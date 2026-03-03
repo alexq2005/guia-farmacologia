@@ -1,0 +1,278 @@
+[
+  {
+    "id": "f01",
+    "nombre": "Dosis por peso corporal",
+    "categoria": "dosificacion",
+    "formula": "Dosis = Peso (kg) × Dosis prescrita (mg/kg)",
+    "variables": [
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "dosisPorKg", "descripcion": "Dosis prescrita por kilogramo", "unidad": "mg/kg" }
+    ],
+    "ejemplo": "Paciente de 70 kg, prescripción de 15 mg/kg de amoxicilina:\n70 × 15 = 1050 mg",
+    "explicacion": "Fórmula básica para calcular la dosis total cuando se prescribe en mg/kg. Fundamental en pediatría y ajustes por peso."
+  },
+  {
+    "id": "f02",
+    "nombre": "Velocidad de goteo (gotas/min)",
+    "categoria": "goteo",
+    "formula": "Gotas/min = (Volumen total en mL × Factor de goteo) ÷ Tiempo en minutos",
+    "variables": [
+      { "nombre": "volumen", "descripcion": "Volumen total a infundir", "unidad": "mL" },
+      { "nombre": "factorGoteo", "descripcion": "Factor de goteo del equipo (macro=20, micro=60)", "unidad": "gotas/mL" },
+      { "nombre": "tiempo", "descripcion": "Tiempo de infusión", "unidad": "min" }
+    ],
+    "ejemplo": "Infundir 500 mL en 4 horas con macrogotero (20 gotas/mL):\n(500 × 20) ÷ 240 = 41.6 ≈ 42 gotas/min",
+    "explicacion": "El factor de goteo depende del equipo: macrogotero = 20 gotas/mL, microgotero = 60 gotas/mL. El microgotero es equivalente a mL/hora."
+  },
+  {
+    "id": "f03",
+    "nombre": "Velocidad de infusión (mL/hora)",
+    "categoria": "goteo",
+    "formula": "mL/hora = Volumen total (mL) ÷ Tiempo (horas)",
+    "variables": [
+      { "nombre": "volumen", "descripcion": "Volumen total a infundir", "unidad": "mL" },
+      { "nombre": "tiempo", "descripcion": "Tiempo de infusión", "unidad": "horas" }
+    ],
+    "ejemplo": "Infundir 1000 mL de SF en 8 horas:\n1000 ÷ 8 = 125 mL/hora",
+    "explicacion": "Para bombas de infusión que trabajan en mL/h. Con microgotero, mL/hora = microgotas/min."
+  },
+  {
+    "id": "f04",
+    "nombre": "Dosis de fármaco en infusión continua",
+    "categoria": "goteo",
+    "formula": "Velocidad (mL/h) = (Dosis deseada × Peso × 60) ÷ Concentración",
+    "variables": [
+      { "nombre": "dosisDeseada", "descripcion": "Dosis deseada", "unidad": "mcg/kg/min" },
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "concentracion", "descripcion": "Concentración de la solución", "unidad": "mcg/mL" }
+    ],
+    "ejemplo": "Dopamina 5 mcg/kg/min en paciente de 80 kg, concentración 1600 mcg/mL:\n(5 × 80 × 60) ÷ 1600 = 15 mL/h",
+    "explicacion": "Esencial para fármacos vasoactivos en UCI. La concentración se calcula: mg totales × 1000 ÷ volumen total en mL."
+  },
+  {
+    "id": "f05",
+    "nombre": "Regla de tres simple",
+    "categoria": "dosificacion",
+    "formula": "Cantidad a administrar = (Dosis prescrita × Presentación disponible) ÷ Concentración disponible",
+    "variables": [
+      { "nombre": "dosisPrescrita", "descripcion": "Dosis que se debe administrar", "unidad": "mg" },
+      { "nombre": "presentacion", "descripcion": "Volumen o cantidad de la presentación", "unidad": "mL" },
+      { "nombre": "concentracion", "descripcion": "Cantidad de fármaco en la presentación", "unidad": "mg" }
+    ],
+    "ejemplo": "Se prescribe 500 mg de amoxicilina. Disponible: suspensión 250 mg/5 mL:\n(500 × 5) ÷ 250 = 10 mL",
+    "explicacion": "La regla de tres es la herramienta más utilizada en enfermería para conversión de dosis. Siempre verificar las unidades."
+  },
+  {
+    "id": "f06",
+    "nombre": "Superficie corporal (BSA) - Mosteller",
+    "categoria": "pediatria",
+    "formula": "BSA (m²) = √((Peso kg × Talla cm) ÷ 3600)",
+    "variables": [
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "talla", "descripcion": "Talla del paciente", "unidad": "cm" }
+    ],
+    "ejemplo": "Niño de 20 kg y 110 cm:\nBSA = √((20 × 110) ÷ 3600) = √0.611 = 0.78 m²",
+    "explicacion": "La BSA se usa para dosificación más precisa en pediatría y quimioterapia. Fórmula de Mosteller es la más práctica."
+  },
+  {
+    "id": "f07",
+    "nombre": "Dosis pediátrica por BSA",
+    "categoria": "pediatria",
+    "formula": "Dosis pediátrica = (BSA niño ÷ 1.73 m²) × Dosis adulto",
+    "variables": [
+      { "nombre": "bsaNino", "descripcion": "Superficie corporal del niño", "unidad": "m²" },
+      { "nombre": "dosisAdulto", "descripcion": "Dosis estándar del adulto", "unidad": "mg" }
+    ],
+    "ejemplo": "Niño con BSA 0.78 m², dosis adulto 500 mg:\n(0.78 ÷ 1.73) × 500 = 225 mg",
+    "explicacion": "1.73 m² es la BSA estándar del adulto. Método más preciso que Young o Clark para dosis pediátricas."
+  },
+  {
+    "id": "f08",
+    "nombre": "Regla de Young (dosis pediátrica por edad)",
+    "categoria": "pediatria",
+    "formula": "Dosis pediátrica = (Edad en años ÷ (Edad + 12)) × Dosis adulto",
+    "variables": [
+      { "nombre": "edad", "descripcion": "Edad del niño", "unidad": "años" },
+      { "nombre": "dosisAdulto", "descripcion": "Dosis estándar del adulto", "unidad": "mg" }
+    ],
+    "ejemplo": "Niño de 6 años, dosis adulto 500 mg:\n(6 ÷ 18) × 500 = 166.7 mg",
+    "explicacion": "Método rápido basado en la edad. Menos preciso que BSA. Útil cuando no hay datos de peso disponibles."
+  },
+  {
+    "id": "f09",
+    "nombre": "Regla de Clark (dosis pediátrica por peso)",
+    "categoria": "pediatria",
+    "formula": "Dosis pediátrica = (Peso en kg ÷ 70) × Dosis adulto",
+    "variables": [
+      { "nombre": "peso", "descripcion": "Peso del niño", "unidad": "kg" },
+      { "nombre": "dosisAdulto", "descripcion": "Dosis estándar del adulto", "unidad": "mg" }
+    ],
+    "ejemplo": "Niño de 25 kg, dosis adulto 500 mg:\n(25 ÷ 70) × 500 = 178.6 mg",
+    "explicacion": "Asume peso adulto estándar de 70 kg. Más preciso que Young pero menos que BSA."
+  },
+  {
+    "id": "f10",
+    "nombre": "Aclaramiento de Creatinina (Cockcroft-Gault)",
+    "categoria": "renal",
+    "formula": "ClCr = ((140 - Edad) × Peso kg) ÷ (72 × Creatinina sérica mg/dL)\n[× 0.85 en mujeres]",
+    "variables": [
+      { "nombre": "edad", "descripcion": "Edad del paciente", "unidad": "años" },
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "creatinina", "descripcion": "Creatinina sérica", "unidad": "mg/dL" },
+      { "nombre": "sexo", "descripcion": "Sexo del paciente (multiplicar por 0.85 si mujer)", "unidad": "" }
+    ],
+    "ejemplo": "Mujer 65 años, 60 kg, creatinina 1.2:\n((140-65) × 60) ÷ (72 × 1.2) × 0.85 = 44.3 mL/min",
+    "explicacion": "Fundamental para ajuste de dosis en insuficiencia renal. Normal: >90 mL/min. Insuficiencia leve: 60-89, moderada: 30-59, grave: 15-29, terminal: <15."
+  },
+  {
+    "id": "f11",
+    "nombre": "Conversión de unidades de insulina",
+    "categoria": "conversion",
+    "formula": "Para insulina U-100: 1 mL = 100 unidades\nPara insulina U-40: 1 mL = 40 unidades",
+    "variables": [
+      { "nombre": "unidades", "descripcion": "Unidades de insulina prescritas", "unidad": "UI" },
+      { "nombre": "concentracion", "descripcion": "Concentración de la insulina", "unidad": "UI/mL" }
+    ],
+    "ejemplo": "Se prescriben 30 UI de insulina U-100:\n30 ÷ 100 = 0.3 mL",
+    "explicacion": "SIEMPRE usar jeringas de insulina apropiadas para la concentración. Error en la conversión puede ser fatal."
+  },
+  {
+    "id": "f12",
+    "nombre": "Conversión mg ↔ mcg ↔ g",
+    "categoria": "conversion",
+    "formula": "1 g = 1000 mg = 1,000,000 mcg\n1 mg = 1000 mcg = 0.001 g\n1 mcg = 0.001 mg = 0.000001 g",
+    "variables": [
+      { "nombre": "valor", "descripcion": "Valor a convertir", "unidad": "g/mg/mcg" }
+    ],
+    "ejemplo": "Convertir 0.25 mg a mcg:\n0.25 × 1000 = 250 mcg\n\nConvertir 2 g a mg:\n2 × 1000 = 2000 mg",
+    "explicacion": "Error común en enfermería. Regla mnemotécnica: al bajar de unidad (g→mg→mcg) se multiplica por 1000; al subir se divide."
+  },
+  {
+    "id": "f13",
+    "nombre": "Dilución de fármacos",
+    "categoria": "dosificacion",
+    "formula": "C1 × V1 = C2 × V2\nV2 = (C1 × V1) ÷ C2",
+    "variables": [
+      { "nombre": "C1", "descripcion": "Concentración inicial", "unidad": "mg/mL" },
+      { "nombre": "V1", "descripcion": "Volumen inicial", "unidad": "mL" },
+      { "nombre": "C2", "descripcion": "Concentración deseada", "unidad": "mg/mL" },
+      { "nombre": "V2", "descripcion": "Volumen final", "unidad": "mL" }
+    ],
+    "ejemplo": "Diluir ampolla de 40 mg/2mL a concentración 4 mg/mL:\nV2 = (20 × 2) ÷ 4 = 10 mL totales\nAgregar 8 mL de diluyente",
+    "explicacion": "Fórmula de dilución C1V1=C2V2. Esencial para preparar medicación IV. Siempre verificar el diluyente compatible."
+  },
+  {
+    "id": "f14",
+    "nombre": "Dosis de carga",
+    "categoria": "dosificacion",
+    "formula": "Dosis de carga = (Cp deseada × Vd × Peso) ÷ Biodisponibilidad",
+    "variables": [
+      { "nombre": "CpDeseada", "descripcion": "Concentración plasmática deseada", "unidad": "mg/L" },
+      { "nombre": "Vd", "descripcion": "Volumen de distribución", "unidad": "L/kg" },
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "F", "descripcion": "Biodisponibilidad (1 para IV)", "unidad": "" }
+    ],
+    "ejemplo": "Fenitoína: Cp=20 mg/L, Vd=0.65 L/kg, peso 70 kg, IV (F=1):\n(20 × 0.65 × 70) ÷ 1 = 910 mg",
+    "explicacion": "La dosis de carga alcanza niveles terapéuticos rápidamente. Se usa cuando no se puede esperar a acumular niveles con dosis de mantenimiento."
+  },
+  {
+    "id": "f15",
+    "nombre": "Índice de masa corporal (IMC)",
+    "categoria": "dosificacion",
+    "formula": "IMC = Peso (kg) ÷ Talla² (m²)",
+    "variables": [
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "talla", "descripcion": "Talla del paciente", "unidad": "m" }
+    ],
+    "ejemplo": "Paciente de 85 kg y 1.70 m:\n85 ÷ (1.70)² = 85 ÷ 2.89 = 29.4 (sobrepeso)",
+    "explicacion": "Clasificación OMS: <18.5 bajo peso, 18.5-24.9 normal, 25-29.9 sobrepeso, ≥30 obesidad. Importante para ajuste de dosis en obesidad."
+  },
+  {
+    "id": "f16",
+    "nombre": "Peso Corporal Ideal (Devine)",
+    "categoria": "dosificacion",
+    "formula": "Hombres: PCI = 50 + 0.91 × (Talla cm - 152.4)\nMujeres: PCI = 45.5 + 0.91 × (Talla cm - 152.4)",
+    "variables": [
+      { "nombre": "talla", "descripcion": "Talla del paciente", "unidad": "cm" },
+      { "nombre": "sexo", "descripcion": "Sexo del paciente", "unidad": "" }
+    ],
+    "ejemplo": "Hombre de 175 cm:\nPCI = 50 + 0.91 × (175 - 152.4) = 50 + 20.6 = 70.6 kg",
+    "explicacion": "Usado para dosificar aminoglucósidos, ventilación mecánica y otros fármacos donde el peso real sobreestima la dosis en obesos."
+  },
+  {
+    "id": "f17",
+    "nombre": "Peso Corporal Ajustado",
+    "categoria": "dosificacion",
+    "formula": "Peso ajustado = PCI + 0.4 × (Peso real - PCI)",
+    "variables": [
+      { "nombre": "pesoReal", "descripcion": "Peso real del paciente", "unidad": "kg" },
+      { "nombre": "pci", "descripcion": "Peso corporal ideal", "unidad": "kg" }
+    ],
+    "ejemplo": "Paciente de 110 kg con PCI de 70 kg:\nPeso ajustado = 70 + 0.4 × (110 - 70) = 70 + 16 = 86 kg",
+    "explicacion": "Se usa en pacientes obesos (peso real >120% del ideal) para dosificación más precisa de fármacos hidrofílicos como vancomicina y aminoglucósidos."
+  },
+  {
+    "id": "f18",
+    "nombre": "Calcio corregido por albúmina",
+    "categoria": "renal",
+    "formula": "Ca corregido = Ca medido + 0.8 × (4.0 - Albúmina)",
+    "variables": [
+      { "nombre": "calcioMedido", "descripcion": "Calcio sérico total medido", "unidad": "mg/dL" },
+      { "nombre": "albumina", "descripcion": "Albúmina sérica", "unidad": "g/dL" }
+    ],
+    "ejemplo": "Ca medido 7.8 mg/dL, albúmina 2.5 g/dL:\nCa corregido = 7.8 + 0.8 × (4.0 - 2.5) = 7.8 + 1.2 = 9.0 mg/dL",
+    "explicacion": "Imprescindible en pacientes hipoalbuminémicos. El calcio total aparece falsamente bajo pero el calcio iónico puede ser normal. Normal corregido: 8.5-10.5 mg/dL."
+  },
+  {
+    "id": "f19",
+    "nombre": "Déficit de Sodio",
+    "categoria": "renal",
+    "formula": "Déficit Na = ACT × (Na deseado - Na actual)\nACT = Peso × 0.6 (hombres) o 0.5 (mujeres)",
+    "variables": [
+      { "nombre": "peso", "descripcion": "Peso del paciente", "unidad": "kg" },
+      { "nombre": "naActual", "descripcion": "Sodio sérico actual", "unidad": "mEq/L" },
+      { "nombre": "naDeseado", "descripcion": "Sodio sérico objetivo", "unidad": "mEq/L" },
+      { "nombre": "sexo", "descripcion": "Factor ACT: 0.6 hombres, 0.5 mujeres", "unidad": "" }
+    ],
+    "ejemplo": "Hombre 70 kg, Na actual 125, Na deseado 130:\nACT = 70 × 0.6 = 42 L\nDéficit = 42 × (130 - 125) = 210 mEq",
+    "explicacion": "Corregir Na no más de 8-10 mEq/L en 24h para evitar mielinólisis pontina. Monitorizar Na cada 4-6 horas durante la corrección."
+  },
+  {
+    "id": "f20",
+    "nombre": "Anion Gap",
+    "categoria": "renal",
+    "formula": "Anion Gap = Na⁺ - (Cl⁻ + HCO₃⁻)",
+    "variables": [
+      { "nombre": "sodio", "descripcion": "Sodio sérico", "unidad": "mEq/L" },
+      { "nombre": "cloro", "descripcion": "Cloro sérico", "unidad": "mEq/L" },
+      { "nombre": "bicarbonato", "descripcion": "Bicarbonato sérico", "unidad": "mEq/L" }
+    ],
+    "ejemplo": "Na 140, Cl 100, HCO₃ 24:\nAnion Gap = 140 - (100 + 24) = 16 mEq/L",
+    "explicacion": "Normal: 8-12 mEq/L. Elevado en acidosis metabólica por cetoacidosis diabética, uremia, intoxicación por metanol/etilenglicol, acidosis láctica (MUDPILES)."
+  },
+  {
+    "id": "f21",
+    "nombre": "Osmolaridad sérica calculada",
+    "categoria": "renal",
+    "formula": "Osm = 2 × Na + (Glucosa ÷ 18) + (BUN ÷ 2.8)",
+    "variables": [
+      { "nombre": "sodio", "descripcion": "Sodio sérico", "unidad": "mEq/L" },
+      { "nombre": "glucosa", "descripcion": "Glucosa sérica", "unidad": "mg/dL" },
+      { "nombre": "bun", "descripcion": "Nitrógeno ureico en sangre", "unidad": "mg/dL" }
+    ],
+    "ejemplo": "Na 140, Glucosa 180, BUN 28:\nOsm = 2×140 + (180÷18) + (28÷2.8) = 280 + 10 + 10 = 300 mOsm/L",
+    "explicacion": "Normal: 275-295 mOsm/L. La diferencia entre osmolaridad medida y calculada (gap osmolar >10) sugiere intoxicación por alcohol, metanol o etilenglicol."
+  },
+  {
+    "id": "f22",
+    "nombre": "Concentración de infusión (mcg/mL)",
+    "categoria": "goteo",
+    "formula": "Concentración = (mg de fármaco × 1000) ÷ Volumen total mL",
+    "variables": [
+      { "nombre": "mgFarmaco", "descripcion": "Cantidad total de fármaco agregada", "unidad": "mg" },
+      { "nombre": "volumen", "descripcion": "Volumen total de la solución", "unidad": "mL" }
+    ],
+    "ejemplo": "Dopamina 400 mg en 250 mL de SG5%:\n(400 × 1000) ÷ 250 = 1600 mcg/mL",
+    "explicacion": "Paso previo necesario para calcular la velocidad de infusión en mcg/kg/min. Se usa con la fórmula f04 para programar la bomba de infusión."
+  }
+]

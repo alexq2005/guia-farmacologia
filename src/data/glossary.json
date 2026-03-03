@@ -1,0 +1,290 @@
+[
+  { "termino": "Absorción", "definicion": "Proceso por el cual un fármaco pasa desde el sitio de administración al torrente sanguíneo. Depende de la vía, la forma farmacéutica y las propiedades físico-químicas del fármaco.", "categoria": "farmacologia" },
+  { "termino": "Agonista", "definicion": "Sustancia que se une a un receptor y produce una respuesta biológica. Imita la acción del ligando natural.", "categoria": "farmacologia" },
+  { "termino": "Anafilaxia", "definicion": "Reacción alérgica grave, sistémica y potencialmente mortal. Requiere administración inmediata de adrenalina IM.", "categoria": "general" },
+  { "termino": "Antagonista", "definicion": "Sustancia que se une a un receptor sin activarlo, bloqueando la acción del agonista. Ejemplo: naloxona (antagonista opioide).", "categoria": "farmacologia" },
+  { "termino": "Anticoagulante", "definicion": "Fármaco que previene la formación de coágulos al interferir con la cascada de coagulación. Ejemplos: heparina, warfarina.", "categoria": "farmacologia" },
+  { "termino": "Bactericida", "definicion": "Antibiótico que destruye las bacterias. A diferencia de los bacteriostáticos, no solo inhibe el crecimiento sino que provoca la muerte bacteriana.", "categoria": "farmacologia" },
+  { "termino": "Bacteriostático", "definicion": "Antibiótico que inhibe el crecimiento y multiplicación bacteriana sin matar directamente a las bacterias. El sistema inmune completa la eliminación.", "categoria": "farmacologia" },
+  { "termino": "Biodisponibilidad", "definicion": "Fracción del fármaco administrado que alcanza la circulación sistémica en forma inalterada. Por vía IV es siempre del 100%.", "categoria": "farmacologia" },
+  { "termino": "Bolo", "definicion": "Administración IV rápida de un fármaco en cantidad única. Se aplica en 1-5 minutos dependiendo del fármaco.", "categoria": "enfermeria" },
+  { "termino": "Bradicardia", "definicion": "Frecuencia cardíaca inferior a 60 latidos por minuto en adultos. Puede ser efecto adverso de beta-bloqueantes, digoxina u opioides.", "categoria": "general" },
+  { "termino": "Clearance (Aclaramiento)", "definicion": "Volumen de plasma del cual el fármaco es completamente eliminado por unidad de tiempo. Determina la dosis de mantenimiento.", "abreviatura": "Cl", "categoria": "farmacologia" },
+  { "termino": "Concentración mínima inhibitoria", "definicion": "Menor concentración de un antibiótico capaz de inhibir el crecimiento bacteriano in vitro. Guía la elección y dosificación del antibiótico.", "abreviatura": "CMI", "categoria": "farmacologia" },
+  { "termino": "Contraindicación absoluta", "definicion": "Situación en la que un fármaco NO debe administrarse bajo ninguna circunstancia por riesgo de consecuencias graves o muerte.", "categoria": "farmacologia" },
+  { "termino": "Contraindicación relativa", "definicion": "Situación en la que un fármaco puede administrarse con precaución si el beneficio supera el riesgo, bajo estrecha vigilancia.", "categoria": "farmacologia" },
+  { "termino": "Dosis de carga", "definicion": "Dosis inicial mayor que la de mantenimiento, administrada para alcanzar rápidamente niveles terapéuticos en sangre.", "categoria": "farmacologia" },
+  { "termino": "Dosis de mantenimiento", "definicion": "Dosis administrada a intervalos regulares para mantener la concentración del fármaco dentro del rango terapéutico.", "categoria": "farmacologia" },
+  { "termino": "Efecto de primer paso", "definicion": "Metabolismo del fármaco que ocurre en el hígado antes de llegar a la circulación sistémica. Reduce la biodisponibilidad oral.", "categoria": "farmacologia" },
+  { "termino": "Efecto secundario", "definicion": "Efecto no deseado que ocurre a dosis terapéuticas normales. Diferente de efecto adverso en que es predecible y generalmente leve.", "categoria": "farmacologia" },
+  { "termino": "Extravasación", "definicion": "Salida accidental de un fármaco IV al tejido circundante. Puede causar necrosis tisular con fármacos vesicantes.", "categoria": "enfermeria" },
+  { "termino": "Factor de goteo", "definicion": "Número de gotas por mililitro que proporciona un equipo de infusión. Macrogotero: 20 gotas/mL, Microgotero: 60 gotas/mL.", "categoria": "enfermeria" },
+  { "termino": "Farmacocinética", "definicion": "Estudio de lo que el cuerpo le hace al fármaco: absorción, distribución, metabolismo y excreción (ADME).", "categoria": "farmacologia" },
+  { "termino": "Farmacodinamia", "definicion": "Estudio de lo que el fármaco le hace al cuerpo: mecanismo de acción, efectos terapéuticos y adversos.", "categoria": "farmacologia" },
+  { "termino": "Flebitis", "definicion": "Inflamación de una vena, frecuentemente causada por irritación química de fármacos IV, trauma mecánico del catéter, o infección.", "categoria": "enfermeria" },
+  { "termino": "Hemólisis", "definicion": "Destrucción de glóbulos rojos. Puede ser efecto adverso de ciertos fármacos o resultado de incompatibilidad sanguínea.", "categoria": "general" },
+  { "termino": "Hepatotoxicidad", "definicion": "Daño hepático causado por fármacos. El paracetamol en sobredosis es la causa más común de hepatotoxicidad por fármacos.", "categoria": "farmacologia" },
+  { "termino": "Hipersensibilidad", "definicion": "Respuesta inmune exagerada a un fármaco. Tipo I (anafilaxia) es la más peligrosa. Siempre preguntar antecedentes alérgicos.", "categoria": "farmacologia" },
+  { "termino": "Índice terapéutico", "definicion": "Relación entre la dosis tóxica y la dosis terapéutica (DT50/DE50). Un índice bajo indica mayor riesgo de toxicidad.", "categoria": "farmacologia" },
+  { "termino": "Infusión continua", "definicion": "Administración IV ininterrumpida de un fármaco diluido a velocidad controlada, generalmente mediante bomba de infusión.", "categoria": "enfermeria" },
+  { "termino": "Interacción medicamentosa", "definicion": "Modificación del efecto de un fármaco por la administración simultánea de otro fármaco, alimento o sustancia.", "categoria": "farmacologia" },
+  { "termino": "Inyección en bolo", "definicion": "Administración IV directa y rápida. Se usa para fármacos de emergencia. Verificar siempre la velocidad de administración recomendada.", "categoria": "enfermeria" },
+  { "termino": "Nefrotoxicidad", "definicion": "Daño renal causado por fármacos. Aminoglucósidos, AINEs y medios de contraste son causas frecuentes. Monitorizar creatinina.", "categoria": "farmacologia" },
+  { "termino": "Nivel sérico", "definicion": "Concentración del fármaco medida en sangre. Se usa para monitorizar fármacos de índice terapéutico estrecho (vancomicina, digoxina, fenitoína).", "categoria": "farmacologia" },
+  { "termino": "Ototoxicidad", "definicion": "Daño al oído interno causado por fármacos, que puede provocar pérdida auditiva o vértigo. Asociada a aminoglucósidos y furosemida.", "categoria": "farmacologia" },
+  { "termino": "Perfusión", "definicion": "Administración controlada y continua de una solución IV. Sinónimo de infusión en muchos contextos clínicos.", "categoria": "enfermeria" },
+  { "termino": "Pico plasmático", "definicion": "Concentración máxima del fármaco en sangre tras su administración. El tiempo al pico varía según la vía.", "abreviatura": "Cmáx", "categoria": "farmacologia" },
+  { "termino": "Rango terapéutico", "definicion": "Intervalo de concentraciones plasmáticas entre la concentración mínima eficaz y la concentración tóxica mínima.", "categoria": "farmacologia" },
+  { "termino": "Reacción adversa medicamentosa", "definicion": "Respuesta nociva y no intencionada a un medicamento usado a dosis normales. Se clasifica por gravedad y mecanismo.", "abreviatura": "RAM", "categoria": "farmacologia" },
+  { "termino": "Reconstitución", "definicion": "Proceso de agregar un diluyente a un fármaco liofilizado (en polvo) para obtener una solución inyectable.", "categoria": "enfermeria" },
+  { "termino": "Síndrome serotoninérgico", "definicion": "Toxicidad por exceso de serotonina: agitación, temblor, hipertermia, diaforesis. Puede ser mortal. Causado por interacción de fármacos serotoninérgicos.", "categoria": "general" },
+  { "termino": "Taquifilaxia", "definicion": "Disminución rápida de la respuesta a un fármaco tras administraciones repetidas en corto tiempo.", "categoria": "farmacologia" },
+  { "termino": "Teratogénico", "definicion": "Sustancia capaz de causar malformaciones en el feto durante el embarazo. Categorías FDA: A (seguro) a X (contraindicado).", "categoria": "farmacologia" },
+  { "termino": "Tolerancia", "definicion": "Necesidad de aumentar la dosis para obtener el mismo efecto. Común con opioides y benzodiacepinas.", "categoria": "farmacologia" },
+  { "termino": "Vida media", "definicion": "Tiempo necesario para que la concentración plasmática del fármaco se reduzca a la mitad. Determina la frecuencia de dosificación.", "abreviatura": "t½", "categoria": "farmacologia" },
+  { "termino": "Volumen de distribución", "definicion": "Volumen teórico en el que se distribuye un fármaco para alcanzar la concentración plasmática observada. Indica la extensión de distribución tisular.", "abreviatura": "Vd", "categoria": "farmacologia" },
+  { "termino": "5 correctos", "definicion": "Verificación de enfermería antes de administrar medicamentos: paciente correcto, fármaco correcto, dosis correcta, vía correcta, hora correcta.", "categoria": "enfermeria" },
+  { "termino": "10 correctos", "definicion": "Ampliación de los 5 correctos: + registro correcto, fecha de caducidad correcta, paciente informado, derecho a rechazar, respuesta correcta al fármaco.", "categoria": "enfermeria" },
+  { "termino": "Incompatibilidad", "definicion": "Reacción física o química entre dos o más fármacos mezclados en la misma solución IV. Puede causar precipitación, inactivación o toxicidad.", "categoria": "enfermeria" },
+  { "termino": "Llave de tres vías", "definicion": "Dispositivo que permite conectar múltiples líneas de infusión IV. Verificar compatibilidad de fármacos que se administran simultáneamente.", "categoria": "enfermeria" },
+  { "termino": "Purga", "definicion": "Eliminación del aire de un equipo de infusión IV antes de conectarlo al paciente. Previene embolia aérea.", "categoria": "enfermeria" },
+  { "termino": "Solución isotónica", "definicion": "Solución con la misma osmolaridad que el plasma (~290 mOsm/L). Ejemplo: SF 0.9%, Ringer Lactato. No causa movimiento neto de agua.", "categoria": "enfermeria" },
+  { "termino": "Solución hipertónica", "definicion": "Solución con osmolaridad mayor al plasma. Ejemplo: NaCl 3%. Atrae agua del espacio intracelular. Uso en hiponatremia severa.", "categoria": "enfermeria" },
+  { "termino": "Solución hipotónica", "definicion": "Solución con osmolaridad menor al plasma. Ejemplo: Dextrosa 5%. El agua entra a las células. Contraindicada en edema cerebral.", "categoria": "enfermeria" },
+  {
+    "termino": "ADME",
+    "definicion": "Acrónimo de las cuatro fases de la farmacocinética: Absorción, Distribución, Metabolismo y Excreción.",
+    "abreviatura": "ADME",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "BID",
+    "definicion": "Dos veces al día (del latín bis in die).",
+    "abreviatura": "BID",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TID",
+    "definicion": "Tres veces al día (del latín ter in die).",
+    "abreviatura": "TID",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "QID",
+    "definicion": "Cuatro veces al día (del latín quater in die).",
+    "abreviatura": "QID",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "PRN",
+    "definicion": "Según necesidad (del latín pro re nata). Se administra cuando el paciente lo requiere.",
+    "abreviatura": "PRN",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "STAT",
+    "definicion": "Inmediatamente (del latín statim). Indica administración urgente sin demora.",
+    "abreviatura": "STAT",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "VO",
+    "definicion": "Vía oral.",
+    "abreviatura": "VO",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "EV / IV",
+    "definicion": "Vía endovenosa / intravenosa.",
+    "abreviatura": "EV/IV",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "IM",
+    "definicion": "Vía intramuscular.",
+    "abreviatura": "IM",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SC",
+    "definicion": "Vía subcutánea.",
+    "abreviatura": "SC",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SL",
+    "definicion": "Vía sublingual.",
+    "abreviatura": "SL",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "NPO",
+    "definicion": "Nada por vía oral (del latín nil per os). El paciente debe estar en ayunas.",
+    "abreviatura": "NPO",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "INR",
+    "definicion": "International Normalized Ratio. Mide el efecto anticoagulante de la warfarina. Rango terapéutico habitual: 2-3.",
+    "abreviatura": "INR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TTPa",
+    "definicion": "Tiempo de tromboplastina parcial activado. Monitoriza el efecto de la heparina no fraccionada.",
+    "abreviatura": "TTPa",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Farmacovigilancia",
+    "definicion": "Ciencia que detecta, evalúa y previene los efectos adversos de los medicamentos una vez comercializados. Enfermería tiene un rol clave en la notificación de reacciones adversas.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Polifarmacia",
+    "definicion": "Uso simultáneo de 5 o más medicamentos. Aumenta el riesgo de interacciones y efectos adversos. Muy frecuente en pacientes geriátricos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Profármaco",
+    "definicion": "Sustancia inactiva que se convierte en fármaco activo dentro del organismo mediante metabolismo. Ejemplo: enalapril se convierte en enalaprilato.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Metabolito activo",
+    "definicion": "Producto del metabolismo de un fármaco que conserva actividad farmacológica. Puede prolongar o modificar el efecto terapéutico. Ejemplo: morfina-6-glucurónido.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Estado estacionario",
+    "definicion": "Punto en el que la cantidad de fármaco administrado iguala la cantidad eliminada, manteniendo niveles plasmáticos constantes. Se alcanza tras 4-5 vidas medias.",
+    "abreviatura": "Css",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Inducción enzimática",
+    "definicion": "Aumento de la actividad de enzimas hepáticas (CYP450) por ciertos fármacos, acelerando el metabolismo de otros. Inductores comunes: rifampicina, carbamazepina, fenitoína.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Inhibición enzimática",
+    "definicion": "Bloqueo de enzimas hepáticas (CYP450) por ciertos fármacos, retardando el metabolismo de otros y aumentando sus niveles. Inhibidores comunes: ketoconazol, eritromicina, fluoxetina.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Ventana terapéutica",
+    "definicion": "Rango de dosis en el que un fármaco produce efecto beneficioso sin toxicidad significativa. Fármacos con ventana estrecha requieren monitorización de niveles séricos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Idiosincrasia",
+    "definicion": "Reacción adversa impredecible a un fármaco, determinada genéticamente. No está relacionada con la dosis ni con el mecanismo de acción esperado.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Efecto rebote",
+    "definicion": "Reaparición o empeoramiento de síntomas tras la suspensión brusca de un fármaco. Frecuente con betabloqueantes, corticoides y benzodiacepinas. Requiere retiro gradual.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Dependencia física",
+    "definicion": "Estado de adaptación fisiológica que produce síndrome de abstinencia al suspender bruscamente el fármaco. Diferente de la adicción. Común con opioides, benzodiacepinas y corticoides.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Osmolaridad",
+    "definicion": "Concentración de partículas osmóticamente activas en una solución, medida en mOsm/L. Osmolaridad plasmática normal: 275-295 mOsm/L. Importante para selección de soluciones IV.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Hipopotasemia",
+    "definicion": "Potasio sérico menor de 3.5 mEq/L. Causa debilidad muscular, arritmias y paro cardíaco. Frecuente con diuréticos de asa. Monitorizar ECG y reponer con precaución.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hiperpotasemia",
+    "definicion": "Potasio sérico mayor de 5.5 mEq/L. Causa arritmias potencialmente mortales. Frecuente con IECA, espironolactona e insuficiencia renal. Emergencia si K+ > 6.5 mEq/L.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hiponatremia",
+    "definicion": "Sodio sérico menor de 135 mEq/L. Causa confusión, convulsiones y edema cerebral. Puede ser causada por diuréticos tiazídicos, ISRS o exceso de líquidos hipotónicos.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hipocalcemia",
+    "definicion": "Calcio sérico menor de 8.5 mg/dL. Causa parestesias, espasmos musculares (signo de Trousseau/Chvostek) y arritmias. Frecuente tras tiroidectomía o con furosemida.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hipercalcemia",
+    "definicion": "Calcio sérico mayor de 10.5 mg/dL. Causa confusión, poliuria, estreñimiento y arritmias. Asociada a hiperparatiroidismo, tiazidas y exceso de vitamina D.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome neuroléptico maligno",
+    "definicion": "Reacción grave a antipsicóticos: rigidez muscular, hipertermia extrema, alteración del estado mental y disautonomía. Emergencia médica. Tratamiento: suspender antipsicótico, dantroleno.",
+    "abreviatura": "SNM",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome del hombre rojo",
+    "definicion": "Reacción por infusión rápida de vancomicina: eritema en cara, cuello y tórax, prurito e hipotensión. Se previene infundiendo en mínimo 60 minutos. No es alergia verdadera.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Atropinización",
+    "definicion": "Estado clínico alcanzado al administrar atropina: sequedad de boca, midriasis, taquicardia y piel seca. Objetivo terapéutico en intoxicación por organofosforados.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Titulación",
+    "definicion": "Ajuste gradual de la dosis de un fármaco hasta alcanzar el efecto deseado minimizando efectos adversos. Frecuente con antihipertensivos, opioides e insulina.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Dilución",
+    "definicion": "Proceso de agregar un fármaco a un volumen de solución IV para su administración. La concentración final debe respetar los límites de osmolaridad y estabilidad.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Bomba de infusión",
+    "definicion": "Dispositivo electrónico que administra fluidos y medicamentos IV a velocidad precisa y controlada. Indispensable para fármacos de alto riesgo y vasoactivos.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Medicamento de alto riesgo",
+    "definicion": "Fármacos con mayor probabilidad de causar daño grave si se usan incorrectamente. Incluyen: insulina, opioides, anticoagulantes, electrolitos concentrados y quimioterapia.",
+    "abreviatura": "MAR",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Reacción de hipersensibilidad tipo I",
+    "definicion": "Reacción alérgica inmediata mediada por IgE. Incluye urticaria, broncoespasmo y anafilaxia. Aparece en minutos tras la exposición. Requiere epinefrina si es grave.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Citocromo P450",
+    "definicion": "Familia de enzimas hepáticas responsables del metabolismo de la mayoría de fármacos. Las isoformas principales son CYP3A4, CYP2D6, CYP2C19 y CYP1A2.",
+    "abreviatura": "CYP450",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "QD",
+    "definicion": "Una vez al día (del latín quaque die).",
+    "abreviatura": "QD",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TFG",
+    "definicion": "Tasa de filtración glomerular. Indica la función renal. Normal: >90 mL/min/1.73m². Esencial para ajuste de dosis de fármacos de eliminación renal.",
+    "abreviatura": "TFG",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SNG",
+    "definicion": "Sonda nasogástrica. Vía de administración de fármacos en pacientes que no pueden deglutir. Verificar compatibilidad de la forma farmacéutica.",
+    "abreviatura": "SNG",
+    "categoria": "abreviatura"
+  }
+]

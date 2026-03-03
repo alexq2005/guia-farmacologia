@@ -1,0 +1,362 @@
+[
+  {
+    "id": "oral",
+    "nombre": "Vía Oral (VO)",
+    "descripcion": "Administración de medicamentos por la boca para absorción en el tracto gastrointestinal. Es la vía más utilizada, segura y económica.",
+    "tecnica": [
+      "Verificar los 10 correctos de medicación",
+      "Comprobar que el paciente puede deglutir (reflejo de deglución presente)",
+      "Posicionar al paciente en semifowler (30-45°) para evitar aspiración",
+      "Administrar con 100-200 mL de agua (salvo restricción hídrica)",
+      "No triturar comprimidos de liberación prolongada ni cápsulas entéricas",
+      "Para pacientes con SNG: verificar permeabilidad, triturar y diluir en 20-30 mL de agua",
+      "Esperar a que el paciente trague antes de registrar la administración"
+    ],
+    "precauciones": [
+      "Contraindicada en pacientes inconscientes o con vómitos activos",
+      "No administrar con alimentos que interfieran (ej: tetraciclinas con lácteos)",
+      "Verificar ayuno si es requerido (ej: levotiroxina 30 min antes del desayuno)",
+      "Efecto de primer paso hepático reduce biodisponibilidad",
+      "Inicio de acción más lento que vías parenterales (30-60 min generalmente)"
+    ],
+    "imagen": "route_oral",
+    "zonas": ["Boca", "Esófago", "Estómago", "Intestino delgado (absorción principal)"],
+    "velocidad": "Inicio: 30-60 min | Pico: 1-2 horas | Duración variable"
+  },
+  {
+    "id": "IV",
+    "nombre": "Vía Intravenosa (IV/EV)",
+    "descripcion": "Administración directa al torrente sanguíneo a través de una vena. Biodisponibilidad del 100%. Permite efecto inmediato y control preciso de dosis.",
+    "tecnica": [
+      "Verificar permeabilidad del acceso venoso (reflujo sanguíneo)",
+      "Comprobar signos de flebitis o infiltración antes de administrar",
+      "Lavar la vía con 5-10 mL de SF 0.9% antes y después del fármaco",
+      "BOLO: administrar lentamente (según indicación, generalmente 1-5 min)",
+      "INFUSIÓN INTERMITENTE: diluir en 50-250 mL, pasar en 30-60 min",
+      "INFUSIÓN CONTINUA: diluir en 500-1000 mL, usar bomba de infusión",
+      "Verificar compatibilidad si se mezclan fármacos en la misma línea",
+      "Monitorizar signos vitales durante y después de la administración"
+    ],
+    "precauciones": [
+      "Vía de mayor riesgo: reacciones adversas son inmediatas e irreversibles",
+      "NUNCA administrar fármacos con partículas visibles o solución turbia",
+      "Verificar fecha de caducidad y estabilidad después de reconstitución",
+      "Respetar estrictamente la velocidad de infusión (ej: vancomicina lenta por síndrome del hombre rojo)",
+      "Vigilar extravasación especialmente con vesicantes (ej: dopamina, noradrenalina)",
+      "Riesgo de embolia aérea: purgar siempre el equipo",
+      "Registrar hora de inicio y fin de cada infusión"
+    ],
+    "imagen": "route_iv",
+    "zonas": ["Vena cefálica", "Vena basílica", "Vena mediana cubital", "Dorso de la mano", "Vena yugular (CVC)", "Vena subclavia (CVC)", "Vena femoral (CVC)"],
+    "velocidad": "Inicio: inmediato (segundos) | Pico: inmediato | Control total con bomba"
+  },
+  {
+    "id": "IM",
+    "nombre": "Vía Intramuscular (IM)",
+    "descripcion": "Inyección del fármaco en el tejido muscular profundo. Absorción relativamente rápida por la buena vascularización muscular.",
+    "tecnica": [
+      "Seleccionar la aguja apropiada (calibre 21-23G, longitud 2.5-3.8 cm en adultos)",
+      "Sitio preferido en adultos: VENTROGLÚTEO (más seguro, menor riesgo de nervio ciático)",
+      "Alternativas: deltoides (hasta 2 mL), vasto lateral (preferido en lactantes)",
+      "Limpiar la zona con antiséptico en movimiento circular",
+      "Técnica en Z: desplazar el tejido lateral antes de insertar para sellar el trayecto",
+      "Insertar la aguja en ángulo de 90° con movimiento firme y rápido",
+      "Aspirar brevemente (excepto en vacunas según protocolo actual)",
+      "Inyectar lentamente (1 mL por 10 segundos)",
+      "Retirar la aguja rápidamente y aplicar presión suave (no masajear)"
+    ],
+    "precauciones": [
+      "Volumen máximo por sitio: glúteo 5 mL, deltoides 2 mL, vasto lateral 5 mL",
+      "Contraindicada en pacientes anticoagulados o con trombocitopenia severa",
+      "Rotar sitios de inyección si se administra frecuentemente",
+      "No usar glúteo dorsoglúteo en niños < 3 años (nervio ciático)",
+      "Verificar que no hay induración o signos de absceso previo en la zona"
+    ],
+    "imagen": "route_im",
+    "zonas": ["Ventroglúteo (preferido)", "Dorsoglúteo", "Deltoides", "Vasto lateral del muslo"],
+    "angulo": "90° respecto a la superficie de la piel",
+    "velocidad": "Inicio: 10-30 min | Pico: 30-60 min | Duración: variable según formulación"
+  },
+  {
+    "id": "SC",
+    "nombre": "Vía Subcutánea (SC)",
+    "descripcion": "Inyección en el tejido subcutáneo (hipodermis), debajo de la piel y por encima del músculo. Absorción lenta y sostenida.",
+    "tecnica": [
+      "Seleccionar aguja corta (calibre 25-27G, longitud 1.5-1.6 cm)",
+      "Sitios: abdomen (más rápida absorción), muslo anterior, parte posterior del brazo",
+      "Pellizcar un pliegue de piel entre el pulgar e índice",
+      "Insertar la aguja en ángulo de 45° (o 90° con aguja corta y pliegue suficiente)",
+      "NO aspirar en inyecciones SC (ya no se recomienda)",
+      "Inyectar lentamente el contenido",
+      "Retirar aguja y no masajear (especialmente con heparinas)",
+      "Para insulina: rotar sitios siguiendo un patrón (reloj)",
+      "Para heparinas: inyectar en abdomen, 5 cm alejado del ombligo"
+    ],
+    "precauciones": [
+      "Volumen máximo: 1-2 mL por sitio",
+      "No inyectar en zonas con lipodistrofia, hematomas o cicatrices",
+      "Rotar sitios para prevenir lipodistrofia (especialmente con insulina)",
+      "No masajear después de heparinas (aumenta hematoma)",
+      "Absorción variable según perfusión tisular (disminuida en shock)"
+    ],
+    "imagen": "route_sc",
+    "zonas": ["Abdomen (periumbilical)", "Cara anterior del muslo", "Parte posterior del brazo", "Zona dorsal superior"],
+    "angulo": "45° (o 90° con aguja corta)",
+    "velocidad": "Inicio: 15-30 min | Pico: 1-2 horas | Absorción lenta y sostenida"
+  },
+  {
+    "id": "sublingual",
+    "nombre": "Vía Sublingual (SL)",
+    "descripcion": "Colocación del fármaco debajo de la lengua para absorción por la mucosa sublingual. Evita el efecto de primer paso hepático.",
+    "tecnica": [
+      "Colocar el comprimido o spray debajo de la lengua",
+      "Indicar al paciente que NO trague, mastique ni hable",
+      "Mantener bajo la lengua hasta disolución completa (2-5 minutos)",
+      "No ingerir líquidos hasta que se disuelva completamente",
+      "Para nitroglicerina SL: paciente sentado, puede repetir cada 5 min x3"
+    ],
+    "precauciones": [
+      "No usar en pacientes inconscientes o con náuseas/vómitos",
+      "La saliva excesiva puede diluir el fármaco y reducir absorción",
+      "No es útil para fármacos con mal sabor (poca cooperación del paciente)",
+      "Verificar absorción: mucosa oral seca puede reducir el efecto"
+    ],
+    "imagen": "route_sublingual",
+    "zonas": ["Debajo de la lengua (plexo venoso sublingual)"],
+    "velocidad": "Inicio: 1-3 min | Pico: 5-15 min | Absorción muy rápida"
+  },
+  {
+    "id": "topica",
+    "nombre": "Vía Tópica",
+    "descripcion": "Aplicación directa del fármaco sobre la piel o mucosas para efecto local. Incluye cremas, pomadas, geles, lociones.",
+    "tecnica": [
+      "Limpiar y secar la zona antes de aplicar",
+      "Usar guantes para proteger al profesional",
+      "Aplicar una capa fina y uniforme sobre la zona afectada",
+      "Para pomadas oculares: aplicar en fondo de saco conjuntival inferior",
+      "Para gotas óticas: templar a temperatura corporal, tirar del pabellón",
+      "Cubrir con apósito solo si está indicado",
+      "Lavar las manos después de la aplicación"
+    ],
+    "precauciones": [
+      "No aplicar sobre heridas abiertas salvo indicación específica",
+      "Corticoides tópicos: no usar en cara por períodos prolongados",
+      "Algunos fármacos tópicos tienen absorción sistémica significativa",
+      "Verificar alergias a excipientes (lanolina, parabenos)",
+      "No ocluir con plástico salvo indicación médica"
+    ],
+    "imagen": "route_topical",
+    "zonas": ["Piel (epidermis/dermis)", "Mucosa oral", "Mucosa nasal", "Mucosa vaginal"],
+    "velocidad": "Inicio: variable | Efecto principalmente local"
+  },
+  {
+    "id": "inhalatoria",
+    "nombre": "Vía Inhalatoria",
+    "descripcion": "Administración de fármacos por inhalación para efecto local en las vías respiratorias o sistémico por absorción pulmonar.",
+    "tecnica": [
+      "IDM (inhalador de dosis medida): agitar, exhalar, activar al inicio de inspiración lenta y profunda",
+      "Mantener la respiración 10 segundos después de inhalar",
+      "Con aerocámara: mejorar la coordinación y deposición pulmonar",
+      "Nebulización: flujo de O2 o aire a 6-8 L/min, 10-15 min por sesión",
+      "IPS (inhalador de polvo seco): inspiración rápida y profunda, NO agitar",
+      "Si usa broncodilatador + corticoide: SIEMPRE el broncodilatador primero",
+      "Enjuagar la boca después de corticoides inhalados (previene candidiasis oral)"
+    ],
+    "precauciones": [
+      "Verificar técnica inhalatoria (80% de pacientes la realizan mal)",
+      "Lavar aerocámara con agua y detergente, dejar secar al aire",
+      "No usar nebulización con oxígeno en EPOC con hipercapnia (usar aire)",
+      "Corticoides inhalados: enjuague bucal SIEMPRE para prevenir candidiasis"
+    ],
+    "imagen": "route_inhaled",
+    "zonas": ["Vías aéreas superiores", "Bronquios", "Bronquiolos", "Alvéolos"],
+    "velocidad": "Inicio: 1-5 min (broncodilatadores) | Efecto rápido y local"
+  },
+  {
+    "id": "rectal",
+    "nombre": "Vía Rectal",
+    "descripcion": "Administración de fármacos por el recto en forma de supositorios, enemas o espumas. Útil cuando la vía oral no es posible.",
+    "tecnica": [
+      "Explicar el procedimiento al paciente (privacidad)",
+      "Posicionar en decúbito lateral izquierdo con piernas flexionadas",
+      "Lubricar el supositorio con lubricante hidrosoluble",
+      "Insertar suavemente con el dedo índice (unos 2-3 cm en adultos)",
+      "La punta roma va primero (favorece retención)",
+      "Pedir al paciente que permanezca acostado 15-20 minutos",
+      "Para enemas: administrar lentamente, pedir que retenga 5-10 min"
+    ],
+    "precauciones": [
+      "Contraindicada en cirugía rectal reciente, sangrado rectal activo",
+      "No usar en neutropenia severa (riesgo de lesión mucosa e infección)",
+      "Absorción irregular y variable",
+      "Hemorroides pueden dificultar la administración"
+    ],
+    "imagen": "route_rectal",
+    "zonas": ["Recto (venas hemorroidales media e inferior evitan primer paso hepático)"],
+    "angulo": "Dirección hacia el ombligo",
+    "velocidad": "Inicio: 15-30 min | Absorción parcialmente evita primer paso hepático"
+  },
+  {
+    "id": "transdermica",
+    "nombre": "Vía Transdérmica",
+    "descripcion": "Administración a través de parches que liberan fármaco de forma continua y controlada a través de la piel hacia la circulación sistémica.",
+    "tecnica": [
+      "Seleccionar zona limpia, seca, sin vello, sin irritación",
+      "Zonas habituales: tórax, espalda alta, parte superior del brazo",
+      "Retirar el parche anterior antes de colocar uno nuevo",
+      "Presionar firmemente durante 30 segundos asegurando bordes",
+      "Anotar fecha, hora y sitio de colocación",
+      "Rotar el sitio de aplicación con cada cambio de parche",
+      "Retirar y doblar sobre sí mismo el parche usado (desechar seguro)"
+    ],
+    "precauciones": [
+      "No cortar los parches (altera la dosis liberada)",
+      "El calor aumenta la absorción (evitar exposición solar directa, sauna)",
+      "No colocar sobre cicatrices, pliegues cutáneos o zonas irradiadas",
+      "Fentanilo transdérmico: puede causar depresión respiratoria tardía"
+    ],
+    "imagen": "route_transdermal",
+    "zonas": ["Tórax anterior", "Espalda alta", "Parte superior del brazo"],
+    "velocidad": "Inicio: 12-24 horas | Liberación continua 24-72 horas según parche"
+  },
+  {
+    "id": "intradermica",
+    "nombre": "Vía Intradérmica (ID)",
+    "descripcion": "Inyección en la capa dérmica de la piel. Se usa principalmente para pruebas diagnósticas (tuberculina, alergias) y algunas vacunas.",
+    "tecnica": [
+      "Aguja calibre 25-27G, longitud 1-1.5 cm",
+      "Sitio preferido: cara anterior del antebrazo",
+      "Limpiar con alcohol y dejar secar",
+      "Insertar aguja con bisel hacia arriba en ángulo de 5-15°",
+      "Inyectar 0.1 mL lentamente hasta formar una pápula (habón)",
+      "NO aspirar antes de inyectar",
+      "Retirar aguja y NO masajear ni cubrir",
+      "Marcar la zona con un círculo para lectura posterior (48-72h para PPD)"
+    ],
+    "precauciones": [
+      "Volumen máximo: 0.1-0.5 mL",
+      "Debe formarse habón visible; si no se forma, la inyección fue muy profunda",
+      "No comprimir ni cubrir el sitio de inyección",
+      "Para prueba de tuberculina (PPD): leer induración a las 48-72 horas"
+    ],
+    "imagen": "route_intradermal",
+    "zonas": ["Cara anterior del antebrazo", "Parte superior de la espalda"],
+    "angulo": "5-15° con el bisel hacia arriba",
+    "velocidad": "Absorción mínima (efecto local deseado para diagnóstico)"
+  },
+  {
+    "id": "oftalmica",
+    "nombre": "Vía Oftálmica",
+    "descripcion": "Administración de colirios, pomadas o soluciones directamente en el ojo para efecto local.",
+    "tecnica": [
+      "Lavarse las manos y usar guantes si es necesario",
+      "Paciente mirando hacia arriba, inclinar ligeramente la cabeza hacia atrás",
+      "Con el dedo índice, retraer suavemente el párpado inferior",
+      "Instilar la gota o pomada en el fondo de saco conjuntival inferior",
+      "Evitar tocar el ojo o pestañas con el gotero",
+      "Tras instilar, pedir que cierre los ojos suavemente (no apretar)",
+      "Presionar el conducto lagrimal (canto interno) 1-2 min para reducir absorción sistémica",
+      "Si hay más de un colirio: esperar 5 minutos entre cada uno"
+    ],
+    "precauciones": [
+      "Los colirios son individuales (no compartir entre pacientes)",
+      "Desechar 28 días después de abiertos (salvo indicación del fabricante)",
+      "Colirios midriáticos: advertir visión borrosa y fotosensibilidad",
+      "Presionar punto lagrimal con timolol para evitar absorción sistémica (bradicardia)"
+    ],
+    "imagen": "route_ophthalmic",
+    "zonas": ["Fondo de saco conjuntival inferior"],
+    "velocidad": "Inicio: minutos | Efecto local | Posible absorción sistémica"
+  },
+  {
+    "id": "otica",
+    "nombre": "Vía Ótica",
+    "descripcion": "Administración de gotas o soluciones en el conducto auditivo externo para efecto local.",
+    "tecnica": [
+      "Templar las gotas a temperatura corporal (entre las manos 1-2 min)",
+      "Paciente en decúbito lateral con oído afectado hacia arriba",
+      "Adultos: tirar del pabellón auricular hacia arriba y hacia atrás",
+      "Niños < 3 años: tirar del pabellón hacia abajo y hacia atrás",
+      "Instilar el número de gotas prescrito sin tocar el oído con el gotero",
+      "Presionar suavemente el trago para facilitar la entrada",
+      "Mantener posición 5 minutos",
+      "Colocar algodón suelto si está indicado"
+    ],
+    "precauciones": [
+      "No usar en perforación timpánica sin indicación médica",
+      "Gotas frías pueden causar vértigo (reflejo calórico)",
+      "Verificar que el conducto no está obstruido por cerumen"
+    ],
+    "imagen": "route_otic",
+    "zonas": ["Conducto auditivo externo"],
+    "angulo": "Adultos: pabellón arriba y atrás | Niños: pabellón abajo y atrás",
+    "velocidad": "Efecto local"
+  },
+  {
+    "id": "nasal",
+    "nombre": "Vía Nasal",
+    "descripcion": "Administración de fármacos en la cavidad nasal. Para efecto local (descongestivo) o sistémico (absorción por mucosa nasal rica en vasos).",
+    "tecnica": [
+      "Pedir al paciente que se suene suavemente la nariz",
+      "Inclinar la cabeza ligeramente hacia adelante (NO hacia atrás)",
+      "Insertar la punta del spray en la fosa nasal sin tocar el tabique",
+      "Dirigir el spray hacia la pared lateral de la nariz (alejado del tabique)",
+      "Presionar mientras el paciente inspira suavemente por la nariz",
+      "Alternar fosas nasales si se usa crónicamente",
+      "Para gotas nasales: inclinar cabeza hacia atrás, 5 min en posición"
+    ],
+    "precauciones": [
+      "Vasoconstrictores nasales: no usar > 3-5 días (rinitis de rebote)",
+      "Corticoides nasales: vigilar epistaxis, perforación septal con uso prolongado",
+      "Limpiar la boquilla del spray regularmente"
+    ],
+    "imagen": "route_nasal",
+    "zonas": ["Cornetes nasales", "Mucosa nasal"],
+    "velocidad": "Inicio: 5-15 min | Local o sistémico según fármaco"
+  },
+  {
+    "id": "vaginal",
+    "nombre": "Vía Vaginal",
+    "descripcion": "Administración de óvulos, cremas, geles o anillos en la cavidad vaginal. Principalmente para efecto local.",
+    "tecnica": [
+      "Explicar procedimiento (privacidad y comodidad de la paciente)",
+      "Posición de litotomía o decúbito dorsal con piernas flexionadas",
+      "Usar guantes y lubricante hidrosoluble si necesario",
+      "Insertar el óvulo lo más profundo posible con el dedo índice",
+      "Para cremas: usar aplicador proporcionado, insertar suavemente",
+      "Pedir a la paciente que permanezca acostada 15-30 minutos",
+      "Preferiblemente administrar al acostarse (mejor retención)"
+    ],
+    "precauciones": [
+      "Completar el tratamiento aunque los síntomas mejoren",
+      "Óvulos pueden derretirse y manchar; usar protector",
+      "Algunos tratamientos tópicos vaginales pueden debilitar preservativos"
+    ],
+    "imagen": "route_vaginal",
+    "zonas": ["Canal vaginal", "Fondos de saco vaginales"],
+    "velocidad": "Efecto local | Absorción sistémica mínima"
+  },
+  {
+    "id": "epidural",
+    "nombre": "Vía Epidural",
+    "descripcion": "Administración de fármacos en el espacio epidural (entre el ligamento amarillo y la duramadre). Uso en analgesia y anestesia.",
+    "tecnica": [
+      "PROCEDIMIENTO MÉDICO — enfermería colabora y monitoriza",
+      "Posicionar al paciente en sedestación o decúbito lateral fetal",
+      "Mantener técnica estéril absoluta",
+      "Monitorizar signos vitales cada 5 min durante los primeros 30 min",
+      "Vigilar nivel sensitivo (dermatomas bloqueados)",
+      "Evaluar función motora de extremidades inferiores",
+      "Vigilar signos de complicaciones: cefalea, retención urinaria, hipotensión"
+    ],
+    "precauciones": [
+      "Riesgo de depresión respiratoria con opioides epidurales (vigilar FR y saturación)",
+      "Hipotensión por bloqueo simpático: tener SF cargado",
+      "Nunca administrar fármacos que no sean específicos para vía epidural",
+      "No administrar anticoagulantes sin intervalo seguro (riesgo hematoma epidural)"
+    ],
+    "imagen": "route_epidural",
+    "zonas": ["Espacio epidural lumbar (L2-L4 más frecuente)"],
+    "velocidad": "Inicio: 10-20 min | Duración: según fármaco y concentración"
+  }
+]

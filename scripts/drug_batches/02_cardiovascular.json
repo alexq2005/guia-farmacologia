@@ -1,0 +1,464 @@
+[
+  {
+    "id": "captopril",
+    "nombre": "Captopril",
+    "nombreGenerico": "Captopril",
+    "nombresComerciales": ["Capoten", "Captral", "Capotena"],
+    "familia": "Antihipertensivos",
+    "clasificacion": "Inhibidor de la ECA (IECA)",
+    "mecanismoAccion": "Inhibe la enzima convertidora de angiotensina (ECA), bloqueando la conversión de angiotensina I a angiotensina II. Reduce la vasoconstricción, la secreción de aldosterona y la retención de sodio/agua.",
+    "indicaciones": [
+      "Crisis hipertensiva (sublingual)",
+      "Hipertensión arterial",
+      "Insuficiencia cardíaca",
+      "Nefropatía diabética",
+      "Post-infarto de miocardio"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogénico)",
+      "Estenosis bilateral de arteria renal",
+      "Angioedema previo por IECA",
+      "Hiperpotasemia",
+      "Estenosis aórtica severa"
+    ],
+    "efectosAdversos": [
+      "Tos seca (10-15%)",
+      "Hipotensión (primera dosis)",
+      "Hiperpotasemia",
+      "Angioedema (raro pero grave)",
+      "Disgeusia (alteración del gusto)",
+      "Erupción cutánea",
+      "Deterioro función renal",
+      "Mareo"
+    ],
+    "interacciones": [
+      "AINEs: reducen efecto antihipertensivo y aumentan riesgo renal",
+      "Espironolactona/suplementos K+: hiperpotasemia",
+      "Litio: aumenta niveles de litio",
+      "Diuréticos: hipotensión de primera dosis",
+      "ARA-II: doble bloqueo SRAA (evitar)"
+    ],
+    "viaAdministracion": ["oral", "sublingual"],
+    "dosis": {
+      "adulto": "HTA: 12.5-50 mg/8-12h. IC: inicio 6.25 mg/8h, titular. Crisis HTA: 25 mg SL",
+      "pediatrico": "Neonatos: 0.01-0.05 mg/kg/dosis. Niños: 0.3-0.5 mg/kg/dosis cada 8h",
+      "geriatrico": "Iniciar 6.25 mg. Mayor riesgo de hipotensión",
+      "ajusteRenal": "CrCl 10-50: 75% dosis. CrCl <10: 50% dosis",
+      "ajusteHepatico": "No requiere ajuste específico"
+    },
+    "presentaciones": [
+      "Comprimidos 25 mg y 50 mg",
+      "Comprimidos sublinguales 25 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche en mínimas cantidades. Usar con precaución.",
+    "cuidadosEnfermeria": [
+      "Administrar 1 hora antes de comidas (absorción se reduce con alimentos)",
+      "Monitorizar PA antes y 1h después de primera dosis",
+      "Vigilar primera dosis en pacientes con depleción de volumen",
+      "Controlar potasio sérico periódicamente",
+      "Monitorizar función renal (creatinina, BUN)",
+      "Educar sobre tos seca como efecto esperado (no confundir con patología)",
+      "Instruir para reportar edema facial/labial (angioedema)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral rápida 60-75%. Se reduce con alimentos",
+      "distribucion": "Unión proteica 25-30%",
+      "metabolismo": "Hepático parcial (50%)",
+      "excrecion": "Renal 95% (40-50% sin metabolizar)",
+      "vidaMedia": "2-3 horas",
+      "inicioAccion": "Oral: 15-30 min. SL: 5-10 min",
+      "picoAccion": "1-2 horas",
+      "duracionAccion": "6-12 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de humedad.",
+    "unidadId": "u02",
+    "capituloId": "c02_01"
+  },
+  {
+    "id": "propranolol",
+    "nombre": "Propranolol",
+    "nombreGenerico": "Clorhidrato de propranolol",
+    "nombresComerciales": ["Inderal", "Sumial", "Propranolol"],
+    "familia": "Antihipertensivos",
+    "clasificacion": "Betabloqueante no selectivo (beta-1 y beta-2)",
+    "mecanismoAccion": "Bloquea receptores beta-1 (cardíacos) y beta-2 (bronquiales, vasculares). Reduce frecuencia cardíaca, contractilidad, gasto cardíaco y secreción de renina. Por bloqueo beta-2 puede causar broncoconstricción.",
+    "indicaciones": [
+      "Hipertensión arterial",
+      "Angina de pecho",
+      "Arritmias supraventriculares",
+      "Profilaxis de migraña",
+      "Temblor esencial",
+      "Tirotoxicosis (control síntomas)",
+      "Hemorragia variceal (profilaxis)"
+    ],
+    "contraindicaciones": [
+      "Asma bronquial y EPOC severo",
+      "Bradicardia sinusal (<50 lpm)",
+      "Bloqueo AV de segundo o tercer grado",
+      "Shock cardiogénico",
+      "Insuficiencia cardíaca descompensada",
+      "Feocromocitoma sin alfa-bloqueo previo"
+    ],
+    "efectosAdversos": [
+      "Bradicardia",
+      "Hipotensión",
+      "Broncoespasmo",
+      "Fatiga y astenia",
+      "Extremidades frías",
+      "Depresión",
+      "Insomnio y pesadillas",
+      "Enmascaramiento de hipoglucemia en diabéticos",
+      "Impotencia sexual"
+    ],
+    "interacciones": [
+      "Verapamilo/diltiazem: bradicardia severa y bloqueo AV",
+      "Insulina: enmascara síntomas de hipoglucemia",
+      "Clonidina: HTA de rebote al suspender",
+      "Digoxina: bradicardia aditiva",
+      "AINEs: reducen efecto antihipertensivo"
+    ],
+    "viaAdministracion": ["oral", "IV"],
+    "dosis": {
+      "adulto": "HTA: 40-80 mg/12h. Arritmias: 10-30 mg/6-8h. IV: 1 mg lento, repetir cada 5 min. Máx IV: 5 mg",
+      "pediatrico": "Oral: 0.5-1 mg/kg/día en 3-4 dosis. IV: 0.01-0.1 mg/kg lento",
+      "geriatrico": "Iniciar con dosis bajas. Mayor sensibilidad",
+      "ajusteRenal": "No requiere ajuste significativo",
+      "ajusteHepatico": "Reducir dosis. Aumento significativo de biodisponibilidad"
+    },
+    "presentaciones": [
+      "Comprimidos 10, 40, 80 mg",
+      "Solución oral 4 mg/mL",
+      "Ampollas 1 mg/mL (5 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Monitorizar al lactante.",
+    "cuidadosEnfermeria": [
+      "Medir FC antes de cada dosis: no administrar si FC <60 lpm",
+      "Monitorizar PA y FC regularmente",
+      "No suspender abruptamente (riesgo de angina de rebote e IAM)",
+      "Reducir gradualmente en 1-2 semanas",
+      "Vigilar signos de broncoespasmo en pacientes con patología respiratoria",
+      "Advertir a diabéticos que puede enmascarar hipoglucemia",
+      "Administrar IV lento con monitorización ECG"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral completa. Alto efecto de primer paso hepático",
+      "distribucion": "Amplia, altamente lipofílico. Cruza BHE. Unión proteica 90%",
+      "metabolismo": "Hepático extenso CYP2D6 y CYP1A2",
+      "excrecion": "Renal 90% como metabolitos",
+      "vidaMedia": "3-6 horas",
+      "inicioAccion": "Oral: 30 min. IV: 2 min",
+      "picoAccion": "Oral: 1-2 h. IV: inmediato",
+      "duracionAccion": "6-12 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u02",
+    "capituloId": "c02_01"
+  },
+  {
+    "id": "verapamilo",
+    "nombre": "Verapamilo",
+    "nombreGenerico": "Clorhidrato de verapamilo",
+    "nombresComerciales": ["Isoptin", "Calan", "Manidon"],
+    "familia": "Antihipertensivos",
+    "clasificacion": "Antagonista del calcio (no dihidropiridínico)",
+    "mecanismoAccion": "Bloquea canales de calcio tipo L en músculo liso vascular y miocardio. A diferencia de las dihidropiridinas (amlodipino), tiene mayor efecto sobre el nodo AV y la contractilidad cardíaca que sobre los vasos periféricos.",
+    "indicaciones": [
+      "Taquicardia supraventricular paroxística",
+      "Fibrilación/flutter auricular (control de frecuencia)",
+      "Hipertensión arterial",
+      "Angina de pecho estable",
+      "Migraña (profilaxis)"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia cardíaca severa (FE <35%)",
+      "Bloqueo AV de segundo o tercer grado",
+      "Síndrome de Wolff-Parkinson-White con FA",
+      "Taquicardia ventricular",
+      "Uso concomitante de betabloqueantes IV",
+      "Hipotensión severa"
+    ],
+    "efectosAdversos": [
+      "Estreñimiento (muy frecuente)",
+      "Bradicardia",
+      "Hipotensión",
+      "Edema periférico",
+      "Mareo",
+      "Cefalea",
+      "Bloqueo AV",
+      "Insuficiencia cardíaca (dosis altas)"
+    ],
+    "interacciones": [
+      "Betabloqueantes: bradicardia severa y bloqueo AV",
+      "Digoxina: aumenta niveles de digoxina 50-75%",
+      "Carbamazepina: aumenta niveles de carbamazepina",
+      "Estatinas (simvastatina): riesgo de rabdomiólisis",
+      "Ciclosporina: aumenta niveles de ciclosporina"
+    ],
+    "viaAdministracion": ["oral", "IV"],
+    "dosis": {
+      "adulto": "TSVP: 5-10 mg IV en 2 min. HTA oral: 80-120 mg/8h. Máx: 480 mg/día",
+      "pediatrico": "IV: 0.1-0.3 mg/kg (máx 5 mg). No usar en <1 año",
+      "geriatrico": "Iniciar con dosis bajas. Mayor riesgo de bradicardia",
+      "ajusteRenal": "No requiere ajuste significativo",
+      "ajusteHepatico": "Reducir dosis al 30% en cirrosis"
+    },
+    "presentaciones": [
+      "Comprimidos 80, 120 mg",
+      "Comprimidos retard 120, 180, 240 mg",
+      "Ampollas 5 mg/2 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Compatible con precaución.",
+    "cuidadosEnfermeria": [
+      "Monitorizar ECG durante administración IV",
+      "No administrar IV con betabloqueantes (riesgo de asistolia)",
+      "Medir FC y PA antes de cada dosis oral",
+      "Vigilar estreñimiento: recomendar dieta rica en fibra",
+      "No triturar comprimidos de liberación prolongada",
+      "Tener atropina y calcio IV disponibles para bradicardia severa",
+      "Separar de jugo de pomelo (aumenta niveles)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral >90%. Biodisponibilidad 20-35% (primer paso hepático)",
+      "distribucion": "Unión proteica 90%. Volumen distribución alto",
+      "metabolismo": "Hepático extenso CYP3A4. Metabolito activo: norverapamilo",
+      "excrecion": "Renal 70%, fecal 16%",
+      "vidaMedia": "6-8 horas (dosis única), 4.5-12 h (dosis múltiple)",
+      "inicioAccion": "IV: 1-5 min. Oral: 1-2 h",
+      "picoAccion": "IV: 3-5 min. Oral: 1-2 h",
+      "duracionAccion": "IV: 10-20 min. Oral: 6-8 h"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u02",
+    "capituloId": "c02_01"
+  },
+  {
+    "id": "digoxina",
+    "nombre": "Digoxina",
+    "nombreGenerico": "Digoxina",
+    "nombresComerciales": ["Lanoxin", "Digoxin", "Lanicor"],
+    "familia": "Antiarrítmicos",
+    "clasificacion": "Glucósido cardíaco (inotrópico positivo)",
+    "mecanismoAccion": "Inhibe la bomba Na+/K+ ATPasa en el miocardio, aumentando el calcio intracelular y la fuerza de contracción. Reduce la conducción AV por efecto vagotónico, útil para controlar la frecuencia ventricular en fibrilación auricular.",
+    "indicaciones": [
+      "Insuficiencia cardíaca con FE reducida (FEVIr)",
+      "Fibrilación auricular (control de frecuencia)",
+      "Flutter auricular",
+      "Taquicardia supraventricular"
+    ],
+    "contraindicaciones": [
+      "Taquicardia ventricular o fibrilación ventricular",
+      "Miocardiopatía hipertrófica obstructiva",
+      "Síndrome de Wolff-Parkinson-White",
+      "Bloqueo AV de segundo o tercer grado",
+      "Hipopotasemia no corregida"
+    ],
+    "efectosAdversos": [
+      "Náuseas, vómitos, anorexia (signos tempranos de toxicidad)",
+      "Arritmias por intoxicación digitálica",
+      "Visión amarillenta (xantopsia)",
+      "Bradicardia",
+      "Confusión (especialmente en ancianos)",
+      "Ginecomastia (uso prolongado)",
+      "Diarrea"
+    ],
+    "interacciones": [
+      "Amiodarona: aumenta niveles de digoxina 70%",
+      "Verapamilo: aumenta niveles de digoxina",
+      "Diuréticos de asa/tiazidas: hipopotasemia (aumenta toxicidad)",
+      "Antiácidos: reducen absorción",
+      "Eritromicina: aumenta niveles",
+      "Quinidina: duplica niveles de digoxina"
+    ],
+    "viaAdministracion": ["oral", "IV"],
+    "dosis": {
+      "adulto": "Digitalización rápida: 0.5 mg IV + 0.25 mg cada 6h (total 1-1.5 mg). Mantenimiento: 0.125-0.25 mg/día VO",
+      "pediatrico": "Digitalización: 20-30 mcg/kg en 3 dosis. Mantenimiento: 5-10 mcg/kg/día",
+      "geriatrico": "0.0625-0.125 mg/día. Mayor riesgo de toxicidad",
+      "ajusteRenal": "CrCl 10-50: 25-75% dosis. CrCl <10: 10-25% dosis",
+      "ajusteHepatico": "No requiere ajuste específico"
+    },
+    "presentaciones": [
+      "Comprimidos 0.25 mg",
+      "Elixir pediátrico 0.05 mg/mL",
+      "Ampollas 0.5 mg/2 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche en cantidades mínimas. Compatible.",
+    "cuidadosEnfermeria": [
+      "SIEMPRE medir FC apical 1 minuto completo antes de administrar",
+      "No administrar si FC <60 lpm en adultos (<70 en niños)",
+      "Monitorizar niveles séricos: rango terapéutico 0.5-2.0 ng/mL",
+      "Vigilar potasio sérico: hipopotasemia aumenta toxicidad",
+      "Observar signos tempranos de toxicidad: náuseas, anorexia, visión amarilla",
+      "Antídoto: anticuerpos antidigoxina (Digibind)",
+      "Monitorizar ECG: bigeminismo, bloqueo AV como signos de toxicidad",
+      "No administrar con antiácidos (separar 2h)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral 60-80% (tabletas). Elixir: 70-85%",
+      "distribucion": "Amplia. Se concentra en músculo cardíaco. Unión proteica 25%",
+      "metabolismo": "Mínimo. Excreción renal sin metabolizar",
+      "excrecion": "Renal 60-80% sin cambios",
+      "vidaMedia": "36-48 horas (función renal normal)",
+      "inicioAccion": "Oral: 1-2 h. IV: 5-30 min",
+      "picoAccion": "Oral: 4-6 h. IV: 1-4 h",
+      "duracionAccion": "3-4 días"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u02",
+    "capituloId": "c02_02"
+  },
+  {
+    "id": "hidroclorotiazida",
+    "nombre": "Hidroclorotiazida",
+    "nombreGenerico": "Hidroclorotiazida",
+    "nombresComerciales": ["Esidrex", "Microzide", "Diclotride"],
+    "familia": "Diuréticos",
+    "clasificacion": "Diurético tiazídico",
+    "mecanismoAccion": "Inhibe el cotransportador Na+/Cl- en el túbulo contorneado distal del nefrón, aumentando la excreción de sodio, cloro y agua. También produce vasodilatación a largo plazo por mecanismo no completamente establecido.",
+    "indicaciones": [
+      "Hipertensión arterial (primera línea)",
+      "Edema por insuficiencia cardíaca leve",
+      "Diabetes insípida nefrogénica",
+      "Prevención de litiasis renal cálcica recurrente",
+      "Edema por cirrosis hepática"
+    ],
+    "contraindicaciones": [
+      "Anuria",
+      "Hipersensibilidad a sulfonamidas",
+      "Insuficiencia renal severa (CrCl <30)",
+      "Hipopotasemia o hiponatremia severa",
+      "Enfermedad de Addison"
+    ],
+    "efectosAdversos": [
+      "Hipopotasemia",
+      "Hiponatremia",
+      "Hiperuricemia (precipita gota)",
+      "Hiperglucemia",
+      "Hiperlipidemia",
+      "Hipotensión ortostática",
+      "Hipercalcemia leve",
+      "Fotosensibilidad"
+    ],
+    "interacciones": [
+      "Digoxina: hipopotasemia aumenta toxicidad digitálica",
+      "Litio: aumenta niveles de litio",
+      "AINEs: reducen efecto diurético",
+      "IECA/ARA-II: hipotensión potenciada",
+      "Corticosteroides: mayor hipopotasemia"
+    ],
+    "viaAdministracion": ["oral"],
+    "dosis": {
+      "adulto": "HTA: 12.5-25 mg/día (máx 50 mg/día). Edema: 25-100 mg/día",
+      "pediatrico": "1-2 mg/kg/día en 1-2 dosis",
+      "geriatrico": "Iniciar 12.5 mg/día. Mayor riesgo de hipopotasemia",
+      "ajusteRenal": "Ineficaz si CrCl <30 mL/min. Usar diurético de asa",
+      "ajusteHepatico": "Precaución en cirrosis (riesgo de encefalopatía hepática)"
+    },
+    "presentaciones": [
+      "Comprimidos 12.5, 25, 50 mg"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. Compatible en dosis bajas.",
+    "cuidadosEnfermeria": [
+      "Administrar por la mañana para evitar nicturia",
+      "Monitorizar electrolitos: K+, Na+, Mg2+, Ca2+",
+      "Controlar peso diario y balance hídrico",
+      "Vigilar signos de hipopotasemia: debilidad, calambres, arritmias",
+      "Recomendar alimentos ricos en potasio",
+      "Monitorizar glucemia en diabéticos",
+      "Monitorizar ácido úrico (riesgo de gota)",
+      "Aconsejar fotoprotección"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral rápida 65-75%",
+      "distribucion": "Unión proteica 40-68%",
+      "metabolismo": "Mínimo. Se excreta sin metabolizar",
+      "excrecion": "Renal >95% sin cambios",
+      "vidaMedia": "6-15 horas",
+      "inicioAccion": "2 horas",
+      "picoAccion": "4-6 horas",
+      "duracionAccion": "12-24 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u02",
+    "capituloId": "c02_04"
+  },
+  {
+    "id": "espironolactona",
+    "nombre": "Espironolactona",
+    "nombreGenerico": "Espironolactona",
+    "nombresComerciales": ["Aldactone", "Spiractin", "Aldactazine"],
+    "familia": "Diuréticos",
+    "clasificacion": "Diurético ahorrador de potasio (antagonista de aldosterona)",
+    "mecanismoAccion": "Antagonista competitivo de la aldosterona en el túbulo colector renal. Bloquea los receptores mineralocorticoides, reduciendo la reabsorción de sodio y la excreción de potasio. Efecto diurético leve pero importante efecto ahorrador de potasio.",
+    "indicaciones": [
+      "Insuficiencia cardíaca (reduce mortalidad)",
+      "Cirrosis hepática con ascitis",
+      "Hiperaldosteronismo primario y secundario",
+      "Hipertensión arterial resistente",
+      "Síndrome de ovario poliquístico (antiandrógeno)"
+    ],
+    "contraindicaciones": [
+      "Hiperpotasemia (K+ >5.5 mEq/L)",
+      "Insuficiencia renal severa (CrCl <30)",
+      "Enfermedad de Addison",
+      "Uso concomitante con eplerenona",
+      "Anuria"
+    ],
+    "efectosAdversos": [
+      "Hiperpotasemia (riesgo principal)",
+      "Ginecomastia dolorosa en hombres",
+      "Irregularidades menstruales en mujeres",
+      "Náuseas y diarrea",
+      "Somnolencia",
+      "Cefalea",
+      "Hiponatremia"
+    ],
+    "interacciones": [
+      "IECA/ARA-II: hiperpotasemia grave",
+      "Suplementos de potasio: hiperpotasemia",
+      "Digoxina: reduce excreción renal de digoxina",
+      "AINEs: reducen efecto diurético e hiperpotasemia",
+      "Litio: aumenta toxicidad del litio"
+    ],
+    "viaAdministracion": ["oral"],
+    "dosis": {
+      "adulto": "IC: 12.5-50 mg/día. Cirrosis: 100-400 mg/día. HTA: 25-100 mg/día",
+      "pediatrico": "1-3 mg/kg/día en 1-2 dosis",
+      "geriatrico": "Iniciar 12.5-25 mg/día. Mayor riesgo de hiperpotasemia",
+      "ajusteRenal": "CrCl 30-50: máx 25 mg/día. Contraindicado si CrCl <30",
+      "ajusteHepatico": "Usar con precaución. Puede acumular metabolito activo"
+    },
+    "presentaciones": [
+      "Comprimidos 25, 50, 100 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "El metabolito activo se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Monitorizar potasio sérico semanalmente al inicio, luego mensual",
+      "No administrar con suplementos de potasio sin indicación",
+      "Educar para evitar alimentos muy ricos en potasio (plátano, naranja)",
+      "Valorar ginecomastia en varones (efecto antiandrogénico)",
+      "Monitorizar función renal y electrolitos",
+      "Pesar paciente diariamente (control de edema/ascitis)",
+      "Puede tardar 2-3 días en alcanzar efecto máximo"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral >90%. Mejora con alimentos",
+      "distribucion": "Unión proteica >90%",
+      "metabolismo": "Hepático extenso. Metabolito activo: canrenona",
+      "excrecion": "Renal 47-57%, fecal 35-41%",
+      "vidaMedia": "Espironolactona: 1-2 h. Canrenona: 10-23 h",
+      "inicioAccion": "Gradual, 24-48 horas",
+      "picoAccion": "48-72 horas para efecto máximo",
+      "duracionAccion": "2-3 días tras suspensión"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u02",
+    "capituloId": "c02_04"
+  }
+]

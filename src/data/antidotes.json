@@ -1,0 +1,137 @@
+[
+  {
+    "id": "ant_001",
+    "toxico": "Opioides (morfina, fentanilo, heroína, codeína, tramadol, metadona)",
+    "antidoto": "Naloxona",
+    "dosis": "0.4-2 mg IV iniciales, puede repetirse cada 2-3 min hasta un máximo de 10 mg. Infusión continua: 2/3 de la dosis efectiva por hora (0.25-6.25 mcg/kg/h)",
+    "via": "IV (preferida), IM, SC, intranasal, endotraqueal",
+    "inicio": "IV: 1-2 min. IM/SC: 2-5 min. Intranasal: 3-5 min",
+    "notas": "Vida media (30-90 min) menor que la mayoría de opioides; vigilar resedación y repetir dosis o mantener infusión continua. En adictos, titular con dosis bajas (0.04-0.1 mg) para evitar síndrome de abstinencia severo. Si no hay respuesta tras 10 mg, reconsiderar diagnóstico."
+  },
+  {
+    "id": "ant_002",
+    "toxico": "Benzodiacepinas (diazepam, midazolam, lorazepam, alprazolam, clonazepam)",
+    "antidoto": "Flumazenilo",
+    "dosis": "0.2 mg IV inicial en 15 seg, luego 0.1 mg cada 60 seg si necesario. Máximo: 1 mg (sedación revertir), 3-5 mg (sobredosis). Infusión: 0.1-0.5 mg/h",
+    "via": "IV exclusivamente",
+    "inicio": "1-2 min IV. Efecto máximo: 6-10 min",
+    "notas": "CONTRAINDICADO si coingestión con antidepresivos tricíclicos o proconvulsivantes, y en pacientes con dependencia crónica a benzodiacepinas (riesgo alto de convulsiones). Vida media corta (40-80 min): vigilar resedación hasta 2h tras última dosis. No administrar de forma rutinaria en sobredosis mixtas."
+  },
+  {
+    "id": "ant_003",
+    "toxico": "Paracetamol (acetaminofén)",
+    "antidoto": "N-Acetilcisteína (NAC)",
+    "dosis": "Protocolo IV 21h: 150 mg/kg en 200 mL SG5% en 1h, luego 50 mg/kg en 500 mL SG5% en 4h, luego 100 mg/kg en 1000 mL SG5% en 16h. Protocolo oral 72h: 140 mg/kg carga, luego 70 mg/kg cada 4h x 17 dosis",
+    "via": "IV (protocolo hospitalario), oral",
+    "inicio": "Inmediato. Mayor eficacia si se inicia dentro de las primeras 8 horas post-ingesta",
+    "notas": "Máxima eficacia si se administra en las primeras 8h post-ingesta, pero administrar incluso si han pasado > 24h en intoxicación severa. Usar nomograma de Rumack-Matthew para decisión (nivel sérico de paracetamol a las 4h post-ingesta). Reacciones anafilactoides frecuentes con infusión IV rápida (reducir velocidad). Verificar INR, AST/ALT, creatinina."
+  },
+  {
+    "id": "ant_004",
+    "toxico": "Warfarina y anticoagulantes cumarínicos",
+    "antidoto": "Vitamina K1 (Fitomenadiona)",
+    "dosis": "INR elevado sin sangrado: 1-2.5 mg VO. Sangrado leve-moderado: 2.5-5 mg IV lenta. Sangrado grave/amenaza vital: 10 mg IV lenta + plasma fresco congelado o concentrado de complejo protrombínico (CCP 25-50 UI/kg)",
+    "via": "IV (lenta), oral. Evitar IM (riesgo de hematoma) y SC (absorción errática)",
+    "inicio": "IV: 1-2h para inicio de efecto, 12-24h para normalizar INR. Oral: 6-12h",
+    "notas": "La vía IV conlleva riesgo de anafilaxia: administrar diluida en 50 mL SF en 15-30 min mínimo. En sangrado que amenaza la vida, la vitamina K sola es insuficiente (efecto lento): asociar CCP o plasma fresco congelado para reversión inmediata. Para DOACs (dabigatrán): idarucizumab; para rivaroxabán/apixabán: andexanet alfa."
+  },
+  {
+    "id": "ant_005",
+    "toxico": "Heparina no fraccionada y heparina de bajo peso molecular",
+    "antidoto": "Protamina",
+    "dosis": "Heparina no fraccionada: 1 mg neutraliza 100 UI de heparina administrada en las últimas 2-3h. Ajustar según tiempo desde última dosis. HBPM (enoxaparina): 1 mg por cada 1 mg de enoxaparina (si < 8h); neutraliza ~60% de actividad anti-Xa",
+    "via": "IV exclusivamente",
+    "inicio": "5 min IV. Efecto máximo: inmediato",
+    "notas": "Administrar IV lenta (no más de 5 mg/min, máximo 50 mg en 10 min). La administración rápida causa hipotensión severa, bradicardia y anafilaxia. Mayor riesgo de reacciones en pacientes con alergia al pescado, vasectomizados o expuestos a insulina NPH con protamina. Puede revertir parcialmente HBPM (60-80% del efecto anti-Xa). Sobredosis de protamina tiene efecto anticoagulante paradójico."
+  },
+  {
+    "id": "ant_006",
+    "toxico": "Digoxina y digitálicos",
+    "antidoto": "Anticuerpos antidigoxina (Digibind/DigiFab)",
+    "dosis": "Basada en carga corporal de digoxina. Ingesta aguda conocida: N° viales = (mg ingeridos x 0.8) / 0.5. Nivel sérico conocido: N° viales = (nivel sérico ng/mL x peso kg) / 100. Empírica: 10-20 viales en intoxicación aguda grave, 3-6 viales en intoxicación crónica",
+    "via": "IV en 30 min (puede ser bolo IV directo si paro cardíaco inminente)",
+    "inicio": "15-30 min tras infusión. Respuesta completa en 4h",
+    "notas": "Indicaciones: arritmias potencialmente mortales, hiperpotasemia > 5.5 mEq/L, nivel sérico > 10 ng/mL (aguda) o > 6 ng/mL (crónica), ingesta > 10 mg en adultos. Tras administración, los niveles de digoxina total aumentan (complejo Fab-digoxina); medir digoxina libre. El potasio sérico puede disminuir rápidamente: monitorizar. Efectividad > 90%."
+  },
+  {
+    "id": "ant_007",
+    "toxico": "Organofosforados e insecticidas carbamatos (inhibidores de colinesterasa)",
+    "antidoto": "Atropina + Pralidoxima (2-PAM)",
+    "dosis": "Atropina: 2-4 mg IV cada 5-10 min hasta atropinización (secreción bronquial seca, FC > 80). Puede requerirse dosis masivas (cientos de mg). Pralidoxima: 1-2 g IV en 15-30 min, luego infusión 500 mg/h o bolos de 1 g cada 6-8h",
+    "via": "IV (ambos fármacos)",
+    "inicio": "Atropina IV: 1-4 min. Pralidoxima IV: 10-40 min",
+    "notas": "Atropina trata los efectos muscarínicos (bradicardia, broncorrea, broncoespasmo, salivación). Pralidoxima reactiva la acetilcolinesterasa si se administra antes del 'envejecimiento' (aging) del enlace (primeras 24-48h). Pralidoxima es más efectiva en organofosforados que en carbamatos. Descontaminar al paciente (retirar ropa, lavar piel). El personal sanitario debe usar protección."
+  },
+  {
+    "id": "ant_008",
+    "toxico": "Hierro (sulfato ferroso, gluconato ferroso)",
+    "antidoto": "Deferoxamina (Desferrioxamina)",
+    "dosis": "IV: 15 mg/kg/h en infusión continua (máximo 6-8 g/día). Inicio habitual: 1 g IV. IM: 90 mg/kg (máximo 1 g por inyección) cada 8h si no hay acceso IV. Duración: hasta que orina pierda color 'vino rosado' y síntomas mejoren",
+    "via": "IV (preferida en intoxicación severa), IM",
+    "inicio": "IV: inmediato. La orina se torna color vino rosado (complejo ferrioxamina)",
+    "notas": "Indicada si hierro sérico > 500 mcg/dL, síntomas sistémicos severos, acidosis metabólica o compromiso hemodinámico. La orina color vino rosado confirma la quelación activa. No administrar más de 24h (riesgo de toxicidad pulmonar tipo SDRA). Puede causar hipotensión si la infusión es demasiado rápida. Contraindicada en insuficiencia renal severa (relativa). No usar VO."
+  },
+  {
+    "id": "ant_009",
+    "toxico": "Metanol y etilenglicol",
+    "antidoto": "Fomepizol (4-metilpirazol) o Etanol",
+    "dosis": "Fomepizol: carga 15 mg/kg IV, luego 10 mg/kg cada 12h x 4 dosis, luego 15 mg/kg cada 12h hasta nivel < 20 mg/dL. Etanol (alternativa): bolo 0.8 g/kg (etanol 10% IV), luego infusión 80-130 mg/kg/h para mantener etanolemia 100-150 mg/dL",
+    "via": "IV (fomepizol y etanol IV). Etanol también oral",
+    "inicio": "Fomepizol: inmediato (inhibición completa de alcohol deshidrogenasa en minutos). Etanol: 30-60 min para alcanzar nivel terapéutico",
+    "notas": "Fomepizol es el antídoto de elección (más predecible, menos efectos adversos). Ambos inhiben la alcohol deshidrogenasa, bloqueando la conversión a metabolitos tóxicos (ácido fórmico del metanol, ácido oxálico del etilenglicol). Asociar hemodiálisis si: acidosis severa, fallo renal, nivel > 50 mg/dL, daño orgánico. Administrar ácido folínico 50 mg IV/6h (metanol) o tiamina 100 mg + piridoxina 50 mg (etilenglicol)."
+  },
+  {
+    "id": "ant_010",
+    "toxico": "Betabloqueantes (propranolol, atenolol, metoprolol, carvedilol)",
+    "antidoto": "Glucagón",
+    "dosis": "Bolo: 3-10 mg IV en 3-5 min (habitual 5 mg). Si responde, infusión continua: 1-5 mg/h (habitual 2-5 mg/h). Si no responde al primer bolo, repetir hasta 10 mg. Preparar antiemético (ondansetrón) por vómitos frecuentes",
+    "via": "IV exclusivamente en intoxicación",
+    "inicio": "IV: 1-3 min. Efecto máximo: 5-7 min. Duración: 10-15 min (por eso se necesita infusión continua)",
+    "notas": "Glucagón activa la adenilato ciclasa por vía independiente del receptor beta, produciendo efecto inotrópico y cronotrópico positivo. Es el tratamiento de primera línea cuando la atropina y los líquidos IV no son efectivos. Provoca vómitos frecuentes (premedicar con ondansetrón). Puede causar hiperglucemia e hipopotasemia. Si refractario: considerar insulina-glucosa en altas dosis (hiperinsulinemia euglucémica) o emulsión lipídica IV."
+  },
+  {
+    "id": "ant_011",
+    "toxico": "Calcioantagonistas (verapamilo, diltiazem, nifedipino, amlodipino)",
+    "antidoto": "Calcio IV + Insulina en altas dosis (terapia hiperinsulinémica euglucémica)",
+    "dosis": "Cloruro de calcio 10%: 1-2 g (10-20 mL) IV en 5-10 min, puede repetir cada 10-20 min (3-4 dosis). Gluconato de calcio 10%: 3-6 g IV (30-60 mL). Insulina regular: bolo 1 UI/kg IV + dextrosa 50% 25 g, luego infusión insulina 0.5-2 UI/kg/h + dextrosa para mantener glucemia 100-250 mg/dL",
+    "via": "IV exclusivamente",
+    "inicio": "Calcio IV: 1-3 min. Insulina: efecto inotrópico en 15-60 min (efecto máximo en 1-2h)",
+    "notas": "El calcio IV es tratamiento de primera línea pero a menudo insuficiente en intoxicación severa. La terapia hiperinsulinémica euglucémica (HIE) ha demostrado ser el tratamiento más efectivo en intoxicaciones graves por calcioantagonistas. Monitorizar glucemia cada 15-30 min y potasio cada hora. El cloruro de calcio tiene 3 veces más calcio elemental que el gluconato, pero causa necrosis si se extravasa (preferir gluconato por vía periférica). Considerar emulsión lipídica IV 20% si refractario."
+  },
+  {
+    "id": "ant_012",
+    "toxico": "Isoniazida (INH)",
+    "antidoto": "Piridoxina (Vitamina B6)",
+    "dosis": "Dosis conocida de isoniazida: misma cantidad en gramos de piridoxina (1 g por cada 1 g de INH ingerida). Dosis desconocida: 5 g IV en adultos (70 mg/kg en niños, máximo 5 g). Administrar IV en 5-10 min",
+    "via": "IV (preferida en convulsiones), oral si no hay acceso IV",
+    "inicio": "IV: 5-15 min para cese de convulsiones",
+    "notas": "Específico para convulsiones refractarias por intoxicación con isoniazida (que no responden a benzodiacepinas convencionales). La isoniazida depleciona piridoxina, que es cofactor esencial para la síntesis de GABA. Puede repetirse si las convulsiones recidivan. Las benzodiacepinas son tratamiento coadyuvante pero no suficiente sin piridoxina. Si no hay piridoxina IV disponible, puede administrarse VO (triturar comprimidos en solución). Regla: gramo por gramo."
+  },
+  {
+    "id": "ant_013",
+    "toxico": "Metotrexato",
+    "antidoto": "Ácido folínico (Leucovorina cálcica)",
+    "dosis": "Rescate estándar: 15 mg (10-25 mg) cada 6h durante 48-72h post-metotrexato. Sobredosis/toxicidad severa: misma dosis que metotrexato administrado, o al menos 10 mg/m² cada 6h hasta que nivel de metotrexato < 0.05 micromol/L. Glucarpidasa si disponible: 50 UI/kg IV en casos refractarios",
+    "via": "IV, IM, oral (no usar oral si mucositis, vómitos o sospecha de malabsorción)",
+    "inicio": "IV: inmediato. El rescate debe iniciarse dentro de las 24-42h post-metotrexato",
+    "notas": "NO confundir con ácido fólico (que es ineficaz como antídoto). El ácido folínico bypassa el bloqueo de la dihidrofolato reductasa causado por metotrexato. Mantener hidratación alcalina (pH urinario > 7) para prevenir precipitación renal del metotrexato. Monitorizar niveles séricos de metotrexato, función renal y hemograma. La glucarpidasa (carboxipeptidasa G2) degrada el metotrexato extracelularmente."
+  },
+  {
+    "id": "ant_014",
+    "toxico": "Cianuro (inhalación de humo, cianuro de potasio/sodio, nitroprusiato)",
+    "antidoto": "Hidroxocobalamina (Cyanokit) o Kit de cianuro (nitrito de amilo + nitrito de sodio + tiosulfato de sodio)",
+    "dosis": "Hidroxocobalamina: 5 g IV en 15 min (adultos), puede repetir 5 g. Niños: 70 mg/kg (máx 5 g). Kit de cianuro: nitrito de sodio 300 mg IV en 3-5 min + tiosulfato de sodio 12.5 g IV en 10-30 min",
+    "via": "IV exclusivamente",
+    "inicio": "Hidroxocobalamina: inmediato. Nitrito de sodio: 3-5 min. Tiosulfato: 30 min",
+    "notas": "Hidroxocobalamina es el antídoto de primera elección (especialmente en víctimas de incendios, donde puede haber co-intoxicación por CO y los nitritos empeorarían la metahemoglobinemia). Los nitritos inducen metahemoglobina que fija el cianuro: CONTRAINDICADOS si sospecha de intoxicación por CO simultánea. La hidroxocobalamina tiñe la orina, piel y mucosas de rojo oscuro (interferencia con análisis de laboratorio). El tiosulfato puede usarse solo si la intoxicación no es severa."
+  },
+  {
+    "id": "ant_015",
+    "toxico": "Síndrome anticolinérgico (antidepresivos tricíclicos, antihistamínicos, escopolamina, atropina, plantas como belladona)",
+    "antidoto": "Fisostigmina",
+    "dosis": "Adultos: 0.5-2 mg IV lenta (no más de 1 mg/min). Puede repetir cada 10-30 min si los síntomas recurren. Niños: 0.02 mg/kg IV lenta (máximo 0.5 mg/dosis). Dosis máxima acumulada: 4 mg en adultos",
+    "via": "IV exclusivamente (lenta)",
+    "inicio": "IV: 3-8 min. Duración del efecto: 30-60 min (puede necesitar redosificación)",
+    "notas": "Síndrome anticolinérgico: taquicardia, midriasis, piel seca y roja, hipertermia, retención urinaria, íleo, delirium/agitación, alucinaciones. La fisostigmina es un inhibidor reversible de la colinesterasa que cruza la barrera hematoencefálica. PRECAUCIÓN: puede causar bradicardia severa, broncoespasmo y convulsiones. Contraindicada si QRS ancho (intoxicación por tricíclicos con cardiotoxicidad) o bloqueo cardíaco. Tener atropina disponible. Administrar con monitorización cardíaca continua."
+  }
+]

@@ -1,0 +1,522 @@
+[
+  {
+    "id": "ampicilina",
+    "nombre": "Ampicilina",
+    "nombreGenerico": "Ampicilina sódica",
+    "nombresComerciales": ["Binotal", "Pentrexyl", "Ampirigen"],
+    "familia": "Antibióticos betalactámicos",
+    "clasificacion": "Penicilina de amplio espectro (aminopenicilina)",
+    "mecanismoAccion": "Inhibe la síntesis de la pared celular bacteriana al unirse a las proteínas fijadoras de penicilinas (PBP). Bactericida. Espectro amplio: gram+ y algunos gram- (E.coli, Proteus, H.influenzae, Listeria).",
+    "indicaciones": [
+      "Meningitis bacteriana (Listeria, estreptococos grupo B)",
+      "Endocarditis infecciosa (con gentamicina)",
+      "Infecciones urinarias",
+      "Infecciones respiratorias",
+      "Sepsis neonatal"
+    ],
+    "contraindicaciones": [
+      "Alergia a penicilinas",
+      "Mononucleosis infecciosa (rash)",
+      "Alergia a cefalosporinas (reactividad cruzada 5-10%)"
+    ],
+    "efectosAdversos": [
+      "Diarrea",
+      "Erupción cutánea (maculopapular)",
+      "Náuseas y vómitos",
+      "Reacciones alérgicas (urticaria a anafilaxia)",
+      "Colitis pseudomembranosa",
+      "Sobreinfección fúngica",
+      "Flebitis en sitio IV"
+    ],
+    "interacciones": [
+      "Alopurinol: aumenta riesgo de rash",
+      "Metotrexato: reduce excreción de metotrexato",
+      "Anticoagulantes orales: puede aumentar efecto",
+      "Aminoglucósidos: sinergismo (no mezclar en mismo suero)"
+    ],
+    "viaAdministracion": ["oral", "IV", "IM"],
+    "dosis": {
+      "adulto": "Oral: 250-500 mg cada 6h. IV/IM: 1-2 g cada 4-6h. Meningitis: 2 g cada 4h",
+      "pediatrico": "Oral: 50-100 mg/kg/día en 4 dosis. IV: 100-400 mg/kg/día en 4-6 dosis",
+      "geriatrico": "Ajustar según función renal",
+      "ajusteRenal": "CrCl 10-30: cada 8-12h. CrCl <10: cada 12-24h",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Cápsulas 500 mg",
+      "Suspensión oral 250 mg/5 mL",
+      "Frasco ampolla 500 mg y 1 g (polvo para reconstitución)"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. Compatible.",
+    "cuidadosEnfermeria": [
+      "Investigar alergias a penicilinas antes de administrar",
+      "Administrar oral con estómago vacío (1h antes o 2h después)",
+      "Reconstituir IV con agua estéril o SF. Infundir en 15-30 min",
+      "No mezclar con aminoglucósidos en la misma línea IV",
+      "Vigilar signos de anafilaxia los primeros 30 minutos",
+      "Monitorizar sitio IV por flebitis",
+      "Observar signos de sobreinfección fúngica (candidiasis oral)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral 40-50%. Alimentos reducen absorción",
+      "distribucion": "Amplia. Cruza meninges inflamadas. Unión proteica 20%",
+      "metabolismo": "Mínimo hepático",
+      "excrecion": "Renal 75-85% sin metabolizar",
+      "vidaMedia": "1-1.5 horas (aumenta en IR)",
+      "inicioAccion": "IV: inmediato. Oral: 1-2 h",
+      "picoAccion": "IV: fin de infusión. Oral: 1-2 h",
+      "duracionAccion": "4-6 horas"
+    },
+    "almacenamiento": "Polvo: temperatura ambiente. Reconstituido: refrigerar, usar en 24h.",
+    "unidadId": "u03",
+    "capituloId": "c03_01"
+  },
+  {
+    "id": "ceftriaxona",
+    "nombre": "Ceftriaxona",
+    "nombreGenerico": "Ceftriaxona sódica",
+    "nombresComerciales": ["Rocephin", "Ceftriax", "Acantex"],
+    "familia": "Antibióticos betalactámicos",
+    "clasificacion": "Cefalosporina de tercera generación",
+    "mecanismoAccion": "Inhibe la síntesis de pared celular bacteriana. Amplio espectro gram-negativo, incluye meningococos, gonococos, enterobacterias. Resistente a muchas betalactamasas. Penetra bien en LCR con meninges inflamadas.",
+    "indicaciones": [
+      "Meningitis bacteriana",
+      "Neumonía comunitaria grave",
+      "Infecciones intraabdominales",
+      "Infecciones urinarias complicadas",
+      "Gonorrea no complicada",
+      "Enfermedad de Lyme",
+      "Sepsis"
+    ],
+    "contraindicaciones": [
+      "Alergia a cefalosporinas o penicilinas (reactividad cruzada)",
+      "Neonatos con hiperbilirrubinemia (desplaza bilirrubina de albúmina)",
+      "Neonatos que reciben calcio IV (riesgo precipitación)"
+    ],
+    "efectosAdversos": [
+      "Diarrea",
+      "Barro biliar y pseudolitiasis (uso prolongado)",
+      "Eosinofilia",
+      "Reacciones alérgicas",
+      "Elevación transitoria de transaminasas",
+      "Sobreinfección por Clostridioides difficile",
+      "Flebitis en sitio IV",
+      "Dolor en sitio IM"
+    ],
+    "interacciones": [
+      "Soluciones con calcio: precipitación (no mezclar, especialmente en neonatos)",
+      "Aminoglucósidos: sinergismo (no mezclar en mismo suero)",
+      "Warfarina: puede potenciar efecto anticoagulante",
+      "Probenecid: no afecta eliminación (a diferencia de otras cefalosporinas)"
+    ],
+    "viaAdministracion": ["IV", "IM"],
+    "dosis": {
+      "adulto": "1-2 g cada 24h. Meningitis: 2 g cada 12h. Gonorrea: 500 mg IM dosis única",
+      "pediatrico": "50-100 mg/kg/día en 1-2 dosis. Meningitis: 100 mg/kg/día. Máx: 4 g/día",
+      "geriatrico": "No requiere ajuste específico",
+      "ajusteRenal": "Solo en IR severa con insuficiencia hepática concomitante",
+      "ajusteHepatico": "No requiere ajuste si función renal normal"
+    },
+    "presentaciones": [
+      "Frasco ampolla 500 mg, 1 g, 2 g (polvo para reconstitución)",
+      "Frasco con lidocaína para IM"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche en baja concentración. Compatible.",
+    "cuidadosEnfermeria": [
+      "Investigar alergias a penicilinas y cefalosporinas",
+      "Reconstituir IV con SF o dextrosa 5%. Infundir en 30 min",
+      "Para IM: reconstituir con lidocaína 1% (reduce dolor)",
+      "NUNCA mezclar con soluciones que contengan calcio",
+      "Vigilar ecografía abdominal si uso >14 días (barro biliar)",
+      "Administración cada 24h facilita adherencia",
+      "Monitorizar signos de sobreinfección (C. difficile)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "IM: absorción completa. No disponible oral",
+      "distribucion": "Amplia. Cruza BHE inflamada. Unión proteica 85-95%",
+      "metabolismo": "Mínimo. Parcialmente excretada por bilis",
+      "excrecion": "Renal 33-67%, biliar 33-67%",
+      "vidaMedia": "5.8-8.7 horas (permite dosis cada 24h)",
+      "inicioAccion": "IV: inmediato. IM: 1 h",
+      "picoAccion": "IV: fin infusión. IM: 2-3 h",
+      "duracionAccion": "24 horas"
+    },
+    "almacenamiento": "Polvo: temperatura ambiente. Reconstituido: estable 24h a TA, 10 días refrigerado.",
+    "unidadId": "u03",
+    "capituloId": "c03_01"
+  },
+  {
+    "id": "cefalexina",
+    "nombre": "Cefalexina",
+    "nombreGenerico": "Cefalexina",
+    "nombresComerciales": ["Keflex", "Ceporex", "Ospexin"],
+    "familia": "Antibióticos betalactámicos",
+    "clasificacion": "Cefalosporina de primera generación (oral)",
+    "mecanismoAccion": "Inhibe la síntesis de pared celular bacteriana. Excelente cobertura de gram-positivos (S. aureus MSSA, estreptococos). Cobertura limitada de gram-negativos (E.coli, Klebsiella, Proteus).",
+    "indicaciones": [
+      "Infecciones de piel y tejidos blandos",
+      "Faringitis estreptocócica",
+      "Infecciones urinarias no complicadas",
+      "Otitis media",
+      "Profilaxis de endocarditis (alternativa)"
+    ],
+    "contraindicaciones": [
+      "Alergia a cefalosporinas",
+      "Alergia severa (anafilaxia) a penicilinas"
+    ],
+    "efectosAdversos": [
+      "Diarrea",
+      "Náuseas",
+      "Dispepsia",
+      "Erupción cutánea",
+      "Candidiasis vaginal",
+      "Colitis por C. difficile (raro)"
+    ],
+    "interacciones": [
+      "Probenecid: aumenta niveles de cefalexina",
+      "Metotrexato: reduce excreción",
+      "Anticoagulantes orales: monitorizar INR"
+    ],
+    "viaAdministracion": ["oral"],
+    "dosis": {
+      "adulto": "250-500 mg cada 6h. Infecciones graves: 1 g cada 6h",
+      "pediatrico": "25-50 mg/kg/día en 4 dosis. Máx: 100 mg/kg/día",
+      "geriatrico": "Ajustar según función renal",
+      "ajusteRenal": "CrCl 10-50: cada 8-12h. CrCl <10: cada 12-24h",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Cápsulas 250 mg y 500 mg",
+      "Comprimidos 1 g",
+      "Suspensión oral 125 mg/5 mL y 250 mg/5 mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. Compatible.",
+    "cuidadosEnfermeria": [
+      "Puede administrarse con o sin alimentos",
+      "Completar el curso completo de antibiótico",
+      "Vigilar signos de sobreinfección fúngica",
+      "Refrigerar suspensión oral reconstituida",
+      "Monitorizar función renal en tratamientos prolongados",
+      "Educar sobre completar tratamiento aunque mejore"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral rápida y casi completa. No afectada por alimentos",
+      "distribucion": "Amplia en tejidos. No cruza BHE. Unión proteica 10-15%",
+      "metabolismo": "Mínimo",
+      "excrecion": "Renal >90% sin metabolizar",
+      "vidaMedia": "0.6-1.2 horas",
+      "inicioAccion": "1 hora",
+      "picoAccion": "1 hora",
+      "duracionAccion": "6 horas"
+    },
+    "almacenamiento": "Cápsulas: temperatura ambiente. Suspensión reconstituida: refrigerar, usar en 14 días.",
+    "unidadId": "u03",
+    "capituloId": "c03_01"
+  },
+  {
+    "id": "clindamicina",
+    "nombre": "Clindamicina",
+    "nombreGenerico": "Clorhidrato de clindamicina",
+    "nombresComerciales": ["Dalacin", "Cleocin", "Clindamicina MK"],
+    "familia": "Antibióticos",
+    "clasificacion": "Lincosamida",
+    "mecanismoAccion": "Inhibe la síntesis proteica bacteriana uniéndose a la subunidad 50S ribosomal. Bacteriostático, pero puede ser bactericida a dosis altas. Excelente cobertura de anaerobios y gram-positivos incluyendo MRSA comunitario.",
+    "indicaciones": [
+      "Infecciones por anaerobios (abscesos, peritonitis)",
+      "Infecciones de piel y tejidos blandos (MRSA comunitario)",
+      "Osteomielitis",
+      "Neumonía por aspiración",
+      "Endometritis y infecciones pélvicas",
+      "Profilaxis endocarditis en alérgicos a penicilina",
+      "Toxoplasmosis (con pirimetamina)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a clindamicina o lincomicina",
+      "Antecedente de colitis por Clostridioides difficile",
+      "Meningitis (no penetra BHE)"
+    ],
+    "efectosAdversos": [
+      "Diarrea (hasta 20%)",
+      "Colitis pseudomembranosa por C. difficile (grave)",
+      "Náuseas y vómitos",
+      "Erupción cutánea",
+      "Dolor abdominal",
+      "Elevación de transaminasas",
+      "Tromboflebitis (IV)"
+    ],
+    "interacciones": [
+      "Eritromicina: antagonismo (compiten por sitio ribosomal)",
+      "Bloqueantes neuromusculares: potenciación",
+      "Kaolín-pectina: reduce absorción oral",
+      "Warfarina: puede aumentar efecto anticoagulante"
+    ],
+    "viaAdministracion": ["oral", "IV", "IM", "topica"],
+    "dosis": {
+      "adulto": "Oral: 150-450 mg cada 6h. IV: 600-900 mg cada 8h. Máx: 4.8 g/día IV",
+      "pediatrico": "Oral: 8-25 mg/kg/día en 3-4 dosis. IV: 25-40 mg/kg/día",
+      "geriatrico": "No requiere ajuste específico",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepática severa"
+    },
+    "presentaciones": [
+      "Cápsulas 300 mg",
+      "Solución oral 75 mg/5 mL",
+      "Ampollas 300 mg/2 mL y 600 mg/4 mL",
+      "Gel y loción tópica 1%"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. Usar con precaución.",
+    "cuidadosEnfermeria": [
+      "Administrar IV diluida, NUNCA en bolo (riesgo de paro cardíaco)",
+      "Infundir IV en mínimo 10-60 min (no más de 30 mg/min)",
+      "Educar sobre suspender y consultar si diarrea severa (C. difficile)",
+      "Administrar cápsulas con vaso lleno de agua",
+      "Vigilar función hepática en tratamientos prolongados",
+      "No mezclar con eritromicina (antagonismo)",
+      "Monitorizar deposiciones: suspender si >3 deposiciones líquidas/día"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral 90%. No afectada significativamente por alimentos",
+      "distribucion": "Buena penetración ósea. No cruza BHE. Unión proteica 94%",
+      "metabolismo": "Hepático extenso CYP3A4",
+      "excrecion": "Biliar y renal",
+      "vidaMedia": "2-3 horas",
+      "inicioAccion": "Oral: 1-2 h. IV: inmediato",
+      "picoAccion": "Oral: 45-60 min. IV: fin infusión",
+      "duracionAccion": "6-8 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Solución oral: no refrigerar (se espesa).",
+    "unidadId": "u03",
+    "capituloId": "c03_03"
+  },
+  {
+    "id": "gentamicina",
+    "nombre": "Gentamicina",
+    "nombreGenerico": "Sulfato de gentamicina",
+    "nombresComerciales": ["Garamicina", "Gentalyn", "Gentamicina MK"],
+    "familia": "Antibióticos",
+    "clasificacion": "Aminoglucósido",
+    "mecanismoAccion": "Se une irreversiblemente a la subunidad 30S ribosomal, causando lectura errónea del ARNm y producción de proteínas anómalas letales. Bactericida concentración-dependiente. Efecto postantibiótico prolongado. Espectro: gram-negativos aerobios.",
+    "indicaciones": [
+      "Sepsis por gram-negativos",
+      "Endocarditis (con ampicilina o vancomicina)",
+      "Infecciones urinarias complicadas",
+      "Pielonefritis",
+      "Infecciones intraabdominales (con anaerobicida)",
+      "Osteomielitis"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a aminoglucósidos",
+      "Miastenia gravis",
+      "Insuficiencia renal severa (relativa)",
+      "Embarazo (ototoxicidad fetal)"
+    ],
+    "efectosAdversos": [
+      "Nefrotoxicidad (reversible generalmente)",
+      "Ototoxicidad vestibular y coclear (puede ser irreversible)",
+      "Bloqueo neuromuscular",
+      "Náuseas",
+      "Erupción cutánea",
+      "Fiebre medicamentosa"
+    ],
+    "interacciones": [
+      "Vancomicina: nefrotoxicidad aditiva",
+      "Furosemida: ototoxicidad aditiva",
+      "Bloqueantes neuromusculares: potenciación",
+      "Cefalosporinas: nefrotoxicidad aditiva",
+      "No mezclar con penicilinas en mismo suero (inactivación)"
+    ],
+    "viaAdministracion": ["IV", "IM", "topica", "oftalmica"],
+    "dosis": {
+      "adulto": "Convencional: 1-2.5 mg/kg cada 8h. Dosis única diaria: 5-7 mg/kg cada 24h",
+      "pediatrico": "2.5 mg/kg cada 8h o 5-7.5 mg/kg cada 24h",
+      "geriatrico": "Ajustar según función renal. Mayor riesgo de toxicidad",
+      "ajusteRenal": "Obligatorio. Ajustar por niveles séricos. Prolongar intervalo",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Ampollas 20, 40, 80 mg/2 mL",
+      "Ampollas 160 mg/2 mL",
+      "Crema tópica 0.1%",
+      "Gotas oftálmicas 0.3%"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche en baja concentración. Precaución.",
+    "cuidadosEnfermeria": [
+      "MONITORIZAR niveles séricos: pico 5-10 mcg/mL, valle <2 mcg/mL",
+      "Solicitar creatinina basal y cada 2-3 días",
+      "Vigilar signos de ototoxicidad: tinnitus, vértigo, pérdida auditiva",
+      "Asegurar hidratación adecuada para proteger función renal",
+      "Infundir IV en 30-60 minutos",
+      "No mezclar con penicilinas en la misma línea IV",
+      "Evaluar función vestibular: test de Romberg",
+      "Esquema dosis única diaria preferido (menos nefrotóxico)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "No se absorbe oral. IM: absorción completa",
+      "distribucion": "Extracelular. No cruza BHE. Unión proteica <30%",
+      "metabolismo": "No se metaboliza",
+      "excrecion": "Renal 100% sin metabolizar",
+      "vidaMedia": "2-3 horas (aumenta en IR)",
+      "inicioAccion": "IV: inmediato. IM: 30-60 min",
+      "picoAccion": "IV: 30 min post-infusión. IM: 30-90 min",
+      "duracionAccion": "8-12 horas (efecto postantibiótico)"
+    },
+    "almacenamiento": "Temperatura ambiente. No refrigerar.",
+    "unidadId": "u03",
+    "capituloId": "c03_03"
+  },
+  {
+    "id": "fluconazol",
+    "nombre": "Fluconazol",
+    "nombreGenerico": "Fluconazol",
+    "nombresComerciales": ["Diflucan", "Fluconazol MK", "Flucoral"],
+    "familia": "Antifúngicos",
+    "clasificacion": "Antifúngico azólico (triazol)",
+    "mecanismoAccion": "Inhibe la enzima 14-alfa-desmetilasa (CYP51) fúngica, bloqueando la síntesis de ergosterol, componente esencial de la membrana celular del hongo. Fungistático, aunque fungicida contra Cryptococcus.",
+    "indicaciones": [
+      "Candidiasis orofaríngea y esofágica",
+      "Candidiasis vaginal",
+      "Candidiasis sistémica/candidemia",
+      "Meningitis criptocócica",
+      "Profilaxis antifúngica en neutropénicos",
+      "Dermatofitosis (alternativa)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a azoles",
+      "Uso concomitante de terfenadina o cisaprida",
+      "QT prolongado con medicamentos que prolongan QT"
+    ],
+    "efectosAdversos": [
+      "Náuseas y dolor abdominal",
+      "Cefalea",
+      "Erupción cutánea",
+      "Elevación de transaminasas",
+      "Hepatotoxicidad (raro pero grave)",
+      "Prolongación QT (dosis altas)",
+      "Alopecia (tratamiento prolongado)"
+    ],
+    "interacciones": [
+      "Warfarina: aumenta INR significativamente",
+      "Fenitoína: aumenta niveles de fenitoína",
+      "Ciclosporina: aumenta niveles de ciclosporina",
+      "Rifampicina: reduce niveles de fluconazol",
+      "Estatinas: riesgo de rabdomiólisis",
+      "Benzodiacepinas: aumenta niveles de midazolam"
+    ],
+    "viaAdministracion": ["oral", "IV"],
+    "dosis": {
+      "adulto": "Candidiasis oral: 200 mg día 1, luego 100 mg/día. Sistémica: 400-800 mg/día. Vaginal: 150 mg dosis única",
+      "pediatrico": "3-12 mg/kg/día según tipo de infección",
+      "geriatrico": "Ajustar según función renal",
+      "ajusteRenal": "CrCl <50: 50% de la dosis (tras dosis de carga completa)",
+      "ajusteHepatico": "Usar con precaución. Monitorizar transaminasas"
+    },
+    "presentaciones": [
+      "Cápsulas 50, 100, 150, 200 mg",
+      "Suspensión oral 10 mg/mL y 40 mg/mL",
+      "Solución IV 2 mg/mL (100, 200 mL)"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche. Dosis única de 150 mg es compatible.",
+    "cuidadosEnfermeria": [
+      "Puede administrarse con o sin alimentos",
+      "Infusión IV lenta: no exceder 200 mg/hora",
+      "Monitorizar función hepática antes y durante tratamiento",
+      "Vigilar interacciones farmacológicas (inhibidor CYP potente)",
+      "Monitorizar INR si se usa con warfarina",
+      "Dosis de carga el primer día para alcanzar niveles rápido",
+      "Buena biodisponibilidad oral (IV solo si no tolera oral)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral >90%. No afectada por alimentos ni pH gástrico",
+      "distribucion": "Excelente penetración en LCR, orina, piel. Unión proteica 12%",
+      "metabolismo": "Mínimo hepático (<10%)",
+      "excrecion": "Renal 80% sin metabolizar",
+      "vidaMedia": "25-30 horas (permite dosis diaria)",
+      "inicioAccion": "1-2 horas",
+      "picoAccion": "1-2 horas oral",
+      "duracionAccion": "24 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Solución IV: no congelar.",
+    "unidadId": "u03",
+    "capituloId": "c03_04"
+  },
+  {
+    "id": "aciclovir",
+    "nombre": "Aciclovir",
+    "nombreGenerico": "Aciclovir",
+    "nombresComerciales": ["Zovirax", "Aciclovir MK", "Cicloferon"],
+    "familia": "Antivirales",
+    "clasificacion": "Antiviral (análogo nucleósido de guanosina)",
+    "mecanismoAccion": "Es fosforilado selectivamente por la timidina quinasa viral (presente solo en células infectadas). El trifosfato de aciclovir inhibe la ADN polimerasa viral e interrumpe la cadena de ADN viral. Selectividad por células infectadas lo hace poco tóxico.",
+    "indicaciones": [
+      "Herpes simple genital (primer episodio y recurrencias)",
+      "Herpes zóster (varicela-zóster)",
+      "Encefalitis herpética",
+      "Herpes neonatal",
+      "Varicela en inmunocomprometidos",
+      "Herpes labial (tópico)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a aciclovir o valaciclovir",
+      "Deshidratación (riesgo de nefrotoxicidad)"
+    ],
+    "efectosAdversos": [
+      "Nefrotoxicidad (cristaluria con IV)",
+      "Náuseas y vómitos",
+      "Cefalea",
+      "Flebitis en sitio IV",
+      "Temblor y confusión (SNC, dosis altas)",
+      "Elevación transitoria de creatinina",
+      "Diarrea"
+    ],
+    "interacciones": [
+      "Probenecid: aumenta niveles de aciclovir",
+      "Otros nefrotóxicos: mayor riesgo renal",
+      "Metotrexato: competencia por excreción renal",
+      "Zidovudina: somnolencia y fatiga"
+    ],
+    "viaAdministracion": ["oral", "IV", "topica"],
+    "dosis": {
+      "adulto": "Herpes genital: 200-400 mg 5 veces/día oral. Herpes zóster: 800 mg 5 veces/día. Encefalitis: 10 mg/kg IV cada 8h",
+      "pediatrico": "Oral: 20 mg/kg/dosis (máx 800 mg) 4 veces/día. IV: 10-20 mg/kg cada 8h",
+      "geriatrico": "Ajustar según función renal",
+      "ajusteRenal": "CrCl 25-50: dosis normal cada 12h. CrCl 10-25: cada 24h. CrCl <10: 50% cada 24h",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Comprimidos 200 mg y 800 mg",
+      "Suspensión oral 200 mg/5 mL",
+      "Frasco ampolla 250 mg y 500 mg (polvo para reconstitución)",
+      "Crema tópica 5%"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. Compatible.",
+    "cuidadosEnfermeria": [
+      "Asegurar hidratación abundante (prevenir cristaluria)",
+      "Infundir IV lento en mínimo 1 hora (nunca en bolo)",
+      "Monitorizar función renal durante tratamiento IV",
+      "Iniciar tratamiento lo antes posible tras inicio de síntomas",
+      "Efectividad mayor si se inicia en primeras 72h de herpes zóster",
+      "Administrar oral con o sin alimentos",
+      "Vigilar signos neurológicos con dosis altas IV"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral 15-30%. No afectada por alimentos",
+      "distribucion": "Amplia. Buena penetración en LCR (50%). Unión proteica 9-33%",
+      "metabolismo": "Mínimo hepático",
+      "excrecion": "Renal 62-91% sin metabolizar",
+      "vidaMedia": "2.5-3.3 horas (aumenta en IR)",
+      "inicioAccion": "IV: inmediato. Oral: 1-2 h",
+      "picoAccion": "Oral: 1.5-2.5 h",
+      "duracionAccion": "4-8 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Reconstituido IV: usar en 12h.",
+    "unidadId": "u03",
+    "capituloId": "c03_04"
+  }
+]

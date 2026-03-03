@@ -1,0 +1,1113 @@
+{
+  "farmacos": [
+    "Adrenalina",
+    "Amikacina",
+    "Amiodarona",
+    "Ampicilina",
+    "Ceftriaxona",
+    "Ciprofloxacino",
+    "Clindamicina",
+    "Dexametasona",
+    "Dexmedetomidina",
+    "Diazepam",
+    "Dobutamina",
+    "Dopamina",
+    "Fenitoína",
+    "Fentanilo",
+    "Fluconazol",
+    "Furosemida",
+    "Gentamicina",
+    "Heparina",
+    "Hidrocortisona",
+    "Insulina Regular",
+    "KCl (Potasio)",
+    "Levofloxacino",
+    "Lidocaína",
+    "Meropenem",
+    "Metoclopramida",
+    "Metilprednisolona",
+    "Midazolam",
+    "Morfina",
+    "Nitroglicerina",
+    "Noradrenalina",
+    "Omeprazol",
+    "Ondansetrón",
+    "Pantoprazol",
+    "Piperacilina/Tazobactam",
+    "Propofol",
+    "Ranitidina",
+    "Remifentanilo",
+    "Sulfato de Magnesio",
+    "Tramadol",
+    "Vancomicina",
+    "Vasopresina"
+  ],
+  "reglas_generales": [
+    "Siempre lavar la línea con SF 0.9% entre fármacos incompatibles",
+    "Los IBP IV (omeprazol, pantoprazol) son incompatibles con la mayoría de fármacos por pH extremo (9-11). Administrar por línea exclusiva",
+    "Los betalactámicos inactivan aminoglucósidos en mezcla. NUNCA en misma línea/jeringa",
+    "Las catecolaminas (dopamina, dobutamina, noradrenalina, adrenalina) son incompatibles con soluciones alcalinas (furosemida, fenitoína, bicarbonato)",
+    "La fenitoína IV es incompatible con prácticamente todo excepto SF 0.9%. Usar línea exclusiva",
+    "El diazepam IV se adsorbe al PVC y es incompatible con la mayoría de fármacos. Usar línea exclusiva",
+    "El propofol es incompatible con la mayoría de fármacos. Administrar por línea exclusiva o en Y solo con compatibles verificados",
+    "Verificar siempre la ausencia de turbidez, precipitación o cambio de color antes de administrar"
+  ],
+  "compatibilidades": [
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Dobutamina",
+      "compatibilidad": "compatible",
+      "notas": "Pueden administrarse en Y. Combinación frecuente en shock cardiogénico."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Lidocaína",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y y en mezcla. Uso frecuente en emergencias cardíacas."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Heparina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Noradrenalina",
+      "compatibilidad": "compatible",
+      "notas": "Pueden coadministrarse en Y. Combinación habitual en soporte vasoactivo."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "La furosemida es alcalina (pH 8-9.3) e incompatible con catecolaminas. Precipitación visible. Usar líneas separadas."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Ampicilina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles en mezcla directa. La ampicilina tiene pH alcalino que degrada la dopamina."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales. Combinación frecuente en UCI."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Dopamina",
+      "farmaco2": "Fenitoína",
+      "compatibilidad": "incompatible",
+      "notas": "Fenitoína IV (pH 12) es incompatible con catecolaminas. Precipitación inmediata."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencia de pH. La furosemida (alcalina) es incompatible con dobutamina (ácida). Lavar línea entre ambos."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Heparina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles en mezcla. Posible precipitación. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Ceftriaxona",
+      "compatibilidad": "incompatible",
+      "notas": "No mezclar. Incompatibilidad fisicoquímica documentada."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Noradrenalina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación frecuente en soporte inotrópico-vasopresor."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Dobutamina",
+      "farmaco2": "Fenitoína",
+      "compatibilidad": "incompatible",
+      "notas": "Fenitoína es incompatible con la mayoría de soluciones y fármacos. No mezclar."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles por diferencia de pH. Precipitación. Administrar por líneas separadas."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar. La insulina puede adsorberse al equipo de PVC."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación frecuente en UCI."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Fentanilo",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación habitual en cuidados intensivos."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Vasopresina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación estándar en shock séptico refractario a catecolaminas."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Remifentanilo",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales de UCI."
+    },
+    {
+      "farmaco1": "Noradrenalina",
+      "farmaco2": "Dexmedetomidina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación frecuente en sedoanalgesia con soporte vasoactivo."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Noradrenalina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Ambas catecolaminas pueden coadministrarse."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Dobutamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Uso ocasional en shock cardiogénico severo."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Furosemida (pH alcalino) incompatible con catecolaminas. Precipitación. Vías separadas obligatorias."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Heparina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Fenitoína",
+      "compatibilidad": "incompatible",
+      "notas": "Fenitoína incompatible con catecolaminas por pH extremadamente alcalino."
+    },
+    {
+      "farmaco1": "Adrenalina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Los aminoglucósidos son incompatibles con heparina. Precipitación. Usar vías separadas y lavar."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Gentamicina",
+      "compatibilidad": "incompatible",
+      "notas": "Igual que amikacina: aminoglucósidos incompatibles con heparina. Precipitación. Vías separadas."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Administrar por líneas separadas. Lavar la línea con SF entre ambos."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación con formación de turbidez. No administrar en la misma línea."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Lidocaína",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y y en mezcla en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Ranitidina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. La ranitidina es compatible con la mayoría de fármacos IV."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Ambos pueden adsorberse al PVC del equipo de infusión."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. KCl puede añadirse a soluciones con heparina. Combinación frecuente."
+    },
+    {
+      "farmaco1": "Heparina",
+      "farmaco2": "Hidrocortisona",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y y en mezcla. Combinación estándar para sedoanalgesia en UCI y procedimientos."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y, aunque la coadministración es infrecuente (ambos son opioides)."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "variable",
+      "notas": "Datos limitados. Compatibilidad dependiente de concentración. Preferible administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Dexmedetomidina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación útil para sedoanalgesia multimodal en UCI."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Propofol",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación estándar en inducción y mantenimiento anestésico."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "Ondansetrón",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Ondansetrón como antiemético en combinación con opioides."
+    },
+    {
+      "farmaco1": "Fentanilo",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Remifentanilo",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación en sedoanalgesia en UCI."
+    },
+    {
+      "farmaco1": "Remifentanilo",
+      "farmaco2": "Propofol",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación estándar en anestesia total intravenosa (TIVA)."
+    },
+    {
+      "farmaco1": "Remifentanilo",
+      "farmaco2": "Dexmedetomidina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Morfina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y y en mezcla. Combinación frecuente en cuidados paliativos y sedoanalgesia."
+    },
+    {
+      "farmaco1": "Morfina",
+      "farmaco2": "Metoclopramida",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. La metoclopramida puede coadministrarse para prevenir náuseas inducidas por opioides."
+    },
+    {
+      "farmaco1": "Morfina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar. Uso frecuente en edema agudo de pulmón."
+    },
+    {
+      "farmaco1": "Morfina",
+      "farmaco2": "Ondansetrón",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Ondansetrón para prevención de náuseas por opioides."
+    },
+    {
+      "farmaco1": "Morfina",
+      "farmaco2": "Dexametasona",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Tramadol",
+      "farmaco2": "Metoclopramida",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Metoclopramida como antiemético junto con tramadol."
+    },
+    {
+      "farmaco1": "Tramadol",
+      "farmaco2": "Ondansetrón",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Precaución: ondansetrón puede reducir eficacia analgésica del tramadol (antagonismo serotoninérgico parcial)."
+    },
+    {
+      "farmaco1": "Tramadol",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Insulina Regular",
+      "farmaco2": "Lidocaína",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Recordar que la insulina se adsorbe al PVC."
+    },
+    {
+      "farmaco1": "Insulina Regular",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible y combinación MUY frecuente. Insulina + K+ en solución glucosada para hiperpotasemia o CAD."
+    },
+    {
+      "farmaco1": "Insulina Regular",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "variable",
+      "notas": "Compatibilidad dependiente de concentración y pH de la solución. Preferible separar."
+    },
+    {
+      "farmaco1": "Ampicilina",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Los betalactámicos inactivan los aminoglucósidos en mezcla. NUNCA administrar juntos en la misma línea o jeringa. Separar administración al menos 1h."
+    },
+    {
+      "farmaco1": "Ampicilina",
+      "farmaco2": "Gentamicina",
+      "compatibilidad": "incompatible",
+      "notas": "Betalactámicos inactivan aminoglucósidos. Separar por al menos 1 hora. Nunca mezclar."
+    },
+    {
+      "farmaco1": "Ampicilina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Ampicilina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "variable",
+      "notas": "Datos contradictorios. Ambos tienen pH alcalino pero la estabilidad depende de concentraciones. Preferible administrar por separado."
+    },
+    {
+      "farmaco1": "Piperacilina/Tazobactam",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Betalactámicos inactivan aminoglucósidos. No mezclar. Administrar con separación de al menos 1h."
+    },
+    {
+      "farmaco1": "Piperacilina/Tazobactam",
+      "farmaco2": "Gentamicina",
+      "compatibilidad": "incompatible",
+      "notas": "Inactivación de aminoglucósido por betalactámico. Vías separadas obligatorias."
+    },
+    {
+      "farmaco1": "Piperacilina/Tazobactam",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Administrar por líneas separadas con lavado intermedio."
+    },
+    {
+      "farmaco1": "Piperacilina/Tazobactam",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "variable",
+      "notas": "Compatibilidad dependiente de concentración. Administrar por separado si es posible."
+    },
+    {
+      "farmaco1": "Piperacilina/Tazobactam",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Ceftriaxona",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibilidad entre cefalosporinas y aminoglucósidos. No mezclar en la misma solución. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Ceftriaxona",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada cuando se mezclan. Administrar por vías separadas con lavado de línea intermedio con SF."
+    },
+    {
+      "farmaco1": "Ceftriaxona",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales, aunque se recomienda verificar ausencia de turbidez."
+    },
+    {
+      "farmaco1": "Ceftriaxona",
+      "farmaco2": "Metoclopramida",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Ceftriaxona",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "incompatible",
+      "notas": "PRECAUCIÓN: Ceftriaxona precipita con calcio (no con potasio en sí), pero soluciones con calcio están contraindicadas. Verificar composición del diluyente."
+    },
+    {
+      "farmaco1": "Meropenem",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación habitual en infecciones nosocomiales graves."
+    },
+    {
+      "farmaco1": "Meropenem",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Meropenem",
+      "farmaco2": "Heparina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Meropenem",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Meropenem",
+      "farmaco2": "Dexametasona",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "variable",
+      "notas": "Compatibilidad dependiente de concentración. Se recomienda administrar por líneas separadas si es posible."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Administrar por líneas separadas."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Levofloxacino",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación antibiótica frecuente."
+    },
+    {
+      "farmaco1": "Vancomicina",
+      "farmaco2": "Ondansetrón",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y para prevención de náuseas durante infusión."
+    },
+    {
+      "farmaco1": "Clindamicina",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación antibiótica habitual."
+    },
+    {
+      "farmaco1": "Clindamicina",
+      "farmaco2": "Gentamicina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación sinérgica contra anaerobios y gramnegativos."
+    },
+    {
+      "farmaco1": "Clindamicina",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibilidad documentada. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Clindamicina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación. Administrar por líneas separadas."
+    },
+    {
+      "farmaco1": "Fluconazol",
+      "farmaco2": "Ceftriaxona",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación empírica frecuente en infecciones graves."
+    },
+    {
+      "farmaco1": "Fluconazol",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Fluconazol",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencias de pH. Vías separadas."
+    },
+    {
+      "farmaco1": "Fluconazol",
+      "farmaco2": "Ampicilina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibilidad documentada. Administrar por separado."
+    },
+    {
+      "farmaco1": "Levofloxacino",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Vías separadas."
+    },
+    {
+      "farmaco1": "Levofloxacino",
+      "farmaco2": "Heparina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación con turbidez. No administrar en misma línea."
+    },
+    {
+      "farmaco1": "Levofloxacino",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Omeprazol",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "incompatible",
+      "notas": "El omeprazol IV es incompatible con la mayoría de fármacos por su pH alcalino (9-11). Administrar solo, lavar línea antes y después."
+    },
+    {
+      "farmaco1": "Omeprazol",
+      "farmaco2": "Fentanilo",
+      "compatibilidad": "incompatible",
+      "notas": "Omeprazol IV es incompatible por su pH elevado. Administrar por línea separada."
+    },
+    {
+      "farmaco1": "Omeprazol",
+      "farmaco2": "Morfina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatible por pH alcalino del omeprazol. Precipitación. Administrar en línea exclusiva."
+    },
+    {
+      "farmaco1": "Omeprazol",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "incompatible",
+      "notas": "Omeprazol es incompatible con catecolaminas. Administrar por vía separada."
+    },
+    {
+      "farmaco1": "Omeprazol",
+      "farmaco2": "Ceftriaxona",
+      "compatibilidad": "incompatible",
+      "notas": "pH alcalino del omeprazol incompatible. Línea exclusiva para IBP IV."
+    },
+    {
+      "farmaco1": "Pantoprazol",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "incompatible",
+      "notas": "Pantoprazol IV (pH 9-10.5) es incompatible con la mayoría de fármacos. Administrar por línea exclusiva."
+    },
+    {
+      "farmaco1": "Pantoprazol",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "incompatible",
+      "notas": "IBP incompatible con catecolaminas. Línea exclusiva."
+    },
+    {
+      "farmaco1": "Pantoprazol",
+      "farmaco2": "Noradrenalina",
+      "compatibilidad": "incompatible",
+      "notas": "IBP incompatible con catecolaminas. Línea exclusiva obligatoria."
+    },
+    {
+      "farmaco1": "Pantoprazol",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatible por pH alcalino. Precipitación."
+    },
+    {
+      "farmaco1": "Pantoprazol",
+      "farmaco2": "Octreotida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación. Los IBP IV requieren línea exclusiva."
+    },
+    {
+      "farmaco1": "Ranitidina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. La ranitidina tiene amplia compatibilidad con la mayoría de fármacos IV."
+    },
+    {
+      "farmaco1": "Ranitidina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Ranitidina",
+      "farmaco2": "Fentanilo",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Ranitidina",
+      "farmaco2": "Ampicilina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibilidad documentada con ampicilina. Separar administración."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles. La furosemida potencia además la ototoxicidad y nefrotoxicidad de los aminoglucósidos."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "Gentamicina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles por pH. Además, furosemida potencia ototoxicidad de aminoglucósidos. Separar obligatoriamente."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación visible. Incompatibles en mezcla y en Y."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencia de pH. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "Hidrocortisona",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Ambos pH alcalinos."
+    },
+    {
+      "farmaco1": "Furosemida",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. KCl se repone frecuentemente con diuréticos. Monitorizar K+ sérico."
+    },
+    {
+      "farmaco1": "Dexametasona",
+      "farmaco2": "Ondansetrón",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación estándar antiemética en quimioterapia y postoperatorio."
+    },
+    {
+      "farmaco1": "Dexametasona",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Dexametasona",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Dexametasona",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "variable",
+      "notas": "Datos contradictorios. Preferible separar. Si en Y, vigilar turbidez."
+    },
+    {
+      "farmaco1": "Hidrocortisona",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. No mezclar."
+    },
+    {
+      "farmaco1": "Hidrocortisona",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Metilprednisolona",
+      "farmaco2": "Ciprofloxacino",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación. Los corticoides IV son generalmente incompatibles con ciprofloxacino."
+    },
+    {
+      "farmaco1": "Metilprednisolona",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. Útil ya que corticoides pueden causar hipopotasemia."
+    },
+    {
+      "farmaco1": "Metoclopramida",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Metoclopramida",
+      "farmaco2": "Fentanilo",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Uso habitual como premedicación antiemética."
+    },
+    {
+      "farmaco1": "Ondansetrón",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Ondansetrón",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencia de pH. Vías separadas."
+    },
+    {
+      "farmaco1": "Ondansetrón",
+      "farmaco2": "Ampicilina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibilidad documentada. Separar administración."
+    },
+    {
+      "farmaco1": "Lidocaína",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Lidocaína",
+      "farmaco2": "Dobutamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y y en mezcla en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Propofol",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación ocasional en inducción."
+    },
+    {
+      "farmaco1": "Propofol",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Propofol",
+      "farmaco2": "Lidocaína",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. La lidocaína puede añadirse al propofol para reducir dolor a la inyección (20-40 mg por dosis)."
+    },
+    {
+      "farmaco1": "Propofol",
+      "farmaco2": "Vancomicina",
+      "compatibilidad": "incompatible",
+      "notas": "Emulsión lipídica incompatible. No mezclar."
+    },
+    {
+      "farmaco1": "Propofol",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatible con emulsión lipídica del propofol. Vías separadas."
+    },
+    {
+      "farmaco1": "Dexmedetomidina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Uso combinado debe monitorizarse estrechamente (sedación aditiva)."
+    },
+    {
+      "farmaco1": "Dexmedetomidina",
+      "farmaco2": "Propofol",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación en transición de sedación en UCI."
+    },
+    {
+      "farmaco1": "Dexmedetomidina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Dexmedetomidina reduce requerimiento de opioides 30-50%."
+    },
+    {
+      "farmaco1": "Dexmedetomidina",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Diazepam",
+      "farmaco2": "Heparina",
+      "compatibilidad": "incompatible",
+      "notas": "Diazepam IV es incompatible con la mayoría de fármacos y se adsorbe al PVC. Usar línea exclusiva."
+    },
+    {
+      "farmaco1": "Diazepam",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación. Diazepam debe administrarse por línea exclusiva o inyección directa lenta."
+    },
+    {
+      "farmaco1": "Diazepam",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatible. Diazepam requiere línea exclusiva."
+    },
+    {
+      "farmaco1": "Fenitoína",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Ambos alcalinos pero fenitoína precipita al diluir en cualquier solución que no sea SF 0.9%. No mezclar."
+    },
+    {
+      "farmaco1": "Fenitoína",
+      "farmaco2": "Heparina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación inmediata. Fenitoína solo compatible con SF 0.9% y nada más. Línea exclusiva obligatoria."
+    },
+    {
+      "farmaco1": "Fenitoína",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación. Fenitoína debe ir por línea exclusiva con filtro de 0.22 micras."
+    },
+    {
+      "farmaco1": "Fenitoína",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatible. Fenitoína solo en SF 0.9% por línea exclusiva."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Heparina",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. Administrar por vías separadas. Lavar línea con SF."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencia de pH. Vías separadas obligatorias."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Ceftriaxona",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación documentada. No mezclar."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación frecuente en arritmias con inestabilidad hemodinámica."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Dobutamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Lidocaína",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y aunque la combinación debe monitorizarse (ambos antiarrítmicos)."
+    },
+    {
+      "farmaco1": "Amiodarona",
+      "farmaco2": "Fenitoína",
+      "compatibilidad": "incompatible",
+      "notas": "Ambos incompatibles entre sí. Precipitación. Líneas separadas."
+    },
+    {
+      "farmaco1": "KCl (Potasio)",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. KCl compatible con la mayoría de soluciones y fármacos IV."
+    },
+    {
+      "farmaco1": "KCl (Potasio)",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "KCl (Potasio)",
+      "farmaco2": "Noradrenalina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. Frecuente en UCI: reposición de K+ junto con soporte vasoactivo."
+    },
+    {
+      "farmaco1": "Sulfato de Magnesio",
+      "farmaco2": "KCl (Potasio)",
+      "compatibilidad": "compatible",
+      "notas": "Compatible. Reposición simultánea frecuente (hipoMg impide corrección de hipoK)."
+    },
+    {
+      "farmaco1": "Sulfato de Magnesio",
+      "farmaco2": "Heparina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Sulfato de Magnesio",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "variable",
+      "notas": "Datos limitados. Preferible separar por precaución."
+    },
+    {
+      "farmaco1": "Sulfato de Magnesio",
+      "farmaco2": "Insulina Regular",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Vasopresina",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación en shock séptico."
+    },
+    {
+      "farmaco1": "Vasopresina",
+      "farmaco2": "Dobutamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Vasopresina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "variable",
+      "notas": "Datos limitados. Vasopresina generalmente estable pero preferible separar de soluciones alcalinas."
+    },
+    {
+      "farmaco1": "Vasopresina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Nitroglicerina",
+      "farmaco2": "Heparina",
+      "compatibilidad": "variable",
+      "notas": "Estudios contradictorios. La nitroglicerina puede reducir el efecto de la heparina. Monitorizar TTPa estrechamente si coadministran."
+    },
+    {
+      "farmaco1": "Nitroglicerina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Precipitación por diferencia de pH. Administrar por vías separadas."
+    },
+    {
+      "farmaco1": "Nitroglicerina",
+      "farmaco2": "Morfina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y. Combinación clásica en síndrome coronario agudo."
+    },
+    {
+      "farmaco1": "Nitroglicerina",
+      "farmaco2": "Fenitoína",
+      "compatibilidad": "incompatible",
+      "notas": "Fenitoína incompatible con todo excepto SF 0.9%. No mezclar."
+    },
+    {
+      "farmaco1": "Nitroglicerina",
+      "farmaco2": "Dopamina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales. IMPORTANTE: nitroglicerina se adsorbe al PVC."
+    },
+    {
+      "farmaco1": "Ciprofloxacino",
+      "farmaco2": "Amikacina",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Ciprofloxacino",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones estándar."
+    },
+    {
+      "farmaco1": "Gentamicina",
+      "farmaco2": "Midazolam",
+      "compatibilidad": "compatible",
+      "notas": "Compatible en Y en concentraciones habituales."
+    },
+    {
+      "farmaco1": "Gentamicina",
+      "farmaco2": "Furosemida",
+      "compatibilidad": "incompatible",
+      "notas": "Incompatibles fisicoquímicamente. Además, furosemida potencia ototoxicidad y nefrotoxicidad. Separar administración."
+    },
+    {
+      "farmaco1": "Gentamicina",
+      "farmaco2": "Ceftriaxona",
+      "compatibilidad": "incompatible",
+      "notas": "Cefalosporinas inactivan aminoglucósidos en mezcla. Administrar por separado con intervalo de 1h mínimo."
+    }
+  ]
+}

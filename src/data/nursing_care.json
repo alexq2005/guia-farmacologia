@@ -1,0 +1,411 @@
+{
+  "derechosAdministracion": {
+    "titulo": "Los 10 Correctos de la Administración de Medicamentos",
+    "descripcion": "Verificaciones obligatorias antes de administrar cualquier fármaco",
+    "items": [
+      {
+        "numero": 1,
+        "nombre": "Paciente Correcto",
+        "descripcion": "Verificar identidad con al menos 2 identificadores (nombre completo y fecha de nacimiento o brazalete).",
+        "ejemplo": "Preguntar: '¿Cuál es su nombre completo y fecha de nacimiento?' — comparar con brazalete y prescripción."
+      },
+      {
+        "numero": 2,
+        "nombre": "Medicamento Correcto",
+        "descripcion": "Comparar la etiqueta del medicamento con la orden médica en 3 momentos: al tomar del dispensador, al preparar, y antes de administrar.",
+        "ejemplo": "Leer la etiqueta: nombre genérico y comercial, concentración, fecha de vencimiento."
+      },
+      {
+        "numero": 3,
+        "nombre": "Dosis Correcta",
+        "descripcion": "Calcular y verificar la dosis. Doble verificación para medicamentos de alto riesgo (insulina, heparina, opioides).",
+        "ejemplo": "Si la orden dice 500mg y el vial es de 250mg/5ml → administrar 10ml. Verificar cálculo con otro enfermero."
+      },
+      {
+        "numero": 4,
+        "nombre": "Vía Correcta",
+        "descripcion": "Confirmar que la vía de administración corresponde a la prescrita y que la formulación es apropiada para esa vía.",
+        "ejemplo": "Un medicamento oral NO se puede administrar IV. Verificar que la presentación sea compatible con la vía."
+      },
+      {
+        "numero": 5,
+        "nombre": "Hora Correcta",
+        "descripcion": "Administrar en el horario prescrito, dentro del margen aceptable (generalmente ±30 minutos).",
+        "ejemplo": "Medicamento prescrito cada 8h a las 8:00-16:00-24:00. Margen aceptable: 7:30-8:30."
+      },
+      {
+        "numero": 6,
+        "nombre": "Registro Correcto",
+        "descripcion": "Documentar inmediatamente después de administrar: medicamento, dosis, vía, hora, firma del enfermero, y respuesta del paciente.",
+        "ejemplo": "Registrar: 'Paracetamol 1g VO a las 08:15. Paciente tolera sin náuseas. Firma: Enf. García.'"
+      },
+      {
+        "numero": 7,
+        "nombre": "Razón Correcta",
+        "descripcion": "Conocer la indicación del medicamento y verificar que corresponde a la condición del paciente.",
+        "ejemplo": "Metformina prescrita → verificar que el paciente tiene diagnóstico de diabetes tipo 2."
+      },
+      {
+        "numero": 8,
+        "nombre": "Forma Correcta",
+        "descripcion": "Verificar que la forma farmacéutica (tableta, cápsula, solución, etc.) sea la correcta y que no se altere (no triturar cápsulas de liberación prolongada).",
+        "ejemplo": "Omeprazol cápsula de liberación retardada → NO triturar ni abrir. Si el paciente no puede tragar, solicitar forma líquida."
+      },
+      {
+        "numero": 9,
+        "nombre": "Respuesta Correcta",
+        "descripcion": "Evaluar la respuesta terapéutica esperada y vigilar efectos adversos tras la administración.",
+        "ejemplo": "Tras administrar analgésico, reevaluar dolor a los 30-60 min. Si EVA no disminuye, notificar al médico."
+      },
+      {
+        "numero": 10,
+        "nombre": "Educación Correcta",
+        "descripcion": "Informar al paciente sobre el medicamento: qué es, para qué sirve, efectos esperados y adversos a reportar.",
+        "ejemplo": "Explicar: 'Le voy a administrar un antihipertensivo. Puede sentir mareo al levantarse. Hágalo lentamente.'"
+      }
+    ]
+  },
+  "valoracionPreAdministracion": {
+    "titulo": "Valoración Pre-Administración",
+    "descripcion": "Evaluaciones que debe realizar el enfermero antes de administrar cualquier medicamento",
+    "categorias": [
+      {
+        "nombre": "Signos Vitales",
+        "items": [
+          "Presión arterial — especialmente antes de antihipertensivos, vasodilatadores, betabloqueantes (suspender si PAS <90 mmHg)",
+          "Frecuencia cardíaca — antes de digoxina (suspender si FC <60 lpm), betabloqueantes, antiarrítmicos",
+          "Frecuencia respiratoria — antes de opioides y sedantes (suspender si FR <12 rpm)",
+          "Temperatura — antes de antipiréticos (registrar como línea base), antibióticos",
+          "Saturación de O2 — antes de broncodilatadores, opioides, sedantes",
+          "Glucemia capilar — antes de insulina y antidiabéticos orales (verificar rango)"
+        ]
+      },
+      {
+        "nombre": "Alergias",
+        "items": [
+          "Verificar alergias documentadas en historial clínico y brazalete",
+          "Preguntar al paciente directamente por alergias medicamentosas",
+          "Reacciones cruzadas: alergia a penicilina → precaución con cefalosporinas (5-10% reactividad cruzada)",
+          "Alergias a excipientes: látex, gluten, colorantes, conservantes",
+          "Alergia a AINEs → precaución con todos los AINEs, no solo el específico",
+          "Tener siempre disponible: adrenalina, corticoides, antihistamínicos para anafilaxia"
+        ]
+      },
+      {
+        "nombre": "Estado del Paciente",
+        "items": [
+          "Nivel de conciencia — Glasgow, orientación (importante para vía oral segura)",
+          "Capacidad de deglución — test de deglución antes de medicación oral",
+          "Función renal — creatinina, TFG (ajuste de dosis en insuficiencia renal)",
+          "Función hepática — transaminasas, bilirrubina (ajuste en insuficiencia hepática)",
+          "Estado de embarazo/lactancia — clasificación de riesgo del fármaco",
+          "Peso actual — especialmente en pediatría y fármacos con dosis por kg",
+          "Ayuno — para medicamentos que requieren estómago vacío o con alimentos"
+        ]
+      },
+      {
+        "nombre": "Interacciones",
+        "items": [
+          "Revisar TODOS los medicamentos actuales del paciente (incluyendo OTC y suplementos)",
+          "Verificar compatibilidad si se administran múltiples fármacos IV",
+          "Separar temporalmente medicamentos que interaccionan (ej: antiácidos y fluoroquinolonas)",
+          "Alimentos que interaccionan: pomelo/toronja con estatinas, vitamina K con warfarina",
+          "Alcohol: potencia sedantes, hepatotóxicos, hipoglucemiantes"
+        ]
+      }
+    ]
+  },
+  "cuidadosPorVia": {
+    "titulo": "Cuidados de Enfermería por Vía de Administración",
+    "vias": [
+      {
+        "nombre": "Vía Oral (VO)",
+        "cuidados": [
+          "Verificar capacidad de deglución del paciente",
+          "Elevar cabecera a 30-45° para prevenir aspiración",
+          "Administrar con 150-250 ml de agua (salvo restricción hídrica)",
+          "No triturar: cápsulas de liberación prolongada, tabletas con cubierta entérica",
+          "Ayuno/alimento según indicación: omeprazol en ayunas, AINEs con alimentos",
+          "Si el paciente vomita dentro de 30 min → notificar para posible readministración",
+          "Tabletas sublinguales: bajo la lengua, no tragar, no beber agua hasta disolución completa"
+        ]
+      },
+      {
+        "nombre": "Vía Intravenosa (IV)",
+        "cuidados": [
+          "Verificar permeabilidad del acceso venoso antes de cada administración",
+          "Evaluar sitio de punción: eritema, edema, dolor, induración (escala de flebitis)",
+          "Lavado (flush) con 5-10 ml de SF 0.9% antes y después de cada medicamento",
+          "Velocidad de infusión según protocolo — nunca acelerar sin indicación médica",
+          "Doble verificación para medicamentos de alto riesgo: insulina IV, heparina, aminas",
+          "Observar reacciones durante los primeros 15 min (especialmente antibióticos, hemoderivados)",
+          "Rotular cada línea de infusión: medicamento, concentración, velocidad, hora de inicio",
+          "Cambio de equipo de infusión cada 72-96 h (inmediato si contaminación sospechada)"
+        ]
+      },
+      {
+        "nombre": "Vía Intramuscular (IM)",
+        "cuidados": [
+          "Seleccionar sitio según volumen: deltoides (≤2ml), vasto lateral (≤5ml), dorsoglúteo (≤5ml)",
+          "Técnica Z-track para medicamentos irritantes (hierro dextrano)",
+          "Aspirar antes de inyectar (excepto en vacunas y heparinas)",
+          "No masajear el sitio después (puede aumentar absorción de forma impredecible)",
+          "Rotar sitios de inyección y documentar el sitio utilizado",
+          "Contraindicado en pacientes anticoagulados o con trombocitopenia severa",
+          "Aguja calibre 21-23G, longitud según masa muscular del paciente"
+        ]
+      },
+      {
+        "nombre": "Vía Subcutánea (SC)",
+        "cuidados": [
+          "Sitios: abdomen (excepto 5cm alrededor del ombligo), muslo, brazo",
+          "Ángulo de inserción: 45° en pacientes delgados, 90° si hay tejido adiposo adecuado",
+          "NO aspirar antes de inyectar insulina ni heparinas de bajo peso molecular",
+          "Rotar sitios sistemáticamente para prevenir lipodistrofia (especialmente insulina)",
+          "Volumen máximo: 1-2 ml por sitio",
+          "Insulina: verificar tipo, concentración, y no mezclar incompatibles",
+          "Heparina SC: no frotar el sitio, aplicar presión suave"
+        ]
+      },
+      {
+        "nombre": "Vía Inhalatoria",
+        "cuidados": [
+          "Enseñar técnica correcta del inhalador — verificar comprensión con demostración de retorno",
+          "IDM (inhalador de dosis medida): agitar, exhalar, presionar al inicio de la inspiración, sostener 10 seg",
+          "Si usa corticoide inhalado: enjuagar boca después para prevenir candidiasis oral",
+          "Espaciador: obligatorio en niños y recomendado en adultos con mala técnica",
+          "Nebulización: posición sentada, respirar normalmente, duración 10-15 min",
+          "Broncodilatador siempre ANTES que corticoide inhalado (si usa ambos)",
+          "Limpiar boquilla del inhalador semanalmente"
+        ]
+      },
+      {
+        "nombre": "Vía Tópica/Transdérmica",
+        "cuidados": [
+          "Limpiar y secar la piel antes de aplicar",
+          "Parches transdérmicos: rotar sitios, zona sin vello, sin irritación, sin pliegues",
+          "Retirar parche anterior antes de colocar nuevo (marcar con fecha y hora)",
+          "Aplicar cremas/ungüentos con guantes (evitar absorción por el personal)",
+          "No aplicar calor sobre parches transdérmicos (aumenta absorción — riesgo de sobredosis)",
+          "Vigilar irritación local: eritema, prurito, vesículas",
+          "Nitroglicerina tópica: medir dosis exacta, cubrir con película transparente"
+        ]
+      }
+    ]
+  },
+  "medicamentosAltoRiesgo": {
+    "titulo": "Medicamentos de Alto Riesgo",
+    "descripcion": "Fármacos que requieren doble verificación y precauciones especiales (regla nemotécnica: A PINCH)",
+    "categorias": [
+      {
+        "nombre": "A - Anti-infecciosos (aminoglucósidos)",
+        "farmacos": ["Gentamicina", "Amikacina", "Vancomicina"],
+        "precauciones": [
+          "Monitorizar niveles séricos (pico y valle)",
+          "Vigilar función renal (creatinina, diuresis)",
+          "Vigilar ototoxicidad (tinitus, pérdida auditiva)",
+          "Infusión IV lenta según protocolo (vancomicina: 1h mínimo)"
+        ]
+      },
+      {
+        "nombre": "P - Potasio (IV)",
+        "farmacos": ["Cloruro de potasio IV"],
+        "precauciones": [
+          "NUNCA administrar en bolo IV — riesgo de paro cardíaco",
+          "Concentración máxima periférica: 40 mEq/L",
+          "Velocidad máxima: 10 mEq/h (20 mEq/h con monitoreo cardíaco continuo)",
+          "Verificar función renal y niveles de K+ antes de cada dosis",
+          "Monitorizar ECG durante infusión"
+        ]
+      },
+      {
+        "nombre": "I - Insulina",
+        "farmacos": ["Todas las insulinas"],
+        "precauciones": [
+          "Doble verificación: tipo de insulina, dosis, vía, paciente",
+          "Verificar glucemia capilar antes de administrar",
+          "Conocer inicio, pico y duración de cada tipo de insulina",
+          "NUNCA mezclar insulina glargina/detemir con otras insulinas",
+          "Insulina IV: solo regular, con bomba de infusión y monitoreo horario de glucemia",
+          "Rotar sitios de inyección SC — documentar ubicación"
+        ]
+      },
+      {
+        "nombre": "N - Narcóticos/Opioides",
+        "farmacos": ["Morfina", "Fentanilo", "Oxicodona", "Meperidina"],
+        "precauciones": [
+          "Evaluar FR antes de cada dosis — suspender si FR <12 rpm",
+          "Evaluar nivel de sedación con escala de Ramsay",
+          "Tener naloxona (Narcan) disponible siempre",
+          "No administrar si paciente está excesivamente sedado",
+          "Monitorizar saturación de O2 especialmente en ancianos",
+          "Prevenir estreñimiento: iniciar laxante profiláctico"
+        ]
+      },
+      {
+        "nombre": "C - Citotóxicos/Quimioterapia",
+        "farmacos": ["Metotrexato", "Ciclofosfamida", "Doxorrubicina"],
+        "precauciones": [
+          "Manipular con equipo de protección personal (EPP) completo",
+          "Verificar protocolo de quimioterapia (dosis/m² de superficie corporal)",
+          "Preparación en cabina de seguridad biológica",
+          "Monitorizar hemograma antes de cada ciclo",
+          "Extravasación: detener infusión inmediatamente, aspirar residuo, aplicar antídoto específico"
+        ]
+      },
+      {
+        "nombre": "H - Heparina y anticoagulantes",
+        "farmacos": ["Heparina no fraccionada", "Enoxaparina", "Warfarina"],
+        "precauciones": [
+          "Heparina IV: doble verificación de dosis, bomba de infusión obligatoria",
+          "Monitorizar TTPa (heparina) o INR (warfarina) según protocolo",
+          "Vigilar signos de sangrado: hematomas, petequias, melena, hematuria",
+          "Protamina como antídoto de heparina — tener disponible",
+          "Vitamina K como antídoto de warfarina",
+          "Enoxaparina SC: no frotar sitio de inyección, alternar lados del abdomen"
+        ]
+      }
+    ]
+  },
+  "procedimientosEspeciales": {
+    "titulo": "Procedimientos Especiales de Enfermería",
+    "procedimientos": [
+      {
+        "nombre": "Administración por Sonda Nasogástrica (SNG)",
+        "pasos": [
+          "Verificar posición de la sonda (aspirar y comprobar pH <5.5, o Rx)",
+          "Elevar cabecera a 30-45°",
+          "Detener alimentación enteral 30 min antes (si aplica)",
+          "Triturar tabletas hasta polvo fino — disolver en 15-30 ml de agua tibia",
+          "NO triturar: cápsulas de liberación prolongada, tabletas con cubierta entérica",
+          "Administrar cada medicamento por separado con 5-10 ml de agua entre cada uno",
+          "Lavar la sonda con 30 ml de agua al finalizar",
+          "Mantener cabecera elevada 30 min después"
+        ]
+      },
+      {
+        "nombre": "Dilución y Reconstitución",
+        "pasos": [
+          "Verificar solvente correcto: agua estéril, SF 0.9%, SG 5% según ficha técnica",
+          "Volumen de dilución según concentración indicada",
+          "Agitar suavemente (no agitar vigorosamente — proteínas/biológicos)",
+          "Verificar aspecto de la solución: transparencia, color, partículas",
+          "Rotular: nombre del medicamento, concentración final, fecha/hora de preparación, caducidad",
+          "Estabilidad post-reconstitución: verificar en ficha técnica (varía de horas a días)",
+          "Temperatura de conservación post-dilución según el medicamento"
+        ]
+      },
+      {
+        "nombre": "Manejo de Extravasación IV",
+        "pasos": [
+          "Detener la infusión inmediatamente — NO retirar el catéter aún",
+          "Aspirar todo el medicamento residual a través del catéter",
+          "Retirar el catéter",
+          "Delimitar el área afectada con marcador",
+          "Aplicar antídoto específico si disponible (hialuronidasa, fentolamina, etc.)",
+          "Vesicantes (doxorrubicina, vincristina): aplicar frío intermitente 15 min cada 4h × 48h",
+          "NO aplicar presión sobre el área",
+          "Elevar la extremidad afectada",
+          "Documentar: medicamento, volumen estimado extravasado, aspecto del sitio, tratamiento aplicado",
+          "Seguimiento diario del sitio durante 7-14 días"
+        ]
+      },
+      {
+        "nombre": "Manejo de Reacción Anafiláctica",
+        "pasos": [
+          "Detener la administración del medicamento inmediatamente",
+          "Solicitar ayuda — activar código de emergencia",
+          "Evaluar vía aérea, respiración, circulación (ABC)",
+          "Posición: Trendelenburg si hipotensión, posición sentada si disnea",
+          "Adrenalina IM 0.3-0.5 mg (0.01 mg/kg en niños) en cara anterolateral del muslo",
+          "Oxígeno a alto flujo (10-15 L/min con mascarilla de reservorio)",
+          "Acceso venoso periférico de gran calibre — SF 0.9% en bolo (1-2 L en adultos)",
+          "Repetir adrenalina cada 5-15 min si no hay mejoría",
+          "Corticoides IV (hidrocortisona 200mg) para prevenir fase tardía",
+          "Antihistamínico IV (difenhidramina 50mg) como coadyuvante",
+          "Monitorización continua mínimo 6-8 horas post-reacción",
+          "Documentar: medicamento causante, cronología, síntomas, tratamiento, respuesta"
+        ]
+      }
+    ]
+  },
+  "documentacionEnfermeria": {
+    "titulo": "Documentación de Enfermería en Farmacoterapia",
+    "secciones": [
+      {
+        "nombre": "Registro de Administración",
+        "items": [
+          "Nombre del medicamento (genérico y comercial)",
+          "Dosis administrada",
+          "Vía de administración",
+          "Hora exacta de administración",
+          "Sitio de administración (IM, SC, parche, etc.)",
+          "Lote y fecha de vencimiento (en medicamentos de alto riesgo)",
+          "Firma y nombre del enfermero administrador"
+        ]
+      },
+      {
+        "nombre": "Registro de NO Administración",
+        "items": [
+          "Razón de no administración: rechazo del paciente, parámetro fuera de rango, ausencia del paciente, vómito, ayuno para procedimiento",
+          "Hora en que se detectó la indicación de no administrar",
+          "Médico notificado (nombre, hora, instrucciones recibidas)",
+          "Acción tomada (suspender, reprogramar, sustituir)"
+        ]
+      },
+      {
+        "nombre": "Registro de Efectos Adversos",
+        "items": [
+          "Descripción detallada de la reacción",
+          "Cronología: hora de administración → hora de inicio de síntomas",
+          "Severidad: leve, moderada, severa, potencialmente mortal",
+          "Medicamento(s) sospechoso(s)",
+          "Tratamiento administrado para la reacción",
+          "Evolución del paciente",
+          "Reporte al sistema de farmacovigilancia (si aplica)",
+          "Actualización de alergias en el historial del paciente"
+        ]
+      }
+    ]
+  },
+  "calculosFarmacologicos": {
+    "titulo": "Cálculos Farmacológicos Esenciales",
+    "formulas": [
+      {
+        "nombre": "Dosis deseada",
+        "formula": "Dosis = (Dosis prescrita / Concentración disponible) × Volumen del vial",
+        "ejemplo": "Prescrito: 500mg. Disponible: vial de 250mg/5ml → (500/250) × 5 = 10 ml"
+      },
+      {
+        "nombre": "Goteo por minuto",
+        "formula": "Gotas/min = (Volumen en ml × Factor de goteo) / Tiempo en minutos",
+        "ejemplo": "1000 ml en 8h con equipo de macrogoteo (20 gtt/ml) → (1000 × 20) / 480 = 41.6 ≈ 42 gtt/min"
+      },
+      {
+        "nombre": "Microgoteo",
+        "formula": "Microgotas/min = Volumen en ml / Tiempo en horas",
+        "ejemplo": "500 ml en 6h → 500/6 = 83.3 ≈ 83 microgtt/min"
+      },
+      {
+        "nombre": "Dosis pediátrica por peso",
+        "formula": "Dosis = Peso (kg) × Dosis por kg",
+        "ejemplo": "Niño de 20 kg, amoxicilina 25 mg/kg/día → 20 × 25 = 500 mg/día"
+      },
+      {
+        "nombre": "Superficie corporal (Mosteller)",
+        "formula": "SC (m²) = √(Peso kg × Talla cm / 3600)",
+        "ejemplo": "Paciente 70 kg, 170 cm → √(70 × 170 / 3600) = √3.31 = 1.82 m²"
+      },
+      {
+        "nombre": "Velocidad de infusión con bomba",
+        "formula": "ml/h = Volumen total (ml) / Tiempo total (horas)",
+        "ejemplo": "1000 ml de SF en 8h → 1000/8 = 125 ml/h"
+      },
+      {
+        "nombre": "Concentración de infusión",
+        "formula": "Concentración = Dosis del fármaco / Volumen de dilución",
+        "ejemplo": "Dopamina 200mg en 250ml SG5% → 200/250 = 0.8 mg/ml = 800 mcg/ml"
+      }
+    ]
+  }
+}

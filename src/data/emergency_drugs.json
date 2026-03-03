@@ -1,0 +1,189 @@
+[
+  {
+    "id": "em_001",
+    "nombre": "Adrenalina (Epinefrina)",
+    "indicacion": "Paro cardíaco, anafilaxia, broncoespasmo severo, shock anafiláctico",
+    "dosis": "Paro cardíaco: 1 mg IV cada 3-5 min. Anafilaxia: 0.3-0.5 mg IM (adultos), 0.01 mg/kg IM (niños, máx 0.3 mg). Infusión: 1-10 mcg/min",
+    "via": "IV, IM, SC, endotraqueal",
+    "velocidadAdmin": "Bolo IV directo en paro cardíaco. IM en cara anterolateral del muslo en anafilaxia. Infusión continua diluida en SG5% o SF",
+    "presentacion": "Ampolla 1 mg/mL (1:1000) 1 mL. Jeringa precargada 0.1 mg/mL (1:10000) 10 mL",
+    "efectosAdversos": "Taquicardia, hipertensión, arritmias ventriculares, temblor, ansiedad, cefalea, isquemia miocárdica, necrosis tisular por extravasación",
+    "notas": "No mezclar con bicarbonato de sodio (se inactiva). Proteger de la luz. Verificar concentración antes de administrar (1:1000 IM vs 1:10000 IV). En paro cardíaco usar vía IV o intraósea."
+  },
+  {
+    "id": "em_002",
+    "nombre": "Atropina",
+    "indicacion": "Bradicardia sintomática, intoxicación por organofosforados/carbamatos, bloqueo AV, premedicación anestésica",
+    "dosis": "Bradicardia: 0.5-1 mg IV cada 3-5 min (máx 3 mg). Intoxicación por organofosforados: 2-4 mg IV, repetir cada 5-10 min hasta atropinización. Premedicación: 0.4-0.6 mg IV/IM",
+    "via": "IV, IM, SC, endotraqueal",
+    "velocidadAdmin": "Bolo IV rápido (en menos de 1 minuto). No administrar lentamente ya que puede causar bradicardia paradójica",
+    "presentacion": "Ampolla 1 mg/mL (1 mL). Ampolla 0.5 mg/mL (1 mL)",
+    "efectosAdversos": "Taquicardia, sequedad de boca, midriasis, visión borrosa, retención urinaria, íleo paralítico, hipertermia, confusión",
+    "notas": "Dosis menores de 0.5 mg pueden causar bradicardia paradójica. En intoxicación por organofosforados se necesitan dosis altas y repetidas. No revierte bloqueo AV de segundo grado tipo II ni de tercer grado (usar marcapasos)."
+  },
+  {
+    "id": "em_003",
+    "nombre": "Amiodarona",
+    "indicacion": "Fibrilación ventricular/taquicardia ventricular sin pulso refractaria, taquicardia ventricular estable, fibrilación auricular, taquiarritmias supraventriculares",
+    "dosis": "FV/TV sin pulso: 300 mg IV en bolo, puede repetir 150 mg. TV estable/FA: carga 150 mg IV en 10 min, luego infusión 1 mg/min x 6h, después 0.5 mg/min x 18h. Dosis máxima: 2.2 g/24h",
+    "via": "IV (preferente), oral",
+    "velocidadAdmin": "En paro: bolo IV rápido diluido en 20 mL de SG5%. TV estable: 150 mg en 100 mL SG5% en 10 min. Infusión de mantenimiento en bomba",
+    "presentacion": "Ampolla 150 mg/3 mL. Comprimidos 200 mg",
+    "efectosAdversos": "Hipotensión (por vasodilatación), bradicardia, prolongación QT, flebitis, toxicidad pulmonar (uso crónico), hepatotoxicidad, disfunción tiroidea",
+    "notas": "Usar solo con SG5% (incompatible con solución salina). Administrar por vía central si es posible (causa flebitis en venas periféricas). Contraindicado en bradicardia sinusal severa y bloqueo AV. Interacciona con warfarina y digoxina."
+  },
+  {
+    "id": "em_004",
+    "nombre": "Lidocaína",
+    "indicacion": "Taquicardia ventricular, fibrilación ventricular refractaria (alternativa a amiodarona), anestesia local, arritmias ventriculares post-IAM",
+    "dosis": "Antiarrítmico: 1-1.5 mg/kg IV en bolo, puede repetir 0.5-0.75 mg/kg cada 5-10 min (máx 3 mg/kg). Infusión: 1-4 mg/min. Anestesia local: según técnica (máx 4.5 mg/kg sin adrenalina, 7 mg/kg con adrenalina)",
+    "via": "IV, infiltración local, tópica, endotraqueal",
+    "velocidadAdmin": "Bolo IV en 2-3 minutos. Infusión continua con bomba. No exceder velocidad de administración para evitar toxicidad",
+    "presentacion": "Ampolla 1% (10 mg/mL) y 2% (20 mg/mL). Vial 2% para infusión. Jalea tópica 2%. Spray 10%",
+    "efectosAdversos": "Mareo, parestesias peribucales, temblores, convulsiones (toxicidad SNC), bradicardia, hipotensión, arritmias (toxicidad cardíaca), paro cardíaco en sobredosis",
+    "notas": "Reducir dosis en insuficiencia hepática, ICC y ancianos (aclaramiento reducido). Signos tempranos de toxicidad: sabor metálico, acúfenos, entumecimiento perioral. Alternativa a amiodarona en FV/TV sin pulso."
+  },
+  {
+    "id": "em_005",
+    "nombre": "Adenosina",
+    "indicacion": "Taquicardia supraventricular paroxística (TSVP) por reentrada nodal, diagnóstico diferencial de taquicardias de complejo estrecho",
+    "dosis": "Primera dosis: 6 mg IV en bolo rápido. Si no responde en 1-2 min: 12 mg IV. Puede repetir 12 mg una vez más. Niños: 0.1 mg/kg (máx 6 mg), luego 0.2 mg/kg (máx 12 mg)",
+    "via": "IV exclusivamente (vena proximal, preferiblemente antecubital o central)",
+    "velocidadAdmin": "Bolo IV ultrarrápido en 1-2 segundos seguido inmediatamente de lavado rápido con 20 mL de SF. Elevar el brazo",
+    "presentacion": "Ampolla 6 mg/2 mL (3 mg/mL). Vial 3 mg/mL",
+    "efectosAdversos": "Disnea transitoria, opresión torácica, rubor facial, bradicardia/asistolia transitoria (segundos), cefalea, náuseas. Los efectos son muy breves (< 10 seg)",
+    "notas": "Vida media ultracorta (< 10 segundos). Administrar lo más proximal posible al corazón. Reducir dosis si el paciente toma dipiridamol o carbamazepina. Aumentar dosis en consumidores de cafeína/teofilina. Contraindicada en asma severa, bloqueo AV de 2° o 3° grado. Tener desfibrilador disponible."
+  },
+  {
+    "id": "em_006",
+    "nombre": "Dopamina",
+    "indicacion": "Shock cardiogénico, shock séptico (segunda línea), bradicardia sintomática refractaria a atropina, hipotensión",
+    "dosis": "Dosis baja (renal): 1-5 mcg/kg/min. Dosis media (cardíaca/beta): 5-10 mcg/kg/min. Dosis alta (vasopresora/alfa): 10-20 mcg/kg/min. Máximo: 50 mcg/kg/min",
+    "via": "IV exclusivamente, en infusión continua. Preferible por vía central",
+    "velocidadAdmin": "Infusión continua con bomba de infusión. Titular según respuesta hemodinámica. Dilución: 400 mg en 250 mL SG5% o SF (1600 mcg/mL)",
+    "presentacion": "Ampolla 200 mg/5 mL (40 mg/mL). Ampolla 400 mg/10 mL",
+    "efectosAdversos": "Taquicardia, arritmias, hipertensión, vasoconstricción periférica, náuseas, vómitos, necrosis tisular por extravasación",
+    "notas": "Si hay extravasación: infiltrar zona con fentolamina 5-10 mg diluida en 10-15 mL de SF. No mezclar con bicarbonato de sodio ni soluciones alcalinas. Inactivada por soluciones alcalinas. Efecto dependiente de dosis. Usar vía central siempre que sea posible."
+  },
+  {
+    "id": "em_007",
+    "nombre": "Dobutamina",
+    "indicacion": "Insuficiencia cardíaca aguda con bajo gasto cardíaco, shock cardiogénico, soporte inotrópico post-cirugía cardíaca",
+    "dosis": "2-20 mcg/kg/min en infusión continua. Inicio habitual: 2.5-5 mcg/kg/min, titular cada 10 min según respuesta. Máximo: 40 mcg/kg/min",
+    "via": "IV exclusivamente, en infusión continua",
+    "velocidadAdmin": "Infusión continua con bomba. Dilución: 250 mg en 250 mL SG5% o SF (1000 mcg/mL). No administrar en bolo",
+    "presentacion": "Ampolla 250 mg/20 mL (12.5 mg/mL). Vial 250 mg",
+    "efectosAdversos": "Taquicardia, arritmias, hipertensión o hipotensión, angina, cefalea, náuseas, hipopotasemia",
+    "notas": "A diferencia de dopamina, es principalmente inotrópico positivo (beta-1) con leve efecto vasodilatador. No tiene efecto renal selectivo. Puede combinarse con dopamina o noradrenalina. Incompatible con bicarbonato y soluciones alcalinas. Desarrolla tolerancia tras 72h de infusión continua."
+  },
+  {
+    "id": "em_008",
+    "nombre": "Noradrenalina (Norepinefrina)",
+    "indicacion": "Shock séptico (primera línea), shock distributivo, hipotensión severa refractaria",
+    "dosis": "Inicio: 0.1-0.5 mcg/kg/min. Rango habitual: 0.01-3 mcg/kg/min. Titular según PAM objetivo (generalmente PAM ≥ 65 mmHg). Dosis habituales: 2-30 mcg/min en adultos",
+    "via": "IV exclusivamente, en infusión continua. Obligatoriamente por vía central",
+    "velocidadAdmin": "Infusión continua con bomba. Dilución habitual: 4 mg en 250 mL SG5% (16 mcg/mL). No administrar en bolo. No suspender bruscamente (retirada gradual)",
+    "presentacion": "Ampolla 4 mg/4 mL (1 mg/mL). Ampolla 8 mg/4 mL (2 mg/mL)",
+    "efectosAdversos": "Hipertensión, bradicardia refleja, arritmias, isquemia periférica, necrosis tisular severa por extravasación, vasoconstricción esplácnica",
+    "notas": "Primera elección en shock séptico (Surviving Sepsis Campaign). Administrar siempre por vía central; la extravasación periférica causa necrosis severa. Si ocurre extravasación: fentolamina local. Incompatible con soluciones alcalinas. Proteger de la luz. Monitorización hemodinámica continua obligatoria."
+  },
+  {
+    "id": "em_009",
+    "nombre": "Nitroglicerina",
+    "indicacion": "Angina de pecho, síndrome coronario agudo, insuficiencia cardíaca aguda con edema pulmonar, crisis hipertensiva con isquemia",
+    "dosis": "Sublingual: 0.4 mg cada 5 min (máx 3 dosis). IV: inicio 5-10 mcg/min, titular cada 3-5 min en incrementos de 5-10 mcg/min. Rango: 5-200 mcg/min. Parche transdérmico: 0.2-0.8 mg/h",
+    "via": "Sublingual, IV, transdérmico, tópico",
+    "velocidadAdmin": "Sublingual: dejar disolver bajo la lengua. IV: infusión continua con bomba, usar equipo libre de PVC (el PVC absorbe nitroglicerina). Titular según dolor y PA",
+    "presentacion": "Comprimidos sublinguales 0.4 mg y 0.6 mg. Ampolla 5 mg/mL (5 mL y 10 mL). Parche transdérmico. Spray sublingual",
+    "efectosAdversos": "Cefalea (muy frecuente), hipotensión, taquicardia refleja, mareo, síncope, rubor, tolerancia con uso continuo",
+    "notas": "Contraindicada si PAS < 90 mmHg o si usó inhibidores de PDE5 (sildenafilo/tadalafilo) en las últimas 24-48 horas. Desarrolla tolerancia: dejar intervalo libre de 10-12h con parches. Usar equipos sin PVC para infusión IV. No usar en infarto de ventrículo derecho."
+  },
+  {
+    "id": "em_010",
+    "nombre": "Furosemida",
+    "indicacion": "Edema pulmonar agudo, insuficiencia cardíaca congestiva, edema severo, hiperpotasemia (coadyuvante), insuficiencia renal oligúrica",
+    "dosis": "Edema agudo de pulmón: 20-80 mg IV en bolo. Puede repetir en 2h duplicando dosis. Infusión: 0.1-0.4 mg/kg/h. Edema crónico: 20-80 mg/día VO. Máximo IV: 200 mg/dosis, 600 mg/día",
+    "via": "IV, IM, oral",
+    "velocidadAdmin": "IV: no exceder 4 mg/min (riesgo de ototoxicidad). Bolo lento en 1-2 minutos. Infusión continua si se requieren dosis altas. Inicio de acción IV: 5 min",
+    "presentacion": "Ampolla 20 mg/2 mL. Ampolla 40 mg/4 mL. Comprimidos 40 mg",
+    "efectosAdversos": "Hipotensión, hipopotasemia, hiponatremia, hipocalcemia, hipomagnesemia, ototoxicidad (dosis altas o rápidas), alcalosis metabólica, deshidratación, hiperuricemia",
+    "notas": "Monitorizar electrolitos (especialmente potasio). Puede necesitar suplemento de potasio. La ototoxicidad es más frecuente con administración rápida o en insuficiencia renal. Compatible con la mayoría de soluciones IV. No mezclar con soluciones ácidas. Sensible a la luz."
+  },
+  {
+    "id": "em_011",
+    "nombre": "Midazolam",
+    "indicacion": "Estado epiléptico, sedación para procedimientos, premedicación anestésica, ansiólisis, sedación en UCI, convulsiones agudas",
+    "dosis": "Estado epiléptico: 0.2 mg/kg IM (máx 10 mg), 0.1-0.2 mg/kg IV. Sedación procedimientos: 0.5-2 mg IV, titular. Sedación UCI: 0.01-0.1 mg/kg/h. Intranasal: 0.2 mg/kg. Niños convulsiones: 0.1-0.2 mg/kg IV/IM",
+    "via": "IV, IM, oral, intranasal, rectal, bucal",
+    "velocidadAdmin": "IV: administrar lentamente, 1-2.5 mg en 2 min, esperar 2-3 min entre incrementos. No administrar en bolo rápido (riesgo de depresión respiratoria y apnea)",
+    "presentacion": "Ampolla 5 mg/mL (3 mL). Ampolla 1 mg/mL (5 mL). Comprimidos 7.5 mg y 15 mg. Solución oral",
+    "efectosAdversos": "Depresión respiratoria, apnea (especialmente IV rápido), hipotensión, somnolencia excesiva, amnesia anterógrada, reacción paradójica (agitación), dependencia",
+    "notas": "Tener flumazenilo disponible como antídoto. Reducir dosis en ancianos, hepatópatas e insuficiencia renal. Potencia los efectos con opioides (reducir dosis de ambos). El antídoto es flumazenilo. Metabolismo hepático por CYP3A4. Mayor potencia y menor duración que diazepam."
+  },
+  {
+    "id": "em_012",
+    "nombre": "Naloxona",
+    "indicacion": "Reversión de depresión respiratoria por opioides, sobredosis de opioides, diagnóstico de dependencia a opioides, coma de origen desconocido",
+    "dosis": "Sobredosis opioide: 0.4-2 mg IV, puede repetir cada 2-3 min hasta 10 mg. Depresión respiratoria postquirúrgica: 0.1-0.2 mg IV cada 2-3 min. Infusión: 0.25-6.25 mcg/kg/h. Neonatal: 0.01 mg/kg IV",
+    "via": "IV (preferida), IM, SC, intranasal, endotraqueal",
+    "velocidadAdmin": "IV: bolo directo rápido. Puede repetirse cada 2-3 minutos. Infusión continua si opioides de larga duración. Inicio IV: 1-2 min. Inicio IM: 2-5 min",
+    "presentacion": "Ampolla 0.4 mg/mL (1 mL). Spray nasal 4 mg/dosis. Jeringa precargada 2 mg/2 mL",
+    "efectosAdversos": "Síndrome de abstinencia agudo (en dependientes), taquicardia, hipertensión, edema pulmonar, arritmias, náuseas, vómitos, diaforesis",
+    "notas": "Vida media (30-90 min) menor que la mayoría de opioides: vigilar RESEDACIÓN y repetir dosis o iniciar infusión. En dependientes a opioides, usar dosis bajas tituladas para evitar síndrome de abstinencia severo. Si no hay respuesta tras 10 mg, reconsiderar diagnóstico."
+  },
+  {
+    "id": "em_013",
+    "nombre": "Flumazenilo",
+    "indicacion": "Reversión de sedación por benzodiacepinas, sobredosis de benzodiacepinas, reversión postanestésica de benzodiacepinas",
+    "dosis": "Reversión sedación: 0.2 mg IV en 15 seg, luego 0.1 mg cada 60 seg si necesario (máx 1 mg). Sobredosis: 0.2 mg IV, luego 0.3 mg, luego 0.5 mg cada 30 seg (máx 3-5 mg). Infusión: 0.1-0.5 mg/h",
+    "via": "IV exclusivamente",
+    "velocidadAdmin": "IV lento: cada dosis en 15-30 segundos. Esperar 60 segundos entre dosis. Si no hay respuesta a 5 mg acumulados, la sedación no es por benzodiacepinas",
+    "presentacion": "Ampolla 0.5 mg/5 mL (0.1 mg/mL). Ampolla 1 mg/10 mL",
+    "efectosAdversos": "Convulsiones (especialmente en usuarios crónicos o coingestión con proconvulsivantes), agitación, náuseas, mareo, resedación, arritmias",
+    "notas": "CONTRAINDICADO si sospecha de coingestión con antidepresivos tricíclicos o en dependientes crónicos a benzodiacepinas (riesgo de convulsiones). Vida media corta (40-80 min): vigilar resedación. No usar de rutina en sobredosis mixtas. Tener anticonvulsivantes disponibles."
+  },
+  {
+    "id": "em_014",
+    "nombre": "Glucagón",
+    "indicacion": "Hipoglucemia severa (cuando no hay acceso IV), sobredosis de betabloqueantes, sobredosis de calcioantagonistas",
+    "dosis": "Hipoglucemia: 1 mg IM/SC (adultos), 0.5 mg (niños < 25 kg). Sobredosis betabloqueantes: 3-10 mg IV en bolo, luego infusión 1-5 mg/h. Sobredosis calcioantagonistas: 5-10 mg IV en bolo",
+    "via": "IM, SC, IV, intranasal",
+    "velocidadAdmin": "IM/SC: efecto en 8-10 min. IV: bolo en 1 minuto, efecto en 1-2 min. Reconstituir con diluyente proporcionado antes de usar",
+    "presentacion": "Vial liofilizado 1 mg con diluyente. Kit de emergencia 1 mg. Polvo nasal 3 mg",
+    "efectosAdversos": "Náuseas, vómitos (muy frecuentes), hiperglucemia, hipopotasemia, taquicardia, hipertensión",
+    "notas": "El paciente debe ingerir carbohidratos orales tan pronto recupere la conciencia para prevenir recurrencia. Ineficaz en hipoglucemia por alcohol o ayuno prolongado (deplección de glucógeno). Reconstituir inmediatamente antes de usar. En intoxicación por betabloqueantes puede ser la única opción efectiva."
+  },
+  {
+    "id": "em_015",
+    "nombre": "Dextrosa al 50%",
+    "indicacion": "Hipoglucemia severa, coma hipoglucémico, hipoglucemia en pacientes con acceso IV",
+    "dosis": "Adultos: 25-50 mL de dextrosa 50% IV (equivale a 12.5-25 g de glucosa). Niños: 0.5-1 g/kg (dextrosa 10-25%). Neonatos: 2 mL/kg de dextrosa 10%",
+    "via": "IV exclusivamente. Nunca IM ni SC",
+    "velocidadAdmin": "Bolo IV lento en 3-5 minutos por vena de buen calibre. La solución al 50% es muy hipertónica e irritante. En niños usar concentraciones menores (10-25%)",
+    "presentacion": "Jeringa precargada 50% (25 g/50 mL). Ampolla dextrosa 50% (50 mL). Bolsa dextrosa 5% y 10% (250-1000 mL)",
+    "efectosAdversos": "Flebitis, tromboflebitis, necrosis tisular por extravasación, hiperglucemia reactiva, hipopotasemia, edema cerebral (corrección excesiva)",
+    "notas": "Administrar tiamina 100 mg IV ANTES de dextrosa en sospecha de alcoholismo/desnutrición (prevenir encefalopatía de Wernicke). Verificar glucemia antes y después. La concentración al 50% es muy hipertónica (2525 mOsm/L): usar vena de gran calibre. En niños nunca usar al 50%."
+  },
+  {
+    "id": "em_016",
+    "nombre": "Bicarbonato de Sodio",
+    "indicacion": "Acidosis metabólica severa (pH < 7.1), hiperpotasemia severa, intoxicación por antidepresivos tricíclicos, paro cardíaco prolongado, intoxicación por aspirina",
+    "dosis": "Paro cardíaco: 1 mEq/kg IV en bolo. Acidosis metabólica: calcular déficit de bicarbonato = 0.3 x peso x (HCO3 deseado - HCO3 actual); administrar 50% del déficit. Hiperpotasemia: 50 mEq IV en 5 min. Intoxicación TCA: 1-2 mEq/kg IV en bolo",
+    "via": "IV exclusivamente",
+    "velocidadAdmin": "Bolo IV directo en paro cardíaco y emergencias. Infusión lenta para corrección de acidosis (en 2-4 horas). Solución hipertónica al 8.4% por vía central preferentemente",
+    "presentacion": "Ampolla 8.4% (1 mEq/mL) 10 mL y 50 mL. Solución 1.4% (frasco 500 mL)",
+    "efectosAdversos": "Alcalosis metabólica, hipernatremia, hipopotasemia, hipocalcemia, sobrecarga hídrica, necrosis tisular por extravasación",
+    "notas": "INCOMPATIBLE con calcio (precipita), catecolaminas (las inactiva), y muchos fármacos. Administrar por vía separada. No usar de rutina en paro cardíaco (solo si acidosis documentada o hiperpotasemia). Monitorizar gasometría y electrolitos. La solución al 8.4% es muy hipertónica."
+  },
+  {
+    "id": "em_017",
+    "nombre": "Sulfato de Magnesio",
+    "indicacion": "Eclampsia y preeclampsia severa, torsades de pointes, hipomagnesemia severa, asma aguda severa refractaria, tocolisis",
+    "dosis": "Eclampsia: carga 4-6 g IV en 15-20 min, luego infusión 1-2 g/h. Torsades de pointes: 1-2 g IV en 5-20 min. Hipomagnesemia: 1-2 g IV en 1h. Asma severa: 2 g IV en 20 min. Preeclampsia: protocolo Zuspan (4g carga + 1g/h mantenimiento)",
+    "via": "IV, IM (doloroso)",
+    "velocidadAdmin": "IV: diluir en SF o SG5%. Carga en 15-20 min. Infusión de mantenimiento con bomba. En torsades de pointes: bolo IV en 1-2 min si paro, en 5-20 min si estable. IM: inyección profunda glútea",
+    "presentacion": "Ampolla 10% (1 g/10 mL). Ampolla 20% (2 g/10 mL). Ampolla 50% (5 g/10 mL)",
+    "efectosAdversos": "Hipotensión, bradicardia, depresión respiratoria, hipotonía, hiporreflexia, rubor, diaforesis, parálisis muscular (toxicidad)",
+    "notas": "Monitorizar reflejo patelar (pérdida indica toxicidad), frecuencia respiratoria (> 12/min), diuresis (> 25 mL/h) y magnesemia. Antídoto de toxicidad: gluconato de calcio 1 g IV en 3 min. Reducir dosis en insuficiencia renal. El reflejo patelar se pierde con niveles > 10 mg/dL."
+  }
+]

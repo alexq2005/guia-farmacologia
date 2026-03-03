@@ -1,0 +1,388 @@
+[
+  {
+    "id": "fentanilo",
+    "nombre": "Fentanilo",
+    "nombreGenerico": "Citrato de fentanilo",
+    "nombresComerciales": ["Durogesic", "Actiq", "Fentanest"],
+    "familia": "Analgésicos opioides",
+    "clasificacion": "Agonista opioide sintético (receptor mu)",
+    "mecanismoAccion": "Opioide sintético 50-100 veces más potente que la morfina. Se une selectivamente a receptores mu opioides en SNC, inhibiendo vías ascendentes del dolor y alterando la respuesta emocional al mismo.",
+    "indicaciones": [
+      "Dolor severo agudo y crónico",
+      "Analgesia intraoperatoria",
+      "Dolor oncológico (parches transdérmicos)",
+      "Sedoanalgesia en UCI",
+      "Dolor irruptivo oncológico"
+    ],
+    "contraindicaciones": [
+      "Depresión respiratoria severa",
+      "Obstrucción gastrointestinal",
+      "Uso de IMAO en últimos 14 días",
+      "Asma bronquial no controlada",
+      "Íleo paralítico"
+    ],
+    "efectosAdversos": [
+      "Depresión respiratoria (dosis-dependiente)",
+      "Rigidez muscular (tórax leñoso)",
+      "Bradicardia",
+      "Náuseas y vómitos",
+      "Sedación profunda",
+      "Estreñimiento",
+      "Prurito",
+      "Retención urinaria",
+      "Tolerancia y dependencia"
+    ],
+    "interacciones": [
+      "Benzodiacepinas: depresión respiratoria potencialmente fatal",
+      "IMAO: crisis serotoninérgica",
+      "Inhibidores CYP3A4 (ketoconazol, ritonavir): aumento de niveles",
+      "Otros depresores SNC: efecto aditivo",
+      "Relajantes musculares: potenciación"
+    ],
+    "viaAdministracion": ["IV", "transdermica", "sublingual", "epidural"],
+    "dosis": {
+      "adulto": "IV: 25-100 mcg bolo. Infusión: 25-200 mcg/h. Parche: 12-100 mcg/h cada 72h",
+      "pediatrico": "IV: 1-2 mcg/kg/dosis. Infusión: 1-3 mcg/kg/h",
+      "geriatrico": "Reducir dosis 25-50%. Iniciar con dosis más baja",
+      "ajusteRenal": "Precaución en IR severa, acumulación de metabolitos",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepática"
+    },
+    "presentaciones": [
+      "Ampollas 0.05 mg/mL (2, 5, 10 mL)",
+      "Parches transdérmicos 12, 25, 50, 75, 100 mcg/h",
+      "Comprimidos sublinguales 100, 200, 400 mcg",
+      "Spray nasal 100, 400 mcg/dosis"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche materna. Evitar en lactancia.",
+    "cuidadosEnfermeria": [
+      "Monitorización continua: FR, SatO2, FC, PA",
+      "Tener naloxona disponible como antídoto",
+      "Verificar parches transdérmicos no dañados antes de aplicar",
+      "No cortar parches transdérmicos",
+      "Vigilar rigidez torácica con bolos IV rápidos",
+      "Rotar sitio de aplicación de parches cada 72h",
+      "Registrar escala de sedación (Ramsay/RASS)",
+      "No exponer parches a fuentes de calor"
+    ],
+    "farmacocinetica": {
+      "absorcion": "IV inmediata. Transdérmica: absorción gradual",
+      "distribucion": "Amplia, altamente lipofílico. Unión proteica 80-85%",
+      "metabolismo": "Hepático CYP3A4 a norfentanilo (inactivo)",
+      "excrecion": "Renal 75%, fecal 9%",
+      "vidaMedia": "IV: 2-4 h. Transdérmico: 17 h (tras retirar parche)",
+      "inicioAccion": "IV: 1-2 min. Transdérmico: 12-24 h",
+      "picoAccion": "IV: 3-5 min. Transdérmico: 24-72 h",
+      "duracionAccion": "IV: 30-60 min. Transdérmico: 72 h"
+    },
+    "almacenamiento": "Temperatura ambiente. Parches: conservar en sobre hasta uso. Controlado.",
+    "unidadId": "u01",
+    "capituloId": "c01_02"
+  },
+  {
+    "id": "ketamina",
+    "nombre": "Ketamina",
+    "nombreGenerico": "Clorhidrato de ketamina",
+    "nombresComerciales": ["Ketalar", "Ketanest", "Ketalin"],
+    "familia": "Anestésicos",
+    "clasificacion": "Anestésico disociativo (antagonista NMDA)",
+    "mecanismoAccion": "Bloquea receptores NMDA de glutamato produciendo anestesia disociativa: el paciente parece despierto pero está desconectado del entorno. También interactúa con receptores opioides y monoaminérgicos.",
+    "indicaciones": [
+      "Inducción y mantenimiento anestésico",
+      "Sedación para procedimientos dolorosos cortos",
+      "Analgesia en quemados y politraumatizados",
+      "Broncoespasmo severo refractario",
+      "Estado epiléptico refractario"
+    ],
+    "contraindicaciones": [
+      "Hipertensión arterial no controlada",
+      "Preeclampsia/eclampsia",
+      "Aneurisma aórtico o cerebral",
+      "Hipertensión intracraneal",
+      "Enfermedad coronaria severa",
+      "Trastornos psiquiátricos graves"
+    ],
+    "efectosAdversos": [
+      "Alucinaciones y fenómenos disociativos al despertar",
+      "Hipertensión arterial",
+      "Taquicardia",
+      "Aumento de secreciones",
+      "Nistagmo",
+      "Náuseas y vómitos",
+      "Laringoespasmo (raro)",
+      "Aumento de presión intraocular"
+    ],
+    "interacciones": [
+      "Benzodiacepinas: reducen efectos psicomiméticos",
+      "Teofilina: mayor riesgo convulsiones",
+      "Halotano: prolonga efecto",
+      "Antihipertensivos: antagonismo"
+    ],
+    "viaAdministracion": ["IV", "IM"],
+    "dosis": {
+      "adulto": "IV: 1-2 mg/kg inducción. IM: 4-8 mg/kg. Infusión analgésica: 0.1-0.3 mg/kg/h",
+      "pediatrico": "IV: 1-2 mg/kg. IM: 3-5 mg/kg",
+      "geriatrico": "Reducir dosis 25-50%",
+      "ajusteRenal": "No requiere ajuste significativo",
+      "ajusteHepatico": "Precaución en hepatopatía severa"
+    },
+    "presentaciones": [
+      "Frasco ampolla 50 mg/mL (10 mL)",
+      "Frasco ampolla 10 mg/mL (20 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Evitar durante lactancia.",
+    "cuidadosEnfermeria": [
+      "Monitorizar PA, FC, FR y SatO2 continuamente",
+      "Premedicar con benzodiacepina para reducir alucinaciones",
+      "Administrar atropina para reducir hipersecreción",
+      "Ambiente tranquilo y oscuro durante la recuperación",
+      "No estimular al paciente durante el despertar",
+      "Tener equipo de reanimación disponible",
+      "Valorar nistagmo como signo de profundidad anestésica"
+    ],
+    "farmacocinetica": {
+      "absorcion": "IV: inmediata. IM: rápida y completa",
+      "distribucion": "Alta liposolubilidad. Cruza BHE rápidamente",
+      "metabolismo": "Hepático CYP3A4 y CYP2B6 a norketamina (activo)",
+      "excrecion": "Renal 90%",
+      "vidaMedia": "2-3 horas",
+      "inicioAccion": "IV: 30 seg. IM: 3-5 min",
+      "picoAccion": "IV: 1 min. IM: 5-20 min",
+      "duracionAccion": "IV: 10-15 min. IM: 20-40 min"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz. Controlado.",
+    "unidadId": "u01",
+    "capituloId": "c01_03"
+  },
+  {
+    "id": "carbamazepina",
+    "nombre": "Carbamazepina",
+    "nombreGenerico": "Carbamazepina",
+    "nombresComerciales": ["Tegretol", "Carbatrol", "Epitol"],
+    "familia": "Anticonvulsivantes",
+    "clasificacion": "Antiepiléptico (bloqueador canales de sodio)",
+    "mecanismoAccion": "Bloquea canales de sodio dependientes de voltaje, estabilizando membranas neuronales hiperexcitadas y reduciendo la propagación de descargas epilépticas. También tiene efecto analgésico en dolor neuropático.",
+    "indicaciones": [
+      "Epilepsia parcial (focal) con o sin generalización",
+      "Epilepsia tónico-clónica generalizada",
+      "Neuralgia del trigémino",
+      "Trastorno bipolar (fase maníaca)",
+      "Dolor neuropático"
+    ],
+    "contraindicaciones": [
+      "Bloqueo auriculoventricular",
+      "Antecedente de supresión medular",
+      "Porfiria aguda intermitente",
+      "Uso concomitante de IMAO",
+      "Hipersensibilidad a antidepresivos tricíclicos"
+    ],
+    "efectosAdversos": [
+      "Mareo y somnolencia (frecuentes al inicio)",
+      "Diplopia y visión borrosa",
+      "Náuseas y vómitos",
+      "Hiponatremia (SIADH)",
+      "Agranulocitosis y anemia aplásica (raro pero grave)",
+      "Síndrome de Stevens-Johnson (raro)",
+      "Hepatotoxicidad",
+      "Ataxia"
+    ],
+    "interacciones": [
+      "Induce CYP3A4: reduce niveles de ACO, warfarina, fenitoína",
+      "Eritromicina, verapamilo: aumentan niveles de carbamazepina",
+      "Valproato: interacción compleja bidireccional",
+      "Litio: mayor neurotoxicidad",
+      "Jugo de pomelo: aumenta niveles"
+    ],
+    "viaAdministracion": ["oral"],
+    "dosis": {
+      "adulto": "Inicio: 100-200 mg/12h. Mantenimiento: 400-1200 mg/día en 2-3 tomas",
+      "pediatrico": "Inicio: 5 mg/kg/día. Mantenimiento: 10-20 mg/kg/día",
+      "geriatrico": "Iniciar con dosis más bajas. Mayor riesgo de hiponatremia",
+      "ajusteRenal": "Precaución en IR. No se dializa eficazmente",
+      "ajusteHepatico": "Reducir dosis. Monitorizar función hepática"
+    },
+    "presentaciones": [
+      "Comprimidos 200 mg y 400 mg",
+      "Comprimidos de liberación prolongada 200, 400 mg",
+      "Suspensión oral 100 mg/5 mL"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche. Monitorizar al lactante por sedación.",
+    "cuidadosEnfermeria": [
+      "Solicitar hemograma basal y periódico (riesgo agranulocitosis)",
+      "Monitorizar niveles plasmáticos: rango terapéutico 4-12 mcg/mL",
+      "Vigilar signos de hiponatremia: confusión, cefalea, convulsiones",
+      "Administrar con alimentos para reducir molestias GI",
+      "No suspender abruptamente (riesgo de convulsiones)",
+      "Educar sobre signos de reacciones cutáneas graves",
+      "Monitorizar función hepática periódicamente"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral lenta pero completa. Biodisponibilidad 85%",
+      "distribucion": "Unión proteica 75%. Cruza BHE",
+      "metabolismo": "Hepático CYP3A4. Autoinducción en 3-5 semanas",
+      "excrecion": "Renal 72%, fecal 28%",
+      "vidaMedia": "Inicial: 25-65 h. Tras autoinducción: 12-17 h",
+      "inicioAccion": "Días a semanas para efecto antiepiléptico completo",
+      "picoAccion": "4-8 horas (oral)",
+      "duracionAccion": "12 horas por dosis"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de humedad.",
+    "unidadId": "u01",
+    "capituloId": "c01_04"
+  },
+  {
+    "id": "gabapentina",
+    "nombre": "Gabapentina",
+    "nombreGenerico": "Gabapentina",
+    "nombresComerciales": ["Neurontin", "Gabapentin", "Gralise"],
+    "familia": "Anticonvulsivantes",
+    "clasificacion": "Antiepiléptico y neuromodulador (análogo GABA)",
+    "mecanismoAccion": "Se une a la subunidad alfa-2-delta de canales de calcio voltaje-dependientes presinápticos, reduciendo la liberación de neurotransmisores excitatorios. A pesar de su nombre, no actúa directamente sobre receptores GABA.",
+    "indicaciones": [
+      "Dolor neuropático periférico",
+      "Neuralgia postherpética",
+      "Epilepsia focal como terapia adyuvante",
+      "Fibromialgia (off-label)",
+      "Síndrome de piernas inquietas (off-label)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a gabapentina",
+      "Pancreatitis aguda"
+    ],
+    "efectosAdversos": [
+      "Somnolencia y mareo (muy frecuentes)",
+      "Edema periférico",
+      "Aumento de peso",
+      "Ataxia",
+      "Fatiga",
+      "Visión borrosa",
+      "Cefalea",
+      "Temblor"
+    ],
+    "interacciones": [
+      "Antiácidos con aluminio/magnesio: reducen absorción (separar 2h)",
+      "Opioides: mayor riesgo de depresión respiratoria",
+      "Alcohol: potenciación de efectos sobre SNC",
+      "Morfina: aumenta niveles de gabapentina"
+    ],
+    "viaAdministracion": ["oral"],
+    "dosis": {
+      "adulto": "Dolor neuropático: inicio 300 mg/día, titular a 900-3600 mg/día en 3 tomas. Epilepsia: 900-1800 mg/día",
+      "pediatrico": "Epilepsia (>6 años): 10-15 mg/kg/día en 3 tomas. Máx: 50 mg/kg/día",
+      "geriatrico": "Iniciar con dosis bajas. Ajustar según función renal",
+      "ajusteRenal": "CrCl 30-59: 200-700 mg/día. CrCl 15-29: 100-300 mg/día. CrCl <15: 100-300 mg/día",
+      "ajusteHepatico": "No requiere ajuste (no se metaboliza hepáticamente)"
+    },
+    "presentaciones": [
+      "Cápsulas 100, 300, 400 mg",
+      "Comprimidos 600, 800 mg",
+      "Solución oral 250 mg/5 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Usar con precaución.",
+    "cuidadosEnfermeria": [
+      "Titular gradualmente para minimizar somnolencia",
+      "No suspender abruptamente (reducir en mínimo 1 semana)",
+      "Separar antiácidos al menos 2 horas de la gabapentina",
+      "Monitorizar edema periférico y aumento de peso",
+      "Evaluar función renal para ajuste de dosis",
+      "Advertir sobre mareo y somnolencia al conducir",
+      "Evaluar eficacia con escalas de dolor (EVA)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral, biodisponibilidad dosis-dependiente (60% a 300mg, 35% a 1600mg)",
+      "distribucion": "No se une a proteínas. Cruza BHE",
+      "metabolismo": "No se metaboliza. Se excreta sin cambios",
+      "excrecion": "Renal 100% sin metabolizar",
+      "vidaMedia": "5-7 horas",
+      "inicioAccion": "Efecto analgésico en días a semanas",
+      "picoAccion": "2-4 horas",
+      "duracionAccion": "8 horas por dosis"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de humedad.",
+    "unidadId": "u01",
+    "capituloId": "c01_04"
+  },
+  {
+    "id": "haloperidol",
+    "nombre": "Haloperidol",
+    "nombreGenerico": "Haloperidol",
+    "nombresComerciales": ["Haldol", "Haloperil", "Serenase"],
+    "familia": "Antipsicóticos",
+    "clasificacion": "Antipsicótico típico (butirofenona)",
+    "mecanismoAccion": "Bloquea receptores dopaminérgicos D2 en el sistema mesolímbico, reduciendo la actividad dopaminérgica excesiva responsable de síntomas psicóticos. También bloquea receptores alfa-1 adrenérgicos.",
+    "indicaciones": [
+      "Delirium (agitación en UCI)",
+      "Esquizofrenia y trastornos psicóticos",
+      "Agitación psicomotora aguda",
+      "Náuseas y vómitos postoperatorios (dosis bajas)",
+      "Tics y síndrome de Tourette",
+      "Hipo intratable"
+    ],
+    "contraindicaciones": [
+      "Depresión grave del SNC",
+      "Enfermedad de Parkinson",
+      "QT prolongado o antecedente de torsades de pointes",
+      "Feocromocitoma",
+      "Demencia con cuerpos de Lewy"
+    ],
+    "efectosAdversos": [
+      "Síntomas extrapiramidales: distonía aguda, acatisia, parkinsonismo",
+      "Síndrome neuroléptico maligno (raro pero grave)",
+      "Prolongación QT y arritmias",
+      "Sedación",
+      "Hipotensión ortostática",
+      "Hiperprolactinemia",
+      "Discinesia tardía (uso prolongado)",
+      "Sequedad bucal"
+    ],
+    "interacciones": [
+      "Fármacos que prolongan QT: mayor riesgo arritmias",
+      "Litio: mayor neurotoxicidad",
+      "Carbamazepina: reduce niveles de haloperidol",
+      "Levodopa: antagonismo del efecto antiparkinsoniano",
+      "Depresores del SNC: efecto aditivo"
+    ],
+    "viaAdministracion": ["oral", "IM", "IV"],
+    "dosis": {
+      "adulto": "Agitación: 2.5-5 mg IM/IV, repetir cada 30-60 min. Oral: 0.5-5 mg/8-12h. Delirium: 0.5-2 mg IV",
+      "pediatrico": "0.01-0.03 mg/kg/día en 2-3 dosis. Máx: 0.15 mg/kg/día",
+      "geriatrico": "Iniciar 0.5 mg. Titular lentamente. Mayor riesgo de caídas",
+      "ajusteRenal": "No requiere ajuste específico",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepática"
+    },
+    "presentaciones": [
+      "Comprimidos 1, 5, 10 mg",
+      "Gotas orales 2 mg/mL",
+      "Ampollas 5 mg/mL (1 mL)",
+      "Ampolla decanoato 50 mg/mL (depot IM)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Monitorizar ECG antes y durante tratamiento IV (QTc)",
+      "Valorar síntomas extrapiramidales en cada turno",
+      "Tener biperideno disponible para distonía aguda",
+      "Vigilar signos de síndrome neuroléptico maligno: fiebre, rigidez, alteración consciencia",
+      "Monitorizar PA por riesgo de hipotensión ortostática",
+      "En delirium, usar dosis mínima eficaz",
+      "No administrar IV rápido (riesgo arritmias)",
+      "Evaluar nivel de sedación frecuentemente"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: biodisponibilidad 60-70%. IM: absorción rápida",
+      "distribucion": "Amplia, altamente lipofílico. Unión proteica 92%",
+      "metabolismo": "Hepático CYP3A4 y CYP2D6",
+      "excrecion": "Renal 40%, fecal 15%",
+      "vidaMedia": "12-36 horas",
+      "inicioAccion": "IM: 10-20 min. IV: 3-5 min. Oral: 30-60 min",
+      "picoAccion": "IM: 20-40 min. Oral: 2-6 h",
+      "duracionAccion": "12-24 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  }
+]

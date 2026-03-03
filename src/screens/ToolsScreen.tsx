@@ -1,0 +1,255 @@
+import React, { useMemo } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { RootStackParamList, TabParamList } from '../types';
+import { FORMULA_COLORS } from '../utils/colors';
+import type { ThemeColors } from '../utils/colors';
+import { useTheme } from '../context/ThemeContext';
+import formulas from '../data/formulas.json';
+import pathologies from '../data/pathologies.json';
+import type { Formula } from '../types';
+
+type NavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<TabParamList, 'Herramientas'>,
+  NativeStackNavigationProp<RootStackParamList>
+>;
+
+interface Props {
+  navigation: NavigationProp;
+}
+
+const categoryLabels: Record<string, string> = {
+  dosificacion: '💊 Dosificación',
+  goteo: '💧 Goteo e Infusión',
+  conversion: '🔄 Conversión de Unidades',
+  pediatria: '👶 Pediatría',
+  renal: '🫘 Función Renal',
+};
+
+export function ToolsScreen({ navigation }: Props) {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
+
+  const toolSections = [
+    {
+      icon: '🏥',
+      title: 'Patologías Clínicas',
+      subtitle: `${pathologies.length} patologías con fármacos vinculados`,
+      color: '#0F766E',
+      target: 'pathologies' as const,
+    },
+    {
+      icon: '⚠️',
+      title: 'Verificar Interacciones',
+      subtitle: 'Comprueba interacciones entre fármacos',
+      color: '#7C3AED',
+      target: 'interactions' as const,
+    },
+    {
+      icon: '👩‍⚕️',
+      title: 'Cuidados de Enfermería',
+      subtitle: '10 correctos, valoración, alto riesgo, procedimientos',
+      color: colors.nursing || '#E91E63',
+      target: 'nursing' as const,
+    },
+    {
+      icon: '🧮',
+      title: 'Calculadoras Clínicas',
+      subtitle: '7 calculadoras interactivas con interpretación',
+      color: '#0891B2',
+      target: 'calculators' as const,
+    },
+    {
+      icon: '💉',
+      title: 'Vías de Administración',
+      subtitle: 'Técnicas con imágenes y precauciones',
+      color: '#059669',
+      target: 'routes' as const,
+    },
+    {
+      icon: '📖',
+      title: 'Glosario Farmacológico',
+      subtitle: 'Términos, abreviaturas y definiciones',
+      color: '#7C3AED',
+      target: 'glossary' as const,
+    },
+  ];
+
+  // Group formulas by category
+  const groupedFormulas: Record<string, Formula[]> = {};
+  (formulas as Formula[]).forEach(f => {
+    if (!groupedFormulas[f.categoria]) groupedFormulas[f.categoria] = [];
+    groupedFormulas[f.categoria].push(f);
+  });
+
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor={colors.accent} barStyle="light-content" />
+      <View style={[styles.header, { backgroundColor: colors.accent }]}>
+        <Text style={styles.headerTitle}>🔧 Herramientas</Text>
+        <Text style={styles.headerSubtitle}>Calculadoras, guías y referencias</Text>
+      </View>
+
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+        {/* Tool Cards */}
+        <View style={styles.toolsGrid}>
+          {toolSections.map((tool, i) => (
+            <TouchableOpacity
+              key={i}
+              style={[styles.toolCard, { borderLeftColor: tool.color }]}
+              onPress={() => {
+                if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');
+                else if (tool.target === 'nursing') navigation.navigate('NursingCare');
+                else if (tool.target === 'pathologies') navigation.navigate('PathologiesScreen');
+                else if (tool.target === 'interactions') navigation.navigate('InteractionChecker');
+                else if (tool.target === 'calculators') navigation.navigate('Calculators');
+              }}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.toolIcon}>{tool.icon}</Text>
+              <View style={styles.toolText}>
+                <Text style={styles.toolTitle}>{tool.title}</Text>
+                <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
+              </View>
+              <Text style={styles.toolArrow}>→</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Formula Quick Access */}
+        <Text style={styles.sectionTitle}>🧮 Fórmulas de Cálculo</Text>
+        {Object.entries(groupedFormulas).map(([cat, fms]) => (
+          <View key={cat} style={styles.formulaGroup}>
+            <Text style={[styles.formulaCategoryTitle, { color: FORMULA_COLORS[cat] || colors.text }]}>
+              {categoryLabels[cat] || cat}
+            </Text>
+            {fms.map(formula => (
+              <TouchableOpacity
+                key={formula.id}
+                style={styles.formulaCard}
+                onPress={() => navigation.navigate('FormulaDetail', { formulaId: formula.id })}
+                activeOpacity={0.7}
+              >
+                <View style={[styles.formulaColor, { backgroundColor: FORMULA_COLORS[formula.categoria] || colors.primary }]} />
+                <View style={styles.formulaContent}>
+                  <Text style={styles.formulaName}>{formula.nombre}</Text>
+                  <Text style={styles.formulaFormula} numberOfLines={1}>{formula.formula}</Text>
+                </View>
+                <Text style={styles.formulaArrow}>›</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ))}
+
+        {/* Routes Quick Access */}
+        <Text style={styles.sectionTitle}>💉 Vías de Administración</Text>
+        <View style={styles.routesGrid}>
+          {[
+            { id: 'oral', icon: '💊', name: 'Oral' },
+            { id: 'IV', icon: '💉', name: 'Intravenosa' },
+            { id: 'IM', icon: '💪', name: 'Intramuscular' },
+            { id: 'SC', icon: '📌', name: 'Subcutánea' },
+            { id: 'sublingual', icon: '👅', name: 'Sublingual' },
+            { id: 'inhalatoria', icon: '🌬️', name: 'Inhalatoria' },
+            { id: 'topica', icon: '🧴', name: 'Tópica' },
+            { id: 'transdermica', icon: '🩹', name: 'Transdérmica' },
+          ].map(r => (
+            <TouchableOpacity
+              key={r.id}
+              style={styles.routeCard}
+              onPress={() => navigation.navigate('RouteDetail', { routeId: r.id as any })}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.routeIcon}>{r.icon}</Text>
+              <Text style={styles.routeName}>{r.name}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={{ height: 40 }} />
+      </ScrollView>
+    </View>
+  );
+}
+
+const createStyles = (colors: ThemeColors) => StyleSheet.create({
+  container: { flex: 1, backgroundColor: colors.background },
+  header: {
+    paddingTop: 16,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+  },
+  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  scroll: { flex: 1 },
+  toolsGrid: { padding: 16, gap: 10 },
+  toolCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    borderRadius: 14,
+    padding: 16,
+    elevation: 2,
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    borderLeftWidth: 4,
+  },
+  toolIcon: { fontSize: 32, marginRight: 14 },
+  toolText: { flex: 1 },
+  toolTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
+  toolSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  toolArrow: { fontSize: 18, color: colors.textLight },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: colors.text,
+    marginHorizontal: 20,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  formulaGroup: { marginBottom: 8 },
+  formulaCategoryTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    marginHorizontal: 20,
+    marginBottom: 6,
+  },
+  formulaCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.surface,
+    marginHorizontal: 16,
+    marginBottom: 6,
+    borderRadius: 10,
+    elevation: 1,
+    overflow: 'hidden',
+  },
+  formulaColor: { width: 4, alignSelf: 'stretch' },
+  formulaContent: { flex: 1, padding: 12 },
+  formulaName: { fontSize: 14, fontWeight: '600', color: colors.text },
+  formulaFormula: { fontSize: 11, color: colors.textLight, marginTop: 2, fontFamily: 'monospace' },
+  formulaArrow: { fontSize: 20, color: colors.textLight, marginRight: 12 },
+  routesGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 12,
+    gap: 8,
+  },
+  routeCard: {
+    width: '22%',
+    backgroundColor: colors.surface,
+    borderRadius: 14,
+    padding: 12,
+    alignItems: 'center',
+    elevation: 1,
+    marginHorizontal: '1.5%',
+  },
+  routeIcon: { fontSize: 28 },
+  routeName: { fontSize: 11, color: colors.text, fontWeight: '600', marginTop: 4, textAlign: 'center' },
+});

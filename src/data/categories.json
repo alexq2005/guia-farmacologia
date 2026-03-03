@@ -1,0 +1,642 @@
+{
+  "unidades": [
+    {
+      "id": "u01",
+      "nombre": "Sistema Nervioso",
+      "numero": 1,
+      "color": "#7C3AED",
+      "icon": "brain",
+      "capitulos": [
+        {
+          "id": "c01_01",
+          "nombre": "Analgésicos No Opioides",
+          "unidadId": "u01",
+          "drugIds": [
+            "paracetamol"
+          ]
+        },
+        {
+          "id": "c01_02",
+          "nombre": "Analgésicos Opioides",
+          "unidadId": "u01",
+          "drugIds": [
+            "morfina",
+            "tramadol",
+            "fentanilo",
+            "codeina",
+            "oxicodona",
+            "buprenorfina",
+            "sumatriptan"
+          ]
+        },
+        {
+          "id": "c01_03",
+          "nombre": "Anestésicos",
+          "unidadId": "u01",
+          "drugIds": [
+            "lidocaina",
+            "ketamina",
+            "midazolam"
+          ]
+        },
+        {
+          "id": "c01_04",
+          "nombre": "Anticonvulsivantes",
+          "unidadId": "u01",
+          "drugIds": [
+            "diazepam",
+            "fenitoina",
+            "pregabalina",
+            "carbamazepina",
+            "gabapentina",
+            "lorazepam",
+            "clonazepam",
+            "fenobarbital",
+            "levetiracetam",
+            "lamotrigina",
+            "topiramato",
+            "alprazolam",
+            "acido_valproico"
+          ]
+        },
+        {
+          "id": "c01_05",
+          "nombre": "Antiparkinsonianos",
+          "unidadId": "u01",
+          "drugIds": [
+            "levodopa",
+            "biperideno"
+          ]
+        },
+        {
+          "id": "c01_06",
+          "nombre": "Antipsicóticos",
+          "unidadId": "u01",
+          "drugIds": [
+            "haloperidol",
+            "risperidona",
+            "quetiapina",
+            "olanzapina",
+            "aripiprazol",
+            "clozapina",
+            "clorpromazina"
+          ]
+        },
+        {
+          "id": "c01_07",
+          "nombre": "Antidepresivos",
+          "unidadId": "u01",
+          "drugIds": [
+            "sertralina",
+            "fluoxetina",
+            "amitriptilina",
+            "duloxetina",
+            "venlafaxina",
+            "mirtazapina",
+            "escitalopram",
+            "trazodona",
+            "litio",
+            "bupropion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u02",
+      "nombre": "Sistema Cardiovascular",
+      "numero": 2,
+      "color": "#DC2626",
+      "icon": "heart",
+      "capitulos": [
+        {
+          "id": "c02_01",
+          "nombre": "Antihipertensivos",
+          "unidadId": "u02",
+          "drugIds": [
+            "enalapril",
+            "losartan",
+            "amlodipino",
+            "atenolol",
+            "captopril",
+            "propranolol",
+            "verapamilo",
+            "metoprolol",
+            "nifedipino",
+            "metildopa",
+            "carvedilol",
+            "clonidina",
+            "diltiazem",
+            "prazosina"
+          ]
+        },
+        {
+          "id": "c02_02",
+          "nombre": "Antiarrítmicos",
+          "unidadId": "u02",
+          "drugIds": [
+            "amiodarona",
+            "digoxina",
+            "adenosina"
+          ]
+        },
+        {
+          "id": "c02_03",
+          "nombre": "Vasodilatadores",
+          "unidadId": "u02",
+          "drugIds": [
+            "nitroglicerina",
+            "nifedipino",
+            "nitroprusiato",
+            "sildenafilo"
+          ]
+        },
+        {
+          "id": "c02_04",
+          "nombre": "Diuréticos",
+          "unidadId": "u02",
+          "drugIds": [
+            "furosemida",
+            "hidroclorotiazida",
+            "espironolactona"
+          ]
+        },
+        {
+          "id": "c02_05",
+          "nombre": "Antilipémicos",
+          "unidadId": "u02",
+          "drugIds": [
+            "atorvastatina",
+            "simvastatina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u03",
+      "nombre": "Antiinfecciosos",
+      "numero": 3,
+      "color": "#059669",
+      "icon": "shield-check",
+      "capitulos": [
+        {
+          "id": "c03_01",
+          "nombre": "Penicilinas y Cefalosporinas",
+          "unidadId": "u03",
+          "drugIds": [
+            "amoxicilina",
+            "ampicilina",
+            "ceftriaxona",
+            "cefalexina",
+            "piperacilina_tazobactam"
+          ]
+        },
+        {
+          "id": "c03_02",
+          "nombre": "Quinolonas y Macrólidos",
+          "unidadId": "u03",
+          "drugIds": [
+            "ciprofloxacino",
+            "azitromicina",
+            "levofloxacino"
+          ]
+        },
+        {
+          "id": "c03_03",
+          "nombre": "Otros Antibióticos",
+          "unidadId": "u03",
+          "drugIds": [
+            "vancomicina",
+            "metronidazol",
+            "clindamicina",
+            "gentamicina",
+            "meropenem",
+            "linezolid",
+            "trimetoprima_sulfametoxazol",
+            "doxiciclina",
+            "amikacina",
+            "nitrofurantoina",
+            "colistina"
+          ]
+        },
+        {
+          "id": "c03_04",
+          "nombre": "Antivirales y Antifúngicos",
+          "unidadId": "u03",
+          "drugIds": [
+            "fluconazol",
+            "aciclovir",
+            "oseltamivir",
+            "anfotericina_b",
+            "nistatina"
+          ]
+        },
+        {
+          "id": "c03_05",
+          "nombre": "Antituberculosos",
+          "unidadId": "u03",
+          "drugIds": [
+            "isoniazida",
+            "rifampicina"
+          ]
+        },
+        {
+          "id": "c03_06",
+          "nombre": "Antiparasitarios",
+          "unidadId": "u03",
+          "drugIds": [
+            "albendazol",
+            "ivermectina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u04",
+      "nombre": "Sistema Respiratorio",
+      "numero": 4,
+      "color": "#0EA5E9",
+      "icon": "lungs",
+      "capitulos": [
+        {
+          "id": "c04_01",
+          "nombre": "Broncodilatadores",
+          "unidadId": "u04",
+          "drugIds": [
+            "salbutamol",
+            "ipratropio",
+            "aminofilina"
+          ]
+        },
+        {
+          "id": "c04_02",
+          "nombre": "Antiinflamatorios Inhalados",
+          "unidadId": "u04",
+          "drugIds": [
+            "budesonida",
+            "beclometasona",
+            "montelukast",
+            "fluticasona"
+          ]
+        },
+        {
+          "id": "c04_03",
+          "nombre": "Mucolíticos y Antitusivos",
+          "unidadId": "u04",
+          "drugIds": [
+            "acetilcisteina_mucolitico",
+            "dextrometorfano"
+          ]
+        },
+        {
+          "id": "c04_04",
+          "nombre": "Antihistamínicos",
+          "unidadId": "u04",
+          "drugIds": [
+            "loratadina",
+            "cetirizina",
+            "difenhidramina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u05",
+      "nombre": "Sistema Digestivo",
+      "numero": 5,
+      "color": "#D97706",
+      "icon": "stomach",
+      "capitulos": [
+        {
+          "id": "c05_01",
+          "nombre": "Antiulcerosos",
+          "unidadId": "u05",
+          "drugIds": [
+            "omeprazol",
+            "ranitidina",
+            "pantoprazol"
+          ]
+        },
+        {
+          "id": "c05_02",
+          "nombre": "Antieméticos",
+          "unidadId": "u05",
+          "drugIds": [
+            "metoclopramida",
+            "ondansetron",
+            "domperidona"
+          ]
+        },
+        {
+          "id": "c05_03",
+          "nombre": "Otros Digestivos",
+          "unidadId": "u05",
+          "drugIds": [
+            "loperamida",
+            "lactulosa",
+            "sucralfato",
+            "bismuto_subsalicilato",
+            "polietilenglicol"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u06",
+      "nombre": "Sistema Endocrino",
+      "numero": 6,
+      "color": "#8B5CF6",
+      "icon": "thyroid",
+      "capitulos": [
+        {
+          "id": "c06_01",
+          "nombre": "Insulinas y Antidiabéticos",
+          "unidadId": "u06",
+          "drugIds": [
+            "insulina_regular",
+            "metformina",
+            "insulina_nph",
+            "glibenclamida",
+            "glucagon",
+            "insulina_glargina",
+            "sitagliptina",
+            "empagliflozina",
+            "insulina_lispro"
+          ]
+        },
+        {
+          "id": "c06_02",
+          "nombre": "Hormonas Tiroideas",
+          "unidadId": "u06",
+          "drugIds": [
+            "levotiroxina",
+            "metimazol"
+          ]
+        },
+        {
+          "id": "c06_03",
+          "nombre": "Corticosteroides Sistémicos",
+          "unidadId": "u06",
+          "drugIds": [
+            "dexametasona",
+            "prednisona",
+            "hidrocortisona_sistemica",
+            "metilprednisolona"
+          ]
+        },
+        {
+          "id": "c06_04",
+          "nombre": "Otros Endocrinos",
+          "unidadId": "u06",
+          "drugIds": [
+            "desmopresina",
+            "calcitriol"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u07",
+      "nombre": "Sistema Reproductor y Óseo",
+      "numero": 7,
+      "color": "#EC4899",
+      "icon": "baby",
+      "capitulos": [
+        {
+          "id": "c07_01",
+          "nombre": "Oxitócicos y Tocolíticos",
+          "unidadId": "u07",
+          "drugIds": [
+            "oxitocina",
+            "misoprostol",
+            "progesterona",
+            "ergometrina"
+          ]
+        },
+        {
+          "id": "c07_02",
+          "nombre": "Otros (Suplementos y Óseo)",
+          "unidadId": "u07",
+          "drugIds": [
+            "calcio_carbonato",
+            "acido_folico",
+            "sulfato_ferroso",
+            "alendronato",
+            "tiamina"
+          ]
+        },
+        {
+          "id": "c07_03",
+          "nombre": "Urológicos",
+          "unidadId": "u07",
+          "drugIds": [
+            "tamsulosina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u08",
+      "nombre": "Sistema Musculoesquelético",
+      "numero": 8,
+      "color": "#F97316",
+      "icon": "bone",
+      "capitulos": [
+        {
+          "id": "c08_01",
+          "nombre": "AINEs",
+          "unidadId": "u08",
+          "drugIds": [
+            "ibuprofeno",
+            "diclofenaco",
+            "ketorolaco",
+            "naproxeno"
+          ]
+        },
+        {
+          "id": "c08_02",
+          "nombre": "Relajantes Musculares",
+          "unidadId": "u08",
+          "drugIds": [
+            "ciclobenzaprina",
+            "baclofeno"
+          ]
+        },
+        {
+          "id": "c08_03",
+          "nombre": "Antigotosos",
+          "unidadId": "u08",
+          "drugIds": [
+            "colchicina",
+            "alopurinol"
+          ]
+        },
+        {
+          "id": "c08_04",
+          "nombre": "Inmunosupresores",
+          "unidadId": "u08",
+          "drugIds": [
+            "metotrexato",
+            "hidroxicloroquina",
+            "azatioprina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u09",
+      "nombre": "Dermatología",
+      "numero": 9,
+      "color": "#14B8A6",
+      "icon": "hand",
+      "capitulos": [
+        {
+          "id": "c09_01",
+          "nombre": "Antibióticos Tópicos",
+          "unidadId": "u09",
+          "drugIds": [
+            "mupirocina",
+            "sulfadiazina_plata"
+          ]
+        },
+        {
+          "id": "c09_02",
+          "nombre": "Corticoides Tópicos",
+          "unidadId": "u09",
+          "drugIds": [
+            "hidrocortisona_topica",
+            "betametasona_topica"
+          ]
+        },
+        {
+          "id": "c09_03",
+          "nombre": "Antifúngicos Tópicos",
+          "unidadId": "u09",
+          "drugIds": [
+            "clotrimazol_topico"
+          ]
+        },
+        {
+          "id": "c09_04",
+          "nombre": "Antiparasitarios Tópicos",
+          "unidadId": "u09",
+          "drugIds": [
+            "permetrina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u10",
+      "nombre": "Hematología",
+      "numero": 10,
+      "color": "#B91C1C",
+      "icon": "droplet",
+      "capitulos": [
+        {
+          "id": "c10_01",
+          "nombre": "Anticoagulantes y Antiagregantes",
+          "unidadId": "u10",
+          "drugIds": [
+            "heparina",
+            "enoxaparina",
+            "warfarina",
+            "aspirina",
+            "clopidogrel",
+            "rivaroxaban",
+            "dabigatran"
+          ]
+        },
+        {
+          "id": "c10_02",
+          "nombre": "Hemostáticos y Factores",
+          "unidadId": "u10",
+          "drugIds": [
+            "acido_tranexamico",
+            "vitamina_k",
+            "hierro_parenteral",
+            "filgrastim",
+            "eritropoyetina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u11",
+      "nombre": "Antídotos y Emergencias",
+      "numero": 11,
+      "color": "#EF4444",
+      "icon": "alert-triangle",
+      "capitulos": [
+        {
+          "id": "c11_01",
+          "nombre": "Antídotos Específicos",
+          "unidadId": "u11",
+          "drugIds": [
+            "naloxona",
+            "flumazenilo",
+            "n_acetilcisteina",
+            "carbon_activado",
+            "dantroleno"
+          ]
+        },
+        {
+          "id": "c11_02",
+          "nombre": "Fármacos de Emergencia",
+          "unidadId": "u11",
+          "drugIds": [
+            "vasopresina",
+            "adrenalina",
+            "atropina",
+            "bicarbonato-sodio",
+            "calcio_cloruro",
+            "potasio_cloruro",
+            "fenilefrina"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u12",
+      "nombre": "Fármacos Hospitalarios",
+      "numero": 12,
+      "color": "#6366F1",
+      "icon": "hospital",
+      "capitulos": [
+        {
+          "id": "c12_01",
+          "nombre": "Anestésicos Generales",
+          "unidadId": "u12",
+          "drugIds": [
+            "propofol",
+            "succinilcolina",
+            "rocuronio",
+            "sugammadex",
+            "neostigmina"
+          ]
+        },
+        {
+          "id": "c12_02",
+          "nombre": "Otros Hospitalarios",
+          "unidadId": "u12",
+          "drugIds": [
+            "manitol",
+            "noradrenalina",
+            "dopamina",
+            "sulfato-magnesio",
+            "dobutamina",
+            "dexmedetomidina"
+          ]
+        },
+        {
+          "id": "c12_03",
+          "nombre": "Sedación en UCI",
+          "unidadId": "u12",
+          "drugIds": [
+            "remifentanilo",
+            "cisatracurio"
+          ]
+        }
+      ]
+    }
+  ]
+}
