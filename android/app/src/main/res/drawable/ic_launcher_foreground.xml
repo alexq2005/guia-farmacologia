@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- All content centered in 72dp safe zone (offset 18dp from edges) -->
+
+    <!-- Open book - left page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,72 L54,48 Q54,45 51,44 L32,40 Q29,39 29,42 L29,66 Q29,69 32,68 L51,72 Q54,73 54,72 Z" />
+
+    <!-- Open book - right page -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:pathData="M54,72 L54,48 Q54,45 57,44 L76,40 Q79,39 79,42 L79,66 Q79,69 76,68 L57,72 Q54,73 54,72 Z" />
+
+    <!-- Book spine line -->
+    <path
+        android:strokeColor="#1E40AF"
+        android:strokeWidth="1"
+        android:pathData="M54,48 L54,72"
+        android:fillColor="#00000000" />
+
+    <!-- Page lines - left -->
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M35,48 L50,51"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M35,52 L50,55"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M35,56 L50,59"
+        android:fillColor="#00000000" />
+
+    <!-- Page lines - right -->
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M58,51 L73,48"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M58,55 L73,52"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#C0C8E0"
+        android:strokeWidth="0.8"
+        android:pathData="M58,59 L73,56"
+        android:fillColor="#00000000" />
+
+    <!-- Medical cross -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49,26 L59,26 L59,32 L65,32 L65,42 L59,42 L59,48 L49,48 L49,42 L43,42 L43,32 L49,32 Z" />
+
+    <!-- Cross outline for depth -->
+    <path
+        android:strokeColor="#1E40AF"
+        android:strokeWidth="1.2"
+        android:pathData="M49,26 L59,26 L59,32 L65,32 L65,42 L59,42 L59,48 L49,48 L49,42 L43,42 L43,32 L49,32 Z"
+        android:fillColor="#00000000" />
+
+</vector>
