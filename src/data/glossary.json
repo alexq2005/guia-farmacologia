@@ -1,60 +1,120 @@
 [
-  { "termino": "Absorción", "definicion": "Proceso por el cual un fármaco pasa desde el sitio de administración al torrente sanguíneo. Depende de la vía, la forma farmacéutica y las propiedades físico-químicas del fármaco.", "categoria": "farmacologia" },
-  { "termino": "Agonista", "definicion": "Sustancia que se une a un receptor y produce una respuesta biológica. Imita la acción del ligando natural.", "categoria": "farmacologia" },
-  { "termino": "Anafilaxia", "definicion": "Reacción alérgica grave, sistémica y potencialmente mortal. Requiere administración inmediata de adrenalina IM.", "categoria": "general" },
-  { "termino": "Antagonista", "definicion": "Sustancia que se une a un receptor sin activarlo, bloqueando la acción del agonista. Ejemplo: naloxona (antagonista opioide).", "categoria": "farmacologia" },
-  { "termino": "Anticoagulante", "definicion": "Fármaco que previene la formación de coágulos al interferir con la cascada de coagulación. Ejemplos: heparina, warfarina.", "categoria": "farmacologia" },
-  { "termino": "Bactericida", "definicion": "Antibiótico que destruye las bacterias. A diferencia de los bacteriostáticos, no solo inhibe el crecimiento sino que provoca la muerte bacteriana.", "categoria": "farmacologia" },
-  { "termino": "Bacteriostático", "definicion": "Antibiótico que inhibe el crecimiento y multiplicación bacteriana sin matar directamente a las bacterias. El sistema inmune completa la eliminación.", "categoria": "farmacologia" },
-  { "termino": "Biodisponibilidad", "definicion": "Fracción del fármaco administrado que alcanza la circulación sistémica en forma inalterada. Por vía IV es siempre del 100%.", "categoria": "farmacologia" },
-  { "termino": "Bolo", "definicion": "Administración IV rápida de un fármaco en cantidad única. Se aplica en 1-5 minutos dependiendo del fármaco.", "categoria": "enfermeria" },
-  { "termino": "Bradicardia", "definicion": "Frecuencia cardíaca inferior a 60 latidos por minuto en adultos. Puede ser efecto adverso de beta-bloqueantes, digoxina u opioides.", "categoria": "general" },
-  { "termino": "Clearance (Aclaramiento)", "definicion": "Volumen de plasma del cual el fármaco es completamente eliminado por unidad de tiempo. Determina la dosis de mantenimiento.", "abreviatura": "Cl", "categoria": "farmacologia" },
-  { "termino": "Concentración mínima inhibitoria", "definicion": "Menor concentración de un antibiótico capaz de inhibir el crecimiento bacteriano in vitro. Guía la elección y dosificación del antibiótico.", "abreviatura": "CMI", "categoria": "farmacologia" },
-  { "termino": "Contraindicación absoluta", "definicion": "Situación en la que un fármaco NO debe administrarse bajo ninguna circunstancia por riesgo de consecuencias graves o muerte.", "categoria": "farmacologia" },
-  { "termino": "Contraindicación relativa", "definicion": "Situación en la que un fármaco puede administrarse con precaución si el beneficio supera el riesgo, bajo estrecha vigilancia.", "categoria": "farmacologia" },
-  { "termino": "Dosis de carga", "definicion": "Dosis inicial mayor que la de mantenimiento, administrada para alcanzar rápidamente niveles terapéuticos en sangre.", "categoria": "farmacologia" },
-  { "termino": "Dosis de mantenimiento", "definicion": "Dosis administrada a intervalos regulares para mantener la concentración del fármaco dentro del rango terapéutico.", "categoria": "farmacologia" },
-  { "termino": "Efecto de primer paso", "definicion": "Metabolismo del fármaco que ocurre en el hígado antes de llegar a la circulación sistémica. Reduce la biodisponibilidad oral.", "categoria": "farmacologia" },
-  { "termino": "Efecto secundario", "definicion": "Efecto no deseado que ocurre a dosis terapéuticas normales. Diferente de efecto adverso en que es predecible y generalmente leve.", "categoria": "farmacologia" },
-  { "termino": "Extravasación", "definicion": "Salida accidental de un fármaco IV al tejido circundante. Puede causar necrosis tisular con fármacos vesicantes.", "categoria": "enfermeria" },
-  { "termino": "Factor de goteo", "definicion": "Número de gotas por mililitro que proporciona un equipo de infusión. Macrogotero: 20 gotas/mL, Microgotero: 60 gotas/mL.", "categoria": "enfermeria" },
-  { "termino": "Farmacocinética", "definicion": "Estudio de lo que el cuerpo le hace al fármaco: absorción, distribución, metabolismo y excreción (ADME).", "categoria": "farmacologia" },
-  { "termino": "Farmacodinamia", "definicion": "Estudio de lo que el fármaco le hace al cuerpo: mecanismo de acción, efectos terapéuticos y adversos.", "categoria": "farmacologia" },
-  { "termino": "Flebitis", "definicion": "Inflamación de una vena, frecuentemente causada por irritación química de fármacos IV, trauma mecánico del catéter, o infección.", "categoria": "enfermeria" },
-  { "termino": "Hemólisis", "definicion": "Destrucción de glóbulos rojos. Puede ser efecto adverso de ciertos fármacos o resultado de incompatibilidad sanguínea.", "categoria": "general" },
-  { "termino": "Hepatotoxicidad", "definicion": "Daño hepático causado por fármacos. El paracetamol en sobredosis es la causa más común de hepatotoxicidad por fármacos.", "categoria": "farmacologia" },
-  { "termino": "Hipersensibilidad", "definicion": "Respuesta inmune exagerada a un fármaco. Tipo I (anafilaxia) es la más peligrosa. Siempre preguntar antecedentes alérgicos.", "categoria": "farmacologia" },
-  { "termino": "Índice terapéutico", "definicion": "Relación entre la dosis tóxica y la dosis terapéutica (DT50/DE50). Un índice bajo indica mayor riesgo de toxicidad.", "categoria": "farmacologia" },
-  { "termino": "Infusión continua", "definicion": "Administración IV ininterrumpida de un fármaco diluido a velocidad controlada, generalmente mediante bomba de infusión.", "categoria": "enfermeria" },
-  { "termino": "Interacción medicamentosa", "definicion": "Modificación del efecto de un fármaco por la administración simultánea de otro fármaco, alimento o sustancia.", "categoria": "farmacologia" },
-  { "termino": "Inyección en bolo", "definicion": "Administración IV directa y rápida. Se usa para fármacos de emergencia. Verificar siempre la velocidad de administración recomendada.", "categoria": "enfermeria" },
-  { "termino": "Nefrotoxicidad", "definicion": "Daño renal causado por fármacos. Aminoglucósidos, AINEs y medios de contraste son causas frecuentes. Monitorizar creatinina.", "categoria": "farmacologia" },
-  { "termino": "Nivel sérico", "definicion": "Concentración del fármaco medida en sangre. Se usa para monitorizar fármacos de índice terapéutico estrecho (vancomicina, digoxina, fenitoína).", "categoria": "farmacologia" },
-  { "termino": "Ototoxicidad", "definicion": "Daño al oído interno causado por fármacos, que puede provocar pérdida auditiva o vértigo. Asociada a aminoglucósidos y furosemida.", "categoria": "farmacologia" },
-  { "termino": "Perfusión", "definicion": "Administración controlada y continua de una solución IV. Sinónimo de infusión en muchos contextos clínicos.", "categoria": "enfermeria" },
-  { "termino": "Pico plasmático", "definicion": "Concentración máxima del fármaco en sangre tras su administración. El tiempo al pico varía según la vía.", "abreviatura": "Cmáx", "categoria": "farmacologia" },
-  { "termino": "Rango terapéutico", "definicion": "Intervalo de concentraciones plasmáticas entre la concentración mínima eficaz y la concentración tóxica mínima.", "categoria": "farmacologia" },
-  { "termino": "Reacción adversa medicamentosa", "definicion": "Respuesta nociva y no intencionada a un medicamento usado a dosis normales. Se clasifica por gravedad y mecanismo.", "abreviatura": "RAM", "categoria": "farmacologia" },
-  { "termino": "Reconstitución", "definicion": "Proceso de agregar un diluyente a un fármaco liofilizado (en polvo) para obtener una solución inyectable.", "categoria": "enfermeria" },
-  { "termino": "Síndrome serotoninérgico", "definicion": "Toxicidad por exceso de serotonina: agitación, temblor, hipertermia, diaforesis. Puede ser mortal. Causado por interacción de fármacos serotoninérgicos.", "categoria": "general" },
-  { "termino": "Taquifilaxia", "definicion": "Disminución rápida de la respuesta a un fármaco tras administraciones repetidas en corto tiempo.", "categoria": "farmacologia" },
-  { "termino": "Teratogénico", "definicion": "Sustancia capaz de causar malformaciones en el feto durante el embarazo. Categorías FDA: A (seguro) a X (contraindicado).", "categoria": "farmacologia" },
-  { "termino": "Tolerancia", "definicion": "Necesidad de aumentar la dosis para obtener el mismo efecto. Común con opioides y benzodiacepinas.", "categoria": "farmacologia" },
-  { "termino": "Vida media", "definicion": "Tiempo necesario para que la concentración plasmática del fármaco se reduzca a la mitad. Determina la frecuencia de dosificación.", "abreviatura": "t½", "categoria": "farmacologia" },
-  { "termino": "Volumen de distribución", "definicion": "Volumen teórico en el que se distribuye un fármaco para alcanzar la concentración plasmática observada. Indica la extensión de distribución tisular.", "abreviatura": "Vd", "categoria": "farmacologia" },
-  { "termino": "5 correctos", "definicion": "Verificación de enfermería antes de administrar medicamentos: paciente correcto, fármaco correcto, dosis correcta, vía correcta, hora correcta.", "categoria": "enfermeria" },
-  { "termino": "10 correctos", "definicion": "Ampliación de los 5 correctos: + registro correcto, fecha de caducidad correcta, paciente informado, derecho a rechazar, respuesta correcta al fármaco.", "categoria": "enfermeria" },
-  { "termino": "Incompatibilidad", "definicion": "Reacción física o química entre dos o más fármacos mezclados en la misma solución IV. Puede causar precipitación, inactivación o toxicidad.", "categoria": "enfermeria" },
-  { "termino": "Llave de tres vías", "definicion": "Dispositivo que permite conectar múltiples líneas de infusión IV. Verificar compatibilidad de fármacos que se administran simultáneamente.", "categoria": "enfermeria" },
-  { "termino": "Purga", "definicion": "Eliminación del aire de un equipo de infusión IV antes de conectarlo al paciente. Previene embolia aérea.", "categoria": "enfermeria" },
-  { "termino": "Solución isotónica", "definicion": "Solución con la misma osmolaridad que el plasma (~290 mOsm/L). Ejemplo: SF 0.9%, Ringer Lactato. No causa movimiento neto de agua.", "categoria": "enfermeria" },
-  { "termino": "Solución hipertónica", "definicion": "Solución con osmolaridad mayor al plasma. Ejemplo: NaCl 3%. Atrae agua del espacio intracelular. Uso en hiponatremia severa.", "categoria": "enfermeria" },
-  { "termino": "Solución hipotónica", "definicion": "Solución con osmolaridad menor al plasma. Ejemplo: Dextrosa 5%. El agua entra a las células. Contraindicada en edema cerebral.", "categoria": "enfermeria" },
+  {
+    "termino": "10 correctos",
+    "definicion": "Ampliación de los 5 correctos: + registro correcto, fecha de caducidad correcta, paciente informado, derecho a rechazar, respuesta correcta al fármaco.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "5 correctos",
+    "definicion": "Verificación de enfermería antes de administrar medicamentos: paciente correcto, fármaco correcto, dosis correcta, vía correcta, hora correcta.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Absorción",
+    "definicion": "Proceso por el cual un fármaco pasa desde el sitio de administración al torrente sanguíneo. Depende de la vía, la forma farmacéutica y las propiedades físico-químicas del fármaco.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "ACV",
+    "definicion": "Accidente Cerebrovascular. Interrupción del flujo sanguíneo cerebral (isquémico 85%) o hemorragia intracerebral (hemorrágico 15%). Emergencia neurológica tiempo-dependiente.",
+    "abreviatura": "ACV",
+    "categoria": "abreviatura"
+  },
   {
     "termino": "ADME",
     "definicion": "Acrónimo de las cuatro fases de la farmacocinética: Absorción, Distribución, Metabolismo y Excreción.",
     "abreviatura": "ADME",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Agonista",
+    "definicion": "Sustancia que se une a un receptor y produce una respuesta biológica. Imita la acción del ligando natural.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Alvéolo pulmonar",
+    "definicion": "Estructura sacular terminal del pulmón donde ocurre el intercambio gaseoso (O₂/CO₂). ~300 millones por pulmón. Su ocupación por líquido (edema), pus (neumonía) o colapso (atelectasia) altera la oxigenación.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Anafilaxia",
+    "definicion": "Reacción alérgica grave, sistémica y potencialmente mortal. Requiere administración inmediata de adrenalina IM.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Anasarca",
+    "definicion": "Edema generalizado y severo que afecta todo el cuerpo, incluyendo tejido subcutáneo, cavidades serosas y vísceras. Causas: ICC severa, síndrome nefrótico, cirrosis avanzada, desnutrición grave.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Antagonista",
+    "definicion": "Sustancia que se une a un receptor sin activarlo, bloqueando la acción del agonista. Ejemplo: naloxona (antagonista opioide).",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Anticoagulante",
+    "definicion": "Fármaco que previene la formación de coágulos al interferir con la cascada de coagulación. Ejemplos: heparina, warfarina.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Anuria",
+    "definicion": "Diuresis <100 mL/24h. Indica falla renal severa o obstrucción completa del tracto urinario. Emergencia nefrológica que puede requerir diálisis.",
+    "categoria": "general"
+  },
+  {
+    "termino": "APGAR",
+    "definicion": "Score de valoración neonatal al minuto 1 y 5 de vida. Evalúa: Apariencia, Pulso, Gesticulación, Actividad, Respiración. Puntuación 0-10. ≥7 normal.",
+    "abreviatura": "APGAR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "APP",
+    "definicion": "Amenaza de Parto Prematuro. Contracciones uterinas regulares con modificación cervical entre las 22 y 36.6 semanas. Tratamiento: tocolíticos (nifedipino, atosibán) y maduración pulmonar fetal.",
+    "abreviatura": "APP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "ARM",
+    "definicion": "Asistencia Respiratoria Mecánica. Soporte ventilatorio mediante respirador mecánico. Modalidades: VMC, SIMV, PSV, CPAP.",
+    "abreviatura": "ARM",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Ascitis",
+    "definicion": "Acumulación de líquido libre en cavidad peritoneal. Diagnóstico: matidez desplazable, oleada ascítica, ecografía. Paracentesis diagnóstica: GASA ≥1.1 = hipertensión portal. Causa más frecuente: cirrosis.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Atropinización",
+    "definicion": "Estado clínico alcanzado al administrar atropina: sequedad de boca, midriasis, taquicardia y piel seca. Objetivo terapéutico en intoxicación por organofosforados.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Bactericida",
+    "definicion": "Antibiótico que destruye las bacterias. A diferencia de los bacteriostáticos, no solo inhibe el crecimiento sino que provoca la muerte bacteriana.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Bacteriostático",
+    "definicion": "Antibiótico que inhibe el crecimiento y multiplicación bacteriana sin matar directamente a las bacterias. El sistema inmune completa la eliminación.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "BAL",
+    "definicion": "Lavado Broncoalveolar. Procedimiento diagnóstico mediante broncoscopía que obtiene muestras del tracto respiratorio inferior para cultivo, citología y estudios especiales.",
+    "abreviatura": "BAL",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Barrera hematoencefálica",
+    "definicion": "Barrera selectiva entre la sangre y el sistema nervioso central formada por uniones estrechas endoteliales. Limita el paso de fármacos al SNC. Relevante para antibióticos en meningitis y quimioterapia.",
+    "abreviatura": "BHE",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "BH",
+    "definicion": "Balance Hídrico. Diferencia entre ingresos (oral, IV, enteral) y egresos (diuresis, débito SNG, drenajes, pérdidas insensibles). Balance positivo = retención; negativo = depleción.",
+    "abreviatura": "BH",
     "categoria": "abreviatura"
   },
   {
@@ -64,15 +124,591 @@
     "categoria": "abreviatura"
   },
   {
-    "termino": "TID",
-    "definicion": "Tres veces al día (del latín ter in die).",
-    "abreviatura": "TID",
+    "termino": "Biodisponibilidad",
+    "definicion": "Fracción del fármaco administrado que alcanza la circulación sistémica en forma inalterada. Por vía IV es siempre del 100%.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Bolo",
+    "definicion": "Administración IV rápida de un fármaco en cantidad única. Se aplica en 1-5 minutos dependiendo del fármaco.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Bomba de infusión",
+    "definicion": "Dispositivo electrónico que administra fluidos y medicamentos IV a velocidad precisa y controlada. Indispensable para fármacos de alto riesgo y vasoactivos.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "BOTE",
+    "definicion": "Balance, Oxigenación, Termorregulación, Eliminación. Nemotecnia de enfermería para prioridades de valoración del paciente crítico.",
+    "abreviatura": "BOTE",
     "categoria": "abreviatura"
   },
   {
-    "termino": "QID",
-    "definicion": "Cuatro veces al día (del latín quater in die).",
-    "abreviatura": "QID",
+    "termino": "Bradicardia",
+    "definicion": "Frecuencia cardíaca inferior a 60 latidos por minuto en adultos. Puede ser efecto adverso de beta-bloqueantes, digoxina u opioides.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Citocromo P450",
+    "definicion": "Familia de enzimas hepáticas responsables del metabolismo de la mayoría de fármacos. Las isoformas principales son CYP3A4, CYP2D6, CYP2C19 y CYP1A2.",
+    "abreviatura": "CYP450",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Clearance (Aclaramiento)",
+    "definicion": "Volumen de plasma del cual el fármaco es completamente eliminado por unidad de tiempo. Determina la dosis de mantenimiento.",
+    "abreviatura": "Cl",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Concentración mínima inhibitoria",
+    "definicion": "Menor concentración de un antibiótico capaz de inhibir el crecimiento bacteriano in vitro. Guía la elección y dosificación del antibiótico.",
+    "abreviatura": "CMI",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Contraindicación absoluta",
+    "definicion": "Situación en la que un fármaco NO debe administrarse bajo ninguna circunstancia por riesgo de consecuencias graves o muerte.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Contraindicación relativa",
+    "definicion": "Situación en la que un fármaco puede administrarse con precaución si el beneficio supera el riesgo, bajo estrecha vigilancia.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Crepitantes",
+    "definicion": "Ruidos respiratorios anormales (estertores crepitantes): sonidos discontinuos, finos, inspiratorios. Indican líquido alveolar (edema pulmonar, neumonía) o fibrosis. Se auscultan mejor en bases pulmonares.",
+    "categoria": "general"
+  },
+  {
+    "termino": "CSV",
+    "definicion": "Control de Signos Vitales. Registro periódico de FC, FR, TA, temperatura, SatO₂ y dolor. Frecuencia según estado del paciente y indicación médica.",
+    "abreviatura": "CSV",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "DBT",
+    "definicion": "Diabetes. Abreviatura hospitalaria frecuente en Argentina y LATAM para referirse a diabetes mellitus en registros clínicos.",
+    "abreviatura": "DBT",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Dependencia física",
+    "definicion": "Estado de adaptación fisiológica que produce síndrome de abstinencia al suspender bruscamente el fármaco. Diferente de la adicción. Común con opioides, benzodiacepinas y corticoides.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Derrame pleural",
+    "definicion": "Acumulación de líquido en espacio pleural. Trasudado (ICC, cirrosis) vs exudado (infección, neoplasia). Diagnóstico: Rx tórax, ecografía. Toracocentesis según criterios de Light.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Dilución",
+    "definicion": "Proceso de agregar un fármaco a un volumen de solución IV para su administración. La concentración final debe respetar los límites de osmolaridad y estabilidad.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Disnea",
+    "definicion": "Sensación subjetiva de dificultad respiratoria. Se clasifica según la NYHA (I-IV) o mMRC (0-4). Causas cardíacas, pulmonares, metabólicas o psicógenas.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Disnea Paroxística Nocturna",
+    "definicion": "Episodio súbito de disnea que despierta al paciente 1-3 horas después de acostarse. Indica insuficiencia cardíaca izquierda. Diferencia con ortopnea: aparición tardía y carácter paroxístico.",
+    "abreviatura": "DPN",
+    "categoria": "general"
+  },
+  {
+    "termino": "Disuria",
+    "definicion": "Dolor o ardor al orinar. Síntoma cardinal de infección urinaria baja (cistitis). También presente en uretritis, prostatitis y litiasis vesical.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Dosis de carga",
+    "definicion": "Dosis inicial mayor que la de mantenimiento, administrada para alcanzar rápidamente niveles terapéuticos en sangre.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Dosis de mantenimiento",
+    "definicion": "Dosis administrada a intervalos regulares para mantener la concentración del fármaco dentro del rango terapéutico.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "DPP",
+    "definicion": "Desprendimiento Prematuro de Placenta. Separación de la placenta normalmente insertada antes del parto. Cursa con dolor abdominal, sangrado oscuro e hipertonía uterina. Emergencia obstétrica.",
+    "abreviatura": "DPP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "EAP",
+    "definicion": "Edema Agudo de Pulmón. Acumulación de líquido en alvéolos por falla ventricular izquierda aguda. Disnea severa, crepitantes bilaterales, esputo rosado espumoso. Emergencia.",
+    "abreviatura": "EAP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "ECG",
+    "definicion": "Electrocardiograma. Registro de la actividad eléctrica cardíaca mediante 12 derivaciones. Detecta arritmias, isquemia, infarto, alteraciones electrolíticas y efectos farmacológicos.",
+    "abreviatura": "ECG",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Edema en Godet",
+    "definicion": "Edema que al presionar con el dedo deja una depresión (fóvea) que persiste varios segundos. Se clasifica de 1+ a 4+ según profundidad y tiempo de recuperación. Indica acumulación de líquido intersticial.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Efecto de primer paso",
+    "definicion": "Metabolismo del fármaco que ocurre en el hígado antes de llegar a la circulación sistémica. Reduce la biodisponibilidad oral.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Efecto rebote",
+    "definicion": "Reaparición o empeoramiento de síntomas tras la suspensión brusca de un fármaco. Frecuente con betabloqueantes, corticoides y benzodiacepinas. Requiere retiro gradual.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Efecto secundario",
+    "definicion": "Efecto no deseado que ocurre a dosis terapéuticas normales. Diferente de efecto adverso en que es predecible y generalmente leve.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "ELP",
+    "definicion": "Electrolitos Plasmáticos. Determinación de Na⁺, K⁺, Cl⁻, Ca²⁺ y Mg²⁺ en sangre. Esencial para monitorizar terapia con diuréticos, fluidoterapia y función renal.",
+    "abreviatura": "ELP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Epistaxis",
+    "definicion": "Sangrado nasal. Anterior (90%, plexo de Kiesselbach): generalmente autolimitado. Posterior (10%): más grave, requiere taponamiento. Asociado a HTA, anticoagulantes, coagulopatías.",
+    "categoria": "general"
+  },
+  {
+    "termino": "EPOC",
+    "definicion": "Enfermedad Pulmonar Obstructiva Crónica. Limitación crónica al flujo aéreo no completamente reversible. Incluye enfisema y bronquitis crónica. Causa principal: tabaquismo.",
+    "abreviatura": "EPOC",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Escala de Braden",
+    "definicion": "Evalúa riesgo de lesiones por presión. 6 subescalas: percepción sensorial, humedad, actividad, movilidad, nutrición, fricción. Puntaje 6-23. ≤18: riesgo. ≤12: alto riesgo. Más utilizada internacionalmente.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Escala de Glasgow",
+    "definicion": "Escala de Coma de Glasgow. Evalúa nivel de conciencia: apertura ocular (1-4), respuesta verbal (1-5), respuesta motora (1-6). Puntaje 3-15. ≤8: coma, indicación de intubación. Predictor pronóstico en TEC.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Escala de Norton",
+    "definicion": "Evalúa riesgo de úlceras por presión. Valora: estado físico, mental, actividad, movilidad e incontinencia. Puntaje 5-20. ≤14: riesgo. ≤12: alto riesgo. Guía medidas preventivas de enfermería.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Escala Visual Analógica",
+    "definicion": "Escala de evaluación del dolor. Línea de 10 cm donde el paciente marca su nivel de dolor: 0 (sin dolor) a 10 (peor dolor imaginable). Permite objetivar y monitorizar el tratamiento analgésico.",
+    "abreviatura": "EVA",
+    "categoria": "general"
+  },
+  {
+    "termino": "Espacio epidural",
+    "definicion": "Espacio entre la duramadre y el ligamento amarillo/periostio vertebral. Contiene grasa y plexos venosos. Vía de administración de anestésicos y analgésicos (analgesia peridural, especialmente en obstetricia).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Espacio pleural",
+    "definicion": "Espacio virtual entre la pleura visceral (pulmón) y parietal (pared torácica). Contiene una fina capa de líquido lubricante. Su ocupación por líquido (derrame) o aire (neumotórax) compromete la ventilación.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Estado Ácido-Base",
+    "definicion": "Evaluación del equilibrio ácido-base mediante gasometría arterial. Parámetros: pH (7.35-7.45), PaCO₂ (35-45 mmHg), HCO₃⁻ (22-26 mEq/L), BE (±2). Permite identificar acidosis/alcalosis respiratoria o metabólica.",
+    "abreviatura": "EAB",
+    "categoria": "general"
+  },
+  {
+    "termino": "Estado estacionario",
+    "definicion": "Punto en el que la cantidad de fármaco administrado iguala la cantidad eliminada, manteniendo niveles plasmáticos constantes. Se alcanza tras 4-5 vidas medias.",
+    "abreviatura": "Css",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Estertores",
+    "definicion": "Ruidos respiratorios patológicos. Incluyen crepitantes (finos, alveolares), subcrepitantes (medianos, bronquiolares) y roncus (gruesos, bronquiales). Su presencia, tipo y localización orientan el diagnóstico.",
+    "categoria": "general"
+  },
+  {
+    "termino": "EV / IV",
+    "definicion": "Vía endovenosa / intravenosa.",
+    "abreviatura": "EV/IV",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Extravasación",
+    "definicion": "Salida accidental de un fármaco IV al tejido circundante. Puede causar necrosis tisular con fármacos vesicantes.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Factor de goteo",
+    "definicion": "Número de gotas por mililitro que proporciona un equipo de infusión. Macrogotero: 20 gotas/mL, Microgotero: 60 gotas/mL.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "FAL",
+    "definicion": "Fosfatasa Alcalina. Enzima presente en hígado, hueso y placenta. Su elevación sugiere colestasis, enfermedad ósea o embarazo. Se interpreta junto con GGT.",
+    "abreviatura": "FAL",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Farmacocinética",
+    "definicion": "Estudio de lo que el cuerpo le hace al fármaco: absorción, distribución, metabolismo y excreción (ADME).",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Farmacodinamia",
+    "definicion": "Estudio de lo que el fármaco le hace al cuerpo: mecanismo de acción, efectos terapéuticos y adversos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Farmacovigilancia",
+    "definicion": "Ciencia que detecta, evalúa y previene los efectos adversos de los medicamentos una vez comercializados. Enfermería tiene un rol clave en la notificación de reacciones adversas.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "FC",
+    "definicion": "Frecuencia Cardíaca. Número de latidos por minuto. Normal adulto en reposo: 60-100 lpm. Se evalúa ritmo, frecuencia y regularidad.",
+    "abreviatura": "FC",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Flebitis",
+    "definicion": "Inflamación de una vena, frecuentemente causada por irritación química de fármacos IV, trauma mecánico del catéter, o infección.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "FR",
+    "definicion": "Frecuencia Respiratoria. Número de respiraciones por minuto. Normal adulto: 12-20 rpm. Parámetro vital que indica trabajo respiratorio.",
+    "abreviatura": "FR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "GCS",
+    "definicion": "Glasgow Coma Scale (Escala de Coma de Glasgow). Evalúa nivel de conciencia: apertura ocular (1-4), respuesta verbal (1-5) y motora (1-6). Total 3-15. ≤8 = coma.",
+    "abreviatura": "GCS",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Globo vesical",
+    "definicion": "Retención urinaria aguda con distensión palpable y dolorosa de la vejiga por encima del pubis. Causas: hiperplasia prostática, posquirúrgico, fármacos anticolinérgicos, lesión medular. Tratamiento: cateterismo vesical.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Glomérulo renal",
+    "definicion": "Red de capilares dentro de la cápsula de Bowman donde ocurre la filtración glomerular. Filtra ~180 L/día de plasma. Su daño causa proteinuria y hematuria (glomerulonefritis, nefropatía diabética).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "GOT/GPT",
+    "definicion": "Transaminasas hepáticas. GOT (AST): aspartato aminotransferasa. GPT (ALT): alanina aminotransferasa. Su elevación indica daño hepatocelular. GPT es más específica del hígado.",
+    "abreviatura": "GOT/GPT",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Hematemesis",
+    "definicion": "Vómito de sangre roja (fresca) o en borra de café (digerida). Indica hemorragia digestiva alta. Causas: úlcera péptica, várices esofágicas, gastritis erosiva.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hematuria",
+    "definicion": "Presencia de sangre en orina. Macroscópica (visible) o microscópica (>5 hematíes/campo). Causas: ITU, litiasis, glomerulonefritis, neoplasias, traumatismo.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hemólisis",
+    "definicion": "Destrucción de glóbulos rojos. Puede ser efecto adverso de ciertos fármacos o resultado de incompatibilidad sanguínea.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hemoptisis",
+    "definicion": "Expectoración de sangre proveniente del tracto respiratorio inferior. Causas: tuberculosis, bronquiectasias, cáncer de pulmón, TEP. Hemoptisis masiva (>600 mL/24h): emergencia.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hepatocito",
+    "definicion": "Célula principal del hígado, responsable del metabolismo de fármacos (sistema CYP450), síntesis de proteínas (albúmina, factores de coagulación), metabolismo de bilirrubina y detoxificación.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Hepatotoxicidad",
+    "definicion": "Daño hepático causado por fármacos. El paracetamol en sobredosis es la causa más común de hepatotoxicidad por fármacos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Hipercalcemia",
+    "definicion": "Calcio sérico mayor de 10.5 mg/dL. Causa confusión, poliuria, estreñimiento y arritmias. Asociada a hiperparatiroidismo, tiazidas y exceso de vitamina D.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hiperpotasemia",
+    "definicion": "Potasio sérico mayor de 5.5 mEq/L. Causa arritmias potencialmente mortales. Frecuente con IECA, espironolactona e insuficiencia renal. Emergencia si K+ > 6.5 mEq/L.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hipersensibilidad",
+    "definicion": "Respuesta inmune exagerada a un fármaco. Tipo I (anafilaxia) es la más peligrosa. Siempre preguntar antecedentes alérgicos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Hipocalcemia",
+    "definicion": "Calcio sérico menor de 8.5 mg/dL. Causa parestesias, espasmos musculares (signo de Trousseau/Chvostek) y arritmias. Frecuente tras tiroidectomía o con furosemida.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hiponatremia",
+    "definicion": "Sodio sérico menor de 135 mEq/L. Causa confusión, convulsiones y edema cerebral. Puede ser causada por diuréticos tiazídicos, ISRS o exceso de líquidos hipotónicos.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Hipopotasemia",
+    "definicion": "Potasio sérico menor de 3.5 mEq/L. Causa debilidad muscular, arritmias y paro cardíaco. Frecuente con diuréticos de asa. Monitorizar ECG y reponer con precaución.",
+    "categoria": "general"
+  },
+  {
+    "termino": "HMG",
+    "definicion": "Hemograma. Análisis de sangre que evalúa glóbulos rojos, blancos, plaquetas, hemoglobina y hematocrito. Estudio de laboratorio más solicitado.",
+    "abreviatura": "HMG",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "HTA",
+    "definicion": "Hipertensión Arterial. Presión arterial sostenida ≥140/90 mmHg. Principal factor de riesgo cardiovascular modificable.",
+    "abreviatura": "HTA",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "IAM",
+    "definicion": "Infarto Agudo de Miocardio. Necrosis del músculo cardíaco por isquemia prolongada. Dolor torácico opresivo, cambios ECG (elevación ST) y elevación de troponinas.",
+    "abreviatura": "IAM",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Idiosincrasia",
+    "definicion": "Reacción adversa impredecible a un fármaco, determinada genéticamente. No está relacionada con la dosis ni con el mecanismo de acción esperado.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "IM",
+    "definicion": "Vía intramuscular.",
+    "abreviatura": "IM",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Incompatibilidad",
+    "definicion": "Reacción física o química entre dos o más fármacos mezclados en la misma solución IV. Puede causar precipitación, inactivación o toxicidad.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Índice terapéutico",
+    "definicion": "Relación entre la dosis tóxica y la dosis terapéutica (DT50/DE50). Un índice bajo indica mayor riesgo de toxicidad.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Inducción enzimática",
+    "definicion": "Aumento de la actividad de enzimas hepáticas (CYP450) por ciertos fármacos, acelerando el metabolismo de otros. Inductores comunes: rifampicina, carbamazepina, fenitoína.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Infusión continua",
+    "definicion": "Administración IV ininterrumpida de un fármaco diluido a velocidad controlada, generalmente mediante bomba de infusión.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Ingurgitación yugular",
+    "definicion": "Distensión visible de las venas yugulares externas con el paciente a 45°. Indica aumento de la presión venosa central. Presente en ICC derecha, taponamiento cardíaco, TEP masivo.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Inhibición enzimática",
+    "definicion": "Bloqueo de enzimas hepáticas (CYP450) por ciertos fármacos, retardando el metabolismo de otros y aumentando sus niveles. Inhibidores comunes: ketoconazol, eritromicina, fluoxetina.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "INR",
+    "definicion": "International Normalized Ratio. Mide el efecto anticoagulante de la warfarina. Rango terapéutico habitual: 2-3.",
+    "abreviatura": "INR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Interacción medicamentosa",
+    "definicion": "Modificación del efecto de un fármaco por la administración simultánea de otro fármaco, alimento o sustancia.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Inyección en bolo",
+    "definicion": "Administración IV directa y rápida. Se usa para fármacos de emergencia. Verificar siempre la velocidad de administración recomendada.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "IRC",
+    "definicion": "Insuficiencia Renal Crónica. Deterioro progresivo e irreversible de la función renal. Se clasifica en estadios 1-5 según la TFG. Requiere ajuste de dosis de múltiples fármacos.",
+    "abreviatura": "IRC",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Islotes de Langerhans",
+    "definicion": "Agrupaciones celulares endocrinas del páncreas. Células β: producen insulina. Células α: producen glucagón. Células δ: producen somatostatina. Su destrucción autoinmune causa diabetes tipo 1.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "KPTT",
+    "definicion": "Tiempo de Tromboplastina Parcial Activado con Kaolín. Evalúa la vía intrínseca de la coagulación. Usado para monitorizar heparina no fraccionada. Normal: 25-35 segundos.",
+    "abreviatura": "KPTT",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "LAB",
+    "definicion": "Laboratorio. Abreviatura hospitalaria para análisis de laboratorio clínico. Incluye hemograma, bioquímica, coagulograma y otros estudios.",
+    "abreviatura": "LAB",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "LCR",
+    "definicion": "Líquido Cefalorraquídeo. Se obtiene por punción lumbar. Su análisis (citoquímico, cultivo, tinción de Gram) es clave para diagnosticar meningitis y otras patologías del SNC.",
+    "abreviatura": "LCR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "LDH",
+    "definicion": "Lactato Deshidrogenasa. Enzima intracelular que se eleva por daño tisular: hemólisis, IAM, hepatopatía, neoplasias. Marcador inespecífico de destrucción celular.",
+    "abreviatura": "LDH",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Llave de tres vías",
+    "definicion": "Dispositivo que permite conectar múltiples líneas de infusión IV. Verificar compatibilidad de fármacos que se administran simultáneamente.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "LME",
+    "definicion": "Lactancia Materna Exclusiva. Alimentación exclusiva con leche materna sin complementos hasta los 6 meses. Considerar fármacos compatibles con lactancia.",
+    "abreviatura": "LME",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Medicamento de alto riesgo",
+    "definicion": "Fármacos con mayor probabilidad de causar daño grave si se usan incorrectamente. Incluyen: insulina, opioides, anticoagulantes, electrolitos concentrados y quimioterapia.",
+    "abreviatura": "MAR",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Médula ósea",
+    "definicion": "Tejido hematopoyético dentro de los huesos que produce células sanguíneas (glóbulos rojos, blancos y plaquetas). Médula roja: activa. Médula amarilla: grasa. Diana de quimioterapia (mielotoxicidad).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Melena",
+    "definicion": "Deposiciones negras, brillantes y malolientes (aspecto de alquitrán) por sangre digerida. Indica hemorragia digestiva alta (proximal al ángulo de Treitz). Requiere >60 mL de sangre.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Metabolito activo",
+    "definicion": "Producto del metabolismo de un fármaco que conserva actividad farmacológica. Puede prolongar o modificar el efecto terapéutico. Ejemplo: morfina-6-glucurónido.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Nefrón",
+    "definicion": "Unidad funcional del riñón (~1 millón por riñón). Componentes: glomérulo, túbulo proximal, asa de Henle, túbulo distal, conducto colector. Sitio de acción de diuréticos según segmento.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Nefrotoxicidad",
+    "definicion": "Daño renal causado por fármacos. Aminoglucósidos, AINEs y medios de contraste son causas frecuentes. Monitorizar creatinina.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Neumotórax",
+    "definicion": "Presencia de aire en espacio pleural que colapsa el pulmón. Espontáneo (primario o secundario) o traumático. A tensión: emergencia con desviación traqueal. Tratamiento: tubo de drenaje torácico.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Nivel sérico",
+    "definicion": "Concentración del fármaco medida en sangre. Se usa para monitorizar fármacos de índice terapéutico estrecho (vancomicina, digoxina, fenitoína).",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Nodo sinoauricular",
+    "definicion": "Marcapasos natural del corazón, ubicado en la aurícula derecha. Genera impulsos eléctricos a 60-100 lpm. Su automatismo es modulado por el sistema nervioso autónomo y fármacos (betabloqueantes, digoxina, ivabradina).",
+    "abreviatura": "NSA",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "NPO",
+    "definicion": "Nada por vía oral (del latín nil per os). El paciente debe estar en ayunas.",
+    "abreviatura": "NPO",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Oliguria",
+    "definicion": "Diuresis <400 mL/24h o <0.5 mL/kg/h. Indicador temprano de disfunción renal o hipoperfusión. Requiere evaluación de volemia, función renal y obstrucción urinaria.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Ortopnea",
+    "definicion": "Disnea que aparece en decúbito supino y mejora al sentarse o con almohadas. Indica congestión pulmonar por insuficiencia cardíaca izquierda. Se cuantifica por número de almohadas necesarias.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Osmolaridad",
+    "definicion": "Concentración de partículas osmóticamente activas en una solución, medida en mOsm/L. Osmolaridad plasmática normal: 275-295 mOsm/L. Importante para selección de soluciones IV.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Ototoxicidad",
+    "definicion": "Daño al oído interno causado por fármacos, que puede provocar pérdida auditiva o vértigo. Asociada a aminoglucósidos y furosemida.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "PCR",
+    "definicion": "Paro Cardiorrespiratorio. Cese súbito de la actividad cardíaca y respiratoria. Requiere inicio inmediato de RCP y desfibrilación si ritmo desfibrilable.",
+    "abreviatura": "PCR",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Perfusión",
+    "definicion": "Administración controlada y continua de una solución IV. Sinónimo de infusión en muchos contextos clínicos.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Peritoneo",
+    "definicion": "Membrana serosa que recubre la cavidad abdominal (peritoneo parietal) y las vísceras (peritoneo visceral). El espacio entre ambas hojas puede acumular líquido (ascitis) o infectarse (peritonitis).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Pico plasmático",
+    "definicion": "Concentración máxima del fármaco en sangre tras su administración. El tiempo al pico varía según la vía.",
+    "abreviatura": "Cmáx",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Placa motora",
+    "definicion": "Región especializada de la fibra muscular en la unión neuromuscular donde se concentran los receptores nicotínicos de acetilcolina. Su bloqueo produce parálisis muscular (uso en anestesia).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Polifarmacia",
+    "definicion": "Uso simultáneo de 5 o más medicamentos. Aumenta el riesgo de interacciones y efectos adversos. Muy frecuente en pacientes geriátricos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Poliuria",
+    "definicion": "Diuresis >3 litros/24h. Causas: diabetes mellitus (glucosuria), diabetes insípida, diuréticos, fase poliúrica de IRA, hipercalcemia. Requiere reposición hídrica.",
+    "categoria": "general"
+  },
+  {
+    "termino": "PPD",
+    "definicion": "Prueba de Tuberculina (derivado proteico purificado). Intradermorreacción de Mantoux. Lectura a las 48-72 h. Positiva si induración ≥10 mm (≥5 mm en inmunodeprimidos).",
+    "abreviatura": "PPD",
     "categoria": "abreviatura"
   },
   {
@@ -82,27 +718,104 @@
     "categoria": "abreviatura"
   },
   {
-    "termino": "STAT",
-    "definicion": "Inmediatamente (del latín statim). Indica administración urgente sin demora.",
-    "abreviatura": "STAT",
+    "termino": "Profármaco",
+    "definicion": "Sustancia inactiva que se convierte en fármaco activo dentro del organismo mediante metabolismo. Ejemplo: enalapril se convierte en enalaprilato.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Proteinuria",
+    "definicion": "Presencia anormal de proteínas en orina (>150 mg/24h). Marcador de daño glomerular. >3.5 g/24h = rango nefrótico. Se detecta con tira reactiva o relación proteína/creatinina.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Purga",
+    "definicion": "Eliminación del aire de un equipo de infusión IV antes de conectarlo al paciente. Previene embolia aérea.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "QD",
+    "definicion": "Una vez al día (del latín quaque die).",
+    "abreviatura": "QD",
     "categoria": "abreviatura"
   },
   {
-    "termino": "VO",
-    "definicion": "Vía oral.",
-    "abreviatura": "VO",
+    "termino": "QID",
+    "definicion": "Cuatro veces al día (del latín quater in die).",
+    "abreviatura": "QID",
     "categoria": "abreviatura"
   },
   {
-    "termino": "EV / IV",
-    "definicion": "Vía endovenosa / intravenosa.",
-    "abreviatura": "EV/IV",
+    "termino": "Rango terapéutico",
+    "definicion": "Intervalo de concentraciones plasmáticas entre la concentración mínima eficaz y la concentración tóxica mínima.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "RCIU",
+    "definicion": "Restricción del Crecimiento Intrauterino. Feto con peso estimado por debajo del percentil 10 para la edad gestacional. Requiere vigilancia fetal estricta.",
+    "abreviatura": "RCIU",
     "categoria": "abreviatura"
   },
   {
-    "termino": "IM",
-    "definicion": "Vía intramuscular.",
-    "abreviatura": "IM",
+    "termino": "RCP",
+    "definicion": "Reanimación Cardiopulmonar. Conjunto de maniobras para restaurar la circulación y ventilación: compresiones torácicas 100-120/min, relación 30:2 con ventilaciones.",
+    "abreviatura": "RCP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Reacción adversa medicamentosa",
+    "definicion": "Respuesta nociva y no intencionada a un medicamento usado a dosis normales. Se clasifica por gravedad y mecanismo.",
+    "abreviatura": "RAM",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Reacción de hipersensibilidad tipo I",
+    "definicion": "Reacción alérgica inmediata mediada por IgE. Incluye urticaria, broncoespasmo y anafilaxia. Aparece en minutos tras la exposición. Requiere epinefrina si es grave.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Reconstitución",
+    "definicion": "Proceso de agregar un diluyente a un fármaco liofilizado (en polvo) para obtener una solución inyectable.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "RIN",
+    "definicion": "Razón Internacional Normalizada. Sinónimo de INR. Monitoriza efecto de anticoagulantes orales antivitamina K (warfarina, acenocumarol). Rango terapéutico habitual: 2-3.",
+    "abreviatura": "RIN",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Ritmo de galope",
+    "definicion": "Tercer ruido cardíaco (S3) audible en insuficiencia cardíaca, que genera un ritmo de tres tiempos semejante al galope de un caballo. Indica sobrecarga de volumen y disfunción ventricular.",
+    "categoria": "general"
+  },
+  {
+    "termino": "RMN",
+    "definicion": "Resonancia Magnética Nuclear. Estudio de imagen sin radiación ionizante. Superior para tejidos blandos, SNC, articulaciones. Contraindicada con implantes metálicos ferromagnéticos.",
+    "abreviatura": "RMN",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "RPM",
+    "definicion": "Rotura Prematura de Membranas. Rotura de membranas ovulares antes del inicio del trabajo de parto. Si ocurre antes de las 37 semanas: RPM pretérmino.",
+    "abreviatura": "RPM",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Rx",
+    "definicion": "Radiografía. Estudio de imagen por rayos X. Rx de tórax es el estudio complementario más solicitado en internación. Evalúa silueta cardíaca, campos pulmonares y estructuras óseas.",
+    "abreviatura": "Rx",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SAE",
+    "definicion": "Síndrome Ascítico Edematoso. Acumulación de líquido en cavidad peritoneal (ascitis) acompañada de edema periférico. Frecuente en cirrosis hepática descompensada.",
+    "abreviatura": "SAE",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SatO₂",
+    "definicion": "Saturación de Oxígeno. Porcentaje de hemoglobina unida a oxígeno. Normal: 95-100%. Medida por oximetría de pulso. <90% indica hipoxemia significativa.",
+    "abreviatura": "SatO2",
     "categoria": "abreviatura"
   },
   {
@@ -112,113 +825,111 @@
     "categoria": "abreviatura"
   },
   {
-    "termino": "SL",
-    "definicion": "Vía sublingual.",
-    "abreviatura": "SL",
+    "termino": "SCA",
+    "definicion": "Síndrome Coronario Agudo. Conjunto de cuadros clínicos por isquemia miocárdica aguda: angina inestable, IAM sin elevación del ST (SCASEST) e IAM con elevación del ST (SCACEST).",
+    "abreviatura": "SCA",
     "categoria": "abreviatura"
   },
   {
-    "termino": "NPO",
-    "definicion": "Nada por vía oral (del latín nil per os). El paciente debe estar en ayunas.",
-    "abreviatura": "NPO",
-    "categoria": "abreviatura"
-  },
-  {
-    "termino": "INR",
-    "definicion": "International Normalized Ratio. Mide el efecto anticoagulante de la warfarina. Rango terapéutico habitual: 2-3.",
-    "abreviatura": "INR",
-    "categoria": "abreviatura"
-  },
-  {
-    "termino": "TTPa",
-    "definicion": "Tiempo de tromboplastina parcial activado. Monitoriza el efecto de la heparina no fraccionada.",
-    "abreviatura": "TTPa",
-    "categoria": "abreviatura"
-  },
-  {
-    "termino": "Farmacovigilancia",
-    "definicion": "Ciencia que detecta, evalúa y previene los efectos adversos de los medicamentos una vez comercializados. Enfermería tiene un rol clave en la notificación de reacciones adversas.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Polifarmacia",
-    "definicion": "Uso simultáneo de 5 o más medicamentos. Aumenta el riesgo de interacciones y efectos adversos. Muy frecuente en pacientes geriátricos.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Profármaco",
-    "definicion": "Sustancia inactiva que se convierte en fármaco activo dentro del organismo mediante metabolismo. Ejemplo: enalapril se convierte en enalaprilato.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Metabolito activo",
-    "definicion": "Producto del metabolismo de un fármaco que conserva actividad farmacológica. Puede prolongar o modificar el efecto terapéutico. Ejemplo: morfina-6-glucurónido.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Estado estacionario",
-    "definicion": "Punto en el que la cantidad de fármaco administrado iguala la cantidad eliminada, manteniendo niveles plasmáticos constantes. Se alcanza tras 4-5 vidas medias.",
-    "abreviatura": "Css",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Inducción enzimática",
-    "definicion": "Aumento de la actividad de enzimas hepáticas (CYP450) por ciertos fármacos, acelerando el metabolismo de otros. Inductores comunes: rifampicina, carbamazepina, fenitoína.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Inhibición enzimática",
-    "definicion": "Bloqueo de enzimas hepáticas (CYP450) por ciertos fármacos, retardando el metabolismo de otros y aumentando sus niveles. Inhibidores comunes: ketoconazol, eritromicina, fluoxetina.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Ventana terapéutica",
-    "definicion": "Rango de dosis en el que un fármaco produce efecto beneficioso sin toxicidad significativa. Fármacos con ventana estrecha requieren monitorización de niveles séricos.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Idiosincrasia",
-    "definicion": "Reacción adversa impredecible a un fármaco, determinada genéticamente. No está relacionada con la dosis ni con el mecanismo de acción esperado.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Efecto rebote",
-    "definicion": "Reaparición o empeoramiento de síntomas tras la suspensión brusca de un fármaco. Frecuente con betabloqueantes, corticoides y benzodiacepinas. Requiere retiro gradual.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Dependencia física",
-    "definicion": "Estado de adaptación fisiológica que produce síndrome de abstinencia al suspender bruscamente el fármaco. Diferente de la adicción. Común con opioides, benzodiacepinas y corticoides.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Osmolaridad",
-    "definicion": "Concentración de partículas osmóticamente activas en una solución, medida en mOsm/L. Osmolaridad plasmática normal: 275-295 mOsm/L. Importante para selección de soluciones IV.",
-    "categoria": "enfermeria"
-  },
-  {
-    "termino": "Hipopotasemia",
-    "definicion": "Potasio sérico menor de 3.5 mEq/L. Causa debilidad muscular, arritmias y paro cardíaco. Frecuente con diuréticos de asa. Monitorizar ECG y reponer con precaución.",
+    "termino": "Score APACHE II",
+    "definicion": "Acute Physiology and Chronic Health Evaluation. Sistema de puntuación de gravedad en UCI. Evalúa 12 variables fisiológicas, edad y enfermedad crónica. Predice mortalidad hospitalaria.",
+    "abreviatura": "APACHE II",
     "categoria": "general"
   },
   {
-    "termino": "Hiperpotasemia",
-    "definicion": "Potasio sérico mayor de 5.5 mEq/L. Causa arritmias potencialmente mortales. Frecuente con IECA, espironolactona e insuficiencia renal. Emergencia si K+ > 6.5 mEq/L.",
+    "termino": "Score de Wells",
+    "definicion": "Escala de probabilidad clínica para TEP y TVP. Evalúa factores de riesgo, signos clínicos y diagnósticos diferenciales. Orienta la solicitud de estudios complementarios (dímero D, angioTC).",
     "categoria": "general"
   },
   {
-    "termino": "Hiponatremia",
-    "definicion": "Sodio sérico menor de 135 mEq/L. Causa confusión, convulsiones y edema cerebral. Puede ser causada por diuréticos tiazídicos, ISRS o exceso de líquidos hipotónicos.",
+    "termino": "Score SOFA",
+    "definicion": "Sequential Organ Failure Assessment. Evalúa disfunción orgánica en pacientes críticos. 6 sistemas: respiratorio, coagulación, hepático, cardiovascular, neurológico, renal. ≥2 puntos de aumento = sepsis.",
+    "abreviatura": "SOFA",
     "categoria": "general"
   },
   {
-    "termino": "Hipocalcemia",
-    "definicion": "Calcio sérico menor de 8.5 mg/dL. Causa parestesias, espasmos musculares (signo de Trousseau/Chvostek) y arritmias. Frecuente tras tiroidectomía o con furosemida.",
+    "termino": "Shock cardiogénico",
+    "definicion": "Falla circulatoria por incapacidad del corazón de bombear sangre adecuadamente. Causa principal: IAM extenso. Hipotensión con signos de congestión (crepitantes, ingurgitación yugular). Alta mortalidad.",
     "categoria": "general"
   },
   {
-    "termino": "Hipercalcemia",
-    "definicion": "Calcio sérico mayor de 10.5 mg/dL. Causa confusión, poliuria, estreñimiento y arritmias. Asociada a hiperparatiroidismo, tiazidas y exceso de vitamina D.",
+    "termino": "Shock distributivo",
+    "definicion": "Falla circulatoria por vasodilatación patológica con mala distribución del flujo sanguíneo. Incluye: shock séptico (más frecuente), anafiláctico y neurogénico. Piel caliente inicialmente.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Shock hipovolémico",
+    "definicion": "Falla circulatoria por pérdida de volumen intravascular (hemorragia, deshidratación severa). Taquicardia, hipotensión, oliguria, piel fría. Tratamiento: reposición de volumen, control de la hemorragia.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Shock obstructivo",
+    "definicion": "Falla circulatoria por obstrucción mecánica al flujo sanguíneo. Causas: TEP masivo, taponamiento cardíaco, neumotórax a tensión. Tratamiento: resolver la causa obstructiva.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Signo de Blumberg",
+    "definicion": "Dolor a la descompresión abdominal (rebote positivo). Indica irritación peritoneal. Se explora comprimiendo lentamente el abdomen y soltando bruscamente. Positivo en apendicitis, peritonitis.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Signo de Chvostek",
+    "definicion": "Contracción involuntaria de músculos faciales al percutir el nervio facial delante del trago de la oreja. Indica hipocalcemia o hipomagnesemia. Menos específico que Trousseau.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Signo de Murphy",
+    "definicion": "Detención de la inspiración profunda al palpar el punto cístico (reborde costal derecho, línea medioclavicular). Positivo en colecistitis aguda.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Signo de Trousseau",
+    "definicion": "Espasmo carpopedal (mano de partero) al inflar el manguito de tensión por encima de la presión sistólica durante 3 minutos. Indica hipocalcemia (Ca²⁺ <7.5 mg/dL).",
+    "categoria": "general"
+  },
+  {
+    "termino": "Sinapsis",
+    "definicion": "Unión funcional entre dos neuronas o entre neurona y célula efectora. La transmisión puede ser química (neurotransmisores) o eléctrica. Diana de psicofármacos, anestésicos y relajantes musculares.",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Síndrome Ascítico Edematoso",
+    "definicion": "Cuadro clínico caracterizado por ascitis (acumulación de líquido en peritoneo) y edema periférico. Causa más frecuente: cirrosis hepática con hipertensión portal. Tratamiento: restricción de sodio, diuréticos (espironolactona + furosemida), paracentesis.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome Compartimental",
+    "definicion": "Aumento de presión dentro de un compartimiento muscular cerrado que compromete la perfusión tisular. Causa: fracturas, vendajes apretados, quemaduras. Signos: dolor desproporcionado, parestesias, palidez. Emergencia quirúrgica: fasciotomía.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome de Abstinencia Alcohólica",
+    "definicion": "Cuadro clínico por cese o reducción brusca del consumo de alcohol en pacientes con dependencia. Desde temblor y ansiedad (6-24h) hasta convulsiones (24-48h) y delirium tremens (48-72h). Tratamiento: benzodiacepinas.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome de Realimentación",
+    "definicion": "Alteraciones metabólicas graves al reintroducir alimentación en pacientes desnutridos o con ayuno prolongado. Hipofosfatemia, hipopotasemia, hipomagnesemia. Puede causar falla cardíaca y muerte. Prevención: inicio lento con suplementación de tiamina, fósforo, potasio y magnesio.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome del hombre rojo",
+    "definicion": "Reacción por infusión rápida de vancomicina: eritema en cara, cuello y tórax, prurito e hipotensión. Se previene infundiendo en mínimo 60 minutos. No es alergia verdadera.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome Febril Prolongado",
+    "definicion": "Fiebre >38.3°C por más de 3 semanas sin diagnóstico tras evaluación inicial. Causas principales: infecciones (tuberculosis, endocarditis), neoplasias y enfermedades autoinmunes.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome Nefrítico",
+    "definicion": "Hematuria (macro o microscópica), hipertensión arterial, oliguria y edema. Causado por inflamación glomerular (glomerulonefritis). Causa clásica: post-estreptocócica en niños.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Síndrome Nefrótico",
+    "definicion": "Proteinuria masiva (>3.5 g/24h), hipoalbuminemia (<3 g/dL), edema generalizado e hiperlipidemia. Causas: glomerulopatía membranosa, nefropatía diabética, lupus. Riesgo de trombosis y peritonitis espontánea.",
     "categoria": "general"
   },
   {
@@ -228,52 +939,104 @@
     "categoria": "general"
   },
   {
-    "termino": "Síndrome del hombre rojo",
-    "definicion": "Reacción por infusión rápida de vancomicina: eritema en cara, cuello y tórax, prurito e hipotensión. Se previene infundiendo en mínimo 60 minutos. No es alergia verdadera.",
+    "termino": "Síndrome serotoninérgico",
+    "definicion": "Toxicidad por exceso de serotonina: agitación, temblor, hipertermia, diaforesis. Puede ser mortal. Causado por interacción de fármacos serotoninérgicos.",
     "categoria": "general"
   },
   {
-    "termino": "Atropinización",
-    "definicion": "Estado clínico alcanzado al administrar atropina: sequedad de boca, midriasis, taquicardia y piel seca. Objetivo terapéutico en intoxicación por organofosforados.",
-    "categoria": "enfermeria"
+    "termino": "Síndrome Urémico Hemolítico",
+    "definicion": "Tríada: anemia hemolítica microangiopática, trombocitopenia e insuficiencia renal aguda. Causa principal en Argentina: E. coli productora de toxina Shiga (O157:H7). País con mayor incidencia mundial.",
+    "abreviatura": "SUH",
+    "categoria": "general"
   },
   {
-    "termino": "Titulación",
-    "definicion": "Ajuste gradual de la dosis de un fármaco hasta alcanzar el efecto deseado minimizando efectos adversos. Frecuente con antihipertensivos, opioides e insulina.",
-    "categoria": "enfermeria"
-  },
-  {
-    "termino": "Dilución",
-    "definicion": "Proceso de agregar un fármaco a un volumen de solución IV para su administración. La concentración final debe respetar los límites de osmolaridad y estabilidad.",
-    "categoria": "enfermeria"
-  },
-  {
-    "termino": "Bomba de infusión",
-    "definicion": "Dispositivo electrónico que administra fluidos y medicamentos IV a velocidad precisa y controlada. Indispensable para fármacos de alto riesgo y vasoactivos.",
-    "categoria": "enfermeria"
-  },
-  {
-    "termino": "Medicamento de alto riesgo",
-    "definicion": "Fármacos con mayor probabilidad de causar daño grave si se usan incorrectamente. Incluyen: insulina, opioides, anticoagulantes, electrolitos concentrados y quimioterapia.",
-    "abreviatura": "MAR",
-    "categoria": "enfermeria"
-  },
-  {
-    "termino": "Reacción de hipersensibilidad tipo I",
-    "definicion": "Reacción alérgica inmediata mediada por IgE. Incluye urticaria, broncoespasmo y anafilaxia. Aparece en minutos tras la exposición. Requiere epinefrina si es grave.",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "Citocromo P450",
-    "definicion": "Familia de enzimas hepáticas responsables del metabolismo de la mayoría de fármacos. Las isoformas principales son CYP3A4, CYP2D6, CYP2C19 y CYP1A2.",
-    "abreviatura": "CYP450",
-    "categoria": "farmacologia"
-  },
-  {
-    "termino": "QD",
-    "definicion": "Una vez al día (del latín quaque die).",
-    "abreviatura": "QD",
+    "termino": "SIRS",
+    "definicion": "Síndrome de Respuesta Inflamatoria Sistémica. Requiere ≥2 de: temperatura >38°C o <36°C, FC >90 lpm, FR >20 rpm o PaCO₂ <32 mmHg, leucocitos >12.000 o <4.000/mm³.",
+    "abreviatura": "SIRS",
     "categoria": "abreviatura"
+  },
+  {
+    "termino": "Sistema Renina-Angiotensina-Aldosterona",
+    "definicion": "Eje hormonal que regula la presión arterial y el balance hidroelectrolítico. La renina convierte angiotensinógeno en angiotensina I, que la ECA convierte en angiotensina II (vasoconstrictora). Diana de IECA y ARA-II.",
+    "abreviatura": "SRAA",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "SL",
+    "definicion": "Vía sublingual.",
+    "abreviatura": "SL",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SNG",
+    "definicion": "Sonda nasogástrica. Vía de administración de fármacos en pacientes que no pueden deglutir. Verificar compatibilidad de la forma farmacéutica.",
+    "abreviatura": "SNG",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Solución hipertónica",
+    "definicion": "Solución con osmolaridad mayor al plasma. Ejemplo: NaCl 3%. Atrae agua del espacio intracelular. Uso en hiponatremia severa.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Solución hipotónica",
+    "definicion": "Solución con osmolaridad menor al plasma. Ejemplo: Dextrosa 5%. El agua entra a las células. Contraindicada en edema cerebral.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Solución isotónica",
+    "definicion": "Solución con la misma osmolaridad que el plasma (~290 mOsm/L). Ejemplo: SF 0.9%, Ringer Lactato. No causa movimiento neto de agua.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "STAT",
+    "definicion": "Inmediatamente (del latín statim). Indica administración urgente sin demora.",
+    "abreviatura": "STAT",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "SVP",
+    "definicion": "Solución de Vía Parenteral. Solución intravenosa de mantenimiento. Puede referirse también a la vía venosa periférica canalizada.",
+    "abreviatura": "SVP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TAC/TC",
+    "definicion": "Tomografía Axial Computada / Tomografía Computada. Estudio de imagen seccional con rayos X. Indicaciones frecuentes: ACV, TEP, abdomen agudo, traumatismo.",
+    "abreviatura": "TAC/TC",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Taponamiento cardíaco",
+    "definicion": "Acumulación de líquido pericárdico que comprime las cavidades cardíacas e impide el llenado. Tríada de Beck: hipotensión, ingurgitación yugular, ruidos cardíacos apagados. Emergencia: pericardiocentesis.",
+    "categoria": "general"
+  },
+  {
+    "termino": "Taquifilaxia",
+    "definicion": "Disminución rápida de la respuesta a un fármaco tras administraciones repetidas en corto tiempo.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "TAS/TAD",
+    "definicion": "Tensión Arterial Sistólica / Tensión Arterial Diastólica. Valores de la presión arterial en mmHg. Normal: <120/80 mmHg.",
+    "abreviatura": "TAS/TAD",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TEP",
+    "definicion": "Tromboembolismo Pulmonar. Obstrucción de arterias pulmonares por trombos (usualmente de TVP de miembros inferiores). Causa de muerte prevenible más frecuente en pacientes hospitalizados.",
+    "abreviatura": "TEP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Teratogénico",
+    "definicion": "Sustancia capaz de causar malformaciones en el feto durante el embarazo. Categorías FDA: A (seguro) a X (contraindicado).",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Tercer Espacio",
+    "definicion": "Acumulación patológica de líquido en compartimientos donde normalmente hay poco (peritoneo, pleura, intersticio). No contribuye al volumen circulante efectivo. Causas: sepsis, quemaduras, posquirúrgico, hipoalbuminemia.",
+    "categoria": "general"
   },
   {
     "termino": "TFG",
@@ -282,9 +1045,65 @@
     "categoria": "abreviatura"
   },
   {
-    "termino": "SNG",
-    "definicion": "Sonda nasogástrica. Vía de administración de fármacos en pacientes que no pueden deglutir. Verificar compatibilidad de la forma farmacéutica.",
-    "abreviatura": "SNG",
+    "termino": "TID",
+    "definicion": "Tres veces al día (del latín ter in die).",
+    "abreviatura": "TID",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Titulación",
+    "definicion": "Ajuste gradual de la dosis de un fármaco hasta alcanzar el efecto deseado minimizando efectos adversos. Frecuente con antihipertensivos, opioides e insulina.",
+    "categoria": "enfermeria"
+  },
+  {
+    "termino": "Tolerancia",
+    "definicion": "Necesidad de aumentar la dosis para obtener el mismo efecto. Común con opioides y benzodiacepinas.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "TTPa",
+    "definicion": "Tiempo de tromboplastina parcial activado. Monitoriza el efecto de la heparina no fraccionada.",
+    "abreviatura": "TTPa",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "TVP",
+    "definicion": "Trombosis Venosa Profunda. Formación de trombo en venas profundas, generalmente de miembros inferiores. Riesgo de TEP. Tratar con anticoagulación.",
+    "abreviatura": "TVP",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Unión neuromuscular",
+    "definicion": "Sinapsis entre la neurona motora y la fibra muscular esquelética. El neurotransmisor es la acetilcolina (ACh). Diana de bloqueantes neuromusculares (rocuronio, succinilcolina) y anticolinesterásicos (neostigmina).",
+    "categoria": "anatomia"
+  },
+  {
+    "termino": "Ventana terapéutica",
+    "definicion": "Rango de dosis en el que un fármaco produce efecto beneficioso sin toxicidad significativa. Fármacos con ventana estrecha requieren monitorización de niveles séricos.",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "Vida media",
+    "definicion": "Tiempo necesario para que la concentración plasmática del fármaco se reduzca a la mitad. Determina la frecuencia de dosificación.",
+    "abreviatura": "t½",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "VO",
+    "definicion": "Vía oral.",
+    "abreviatura": "VO",
+    "categoria": "abreviatura"
+  },
+  {
+    "termino": "Volumen de distribución",
+    "definicion": "Volumen teórico en el que se distribuye un fármaco para alcanzar la concentración plasmática observada. Indica la extensión de distribución tisular.",
+    "abreviatura": "Vd",
+    "categoria": "farmacologia"
+  },
+  {
+    "termino": "VSG",
+    "definicion": "Velocidad de Sedimentación Globular (eritrosedimentación). Marcador inespecífico de inflamación. Se eleva en infecciones, enfermedades autoinmunes y neoplasias.",
+    "abreviatura": "VSG",
     "categoria": "abreviatura"
   }
 ]

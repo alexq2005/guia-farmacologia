@@ -4,10 +4,51 @@
     "nombre": "Hipertensión Arterial",
     "definicion": "Elevación sostenida de la presión arterial sistólica ≥140 mmHg y/o diastólica ≥90 mmHg. Factor de riesgo principal para enfermedad cardiovascular, cerebrovascular y renal.",
     "fisiopatologiaBreve": "Aumento de la resistencia vascular periférica por disfunción endotelial, activación del sistema renina-angiotensina-aldosterona (SRAA), hiperactividad simpática y retención de sodio. Genera remodelado vascular y cardíaco progresivo.",
-    "signosSintomas": ["Cefalea occipital matutina", "Mareos", "Acúfenos", "Epistaxis", "Visión borrosa", "Disnea de esfuerzo", "Asintomática en la mayoría de casos (hipertensión silenciosa)"],
-    "farmacosRelacionados": ["enalapril", "losartan", "amlodipino", "hidroclorotiazida", "propranolol", "captopril", "metoprolol", "carvedilol", "nifedipino", "clonidina", "prazosina"],
-    "cuidadosEnfermeria": ["Monitorizar PA en ambos brazos al diagnóstico", "Educar sobre toma correcta de medicación y no suspender abruptamente", "Enseñar automedición de PA en domicilio", "Promover dieta hiposódica (DASH) y ejercicio aeróbico regular", "Vigilar efectos adversos: hipotensión ortostática, tos por IECA, edema por calcioantagonistas", "Control periódico de función renal y electrolitos"],
-    "criteriosAlarma": ["PA >180/120 mmHg (emergencia hipertensiva)", "Cefalea intensa con alteración visual", "Dolor torácico o disnea súbita", "Déficit neurológico focal", "Oliguria o deterioro rápido de función renal"],
+    "signosSintomas": [
+      "Cefalea occipital matutina",
+      "Mareos",
+      "Acúfenos",
+      "Epistaxis",
+      "Visión borrosa",
+      "Disnea de esfuerzo",
+      "Asintomática en la mayoría de casos (hipertensión silenciosa)"
+    ],
+    "farmacosRelacionados": [
+      "enalapril",
+      "losartan",
+      "amlodipino",
+      "hidroclorotiazida",
+      "propranolol",
+      "captopril",
+      "metoprolol",
+      "carvedilol",
+      "nifedipino",
+      "clonidina",
+      "prazosina",
+      "labetalol",
+      "metildopa_obstetrico",
+      "hidralazina",
+      "minoxidil_oral",
+      "indapamida",
+      "clortalidona",
+      "fenoldopam",
+      "ivabradina"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorizar PA en ambos brazos al diagnóstico",
+      "Educar sobre toma correcta de medicación y no suspender abruptamente",
+      "Enseñar automedición de PA en domicilio",
+      "Promover dieta hiposódica (DASH) y ejercicio aeróbico regular",
+      "Vigilar efectos adversos: hipotensión ortostática, tos por IECA, edema por calcioantagonistas",
+      "Control periódico de función renal y electrolitos"
+    ],
+    "criteriosAlarma": [
+      "PA >180/120 mmHg (emergencia hipertensiva)",
+      "Cefalea intensa con alteración visual",
+      "Dolor torácico o disnea súbita",
+      "Déficit neurológico focal",
+      "Oliguria o deterioro rápido de función renal"
+    ],
     "categoria": "cardiovascular"
   },
   {
@@ -15,10 +56,50 @@
     "nombre": "Insuficiencia Cardíaca Congestiva",
     "definicion": "Síndrome clínico en el cual el corazón es incapaz de mantener un gasto cardíaco adecuado para las demandas metabólicas del organismo, o lo hace a expensas de presiones de llenado elevadas.",
     "fisiopatologiaBreve": "Deterioro de la función sistólica y/o diastólica ventricular. Activación compensadora del SRAA y sistema nervioso simpático que inicialmente mantiene el gasto cardíaco pero a largo plazo produce remodelado cardíaco, retención hídrica y mayor deterioro.",
-    "signosSintomas": ["Disnea de esfuerzo progresiva", "Ortopnea", "Disnea paroxística nocturna", "Edema periférico bilateral", "Ingurgitación yugular", "Fatiga y debilidad", "Aumento de peso rápido por retención hídrica", "Crepitantes pulmonares basales", "Hepatomegalia"],
-    "farmacosRelacionados": ["enalapril", "losartan", "furosemida", "espironolactona", "carvedilol", "metoprolol", "digoxina", "hidroclorotiazida"],
-    "cuidadosEnfermeria": ["Peso diario en ayunas (mismo horario)", "Balance hídrico estricto", "Restricción de sodio (<2g/día) y líquidos si hay congestión", "Monitorizar signos de congestión: edema, crepitantes, ingurgitación yugular", "Educar sobre signos de descompensación", "Posición Fowler 30-45° para disnea", "Control de potasio con diuréticos y IECA/espironolactona"],
-    "criteriosAlarma": ["Disnea en reposo o súbito empeoramiento", "Aumento de peso >2 kg en 48 horas", "Saturación O₂ <90%", "Taquicardia en reposo >120 lpm", "Hipotensión severa <90/60 mmHg", "Confusión o alteración del estado mental"],
+    "signosSintomas": [
+      "Disnea de esfuerzo progresiva",
+      "Ortopnea",
+      "Disnea paroxística nocturna",
+      "Edema periférico bilateral",
+      "Ingurgitación yugular",
+      "Fatiga y debilidad",
+      "Aumento de peso rápido por retención hídrica",
+      "Crepitantes pulmonares basales",
+      "Hepatomegalia"
+    ],
+    "farmacosRelacionados": [
+      "enalapril",
+      "losartan",
+      "furosemida",
+      "espironolactona",
+      "carvedilol",
+      "metoprolol",
+      "digoxina",
+      "hidroclorotiazida",
+      "milrinona",
+      "levosimendan",
+      "bumetanida",
+      "ivabradina",
+      "tolvaptan",
+      "amilorida"
+    ],
+    "cuidadosEnfermeria": [
+      "Peso diario en ayunas (mismo horario)",
+      "Balance hídrico estricto",
+      "Restricción de sodio (<2g/día) y líquidos si hay congestión",
+      "Monitorizar signos de congestión: edema, crepitantes, ingurgitación yugular",
+      "Educar sobre signos de descompensación",
+      "Posición Fowler 30-45° para disnea",
+      "Control de potasio con diuréticos y IECA/espironolactona"
+    ],
+    "criteriosAlarma": [
+      "Disnea en reposo o súbito empeoramiento",
+      "Aumento de peso >2 kg en 48 horas",
+      "Saturación O₂ <90%",
+      "Taquicardia en reposo >120 lpm",
+      "Hipotensión severa <90/60 mmHg",
+      "Confusión o alteración del estado mental"
+    ],
     "categoria": "cardiovascular"
   },
   {
@@ -26,10 +107,51 @@
     "nombre": "Infarto Agudo de Miocardio",
     "definicion": "Necrosis del músculo cardíaco por obstrucción aguda del flujo coronario, generalmente por ruptura de placa aterosclerótica con trombosis superpuesta.",
     "fisiopatologiaBreve": "Ruptura o erosión de placa aterosclerótica coronaria que expone el contenido lipídico al torrente sanguíneo, activando la cascada de coagulación y formando un trombo que ocluye la arteria. La isquemia prolongada (>20 min) produce necrosis irreversible del miocardio.",
-    "signosSintomas": ["Dolor torácico opresivo retroesternal irradiado a brazo izquierdo, mandíbula o espalda", "Duración >20 minutos, no cede con reposo ni nitroglicerina", "Diaforesis profusa", "Náuseas y vómitos", "Disnea", "Ansiedad intensa", "Presentación atípica en mujeres, diabéticos y ancianos"],
-    "farmacosRelacionados": ["aspirina", "clopidogrel", "heparina", "enoxaparina", "morfina", "atorvastatina", "metoprolol", "enalapril", "nitroglicerina"],
-    "cuidadosEnfermeria": ["Monitorización ECG continua y desfibrilador cercano", "Acceso IV de gran calibre", "Oxígeno si SatO₂ <90%", "Administrar aspirina 300 mg VO masticada STAT", "Reposo absoluto en cama", "Escala de dolor cada 15 minutos", "Preparar para cateterismo cardíaco/fibrinólisis", "Vigilar arritmias de reperfusión", "Apoyo emocional al paciente y familia"],
-    "criteriosAlarma": ["Dolor torácico que no cede con tratamiento", "Arritmias ventriculares (TV/FV)", "Shock cardiogénico: hipotensión + taquicardia + mala perfusión", "Signos de insuficiencia cardíaca aguda", "Bloqueo AV de alto grado"],
+    "signosSintomas": [
+      "Dolor torácico opresivo retroesternal irradiado a brazo izquierdo, mandíbula o espalda",
+      "Duración >20 minutos, no cede con reposo ni nitroglicerina",
+      "Diaforesis profusa",
+      "Náuseas y vómitos",
+      "Disnea",
+      "Ansiedad intensa",
+      "Presentación atípica en mujeres, diabéticos y ancianos"
+    ],
+    "farmacosRelacionados": [
+      "aspirina",
+      "clopidogrel",
+      "heparina",
+      "enoxaparina",
+      "morfina",
+      "atorvastatina",
+      "metoprolol",
+      "enalapril",
+      "nitroglicerina",
+      "ticagrelor",
+      "prasugrel",
+      "lidocaina_antiarritmico",
+      "ranolazina",
+      "trimetazidina",
+      "alteplasa",
+      "apixaban"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorización ECG continua y desfibrilador cercano",
+      "Acceso IV de gran calibre",
+      "Oxígeno si SatO₂ <90%",
+      "Administrar aspirina 300 mg VO masticada STAT",
+      "Reposo absoluto en cama",
+      "Escala de dolor cada 15 minutos",
+      "Preparar para cateterismo cardíaco/fibrinólisis",
+      "Vigilar arritmias de reperfusión",
+      "Apoyo emocional al paciente y familia"
+    ],
+    "criteriosAlarma": [
+      "Dolor torácico que no cede con tratamiento",
+      "Arritmias ventriculares (TV/FV)",
+      "Shock cardiogénico: hipotensión + taquicardia + mala perfusión",
+      "Signos de insuficiencia cardíaca aguda",
+      "Bloqueo AV de alto grado"
+    ],
     "categoria": "cardiovascular"
   },
   {
@@ -37,10 +159,44 @@
     "nombre": "Fibrilación Auricular",
     "definicion": "Arritmia supraventricular más frecuente, caracterizada por activación auricular desorganizada y rápida con pérdida de la contracción auricular efectiva y respuesta ventricular irregular.",
     "fisiopatologiaBreve": "Múltiples circuitos de reentrada en las aurículas generan activación eléctrica caótica (350-600/min). El nodo AV filtra los impulsos resultando en frecuencia ventricular irregular. La pérdida de la contracción auricular favorece estasis sanguínea y formación de trombos, especialmente en la orejuela izquierda.",
-    "signosSintomas": ["Palpitaciones irregulares", "Pulso irregular en frecuencia y amplitud", "Disnea de esfuerzo", "Mareos o presíncope", "Fatiga", "Puede ser asintomática", "Dolor torácico"],
-    "farmacosRelacionados": ["warfarina", "rivaroxaban", "dabigatran", "digoxina", "metoprolol", "verapamilo", "diltiazem", "amiodarona"],
-    "cuidadosEnfermeria": ["Monitorización ECG continua", "Valorar pulso apical durante 1 minuto completo", "Administrar anticoagulación según escala CHA₂DS₂-VASc", "Control de frecuencia cardíaca (objetivo <110 lpm en reposo)", "Vigilar signos de embolia: déficit neurológico, dolor en extremidades", "Educar sobre anticoagulación: interacciones, signos de sangrado", "INR cada 4-6 semanas si usa warfarina"],
-    "criteriosAlarma": ["FC >150 lpm con inestabilidad hemodinámica", "Signos de ACV: déficit neurológico súbito", "Sangrado activo con anticoagulación", "Síncope", "Dolor torácico isquémico"],
+    "signosSintomas": [
+      "Palpitaciones irregulares",
+      "Pulso irregular en frecuencia y amplitud",
+      "Disnea de esfuerzo",
+      "Mareos o presíncope",
+      "Fatiga",
+      "Puede ser asintomática",
+      "Dolor torácico"
+    ],
+    "farmacosRelacionados": [
+      "warfarina",
+      "rivaroxaban",
+      "dabigatran",
+      "digoxina",
+      "metoprolol",
+      "verapamilo",
+      "diltiazem",
+      "amiodarona",
+      "flecainida",
+      "propafenona",
+      "sotalol"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorización ECG continua",
+      "Valorar pulso apical durante 1 minuto completo",
+      "Administrar anticoagulación según escala CHA₂DS₂-VASc",
+      "Control de frecuencia cardíaca (objetivo <110 lpm en reposo)",
+      "Vigilar signos de embolia: déficit neurológico, dolor en extremidades",
+      "Educar sobre anticoagulación: interacciones, signos de sangrado",
+      "INR cada 4-6 semanas si usa warfarina"
+    ],
+    "criteriosAlarma": [
+      "FC >150 lpm con inestabilidad hemodinámica",
+      "Signos de ACV: déficit neurológico súbito",
+      "Sangrado activo con anticoagulación",
+      "Síncope",
+      "Dolor torácico isquémico"
+    ],
     "categoria": "cardiovascular"
   },
   {
@@ -48,10 +204,45 @@
     "nombre": "Trombosis Venosa Profunda",
     "definicion": "Formación de un trombo en el sistema venoso profundo, generalmente de miembros inferiores. Principal riesgo: embolismo pulmonar.",
     "fisiopatologiaBreve": "Tríada de Virchow: estasis venosa, daño endotelial e hipercoagulabilidad. La inmovilización, cirugía, embarazo o trombofilias favorecen la formación de trombos que pueden desprenderse y migrar a la circulación pulmonar.",
-    "signosSintomas": ["Edema unilateral de miembro inferior", "Dolor en pantorrilla que aumenta con dorsiflexión (signo de Homans)", "Aumento de temperatura local", "Eritema", "Empastamiento muscular", "Dilatación de venas superficiales", "Puede ser asintomática"],
-    "farmacosRelacionados": ["heparina", "enoxaparina", "warfarina", "rivaroxaban", "dabigatran"],
-    "cuidadosEnfermeria": ["Reposo en cama con elevación del miembro afectado", "NO masajear ni comprimir el miembro afectado", "Administrar anticoagulación según protocolo", "Medir circunferencia de ambas pantorrillas", "Vigilar signos de TEP: disnea súbita, dolor torácico, taquicardia", "Medias de compresión elástica tras fase aguda", "Control de coagulación: TTPa para heparina, INR para warfarina", "Evaluar riesgo de sangrado"],
-    "criteriosAlarma": ["Disnea súbita (sospecha de TEP)", "Dolor torácico pleurítico", "Cianosis del miembro (phlegmasia cerulea dolens)", "Sangrado activo con anticoagulación", "Taquicardia e hipotensión"],
+    "signosSintomas": [
+      "Edema unilateral de miembro inferior",
+      "Dolor en pantorrilla que aumenta con dorsiflexión (signo de Homans)",
+      "Aumento de temperatura local",
+      "Eritema",
+      "Empastamiento muscular",
+      "Dilatación de venas superficiales",
+      "Puede ser asintomática"
+    ],
+    "farmacosRelacionados": [
+      "heparina",
+      "enoxaparina",
+      "warfarina",
+      "rivaroxaban",
+      "dabigatran",
+      "ticagrelor",
+      "prasugrel",
+      "apixaban",
+      "fondaparinux",
+      "acenocumarol",
+      "alteplasa"
+    ],
+    "cuidadosEnfermeria": [
+      "Reposo en cama con elevación del miembro afectado",
+      "NO masajear ni comprimir el miembro afectado",
+      "Administrar anticoagulación según protocolo",
+      "Medir circunferencia de ambas pantorrillas",
+      "Vigilar signos de TEP: disnea súbita, dolor torácico, taquicardia",
+      "Medias de compresión elástica tras fase aguda",
+      "Control de coagulación: TTPa para heparina, INR para warfarina",
+      "Evaluar riesgo de sangrado"
+    ],
+    "criteriosAlarma": [
+      "Disnea súbita (sospecha de TEP)",
+      "Dolor torácico pleurítico",
+      "Cianosis del miembro (phlegmasia cerulea dolens)",
+      "Sangrado activo con anticoagulación",
+      "Taquicardia e hipotensión"
+    ],
     "categoria": "cardiovascular"
   },
   {
@@ -59,10 +250,53 @@
     "nombre": "Enfermedad Pulmonar Obstructiva Crónica",
     "definicion": "Enfermedad respiratoria crónica prevenible y tratable caracterizada por limitación persistente del flujo aéreo, generalmente progresiva y asociada a respuesta inflamatoria crónica de las vías aéreas.",
     "fisiopatologiaBreve": "Inflamación crónica por inhalación de partículas nocivas (principalmente tabaco) que produce bronquitis crónica (inflamación y exceso de moco) y enfisema (destrucción alveolar). El resultado es obstrucción al flujo aéreo no completamente reversible con hiperinsuflación pulmonar.",
-    "signosSintomas": ["Disnea progresiva, inicialmente de esfuerzo", "Tos crónica productiva", "Expectoración mucosa o purulenta", "Sibilancias", "Tórax en tonel (hiperinsuflación)", "Uso de musculatura accesoria", "Cianosis en fases avanzadas", "Disminución de ruidos respiratorios"],
-    "farmacosRelacionados": ["salbutamol", "ipratropio", "beclometasona", "fluticasona", "aminofilina", "prednisona", "azitromicina"],
-    "cuidadosEnfermeria": ["Enseñar técnica correcta de inhaladores", "Fisioterapia respiratoria y drenaje postural", "Oxigenoterapia controlada (objetivo SatO₂ 88-92%)", "Posición Fowler para facilitar ventilación", "Educación sobre cesación tabáquica", "Plan de acción para exacerbaciones", "Vacunación antigripal y antineumocócica", "Ejercicios de respiración con labios fruncidos"],
-    "criteriosAlarma": ["Disnea severa en reposo", "SatO₂ <88% con oxígeno suplementario", "Taquipnea >30 rpm", "Alteración del estado de conciencia (hipercapnia)", "Fiebre >38.5°C con esputo purulento", "Cianosis central"],
+    "signosSintomas": [
+      "Disnea progresiva, inicialmente de esfuerzo",
+      "Tos crónica productiva",
+      "Expectoración mucosa o purulenta",
+      "Sibilancias",
+      "Tórax en tonel (hiperinsuflación)",
+      "Uso de musculatura accesoria",
+      "Cianosis en fases avanzadas",
+      "Disminución de ruidos respiratorios"
+    ],
+    "farmacosRelacionados": [
+      "salbutamol",
+      "ipratropio",
+      "beclometasona",
+      "fluticasona",
+      "aminofilina",
+      "prednisona",
+      "azitromicina",
+      "tiotropio",
+      "formoterol",
+      "salmeterol",
+      "teofilina",
+      "fenoterol",
+      "fluticasona_salmeterol",
+      "budesonida_formoterol",
+      "bromhexina",
+      "ambroxol",
+      "oxigeno_medicinal"
+    ],
+    "cuidadosEnfermeria": [
+      "Enseñar técnica correcta de inhaladores",
+      "Fisioterapia respiratoria y drenaje postural",
+      "Oxigenoterapia controlada (objetivo SatO₂ 88-92%)",
+      "Posición Fowler para facilitar ventilación",
+      "Educación sobre cesación tabáquica",
+      "Plan de acción para exacerbaciones",
+      "Vacunación antigripal y antineumocócica",
+      "Ejercicios de respiración con labios fruncidos"
+    ],
+    "criteriosAlarma": [
+      "Disnea severa en reposo",
+      "SatO₂ <88% con oxígeno suplementario",
+      "Taquipnea >30 rpm",
+      "Alteración del estado de conciencia (hipercapnia)",
+      "Fiebre >38.5°C con esputo purulento",
+      "Cianosis central"
+    ],
     "categoria": "respiratorio"
   },
   {
@@ -70,10 +304,53 @@
     "nombre": "Asma Bronquial",
     "definicion": "Enfermedad inflamatoria crónica de las vías aéreas con hiperreactividad bronquial y obstrucción reversible del flujo aéreo, manifestada por episodios recurrentes de sibilancias, disnea y tos.",
     "fisiopatologiaBreve": "Inflamación eosinofílica crónica de las vías aéreas que produce broncoespasmo, edema de mucosa e hipersecreción de moco. Los desencadenantes (alérgenos, ejercicio, infecciones, aire frío) provocan episodios agudos de obstrucción bronquial reversible.",
-    "signosSintomas": ["Sibilancias espiratorias", "Disnea episódica", "Tos seca, especialmente nocturna", "Opresión torácica", "Empeoramiento con ejercicio, aire frío o alérgenos", "Taquipnea durante crisis", "Uso de musculatura accesoria en crisis severas"],
-    "farmacosRelacionados": ["salbutamol", "ipratropio", "beclometasona", "fluticasona", "montelukast", "prednisona", "aminofilina", "hidrocortisona_sistemica"],
-    "cuidadosEnfermeria": ["Evaluar con peak flow y clasificar gravedad de crisis", "Enseñar técnica de inhaladores con espaciador", "Diferenciar inhalador de rescate (SABA) vs. controlador (corticoide)", "Identificar y evitar desencadenantes", "Plan de acción escrito para crisis (semáforo)", "Posición sentada inclinada hacia adelante en crisis", "Monitorizar SatO₂ y frecuencia respiratoria", "Educar sobre enjuague bucal tras corticoides inhalados"],
-    "criteriosAlarma": ["Habla entrecortada o incapacidad para hablar", "SatO₂ <90%", "Silencio auscultatorio (tórax silente)", "Cianosis", "Peak flow <33% del mejor personal", "Alteración del nivel de conciencia", "No responde a salbutamol tras 3 nebulizaciones"],
+    "signosSintomas": [
+      "Sibilancias espiratorias",
+      "Disnea episódica",
+      "Tos seca, especialmente nocturna",
+      "Opresión torácica",
+      "Empeoramiento con ejercicio, aire frío o alérgenos",
+      "Taquipnea durante crisis",
+      "Uso de musculatura accesoria en crisis severas"
+    ],
+    "farmacosRelacionados": [
+      "salbutamol",
+      "ipratropio",
+      "beclometasona",
+      "fluticasona",
+      "montelukast",
+      "prednisona",
+      "aminofilina",
+      "hidrocortisona_sistemica",
+      "tiotropio",
+      "formoterol",
+      "salmeterol",
+      "fenoterol",
+      "fluticasona_salmeterol",
+      "budesonida_formoterol",
+      "cromoglicato",
+      "fexofenadina",
+      "desloratadina"
+    ],
+    "cuidadosEnfermeria": [
+      "Evaluar con peak flow y clasificar gravedad de crisis",
+      "Enseñar técnica de inhaladores con espaciador",
+      "Diferenciar inhalador de rescate (SABA) vs. controlador (corticoide)",
+      "Identificar y evitar desencadenantes",
+      "Plan de acción escrito para crisis (semáforo)",
+      "Posición sentada inclinada hacia adelante en crisis",
+      "Monitorizar SatO₂ y frecuencia respiratoria",
+      "Educar sobre enjuague bucal tras corticoides inhalados"
+    ],
+    "criteriosAlarma": [
+      "Habla entrecortada o incapacidad para hablar",
+      "SatO₂ <90%",
+      "Silencio auscultatorio (tórax silente)",
+      "Cianosis",
+      "Peak flow <33% del mejor personal",
+      "Alteración del nivel de conciencia",
+      "No responde a salbutamol tras 3 nebulizaciones"
+    ],
     "categoria": "respiratorio"
   },
   {
@@ -81,10 +358,45 @@
     "nombre": "Neumonía Adquirida en Comunidad",
     "definicion": "Infección aguda del parénquima pulmonar adquirida fuera del ambiente hospitalario, causada principalmente por bacterias (S. pneumoniae, H. influenzae), virus o atípicos.",
     "fisiopatologiaBreve": "Microorganismos alcanzan el alvéolo por microaspiración o inhalación, superando los mecanismos de defensa. Producen inflamación alveolar con exudado que llena los espacios aéreos (consolidación), alterando el intercambio gaseoso.",
-    "signosSintomas": ["Fiebre >38°C con escalofríos", "Tos productiva con esputo purulento o herrumbroso", "Disnea", "Dolor torácico pleurítico", "Taquipnea", "Crepitantes y soplo tubárico a la auscultación", "Malestar general", "Confusión en ancianos"],
-    "farmacosRelacionados": ["amoxicilina", "azitromicina", "ceftriaxona", "levofloxacino", "ampicilina", "paracetamol"],
-    "cuidadosEnfermeria": ["Monitorización de signos vitales cada 4 horas", "Oxigenoterapia si SatO₂ <92%", "Hidratación adecuada (oral o IV)", "Fisioterapia respiratoria y drenaje postural", "Recolectar esputo para cultivo ANTES de iniciar antibiótico", "Administrar antibiótico en las primeras horas", "Posición semi-Fowler", "Aislamiento respiratorio si se sospecha TB o influenza"],
-    "criteriosAlarma": ["SatO₂ <90% con oxígeno", "PA sistólica <90 mmHg", "Frecuencia respiratoria >30 rpm", "Confusión mental (criterios CURB-65 ≥3)", "Derrame pleural significativo", "Deterioro radiológico rápido"],
+    "signosSintomas": [
+      "Fiebre >38°C con escalofríos",
+      "Tos productiva con esputo purulento o herrumbroso",
+      "Disnea",
+      "Dolor torácico pleurítico",
+      "Taquipnea",
+      "Crepitantes y soplo tubárico a la auscultación",
+      "Malestar general",
+      "Confusión en ancianos"
+    ],
+    "farmacosRelacionados": [
+      "amoxicilina",
+      "azitromicina",
+      "ceftriaxona",
+      "levofloxacino",
+      "ampicilina",
+      "paracetamol",
+      "cefuroxima",
+      "moxifloxacino",
+      "claritromicina"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorización de signos vitales cada 4 horas",
+      "Oxigenoterapia si SatO₂ <92%",
+      "Hidratación adecuada (oral o IV)",
+      "Fisioterapia respiratoria y drenaje postural",
+      "Recolectar esputo para cultivo ANTES de iniciar antibiótico",
+      "Administrar antibiótico en las primeras horas",
+      "Posición semi-Fowler",
+      "Aislamiento respiratorio si se sospecha TB o influenza"
+    ],
+    "criteriosAlarma": [
+      "SatO₂ <90% con oxígeno",
+      "PA sistólica <90 mmHg",
+      "Frecuencia respiratoria >30 rpm",
+      "Confusión mental (criterios CURB-65 ≥3)",
+      "Derrame pleural significativo",
+      "Deterioro radiológico rápido"
+    ],
     "categoria": "respiratorio"
   },
   {
@@ -92,10 +404,46 @@
     "nombre": "Tromboembolismo Pulmonar",
     "definicion": "Obstrucción de una o más arterias pulmonares por trombos que generalmente provienen del sistema venoso profundo de miembros inferiores. Emergencia cardiovascular potencialmente mortal.",
     "fisiopatologiaBreve": "Un trombo desprendido del sistema venoso profundo viaja por la vena cava inferior y cavidades derechas hasta impactar en la arteria pulmonar. Produce aumento agudo de la resistencia vascular pulmonar, sobrecarga del ventrículo derecho, y alteración de la relación ventilación/perfusión con hipoxemia.",
-    "signosSintomas": ["Disnea súbita", "Dolor torácico pleurítico", "Taquipnea", "Taquicardia", "Hemoptisis", "Síncope en TEP masivo", "Hipotensión en TEP masivo", "Ingurgitación yugular", "Cianosis"],
-    "farmacosRelacionados": ["heparina", "enoxaparina", "warfarina", "rivaroxaban"],
-    "cuidadosEnfermeria": ["Monitorización continua: ECG, SatO₂, PA", "Oxigenoterapia alto flujo", "Acceso IV de gran calibre", "Anticoagulación inmediata con heparina IV o HBPM", "Reposo absoluto en cama", "Elevar cabecera 30-45°", "Preparar para angioTAC urgente", "Preparar fibrinolíticos si TEP masivo con shock", "Valorar signos de sangrado con anticoagulación"],
-    "criteriosAlarma": ["Hipotensión <90 mmHg (TEP masivo)", "Shock obstructivo", "Paro cardiorrespiratorio", "SatO₂ <85% con oxígeno", "Deterioro del nivel de conciencia", "Signos de fallo del ventrículo derecho"],
+    "signosSintomas": [
+      "Disnea súbita",
+      "Dolor torácico pleurítico",
+      "Taquipnea",
+      "Taquicardia",
+      "Hemoptisis",
+      "Síncope en TEP masivo",
+      "Hipotensión en TEP masivo",
+      "Ingurgitación yugular",
+      "Cianosis"
+    ],
+    "farmacosRelacionados": [
+      "heparina",
+      "enoxaparina",
+      "warfarina",
+      "rivaroxaban",
+      "apixaban",
+      "fondaparinux",
+      "alteplasa",
+      "acenocumarol"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorización continua: ECG, SatO₂, PA",
+      "Oxigenoterapia alto flujo",
+      "Acceso IV de gran calibre",
+      "Anticoagulación inmediata con heparina IV o HBPM",
+      "Reposo absoluto en cama",
+      "Elevar cabecera 30-45°",
+      "Preparar para angioTAC urgente",
+      "Preparar fibrinolíticos si TEP masivo con shock",
+      "Valorar signos de sangrado con anticoagulación"
+    ],
+    "criteriosAlarma": [
+      "Hipotensión <90 mmHg (TEP masivo)",
+      "Shock obstructivo",
+      "Paro cardiorrespiratorio",
+      "SatO₂ <85% con oxígeno",
+      "Deterioro del nivel de conciencia",
+      "Signos de fallo del ventrículo derecho"
+    ],
     "categoria": "respiratorio"
   },
   {
@@ -103,10 +451,44 @@
     "nombre": "Síndrome de Dificultad Respiratoria Aguda",
     "definicion": "Forma grave de insuficiencia respiratoria aguda caracterizada por edema pulmonar no cardiogénico, infiltrados bilaterales y hipoxemia refractaria. Mortalidad 30-50%.",
     "fisiopatologiaBreve": "Daño alveolar difuso por activación de neutrófilos y cascada inflamatoria que destruye la membrana alvéolo-capilar. Produce edema pulmonar rico en proteínas, colapso alveolar, formación de membranas hialinas y fibrosis progresiva. Resultado: cortocircuito intrapulmonar con hipoxemia refractaria.",
-    "signosSintomas": ["Disnea severa de inicio agudo (24-72h tras injuria)", "Hipoxemia refractaria a oxígeno (PaO₂/FiO₂ <300)", "Taquipnea >30 rpm", "Crepitantes bilaterales difusos", "Uso de musculatura accesoria", "Cianosis", "Infiltrados bilaterales en radiografía sin evidencia de ICC"],
-    "farmacosRelacionados": ["hidrocortisona_sistemica", "metilprednisolona", "cisatracurio", "fentanilo", "propofol", "dexmedetomidina"],
-    "cuidadosEnfermeria": ["Ventilación mecánica protectora (Vt 6 mL/kg peso ideal)", "Posición prono 12-16 horas/día", "Monitorización hemodinámica invasiva", "Balance hídrico restrictivo", "Sedación y analgesia adecuada", "Prevención de neumonía asociada a ventilador (cabecera 30°, higiene oral)", "Monitorización de gasometría arterial frecuente", "Cuidados de tubo endotraqueal y circuito"],
-    "criteriosAlarma": ["PaO₂/FiO₂ <100 (SDRA severo)", "Necesidad de FiO₂ >80% mantenida", "Neumotórax por barotrauma", "Inestabilidad hemodinámica", "Fracaso multiorgánico", "Acidosis metabólica severa"],
+    "signosSintomas": [
+      "Disnea severa de inicio agudo (24-72h tras injuria)",
+      "Hipoxemia refractaria a oxígeno (PaO₂/FiO₂ <300)",
+      "Taquipnea >30 rpm",
+      "Crepitantes bilaterales difusos",
+      "Uso de musculatura accesoria",
+      "Cianosis",
+      "Infiltrados bilaterales en radiografía sin evidencia de ICC"
+    ],
+    "farmacosRelacionados": [
+      "hidrocortisona_sistemica",
+      "metilprednisolona",
+      "cisatracurio",
+      "fentanilo",
+      "propofol",
+      "dexmedetomidina",
+      "solucion_fisiologica",
+      "ringer_lactato",
+      "albumina_humana"
+    ],
+    "cuidadosEnfermeria": [
+      "Ventilación mecánica protectora (Vt 6 mL/kg peso ideal)",
+      "Posición prono 12-16 horas/día",
+      "Monitorización hemodinámica invasiva",
+      "Balance hídrico restrictivo",
+      "Sedación y analgesia adecuada",
+      "Prevención de neumonía asociada a ventilador (cabecera 30°, higiene oral)",
+      "Monitorización de gasometría arterial frecuente",
+      "Cuidados de tubo endotraqueal y circuito"
+    ],
+    "criteriosAlarma": [
+      "PaO₂/FiO₂ <100 (SDRA severo)",
+      "Necesidad de FiO₂ >80% mantenida",
+      "Neumotórax por barotrauma",
+      "Inestabilidad hemodinámica",
+      "Fracaso multiorgánico",
+      "Acidosis metabólica severa"
+    ],
     "categoria": "respiratorio"
   },
   {
@@ -114,10 +496,43 @@
     "nombre": "Accidente Cerebrovascular Isquémico",
     "definicion": "Déficit neurológico focal de inicio súbito causado por oclusión de una arteria cerebral con isquemia y necrosis del tejido cerebral irrigado. Emergencia neurológica: 'tiempo es cerebro'.",
     "fisiopatologiaBreve": "Oclusión arterial (trombótica o embólica) interrumpe el flujo sanguíneo cerebral. El tejido central (core) sufre necrosis rápida, rodeado por una zona de penumbra isquémica potencialmente recuperable si se restablece el flujo en las primeras horas (ventana terapéutica).",
-    "signosSintomas": ["Déficit neurológico focal de inicio súbito", "Hemiparesia o hemiplejia", "Afasia (dificultad del habla)", "Desviación de comisura labial", "Pérdida de visión hemianóptica", "Disartria", "Ataxia", "Alteración del nivel de conciencia"],
-    "farmacosRelacionados": ["aspirina", "clopidogrel", "heparina", "enoxaparina", "atorvastatina", "enalapril", "losartan"],
-    "cuidadosEnfermeria": ["Activar código ictus: escala NIHSS y hora de inicio", "Control estricto de PA (no reducir agresivamente en fase aguda)", "Glucemia: mantener 140-180 mg/dL", "Cabecera a 0-30° según protocolo", "Evaluación neurológica frecuente (pupilas, Glasgow, fuerza)", "Prevenir broncoaspiración: NPO hasta evaluar deglución", "Vigilar signos de transformación hemorrágica", "Movilización precoz y prevención de TVP"],
-    "criteriosAlarma": ["Deterioro neurológico: caída de Glasgow ≥2 puntos", "Midriasis unilateral (herniación)", "Crisis convulsiva", "PA >220/120 mmHg o caída brusca", "Vómito en proyectil (hipertensión intracraneal)", "Fiebre >38°C en primeras 24h"],
+    "signosSintomas": [
+      "Déficit neurológico focal de inicio súbito",
+      "Hemiparesia o hemiplejia",
+      "Afasia (dificultad del habla)",
+      "Desviación de comisura labial",
+      "Pérdida de visión hemianóptica",
+      "Disartria",
+      "Ataxia",
+      "Alteración del nivel de conciencia"
+    ],
+    "farmacosRelacionados": [
+      "aspirina",
+      "clopidogrel",
+      "heparina",
+      "enoxaparina",
+      "atorvastatina",
+      "enalapril",
+      "losartan"
+    ],
+    "cuidadosEnfermeria": [
+      "Activar código ictus: escala NIHSS y hora de inicio",
+      "Control estricto de PA (no reducir agresivamente en fase aguda)",
+      "Glucemia: mantener 140-180 mg/dL",
+      "Cabecera a 0-30° según protocolo",
+      "Evaluación neurológica frecuente (pupilas, Glasgow, fuerza)",
+      "Prevenir broncoaspiración: NPO hasta evaluar deglución",
+      "Vigilar signos de transformación hemorrágica",
+      "Movilización precoz y prevención de TVP"
+    ],
+    "criteriosAlarma": [
+      "Deterioro neurológico: caída de Glasgow ≥2 puntos",
+      "Midriasis unilateral (herniación)",
+      "Crisis convulsiva",
+      "PA >220/120 mmHg o caída brusca",
+      "Vómito en proyectil (hipertensión intracraneal)",
+      "Fiebre >38°C en primeras 24h"
+    ],
     "categoria": "neurologico"
   },
   {
@@ -125,10 +540,44 @@
     "nombre": "Epilepsia",
     "definicion": "Trastorno neurológico crónico caracterizado por predisposición persistente a generar crisis epilépticas recurrentes, con consecuencias cognitivas, psicológicas y sociales.",
     "fisiopatologiaBreve": "Desequilibrio entre neurotransmisión excitadora (glutamato) e inhibidora (GABA) que produce descargas neuronales sincrónicas, excesivas y anormales. Puede ser focal (un hemisferio) o generalizada (ambos hemisferios), con múltiples etiologías: genética, estructural, metabólica, infecciosa.",
-    "signosSintomas": ["Crisis tónico-clónicas generalizadas: pérdida de conciencia, rigidez, sacudidas", "Crisis focales: movimientos involuntarios, parestesias, aura", "Ausencias: desconexión breve del entorno", "Automatismos: chupeteo, deambulación", "Estado postictal: confusión, somnolencia, cefalea", "Relajación de esfínteres durante la crisis"],
-    "farmacosRelacionados": ["fenitoina", "carbamazepina", "acido_valproico", "levetiracetam", "lamotrigina", "topiramato", "fenobarbital", "diazepam", "clonazepam", "gabapentina"],
-    "cuidadosEnfermeria": ["Durante crisis: proteger de lesiones, lateralizar, NO introducir objetos en boca", "Registrar: hora inicio, duración, tipo de movimientos, estado postictal", "Administrar antiepilépticos según horario estricto (nunca omitir dosis)", "Monitorizar niveles séricos de fenitoína, carbamazepina, ácido valproico", "Educar sobre desencadenantes: privación de sueño, alcohol, estrés, luces intermitentes", "Evaluar adherencia al tratamiento", "Seguridad: restricciones para conducir, nadar solo, trabajar en alturas"],
-    "criteriosAlarma": ["Status epiléptico: crisis >5 min o crisis repetidas sin recuperación", "Traumatismo craneal durante crisis", "Cianosis durante la crisis", "Primera crisis en adulto (descartar causa secundaria)", "Crisis en embarazada", "Deterioro cognitivo progresivo"],
+    "signosSintomas": [
+      "Crisis tónico-clónicas generalizadas: pérdida de conciencia, rigidez, sacudidas",
+      "Crisis focales: movimientos involuntarios, parestesias, aura",
+      "Ausencias: desconexión breve del entorno",
+      "Automatismos: chupeteo, deambulación",
+      "Estado postictal: confusión, somnolencia, cefalea",
+      "Relajación de esfínteres durante la crisis"
+    ],
+    "farmacosRelacionados": [
+      "fenitoina",
+      "carbamazepina",
+      "acido_valproico",
+      "levetiracetam",
+      "lamotrigina",
+      "topiramato",
+      "fenobarbital",
+      "diazepam",
+      "clonazepam",
+      "gabapentina",
+      "oxcarbazepina"
+    ],
+    "cuidadosEnfermeria": [
+      "Durante crisis: proteger de lesiones, lateralizar, NO introducir objetos en boca",
+      "Registrar: hora inicio, duración, tipo de movimientos, estado postictal",
+      "Administrar antiepilépticos según horario estricto (nunca omitir dosis)",
+      "Monitorizar niveles séricos de fenitoína, carbamazepina, ácido valproico",
+      "Educar sobre desencadenantes: privación de sueño, alcohol, estrés, luces intermitentes",
+      "Evaluar adherencia al tratamiento",
+      "Seguridad: restricciones para conducir, nadar solo, trabajar en alturas"
+    ],
+    "criteriosAlarma": [
+      "Status epiléptico: crisis >5 min o crisis repetidas sin recuperación",
+      "Traumatismo craneal durante crisis",
+      "Cianosis durante la crisis",
+      "Primera crisis en adulto (descartar causa secundaria)",
+      "Crisis en embarazada",
+      "Deterioro cognitivo progresivo"
+    ],
     "categoria": "neurologico"
   },
   {
@@ -136,10 +585,43 @@
     "nombre": "Meningitis Bacteriana",
     "definicion": "Inflamación aguda de las meninges causada por infección bacteriana. Emergencia médica con alta mortalidad sin tratamiento oportuno.",
     "fisiopatologiaBreve": "Bacterias (N. meningitidis, S. pneumoniae, H. influenzae) alcanzan el espacio subaracnoideo por vía hematógena o directa. La respuesta inflamatoria produce edema cerebral, aumento de presión intracraneal y daño del tejido nervioso por citoquinas y radicales libres.",
-    "signosSintomas": ["Cefalea intensa", "Fiebre alta", "Rigidez de nuca (meningismo)", "Signo de Kernig y Brudzinski positivos", "Fotofobia", "Náuseas y vómitos", "Alteración del nivel de conciencia", "Petequias/púrpura (meningococo)", "Crisis convulsivas"],
-    "farmacosRelacionados": ["ceftriaxona", "ampicilina", "vancomicina", "dexametasona", "diazepam", "paracetamol"],
-    "cuidadosEnfermeria": ["Antibioticoterapia INMEDIATA (no demorar por punción lumbar)", "Aislamiento de gotas 24h tras inicio de antibióticos", "Vigilancia neurológica frecuente: Glasgow, pupilas", "Monitorizar signos de hipertensión intracraneal", "Ambiente tranquilo y oscurecido (fotofobia)", "Balance hídrico y control de electrolitos (SIADH)", "Profilaxis de contactos cercanos (rifampicina o ciprofloxacino)", "Dexametasona antes o con primera dosis de antibiótico"],
-    "criteriosAlarma": ["Glasgow ≤8 (proteger vía aérea)", "Crisis convulsivas refractarias", "Signos de herniación: anisocoria, postura de descerebración", "CID: sangrado por múltiples sitios", "Shock séptico", "Rash purpúrico extenso (meningococemia)"],
+    "signosSintomas": [
+      "Cefalea intensa",
+      "Fiebre alta",
+      "Rigidez de nuca (meningismo)",
+      "Signo de Kernig y Brudzinski positivos",
+      "Fotofobia",
+      "Náuseas y vómitos",
+      "Alteración del nivel de conciencia",
+      "Petequias/púrpura (meningococo)",
+      "Crisis convulsivas"
+    ],
+    "farmacosRelacionados": [
+      "ceftriaxona",
+      "ampicilina",
+      "vancomicina",
+      "dexametasona",
+      "diazepam",
+      "paracetamol"
+    ],
+    "cuidadosEnfermeria": [
+      "Antibioticoterapia INMEDIATA (no demorar por punción lumbar)",
+      "Aislamiento de gotas 24h tras inicio de antibióticos",
+      "Vigilancia neurológica frecuente: Glasgow, pupilas",
+      "Monitorizar signos de hipertensión intracraneal",
+      "Ambiente tranquilo y oscurecido (fotofobia)",
+      "Balance hídrico y control de electrolitos (SIADH)",
+      "Profilaxis de contactos cercanos (rifampicina o ciprofloxacino)",
+      "Dexametasona antes o con primera dosis de antibiótico"
+    ],
+    "criteriosAlarma": [
+      "Glasgow ≤8 (proteger vía aérea)",
+      "Crisis convulsivas refractarias",
+      "Signos de herniación: anisocoria, postura de descerebración",
+      "CID: sangrado por múltiples sitios",
+      "Shock séptico",
+      "Rash purpúrico extenso (meningococemia)"
+    ],
     "categoria": "neurologico"
   },
   {
@@ -147,10 +629,42 @@
     "nombre": "Migraña",
     "definicion": "Cefalea primaria recurrente de intensidad moderada a severa, generalmente unilateral y pulsátil, asociada a náuseas, fotofobia y fonofobia, con o sin aura.",
     "fisiopatologiaBreve": "Activación del sistema trigeminovascular con liberación de CGRP y sustancia P que produce vasodilatación, inflamación neurógena y sensibilización periférica y central. El aura se debe a depresión cortical propagada.",
-    "signosSintomas": ["Cefalea unilateral pulsátil (4-72 horas)", "Náuseas y/o vómitos", "Fotofobia y fonofobia", "Aura visual: escotomas, líneas zigzagueantes (30% de pacientes)", "Empeora con actividad física", "Pródromos: irritabilidad, bostezos, antojos"],
-    "farmacosRelacionados": ["sumatriptan", "ibuprofeno", "naproxeno", "paracetamol", "metoclopramida", "amitriptilina", "propranolol", "acido_valproico", "topiramato"],
-    "cuidadosEnfermeria": ["Ambiente oscuro y silencioso durante crisis", "Administrar analgesia al inicio del dolor (no esperar)", "Triptanes: contraindicados en enfermedad cardiovascular", "Registrar diario de cefaleas: frecuencia, intensidad, desencadenantes", "Educación sobre desencadenantes: estrés, alimentos, cambios hormonales, ayuno", "Evaluar necesidad de tratamiento preventivo si >4 crisis/mes", "Enseñar diferencia entre tratamiento abortivo y preventivo"],
-    "criteriosAlarma": ["Primera cefalea severa en >50 años (descartar HSA)", "Cefalea 'la peor de mi vida' (thunder-clap)", "Cefalea con fiebre y rigidez de nuca (meningitis)", "Déficit neurológico focal persistente", "Cefalea progresiva que no responde a tratamiento habitual", "Cambio en el patrón habitual de cefalea"],
+    "signosSintomas": [
+      "Cefalea unilateral pulsátil (4-72 horas)",
+      "Náuseas y/o vómitos",
+      "Fotofobia y fonofobia",
+      "Aura visual: escotomas, líneas zigzagueantes (30% de pacientes)",
+      "Empeora con actividad física",
+      "Pródromos: irritabilidad, bostezos, antojos"
+    ],
+    "farmacosRelacionados": [
+      "sumatriptan",
+      "ibuprofeno",
+      "naproxeno",
+      "paracetamol",
+      "metoclopramida",
+      "amitriptilina",
+      "propranolol",
+      "acido_valproico",
+      "topiramato"
+    ],
+    "cuidadosEnfermeria": [
+      "Ambiente oscuro y silencioso durante crisis",
+      "Administrar analgesia al inicio del dolor (no esperar)",
+      "Triptanes: contraindicados en enfermedad cardiovascular",
+      "Registrar diario de cefaleas: frecuencia, intensidad, desencadenantes",
+      "Educación sobre desencadenantes: estrés, alimentos, cambios hormonales, ayuno",
+      "Evaluar necesidad de tratamiento preventivo si >4 crisis/mes",
+      "Enseñar diferencia entre tratamiento abortivo y preventivo"
+    ],
+    "criteriosAlarma": [
+      "Primera cefalea severa en >50 años (descartar HSA)",
+      "Cefalea 'la peor de mi vida' (thunder-clap)",
+      "Cefalea con fiebre y rigidez de nuca (meningitis)",
+      "Déficit neurológico focal persistente",
+      "Cefalea progresiva que no responde a tratamiento habitual",
+      "Cambio en el patrón habitual de cefalea"
+    ],
     "categoria": "neurologico"
   },
   {
@@ -158,10 +672,46 @@
     "nombre": "Enfermedad de Parkinson",
     "definicion": "Enfermedad neurodegenerativa progresiva causada por la pérdida de neuronas dopaminérgicas en la sustancia negra del mesencéfalo, con depósitos de alfa-sinucleína (cuerpos de Lewy).",
     "fisiopatologiaBreve": "Degeneración progresiva de neuronas dopaminérgicas de la vía nigroestriatal. El déficit de dopamina en los ganglios basales produce desequilibrio entre vías directa (facilitadora) e indirecta (inhibitoria) del movimiento, resultando en los síntomas motores cardinales.",
-    "signosSintomas": ["Temblor de reposo ('contar monedas')", "Bradicinesia (lentitud de movimientos)", "Rigidez en 'rueda dentada'", "Inestabilidad postural", "Marcha festinante (pasos cortos y rápidos)", "Facies inexpresiva (hipomimia)", "Micrografía", "Depresión y deterioro cognitivo en fases avanzadas"],
-    "farmacosRelacionados": ["biperideno", "amitriptilina", "clonazepam", "quetiapina", "sertralina"],
-    "cuidadosEnfermeria": ["Administrar levodopa 30 min antes de comidas para mejor absorción", "Horario estricto de medicación (fluctuaciones motoras on-off)", "Prevención de caídas: ambiente seguro, barras, iluminación", "Ejercicio y fisioterapia para mantener movilidad", "Valorar deglución (riesgo de broncoaspiración)", "Vigilar efectos adversos: discinesias, hipotensión ortostática, alucinaciones", "Evaluar estado anímico (depresión frecuente)", "Nunca suspender abruptamente la medicación"],
-    "criteriosAlarma": ["Rigidez extrema con fiebre (síndrome neuroléptico maligno por suspensión)", "Disfagia severa con riesgo de aspiración", "Alucinaciones o psicosis", "Caídas frecuentes con traumatismos", "Inmovilidad completa", "Retención urinaria aguda"],
+    "signosSintomas": [
+      "Temblor de reposo ('contar monedas')",
+      "Bradicinesia (lentitud de movimientos)",
+      "Rigidez en 'rueda dentada'",
+      "Inestabilidad postural",
+      "Marcha festinante (pasos cortos y rápidos)",
+      "Facies inexpresiva (hipomimia)",
+      "Micrografía",
+      "Depresión y deterioro cognitivo en fases avanzadas"
+    ],
+    "farmacosRelacionados": [
+      "biperideno",
+      "amitriptilina",
+      "clonazepam",
+      "quetiapina",
+      "sertralina",
+      "pramipexol",
+      "rotigotina",
+      "entacapona",
+      "selegilina",
+      "rasagilina"
+    ],
+    "cuidadosEnfermeria": [
+      "Administrar levodopa 30 min antes de comidas para mejor absorción",
+      "Horario estricto de medicación (fluctuaciones motoras on-off)",
+      "Prevención de caídas: ambiente seguro, barras, iluminación",
+      "Ejercicio y fisioterapia para mantener movilidad",
+      "Valorar deglución (riesgo de broncoaspiración)",
+      "Vigilar efectos adversos: discinesias, hipotensión ortostática, alucinaciones",
+      "Evaluar estado anímico (depresión frecuente)",
+      "Nunca suspender abruptamente la medicación"
+    ],
+    "criteriosAlarma": [
+      "Rigidez extrema con fiebre (síndrome neuroléptico maligno por suspensión)",
+      "Disfagia severa con riesgo de aspiración",
+      "Alucinaciones o psicosis",
+      "Caídas frecuentes con traumatismos",
+      "Inmovilidad completa",
+      "Retención urinaria aguda"
+    ],
     "categoria": "neurologico"
   },
   {
@@ -169,10 +719,43 @@
     "nombre": "Úlcera Péptica",
     "definicion": "Pérdida de sustancia de la mucosa gastrointestinal que se extiende más allá de la muscular de la mucosa, causada principalmente por H. pylori y AINEs.",
     "fisiopatologiaBreve": "Desequilibrio entre factores agresivos (ácido clorhídrico, pepsina, H. pylori, AINEs) y defensivos (moco, bicarbonato, prostaglandinas, flujo sanguíneo mucoso). H. pylori produce ureasa y toxinas que dañan la mucosa; los AINEs inhiben las prostaglandinas protectoras.",
-    "signosSintomas": ["Dolor epigástrico urente o sordo", "Úlcera gástrica: dolor con las comidas", "Úlcera duodenal: dolor en ayunas, mejora con alimentos", "Náuseas", "Sensación de plenitud", "Pirosis", "Puede ser asintomática hasta complicarse"],
-    "farmacosRelacionados": ["omeprazol", "pantoprazol", "ranitidina", "sucralfato", "amoxicilina", "metronidazol", "bismuto_subsalicilato"],
-    "cuidadosEnfermeria": ["Administrar IBP en ayunas 30 min antes del desayuno", "Si esquema de erradicación de H. pylori: asegurar adherencia a los 3-4 fármacos", "Educar sobre evitar AINEs, alcohol, tabaco y cafeína", "Vigilar signos de sangrado: melena, hematemesis, palidez", "Dieta sin irritantes durante fase aguda", "Control de dolor con escala EVA", "Si sonda nasogástrica: verificar aspirado (sangre)"],
-    "criteriosAlarma": ["Hematemesis o melena (sangrado digestivo)", "Dolor abdominal súbito e intenso (perforación)", "Abdomen en tabla (peritonitis)", "Hipotensión y taquicardia (shock hipovolémico)", "Vómitos persistentes (obstrucción pilórica)"],
+    "signosSintomas": [
+      "Dolor epigástrico urente o sordo",
+      "Úlcera gástrica: dolor con las comidas",
+      "Úlcera duodenal: dolor en ayunas, mejora con alimentos",
+      "Náuseas",
+      "Sensación de plenitud",
+      "Pirosis",
+      "Puede ser asintomática hasta complicarse"
+    ],
+    "farmacosRelacionados": [
+      "omeprazol",
+      "pantoprazol",
+      "ranitidina",
+      "sucralfato",
+      "amoxicilina",
+      "metronidazol",
+      "bismuto_subsalicilato",
+      "esomeprazol",
+      "lansoprazol",
+      "famotidina"
+    ],
+    "cuidadosEnfermeria": [
+      "Administrar IBP en ayunas 30 min antes del desayuno",
+      "Si esquema de erradicación de H. pylori: asegurar adherencia a los 3-4 fármacos",
+      "Educar sobre evitar AINEs, alcohol, tabaco y cafeína",
+      "Vigilar signos de sangrado: melena, hematemesis, palidez",
+      "Dieta sin irritantes durante fase aguda",
+      "Control de dolor con escala EVA",
+      "Si sonda nasogástrica: verificar aspirado (sangre)"
+    ],
+    "criteriosAlarma": [
+      "Hematemesis o melena (sangrado digestivo)",
+      "Dolor abdominal súbito e intenso (perforación)",
+      "Abdomen en tabla (peritonitis)",
+      "Hipotensión y taquicardia (shock hipovolémico)",
+      "Vómitos persistentes (obstrucción pilórica)"
+    ],
     "categoria": "gastrointestinal"
   },
   {
@@ -180,10 +763,44 @@
     "nombre": "Cirrosis Hepática",
     "definicion": "Etapa final de enfermedad hepática crónica caracterizada por fibrosis difusa, formación de nódulos de regeneración y alteración de la arquitectura hepática con pérdida progresiva de función.",
     "fisiopatologiaBreve": "Daño hepático crónico (alcohol, hepatitis viral, esteatosis) activa células estrelladas que producen colágeno excesivo. La fibrosis distorsiona la arquitectura lobular, crea nódulos de regeneración y aumenta la resistencia al flujo portal (hipertensión portal). La pérdida de hepatocitos funcionales compromete síntesis, metabolismo y detoxificación.",
-    "signosSintomas": ["Ascitis", "Ictericia", "Encefalopatía hepática (confusión, asterixis)", "Várices esofágicas", "Esplenomegalia", "Edema de miembros inferiores", "Eritema palmar", "Arañas vasculares", "Ginecomastia", "Coagulopatía (equimosis fáciles)"],
-    "farmacosRelacionados": ["furosemida", "espironolactona", "lactulosa", "propranolol", "vitamina_k"],
-    "cuidadosEnfermeria": ["Peso y perímetro abdominal diarios (ascitis)", "Restricción de sodio (<2g/día) y líquidos si hiponatremia", "Vigilar signos de encefalopatía: confusión, asterixis, inversión del sueño", "Administrar lactulosa para 2-3 deposiciones blandas/día", "Evaluar sangrado: INR, plaquetas, signos de sangrado", "Dieta hiperproteica (1.2-1.5 g/kg) salvo encefalopatía grado III-IV", "Prevención de infecciones (peritonitis bacteriana espontánea)", "Vigilar función renal (síndrome hepatorrenal)"],
-    "criteriosAlarma": ["Hematemesis masiva (várices esofágicas rotas)", "Encefalopatía hepática grado III-IV (estupor, coma)", "Peritonitis bacteriana espontánea: fiebre, dolor abdominal, ascitis", "Síndrome hepatorrenal: oliguria, creatinina en aumento", "INR >2.5 con sangrado activo"],
+    "signosSintomas": [
+      "Ascitis",
+      "Ictericia",
+      "Encefalopatía hepática (confusión, asterixis)",
+      "Várices esofágicas",
+      "Esplenomegalia",
+      "Edema de miembros inferiores",
+      "Eritema palmar",
+      "Arañas vasculares",
+      "Ginecomastia",
+      "Coagulopatía (equimosis fáciles)"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "espironolactona",
+      "lactulosa",
+      "propranolol",
+      "vitamina_k",
+      "acido_ursodeoxicolico",
+      "silimarina"
+    ],
+    "cuidadosEnfermeria": [
+      "Peso y perímetro abdominal diarios (ascitis)",
+      "Restricción de sodio (<2g/día) y líquidos si hiponatremia",
+      "Vigilar signos de encefalopatía: confusión, asterixis, inversión del sueño",
+      "Administrar lactulosa para 2-3 deposiciones blandas/día",
+      "Evaluar sangrado: INR, plaquetas, signos de sangrado",
+      "Dieta hiperproteica (1.2-1.5 g/kg) salvo encefalopatía grado III-IV",
+      "Prevención de infecciones (peritonitis bacteriana espontánea)",
+      "Vigilar función renal (síndrome hepatorrenal)"
+    ],
+    "criteriosAlarma": [
+      "Hematemesis masiva (várices esofágicas rotas)",
+      "Encefalopatía hepática grado III-IV (estupor, coma)",
+      "Peritonitis bacteriana espontánea: fiebre, dolor abdominal, ascitis",
+      "Síndrome hepatorrenal: oliguria, creatinina en aumento",
+      "INR >2.5 con sangrado activo"
+    ],
     "categoria": "gastrointestinal"
   },
   {
@@ -191,10 +808,42 @@
     "nombre": "Pancreatitis Aguda",
     "definicion": "Inflamación aguda del páncreas por activación prematura de enzimas pancreáticas que producen autodigestión del órgano. Causas principales: litiasis biliar y alcohol.",
     "fisiopatologiaBreve": "La obstrucción del conducto pancreático (cálculo biliar) o el daño celular directo (alcohol) activan prematuramente el tripsinógeno a tripsina dentro del páncreas. La tripsina activa otras enzimas (elastasa, fosfolipasa) que digieren el tejido pancreático, produciendo inflamación local y respuesta inflamatoria sistémica que puede llevar a fallo multiorgánico.",
-    "signosSintomas": ["Dolor epigástrico intenso en 'cinturón' irradiado a espalda", "Náuseas y vómitos", "Distensión abdominal", "Íleo paralítico", "Fiebre", "Taquicardia", "Signo de Cullen (equimosis periumbilical) en formas graves", "Signo de Grey Turner (equimosis en flancos) en formas graves"],
-    "farmacosRelacionados": ["morfina", "tramadol", "pantoprazol", "metoclopramida", "meropenem"],
-    "cuidadosEnfermeria": ["NPO inicial (reposo pancreático)", "Analgesia efectiva (dolor intenso): opioides si necesario", "Hidratación IV agresiva (cristaloides, Ringer Lactato)", "Sonda nasogástrica si vómitos persistentes o íleo", "Monitorización estricta: SV, diuresis, Glasgow", "Control de amilasa, lipasa y calcio sérico", "Reiniciar alimentación oral gradual cuando tolere", "Posición Fowler para aliviar dolor"],
-    "criteriosAlarma": ["Criterios de Ranson ≥3 o APACHE II >8 (gravedad)", "Hipocalcemia <7 mg/dL", "Oliguria <0.5 mL/kg/h (fallo renal)", "SatO₂ <90% (SDRA)", "Fiebre >39°C persistente (necrosis infectada)", "Shock: hipotensión + taquicardia + mala perfusión"],
+    "signosSintomas": [
+      "Dolor epigástrico intenso en 'cinturón' irradiado a espalda",
+      "Náuseas y vómitos",
+      "Distensión abdominal",
+      "Íleo paralítico",
+      "Fiebre",
+      "Taquicardia",
+      "Signo de Cullen (equimosis periumbilical) en formas graves",
+      "Signo de Grey Turner (equimosis en flancos) en formas graves"
+    ],
+    "farmacosRelacionados": [
+      "morfina",
+      "tramadol",
+      "pantoprazol",
+      "metoclopramida",
+      "meropenem",
+      "pancreatina"
+    ],
+    "cuidadosEnfermeria": [
+      "NPO inicial (reposo pancreático)",
+      "Analgesia efectiva (dolor intenso): opioides si necesario",
+      "Hidratación IV agresiva (cristaloides, Ringer Lactato)",
+      "Sonda nasogástrica si vómitos persistentes o íleo",
+      "Monitorización estricta: SV, diuresis, Glasgow",
+      "Control de amilasa, lipasa y calcio sérico",
+      "Reiniciar alimentación oral gradual cuando tolere",
+      "Posición Fowler para aliviar dolor"
+    ],
+    "criteriosAlarma": [
+      "Criterios de Ranson ≥3 o APACHE II >8 (gravedad)",
+      "Hipocalcemia <7 mg/dL",
+      "Oliguria <0.5 mL/kg/h (fallo renal)",
+      "SatO₂ <90% (SDRA)",
+      "Fiebre >39°C persistente (necrosis infectada)",
+      "Shock: hipotensión + taquicardia + mala perfusión"
+    ],
     "categoria": "gastrointestinal"
   },
   {
@@ -202,10 +851,43 @@
     "nombre": "Enfermedad Inflamatoria Intestinal",
     "definicion": "Grupo de trastornos inflamatorios crónicos del tracto gastrointestinal que incluye la enfermedad de Crohn (cualquier segmento, transmural) y la colitis ulcerosa (colon, limitada a mucosa).",
     "fisiopatologiaBreve": "Respuesta inmune desregulada contra la flora intestinal en individuos genéticamente susceptibles. En Crohn: inflamación transmural granulomatosa, puede afectar cualquier segmento del tubo digestivo. En colitis ulcerosa: inflamación superficial continua limitada al colon, iniciando desde el recto.",
-    "signosSintomas": ["Diarrea crónica (sanguinolenta en colitis ulcerosa)", "Dolor abdominal cólico", "Urgencia defecatoria y tenesmo", "Pérdida de peso", "Fiebre", "Fatiga", "Crohn: fístulas, abscesos, estenosis", "Manifestaciones extraintestinales: artritis, uveítis, eritema nodoso"],
-    "farmacosRelacionados": ["prednisona", "metilprednisolona", "azatioprina", "metotrexato", "trimetoprima_sulfametoxazol", "metronidazol"],
-    "cuidadosEnfermeria": ["Control de frecuencia y características de deposiciones", "Evaluación nutricional y suplementación (hierro, B12, folato)", "Cuidados perianales si hay fístulas o diarrea frecuente", "Vigilar efectos de inmunosupresores: infecciones, leucopenia", "Educar sobre brotes y remisiones: reconocer signos de exacerbación", "Apoyo psicológico (enfermedad crónica en jóvenes)", "Screening de cáncer colorrectal (colitis ulcerosa >8 años)"],
-    "criteriosAlarma": ["Megacolon tóxico: distensión >6cm, fiebre, taquicardia", "Hemorragia digestiva masiva", "Perforación intestinal: dolor agudo, abdomen en tabla", "Obstrucción intestinal: vómitos, ausencia de gases", "Sepsis por absceso abdominal"],
+    "signosSintomas": [
+      "Diarrea crónica (sanguinolenta en colitis ulcerosa)",
+      "Dolor abdominal cólico",
+      "Urgencia defecatoria y tenesmo",
+      "Pérdida de peso",
+      "Fiebre",
+      "Fatiga",
+      "Crohn: fístulas, abscesos, estenosis",
+      "Manifestaciones extraintestinales: artritis, uveítis, eritema nodoso"
+    ],
+    "farmacosRelacionados": [
+      "prednisona",
+      "metilprednisolona",
+      "azatioprina",
+      "metotrexato",
+      "trimetoprima_sulfametoxazol",
+      "metronidazol",
+      "mesalazina",
+      "sulfasalazina",
+      "budesonida_oral"
+    ],
+    "cuidadosEnfermeria": [
+      "Control de frecuencia y características de deposiciones",
+      "Evaluación nutricional y suplementación (hierro, B12, folato)",
+      "Cuidados perianales si hay fístulas o diarrea frecuente",
+      "Vigilar efectos de inmunosupresores: infecciones, leucopenia",
+      "Educar sobre brotes y remisiones: reconocer signos de exacerbación",
+      "Apoyo psicológico (enfermedad crónica en jóvenes)",
+      "Screening de cáncer colorrectal (colitis ulcerosa >8 años)"
+    ],
+    "criteriosAlarma": [
+      "Megacolon tóxico: distensión >6cm, fiebre, taquicardia",
+      "Hemorragia digestiva masiva",
+      "Perforación intestinal: dolor agudo, abdomen en tabla",
+      "Obstrucción intestinal: vómitos, ausencia de gases",
+      "Sepsis por absceso abdominal"
+    ],
     "categoria": "gastrointestinal"
   },
   {
@@ -213,10 +895,44 @@
     "nombre": "Hemorragia Digestiva",
     "definicion": "Sangrado del tracto gastrointestinal, clasificado como alto (proximal al ángulo de Treitz: esófago, estómago, duodeno) o bajo (distal al Treitz). Urgencia médica frecuente.",
     "fisiopatologiaBreve": "En HDA: ruptura de várices esofágicas, erosión de úlcera péptica sobre vaso arterial, o lesión de Mallory-Weiss. En HDB: divertículos, angiodisplasia, pólipos o neoplasias. La pérdida de volumen intravascular puede llevar a shock hipovolémico.",
-    "signosSintomas": ["HDA: hematemesis (vómito con sangre roja o en 'poso de café')", "HDA: melena (heces negras, alquitranadas, malolientes)", "HDB: hematoquecia (sangre roja por recto)", "Taquicardia", "Hipotensión", "Palidez", "Mareos", "Síncope", "Oliguria"],
-    "farmacosRelacionados": ["omeprazol", "pantoprazol", "vasopresina", "vitamina_k"],
-    "cuidadosEnfermeria": ["2 accesos IV de grueso calibre", "Reposición de volumen con cristaloides", "Tipificación y pruebas cruzadas urgentes", "Monitorización hemodinámica continua", "Sonda nasogástrica para lavado en HDA", "Control de diuresis horaria (objetivo >0.5 mL/kg/h)", "NPO y preparar para endoscopia urgente", "Transfusión si Hb <7 g/dL (o <9 en cardiópatas)", "Registrar características y cantidad de sangrado"],
-    "criteriosAlarma": ["Shock hipovolémico: PA <90, FC >120, mala perfusión", "Hematemesis masiva o sangrado continuo", "Necesidad de >6 unidades de hematíes", "Caída de hemoglobina >2 g/dL en pocas horas", "Resangrado tras tratamiento endoscópico"],
+    "signosSintomas": [
+      "HDA: hematemesis (vómito con sangre roja o en 'poso de café')",
+      "HDA: melena (heces negras, alquitranadas, malolientes)",
+      "HDB: hematoquecia (sangre roja por recto)",
+      "Taquicardia",
+      "Hipotensión",
+      "Palidez",
+      "Mareos",
+      "Síncope",
+      "Oliguria"
+    ],
+    "farmacosRelacionados": [
+      "omeprazol",
+      "pantoprazol",
+      "vasopresina",
+      "vitamina_k",
+      "esomeprazol",
+      "lansoprazol",
+      "famotidina"
+    ],
+    "cuidadosEnfermeria": [
+      "2 accesos IV de grueso calibre",
+      "Reposición de volumen con cristaloides",
+      "Tipificación y pruebas cruzadas urgentes",
+      "Monitorización hemodinámica continua",
+      "Sonda nasogástrica para lavado en HDA",
+      "Control de diuresis horaria (objetivo >0.5 mL/kg/h)",
+      "NPO y preparar para endoscopia urgente",
+      "Transfusión si Hb <7 g/dL (o <9 en cardiópatas)",
+      "Registrar características y cantidad de sangrado"
+    ],
+    "criteriosAlarma": [
+      "Shock hipovolémico: PA <90, FC >120, mala perfusión",
+      "Hematemesis masiva o sangrado continuo",
+      "Necesidad de >6 unidades de hematíes",
+      "Caída de hemoglobina >2 g/dL en pocas horas",
+      "Resangrado tras tratamiento endoscópico"
+    ],
     "categoria": "gastrointestinal"
   },
   {
@@ -224,10 +940,39 @@
     "nombre": "Diabetes Mellitus Tipo 1",
     "definicion": "Enfermedad autoinmune en la que la destrucción de las células beta del páncreas produce deficiencia absoluta de insulina. Requiere insulinoterapia de por vida.",
     "fisiopatologiaBreve": "Destrucción autoinmune mediada por linfocitos T de las células beta de los islotes de Langerhans. Los anticuerpos (anti-GAD, anti-IA2, anti-insulina) están presentes antes de la manifestación clínica. Cuando se destruye >80-90% de las células beta, aparece hiperglucemia por ausencia total de insulina.",
-    "signosSintomas": ["Polidipsia (sed excesiva)", "Poliuria", "Polifagia con pérdida de peso", "Fatiga", "Visión borrosa", "Debut frecuente con cetoacidosis diabética", "Inicio generalmente en niños y jóvenes"],
-    "farmacosRelacionados": ["insulina_nph", "insulina_glargina", "insulina_lispro"],
-    "cuidadosEnfermeria": ["Educación sobre automonitoreo de glucemia capilar", "Enseñar técnica de inyección de insulina: rotación de sitios, ángulo, conservación", "Reconocimiento y manejo de hipoglucemia: regla de los 15", "Esquema insulínico basal-bolo: ajuste según glucemias", "Conteo de carbohidratos", "Cuidado de pies y prevención de complicaciones", "Monitorización de HbA1c cada 3 meses (objetivo <7%)", "Detección de cetosis: tiras reactivas en orina"],
-    "criteriosAlarma": ["Cetoacidosis diabética: glucemia >250, cetonas +, acidosis", "Hipoglucemia severa: glucemia <54, convulsiones o pérdida de conciencia", "Hiperglucemia >500 mg/dL", "Signos de deshidratación severa", "Dolor abdominal intenso (cetoacidosis)"],
+    "signosSintomas": [
+      "Polidipsia (sed excesiva)",
+      "Poliuria",
+      "Polifagia con pérdida de peso",
+      "Fatiga",
+      "Visión borrosa",
+      "Debut frecuente con cetoacidosis diabética",
+      "Inicio generalmente en niños y jóvenes"
+    ],
+    "farmacosRelacionados": [
+      "insulina_nph",
+      "insulina_glargina",
+      "insulina_lispro",
+      "insulina_detemir",
+      "insulina_aspart"
+    ],
+    "cuidadosEnfermeria": [
+      "Educación sobre automonitoreo de glucemia capilar",
+      "Enseñar técnica de inyección de insulina: rotación de sitios, ángulo, conservación",
+      "Reconocimiento y manejo de hipoglucemia: regla de los 15",
+      "Esquema insulínico basal-bolo: ajuste según glucemias",
+      "Conteo de carbohidratos",
+      "Cuidado de pies y prevención de complicaciones",
+      "Monitorización de HbA1c cada 3 meses (objetivo <7%)",
+      "Detección de cetosis: tiras reactivas en orina"
+    ],
+    "criteriosAlarma": [
+      "Cetoacidosis diabética: glucemia >250, cetonas +, acidosis",
+      "Hipoglucemia severa: glucemia <54, convulsiones o pérdida de conciencia",
+      "Hiperglucemia >500 mg/dL",
+      "Signos de deshidratación severa",
+      "Dolor abdominal intenso (cetoacidosis)"
+    ],
     "categoria": "endocrino"
   },
   {
@@ -235,10 +980,52 @@
     "nombre": "Diabetes Mellitus Tipo 2",
     "definicion": "Trastorno metabólico crónico caracterizado por resistencia a la insulina y deficiencia relativa de secreción de insulina, con hiperglucemia resultante. Representa >90% de los casos de diabetes.",
     "fisiopatologiaBreve": "Resistencia periférica a la acción de la insulina (músculo, hígado, tejido adiposo) combinada con disfunción progresiva de la célula beta pancreática. Inicialmente el páncreas compensa con hiperinsulinemia, pero con el tiempo la célula beta se agota. La obesidad visceral y el sedentarismo son factores clave.",
-    "signosSintomas": ["Frecuentemente asintomática en etapas iniciales", "Polidipsia y poliuria leves", "Acantosis nigricans", "Infecciones recurrentes (candidiasis, ITU)", "Visión borrosa", "Parestesias en pies", "Heridas de lenta cicatrización", "Fatiga"],
-    "farmacosRelacionados": ["metformina", "glibenclamida", "sitagliptina", "empagliflozina", "insulina_nph", "insulina_glargina", "insulina_lispro"],
-    "cuidadosEnfermeria": ["Educación sobre dieta y ejercicio (piedra angular del tratamiento)", "Automonitoreo de glucemia", "Administración correcta de antidiabéticos orales: metformina con alimentos", "Vigilar hipoglucemia con sulfonilureas e insulina", "Cuidado de pies: inspección diaria, calzado adecuado, corte de uñas", "Screening anual de complicaciones: fondo de ojo, microalbuminuria, pies", "HbA1c cada 3-6 meses (objetivo <7%)", "Manejo integral de riesgo cardiovascular"],
-    "criteriosAlarma": ["Estado hiperosmolar hiperglucémico: glucemia >600, deshidratación severa", "Hipoglucemia severa <54 mg/dL", "Pie diabético infectado con signos sistémicos", "Deterioro rápido de función renal", "Pérdida súbita de visión"],
+    "signosSintomas": [
+      "Frecuentemente asintomática en etapas iniciales",
+      "Polidipsia y poliuria leves",
+      "Acantosis nigricans",
+      "Infecciones recurrentes (candidiasis, ITU)",
+      "Visión borrosa",
+      "Parestesias en pies",
+      "Heridas de lenta cicatrización",
+      "Fatiga"
+    ],
+    "farmacosRelacionados": [
+      "metformina",
+      "glibenclamida",
+      "sitagliptina",
+      "empagliflozina",
+      "insulina_nph",
+      "insulina_glargina",
+      "insulina_lispro",
+      "dapagliflozina",
+      "liraglutida",
+      "semaglutida",
+      "pioglitazona",
+      "acarbosa",
+      "glimepirida",
+      "gliclazida",
+      "canagliflozina",
+      "linagliptina",
+      "vildagliptina"
+    ],
+    "cuidadosEnfermeria": [
+      "Educación sobre dieta y ejercicio (piedra angular del tratamiento)",
+      "Automonitoreo de glucemia",
+      "Administración correcta de antidiabéticos orales: metformina con alimentos",
+      "Vigilar hipoglucemia con sulfonilureas e insulina",
+      "Cuidado de pies: inspección diaria, calzado adecuado, corte de uñas",
+      "Screening anual de complicaciones: fondo de ojo, microalbuminuria, pies",
+      "HbA1c cada 3-6 meses (objetivo <7%)",
+      "Manejo integral de riesgo cardiovascular"
+    ],
+    "criteriosAlarma": [
+      "Estado hiperosmolar hiperglucémico: glucemia >600, deshidratación severa",
+      "Hipoglucemia severa <54 mg/dL",
+      "Pie diabético infectado con signos sistémicos",
+      "Deterioro rápido de función renal",
+      "Pérdida súbita de visión"
+    ],
     "categoria": "endocrino"
   },
   {
@@ -246,10 +1033,39 @@
     "nombre": "Hipotiroidismo",
     "definicion": "Déficit de hormonas tiroideas que produce disminución generalizada del metabolismo. Causa más frecuente: tiroiditis de Hashimoto (autoinmune).",
     "fisiopatologiaBreve": "Producción insuficiente de T3 y T4 por la glándula tiroides (primario) o por déficit de TSH hipofisaria (secundario). La falta de hormonas tiroideas reduce la tasa metabólica basal de todos los tejidos, afectando el consumo de oxígeno, la termogénesis y múltiples funciones orgánicas.",
-    "signosSintomas": ["Fatiga y debilidad", "Intolerancia al frío", "Aumento de peso", "Estreñimiento", "Piel seca y cabello quebradizo", "Bradicardia", "Edema facial y palpebral", "Voz ronca", "Reflejos osteotendinosos lentos", "Depresión", "Alteraciones menstruales"],
-    "farmacosRelacionados": ["levotiroxina"],
-    "cuidadosEnfermeria": ["Levotiroxina en ayunas, 30-60 min antes del desayuno", "No tomar con calcio, hierro, antiácidos ni fibra (espaciar 4 horas)", "Inicio con dosis bajas en ancianos y cardiópatas (riesgo de arritmia)", "Control de TSH cada 6-8 semanas al inicio, luego cada 6-12 meses", "Educar: es tratamiento de por vida, no suspender", "Vigilar signos de sobredosis: taquicardia, temblor, insomnio, pérdida de peso", "Evaluar interacciones: warfarina (aumenta efecto), digoxina"],
-    "criteriosAlarma": ["Coma mixedematoso: hipotermia, bradicardia, hipotensión, estupor", "Bradicardia severa <40 lpm", "Hiponatremia severa", "Derrame pericárdico", "Depresión respiratoria"],
+    "signosSintomas": [
+      "Fatiga y debilidad",
+      "Intolerancia al frío",
+      "Aumento de peso",
+      "Estreñimiento",
+      "Piel seca y cabello quebradizo",
+      "Bradicardia",
+      "Edema facial y palpebral",
+      "Voz ronca",
+      "Reflejos osteotendinosos lentos",
+      "Depresión",
+      "Alteraciones menstruales"
+    ],
+    "farmacosRelacionados": [
+      "levotiroxina",
+      "propiltiouracilo"
+    ],
+    "cuidadosEnfermeria": [
+      "Levotiroxina en ayunas, 30-60 min antes del desayuno",
+      "No tomar con calcio, hierro, antiácidos ni fibra (espaciar 4 horas)",
+      "Inicio con dosis bajas en ancianos y cardiópatas (riesgo de arritmia)",
+      "Control de TSH cada 6-8 semanas al inicio, luego cada 6-12 meses",
+      "Educar: es tratamiento de por vida, no suspender",
+      "Vigilar signos de sobredosis: taquicardia, temblor, insomnio, pérdida de peso",
+      "Evaluar interacciones: warfarina (aumenta efecto), digoxina"
+    ],
+    "criteriosAlarma": [
+      "Coma mixedematoso: hipotermia, bradicardia, hipotensión, estupor",
+      "Bradicardia severa <40 lpm",
+      "Hiponatremia severa",
+      "Derrame pericárdico",
+      "Depresión respiratoria"
+    ],
     "categoria": "endocrino"
   },
   {
@@ -257,10 +1073,40 @@
     "nombre": "Hipertiroidismo",
     "definicion": "Exceso de hormonas tiroideas que produce hipermetabolismo generalizado. Causa más frecuente: enfermedad de Graves (autoinmune con anticuerpos estimuladores del receptor de TSH).",
     "fisiopatologiaBreve": "Producción excesiva de T3 y T4 que aumenta la tasa metabólica basal. En Graves, anticuerpos anti-receptor de TSH (TRAb) estimulan continuamente la tiroides. El hipermetabolismo afecta todos los sistemas: cardiovascular (taquicardia, arritmias), nervioso (ansiedad, temblor), digestivo (hiperperistaltismo) y óseo (osteoporosis).",
-    "signosSintomas": ["Taquicardia y palpitaciones", "Pérdida de peso con apetito aumentado", "Temblor fino", "Intolerancia al calor y diaforesis", "Ansiedad e irritabilidad", "Exoftalmos (Graves)", "Bocio", "Diarrea", "Debilidad muscular proximal", "Fibrilación auricular"],
-    "farmacosRelacionados": ["metimazol", "propranolol"],
-    "cuidadosEnfermeria": ["Monitorizar FC y ritmo cardíaco", "Ambiente fresco, ropa ligera", "Dieta hipercalórica hasta normalizar peso", "Vigilar reacciones adversas del metimazol: agranulocitosis (fiebre, odinofagia)", "Educar: consultar inmediatamente si fiebre con odinofagia", "Hemograma basal y periódico con antitiroideos", "Cuidados oculares si exoftalmos: lágrimas artificiales, elevar cabecera", "Preparar para cirugía o yodo radioactivo si indicado"],
-    "criteriosAlarma": ["Tormenta tiroidea: fiebre >40°C, taquicardia severa, delirium, ICC", "Agranulocitosis por antitiroideos: fiebre + infección", "FA de alta respuesta ventricular", "ICC descompensada", "Compresión traqueal por bocio masivo"],
+    "signosSintomas": [
+      "Taquicardia y palpitaciones",
+      "Pérdida de peso con apetito aumentado",
+      "Temblor fino",
+      "Intolerancia al calor y diaforesis",
+      "Ansiedad e irritabilidad",
+      "Exoftalmos (Graves)",
+      "Bocio",
+      "Diarrea",
+      "Debilidad muscular proximal",
+      "Fibrilación auricular"
+    ],
+    "farmacosRelacionados": [
+      "metimazol",
+      "propranolol",
+      "propiltiouracilo"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorizar FC y ritmo cardíaco",
+      "Ambiente fresco, ropa ligera",
+      "Dieta hipercalórica hasta normalizar peso",
+      "Vigilar reacciones adversas del metimazol: agranulocitosis (fiebre, odinofagia)",
+      "Educar: consultar inmediatamente si fiebre con odinofagia",
+      "Hemograma basal y periódico con antitiroideos",
+      "Cuidados oculares si exoftalmos: lágrimas artificiales, elevar cabecera",
+      "Preparar para cirugía o yodo radioactivo si indicado"
+    ],
+    "criteriosAlarma": [
+      "Tormenta tiroidea: fiebre >40°C, taquicardia severa, delirium, ICC",
+      "Agranulocitosis por antitiroideos: fiebre + infección",
+      "FA de alta respuesta ventricular",
+      "ICC descompensada",
+      "Compresión traqueal por bocio masivo"
+    ],
     "categoria": "endocrino"
   },
   {
@@ -268,10 +1114,44 @@
     "nombre": "Cetoacidosis Diabética",
     "definicion": "Emergencia metabólica aguda de la diabetes, caracterizada por hiperglucemia (>250 mg/dL), cetosis y acidosis metabólica (pH <7.30). Más frecuente en DM tipo 1.",
     "fisiopatologiaBreve": "Déficit absoluto o relativo de insulina con exceso de hormonas contrarreguladoras (glucagón, cortisol, catecolaminas). Sin insulina, la glucosa no entra a las células y el organismo utiliza ácidos grasos como combustible, produciendo cuerpos cetónicos (acetoacetato, beta-hidroxibutirato) que causan acidosis metabólica con anion gap elevado.",
-    "signosSintomas": ["Poliuria y polidipsia", "Náuseas y vómitos", "Dolor abdominal difuso", "Deshidratación severa", "Respiración de Kussmaul (rápida y profunda)", "Aliento cetónico (manzanas)", "Taquicardia", "Hipotensión", "Confusión o coma"],
-    "farmacosRelacionados": ["insulina_lispro", "insulina_nph", "potasio_cloruro"],
-    "cuidadosEnfermeria": ["Hidratación IV agresiva: SF 0.9% 1-1.5L en primera hora", "Insulina IV en infusión continua (0.1 UI/kg/h)", "Control de glucemia capilar cada hora", "Control de potasio ANTES de iniciar insulina (no dar insulina si K <3.3)", "Reposición de potasio según niveles", "Monitorización de gasometría cada 2-4 horas", "Control de diuresis horaria", "Cambiar a SG5% + insulina cuando glucemia <250 mg/dL", "Buscar factor desencadenante: infección, omisión de insulina"],
-    "criteriosAlarma": ["pH <7.0 (cetoacidosis severa)", "Potasio <3.3 o >6.0 mEq/L", "Alteración del nivel de conciencia", "Edema cerebral (más frecuente en niños)", "Shock hipovolémico", "Potasio que no corrige con reposición"],
+    "signosSintomas": [
+      "Poliuria y polidipsia",
+      "Náuseas y vómitos",
+      "Dolor abdominal difuso",
+      "Deshidratación severa",
+      "Respiración de Kussmaul (rápida y profunda)",
+      "Aliento cetónico (manzanas)",
+      "Taquicardia",
+      "Hipotensión",
+      "Confusión o coma"
+    ],
+    "farmacosRelacionados": [
+      "insulina_lispro",
+      "insulina_nph",
+      "potasio_cloruro",
+      "dapagliflozina",
+      "semaglutida",
+      "liraglutida"
+    ],
+    "cuidadosEnfermeria": [
+      "Hidratación IV agresiva: SF 0.9% 1-1.5L en primera hora",
+      "Insulina IV en infusión continua (0.1 UI/kg/h)",
+      "Control de glucemia capilar cada hora",
+      "Control de potasio ANTES de iniciar insulina (no dar insulina si K <3.3)",
+      "Reposición de potasio según niveles",
+      "Monitorización de gasometría cada 2-4 horas",
+      "Control de diuresis horaria",
+      "Cambiar a SG5% + insulina cuando glucemia <250 mg/dL",
+      "Buscar factor desencadenante: infección, omisión de insulina"
+    ],
+    "criteriosAlarma": [
+      "pH <7.0 (cetoacidosis severa)",
+      "Potasio <3.3 o >6.0 mEq/L",
+      "Alteración del nivel de conciencia",
+      "Edema cerebral (más frecuente en niños)",
+      "Shock hipovolémico",
+      "Potasio que no corrige con reposición"
+    ],
     "categoria": "endocrino"
   },
   {
@@ -279,10 +1159,48 @@
     "nombre": "Sepsis",
     "definicion": "Disfunción orgánica potencialmente mortal causada por una respuesta desregulada del huésped a la infección. Sepsis 3.0: infección + aumento ≥2 puntos en SOFA.",
     "fisiopatologiaBreve": "La infección desencadena una respuesta inflamatoria sistémica descontrolada con liberación masiva de citoquinas (tormenta de citoquinas), activación endotelial difusa, alteración de la coagulación (microtrombos) y vasodilatación patológica. El resultado es hipoperfusión tisular progresiva que lleva a disfunción multiorgánica.",
-    "signosSintomas": ["Fiebre >38°C o hipotermia <36°C", "Taquicardia >90 lpm", "Taquipnea >22 rpm", "Hipotensión (PAS <100 mmHg)", "Alteración del estado mental (confusión)", "Oliguria", "Moteado cutáneo (livedo)", "Llenado capilar lento", "Lactato elevado"],
-    "farmacosRelacionados": ["ceftriaxona", "piperacilina_tazobactam", "meropenem", "vancomicina", "noradrenalina", "vasopresina", "hidrocortisona_sistemica"],
-    "cuidadosEnfermeria": ["HORA 1: antibiótico IV + hemocultivos + lactato + cristaloides 30 mL/kg si hipotensión", "Acceso IV de grueso calibre (mínimo 2)", "Monitorización continua: PA, FC, SatO₂, diuresis horaria", "Vasopresores si hipotensión refractaria a líquidos (norepinefrina primera línea)", "Control de lactato cada 2-4 horas (objetivo: disminución >10%)", "Balance hídrico estricto", "Glucemia cada 4 horas (objetivo 140-180 mg/dL)", "Prevención de TVP y úlceras de estrés", "Buscar y controlar foco infeccioso"],
-    "criteriosAlarma": ["Shock séptico: vasopresores necesarios + lactato >2 mmol/L", "Lactato >4 mmol/L", "Fracaso multiorgánico: >2 órganos en disfunción", "No respuesta a líquidos y vasopresores", "CID: sangrado difuso + plaquetopenia + coagulopatía", "SatO₂ <90% con oxígeno (SDRA)"],
+    "signosSintomas": [
+      "Fiebre >38°C o hipotermia <36°C",
+      "Taquicardia >90 lpm",
+      "Taquipnea >22 rpm",
+      "Hipotensión (PAS <100 mmHg)",
+      "Alteración del estado mental (confusión)",
+      "Oliguria",
+      "Moteado cutáneo (livedo)",
+      "Llenado capilar lento",
+      "Lactato elevado"
+    ],
+    "farmacosRelacionados": [
+      "ceftriaxona",
+      "piperacilina_tazobactam",
+      "meropenem",
+      "vancomicina",
+      "noradrenalina",
+      "vasopresina",
+      "hidrocortisona_sistemica",
+      "cefepime",
+      "imipenem_cilastatina",
+      "ertapenem"
+    ],
+    "cuidadosEnfermeria": [
+      "HORA 1: antibiótico IV + hemocultivos + lactato + cristaloides 30 mL/kg si hipotensión",
+      "Acceso IV de grueso calibre (mínimo 2)",
+      "Monitorización continua: PA, FC, SatO₂, diuresis horaria",
+      "Vasopresores si hipotensión refractaria a líquidos (norepinefrina primera línea)",
+      "Control de lactato cada 2-4 horas (objetivo: disminución >10%)",
+      "Balance hídrico estricto",
+      "Glucemia cada 4 horas (objetivo 140-180 mg/dL)",
+      "Prevención de TVP y úlceras de estrés",
+      "Buscar y controlar foco infeccioso"
+    ],
+    "criteriosAlarma": [
+      "Shock séptico: vasopresores necesarios + lactato >2 mmol/L",
+      "Lactato >4 mmol/L",
+      "Fracaso multiorgánico: >2 órganos en disfunción",
+      "No respuesta a líquidos y vasopresores",
+      "CID: sangrado difuso + plaquetopenia + coagulopatía",
+      "SatO₂ <90% con oxígeno (SDRA)"
+    ],
     "categoria": "infeccioso"
   },
   {
@@ -290,10 +1208,42 @@
     "nombre": "Infección del Tracto Urinario",
     "definicion": "Infección bacteriana del tracto urinario. Puede ser baja (cistitis: vejiga) o alta (pielonefritis: riñón). Más frecuente en mujeres. E. coli es el agente causal en >80% de casos.",
     "fisiopatologiaBreve": "Ascenso de bacterias desde la uretra a la vejiga (cistitis) y eventualmente al riñón (pielonefritis). La uretra femenina corta y la proximidad al recto favorecen la colonización. Factores predisponentes: catéter urinario, estasis, reflujo vesicoureteral, embarazo, diabetes, inmunosupresión.",
-    "signosSintomas": ["Cistitis: disuria, polaquiuria, urgencia miccional, dolor suprapúbico", "Pielonefritis: fiebre alta con escalofríos, dolor lumbar (puño-percusión +), náuseas y vómitos", "Orina turbia o maloliente", "Hematuria", "En ancianos: confusión aguda sin síntomas urinarios típicos"],
-    "farmacosRelacionados": ["ciprofloxacino", "trimetoprima_sulfametoxazol", "nitrofurantoina", "amoxicilina", "ceftriaxona", "gentamicina"],
-    "cuidadosEnfermeria": ["Recoger urocultivo ANTES de iniciar antibióticos", "Técnica de recolección de muestra: chorro medio, higiene previa", "Hidratación abundante (>2L/día)", "Educar: miccionar frecuentemente, después de relaciones sexuales, limpieza de adelante hacia atrás", "Si catéter urinario: evaluar necesidad diaria de permanencia", "Cuidados del catéter urinario: higiene, sistema cerrado, bolsa por debajo de vejiga", "Completar esquema antibiótico aunque mejoren síntomas"],
-    "criteriosAlarma": ["Pielonefritis con sepsis: fiebre alta + hipotensión + taquicardia", "ITU en embarazada (riesgo de parto prematuro)", "Anuria u oliguria (obstrucción)", "No respuesta a tratamiento en 48-72 horas", "ITU recurrente (>3/año): buscar causa estructural"],
+    "signosSintomas": [
+      "Cistitis: disuria, polaquiuria, urgencia miccional, dolor suprapúbico",
+      "Pielonefritis: fiebre alta con escalofríos, dolor lumbar (puño-percusión +), náuseas y vómitos",
+      "Orina turbia o maloliente",
+      "Hematuria",
+      "En ancianos: confusión aguda sin síntomas urinarios típicos"
+    ],
+    "farmacosRelacionados": [
+      "ciprofloxacino",
+      "trimetoprima_sulfametoxazol",
+      "nitrofurantoina",
+      "amoxicilina",
+      "ceftriaxona",
+      "gentamicina",
+      "fosfomicina",
+      "cefuroxima",
+      "norfloxacino",
+      "trimetoprima",
+      "cefazolina"
+    ],
+    "cuidadosEnfermeria": [
+      "Recoger urocultivo ANTES de iniciar antibióticos",
+      "Técnica de recolección de muestra: chorro medio, higiene previa",
+      "Hidratación abundante (>2L/día)",
+      "Educar: miccionar frecuentemente, después de relaciones sexuales, limpieza de adelante hacia atrás",
+      "Si catéter urinario: evaluar necesidad diaria de permanencia",
+      "Cuidados del catéter urinario: higiene, sistema cerrado, bolsa por debajo de vejiga",
+      "Completar esquema antibiótico aunque mejoren síntomas"
+    ],
+    "criteriosAlarma": [
+      "Pielonefritis con sepsis: fiebre alta + hipotensión + taquicardia",
+      "ITU en embarazada (riesgo de parto prematuro)",
+      "Anuria u oliguria (obstrucción)",
+      "No respuesta a tratamiento en 48-72 horas",
+      "ITU recurrente (>3/año): buscar causa estructural"
+    ],
     "categoria": "infeccioso"
   },
   {
@@ -301,10 +1251,45 @@
     "nombre": "Celulitis",
     "definicion": "Infección bacteriana aguda de la piel y tejido subcutáneo, generalmente causada por S. pyogenes o S. aureus. Requiere una puerta de entrada cutánea.",
     "fisiopatologiaBreve": "Bacterias ingresan a través de soluciones de continuidad en la piel (heridas, úlceras, micosis interdigital, picaduras) e infectan la dermis y tejido subcutáneo. La infección se extiende por planos tisulares produciendo inflamación, edema y destrucción tisular progresiva.",
-    "signosSintomas": ["Eritema con bordes mal definidos (difusos)", "Edema y aumento de volumen", "Calor local", "Dolor a la palpación", "Fiebre", "Linfangitis (línea roja ascendente)", "Adenopatía regional", "Puerta de entrada visible"],
-    "farmacosRelacionados": ["cefalexina", "clindamicina", "diclofenaco", "paracetamol", "vancomicina"],
-    "cuidadosEnfermeria": ["Marcar bordes del eritema con marcador para monitorizar extensión", "Elevación del miembro afectado", "Analgesia y antiinflamatorios", "Compresas tibias", "Administrar antibiótico según prescripción y vigilar respuesta", "Cuidado de puerta de entrada (curación, micosis)", "Educar sobre signos de empeoramiento", "Si diabético: control glucémico estricto"],
-    "criteriosAlarma": ["Progresión rápida del eritema a pesar de antibióticos", "Crepitación palpable (fascitis necrotizante)", "Ampollas hemorrágicas", "Sepsis: fiebre alta, taquicardia, hipotensión", "Dolor desproporcionado al aspecto clínico (fascitis)", "Necrosis tisular"],
+    "signosSintomas": [
+      "Eritema con bordes mal definidos (difusos)",
+      "Edema y aumento de volumen",
+      "Calor local",
+      "Dolor a la palpación",
+      "Fiebre",
+      "Linfangitis (línea roja ascendente)",
+      "Adenopatía regional",
+      "Puerta de entrada visible"
+    ],
+    "farmacosRelacionados": [
+      "cefalexina",
+      "clindamicina",
+      "diclofenaco",
+      "paracetamol",
+      "vancomicina",
+      "cloxacilina",
+      "cefazolina",
+      "amoxicilina_clavulanico",
+      "acido_fusidico"
+    ],
+    "cuidadosEnfermeria": [
+      "Marcar bordes del eritema con marcador para monitorizar extensión",
+      "Elevación del miembro afectado",
+      "Analgesia y antiinflamatorios",
+      "Compresas tibias",
+      "Administrar antibiótico según prescripción y vigilar respuesta",
+      "Cuidado de puerta de entrada (curación, micosis)",
+      "Educar sobre signos de empeoramiento",
+      "Si diabético: control glucémico estricto"
+    ],
+    "criteriosAlarma": [
+      "Progresión rápida del eritema a pesar de antibióticos",
+      "Crepitación palpable (fascitis necrotizante)",
+      "Ampollas hemorrágicas",
+      "Sepsis: fiebre alta, taquicardia, hipotensión",
+      "Dolor desproporcionado al aspecto clínico (fascitis)",
+      "Necrosis tisular"
+    ],
     "categoria": "infeccioso"
   },
   {
@@ -312,10 +1297,40 @@
     "nombre": "Tuberculosis Pulmonar",
     "definicion": "Infección crónica por Mycobacterium tuberculosis que afecta principalmente los pulmones. Transmisión por vía aérea (gotas de Flügge). Problema de salud pública mundial.",
     "fisiopatologiaBreve": "M. tuberculosis se inhala y alcanza los alvéolos donde es fagocitado por macrófagos alveolares. La bacteria sobrevive dentro del macrófago y se multiplica lentamente. Se forma el granuloma caseoso (tubérculo). La infección puede permanecer latente (ITBL) o progresar a enfermedad activa, especialmente en inmunocomprometidos.",
-    "signosSintomas": ["Tos crónica >2-3 semanas (productiva)", "Hemoptisis", "Fiebre vespertina", "Sudoración nocturna profusa", "Pérdida de peso involuntaria", "Astenia y anorexia", "Dolor torácico pleurítico"],
-    "farmacosRelacionados": ["isoniazida", "rifampicina", "paracetamol"],
-    "cuidadosEnfermeria": ["Aislamiento respiratorio aéreo (habitación con presión negativa, mascarilla N95)", "Recolectar 3 muestras de esputo para BAAR (matutinas, en ayunas)", "Tratamiento directamente observado (DOTS/TAES)", "Esquema RHZE: asegurar adherencia durante 6 meses mínimo", "Vigilar hepatotoxicidad: nefrotoxicidad, elevación de transaminasas", "Control mensual de función hepática con isoniazida y rifampicina", "Educar: completar tratamiento aunque mejoren síntomas", "Estudio de contactos cercanos", "Informar al departamento de salud pública"],
-    "criteriosAlarma": ["Hemoptisis masiva", "Hepatotoxicidad: ictericia, transaminasas >5 veces normal", "TB multirresistente (resistencia a isoniazida + rifampicina)", "Meningitis tuberculosa: cefalea, rigidez de nuca, alteración de conciencia", "Insuficiencia respiratoria"],
+    "signosSintomas": [
+      "Tos crónica >2-3 semanas (productiva)",
+      "Hemoptisis",
+      "Fiebre vespertina",
+      "Sudoración nocturna profusa",
+      "Pérdida de peso involuntaria",
+      "Astenia y anorexia",
+      "Dolor torácico pleurítico"
+    ],
+    "farmacosRelacionados": [
+      "isoniazida",
+      "rifampicina",
+      "paracetamol",
+      "pirazinamida",
+      "etambutol"
+    ],
+    "cuidadosEnfermeria": [
+      "Aislamiento respiratorio aéreo (habitación con presión negativa, mascarilla N95)",
+      "Recolectar 3 muestras de esputo para BAAR (matutinas, en ayunas)",
+      "Tratamiento directamente observado (DOTS/TAES)",
+      "Esquema RHZE: asegurar adherencia durante 6 meses mínimo",
+      "Vigilar hepatotoxicidad: nefrotoxicidad, elevación de transaminasas",
+      "Control mensual de función hepática con isoniazida y rifampicina",
+      "Educar: completar tratamiento aunque mejoren síntomas",
+      "Estudio de contactos cercanos",
+      "Informar al departamento de salud pública"
+    ],
+    "criteriosAlarma": [
+      "Hemoptisis masiva",
+      "Hepatotoxicidad: ictericia, transaminasas >5 veces normal",
+      "TB multirresistente (resistencia a isoniazida + rifampicina)",
+      "Meningitis tuberculosa: cefalea, rigidez de nuca, alteración de conciencia",
+      "Insuficiencia respiratoria"
+    ],
     "categoria": "infeccioso"
   },
   {
@@ -323,10 +1338,44 @@
     "nombre": "Neumonía Nosocomial/Asociada a Ventilación",
     "definicion": "Neumonía que se desarrolla ≥48h después del ingreso hospitalario o ≥48h después de intubación endotraqueal (NAV). Principales agentes: P. aeruginosa, S. aureus, enterobacterias.",
     "fisiopatologiaBreve": "Colonización orofaríngea por patógenos hospitalarios resistentes, seguida de microaspiración de secreciones contaminadas hacia el tracto respiratorio inferior. El tubo endotraqueal facilita la aspiración al mantener la glotis abierta y formar biofilm bacteriano.",
-    "signosSintomas": ["Fiebre nueva o persistente", "Secreciones traqueales purulentas", "Nuevos infiltrados en radiografía", "Leucocitosis o leucopenia", "Empeoramiento de oxigenación (aumento de FiO₂)", "Taquicardia", "Inestabilidad hemodinámica"],
-    "farmacosRelacionados": ["piperacilina_tazobactam", "meropenem", "vancomicina", "amikacina", "colistina", "levofloxacino", "linezolid"],
-    "cuidadosEnfermeria": ["Bundle de prevención de NAV: cabecera 30-45°, higiene oral con clorhexidina, evaluación diaria de extubación", "Aspiración de secreciones con técnica aséptica", "Circuito ventilatorio: no cambiar rutinariamente", "Recolectar cultivo de secreciones antes de cambiar antibiótico", "Prevenir broncoaspiración: verificar residuo gástrico", "Movilización precoz si condición lo permite", "Vigilar patrón de resistencia antibiótica del hospital"],
-    "criteriosAlarma": ["Shock séptico asociado", "Empeoramiento a pesar de antibiótico empírico 72h", "SDRA", "Bacteriemia asociada", "Microorganismo multirresistente aislado"],
+    "signosSintomas": [
+      "Fiebre nueva o persistente",
+      "Secreciones traqueales purulentas",
+      "Nuevos infiltrados en radiografía",
+      "Leucocitosis o leucopenia",
+      "Empeoramiento de oxigenación (aumento de FiO₂)",
+      "Taquicardia",
+      "Inestabilidad hemodinámica"
+    ],
+    "farmacosRelacionados": [
+      "piperacilina_tazobactam",
+      "meropenem",
+      "vancomicina",
+      "amikacina",
+      "colistina",
+      "levofloxacino",
+      "linezolid",
+      "ceftazidima",
+      "cefepime",
+      "imipenem_cilastatina",
+      "tigeciclina"
+    ],
+    "cuidadosEnfermeria": [
+      "Bundle de prevención de NAV: cabecera 30-45°, higiene oral con clorhexidina, evaluación diaria de extubación",
+      "Aspiración de secreciones con técnica aséptica",
+      "Circuito ventilatorio: no cambiar rutinariamente",
+      "Recolectar cultivo de secreciones antes de cambiar antibiótico",
+      "Prevenir broncoaspiración: verificar residuo gástrico",
+      "Movilización precoz si condición lo permite",
+      "Vigilar patrón de resistencia antibiótica del hospital"
+    ],
+    "criteriosAlarma": [
+      "Shock séptico asociado",
+      "Empeoramiento a pesar de antibiótico empírico 72h",
+      "SDRA",
+      "Bacteriemia asociada",
+      "Microorganismo multirresistente aislado"
+    ],
     "categoria": "infeccioso"
   },
   {
@@ -334,10 +1383,40 @@
     "nombre": "Insuficiencia Renal Aguda (Lesión Renal Aguda)",
     "definicion": "Deterioro rápido de la función renal (horas a días) con acumulación de productos nitrogenados y alteración del equilibrio hidroelectrolítico. Clasificación KDIGO: aumento de creatinina ≥0.3 mg/dL en 48h u oliguria <0.5 mL/kg/h por >6h.",
     "fisiopatologiaBreve": "Prerrenal (70%): hipoperfusión renal por hipovolemia, sepsis o ICC. Renal intrínseca (25%): daño al parénquima renal por necrosis tubular aguda (isquemia, nefrotóxicos), nefritis intersticial o glomerulonefritis. Posrenal (5%): obstrucción del flujo urinario.",
-    "signosSintomas": ["Oliguria o anuria", "Edema", "Aumento de creatinina y BUN", "Hiperpotasemia", "Acidosis metabólica", "Náuseas y vómitos", "Asterixis en uremia severa", "Puede ser asintomática inicialmente"],
-    "farmacosRelacionados": ["furosemida", "calcio_cloruro", "potasio_cloruro"],
-    "cuidadosEnfermeria": ["Control estricto de diuresis horaria", "Balance hídrico estricto (ingesta = pérdidas + pérdidas insensibles)", "Peso diario", "Monitorizar potasio cada 4-6 horas (riesgo de arritmias)", "Revisar todos los fármacos y ajustar dosis a función renal", "Suspender nefrotóxicos: AINEs, aminoglucósidos, contraste", "Evitar sobrecarga hídrica", "Preparar para diálisis si indicada", "ECG si hiperpotasemia"],
-    "criteriosAlarma": ["Potasio >6.5 mEq/L (arritmias letales)", "Edema agudo de pulmón (sobrecarga hídrica)", "Encefalopatía urémica: confusión, convulsiones", "Acidosis metabólica severa pH <7.1", "Anuria completa", "Pericarditis urémica"],
+    "signosSintomas": [
+      "Oliguria o anuria",
+      "Edema",
+      "Aumento de creatinina y BUN",
+      "Hiperpotasemia",
+      "Acidosis metabólica",
+      "Náuseas y vómitos",
+      "Asterixis en uremia severa",
+      "Puede ser asintomática inicialmente"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "calcio_cloruro",
+      "potasio_cloruro"
+    ],
+    "cuidadosEnfermeria": [
+      "Control estricto de diuresis horaria",
+      "Balance hídrico estricto (ingesta = pérdidas + pérdidas insensibles)",
+      "Peso diario",
+      "Monitorizar potasio cada 4-6 horas (riesgo de arritmias)",
+      "Revisar todos los fármacos y ajustar dosis a función renal",
+      "Suspender nefrotóxicos: AINEs, aminoglucósidos, contraste",
+      "Evitar sobrecarga hídrica",
+      "Preparar para diálisis si indicada",
+      "ECG si hiperpotasemia"
+    ],
+    "criteriosAlarma": [
+      "Potasio >6.5 mEq/L (arritmias letales)",
+      "Edema agudo de pulmón (sobrecarga hídrica)",
+      "Encefalopatía urémica: confusión, convulsiones",
+      "Acidosis metabólica severa pH <7.1",
+      "Anuria completa",
+      "Pericarditis urémica"
+    ],
     "categoria": "renal"
   },
   {
@@ -345,10 +1424,47 @@
     "nombre": "Enfermedad Renal Crónica",
     "definicion": "Daño renal progresivo e irreversible con disminución de la tasa de filtración glomerular (TFG) durante ≥3 meses. Estadio 5 (TFG <15 mL/min): enfermedad renal terminal que requiere diálisis o trasplante.",
     "fisiopatologiaBreve": "Pérdida progresiva de nefronas funcionales por enfermedad de base (diabetes, HTA, glomerulonefritis). Las nefronas remanentes sufren hiperfiltración compensadora que perpetúa el daño. Progresivamente se pierde la capacidad de filtración, regulación de electrolitos, equilibrio ácido-base y producción de eritropoyetina y vitamina D activa.",
-    "signosSintomas": ["Asintomática en estadios tempranos", "Fatiga y debilidad (anemia)", "Edema periférico", "HTA", "Náuseas y anorexia (uremia)", "Prurito", "Nocturia", "Palidez", "Osteodistrofia renal", "Neuropatía periférica en estadios avanzados"],
-    "farmacosRelacionados": ["enalapril", "losartan", "eritropoyetina", "calcitriol", "calcio_carbonato", "furosemida", "sulfato_ferroso", "amlodipino"],
-    "cuidadosEnfermeria": ["Control de PA (objetivo <130/80 mmHg)", "Dieta: restricción de proteínas, sodio, potasio y fósforo según estadio", "Ajustar TODOS los fármacos a TFG", "Monitorizar: creatinina, electrolitos, hemoglobina, fósforo, calcio, PTH", "Eritropoyetina + hierro para anemia (objetivo Hb 10-12 g/dL)", "Cuidado de fístula arteriovenosa si en hemodiálisis", "Vacunación hepatitis B", "Evitar AINES y nefrotóxicos", "Educación sobre acceso vascular y modalidades de diálisis"],
-    "criteriosAlarma": ["Hiperpotasemia >6 mEq/L", "Edema agudo de pulmón", "Pericarditis urémica", "Encefalopatía urémica", "Acidosis metabólica severa", "Sangrado por uremia"],
+    "signosSintomas": [
+      "Asintomática en estadios tempranos",
+      "Fatiga y debilidad (anemia)",
+      "Edema periférico",
+      "HTA",
+      "Náuseas y anorexia (uremia)",
+      "Prurito",
+      "Nocturia",
+      "Palidez",
+      "Osteodistrofia renal",
+      "Neuropatía periférica en estadios avanzados"
+    ],
+    "farmacosRelacionados": [
+      "enalapril",
+      "losartan",
+      "eritropoyetina",
+      "calcitriol",
+      "calcio_carbonato",
+      "furosemida",
+      "sulfato_ferroso",
+      "amlodipino"
+    ],
+    "cuidadosEnfermeria": [
+      "Control de PA (objetivo <130/80 mmHg)",
+      "Dieta: restricción de proteínas, sodio, potasio y fósforo según estadio",
+      "Ajustar TODOS los fármacos a TFG",
+      "Monitorizar: creatinina, electrolitos, hemoglobina, fósforo, calcio, PTH",
+      "Eritropoyetina + hierro para anemia (objetivo Hb 10-12 g/dL)",
+      "Cuidado de fístula arteriovenosa si en hemodiálisis",
+      "Vacunación hepatitis B",
+      "Evitar AINES y nefrotóxicos",
+      "Educación sobre acceso vascular y modalidades de diálisis"
+    ],
+    "criteriosAlarma": [
+      "Hiperpotasemia >6 mEq/L",
+      "Edema agudo de pulmón",
+      "Pericarditis urémica",
+      "Encefalopatía urémica",
+      "Acidosis metabólica severa",
+      "Sangrado por uremia"
+    ],
     "categoria": "renal"
   },
   {
@@ -356,10 +1472,38 @@
     "nombre": "Litiasis Renal (Cólico Nefrítico)",
     "definicion": "Formación de cálculos en el tracto urinario. El cólico nefrítico es el cuadro doloroso agudo por migración del cálculo. Tipos: oxalato de calcio (75%), ácido úrico, estruvita, cistina.",
     "fisiopatologiaBreve": "Supersaturación de la orina con cristales que nuclean y crecen formando cálculos. Factores: baja ingesta de líquidos, hipercalciuria, hiperoxaluria, hiperuricosuria, pH urinario alterado. La migración del cálculo por el uréter produce espasmo y obstrucción con distensión de la cápsula renal (dolor intenso).",
-    "signosSintomas": ["Dolor en fosa lumbar de inicio súbito, intenso, cólico", "Irradiación a flanco, ingle y genitales", "Náuseas y vómitos", "Hematuria (macro o microscópica)", "Agitación e inquietud (no encuentra posición de alivio)", "Disuria si cálculo vesical", "Puño-percusión lumbar positiva"],
-    "farmacosRelacionados": ["ketorolaco", "diclofenaco", "tramadol", "tamsulosina"],
-    "cuidadosEnfermeria": ["Analgesia inmediata: AINE IV es primera línea (ketorolaco)", "Hidratación IV (pero no forzar fluidos durante el dolor agudo)", "Filtrar toda la orina para recuperar el cálculo y analizarlo", "Monitorizar diuresis y características de la orina", "Aplicar calor local en flanco para aliviar espasmo", "Tamsulosina para facilitar expulsión de cálculos <10mm", "Educar: ingesta hídrica >2.5 L/día para prevención", "Control de imagen: TAC o ecografía para localizar cálculo"],
-    "criteriosAlarma": ["Fiebre >38°C + cólico (pionefrosis: emergencia urológica)", "Anuria bilateral (obstrucción bilateral o riñón único)", "Dolor intratable que no cede con analgesia IV", "Cálculo >10mm (probable necesidad de intervención)", "IRA obstructiva: creatinina en aumento"],
+    "signosSintomas": [
+      "Dolor en fosa lumbar de inicio súbito, intenso, cólico",
+      "Irradiación a flanco, ingle y genitales",
+      "Náuseas y vómitos",
+      "Hematuria (macro o microscópica)",
+      "Agitación e inquietud (no encuentra posición de alivio)",
+      "Disuria si cálculo vesical",
+      "Puño-percusión lumbar positiva"
+    ],
+    "farmacosRelacionados": [
+      "ketorolaco",
+      "diclofenaco",
+      "tramadol",
+      "tamsulosina"
+    ],
+    "cuidadosEnfermeria": [
+      "Analgesia inmediata: AINE IV es primera línea (ketorolaco)",
+      "Hidratación IV (pero no forzar fluidos durante el dolor agudo)",
+      "Filtrar toda la orina para recuperar el cálculo y analizarlo",
+      "Monitorizar diuresis y características de la orina",
+      "Aplicar calor local en flanco para aliviar espasmo",
+      "Tamsulosina para facilitar expulsión de cálculos <10mm",
+      "Educar: ingesta hídrica >2.5 L/día para prevención",
+      "Control de imagen: TAC o ecografía para localizar cálculo"
+    ],
+    "criteriosAlarma": [
+      "Fiebre >38°C + cólico (pionefrosis: emergencia urológica)",
+      "Anuria bilateral (obstrucción bilateral o riñón único)",
+      "Dolor intratable que no cede con analgesia IV",
+      "Cálculo >10mm (probable necesidad de intervención)",
+      "IRA obstructiva: creatinina en aumento"
+    ],
     "categoria": "renal"
   },
   {
@@ -367,10 +1511,44 @@
     "nombre": "Anemia Ferropénica",
     "definicion": "Anemia más frecuente a nivel mundial, causada por déficit de hierro que impide la síntesis adecuada de hemoglobina. Resulta en glóbulos rojos microcíticos e hipocrómicos.",
     "fisiopatologiaBreve": "El hierro es esencial para la síntesis del grupo hemo de la hemoglobina. Su déficit puede deberse a ingesta insuficiente, malabsorción, pérdidas crónicas (menstruación excesiva, sangrado GI) o aumento de necesidades (embarazo, crecimiento). La eritropoyesis se vuelve ineficaz produciendo glóbulos rojos pequeños y pálidos.",
-    "signosSintomas": ["Fatiga progresiva", "Palidez de piel y mucosas", "Disnea de esfuerzo", "Taquicardia", "Cefalea", "Mareos", "Pica (deseo de comer hielo, tierra)", "Coiloniquia (uñas en cuchara)", "Queilitis angular", "Glositis"],
-    "farmacosRelacionados": ["sulfato_ferroso", "hierro_parenteral", "acido_folico"],
-    "cuidadosEnfermeria": ["Hierro oral: tomar en ayunas con vitamina C (aumenta absorción)", "Advertir sobre heces negras y estreñimiento con hierro oral", "No tomar hierro con leche, café, té, calcio o antiácidos", "Hierro parenteral: prueba de dosis (reacción anafilactoide)", "Administrar hierro IV lento con monitorización de SV", "Identificar y tratar causa de base (sangrado GI, menorragia)", "Control de hemoglobina y ferritina cada 4-8 semanas", "Tratamiento por 3-6 meses después de normalizar Hb (reponer depósitos)"],
-    "criteriosAlarma": ["Hemoglobina <7 g/dL (considerar transfusión)", "Taquicardia en reposo o disnea severa", "Síncope", "Signos de sangrado activo: melena, hematemesis, menorragia severa", "Anemia que no responde a hierro oral (descartar malabsorción, sangrado oculto)"],
+    "signosSintomas": [
+      "Fatiga progresiva",
+      "Palidez de piel y mucosas",
+      "Disnea de esfuerzo",
+      "Taquicardia",
+      "Cefalea",
+      "Mareos",
+      "Pica (deseo de comer hielo, tierra)",
+      "Coiloniquia (uñas en cuchara)",
+      "Queilitis angular",
+      "Glositis"
+    ],
+    "farmacosRelacionados": [
+      "sulfato_ferroso",
+      "hierro_parenteral",
+      "acido_folico",
+      "hierro_polimaltosato",
+      "hierro_carboximaltosa",
+      "cianocobalamina",
+      "acido_folico_hematologico"
+    ],
+    "cuidadosEnfermeria": [
+      "Hierro oral: tomar en ayunas con vitamina C (aumenta absorción)",
+      "Advertir sobre heces negras y estreñimiento con hierro oral",
+      "No tomar hierro con leche, café, té, calcio o antiácidos",
+      "Hierro parenteral: prueba de dosis (reacción anafilactoide)",
+      "Administrar hierro IV lento con monitorización de SV",
+      "Identificar y tratar causa de base (sangrado GI, menorragia)",
+      "Control de hemoglobina y ferritina cada 4-8 semanas",
+      "Tratamiento por 3-6 meses después de normalizar Hb (reponer depósitos)"
+    ],
+    "criteriosAlarma": [
+      "Hemoglobina <7 g/dL (considerar transfusión)",
+      "Taquicardia en reposo o disnea severa",
+      "Síncope",
+      "Signos de sangrado activo: melena, hematemesis, menorragia severa",
+      "Anemia que no responde a hierro oral (descartar malabsorción, sangrado oculto)"
+    ],
     "categoria": "hematologico"
   },
   {
@@ -378,10 +1556,41 @@
     "nombre": "Coagulación Intravascular Diseminada",
     "definicion": "Activación descontrolada y generalizada de la cascada de coagulación que consume factores y plaquetas, produciendo simultáneamente trombosis microvascular y hemorragia difusa. Siempre secundaria a otra patología.",
     "fisiopatologiaBreve": "Un desencadenante (sepsis, trauma, cáncer, complicaciones obstétricas) libera factor tisular masivamente, activando la coagulación de forma difusa. Se forman microtrombos en la microvasculatura (isquemia orgánica) mientras se consumen plaquetas, fibrinógeno y factores de coagulación (coagulopatía de consumo), resultando en sangrado paradójico.",
-    "signosSintomas": ["Sangrado por múltiples sitios simultáneamente", "Petequias y equimosis extensas", "Sangrado por sitios de punción, heridas, mucosas", "Isquemia digital o de extremidades", "Fallo multiorgánico", "Trombocitopenia", "INR y TTPa prolongados", "Fibrinógeno bajo", "Dímero D elevado"],
-    "farmacosRelacionados": ["heparina", "vitamina_k"],
-    "cuidadosEnfermeria": ["Tratar la CAUSA de base (es lo más importante)", "Monitorización de coagulación: TP, TTPa, fibrinógeno, plaquetas, dímero D cada 6h", "Transfusión de componentes según déficit: PFC, crioprecipitados, plaquetas", "Minimizar punciones y procedimientos invasivos", "Presión prolongada en sitios de venopunción", "Vigilar sangrado oculto: hematemesis, melena, hematuria", "Heparina solo en CID predominantemente trombótica", "Proteger piel: evitar adhesivos, manguito de presión prolongado"],
-    "criteriosAlarma": ["Hemorragia masiva incontrolable", "Shock hemorrágico", "Fibrinógeno <100 mg/dL", "Plaquetas <20,000", "Fallo multiorgánico progresivo", "Gangrena periférica (púrpura fulminante)"],
+    "signosSintomas": [
+      "Sangrado por múltiples sitios simultáneamente",
+      "Petequias y equimosis extensas",
+      "Sangrado por sitios de punción, heridas, mucosas",
+      "Isquemia digital o de extremidades",
+      "Fallo multiorgánico",
+      "Trombocitopenia",
+      "INR y TTPa prolongados",
+      "Fibrinógeno bajo",
+      "Dímero D elevado"
+    ],
+    "farmacosRelacionados": [
+      "heparina",
+      "vitamina_k",
+      "complejo_protrombinico",
+      "acido_aminocaproico"
+    ],
+    "cuidadosEnfermeria": [
+      "Tratar la CAUSA de base (es lo más importante)",
+      "Monitorización de coagulación: TP, TTPa, fibrinógeno, plaquetas, dímero D cada 6h",
+      "Transfusión de componentes según déficit: PFC, crioprecipitados, plaquetas",
+      "Minimizar punciones y procedimientos invasivos",
+      "Presión prolongada en sitios de venopunción",
+      "Vigilar sangrado oculto: hematemesis, melena, hematuria",
+      "Heparina solo en CID predominantemente trombótica",
+      "Proteger piel: evitar adhesivos, manguito de presión prolongado"
+    ],
+    "criteriosAlarma": [
+      "Hemorragia masiva incontrolable",
+      "Shock hemorrágico",
+      "Fibrinógeno <100 mg/dL",
+      "Plaquetas <20,000",
+      "Fallo multiorgánico progresivo",
+      "Gangrena periférica (púrpura fulminante)"
+    ],
     "categoria": "hematologico"
   },
   {
@@ -389,10 +1598,46 @@
     "nombre": "Neutropenia Febril",
     "definicion": "Emergencia oncológica: fiebre ≥38.3°C (o ≥38°C sostenida 1h) en paciente con neutrófilos <500/mm³ o <1000 con descenso esperado. Alta mortalidad sin tratamiento inmediato.",
     "fisiopatologiaBreve": "La quimioterapia destruye células de rápida proliferación, incluyendo precursores mieloides. El nadir de neutrófilos (7-14 días post-quimioterapia) deja al paciente sin defensa fagocítica. Infecciones bacterianas pueden progresar rápidamente a sepsis sin la respuesta inflamatoria habitual (poco pus, poca inflamación).",
-    "signosSintomas": ["Fiebre (puede ser el ÚNICO signo de infección)", "Escalofrío", "Hipotensión", "Signos mínimos de infección en sitios habituales", "Mucositis oral", "Lesiones perianales", "Celulitis en sitio de catéter", "Deterioro general rápido"],
-    "farmacosRelacionados": ["ceftriaxona", "piperacilina_tazobactam", "meropenem", "vancomicina", "filgrastim"],
-    "cuidadosEnfermeria": ["Antibiótico IV dentro de los 60 min de la primera fiebre", "Hemocultivos (2 sets: periférico + catéter central) ANTES del antibiótico", "No tomar temperatura rectal (riesgo de bacteriemia)", "Aislamiento protector: lavado de manos estricto, mascarilla, habitación individual", "Monitorización vital frecuente", "Inspección diaria de mucosas, piel, sitio de catéter, región perianal", "Dieta neutropénica: evitar crudos, frutas sin pelar", "Filgrastim (G-CSF) según protocolo", "NO administrar AINEs (enmascaran fiebre)"],
-    "criteriosAlarma": ["Shock séptico", "Neutrófilos <100/mm³ (neutropenia profunda)", "Fiebre persistente >48h con antibiótico", "Neumonía en paciente neutropénico", "Infección fúngica invasiva sospechada (>5 días de fiebre)", "Sangrado por trombocitopenia asociada"],
+    "signosSintomas": [
+      "Fiebre (puede ser el ÚNICO signo de infección)",
+      "Escalofrío",
+      "Hipotensión",
+      "Signos mínimos de infección en sitios habituales",
+      "Mucositis oral",
+      "Lesiones perianales",
+      "Celulitis en sitio de catéter",
+      "Deterioro general rápido"
+    ],
+    "farmacosRelacionados": [
+      "ceftriaxona",
+      "piperacilina_tazobactam",
+      "meropenem",
+      "vancomicina",
+      "filgrastim",
+      "cefepime",
+      "ceftazidima",
+      "imipenem_cilastatina",
+      "caspofungina"
+    ],
+    "cuidadosEnfermeria": [
+      "Antibiótico IV dentro de los 60 min de la primera fiebre",
+      "Hemocultivos (2 sets: periférico + catéter central) ANTES del antibiótico",
+      "No tomar temperatura rectal (riesgo de bacteriemia)",
+      "Aislamiento protector: lavado de manos estricto, mascarilla, habitación individual",
+      "Monitorización vital frecuente",
+      "Inspección diaria de mucosas, piel, sitio de catéter, región perianal",
+      "Dieta neutropénica: evitar crudos, frutas sin pelar",
+      "Filgrastim (G-CSF) según protocolo",
+      "NO administrar AINEs (enmascaran fiebre)"
+    ],
+    "criteriosAlarma": [
+      "Shock séptico",
+      "Neutrófilos <100/mm³ (neutropenia profunda)",
+      "Fiebre persistente >48h con antibiótico",
+      "Neumonía en paciente neutropénico",
+      "Infección fúngica invasiva sospechada (>5 días de fiebre)",
+      "Sangrado por trombocitopenia asociada"
+    ],
     "categoria": "hematologico"
   },
   {
@@ -400,10 +1645,50 @@
     "nombre": "Trastorno Depresivo Mayor",
     "definicion": "Trastorno del estado de ánimo caracterizado por ánimo deprimido persistente y/o anhedonia durante ≥2 semanas, con alteraciones cognitivas, somáticas y conductuales significativas.",
     "fisiopatologiaBreve": "Modelo monoaminérgico: déficit funcional de serotonina, noradrenalina y/o dopamina en sinapsis del sistema límbico y corteza prefrontal. También involucra neuroplasticidad reducida (BDNF disminuido), desregulación del eje HPA (hipercortisolismo) e inflamación crónica de bajo grado.",
-    "signosSintomas": ["Ánimo deprimido la mayor parte del día", "Anhedonia (pérdida de interés y placer)", "Insomnio o hipersomnia", "Fatiga y pérdida de energía", "Sentimientos de inutilidad o culpa excesiva", "Dificultad de concentración", "Cambios en apetito y peso", "Enlentecimiento psicomotor o agitación", "Ideas de muerte o suicidio"],
-    "farmacosRelacionados": ["sertralina", "fluoxetina", "escitalopram", "venlafaxina", "duloxetina", "mirtazapina", "amitriptilina", "bupropion", "trazodona"],
-    "cuidadosEnfermeria": ["Evaluación de riesgo suicida en CADA contacto", "ISRS: efecto terapéutico tarda 2-4 semanas (educar al paciente)", "Vigilar empeoramiento paradójico al inicio del tratamiento (más energía antes de mejorar ánimo)", "No suspender abruptamente (síndrome de discontinuación)", "Establecer relación terapéutica empática y sin juicios", "Fomentar rutinas: sueño, alimentación, actividad física", "Coordinar con psicología/psiquiatría", "Educación a familia sobre la enfermedad"],
-    "criteriosAlarma": ["Ideación suicida con plan específico", "Intento de suicidio", "Psicosis asociada: alucinaciones, delirios", "Catatonia", "Negativa a comer o beber", "Riesgo de autolesión"],
+    "signosSintomas": [
+      "Ánimo deprimido la mayor parte del día",
+      "Anhedonia (pérdida de interés y placer)",
+      "Insomnio o hipersomnia",
+      "Fatiga y pérdida de energía",
+      "Sentimientos de inutilidad o culpa excesiva",
+      "Dificultad de concentración",
+      "Cambios en apetito y peso",
+      "Enlentecimiento psicomotor o agitación",
+      "Ideas de muerte o suicidio"
+    ],
+    "farmacosRelacionados": [
+      "sertralina",
+      "fluoxetina",
+      "escitalopram",
+      "venlafaxina",
+      "duloxetina",
+      "mirtazapina",
+      "amitriptilina",
+      "bupropion",
+      "trazodona",
+      "paroxetina",
+      "citalopram",
+      "desvenlafaxina",
+      "fluvoxamina"
+    ],
+    "cuidadosEnfermeria": [
+      "Evaluación de riesgo suicida en CADA contacto",
+      "ISRS: efecto terapéutico tarda 2-4 semanas (educar al paciente)",
+      "Vigilar empeoramiento paradójico al inicio del tratamiento (más energía antes de mejorar ánimo)",
+      "No suspender abruptamente (síndrome de discontinuación)",
+      "Establecer relación terapéutica empática y sin juicios",
+      "Fomentar rutinas: sueño, alimentación, actividad física",
+      "Coordinar con psicología/psiquiatría",
+      "Educación a familia sobre la enfermedad"
+    ],
+    "criteriosAlarma": [
+      "Ideación suicida con plan específico",
+      "Intento de suicidio",
+      "Psicosis asociada: alucinaciones, delirios",
+      "Catatonia",
+      "Negativa a comer o beber",
+      "Riesgo de autolesión"
+    ],
     "categoria": "psiquiatrico"
   },
   {
@@ -411,10 +1696,44 @@
     "nombre": "Esquizofrenia",
     "definicion": "Trastorno mental grave y crónico que afecta el pensamiento, la percepción y la conducta. Se manifiesta con síntomas positivos (alucinaciones, delirios) y negativos (aplanamiento afectivo, alogia).",
     "fisiopatologiaBreve": "Hipótesis dopaminérgica: hiperactividad dopaminérgica mesolímbica (síntomas positivos) e hipoactividad dopaminérgica mesocortical (síntomas negativos). También involucra alteraciones glutamatérgicas y serotoninérgicas, con cambios estructurales cerebrales (dilatación ventricular, reducción cortical prefrontal).",
-    "signosSintomas": ["Alucinaciones auditivas (voces)", "Delirios paranoides o de referencia", "Pensamiento desorganizado", "Conducta desorganizada o catatónica", "Aplanamiento afectivo", "Alogia (pobreza del lenguaje)", "Abulia (falta de motivación)", "Aislamiento social", "Deterioro cognitivo"],
-    "farmacosRelacionados": ["haloperidol", "risperidona", "quetiapina", "olanzapina", "aripiprazol", "clozapina", "clorpromazina"],
-    "cuidadosEnfermeria": ["Establecer relación terapéutica basada en confianza", "No confrontar ni argumentar contra las alucinaciones/delirios", "Monitorizar adherencia al tratamiento (causa principal de recaída)", "Vigilar efectos extrapiramidales: acatisia, distonía, parkinsonismo", "Antipsicóticos atípicos: vigilar síndrome metabólico (peso, glucemia, lípidos)", "Clozapina: hemograma semanal (agranulocitosis)", "Evaluación de riesgo de auto/heteroagresión", "Fomentar rehabilitación psicosocial y habilidades de vida diaria"],
-    "criteriosAlarma": ["Síndrome neuroléptico maligno: rigidez, fiebre, disautonomía", "Agranulocitosis con clozapina (leucocitos <1500)", "Riesgo de suicidio (10% de pacientes)", "Agitación severa con riesgo de violencia", "Catatonia maligna", "Primer episodio psicótico (descartar causas orgánicas)"],
+    "signosSintomas": [
+      "Alucinaciones auditivas (voces)",
+      "Delirios paranoides o de referencia",
+      "Pensamiento desorganizado",
+      "Conducta desorganizada o catatónica",
+      "Aplanamiento afectivo",
+      "Alogia (pobreza del lenguaje)",
+      "Abulia (falta de motivación)",
+      "Aislamiento social",
+      "Deterioro cognitivo"
+    ],
+    "farmacosRelacionados": [
+      "haloperidol",
+      "risperidona",
+      "quetiapina",
+      "olanzapina",
+      "aripiprazol",
+      "clozapina",
+      "clorpromazina"
+    ],
+    "cuidadosEnfermeria": [
+      "Establecer relación terapéutica basada en confianza",
+      "No confrontar ni argumentar contra las alucinaciones/delirios",
+      "Monitorizar adherencia al tratamiento (causa principal de recaída)",
+      "Vigilar efectos extrapiramidales: acatisia, distonía, parkinsonismo",
+      "Antipsicóticos atípicos: vigilar síndrome metabólico (peso, glucemia, lípidos)",
+      "Clozapina: hemograma semanal (agranulocitosis)",
+      "Evaluación de riesgo de auto/heteroagresión",
+      "Fomentar rehabilitación psicosocial y habilidades de vida diaria"
+    ],
+    "criteriosAlarma": [
+      "Síndrome neuroléptico maligno: rigidez, fiebre, disautonomía",
+      "Agranulocitosis con clozapina (leucocitos <1500)",
+      "Riesgo de suicidio (10% de pacientes)",
+      "Agitación severa con riesgo de violencia",
+      "Catatonia maligna",
+      "Primer episodio psicótico (descartar causas orgánicas)"
+    ],
     "categoria": "psiquiatrico"
   },
   {
@@ -422,10 +1741,39 @@
     "nombre": "Trastorno Bipolar",
     "definicion": "Trastorno del ánimo con episodios recurrentes de manía (o hipomanía) y depresión. Tipo I: al menos un episodio maníaco. Tipo II: hipomanía + depresión mayor.",
     "fisiopatologiaBreve": "Desregulación de los sistemas de neurotransmisión monoaminérgica y glutamatérgica con alteraciones en la señalización intracelular y la neuroplasticidad. La litemia estabiliza membranas neuronales y modula segundos mensajeros. Fuerte componente genético (heredabilidad ~80%).",
-    "signosSintomas": ["Fase maníaca: euforia/irritabilidad, grandiosidad, disminución de sueño, verborrea, ideas fugaces, conductas de riesgo, hiperactividad", "Fase depresiva: ánimo bajo, anhedonia, hipersomnia, fatiga, ideas suicidas", "Fase mixta: síntomas simultáneos de manía y depresión", "Psicosis en episodios severos"],
-    "farmacosRelacionados": ["litio", "acido_valproico", "carbamazepina", "lamotrigina", "quetiapina", "olanzapina", "aripiprazol"],
-    "cuidadosEnfermeria": ["Litio: monitorizar litemia cada semana al inicio, luego cada 3 meses (rango: 0.6-1.2 mEq/L)", "Signos de toxicidad por litio: temblor grueso, vómitos, diarrea, ataxia, confusión", "Hidratación adecuada y evitar cambios bruscos de ingesta de sodio", "Control de función renal y tiroidea con litio (cada 6 meses)", "Ácido valproico: vigilar hepatotoxicidad y trombocitopenia", "Evaluar riesgo suicida especialmente en fases depresivas y mixtas", "Educar sobre importancia de adherencia: 'sentirse bien' no significa poder dejar la medicación", "Higiene del sueño estricta (privación de sueño desencadena manía)"],
-    "criteriosAlarma": ["Litemia >1.5 mEq/L (toxicidad)", "Manía severa con psicosis o agitación peligrosa", "Ideación suicida activa", "Conductas de riesgo graves (gasto excesivo, hipersexualidad peligrosa)", "Episodio mixto (alto riesgo suicida)", "Hepatotoxicidad por valproato"],
+    "signosSintomas": [
+      "Fase maníaca: euforia/irritabilidad, grandiosidad, disminución de sueño, verborrea, ideas fugaces, conductas de riesgo, hiperactividad",
+      "Fase depresiva: ánimo bajo, anhedonia, hipersomnia, fatiga, ideas suicidas",
+      "Fase mixta: síntomas simultáneos de manía y depresión",
+      "Psicosis en episodios severos"
+    ],
+    "farmacosRelacionados": [
+      "litio",
+      "acido_valproico",
+      "carbamazepina",
+      "lamotrigina",
+      "quetiapina",
+      "olanzapina",
+      "aripiprazol"
+    ],
+    "cuidadosEnfermeria": [
+      "Litio: monitorizar litemia cada semana al inicio, luego cada 3 meses (rango: 0.6-1.2 mEq/L)",
+      "Signos de toxicidad por litio: temblor grueso, vómitos, diarrea, ataxia, confusión",
+      "Hidratación adecuada y evitar cambios bruscos de ingesta de sodio",
+      "Control de función renal y tiroidea con litio (cada 6 meses)",
+      "Ácido valproico: vigilar hepatotoxicidad y trombocitopenia",
+      "Evaluar riesgo suicida especialmente en fases depresivas y mixtas",
+      "Educar sobre importancia de adherencia: 'sentirse bien' no significa poder dejar la medicación",
+      "Higiene del sueño estricta (privación de sueño desencadena manía)"
+    ],
+    "criteriosAlarma": [
+      "Litemia >1.5 mEq/L (toxicidad)",
+      "Manía severa con psicosis o agitación peligrosa",
+      "Ideación suicida activa",
+      "Conductas de riesgo graves (gasto excesivo, hipersexualidad peligrosa)",
+      "Episodio mixto (alto riesgo suicida)",
+      "Hepatotoxicidad por valproato"
+    ],
     "categoria": "psiquiatrico"
   },
   {
@@ -433,10 +1781,45 @@
     "nombre": "Trastorno de Ansiedad Generalizada",
     "definicion": "Ansiedad y preocupación excesivas e incontrolables sobre múltiples temas durante ≥6 meses, con síntomas físicos asociados que causan malestar significativo.",
     "fisiopatologiaBreve": "Desregulación del sistema GABAérgico (inhibición reducida), hiperactividad del eje HPA y de la amígdala, con déficit en la regulación prefrontal de las emociones. Involucra alteraciones en serotonina, noradrenalina y GABA que perpetúan el estado de hipervigilancia.",
-    "signosSintomas": ["Preocupación excesiva difícil de controlar", "Inquietud o sensación de estar 'al límite'", "Fatiga fácil", "Dificultad de concentración", "Irritabilidad", "Tensión muscular", "Trastornos del sueño (insomnio de conciliación)", "Síntomas somáticos: cefalea, dolor muscular, GI"],
-    "farmacosRelacionados": ["sertralina", "escitalopram", "venlafaxina", "duloxetina", "alprazolam", "lorazepam", "gabapentina"],
-    "cuidadosEnfermeria": ["ISRS/IRSN son primera línea (no benzodiacepinas a largo plazo)", "Benzodiacepinas: solo uso a corto plazo, riesgo de dependencia", "Educar: efecto de ISRS tarda 2-4 semanas", "Técnicas de relajación y respiración", "Identificar y evitar desencadenantes de ansiedad", "Reducir cafeína y estimulantes", "Fomentar ejercicio regular (efecto ansiolítico demostrado)", "Coordinar con psicoterapia (TCC es primera línea)"],
-    "criteriosAlarma": ["Crisis de pánico con síntomas cardiopulmonares (descartar IAM, TEP)", "Ideación suicida", "Abuso de benzodiacepinas o alcohol como automedicación", "Incapacidad funcional severa", "Síndrome de abstinencia a benzodiacepinas: convulsiones"],
+    "signosSintomas": [
+      "Preocupación excesiva difícil de controlar",
+      "Inquietud o sensación de estar 'al límite'",
+      "Fatiga fácil",
+      "Dificultad de concentración",
+      "Irritabilidad",
+      "Tensión muscular",
+      "Trastornos del sueño (insomnio de conciliación)",
+      "Síntomas somáticos: cefalea, dolor muscular, GI"
+    ],
+    "farmacosRelacionados": [
+      "sertralina",
+      "escitalopram",
+      "venlafaxina",
+      "duloxetina",
+      "alprazolam",
+      "lorazepam",
+      "gabapentina",
+      "paroxetina",
+      "citalopram",
+      "desvenlafaxina"
+    ],
+    "cuidadosEnfermeria": [
+      "ISRS/IRSN son primera línea (no benzodiacepinas a largo plazo)",
+      "Benzodiacepinas: solo uso a corto plazo, riesgo de dependencia",
+      "Educar: efecto de ISRS tarda 2-4 semanas",
+      "Técnicas de relajación y respiración",
+      "Identificar y evitar desencadenantes de ansiedad",
+      "Reducir cafeína y estimulantes",
+      "Fomentar ejercicio regular (efecto ansiolítico demostrado)",
+      "Coordinar con psicoterapia (TCC es primera línea)"
+    ],
+    "criteriosAlarma": [
+      "Crisis de pánico con síntomas cardiopulmonares (descartar IAM, TEP)",
+      "Ideación suicida",
+      "Abuso de benzodiacepinas o alcohol como automedicación",
+      "Incapacidad funcional severa",
+      "Síndrome de abstinencia a benzodiacepinas: convulsiones"
+    ],
     "categoria": "psiquiatrico"
   },
   {
@@ -444,10 +1827,45 @@
     "nombre": "Preeclampsia",
     "definicion": "Trastorno hipertensivo del embarazo que aparece después de las 20 semanas de gestación, caracterizado por hipertensión (≥140/90) y proteinuria o daño de órgano blanco. Afecta al 5-8% de embarazos.",
     "fisiopatologiaBreve": "Invasión trofoblástica deficiente de las arterias espirales uterinas produce hipoperfusión placentaria. La placenta isquémica libera factores antiangiogénicos (sFlt-1) y proinflamatorios que causan disfunción endotelial sistémica: vasoconstricción, aumento de permeabilidad capilar, activación de coagulación y daño de órganos blanco.",
-    "signosSintomas": ["HTA ≥140/90 después de semana 20", "Proteinuria ≥300 mg/24h", "Edema facial y de manos", "Cefalea intensa que no cede con analgésicos", "Alteraciones visuales (escotomas, fotopsias)", "Dolor en epigastrio o hipocondrio derecho", "Hiperreflexia", "Oliguria"],
-    "farmacosRelacionados": ["sulfato-magnesio", "nifedipino", "metildopa", "hidrocortisona_sistemica"],
-    "cuidadosEnfermeria": ["Monitorización de PA cada 4h (cada 15 min si severa)", "Control de proteinuria (tira reactiva o 24h)", "Balance hídrico estricto y control de diuresis horaria", "Sulfato de magnesio para prevención de eclampsia: vigilar reflejos, FR, diuresis", "Toxicidad por MgSO₄: hiporreflexia, FR <12, diuresis <30 mL/h → antídoto: gluconato de calcio", "Monitorización fetal continua", "Laboratorios cada 6-12h: plaquetas, transaminasas, creatinina, LDH", "Evaluar signos de severidad en cada valoración", "Reposo relativo en decúbito lateral izquierdo"],
-    "criteriosAlarma": ["PA ≥160/110 (preeclampsia severa)", "HELLP: hemólisis + elevación de enzimas hepáticas + plaquetas bajas", "Convulsiones (eclampsia)", "Cefalea intensa, escotomas (eclampsia inminente)", "Plaquetas <100,000", "Desprendimiento de placenta: sangrado vaginal + dolor + hipertonía"],
+    "signosSintomas": [
+      "HTA ≥140/90 después de semana 20",
+      "Proteinuria ≥300 mg/24h",
+      "Edema facial y de manos",
+      "Cefalea intensa que no cede con analgésicos",
+      "Alteraciones visuales (escotomas, fotopsias)",
+      "Dolor en epigastrio o hipocondrio derecho",
+      "Hiperreflexia",
+      "Oliguria"
+    ],
+    "farmacosRelacionados": [
+      "sulfato-magnesio",
+      "nifedipino",
+      "metildopa",
+      "hidrocortisona_sistemica",
+      "labetalol",
+      "sulfato_magnesio_obstetrico",
+      "nifedipino_obstetrico",
+      "metildopa_obstetrico"
+    ],
+    "cuidadosEnfermeria": [
+      "Monitorización de PA cada 4h (cada 15 min si severa)",
+      "Control de proteinuria (tira reactiva o 24h)",
+      "Balance hídrico estricto y control de diuresis horaria",
+      "Sulfato de magnesio para prevención de eclampsia: vigilar reflejos, FR, diuresis",
+      "Toxicidad por MgSO₄: hiporreflexia, FR <12, diuresis <30 mL/h → antídoto: gluconato de calcio",
+      "Monitorización fetal continua",
+      "Laboratorios cada 6-12h: plaquetas, transaminasas, creatinina, LDH",
+      "Evaluar signos de severidad en cada valoración",
+      "Reposo relativo en decúbito lateral izquierdo"
+    ],
+    "criteriosAlarma": [
+      "PA ≥160/110 (preeclampsia severa)",
+      "HELLP: hemólisis + elevación de enzimas hepáticas + plaquetas bajas",
+      "Convulsiones (eclampsia)",
+      "Cefalea intensa, escotomas (eclampsia inminente)",
+      "Plaquetas <100,000",
+      "Desprendimiento de placenta: sangrado vaginal + dolor + hipertonía"
+    ],
     "categoria": "obstetrico"
   },
   {
@@ -455,10 +1873,41 @@
     "nombre": "Eclampsia",
     "definicion": "Convulsiones tónico-clónicas generalizadas en una paciente con preeclampsia que no pueden atribuirse a otra causa. Emergencia obstétrica con alta mortalidad materno-fetal.",
     "fisiopatologiaBreve": "La disfunción endotelial cerebral severa de la preeclampsia produce vasoespasmo cerebral, edema vasogénico e isquemia que desencadenan actividad epiléptica. Puede ocurrir anteparto (50%), intraparto (25%) o postparto (25%, hasta 6 semanas).",
-    "signosSintomas": ["Convulsiones tónico-clónicas generalizadas", "Precedidas frecuentemente por: cefalea severa, alteraciones visuales, hiperreflexia", "HTA severa", "Proteinuria", "Estado postictal: confusión, agitación", "Puede presentarse sin pródromos"],
-    "farmacosRelacionados": ["sulfato-magnesio", "diazepam", "nifedipino", "metildopa"],
-    "cuidadosEnfermeria": ["Sulfato de magnesio IV: dosis de carga 4-6g en 20 min, mantenimiento 1-2g/h", "Durante convulsión: proteger vía aérea, lateralizar, NO introducir objetos en boca", "Oxígeno suplementario", "Vigilar toxicidad por MgSO₄: reflejos rotulianos (ausencia), FR <12/min, diuresis <30 mL/h", "Tener gluconato de calcio 1g listo como antídoto", "Monitorización fetal continua", "Preparar para cesárea urgente una vez estabilizada", "PA cada 5 minutos durante crisis, luego cada 15 min"],
-    "criteriosAlarma": ["Convulsiones refractarias a sulfato de magnesio", "Status epiléptico", "ACV hemorrágico", "Desprendimiento de placenta", "Sufrimiento fetal agudo", "CID", "Paro cardiorrespiratorio"],
+    "signosSintomas": [
+      "Convulsiones tónico-clónicas generalizadas",
+      "Precedidas frecuentemente por: cefalea severa, alteraciones visuales, hiperreflexia",
+      "HTA severa",
+      "Proteinuria",
+      "Estado postictal: confusión, agitación",
+      "Puede presentarse sin pródromos"
+    ],
+    "farmacosRelacionados": [
+      "sulfato-magnesio",
+      "diazepam",
+      "nifedipino",
+      "metildopa",
+      "sulfato_magnesio_obstetrico",
+      "labetalol"
+    ],
+    "cuidadosEnfermeria": [
+      "Sulfato de magnesio IV: dosis de carga 4-6g en 20 min, mantenimiento 1-2g/h",
+      "Durante convulsión: proteger vía aérea, lateralizar, NO introducir objetos en boca",
+      "Oxígeno suplementario",
+      "Vigilar toxicidad por MgSO₄: reflejos rotulianos (ausencia), FR <12/min, diuresis <30 mL/h",
+      "Tener gluconato de calcio 1g listo como antídoto",
+      "Monitorización fetal continua",
+      "Preparar para cesárea urgente una vez estabilizada",
+      "PA cada 5 minutos durante crisis, luego cada 15 min"
+    ],
+    "criteriosAlarma": [
+      "Convulsiones refractarias a sulfato de magnesio",
+      "Status epiléptico",
+      "ACV hemorrágico",
+      "Desprendimiento de placenta",
+      "Sufrimiento fetal agudo",
+      "CID",
+      "Paro cardiorrespiratorio"
+    ],
     "categoria": "obstetrico"
   },
   {
@@ -466,10 +1915,43 @@
     "nombre": "Hemorragia Postparto",
     "definicion": "Sangrado ≥500 mL tras parto vaginal o ≥1000 mL tras cesárea. Primera causa de mortalidad materna en el mundo. Causa más frecuente: atonía uterina (70%).",
     "fisiopatologiaBreve": "Las '4 T': Tono (atonía uterina, 70%), Tejido (retención placentaria), Trauma (desgarros del canal, ruptura uterina) y Trombina (coagulopatía). La atonía uterina impide la contracción del miometrio sobre los vasos del lecho placentario, produciendo hemorragia masiva.",
-    "signosSintomas": ["Sangrado vaginal abundante post-alumbramiento", "Útero blando y no contraído (atonía)", "Taquicardia", "Hipotensión", "Palidez", "Diaforesis", "Ansiedad", "Alteración del estado de conciencia en hemorragia severa"],
-    "farmacosRelacionados": ["oxitocina", "misoprostol", "ergometrina", "oxitocina"],
-    "cuidadosEnfermeria": ["Masaje uterino bimanual continuo", "Oxitocina 20-40 UI en 1L de cristaloides IV", "Vaciamiento vesical (sonda Foley)", "2 accesos IV de grueso calibre + cristaloides", "Tipificación y pruebas cruzadas urgentes", "Monitorización hemodinámica continua", "Control de sangrado: peso de compresas, medición de volumen", "Si no responde: misoprostol rectal + ergometrina IM", "Preparar para taponamiento con balón o intervención quirúrgica"],
-    "criteriosAlarma": ["Shock hipovolémico: PA <90/60, FC >120, mala perfusión", "Pérdida estimada >1500 mL o signos de shock", "Útero que no responde a uterotónicos", "CID asociada", "Necesidad de transfusión masiva", "Inversión uterina"],
+    "signosSintomas": [
+      "Sangrado vaginal abundante post-alumbramiento",
+      "Útero blando y no contraído (atonía)",
+      "Taquicardia",
+      "Hipotensión",
+      "Palidez",
+      "Diaforesis",
+      "Ansiedad",
+      "Alteración del estado de conciencia en hemorragia severa"
+    ],
+    "farmacosRelacionados": [
+      "oxitocina",
+      "misoprostol",
+      "ergometrina",
+      "oxitocina",
+      "carbetocina",
+      "dinoprostona"
+    ],
+    "cuidadosEnfermeria": [
+      "Masaje uterino bimanual continuo",
+      "Oxitocina 20-40 UI en 1L de cristaloides IV",
+      "Vaciamiento vesical (sonda Foley)",
+      "2 accesos IV de grueso calibre + cristaloides",
+      "Tipificación y pruebas cruzadas urgentes",
+      "Monitorización hemodinámica continua",
+      "Control de sangrado: peso de compresas, medición de volumen",
+      "Si no responde: misoprostol rectal + ergometrina IM",
+      "Preparar para taponamiento con balón o intervención quirúrgica"
+    ],
+    "criteriosAlarma": [
+      "Shock hipovolémico: PA <90/60, FC >120, mala perfusión",
+      "Pérdida estimada >1500 mL o signos de shock",
+      "Útero que no responde a uterotónicos",
+      "CID asociada",
+      "Necesidad de transfusión masiva",
+      "Inversión uterina"
+    ],
     "categoria": "obstetrico"
   },
   {
@@ -477,10 +1959,43 @@
     "nombre": "Gota",
     "definicion": "Artropatía inflamatoria por depósito de cristales de urato monosódico en articulaciones y tejidos blandos, secundaria a hiperuricemia crónica (ácido úrico >6.8 mg/dL).",
     "fisiopatologiaBreve": "La hiperuricemia sostenida (sobreproducción o infraexcreción de ácido úrico) supera el límite de solubilidad y los cristales de urato monosódico precipitan en articulaciones y tejidos. Los cristales activan el inflamasoma NLRP3 de los macrófagos, liberando IL-1β que desencadena inflamación aguda intensa.",
-    "signosSintomas": ["Artritis aguda monoarticular (70% primera metatarsofalángica: podagra)", "Dolor intenso, inicio nocturno, máximo en 12-24h", "Articulación roja, caliente, edematosa", "Imposibilidad de apoyar o tocar la zona", "Fiebre en crisis intensas", "Tofos en enfermedad crónica", "Litiasis renal por ácido úrico"],
-    "farmacosRelacionados": ["colchicina", "alopurinol", "naproxeno", "ibuprofeno", "prednisona"],
-    "cuidadosEnfermeria": ["Crisis aguda: reposo articular, hielo local, analgesia", "Colchicina: administrar lo antes posible en la crisis", "Vigilar toxicidad de colchicina: diarrea, náuseas, vómitos", "NO iniciar ni modificar alopurinol durante crisis aguda", "Hidratación abundante (>2L/día)", "Dieta: limitar purinas (carnes rojas, mariscos, vísceras), evitar alcohol y fructosa", "Alopurinol: iniciar a dosis baja con profilaxis de colchicina", "Objetivo: ácido úrico <6 mg/dL"],
-    "criteriosAlarma": ["Artritis séptica (descartar si fiebre alta + monoartritis)", "Gota poliarticular con fiebre (puede simular sepsis)", "Insuficiencia renal por nefropatía úrica", "Reacción adversa grave a alopurinol (síndrome DRESS)", "Crisis refractaria a tratamiento habitual"],
+    "signosSintomas": [
+      "Artritis aguda monoarticular (70% primera metatarsofalángica: podagra)",
+      "Dolor intenso, inicio nocturno, máximo en 12-24h",
+      "Articulación roja, caliente, edematosa",
+      "Imposibilidad de apoyar o tocar la zona",
+      "Fiebre en crisis intensas",
+      "Tofos en enfermedad crónica",
+      "Litiasis renal por ácido úrico"
+    ],
+    "farmacosRelacionados": [
+      "colchicina",
+      "alopurinol",
+      "naproxeno",
+      "ibuprofeno",
+      "prednisona",
+      "meloxicam",
+      "piroxicam",
+      "indometacina",
+      "febuxostat"
+    ],
+    "cuidadosEnfermeria": [
+      "Crisis aguda: reposo articular, hielo local, analgesia",
+      "Colchicina: administrar lo antes posible en la crisis",
+      "Vigilar toxicidad de colchicina: diarrea, náuseas, vómitos",
+      "NO iniciar ni modificar alopurinol durante crisis aguda",
+      "Hidratación abundante (>2L/día)",
+      "Dieta: limitar purinas (carnes rojas, mariscos, vísceras), evitar alcohol y fructosa",
+      "Alopurinol: iniciar a dosis baja con profilaxis de colchicina",
+      "Objetivo: ácido úrico <6 mg/dL"
+    ],
+    "criteriosAlarma": [
+      "Artritis séptica (descartar si fiebre alta + monoartritis)",
+      "Gota poliarticular con fiebre (puede simular sepsis)",
+      "Insuficiencia renal por nefropatía úrica",
+      "Reacción adversa grave a alopurinol (síndrome DRESS)",
+      "Crisis refractaria a tratamiento habitual"
+    ],
     "categoria": "musculoesqueletico"
   },
   {
@@ -488,10 +2003,44 @@
     "nombre": "Artritis Reumatoide",
     "definicion": "Enfermedad autoinmune sistémica crónica que afecta principalmente las articulaciones sinoviales de forma simétrica y erosiva. Sin tratamiento produce deformidad e incapacidad funcional progresiva.",
     "fisiopatologiaBreve": "Autoinmunidad contra antígenos articulares con infiltración de la membrana sinovial por linfocitos T, B y macrófagos (pannus sinovial). El pannus produce enzimas proteolíticas y citoquinas (TNF-α, IL-6, IL-1) que destruyen cartílago y hueso subcondral. La inflamación sistémica crónica aumenta el riesgo cardiovascular.",
-    "signosSintomas": ["Poliartritis simétrica de pequeñas articulaciones (manos, muñecas, pies)", "Rigidez matutina >1 hora", "Tumefacción articular", "Deformidades: desviación cubital, dedos en cuello de cisne, en boutonnière", "Nódulos reumatoides subcutáneos", "Fatiga", "Anemia de enfermedad crónica", "Manifestaciones extraarticulares: serositis, vasculitis, nódulos pulmonares"],
-    "farmacosRelacionados": ["metotrexato", "hidroxicloroquina", "prednisona", "naproxeno", "ibuprofeno", "azatioprina"],
-    "cuidadosEnfermeria": ["Metotrexato: suplementar con ácido fólico 5 mg semanal (reducir toxicidad)", "Control de hemograma y función hepática cada 4-8 semanas con metotrexato", "Vigilar toxicidad del metotrexato: mucositis, citopenias, hepatotoxicidad", "Hidroxicloroquina: control oftalmológico anual (toxicidad retiniana)", "Protección articular: férulas, economía articular", "Fisioterapia y ejercicio adaptado", "Evaluación funcional periódica", "Vacunación antes de iniciar inmunosupresores"],
-    "criteriosAlarma": ["Pancitopenia por metotrexato", "Infección oportunista con inmunosupresores", "Subluxación atlanto-axial (riesgo de compresión medular)", "Toxicidad pulmonar por metotrexato: tos seca, disnea", "Vasculitis reumatoide sistémica"],
+    "signosSintomas": [
+      "Poliartritis simétrica de pequeñas articulaciones (manos, muñecas, pies)",
+      "Rigidez matutina >1 hora",
+      "Tumefacción articular",
+      "Deformidades: desviación cubital, dedos en cuello de cisne, en boutonnière",
+      "Nódulos reumatoides subcutáneos",
+      "Fatiga",
+      "Anemia de enfermedad crónica",
+      "Manifestaciones extraarticulares: serositis, vasculitis, nódulos pulmonares"
+    ],
+    "farmacosRelacionados": [
+      "metotrexato",
+      "hidroxicloroquina",
+      "prednisona",
+      "naproxeno",
+      "ibuprofeno",
+      "azatioprina",
+      "meloxicam",
+      "celecoxib",
+      "leflunomida"
+    ],
+    "cuidadosEnfermeria": [
+      "Metotrexato: suplementar con ácido fólico 5 mg semanal (reducir toxicidad)",
+      "Control de hemograma y función hepática cada 4-8 semanas con metotrexato",
+      "Vigilar toxicidad del metotrexato: mucositis, citopenias, hepatotoxicidad",
+      "Hidroxicloroquina: control oftalmológico anual (toxicidad retiniana)",
+      "Protección articular: férulas, economía articular",
+      "Fisioterapia y ejercicio adaptado",
+      "Evaluación funcional periódica",
+      "Vacunación antes de iniciar inmunosupresores"
+    ],
+    "criteriosAlarma": [
+      "Pancitopenia por metotrexato",
+      "Infección oportunista con inmunosupresores",
+      "Subluxación atlanto-axial (riesgo de compresión medular)",
+      "Toxicidad pulmonar por metotrexato: tos seca, disnea",
+      "Vasculitis reumatoide sistémica"
+    ],
     "categoria": "musculoesqueletico"
   },
   {
@@ -499,10 +2048,43 @@
     "nombre": "Shock Anafiláctico",
     "definicion": "Reacción de hipersensibilidad tipo I sistémica, severa y potencialmente mortal, que produce compromiso cardiovascular y/o respiratorio. Requiere tratamiento inmediato con adrenalina.",
     "fisiopatologiaBreve": "Exposición a alérgeno (fármacos, alimentos, picaduras) en individuo previamente sensibilizado. La IgE unida a mastocitos y basófilos desencadena desgranulación masiva liberando histamina, triptasa, prostaglandinas y leucotrienos. Produce vasodilatación sistémica, broncoespasmo, aumento de permeabilidad capilar y edema de mucosas.",
-    "signosSintomas": ["Inicio rápido (segundos a minutos tras exposición)", "Urticaria generalizada y angioedema", "Broncoespasmo: disnea, sibilancias, estridor", "Hipotensión severa y taquicardia", "Edema laríngeo (voz ronca, estridor)", "Dolor abdominal, náuseas, vómitos", "Mareo, síncope", "Paro cardiorrespiratorio"],
-    "farmacosRelacionados": ["adrenalina", "difenhidramina", "hidrocortisona_sistemica", "salbutamol", "ranitidina"],
-    "cuidadosEnfermeria": ["ADRENALINA IM 0.3-0.5 mg en cara anterolateral del muslo (NO subcutánea)", "Repetir adrenalina cada 5-15 min si no hay respuesta", "Posición Trendelenburg (piernas elevadas), NO sentado si hipotensión", "Asegurar vía aérea: preparar para intubación si edema laríngeo", "2 accesos IV de grueso calibre + cristaloides 1-2L rápido", "Monitorización continua: PA, FC, SatO₂", "Antihistamínicos y corticoides son ADYUVANTES (no sustituyen adrenalina)", "Observación mínima 6-24 horas (riesgo de reacción bifásica)", "Identificar y documentar el alérgeno"],
-    "criteriosAlarma": ["No respuesta a 2 dosis de adrenalina IM", "Obstrucción de vía aérea (estridor severo)", "Paro cardiorrespiratorio", "Reacción bifásica (recurrencia 1-72h después)", "Shock refractario: necesidad de infusión de adrenalina IV"],
+    "signosSintomas": [
+      "Inicio rápido (segundos a minutos tras exposición)",
+      "Urticaria generalizada y angioedema",
+      "Broncoespasmo: disnea, sibilancias, estridor",
+      "Hipotensión severa y taquicardia",
+      "Edema laríngeo (voz ronca, estridor)",
+      "Dolor abdominal, náuseas, vómitos",
+      "Mareo, síncope",
+      "Paro cardiorrespiratorio"
+    ],
+    "farmacosRelacionados": [
+      "adrenalina",
+      "difenhidramina",
+      "hidrocortisona_sistemica",
+      "salbutamol",
+      "ranitidina",
+      "gluconato_calcio",
+      "glucosa_hipertonica"
+    ],
+    "cuidadosEnfermeria": [
+      "ADRENALINA IM 0.3-0.5 mg en cara anterolateral del muslo (NO subcutánea)",
+      "Repetir adrenalina cada 5-15 min si no hay respuesta",
+      "Posición Trendelenburg (piernas elevadas), NO sentado si hipotensión",
+      "Asegurar vía aérea: preparar para intubación si edema laríngeo",
+      "2 accesos IV de grueso calibre + cristaloides 1-2L rápido",
+      "Monitorización continua: PA, FC, SatO₂",
+      "Antihistamínicos y corticoides son ADYUVANTES (no sustituyen adrenalina)",
+      "Observación mínima 6-24 horas (riesgo de reacción bifásica)",
+      "Identificar y documentar el alérgeno"
+    ],
+    "criteriosAlarma": [
+      "No respuesta a 2 dosis de adrenalina IM",
+      "Obstrucción de vía aérea (estridor severo)",
+      "Paro cardiorrespiratorio",
+      "Reacción bifásica (recurrencia 1-72h después)",
+      "Shock refractario: necesidad de infusión de adrenalina IV"
+    ],
     "categoria": "emergencia"
   },
   {
@@ -510,10 +2092,48 @@
     "nombre": "Shock Séptico",
     "definicion": "Subconjunto de sepsis con hipotensión refractaria a líquidos que requiere vasopresores y lactato >2 mmol/L. Mortalidad >40%.",
     "fisiopatologiaBreve": "Evolución más grave de la sepsis donde la vasodilatación patológica y la disfunción miocárdica producen hipotensión refractaria a la resucitación con líquidos. La hipoperfusión tisular sostenida genera metabolismo anaerobio (lactato elevado), disfunción mitocondrial y fallo orgánico progresivo irreversible.",
-    "signosSintomas": ["Hipotensión que persiste tras 30 mL/kg de cristaloides", "Necesidad de vasopresores (norepinefrina)", "Lactato >2 mmol/L", "Moteado cutáneo (livedo reticularis)", "Llenado capilar >3 segundos", "Oliguria", "Alteración del estado mental", "Extremidades frías o calientes según fase"],
-    "farmacosRelacionados": ["noradrenalina", "vasopresina", "dopamina", "dobutamina", "hidrocortisona_sistemica", "piperacilina_tazobactam", "meropenem", "vancomicina"],
-    "cuidadosEnfermeria": ["Norepinefrina como vasopresor de primera línea (por vía central)", "Objetivo: PAM ≥65 mmHg", "Monitorización hemodinámica invasiva (línea arterial, PVC)", "Segundo vasopresor (vasopresina) si no se alcanza objetivo con norepinefrina", "Hidrocortisona IV si shock refractario a vasopresores", "Antibióticos de amplio espectro en la primera hora", "Control de fuente infecciosa (drenaje de absceso, retiro de catéter infectado)", "Balance hídrico: evitar sobrecarga tras resucitación inicial", "Dobutamina si disfunción miocárdica asociada"],
-    "criteriosAlarma": ["Necesidad de 2+ vasopresores a dosis altas", "Lactato en aumento a pesar del tratamiento", "Fallo multiorgánico progresivo", "Arritmias por vasopresores", "Isquemia periférica por vasopresores", "Coagulopatía intravascular diseminada"],
+    "signosSintomas": [
+      "Hipotensión que persiste tras 30 mL/kg de cristaloides",
+      "Necesidad de vasopresores (norepinefrina)",
+      "Lactato >2 mmol/L",
+      "Moteado cutáneo (livedo reticularis)",
+      "Llenado capilar >3 segundos",
+      "Oliguria",
+      "Alteración del estado mental",
+      "Extremidades frías o calientes según fase"
+    ],
+    "farmacosRelacionados": [
+      "noradrenalina",
+      "vasopresina",
+      "dopamina",
+      "dobutamina",
+      "hidrocortisona_sistemica",
+      "piperacilina_tazobactam",
+      "meropenem",
+      "vancomicina",
+      "solucion_fisiologica",
+      "ringer_lactato",
+      "albumina_humana"
+    ],
+    "cuidadosEnfermeria": [
+      "Norepinefrina como vasopresor de primera línea (por vía central)",
+      "Objetivo: PAM ≥65 mmHg",
+      "Monitorización hemodinámica invasiva (línea arterial, PVC)",
+      "Segundo vasopresor (vasopresina) si no se alcanza objetivo con norepinefrina",
+      "Hidrocortisona IV si shock refractario a vasopresores",
+      "Antibióticos de amplio espectro en la primera hora",
+      "Control de fuente infecciosa (drenaje de absceso, retiro de catéter infectado)",
+      "Balance hídrico: evitar sobrecarga tras resucitación inicial",
+      "Dobutamina si disfunción miocárdica asociada"
+    ],
+    "criteriosAlarma": [
+      "Necesidad de 2+ vasopresores a dosis altas",
+      "Lactato en aumento a pesar del tratamiento",
+      "Fallo multiorgánico progresivo",
+      "Arritmias por vasopresores",
+      "Isquemia periférica por vasopresores",
+      "Coagulopatía intravascular diseminada"
+    ],
     "categoria": "emergencia"
   },
   {
@@ -521,10 +2141,46 @@
     "nombre": "Status Epiléptico",
     "definicion": "Crisis epiléptica que dura >5 minutos o 2+ crisis sin recuperación de conciencia entre ellas. Emergencia neurológica con riesgo de daño cerebral permanente y muerte.",
     "fisiopatologiaBreve": "Fallo de los mecanismos inhibitorios que normalmente terminan una crisis. La actividad epiléptica sostenida produce excitotoxicidad por glutamato, entrada masiva de calcio intracelular, estrés oxidativo y muerte neuronal. A mayor duración, mayor resistencia farmacológica por internalización de receptores GABA.",
-    "signosSintomas": ["Crisis tónico-clónica sostenida o repetida", "Pérdida de conciencia prolongada", "Cianosis", "Hipertermia", "Rabdomiólisis (mioglobinuria)", "Acidosis láctica", "Status sutil: movimientos mínimos pero actividad eléctrica continua en EEG"],
-    "farmacosRelacionados": ["diazepam", "midazolam", "lorazepam", "fenitoina", "acido_valproico", "levetiracetam", "fenobarbital", "propofol"],
-    "cuidadosEnfermeria": ["Protocolo tiempo-dependiente: cada minuto cuenta", "0-5 min: vía aérea, O₂, acceso IV, glucemia, diazepam 10mg IV o midazolam IM", "5-20 min: repetir benzodiacepina, iniciar fenitoína 20mg/kg IV (max 50mg/min)", "Fenitoína: pasar en SF (NO en glucosada), monitorizar ECG y PA durante infusión", "Proteger de lesiones, lateralizar para prevenir aspiración", "NO introducir objetos en la boca", "Monitorizar: SatO₂, temperatura, lactato, CK, electrolitos", "Si refractario: intubación + propofol/midazolam en infusión continua en UCI"],
-    "criteriosAlarma": ["Crisis >30 min (status refractario)", "Necesidad de intubación", "Hipertermia >40°C", "Rabdomiólisis con CK >5000 UI/L", "Acidosis metabólica severa", "Hipotensión por fenitoína IV", "Status super-refractario: persiste >24h con anestésicos"],
+    "signosSintomas": [
+      "Crisis tónico-clónica sostenida o repetida",
+      "Pérdida de conciencia prolongada",
+      "Cianosis",
+      "Hipertermia",
+      "Rabdomiólisis (mioglobinuria)",
+      "Acidosis láctica",
+      "Status sutil: movimientos mínimos pero actividad eléctrica continua en EEG"
+    ],
+    "farmacosRelacionados": [
+      "diazepam",
+      "midazolam",
+      "lorazepam",
+      "fenitoina",
+      "acido_valproico",
+      "levetiracetam",
+      "fenobarbital",
+      "propofol",
+      "sulfato_magnesio_emergencia",
+      "glucosa_hipertonica"
+    ],
+    "cuidadosEnfermeria": [
+      "Protocolo tiempo-dependiente: cada minuto cuenta",
+      "0-5 min: vía aérea, O₂, acceso IV, glucemia, diazepam 10mg IV o midazolam IM",
+      "5-20 min: repetir benzodiacepina, iniciar fenitoína 20mg/kg IV (max 50mg/min)",
+      "Fenitoína: pasar en SF (NO en glucosada), monitorizar ECG y PA durante infusión",
+      "Proteger de lesiones, lateralizar para prevenir aspiración",
+      "NO introducir objetos en la boca",
+      "Monitorizar: SatO₂, temperatura, lactato, CK, electrolitos",
+      "Si refractario: intubación + propofol/midazolam en infusión continua en UCI"
+    ],
+    "criteriosAlarma": [
+      "Crisis >30 min (status refractario)",
+      "Necesidad de intubación",
+      "Hipertermia >40°C",
+      "Rabdomiólisis con CK >5000 UI/L",
+      "Acidosis metabólica severa",
+      "Hipotensión por fenitoína IV",
+      "Status super-refractario: persiste >24h con anestésicos"
+    ],
     "categoria": "emergencia"
   },
   {
@@ -532,10 +2188,50 @@
     "nombre": "Edema Agudo de Pulmón",
     "definicion": "Acumulación aguda de líquido en los alvéolos pulmonares, generalmente por insuficiencia cardíaca izquierda aguda (cardiogénico). Produce insuficiencia respiratoria severa.",
     "fisiopatologiaBreve": "Aumento brusco de la presión hidrostática capilar pulmonar (>25 mmHg) por disfunción ventricular izquierda aguda. El líquido trasuda desde los capilares hacia el intersticio y alvéolos, inundando los espacios aéreos. El resultado es grave alteración del intercambio gaseoso con hipoxemia severa.",
-    "signosSintomas": ["Disnea severa de inicio súbito", "Ortopnea (no puede estar acostado)", "Esputo rosado espumoso", "Crepitantes bilaterales difusos", "Taquipnea severa", "Taquicardia", "Diaforesis", "Cianosis", "Ansiedad extrema", "Sibilancias (asma cardíaca)"],
-    "farmacosRelacionados": ["furosemida", "nitroglicerina", "morfina", "dobutamina", "noradrenalina"],
-    "cuidadosEnfermeria": ["Posición sentado con piernas colgando (reduce retorno venoso)", "Oxígeno a alto flujo, VMNI (CPAP) si disponible", "Furosemida IV (40-80 mg) para diuresis rápida", "Nitroglicerina SL o IV si PA sistólica >100 mmHg", "Monitorización continua: SatO₂, PA, FC, diuresis", "Acceso IV (NO sobrecargar con líquidos)", "Morfina IV a dosis bajas: reduce ansiedad y precarga", "Preparar para intubación si no mejora con VMNI", "Balance hídrico negativo como objetivo", "Buscar causa desencadenante: IAM, arritmia, crisis HTA"],
-    "criteriosAlarma": ["SatO₂ <85% con oxígeno", "Necesidad de intubación y ventilación mecánica", "Shock cardiogénico: PA <90 mmHg + mala perfusión", "No respuesta a furosemida (considerar ultrafiltración)", "Arritmia maligna asociada", "Paro cardiorrespiratorio"],
+    "signosSintomas": [
+      "Disnea severa de inicio súbito",
+      "Ortopnea (no puede estar acostado)",
+      "Esputo rosado espumoso",
+      "Crepitantes bilaterales difusos",
+      "Taquipnea severa",
+      "Taquicardia",
+      "Diaforesis",
+      "Cianosis",
+      "Ansiedad extrema",
+      "Sibilancias (asma cardíaca)"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "nitroglicerina",
+      "morfina",
+      "dobutamina",
+      "noradrenalina",
+      "bumetanida",
+      "milrinona",
+      "levosimendan",
+      "nitroglicerina_infusion",
+      "albumina_humana"
+    ],
+    "cuidadosEnfermeria": [
+      "Posición sentado con piernas colgando (reduce retorno venoso)",
+      "Oxígeno a alto flujo, VMNI (CPAP) si disponible",
+      "Furosemida IV (40-80 mg) para diuresis rápida",
+      "Nitroglicerina SL o IV si PA sistólica >100 mmHg",
+      "Monitorización continua: SatO₂, PA, FC, diuresis",
+      "Acceso IV (NO sobrecargar con líquidos)",
+      "Morfina IV a dosis bajas: reduce ansiedad y precarga",
+      "Preparar para intubación si no mejora con VMNI",
+      "Balance hídrico negativo como objetivo",
+      "Buscar causa desencadenante: IAM, arritmia, crisis HTA"
+    ],
+    "criteriosAlarma": [
+      "SatO₂ <85% con oxígeno",
+      "Necesidad de intubación y ventilación mecánica",
+      "Shock cardiogénico: PA <90 mmHg + mala perfusión",
+      "No respuesta a furosemida (considerar ultrafiltración)",
+      "Arritmia maligna asociada",
+      "Paro cardiorrespiratorio"
+    ],
     "categoria": "emergencia"
   },
   {
@@ -543,10 +2239,475 @@
     "nombre": "Crisis Hipertensiva",
     "definicion": "PA ≥180/120 mmHg. Se clasifica en urgencia hipertensiva (sin daño de órgano blanco) y emergencia hipertensiva (con daño de órgano blanco agudo: cerebral, cardíaco, renal, retiniano).",
     "fisiopatologiaBreve": "Elevación aguda y severa de la PA que supera la capacidad de autorregulación vascular. En la emergencia, la presión excesiva daña directamente el endotelio vascular produciendo necrosis fibrinoide arteriolar, activación del SRAA, retención de sodio y vasoconstricción que perpetúan el ciclo. Los órganos más vulnerables son cerebro, corazón, riñones y retina.",
-    "signosSintomas": ["PA ≥180/120 mmHg", "Emergencia: cefalea intensa, alteración visual, déficit neurológico, dolor torácico, disnea, oliguria", "Urgencia: PA elevada con síntomas inespecíficos (ansiedad, cefalea leve), sin daño de órgano", "Encefalopatía hipertensiva: confusión, convulsiones, edema de papila", "Fondo de ojo: hemorragias, exudados, papiledema"],
-    "farmacosRelacionados": ["nitroprusiato", "nitroglicerina", "enalapril", "nifedipino", "propranolol", "furosemida", "clonidina"],
-    "cuidadosEnfermeria": ["DIFERENCIAR emergencia vs urgencia: buscar daño de órgano", "Emergencia: tratamiento IV en UCI, descenso de PA 25% en primera hora", "Urgencia: tratamiento oral, descenso gradual en 24-48 horas", "Monitorización PA cada 5-15 min con tratamiento IV", "NO bajar PA bruscamente (riesgo de isquemia cerebral/coronaria)", "Acceso IV, monitorización ECG continua", "Solicitar: ECG, fondo de ojo, creatinina, troponina, orina, TAC si síntomas neurológicos", "Nitroprusiato: proteger de la luz, monitorizar tiocianatos si >48h"],
-    "criteriosAlarma": ["Encefalopatía hipertensiva: convulsiones, coma", "Disección aórtica: dolor torácico desgarrante irradiado a espalda", "IAM o angina inestable con HTA", "Edema agudo de pulmón hipertensivo", "ACV hemorrágico", "Eclampsia en embarazada"],
+    "signosSintomas": [
+      "PA ≥180/120 mmHg",
+      "Emergencia: cefalea intensa, alteración visual, déficit neurológico, dolor torácico, disnea, oliguria",
+      "Urgencia: PA elevada con síntomas inespecíficos (ansiedad, cefalea leve), sin daño de órgano",
+      "Encefalopatía hipertensiva: confusión, convulsiones, edema de papila",
+      "Fondo de ojo: hemorragias, exudados, papiledema"
+    ],
+    "farmacosRelacionados": [
+      "nitroprusiato",
+      "nitroglicerina",
+      "enalapril",
+      "nifedipino",
+      "propranolol",
+      "furosemida",
+      "clonidina",
+      "fenoldopam",
+      "hidralazina"
+    ],
+    "cuidadosEnfermeria": [
+      "DIFERENCIAR emergencia vs urgencia: buscar daño de órgano",
+      "Emergencia: tratamiento IV en UCI, descenso de PA 25% en primera hora",
+      "Urgencia: tratamiento oral, descenso gradual en 24-48 horas",
+      "Monitorización PA cada 5-15 min con tratamiento IV",
+      "NO bajar PA bruscamente (riesgo de isquemia cerebral/coronaria)",
+      "Acceso IV, monitorización ECG continua",
+      "Solicitar: ECG, fondo de ojo, creatinina, troponina, orina, TAC si síntomas neurológicos",
+      "Nitroprusiato: proteger de la luz, monitorizar tiocianatos si >48h"
+    ],
+    "criteriosAlarma": [
+      "Encefalopatía hipertensiva: convulsiones, coma",
+      "Disección aórtica: dolor torácico desgarrante irradiado a espalda",
+      "IAM o angina inestable con HTA",
+      "Edema agudo de pulmón hipertensivo",
+      "ACV hemorrágico",
+      "Eclampsia en embarazada"
+    ],
+    "categoria": "emergencia"
+  },
+  {
+    "id": "pat_sae",
+    "nombre": "Síndrome Ascítico Edematoso",
+    "definicion": "Cuadro clínico caracterizado por la acumulación de líquido en la cavidad peritoneal (ascitis) y edema periférico. Es la complicación más frecuente de la cirrosis hepática descompensada, resultado de la hipertensión portal y la retención de sodio y agua.",
+    "fisiopatologiaBreve": "La hipertensión portal genera vasodilatación esplácnica con reducción del volumen arterial efectivo. Se activan mecanismos compensadores (SRAA, SNS, ADH) que producen retención renal de sodio y agua. La hipoalbuminemia por falla hepática reduce la presión oncótica, favoreciendo la trasudación hacia el peritoneo y el intersticio.",
+    "signosSintomas": [
+      "Distensión abdominal progresiva",
+      "Matidez desplazable y oleada ascítica",
+      "Edema en miembros inferiores (bilateral, en godet)",
+      "Aumento de peso rápido",
+      "Disnea por elevación diafragmática",
+      "Hernia umbilical por aumento de presión intraabdominal",
+      "Circulación colateral visible (cabeza de medusa)",
+      "Ictericia y signos de hepatopatía crónica"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "espironolactona",
+      "albumina_humana",
+      "propranolol",
+      "lactulosa",
+      "ciprofloxacino"
+    ],
+    "cuidadosEnfermeria": [
+      "Peso diario en ayunas (mismo horario y balanza)",
+      "Medición de perímetro abdominal diario a nivel umbilical",
+      "Balance hídrico estricto (ingesta y diuresis)",
+      "Restricción de sodio (<2 g/día) y líquidos (1-1.5 L/día si Na⁺ <125)",
+      "Monitorizar electrolitos (Na⁺, K⁺) y función renal",
+      "Cuidados de piel edematizada: hidratación, cambios de posición, prevenir lesiones",
+      "Asistir en paracentesis: posición, monitorizar TA durante y después, reponer albúmina si >5L",
+      "Vigilar signos de peritonitis bacteriana espontánea: fiebre, dolor abdominal, deterioro del sensorio"
+    ],
+    "criteriosAlarma": [
+      "Fiebre o dolor abdominal espontáneo (peritonitis bacteriana espontánea)",
+      "Deterioro rápido del sensorio (encefalopatía hepática)",
+      "Hemorragia digestiva (várices esofágicas)",
+      "Creatinina en ascenso rápido (síndrome hepatorrenal)",
+      "Na⁺ sérico <120 mEq/L",
+      "Ascitis refractaria a diuréticos"
+    ],
+    "categoria": "gastrointestinal"
+  },
+  {
+    "id": "pat_sindrome_nefrotico",
+    "nombre": "Síndrome Nefrótico",
+    "definicion": "Conjunto de manifestaciones clínicas derivadas del aumento masivo de la permeabilidad glomerular a las proteínas. Se define por proteinuria >3.5 g/24h, hipoalbuminemia <3 g/dL, edema e hiperlipidemia.",
+    "fisiopatologiaBreve": "El daño glomerular (podocitario) aumenta la permeabilidad de la membrana basal a las proteínas plasmáticas. La pérdida masiva de albúmina reduce la presión oncótica plasmática, causando trasudación de líquido al intersticio (edema). El hígado compensa aumentando la síntesis de lipoproteínas (hiperlipidemia). La pérdida de antitrombina III y proteínas anticoagulantes genera un estado protrombótico.",
+    "signosSintomas": [
+      "Edema periférico progresivo (inicialmente palpebral matutino)",
+      "Edema generalizado (anasarca en casos severos)",
+      "Orina espumosa (proteinuria)",
+      "Aumento de peso por retención hídrica",
+      "Ascitis y derrame pleural",
+      "Hiperlipidemia (colesterol y triglicéridos elevados)",
+      "Mayor susceptibilidad a infecciones",
+      "Riesgo aumentado de trombosis venosa y arterial"
+    ],
+    "farmacosRelacionados": [
+      "prednisona",
+      "furosemida",
+      "espironolactona",
+      "enalapril",
+      "losartan",
+      "enoxaparina"
+    ],
+    "cuidadosEnfermeria": [
+      "Peso diario y medición de edema (escala de godet)",
+      "Control de diuresis y proteinuria (tira reactiva)",
+      "Balance hídrico estricto",
+      "Dieta hiposódica e hipolipemiante con aporte proteico adecuado",
+      "Monitorizar signos de trombosis (TVP, TEP): dolor/edema asimétrico en miembros, disnea súbita",
+      "Cuidados de piel edematizada: evitar lesiones, hidratar, movilizar",
+      "Vigilar signos de infección (inmunosupresión por pérdida de inmunoglobulinas y uso de corticoides)",
+      "Educar sobre efectos adversos de corticoides: hiperglucemia, osteoporosis, facies cushingoide"
+    ],
+    "criteriosAlarma": [
+      "Edema pulmonar o derrame pleural masivo",
+      "Signos de TVP o TEP (disnea súbita, dolor torácico)",
+      "Infección grave (peritonitis espontánea, celulitis)",
+      "Deterioro rápido de función renal (creatinina en ascenso)",
+      "Albúmina sérica <1.5 g/dL",
+      "Anasarca con compromiso respiratorio"
+    ],
+    "categoria": "renal"
+  },
+  {
+    "id": "pat_sindrome_nefritico",
+    "nombre": "Síndrome Nefrítico",
+    "definicion": "Cuadro clínico de inicio agudo causado por inflamación glomerular (glomerulonefritis), caracterizado por hematuria, proteinuria moderada, hipertensión arterial y oliguria con retención de líquidos.",
+    "fisiopatologiaBreve": "La inflamación glomerular (depósito de inmunocomplejos, activación del complemento) daña los capilares glomerulares, permitiendo el paso de eritrocitos (hematuria) y reduciendo la filtración glomerular. La caída de la TFG causa retención de sodio y agua con hipertensión y edema. La causa clásica en niños es la glomerulonefritis post-estreptocócica (1-3 semanas después de faringitis o impétigo).",
+    "signosSintomas": [
+      "Hematuria macroscópica (orina color cola o té)",
+      "Edema facial y palpebral (predominio matutino)",
+      "Hipertensión arterial",
+      "Oliguria",
+      "Proteinuria moderada (generalmente <3.5 g/24h)",
+      "Cefalea (por HTA)",
+      "Dolor lumbar bilateral leve"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "enalapril",
+      "amlodipino",
+      "prednisona"
+    ],
+    "cuidadosEnfermeria": [
+      "Control estricto de presión arterial (c/4-6h según severidad)",
+      "Balance hídrico con control de diuresis horaria",
+      "Restricción de sodio y líquidos durante fase aguda",
+      "Monitorizar color y aspecto de orina (hematuria)",
+      "Control de peso diario",
+      "Reposo relativo durante la fase aguda",
+      "Monitorizar función renal y electrolitos",
+      "En niños: pesquisa de antecedente de infección estreptocócica reciente"
+    ],
+    "criteriosAlarma": [
+      "HTA severa o encefalopatía hipertensiva (cefalea intensa, convulsiones, visión borrosa)",
+      "Oliguria severa o anuria",
+      "Edema pulmonar por sobrecarga de volumen",
+      "Hiperpotasemia (K⁺ >6 mEq/L)",
+      "Deterioro rápido de la función renal (insuficiencia renal rápidamente progresiva)",
+      "Hematuria macroscópica persistente"
+    ],
+    "categoria": "renal"
+  },
+  {
+    "id": "pat_suh",
+    "nombre": "Síndrome Urémico Hemolítico",
+    "definicion": "Microangiopatía trombótica caracterizada por la tríada de anemia hemolítica microangiopática, trombocitopenia e insuficiencia renal aguda. Argentina tiene la mayor incidencia mundial de SUH típico, principalmente en menores de 5 años.",
+    "fisiopatologiaBreve": "La toxina Shiga producida por E. coli O157:H7 (y otras cepas STEC) daña el endotelio vascular, especialmente el renal. Esto genera activación plaquetaria, formación de microtrombos en arteriolas y capilares glomerulares, hemólisis mecánica de eritrocitos al pasar por vasos dañados (esquistocitos) y consumo de plaquetas. El daño endotelial renal causa IRA oligoanúrica.",
+    "signosSintomas": [
+      "Diarrea sanguinolenta previa (pródromo, 5-10 días antes)",
+      "Palidez intensa (anemia hemolítica)",
+      "Petequias y equimosis (trombocitopenia)",
+      "Oliguria o anuria",
+      "Edema",
+      "Hipertensión arterial",
+      "Irritabilidad o letargia",
+      "Ictericia leve",
+      "Esquistocitos en frotis de sangre periférica"
+    ],
+    "farmacosRelacionados": [
+      "furosemida",
+      "gluconato_calcio",
+      "insulina_regular",
+      "bicarbonato-sodio"
+    ],
+    "cuidadosEnfermeria": [
+      "Balance hídrico estricto con control de diuresis horaria (sondaje vesical)",
+      "Peso diario (mismo horario, misma balanza)",
+      "Monitorización continua de TA y FC",
+      "Control de laboratorio seriado: hemograma, reticulocitos, LDH, haptoglobina, creatinina, urea, K⁺",
+      "NO administrar antibióticos (pueden aumentar liberación de toxina Shiga)",
+      "NO administrar antidiarreicos ni AINEs",
+      "Cuidados de accesos vasculares para eventual diálisis",
+      "Soporte transfusional según indicación médica (glóbulos rojos lavados)",
+      "Educación familiar: prevención (cocción completa de carne, higiene, agua segura)"
+    ],
+    "criteriosAlarma": [
+      "Anuria >24 horas (indicación de diálisis)",
+      "Hiperpotasemia >6.5 mEq/L (riesgo de arritmia)",
+      "Convulsiones o signos neurológicos (compromiso de SNC)",
+      "Hemoglobina <7 g/dL con inestabilidad hemodinámica",
+      "HTA severa no controlada",
+      "Acidosis metabólica severa (pH <7.2)",
+      "Sobrecarga de volumen con edema pulmonar"
+    ],
+    "categoria": "renal"
+  },
+  {
+    "id": "pat_dengue",
+    "nombre": "Dengue",
+    "definicion": "Enfermedad viral transmitida por el mosquito Aedes aegypti, endémica en regiones tropicales y subtropicales de América Latina. Cuatro serotipos (DENV 1-4). La infección por un segundo serotipo aumenta el riesgo de dengue grave.",
+    "fisiopatologiaBreve": "El virus del dengue infecta monocitos y células dendríticas. La respuesta inmune genera producción masiva de citoquinas (tormenta de citoquinas) que aumentan la permeabilidad vascular, causando extravasación plasmática, hemoconcentración y potencialmente shock. La trombocitopenia resulta de destrucción plaquetaria mediada por anticuerpos y supresión medular transitoria.",
+    "signosSintomas": [
+      "Fiebre alta de inicio abrupto (40°C, 2-7 días)",
+      "Cefalea intensa retroocular",
+      "Mialgias y artralgias severas (fiebre quebrantahuesos)",
+      "Exantema maculopapular",
+      "Náuseas, vómitos y dolor abdominal",
+      "Trombocitopenia (plaquetas <100.000/mm³)",
+      "Leucopenia",
+      "Petequias, prueba del torniquete positiva",
+      "Signos de alarma: dolor abdominal intenso, vómitos persistentes, acumulación de líquidos, sangrado de mucosas, letargia"
+    ],
+    "farmacosRelacionados": [
+      "paracetamol"
+    ],
+    "cuidadosEnfermeria": [
+      "Hidratación oral abundante (suero de rehidratación oral)",
+      "Antitérmico SOLO paracetamol — CONTRAINDICADOS AINEs (ibuprofeno, aspirina, diclofenac) y dipirona por riesgo hemorrágico",
+      "Control de signos vitales c/4-6h (c/1-2h si signos de alarma)",
+      "Monitorizar diuresis (meta: ≥0.5 mL/kg/h)",
+      "Hemograma y hematocrito seriado (hemoconcentración = extravasación)",
+      "Vigilar signos de alarma: dolor abdominal, vómitos, sangrado, letargia, derrame pleural/ascitis",
+      "Reposo en cama con mosquitero (evitar transmisión durante viremia)",
+      "Fase crítica: días 3-7 de enfermedad (al caer la fiebre — máximo riesgo de shock)",
+      "NO colocar vías IM ni realizar procedimientos invasivos innecesarios"
+    ],
+    "criteriosAlarma": [
+      "Dolor abdominal intenso y sostenido",
+      "Vómitos persistentes (≥3 en 1 hora o ≥5 en 6 horas)",
+      "Sangrado de mucosas (gingivorragia, epistaxis, metrorragia)",
+      "Acumulación de líquidos (derrame pleural, ascitis)",
+      "Letargia o irritabilidad",
+      "Hepatomegalia dolorosa >2 cm",
+      "Hematocrito en ascenso con plaquetas en descenso rápido",
+      "Hipotensión, taquicardia, pulso débil (shock por dengue)"
+    ],
+    "categoria": "infeccioso"
+  },
+  {
+    "id": "pat_chagas",
+    "nombre": "Enfermedad de Chagas",
+    "definicion": "Enfermedad parasitaria causada por Trypanosoma cruzi, transmitida principalmente por vinchucas (triatominos). Endémica en América Latina con ~6 millones de infectados. Causa principal de miocardiopatía en la región.",
+    "fisiopatologiaBreve": "T. cruzi infecta células del sistema reticuloendotelial, músculo cardíaco y músculo liso del tubo digestivo. La fase aguda cursa con parasitemia elevada y puede pasar inadvertida. Tras décadas de infección crónica (fase indeterminada), 30-40% desarrolla miocardiopatía chagásica (fibrosis, dilatación ventricular, trastornos de conducción, arritmias) y/o megavísceras (megaesófago, megacolon) por destrucción de plexos nerviosos autonómicos.",
+    "signosSintomas": [
+      "Fase aguda: chagoma de inoculación o signo de Romaña (edema bipalpebral unilateral)",
+      "Fiebre prolongada, hepatoesplenomegalia, linfadenopatías",
+      "Fase crónica indeterminada: asintomática (puede durar décadas)",
+      "Miocardiopatía chagásica: disnea, palpitaciones, síncope, ICC",
+      "Trastornos de conducción: bloqueo de rama derecha, hemibloqueo anterior izquierdo",
+      "Arritmias ventriculares (riesgo de muerte súbita)",
+      "Megaesófago: disfagia, regurgitación",
+      "Megacolon: constipación crónica severa, fecaloma"
+    ],
+    "farmacosRelacionados": [
+      "benznidazol",
+      "amiodarona",
+      "enalapril",
+      "carvedilol",
+      "furosemida"
+    ],
+    "cuidadosEnfermeria": [
+      "Administración correcta de benznidazol: con alimentos, dosis según peso, duración 60 días",
+      "Vigilar efectos adversos de benznidazol: dermatitis alérgica (más frecuente), neuropatía periférica, leucopenia",
+      "Control de hemograma semanal durante tratamiento tripanocida",
+      "Monitorización de ECG periódico en miocardiopatía chagásica",
+      "Control de peso, diuresis y signos de ICC en cardiopatía",
+      "Educación sobre prevención: mejoramiento de vivienda, control de vinchucas, uso de insecticidas",
+      "Screening en embarazadas de zonas endémicas (transmisión vertical)",
+      "Derivar a cardiología ante hallazgos ECG anormales en paciente seropositivo"
+    ],
+    "criteriosAlarma": [
+      "Síncope o palpitaciones sostenidas (arritmias ventriculares)",
+      "Signos de ICC descompensada (disnea, edema, ingurgitación yugular)",
+      "Bloqueo AV completo (bradicardia severa)",
+      "Dermatitis severa o leucopenia con benznidazol (suspender tratamiento)",
+      "Fenómenos tromboembólicos (ACV, TEP)",
+      "Reactivación en paciente inmunodeprimido (HIV, trasplantado)"
+    ],
+    "categoria": "infeccioso"
+  },
+  {
+    "id": "pat_sca",
+    "nombre": "Síndrome Coronario Agudo",
+    "definicion": "Conjunto de manifestaciones clínicas producidas por la isquemia miocárdica aguda. Incluye angina inestable (AI), infarto sin elevación del ST (SCASEST/IAMSEST) e infarto con elevación del ST (SCACEST/IAMCEST). Emergencia cardiovascular tiempo-dependiente.",
+    "fisiopatologiaBreve": "La rotura o erosión de una placa aterosclerótica coronaria expone el contenido lipídico subendotelial, activando la cascada de coagulación y la agregación plaquetaria. Se forma un trombo que ocluye parcial (AI/SCASEST) o totalmente (SCACEST) la arteria coronaria. La isquemia prolongada >20 minutos produce necrosis miocárdica irreversible. La extensión del infarto depende del tiempo de isquemia y la presencia de circulación colateral.",
+    "signosSintomas": [
+      "Dolor torácico opresivo, retroesternal, >20 minutos",
+      "Irradiación a brazo izquierdo, mandíbula, espalda o epigastrio",
+      "No cede con reposo ni nitroglicerina sublingual (en IAM)",
+      "Diaforesis fría",
+      "Disnea, náuseas, vómitos",
+      "Sensación de muerte inminente",
+      "Presentación atípica frecuente en diabéticos, mujeres y ancianos",
+      "Cambios ECG: elevación/depresión del ST, ondas T invertidas, ondas Q",
+      "Elevación de troponinas (marcadores de necrosis miocárdica)"
+    ],
+    "farmacosRelacionados": [
+      "aspirina",
+      "clopidogrel",
+      "heparina",
+      "enoxaparina",
+      "morfina",
+      "nitroglicerina",
+      "atenolol",
+      "atorvastatina"
+    ],
+    "cuidadosEnfermeria": [
+      "MONA: Morfina, Oxígeno (si SatO₂ <90%), Nitroglicerina, Aspirina — priorizar AAS masticable",
+      "ECG de 12 derivaciones en <10 minutos desde el contacto",
+      "Monitorización continua: ECG, TA, SatO₂, FC",
+      "Dos accesos venosos periféricos de grueso calibre",
+      "Reposo absoluto en cama, posición semifowler",
+      "Calmar la ansiedad del paciente (contribuye a la demanda de O₂)",
+      "Administrar antiagregantes y anticoagulantes según protocolo",
+      "Tiempo puerta-balón <90 min (angioplastia) o puerta-aguja <30 min (fibrinólisis)",
+      "Vigilar complicaciones: arritmias, ICC, shock cardiogénico, rotura cardíaca",
+      "Control seriado de troponinas y enzimas cardíacas"
+    ],
+    "criteriosAlarma": [
+      "Dolor torácico persistente a pesar del tratamiento",
+      "Arritmias ventriculares (TV/FV) — tener desfibrilador preparado",
+      "Hipotensión <90/60 mmHg o shock cardiogénico",
+      "Edema agudo de pulmón",
+      "Nuevo soplo cardíaco (rotura de músculo papilar, CIV)",
+      "Bradicardia severa o bloqueo AV completo",
+      "Re-elevación del ST (reoclusión coronaria)"
+    ],
+    "categoria": "cardiovascular"
+  },
+  {
+    "id": "pat_abstinencia_oh",
+    "nombre": "Síndrome de Abstinencia Alcohólica",
+    "definicion": "Conjunto de síntomas que aparecen al reducir o suspender abruptamente el consumo de alcohol en personas con dependencia. Espectro desde temblor leve hasta delirium tremens con alta mortalidad si no se trata.",
+    "fisiopatologiaBreve": "El alcohol potencia la inhibición GABAérgica y suprime la excitación glutamatérgica (NMDA). Con el consumo crónico, el SNC se adapta aumentando la actividad excitatoria y reduciendo la inhibitoria. Al suspender el alcohol, se produce hiperexcitabilidad neuronal descontrolada: hiperactividad simpática, convulsiones y potencialmente delirium tremens.",
+    "signosSintomas": [
+      "Temblor de manos (6-24h post-última ingesta)",
+      "Ansiedad, irritabilidad, insomnio",
+      "Diaforesis, taquicardia, hipertensión",
+      "Náuseas, vómitos",
+      "Alucinaciones (visuales, tactiles — 12-48h)",
+      "Convulsiones tónico-clónicas (24-48h, pueden ser el debut)",
+      "Delirium tremens (48-72h): confusión severa, agitación extrema, alucinaciones vívidas, fiebre, inestabilidad hemodinámica",
+      "Hipertermia y deshidratación severa"
+    ],
+    "farmacosRelacionados": [
+      "diazepam",
+      "lorazepam",
+      "tiamina",
+      "haloperidol"
+    ],
+    "cuidadosEnfermeria": [
+      "Evaluación con escala CIWA-Ar (Clinical Institute Withdrawal Assessment) cada 1-4h",
+      "Tiamina IV/IM ANTES de administrar glucosa (prevenir encefalopatía de Wernicke)",
+      "Benzodiacepinas según protocolo por puntaje CIWA-Ar (generalmente diazepam VO o lorazepam IV)",
+      "Ambiente tranquilo, bien iluminado, evitar estímulos excesivos",
+      "Monitorización continua: CSV c/1-2h, nivel de conciencia, temperatura",
+      "Hidratación IV (solución fisiológica con electrolitos), balance hídrico",
+      "Corrección de alteraciones electrolíticas: Mg²⁺, K⁺, fosfato",
+      "Prevención de caídas y lesiones (barandas, contención si es necesario)",
+      "Vigilar estado de conciencia: escala de Glasgow"
+    ],
+    "criteriosAlarma": [
+      "Convulsiones (especialmente si son nuevas o recurrentes)",
+      "Fiebre >38.5°C (delirium tremens o infección concomitante)",
+      "Confusión severa o delirium (delirium tremens — mortalidad 5-15% sin tratamiento)",
+      "Inestabilidad hemodinámica (taquicardia >120, HTA severa o hipotensión)",
+      "Hipoglucemia",
+      "Rabdomiólisis (CPK elevada, orina oscura)",
+      "Depresión respiratoria por sobredosis de benzodiacepinas"
+    ],
+    "categoria": "psiquiatrico"
+  },
+  {
+    "id": "pat_intox_organofosforados",
+    "nombre": "Intoxicación por Organofosforados",
+    "definicion": "Envenenamiento por compuestos organofosforados (insecticidas agrícolas: paratión, malatión, clorpirifós). Causa frecuente de intoxicación aguda en áreas rurales de LATAM, tanto accidental como intencional. Inhiben la acetilcolinesterasa de forma irreversible.",
+    "fisiopatologiaBreve": "Los organofosforados fosforilan e inhiben irreversiblemente la acetilcolinesterasa, provocando acumulación de acetilcolina en sinapsis muscarínicas (glándulas, músculo liso, corazón), nicotínicas (músculo esquelético, ganglios) y centrales. El exceso colinérgico produce la crisis colinérgica. Sin tratamiento, la unión enzima-tóxico envejece (aging), volviéndose permanente en 24-48h.",
+    "signosSintomas": [
+      "Síndrome muscarínico (DUMBELS): Diarrea, Urinación, Miosis, Broncoespasmo/Broncorrea, Emesis, Lagrimeo, Salivación",
+      "Bradicardia e hipotensión",
+      "Síndrome nicotínico: fasciculaciones musculares, debilidad, parálisis",
+      "Taquicardia (por efecto nicotínico ganglionar)",
+      "Síntomas centrales: ansiedad, convulsiones, coma",
+      "Insuficiencia respiratoria (broncorrea + broncoespasmo + parálisis diafragmática)",
+      "Olor a ajo/solvente orgánico",
+      "Pupilas puntiformes (miosis) — signo clave"
+    ],
+    "farmacosRelacionados": [
+      "atropina",
+      "pralidoxima",
+      "diazepam"
+    ],
+    "cuidadosEnfermeria": [
+      "PROTECCIÓN DEL PERSONAL: guantes de nitrilo, bata impermeable, barbijo — el tóxico se absorbe por piel",
+      "Descontaminación: retirar toda la ropa, lavar piel con agua y jabón abundante",
+      "Vía aérea permeable: aspirar secreciones frecuentemente (broncorrea profusa)",
+      "Atropina IV en dosis progresivas hasta atropinización: sequedad de secreciones bronquiales como endpoint (NO midriasis)",
+      "Pralidoxima IV dentro de las primeras 24-48h (antes del envejecimiento del complejo)",
+      "Diazepam IV si convulsiones",
+      "Monitorización continua: FC, TA, SatO₂, FR, tamaño pupilar, secreciones bronquiales",
+      "NO inducir vómito ni realizar lavado gástrico sin protección de vía aérea",
+      "Mantener atropinización: puede requerirse infusión continua durante días",
+      "Monitorizar colinesterasa sérica y eritrocitaria como marcador de severidad"
+    ],
+    "criteriosAlarma": [
+      "Insuficiencia respiratoria (SatO₂ <90%, broncorrea masiva)",
+      "Necesidad de intubación y ARM",
+      "Convulsiones",
+      "Bradicardia severa o asistolia",
+      "Síndrome intermedio (debilidad proximal y respiratoria 24-96h post-exposición)",
+      "Neuropatía tardía (2-4 semanas post-exposición)",
+      "Recaída por absorción cutánea o depósitos grasos del tóxico"
+    ],
+    "categoria": "emergencia"
+  },
+  {
+    "id": "pat_sindrome_realimentacion",
+    "nombre": "Síndrome de Realimentación",
+    "definicion": "Conjunto de alteraciones metabólicas potencialmente letales que ocurren al reintroducir nutrición en pacientes severamente desnutridos o con ayuno prolongado (>7-10 días). Causa principal de muerte prevenible en reinicio de alimentación.",
+    "fisiopatologiaBreve": "Durante el ayuno prolongado, el organismo se adapta al catabolismo graso como fuente energética, con depleción intracelular de fósforo, potasio y magnesio (aunque los niveles séricos pueden ser normales). Al reintroducir carbohidratos, la secreción de insulina aumenta bruscamente, provocando entrada masiva de glucosa, fósforo, potasio y magnesio al espacio intracelular. La hipofosfatemia resultante compromete la producción de ATP y 2,3-DPG, causando disfunción cardíaca, respiratoria y neurológica.",
+    "signosSintomas": [
+      "Hipofosfatemia severa (hallazgo cardinal, <1 mg/dL es crítico)",
+      "Hipopotasemia e hipomagnesemia",
+      "Retención hidrosalina y edema",
+      "Taquicardia, arritmias, insuficiencia cardíaca",
+      "Insuficiencia respiratoria (debilidad muscular diafragmática)",
+      "Confusión, convulsiones, coma",
+      "Debilidad muscular generalizada",
+      "Rabdomiólisis",
+      "Déficit de tiamina (encefalopatía de Wernicke)"
+    ],
+    "farmacosRelacionados": [
+      "potasio_cloruro",
+      "sulfato_magnesio_emergencia",
+      "tiamina",
+      "gluconato_calcio"
+    ],
+    "cuidadosEnfermeria": [
+      "IDENTIFICAR pacientes en riesgo: ayuno >7 días, anorexia nerviosa, alcoholismo, posquirúrgico prolongado, oncológicos, sin techo",
+      "Administrar tiamina 200-300 mg IV ANTES de iniciar alimentación (previene Wernicke)",
+      "Iniciar alimentación al 25% de los requerimientos calóricos y aumentar gradualmente en 5-7 días",
+      "Suplementar fósforo, potasio y magnesio desde el inicio ANTES de que desciendan",
+      "Monitorizar electrolitos c/12h los primeros 3 días: fósforo, K⁺, Mg²⁺, Ca²⁺, Na⁺",
+      "Balance hídrico estricto (restringir sodio y líquidos para evitar sobrecarga)",
+      "Peso diario (aumento >0.5 kg/día sugiere retención hídrica)",
+      "Monitorización cardíaca continua (arritmias por alteraciones electrolíticas)",
+      "Control de glucemia capilar c/6h (la hiperinsulinemia puede causar hipoglucemia)"
+    ],
+    "criteriosAlarma": [
+      "Fósforo sérico <1 mg/dL (riesgo de paro cardíaco)",
+      "Potasio sérico <2.5 mEq/L o >6 mEq/L",
+      "Arritmias en el ECG (prolongación QT, ondas U, ondas T picudas)",
+      "Insuficiencia cardíaca aguda (taquicardia, disnea, edema pulmonar)",
+      "Insuficiencia respiratoria (debilidad diafragmática)",
+      "Confusión, convulsiones (hipofosfatemia severa o Wernicke)",
+      "Rabdomiólisis (CPK elevada, mioglobinuria)"
+    ],
     "categoria": "emergencia"
   }
 ]
