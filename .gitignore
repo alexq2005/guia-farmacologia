@@ -68,6 +68,13 @@ yarn-error.log
 
 # Screenshots de desarrollo
 screenshot*.png
+screen_*.png
+
+# Python cache
+__pycache__/
+
+# Bundled JS assets (generated)
+android/app/src/main/assets/
 
 # Yarn
 .yarn/*
