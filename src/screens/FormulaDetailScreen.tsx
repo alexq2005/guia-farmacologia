@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Formula, FormulaVariable } from '../types';
 import { FORMULA_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 import formulas from '../data/formulas.json';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
@@ -61,6 +62,7 @@ function calculateResult(formulaId: string, values: Record<string, string>): str
 export function FormulaDetailScreen({ route }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const formula = (formulas as Formula[]).find(f => f.id === route.params.formulaId);
   const [inputValues, setInputValues] = useState<Record<string, string>>({});
   const [showCalc, setShowCalc] = useState(false);
@@ -89,7 +91,7 @@ export function FormulaDetailScreen({ route }: Props) {
   };
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={color} barStyle="light-content" />
 
       <View style={[styles.header, { backgroundColor: color }]}>
@@ -179,7 +181,7 @@ export function FormulaDetailScreen({ route }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -201,7 +203,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   title: { fontSize: 22, fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
   scroll: { flex: 1 },
   formulaBox: {
-    backgroundColor: '#1E293B',
+    backgroundColor: colors.surfaceElevated,
     marginHorizontal: 16,
     marginTop: 16,
     padding: 20,
@@ -209,14 +211,14 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   formulaLabel: {
     fontSize: 10,
-    color: '#64748B',
+    color: colors.textLight,
     fontWeight: '700',
     letterSpacing: 1,
     marginBottom: 8,
   },
   formulaText: {
     fontSize: 16,
-    color: '#E2E8F0',
+    color: colors.text,
     fontFamily: 'monospace',
     lineHeight: 24,
   },

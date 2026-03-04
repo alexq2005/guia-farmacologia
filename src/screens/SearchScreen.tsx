@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { View, Text, FlatList, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -8,6 +9,8 @@ import { SearchBar } from '../components/SearchBar';
 import { DrugCard } from '../components/DrugCard';
 import { useDrugData } from '../hooks/useDrugData';
 import { useDrugSearch } from '../hooks/useDrugSearch';
+import { useSearchHistory } from '../hooks/useSearchHistory';
+import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 
@@ -22,16 +25,17 @@ interface Props {
 
 export function SearchScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { drugs } = useDrugData();
   const { query, results, search, clear, resultCount } = useDrugSearch(drugs);
-
-  const recentSearches = ['Amoxicilina', 'Insulina', 'Omeprazol', 'Paracetamol', 'Heparina'];
+  const { history, addEntry, removeEntry, clearHistory } = useSearchHistory();
+  const fadeIn = useFadeIn(300);
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
-      <View style={styles.header}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerTitle}>🔍 Búsqueda</Text>
         <Text style={styles.headerSubtitle}>
           Busca entre {drugs.length} fármacos
@@ -47,7 +51,7 @@ export function SearchScreen({ navigation }: Props) {
       />
 
       {query.length >= 2 ? (
-        <>
+        <Animated.View style={{ flex: 1, opacity: fadeIn }}>
           <Text style={styles.resultCount}>
             {resultCount} resultado{resultCount !== 1 ? 's' : ''}
           </Text>
@@ -56,7 +60,10 @@ export function SearchScreen({ navigation }: Props) {
             renderItem={({ item }) => (
               <DrugCard
                 drug={item.drug}
-                onPress={() => navigation.navigate('DrugDetail', { drugId: item.drug.id })}
+                onPress={() => {
+                  addEntry(query);
+                  navigation.navigate('DrugDetail', { drugId: item.drug.id });
+                }}
                 highlight={query}
               />
             )}
@@ -73,22 +80,42 @@ export function SearchScreen({ navigation }: Props) {
               </View>
             }
           />
-        </>
+        </Animated.View>
       ) : (
         <View style={styles.suggestionsContainer}>
-          <Text style={styles.suggestionsTitle}>Sugerencias</Text>
-          <View style={styles.suggestionsGrid}>
-            {recentSearches.map((term, i) => (
-              <View key={i} style={styles.suggestionChip}>
-                <Text
-                  style={styles.suggestionText}
-                  onPress={() => search(term)}
-                >
-                  {term}
-                </Text>
+          {history.length > 0 ? (
+            <>
+              <View style={styles.historyHeader}>
+                <Text style={styles.suggestionsTitle}>🕐 Búsquedas recientes</Text>
+                <TouchableOpacity onPress={clearHistory}>
+                  <Text style={styles.clearHistoryText}>Limpiar</Text>
+                </TouchableOpacity>
               </View>
-            ))}
-          </View>
+              <View style={styles.suggestionsGrid}>
+                {history.map((entry, i) => (
+                  <TouchableOpacity
+                    key={i}
+                    style={styles.suggestionChip}
+                    onPress={() => search(entry.query)}
+                    onLongPress={() => removeEntry(entry.query)}
+                  >
+                    <Text style={styles.suggestionText}>{entry.query}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </>
+          ) : (
+            <>
+              <Text style={styles.suggestionsTitle}>Sugerencias</Text>
+              <View style={styles.suggestionsGrid}>
+                {['Amoxicilina', 'Insulina', 'Omeprazol', 'Paracetamol', 'Heparina'].map((term, i) => (
+                  <TouchableOpacity key={i} style={styles.suggestionChip} onPress={() => search(term)}>
+                    <Text style={styles.suggestionText}>{term}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </>
+          )}
 
           <View style={styles.tipsContainer}>
             <Text style={styles.tipsTitle}>💡 Consejos de búsqueda</Text>
@@ -156,6 +183,17 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   suggestionsContainer: {
     padding: 20,
+  },
+  historyHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  clearHistoryText: {
+    fontSize: 13,
+    color: colors.error,
+    fontWeight: '600',
   },
   suggestionsTitle: {
     fontSize: 16,

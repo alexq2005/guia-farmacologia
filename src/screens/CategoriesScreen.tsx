@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -9,6 +10,7 @@ import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { UNIT_ICONS } from '../utils/icons';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Categorias'>,
@@ -21,8 +23,10 @@ interface Props {
 
 export function CategoriesScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { categories, getUnitDrugCount } = useDrugData();
+  const fadeIn = useFadeIn();
 
   const renderUnit = ({ item }: { item: Unit }) => {
     const color = UNIT_COLORS[item.id] || colors.primary;
@@ -70,9 +74,9 @@ export function CategoriesScreen({ navigation }: Props) {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
-      <View style={styles.header}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerTitle}>📚 Categorías</Text>
         <Text style={styles.headerSubtitle}>
           {categories.unidades.length} unidades temáticas
@@ -86,7 +90,7 @@ export function CategoriesScreen({ navigation }: Props) {
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />
-    </View>
+    </Animated.View>
   );
 }
 

@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, PathologyCategory } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { PATHOLOGY_COLORS, PATHOLOGY_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -29,6 +30,7 @@ const ALL_CATEGORIES: PathologyCategory[] = [
 export function PathologiesScreen({ navigation }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const { pathologies } = useDrugData();
   const [selectedCategory, setSelectedCategory] = useState<PathologyCategory | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,7 +52,7 @@ export function PathologiesScreen({ navigation }: Props) {
   }, [pathologies, selectedCategory, searchQuery]);
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#0F766E" barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Patologías</Text>
@@ -140,7 +142,7 @@ export function PathologiesScreen({ navigation }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 

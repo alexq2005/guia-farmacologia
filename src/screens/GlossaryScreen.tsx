@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, SectionList, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, SectionList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { GlossaryEntry } from '../types';
 import { SearchBar } from '../components/SearchBar';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 import glossaryData from '../data/glossary.json';
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -29,10 +30,11 @@ function normalize(text: string): string {
 export function GlossaryScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const categories = ['farmacologia', 'enfermeria', 'abreviatura', 'general'];
+  const categories = ['farmacologia', 'anatomia', 'enfermeria', 'abreviatura', 'general'];
 
   const filteredSections = useMemo(() => {
     let entries = glossaryData as GlossaryEntry[];
@@ -69,7 +71,7 @@ export function GlossaryScreen() {
   const totalEntries = (glossaryData as GlossaryEntry[]).length;
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
 
       <View style={styles.header}>
@@ -154,7 +156,7 @@ export function GlossaryScreen() {
           </View>
         }
       />
-    </View>
+    </Animated.View>
   );
 }
 

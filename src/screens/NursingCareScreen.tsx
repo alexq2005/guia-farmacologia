@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { CollapsibleSection } from '../components/CollapsibleSection';
+import { useFadeIn } from '../utils/animations';
 
 const nursingData = require('../data/nursing_care.json');
 
@@ -211,6 +212,7 @@ function CalculosTab() {
 export function NursingCareScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const [activeTab, setActiveTab] = useState<TabKey>('derechos');
 
   const renderContent = () => {
@@ -228,7 +230,7 @@ export function NursingCareScreen() {
   const activeTabData = TABS.find(t => t.key === activeTab)!;
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={colors.nursing} barStyle="light-content" />
 
       <View style={styles.header}>
@@ -268,7 +270,7 @@ export function NursingCareScreen() {
         {renderContent()}
         <View style={styles.bottomSpacer} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -312,7 +314,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   precaucionTitle: { fontSize: 13, fontWeight: '700', color: colors.textSecondary, marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 },
   formulaCard: { backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10, padding: 14, borderRadius: 12, elevation: 1 },
   formulaName: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
-  formulaBox: { backgroundColor: '#1A1A2E', borderRadius: 8, padding: 12, marginBottom: 8 },
-  formulaText: { fontSize: 14, color: '#E2E8F0', fontFamily: 'monospace', lineHeight: 20 },
+  formulaBox: { backgroundColor: colors.surfaceElevated, borderRadius: 8, padding: 12, marginBottom: 8 },
+  formulaText: { fontSize: 14, color: colors.text, fontFamily: 'monospace', lineHeight: 20 },
   bottomSpacer: { height: 40 },
 });

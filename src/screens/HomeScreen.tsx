@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, Linking } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import type { RootStackParamList, TabParamList, Drug } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { useFavoritesContext } from '../context/FavoritesContext';
+import { useNotesContext } from '../context/NotesContext';
+import { useQuiz } from '../hooks/useQuiz';
 import { useTheme } from '../context/ThemeContext';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
+import { useFadeIn, useStaggeredEntrance } from '../utils/animations';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Inicio'>,
@@ -21,13 +25,17 @@ interface Props {
 
 export function HomeScreen({ navigation }: Props) {
   const { colors, isDark, toggleTheme } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { drugs, categories, getDrugCount, getRandomDrug, emergencyDrugs, pathologies, getDrugById } = useDrugData();
   const { favorites, favoriteCount } = useFavoritesContext();
+  const { recentNotes, noteCount } = useNotesContext();
+  const { results: quizResults, averageScore } = useQuiz(drugs);
   const [dailyDrug, setDailyDrug] = useState<Drug | null>(null);
+  const fadeIn = useFadeIn(400);
+  const stagger = useStaggeredEntrance(5, 100);
 
   useEffect(() => {
-    // Drug of the day based on current date (deterministic)
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
     const index = dayOfYear % drugs.length;
     setDailyDrug(drugs[index] || null);
@@ -35,25 +43,33 @@ export function HomeScreen({ navigation }: Props) {
 
   const quickActions = [
     { icon: '🔍', label: 'Buscar', onPress: () => navigation.navigate('Busqueda') },
-    { icon: '🚑', label: 'Emergencias', onPress: () => navigation.navigate('Especial') },
-    { icon: '🏥', label: 'Patologías', onPress: () => navigation.navigate('PathologiesScreen' as any) },
-    { icon: '👩‍⚕️', label: 'Cuidados', onPress: () => navigation.navigate('NursingCare') },
+    { icon: '🧠', label: 'Quiz', onPress: () => navigation.navigate('QuizScreen') },
+    { icon: '🚨', label: 'Protocolos', onPress: () => navigation.navigate('EmergencyProtocols') },
+    { icon: '📊', label: 'Escalas', onPress: () => navigation.navigate('ClinicalScales') },
+    { icon: '🔬', label: 'Laboratorio', onPress: () => navigation.navigate('LabValues') },
   ];
+
+  const latestNotes = recentNotes(5);
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
       {/* App Header */}
-      <View style={styles.appHeader}>
+      <View style={[styles.appHeader, { paddingTop: insets.top + 12 }]}>
         <View style={styles.headerTopRow}>
           <View style={{ flex: 1 }}>
             <Text style={styles.appTitle}>Guía Farmacológica</Text>
             <Text style={styles.appSubtitle}>Enfermería</Text>
           </View>
-          <TouchableOpacity onPress={toggleTheme} style={styles.themeToggle}>
-            <Text style={styles.themeToggleIcon}>{isDark ? '☀️' : '🌙'}</Text>
-          </TouchableOpacity>
+          <View style={styles.headerButtons}>
+            <TouchableOpacity onPress={toggleTheme} style={styles.themeToggle}>
+              <Text style={styles.themeToggleIcon}>{isDark ? '☀️' : '🌙'}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('AboutScreen')} style={styles.themeToggle}>
+              <Text style={styles.themeToggleIcon}>ℹ️</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.statsRow}>
           <View style={styles.statItem}>
@@ -73,40 +89,108 @@ export function HomeScreen({ navigation }: Props) {
         </View>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+      <Animated.ScrollView style={[styles.scroll, { opacity: fadeIn }]} showsVerticalScrollIndicator={false}>
         {/* Quick Actions */}
-        <View style={styles.quickActions}>
+        <Animated.View style={[styles.quickActions, { opacity: stagger[0] || 1 }]}>
           {quickActions.map((action, i) => (
             <TouchableOpacity key={i} style={styles.quickAction} onPress={action.onPress} activeOpacity={0.7}>
               <Text style={styles.quickIcon}>{action.icon}</Text>
-              <Text style={styles.quickLabel}>{action.label}</Text>
+              <Text style={styles.quickLabel} numberOfLines={1}>{action.label}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </Animated.View>
 
         {/* Drug of the Day */}
         {dailyDrug && (
-          <View style={styles.section}>
+          <Animated.View style={[styles.section, { opacity: stagger[1] || 1 }]}>
             <Text style={styles.sectionTitle}>💊 Fármaco del Día</Text>
             <TouchableOpacity
               style={[styles.dailyCard, { borderLeftColor: UNIT_COLORS[dailyDrug.unidadId] || colors.primary }]}
               onPress={() => navigation.navigate('DrugDetail', { drugId: dailyDrug.id })}
               activeOpacity={0.7}
             >
-              <Text style={styles.dailyName}>{dailyDrug.nombre}</Text>
+              <View style={styles.dailyCardHeader}>
+                <Text style={styles.dailyName}>{dailyDrug.nombre}</Text>
+                <View style={[styles.dailyPregBadge, { backgroundColor: colors.primaryLight + '20' }]}>
+                  <Text style={[styles.dailyPregText, { color: colors.primaryLight }]}>{dailyDrug.embarazo}</Text>
+                </View>
+              </View>
               <Text style={styles.dailyGeneric}>{dailyDrug.nombreGenerico}</Text>
               <Text style={styles.dailyFamily}>{dailyDrug.familia}</Text>
+              <View style={styles.dailyInfoRow}>
+                {dailyDrug.viaAdministracion.slice(0, 3).map(via => (
+                  <View key={via} style={styles.dailyViaBadge}>
+                    <Text style={styles.dailyViaText}>{via}</Text>
+                  </View>
+                ))}
+              </View>
               <Text style={styles.dailyDose} numberOfLines={2}>
                 {dailyDrug.dosis.adulto}
               </Text>
               <Text style={styles.dailyCta}>Ver detalle completo →</Text>
             </TouchableOpacity>
+          </Animated.View>
+        )}
+
+        {/* Study Progress */}
+        {quizResults.length > 0 && (
+          <Animated.View style={[styles.section, { opacity: stagger[2] || 1 }]}>
+            <Text style={styles.sectionTitle}>📊 Progreso de Estudio</Text>
+            <TouchableOpacity
+              style={styles.progressCard}
+              onPress={() => navigation.navigate('QuizScreen')}
+              activeOpacity={0.7}
+            >
+              <View style={styles.progressRow}>
+                <View style={styles.progressItem}>
+                  <Text style={[styles.progressNumber, { color: colors.quiz }]}>{quizResults.length}</Text>
+                  <Text style={styles.progressLabel}>Sesiones</Text>
+                </View>
+                <View style={styles.progressDivider} />
+                <View style={styles.progressItem}>
+                  <Text style={[styles.progressNumber, { color: averageScore >= 70 ? colors.success : colors.warning }]}>{averageScore}%</Text>
+                  <Text style={styles.progressLabel}>Promedio</Text>
+                </View>
+                <View style={styles.progressDivider} />
+                <View style={styles.progressItem}>
+                  <Text style={[styles.progressNumber, { color: colors.quiz }]}>{quizResults.reduce((s, r) => s + r.correctAnswers, 0)}</Text>
+                  <Text style={styles.progressLabel}>Correctas</Text>
+                </View>
+              </View>
+              <Text style={[styles.dailyCta, { textAlign: 'center', marginTop: 8 }]}>Seguir practicando →</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        )}
+
+        {/* Recent Notes */}
+        {latestNotes.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>📝 Notas Recientes</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
+              {latestNotes.map(note => {
+                const noteDrug = getDrugById(note.drugId);
+                return (
+                  <TouchableOpacity
+                    key={note.drugId}
+                    style={styles.noteCard}
+                    onPress={() => navigation.navigate('DrugDetail', { drugId: note.drugId })}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.noteCardDrug} numberOfLines={1}>{noteDrug?.nombre || note.drugId}</Text>
+                    <Text style={styles.noteCardText} numberOfLines={2}>{note.text}</Text>
+                    <Text style={styles.noteCardDate}>
+                      {new Date(note.updatedAt).toLocaleDateString('es', { day: 'numeric', month: 'short' })}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
           </View>
         )}
 
         {/* Favorites */}
         {favoriteCount > 0 && (
-          <View style={styles.section}>
+          <Animated.View style={[styles.section, { opacity: stagger[3] || 1 }]}>
             <Text style={styles.sectionTitle}>❤️ Mis Favoritos ({favoriteCount})</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
               {favorites.slice(0, 10).map(favId => {
@@ -127,11 +211,11 @@ export function HomeScreen({ navigation }: Props) {
                 );
               })}
             </ScrollView>
-          </View>
+          </Animated.View>
         )}
 
         {/* Browse by System */}
-        <View style={styles.section}>
+        <Animated.View style={[styles.section, { opacity: stagger[4] || 1 }]}>
           <Text style={styles.sectionTitle}>📚 Explorar por Sistema</Text>
           <View style={styles.systemsGrid}>
             {categories.unidades.slice(0, 8).map(unit => (
@@ -150,7 +234,7 @@ export function HomeScreen({ navigation }: Props) {
               </TouchableOpacity>
             ))}
           </View>
-        </View>
+        </Animated.View>
 
         {/* Emergency Access */}
         <View style={styles.section}>
@@ -176,8 +260,18 @@ export function HomeScreen({ navigation }: Props) {
             Guía Farmacológica Integral de Enfermería
           </Text>
           <Text style={styles.footerVersion}>v1.0 — 100% Offline</Text>
+          <View style={styles.offlineBadge}>
+            <Text style={styles.offlineBadgeText}>📱 100% Offline</Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => Linking.openURL('mailto:alexq2005@gmail.com?subject=Guía Farmacológica - Contacto')}
+            style={styles.footerEmail}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.footerEmailText}>✉️ Contacto: alexq2005@gmail.com</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   );
 }
@@ -198,6 +292,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   headerTopRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    gap: 8,
   },
   themeToggle: {
     backgroundColor: 'rgba(255,255,255,0.2)',
@@ -252,13 +350,15 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   quickActions: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingVertical: 16,
+    gap: 8,
   },
   quickAction: {
+    flex: 1,
     alignItems: 'center',
-    padding: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 4,
     borderRadius: 16,
     backgroundColor: colors.surface,
     elevation: 2,
@@ -266,16 +366,16 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    width: 76,
   },
   quickIcon: {
     fontSize: 28,
   },
   quickLabel: {
-    fontSize: 11,
+    fontSize: 10,
     color: colors.text,
     fontWeight: '600',
     marginTop: 4,
+    textAlign: 'center',
   },
   section: {
     marginBottom: 8,
@@ -300,10 +400,41 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
+  dailyCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  dailyPregBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 10,
+  },
+  dailyPregText: {
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  dailyInfoRow: {
+    flexDirection: 'row',
+    gap: 6,
+    marginTop: 6,
+  },
+  dailyViaBadge: {
+    backgroundColor: colors.primaryLight + '15',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  dailyViaText: {
+    fontSize: 11,
+    color: colors.primary,
+    fontWeight: '600',
+  },
   dailyName: {
     fontSize: 20,
     fontWeight: '700',
     color: colors.text,
+    flex: 1,
   },
   dailyGeneric: {
     fontSize: 14,
@@ -439,6 +570,89 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   footerVersion: {
     fontSize: 11,
+    color: colors.textLight,
+    marginTop: 4,
+  },
+  offlineBadge: {
+    backgroundColor: colors.success + '15',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: colors.success + '30',
+  },
+  offlineBadgeText: {
+    fontSize: 11,
+    color: colors.success,
+    fontWeight: '600',
+  },
+  footerEmail: {
+    marginTop: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  footerEmailText: {
+    fontSize: 12,
+    color: colors.primaryLight,
+    fontWeight: '600',
+  },
+  progressCard: {
+    backgroundColor: colors.surface,
+    marginHorizontal: 16,
+    padding: 16,
+    borderRadius: 14,
+    elevation: 2,
+    shadowColor: colors.shadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    borderWidth: 1,
+    borderColor: colors.quiz + '20',
+  },
+  progressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  progressItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  progressNumber: {
+    fontSize: 22,
+    fontWeight: '800',
+  },
+  progressLabel: {
+    fontSize: 11,
+    color: colors.textSecondary,
+    marginTop: 2,
+  },
+  progressDivider: {
+    width: 1,
+    height: 30,
+    backgroundColor: colors.border,
+  },
+  noteCard: {
+    backgroundColor: colors.noteBackground,
+    borderRadius: 12,
+    padding: 12,
+    width: 160,
+    borderWidth: 1,
+    borderColor: colors.noteBorder,
+  },
+  noteCardDrug: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: colors.text,
+  },
+  noteCardText: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    marginTop: 4,
+    lineHeight: 16,
+  },
+  noteCardDate: {
+    fontSize: 10,
     color: colors.textLight,
     marginTop: 4,
   },

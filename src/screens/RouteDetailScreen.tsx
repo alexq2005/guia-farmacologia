@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
-import { View, Text, ScrollView, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, RouteInfo } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 import routes from '../data/routes.json';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RouteDetail'>;
@@ -141,6 +142,7 @@ function RouteIllustration({ route }: { route: RouteInfo }) {
 export function RouteDetailScreen({ route: navRoute }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const routeInfo = (routes as RouteInfo[]).find(r => r.id === navRoute.params.routeId);
 
   if (!routeInfo) {
@@ -154,7 +156,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
   const color = ROUTE_COLORS[routeInfo.id] || colors.primary;
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={color} barStyle="light-content" />
 
       <View style={[styles.header, { backgroundColor: color }]}>
@@ -203,7 +205,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -232,14 +234,14 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 16,
     padding: 16,
-    backgroundColor: '#1E293B',
+    backgroundColor: colors.surfaceElevated,
     borderRadius: 16,
     borderWidth: 2,
   },
   illustrationTitle: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#94A3B8',
+    color: colors.textSecondary,
     marginBottom: 8,
   },
   illustrationText: {

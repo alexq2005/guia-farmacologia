@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
@@ -7,6 +7,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { UNIT_COLORS, PATHOLOGY_COLORS, PATHOLOGY_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PathologyDetail'>;
 
@@ -35,6 +36,7 @@ function BulletList({ items, color }: { items: string[]; color?: string }) {
 export function PathologyDetailScreen({ route, navigation }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const { getPathologyById, getDrugById } = useDrugData();
   const pathology = getPathologyById(route.params.pathologyId);
 
@@ -51,7 +53,7 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
   const linkedDrugs = pathology.farmacosRelacionados.map(id => getDrugById(id)).filter(Boolean);
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={catColor} barStyle="light-content" />
 
       <View style={[styles.header, { backgroundColor: catColor }]}>
@@ -146,7 +148,7 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -173,12 +175,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   bulletRow: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
   bullet: { fontSize: 16, marginRight: 8, marginTop: -1 },
   bulletText: { flex: 1, fontSize: 14, color: colors.text, lineHeight: 20 },
-  alarmCard: { backgroundColor: '#FEF2F2', marginHorizontal: 16, marginBottom: 8, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: '#FECACA' },
-  alarmTitle: { fontSize: 16, fontWeight: '700', color: '#991B1B', marginBottom: 2 },
-  alarmSubtitle: { fontSize: 12, color: '#B91C1C', marginBottom: 12 },
+  alarmCard: { backgroundColor: colors.error + '12', marginHorizontal: 16, marginBottom: 8, padding: 16, borderRadius: 14, borderWidth: 1, borderColor: colors.error + '30' },
+  alarmTitle: { fontSize: 16, fontWeight: '700', color: colors.error, marginBottom: 2 },
+  alarmSubtitle: { fontSize: 12, color: colors.error, marginBottom: 12, opacity: 0.8 },
   alarmItem: { flexDirection: 'row', marginBottom: 8, paddingRight: 8 },
   alarmBullet: { fontSize: 10, marginRight: 8, marginTop: 3 },
-  alarmText: { flex: 1, fontSize: 14, color: '#7F1D1D', lineHeight: 20 },
+  alarmText: { flex: 1, fontSize: 14, color: colors.text, lineHeight: 20 },
   nursingItem: { flexDirection: 'row', marginBottom: 10, paddingRight: 8 },
   nursingNumber: { width: 24, height: 24, borderRadius: 12, backgroundColor: colors.nursing + '20', color: colors.nursing, fontWeight: '700', fontSize: 12, textAlign: 'center', lineHeight: 24, marginRight: 10 },
   nursingText: { flex: 1, fontSize: 14, color: colors.text, lineHeight: 20 },

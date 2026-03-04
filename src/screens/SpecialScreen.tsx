@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -7,6 +8,7 @@ import type { RootStackParamList, TabParamList, EmergencyDrug, Antidote, IVCompa
 import { useDrugData } from '../hooks/useDrugData';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Especial'>,
@@ -161,9 +163,11 @@ function CompatibilityTable({ data }: { data: { farmacos: string[]; compatibilid
 
 export function SpecialScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { emergencyDrugs, antidotes, ivCompatibilities } = useDrugData();
   const [activeTab, setActiveTab] = useState<Tab>('emergencias');
+  const fadeIn = useFadeIn();
 
   const tabs: { key: Tab; label: string; icon: string; count: number }[] = [
     { key: 'emergencias', label: 'Emergencias', icon: '🚑', count: emergencyDrugs.length },
@@ -172,9 +176,9 @@ export function SpecialScreen({ navigation }: Props) {
   ];
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={colors.emergency} barStyle="light-content" />
-      <View style={styles.header}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerTitle}>🚨 Tablas Especiales</Text>
         <Text style={styles.headerSubtitle}>Referencia rápida de emergencia</Text>
       </View>
@@ -237,7 +241,7 @@ export function SpecialScreen({ navigation }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -289,25 +293,25 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   tabBadgeTextActive: { color: colors.emergency },
   scroll: { flex: 1 },
   warningBox: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: colors.warning + '15',
     marginHorizontal: 16,
     marginTop: 12,
     padding: 12,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#F59E0B40',
+    borderColor: colors.warning + '40',
   },
-  warningText: { fontSize: 12, color: '#92400E', lineHeight: 18 },
+  warningText: { fontSize: 12, color: colors.warning, lineHeight: 18 },
   infoBox: {
-    backgroundColor: '#DBEAFE',
+    backgroundColor: colors.info + '15',
     marginHorizontal: 16,
     marginTop: 12,
     padding: 12,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#3B82F640',
+    borderColor: colors.info + '40',
   },
-  infoText: { fontSize: 12, color: '#1E40AF', lineHeight: 18 },
+  infoText: { fontSize: 12, color: colors.info, lineHeight: 18 },
   emergencyCard: {
     backgroundColor: colors.surface,
     marginHorizontal: 16,
@@ -350,12 +354,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   detailValue: { fontSize: 13, color: colors.text, flex: 1, lineHeight: 18 },
   notesBox: {
-    backgroundColor: '#FFF7ED',
+    backgroundColor: colors.warning + '10',
     padding: 8,
     borderRadius: 8,
     marginTop: 6,
   },
-  notesText: { fontSize: 12, color: '#9A3412', lineHeight: 18 },
+  notesText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
   antidoteCard: {
     backgroundColor: colors.surface,
     marginHorizontal: 16,
@@ -366,7 +370,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   antidoteHeader: {
     flexDirection: 'row',
-    backgroundColor: '#DC262612',
+    backgroundColor: colors.error + '12',
     padding: 12,
     alignItems: 'center',
   },

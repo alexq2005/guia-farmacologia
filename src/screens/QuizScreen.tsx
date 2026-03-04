@@ -1,0 +1,173 @@
+import React, { useMemo } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../types';
+import { useTheme } from '../context/ThemeContext';
+import { useDrugData } from '../hooks/useDrugData';
+import { useQuiz } from '../hooks/useQuiz';
+import { useFadeIn } from '../utils/animations';
+import type { ThemeColors } from '../utils/colors';
+
+type Props = NativeStackScreenProps<RootStackParamList, 'QuizScreen'>;
+
+const QUESTION_COUNTS = [5, 10, 15, 20];
+
+export function QuizScreen({ navigation }: Props) {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { drugs, categories } = useDrugData();
+  const { results, averageScore } = useQuiz(drugs);
+  const fadeIn = useFadeIn();
+
+  const unitOptions = [
+    { id: undefined, label: 'Todas las categorías', icon: '📚' },
+    ...categories.unidades.map(u => ({ id: u.id, label: u.nombre, icon: u.icon === 'brain' ? '🧠' : '📋' })),
+  ];
+
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+      <View style={[styles.header, { backgroundColor: colors.quiz }]}>
+        <Text style={styles.headerTitle}>🧠 Modo Estudio</Text>
+        <Text style={styles.headerSubtitle}>Pon a prueba tus conocimientos</Text>
+      </View>
+
+      <Animated.ScrollView style={[styles.scroll, { opacity: fadeIn }]} showsVerticalScrollIndicator={false}>
+        {/* Stats */}
+        {results.length > 0 && (
+          <View style={styles.statsCard}>
+            <Text style={styles.statsTitle}>📊 Tu Progreso</Text>
+            <View style={styles.statsRow}>
+              <View style={styles.statItem}>
+                <Text style={styles.statNumber}>{results.length}</Text>
+                <Text style={styles.statLabel}>Sesiones</Text>
+              </View>
+              <View style={styles.statDivider} />
+              <View style={styles.statItem}>
+                <Text style={[styles.statNumber, { color: averageScore >= 70 ? colors.quizCorrect : colors.quizWrong }]}>
+                  {averageScore}%
+                </Text>
+                <Text style={styles.statLabel}>Promedio</Text>
+              </View>
+              <View style={styles.statDivider} />
+              <View style={styles.statItem}>
+                <Text style={styles.statNumber}>
+                  {results.reduce((s, r) => s + r.totalQuestions, 0)}
+                </Text>
+                <Text style={styles.statLabel}>Preguntas</Text>
+              </View>
+            </View>
+          </View>
+        )}
+
+        {/* Quick Start */}
+        <Text style={styles.sectionTitle}>⚡ Inicio Rápido</Text>
+        <View style={styles.quickGrid}>
+          {QUESTION_COUNTS.map(count => (
+            <TouchableOpacity
+              key={count}
+              style={styles.quickCard}
+              onPress={() => navigation.navigate('QuizSession', { questionCount: count })}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.quickNumber}>{count}</Text>
+              <Text style={styles.quickLabel}>preguntas</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* By Category */}
+        <Text style={styles.sectionTitle}>📂 Por Categoría</Text>
+        <View style={styles.categoryList}>
+          {unitOptions.map((unit, i) => (
+            <TouchableOpacity
+              key={i}
+              style={styles.categoryCard}
+              onPress={() => navigation.navigate('QuizSession', { category: unit.id, questionCount: 10 })}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.categoryIcon}>{unit.icon}</Text>
+              <Text style={styles.categoryLabel} numberOfLines={1}>{unit.label}</Text>
+              <Text style={styles.categoryArrow}>›</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Recent Results */}
+        {results.length > 0 && (
+          <>
+            <Text style={styles.sectionTitle}>🕐 Resultados Recientes</Text>
+            {results.slice(0, 5).map((r, i) => (
+              <View key={i} style={styles.resultCard}>
+                <View style={[styles.resultBadge, {
+                  backgroundColor: r.percentage >= 70 ? colors.quizCorrect + '20' : colors.quizWrong + '20',
+                }]}>
+                  <Text style={[styles.resultPercent, {
+                    color: r.percentage >= 70 ? colors.quizCorrect : colors.quizWrong,
+                  }]}>
+                    {r.percentage}%
+                  </Text>
+                </View>
+                <View style={styles.resultInfo}>
+                  <Text style={styles.resultScore}>{r.correctAnswers}/{r.totalQuestions} correctas</Text>
+                  <Text style={styles.resultDate}>
+                    {new Date(r.completedAt).toLocaleDateString('es', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                  </Text>
+                </View>
+              </View>
+            ))}
+          </>
+        )}
+
+        <View style={{ height: 40 }} />
+      </Animated.ScrollView>
+    </View>
+  );
+}
+
+const createStyles = (colors: ThemeColors) => StyleSheet.create({
+  container: { flex: 1, backgroundColor: colors.background },
+  header: {
+    paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
+  },
+  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  scroll: { flex: 1 },
+  statsCard: {
+    backgroundColor: colors.surface, marginHorizontal: 16, marginTop: 16, padding: 16,
+    borderRadius: 16, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1, shadowRadius: 3,
+  },
+  statsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
+  statsRow: { flexDirection: 'row', alignItems: 'center' },
+  statItem: { flex: 1, alignItems: 'center' },
+  statNumber: { fontSize: 24, fontWeight: '800', color: colors.quiz },
+  statLabel: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
+  statDivider: { width: 1, height: 30, backgroundColor: colors.border },
+  sectionTitle: { fontSize: 18, fontWeight: '700', color: colors.text, marginHorizontal: 20, marginTop: 20, marginBottom: 10 },
+  quickGrid: { flexDirection: 'row', paddingHorizontal: 16, gap: 10 },
+  quickCard: {
+    flex: 1, backgroundColor: colors.quiz + '15', borderRadius: 14, padding: 16,
+    alignItems: 'center', borderWidth: 1, borderColor: colors.quiz + '30',
+  },
+  quickNumber: { fontSize: 28, fontWeight: '800', color: colors.quiz },
+  quickLabel: { fontSize: 12, color: colors.quiz, fontWeight: '600', marginTop: 2 },
+  categoryList: { paddingHorizontal: 16, gap: 6 },
+  categoryCard: {
+    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
+    borderRadius: 12, padding: 14, elevation: 1,
+  },
+  categoryIcon: { fontSize: 24, marginRight: 12 },
+  categoryLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text },
+  categoryArrow: { fontSize: 20, color: colors.textLight },
+  resultCard: {
+    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
+    marginHorizontal: 16, marginBottom: 6, padding: 12, borderRadius: 12, elevation: 1,
+  },
+  resultBadge: { width: 50, height: 50, borderRadius: 25, alignItems: 'center', justifyContent: 'center' },
+  resultPercent: { fontSize: 16, fontWeight: '800' },
+  resultInfo: { flex: 1, marginLeft: 12 },
+  resultScore: { fontSize: 15, fontWeight: '600', color: colors.text },
+  resultDate: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+});

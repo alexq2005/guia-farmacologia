@@ -1,17 +1,19 @@
 import React, { useMemo } from 'react';
-import { View, Text, FlatList, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, FlatList, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { DrugCard } from '../components/DrugCard';
 import { useDrugData } from '../hooks/useDrugData';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChapterDrugs'>;
 
 export function ChapterDrugsScreen({ route, navigation }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
   const { chapterId, unitName, unitColor } = route.params;
   const { getDrugsByChapter, getChapterById } = useDrugData();
 
@@ -19,7 +21,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
   const drugs = getDrugsByChapter(chapterId);
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={unitColor} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: unitColor }]}>
         <Text style={styles.unitName}>{unitName}</Text>
@@ -44,7 +46,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
           </View>
         }
       />
-    </View>
+    </Animated.View>
   );
 }
 

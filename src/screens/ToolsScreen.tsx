@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -7,8 +8,12 @@ import type { RootStackParamList, TabParamList } from '../types';
 import { FORMULA_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 import formulas from '../data/formulas.json';
 import pathologies from '../data/pathologies.json';
+import scalesData from '../data/clinical_scales.json';
+import protocolsData from '../data/emergency_protocols.json';
+import labValuesData from '../data/lab_values.json';
 import type { Formula } from '../types';
 
 type NavigationProp = CompositeNavigationProp<
@@ -30,9 +35,18 @@ const categoryLabels: Record<string, string> = {
 
 export function ToolsScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const fadeIn = useFadeIn();
 
   const toolSections = [
+    {
+      icon: '🧠',
+      title: 'Modo Estudio',
+      subtitle: 'Quiz interactivo de farmacología',
+      color: colors.quiz,
+      target: 'quiz' as const,
+    },
     {
       icon: '🏥',
       title: 'Patologías Clínicas',
@@ -48,6 +62,27 @@ export function ToolsScreen({ navigation }: Props) {
       target: 'interactions' as const,
     },
     {
+      icon: '📊',
+      title: 'Escalas Clínicas',
+      subtitle: `${scalesData.length} escalas interactivas de valoración`,
+      color: '#7C3AED',
+      target: 'scales' as const,
+    },
+    {
+      icon: '🔬',
+      title: 'Valores de Laboratorio',
+      subtitle: `${labValuesData.length} valores de referencia clínica`,
+      color: '#2563EB',
+      target: 'labValues' as const,
+    },
+    {
+      icon: '🚨',
+      title: 'Protocolos de Emergencia',
+      subtitle: `${protocolsData.length} protocolos con fármacos y dosis`,
+      color: '#DC2626',
+      target: 'emergencyProtocols' as const,
+    },
+    {
       icon: '👩‍⚕️',
       title: 'Cuidados de Enfermería',
       subtitle: '10 correctos, valoración, alto riesgo, procedimientos',
@@ -57,7 +92,7 @@ export function ToolsScreen({ navigation }: Props) {
     {
       icon: '🧮',
       title: 'Calculadoras Clínicas',
-      subtitle: '7 calculadoras interactivas con interpretación',
+      subtitle: '15 calculadoras interactivas con interpretación',
       color: '#0891B2',
       target: 'calculators' as const,
     },
@@ -85,11 +120,11 @@ export function ToolsScreen({ navigation }: Props) {
   });
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={colors.accent} barStyle="light-content" />
-      <View style={[styles.header, { backgroundColor: colors.accent }]}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <View style={[styles.header, { backgroundColor: colors.accent, paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerTitle}>🔧 Herramientas</Text>
-        <Text style={styles.headerSubtitle}>Calculadoras, guías y referencias</Text>
+        <Text style={styles.headerSubtitle}>Calculadoras, escalas, protocolos y más</Text>
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
@@ -100,11 +135,16 @@ export function ToolsScreen({ navigation }: Props) {
               key={i}
               style={[styles.toolCard, { borderLeftColor: tool.color }]}
               onPress={() => {
-                if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');
+                if (tool.target === 'quiz') navigation.navigate('QuizScreen');
+                else if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');
                 else if (tool.target === 'nursing') navigation.navigate('NursingCare');
                 else if (tool.target === 'pathologies') navigation.navigate('PathologiesScreen');
                 else if (tool.target === 'interactions') navigation.navigate('InteractionChecker');
                 else if (tool.target === 'calculators') navigation.navigate('Calculators');
+                else if (tool.target === 'scales') navigation.navigate('ClinicalScales');
+                else if (tool.target === 'labValues') navigation.navigate('LabValues');
+                else if (tool.target === 'emergencyProtocols') navigation.navigate('EmergencyProtocols');
+                else if (tool.target === 'routes') navigation.navigate('RouteDetail', { routeId: 'IV' as any });
               }}
               activeOpacity={0.7}
             >
@@ -170,7 +210,7 @@ export function ToolsScreen({ navigation }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 

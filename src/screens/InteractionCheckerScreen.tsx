@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, Drug } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { useFadeIn } from '../utils/animations';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -109,6 +110,7 @@ export function InteractionCheckerScreen({ navigation }: Props) {
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { drugs } = useDrugData();
   const [selectedDrugs, setSelectedDrugs] = useState<Drug[]>([]);
+  const fadeIn = useFadeIn();
   const [searchQuery, setSearchQuery] = useState('');
 
   const searchResults = useMemo(() => {
@@ -150,8 +152,8 @@ export function InteractionCheckerScreen({ navigation }: Props) {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <StatusBar backgroundColor={colors.accent} barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Verificador de Interacciones</Text>
         <Text style={styles.headerSubtitle}>Selecciona 2-6 fármacos para verificar interacciones</Text>
@@ -251,7 +253,7 @@ export function InteractionCheckerScreen({ navigation }: Props) {
 
         <View style={{ height: 40 }} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -279,11 +281,11 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   searchResultText: { flex: 1 },
   searchResultName: { fontSize: 14, fontWeight: '600', color: colors.text },
   searchResultGeneric: { fontSize: 12, color: colors.textSecondary, fontStyle: 'italic' },
-  addIcon: { fontSize: 22, color: '#7C3AED', fontWeight: '700' },
+  addIcon: { fontSize: 22, color: colors.accent, fontWeight: '700' },
   resultsSection: { marginHorizontal: 16, marginTop: 8 },
   resultsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
-  safeBox: { backgroundColor: '#F0FDF4', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: '#BBF7D0' },
-  safeText: { fontSize: 13, color: '#166534', lineHeight: 20 },
+  safeBox: { backgroundColor: colors.success + '12', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: colors.success + '30' },
+  safeText: { fontSize: 13, color: colors.success, lineHeight: 20 },
   interactionCard: { backgroundColor: colors.surface, borderRadius: 12, padding: 14, marginBottom: 10, borderLeftWidth: 4, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3 },
   interactionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   interactionDrugs: { fontSize: 14, fontWeight: '700', color: colors.text, flex: 1 },
@@ -292,6 +294,6 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   interactionItem: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
   interactionBullet: { fontSize: 14, marginRight: 8, color: colors.textSecondary },
   interactionText: { flex: 1, fontSize: 13, color: colors.text, lineHeight: 20 },
-  disclaimer: { marginHorizontal: 16, marginTop: 20, backgroundColor: '#EFF6FF', padding: 14, borderRadius: 12, borderWidth: 1, borderColor: '#BFDBFE' },
-  disclaimerText: { fontSize: 12, color: '#1E40AF', lineHeight: 18 },
+  disclaimer: { marginHorizontal: 16, marginTop: 20, backgroundColor: colors.info + '12', padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.info + '30' },
+  disclaimerText: { fontSize: 12, color: colors.info, lineHeight: 18 },
 });

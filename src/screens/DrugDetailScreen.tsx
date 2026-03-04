@@ -1,14 +1,17 @@
-import React, { useMemo } from 'react';
-import { View, Text, ScrollView, StyleSheet, StatusBar } from 'react-native';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { View, Text, ScrollView, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { TouchableOpacity } from 'react-native';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useDrugData } from '../hooks/useDrugData';
 import { useFavoritesContext } from '../context/FavoritesContext';
+import { useNotesContext } from '../context/NotesContext';
 import { useTheme } from '../context/ThemeContext';
 import { UNIT_COLORS, PREGNANCY_COLORS, ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
+import { shareDrug } from '../utils/share';
+import { useFadeIn } from '../utils/animations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugDetail'>;
 
@@ -44,7 +47,28 @@ export function DrugDetailScreen({ route }: Props) {
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { getDrugById, getUnitById } = useDrugData();
   const { isFavorite, toggleFavorite } = useFavoritesContext();
+  const { getNote, saveNote } = useNotesContext();
+  const fadeIn = useFadeIn(350);
   const drug = getDrugById(route.params.drugId);
+
+  const existingNote = drug ? getNote(drug.id) : undefined;
+  const [noteText, setNoteText] = useState(existingNote?.text || '');
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (existingNote) setNoteText(existingNote.text);
+  }, [existingNote?.text]);
+
+  useEffect(() => {
+    if (!drug) return;
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      if (noteText.trim()) {
+        saveNote(drug.id, noteText.trim());
+      }
+    }, 800);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+  }, [noteText]);
 
   if (!drug) {
     return (
@@ -59,19 +83,29 @@ export function DrugDetailScreen({ route }: Props) {
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
 
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={unitColor} barStyle="light-content" />
 
       <View style={[styles.header, { backgroundColor: unitColor }]}>
         <View style={styles.headerTopRow}>
           <Text style={[styles.unitName, { flex: 1 }]}>{unit?.nombre || 'Sin unidad'}</Text>
           <TouchableOpacity
-            onPress={() => toggleFavorite(drug.id)}
+            onPress={() => shareDrug(drug)}
             style={styles.favButton}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+          >
+            <Text style={styles.favButtonIcon}>📤</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => toggleFavorite(drug.id)}
+            style={[styles.favButton, { marginLeft: 8 }]}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
             <Text style={styles.favButtonIcon}>{isFavorite(drug.id) ? '\u2764\uFE0F' : '\uD83E\uDD0D'}</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.classificationBadge}>
+          <Text style={styles.classificationText}>{drug.clasificacion}</Text>
         </View>
         <Text style={styles.drugName}>{drug.nombre}</Text>
         <Text style={styles.genericName}>{drug.nombreGenerico}</Text>
@@ -211,9 +245,26 @@ export function DrugDetailScreen({ route }: Props) {
           </CollapsibleSection>
         )}
 
+        {/* Personal Notes */}
+        <View style={styles.notesSection}>
+          <Text style={styles.notesSectionTitle}>📝 Mis Notas</Text>
+          <TextInput
+            style={styles.notesInput}
+            value={noteText}
+            onChangeText={setNoteText}
+            placeholder="Escribe tus notas personales sobre este fármaco..."
+            placeholderTextColor={colors.textLight}
+            multiline
+            textAlignVertical="top"
+          />
+          {noteText.trim().length > 0 && (
+            <Text style={styles.notesSaved}>Guardado automáticamente</Text>
+          )}
+        </View>
+
         <View style={styles.bottomSpacer} />
       </ScrollView>
-    </View>
+    </Animated.View>
   );
 }
 
@@ -267,6 +318,21 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   infoRow: { flexDirection: 'row', paddingVertical: 4, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
   infoLabel: { fontSize: 13, fontWeight: '600', color: colors.textSecondary, width: 110 },
   infoValue: { fontSize: 13, color: colors.text, flex: 1 },
+  classificationBadge: {
+    alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.2)', paddingHorizontal: 10,
+    paddingVertical: 3, borderRadius: 10, marginTop: 6,
+  },
+  classificationText: { color: '#FFFFFF', fontSize: 11, fontWeight: '600' },
+  notesSection: {
+    marginHorizontal: 16, marginTop: 12, backgroundColor: colors.noteBackground,
+    borderRadius: 14, padding: 14, borderWidth: 1, borderColor: colors.noteBorder,
+  },
+  notesSectionTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
+  notesInput: {
+    backgroundColor: colors.surface, borderRadius: 10, padding: 12, fontSize: 14,
+    color: colors.text, minHeight: 80, borderWidth: 1, borderColor: colors.border,
+  },
+  notesSaved: { fontSize: 11, color: colors.textLight, marginTop: 4, textAlign: 'right', fontStyle: 'italic' },
   bottomSpacer: { height: 40 },
   errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   errorText: { fontSize: 16, color: colors.error },
