@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager } from 'react-native';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, Animated } from 'react-native';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 
@@ -29,11 +29,23 @@ export function CollapsibleSection({
   const styles = useMemo(() => createStyles(colors), [colors]);
   const [isOpen, setIsOpen] = useState(initiallyOpen);
   const accent = accentColor || colors.primary;
+  const rotateAnim = useRef(new Animated.Value(initiallyOpen ? 1 : 0)).current;
 
   const toggle = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    setIsOpen(!isOpen);
+    const next = !isOpen;
+    setIsOpen(next);
+    Animated.timing(rotateAnim, {
+      toValue: next ? 1 : 0,
+      duration: 250,
+      useNativeDriver: true,
+    }).start();
   };
+
+  const chevronRotate = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg'],
+  });
 
   return (
     <View style={styles.container}>
@@ -51,7 +63,7 @@ export function CollapsibleSection({
             </View>
           ) : null}
         </View>
-        <Text style={styles.chevron}>{isOpen ? '▲' : '▼'}</Text>
+        <Animated.Text style={[styles.chevron, { transform: [{ rotate: chevronRotate }] }]}>▼</Animated.Text>
       </TouchableOpacity>
 
       {isOpen && <View style={styles.content}>{children}</View>}

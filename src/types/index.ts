@@ -198,6 +198,106 @@ export interface Pathology {
   categoria: PathologyCategory;
 }
 
+/** Escala clínica interactiva */
+export type ScaleType = 'components' | 'selector' | 'checklist';
+
+export interface ScaleOption {
+  label: string;
+  value: number;
+}
+
+export interface ScaleComponent {
+  nombre: string;
+  opciones: ScaleOption[];
+}
+
+export interface ScaleInterpretation {
+  rango: [number, number]; // [min, max] inclusive
+  label: string;
+  color: string;
+  descripcion: string;
+}
+
+export interface ClinicalScale {
+  id: string;
+  nombre: string;
+  abreviatura: string;
+  descripcion: string;
+  tipo: ScaleType;
+  categoria: 'neurologia' | 'neonatologia' | 'riesgo_ulceras' | 'sepsis' | 'via_aerea' | 'sedacion' | 'dolor' | 'trombosis' | 'postanestesia' | 'asa';
+  componentes: ScaleComponent[];
+  interpretaciones: ScaleInterpretation[];
+  rangoTotal: [number, number];
+  contextoClinico: string;
+  referencia: string;
+}
+
+/** Valor de laboratorio */
+export type LabCategory = 'hematologia' | 'bioquimica' | 'coagulacion' | 'hepatico' | 'renal' | 'cardiaco' | 'endocrino' | 'orina' | 'gasometria';
+
+export interface LabRange {
+  min: number;
+  max: number;
+  unidad: string;
+}
+
+export interface LabValue {
+  id: string;
+  nombre: string;
+  abreviatura: string;
+  categoria: LabCategory;
+  rangos: {
+    adultoHombre?: LabRange;
+    adultoMujer?: LabRange;
+    adulto?: LabRange;
+    pediatrico?: LabRange;
+  };
+  significadoAlto: string;
+  significadoBajo: string;
+  farmacosAlteran: string[];
+  implicacionesEnfermeria: string[];
+}
+
+/** Protocolo de emergencia */
+export type ProtocolCategory = 'cardiaco' | 'respiratorio' | 'neurologico' | 'metabolico' | 'sepsis' | 'trauma' | 'otro';
+export type ProtocolPriority = 'critico' | 'urgente' | 'emergente';
+
+export interface ProtocolStep {
+  orden: number;
+  tiempo?: string;
+  accion: string;
+  detalles?: string;
+  critico?: boolean;
+  farmacos?: {
+    nombre: string;
+    dosis: string;
+    via: string;
+  }[];
+  decision?: {
+    pregunta: string;
+    si: string;
+    no: string;
+  };
+}
+
+export interface EmergencyProtocol {
+  id: string;
+  nombre: string;
+  abreviatura?: string;
+  descripcion: string;
+  categoria: ProtocolCategory;
+  prioridad: ProtocolPriority;
+  banderasRojas: string[];
+  pasos: ProtocolStep[];
+  resumenFarmacos: {
+    nombre: string;
+    dosis: string;
+    via: string;
+    indicacion: string;
+  }[];
+  notasEnfermeria: string[];
+}
+
 /** Props de navegación */
 export type RootStackParamList = {
   MainTabs: undefined;
@@ -212,6 +312,14 @@ export type RootStackParamList = {
   PathologyDetail: { pathologyId: string };
   InteractionChecker: undefined;
   Calculators: undefined;
+  ClinicalScales: undefined;
+  ScaleDetail: { scaleId: string };
+  LabValues: undefined;
+  EmergencyProtocols: undefined;
+  ProtocolDetail: { protocolId: string };
+  QuizScreen: undefined;
+  QuizSession: { category?: string; questionCount: number };
+  AboutScreen: undefined;
 };
 
 export type TabParamList = {
@@ -221,6 +329,47 @@ export type TabParamList = {
   Especial: undefined;
   Herramientas: undefined;
 };
+
+/** Nota personal sobre un fármaco */
+export interface DrugNote {
+  drugId: string;
+  text: string;
+  updatedAt: number; // timestamp
+}
+
+/** Entrada del historial de búsquedas */
+export interface SearchHistoryEntry {
+  query: string;
+  timestamp: number;
+}
+
+/** Pregunta del quiz */
+export interface QuizQuestion {
+  id: string;
+  type: 'indication' | 'contraindication' | 'route' | 'pregnancy' | 'family' | 'mechanism' | 'adverse' | 'nursing';
+  questionText: string;
+  options: string[];
+  correctIndex: number;
+  drugName: string;
+}
+
+/** Sesión activa de quiz */
+export interface QuizSession {
+  questions: QuizQuestion[];
+  currentIndex: number;
+  answers: (number | null)[];
+  startedAt: number;
+}
+
+/** Resultado de quiz completado */
+export interface QuizResult {
+  id: string;
+  totalQuestions: number;
+  correctAnswers: number;
+  percentage: number;
+  category: string;
+  completedAt: number;
+}
 
 /** Resultado de búsqueda */
 export interface SearchResult {

@@ -57,6 +57,11 @@ export const LIGHT_COLORS = {
   tabBarActive: '#1E40AF',
   tabBarInactive: '#94A3B8',
   searchHighlight: '#FEF08A',
+  quiz: '#8B5CF6',
+  quizCorrect: '#16A34A',
+  quizWrong: '#DC2626',
+  noteBackground: '#FFFBEB',
+  noteBorder: '#FDE68A',
 };
 
 export const DARK_COLORS: ThemeColors = {
@@ -86,6 +91,11 @@ export const DARK_COLORS: ThemeColors = {
   tabBarActive: '#60A5FA',
   tabBarInactive: '#475569',
   searchHighlight: '#854D0E',
+  quiz: '#A78BFA',
+  quizCorrect: '#34D399',
+  quizWrong: '#EF4444',
+  noteBackground: '#1E293B',
+  noteBorder: '#854D0E',
 };
 
 // Default export for backwards compatibility (used by screens that haven't migrated to useTheme)
@@ -131,6 +141,76 @@ export const PATHOLOGY_COLORS: Record<string, string> = {
   'obstetrico': '#DB2777',
   'musculoesqueletico': '#0D9488',
   'emergencia': '#EF4444',
+};
+
+export const SCALE_COLORS: Record<string, string> = {
+  'neurologia': '#7C3AED',
+  'neonatologia': '#EC4899',
+  'riesgo_ulceras': '#EA580C',
+  'sepsis': '#DC2626',
+  'via_aerea': '#0891B2',
+  'sedacion': '#6366F1',
+  'dolor': '#F59E0B',
+  'trombosis': '#991B1B',
+  'postanestesia': '#059669',
+  'asa': '#2563EB',
+};
+
+export const SCALE_ICONS: Record<string, string> = {
+  'neurologia': '🧠',
+  'neonatologia': '👶',
+  'riesgo_ulceras': '🩹',
+  'sepsis': '🦠',
+  'via_aerea': '🫁',
+  'sedacion': '😴',
+  'dolor': '📊',
+  'trombosis': '🩸',
+  'postanestesia': '🏥',
+  'asa': '⚕️',
+};
+
+export const LAB_COLORS: Record<string, string> = {
+  'hematologia': '#DC2626',
+  'bioquimica': '#2563EB',
+  'coagulacion': '#991B1B',
+  'hepatico': '#B45309',
+  'renal': '#F59E0B',
+  'cardiaco': '#E11D48',
+  'endocrino': '#7C3AED',
+  'orina': '#0D9488',
+  'gasometria': '#059669',
+};
+
+export const LAB_ICONS: Record<string, string> = {
+  'hematologia': '🩸',
+  'bioquimica': '🧪',
+  'coagulacion': '🩹',
+  'hepatico': '🫁',
+  'renal': '🫘',
+  'cardiaco': '❤️',
+  'endocrino': '⚖️',
+  'orina': '🧫',
+  'gasometria': '💨',
+};
+
+export const PROTOCOL_COLORS: Record<string, string> = {
+  'cardiaco': '#DC2626',
+  'respiratorio': '#2563EB',
+  'neurologico': '#7C3AED',
+  'metabolico': '#F59E0B',
+  'sepsis': '#059669',
+  'trauma': '#EA580C',
+  'otro': '#6B7280',
+};
+
+export const PROTOCOL_ICONS: Record<string, string> = {
+  'cardiaco': '❤️',
+  'respiratorio': '🫁',
+  'neurologico': '🧠',
+  'metabolico': '⚗️',
+  'sepsis': '🦠',
+  'trauma': '🩸',
+  'otro': '🏥',
 };
 
 export const PATHOLOGY_ICONS: Record<string, string> = {

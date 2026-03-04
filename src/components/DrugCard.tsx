@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import type { Drug } from '../types';
 import { UNIT_COLORS, PREGNANCY_COLORS, ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { useTheme } from '../context/ThemeContext';
+import { useCardPressAnimation } from '../utils/animations';
 
 interface Props {
   drug: Drug;
@@ -20,9 +21,11 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const fav = isFavorite(drug.id);
+  const { scale, onPressIn, onPressOut } = useCardPressAnimation();
 
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.7}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut}>
+    <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
       <View style={[styles.colorBar, { backgroundColor: unitColor }]} />
       <View style={styles.content}>
         <View style={styles.header}>
@@ -64,6 +67,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
           </Text>
         ) : null}
       </View>
+    </Animated.View>
     </TouchableOpacity>
   );
 }
