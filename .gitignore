@@ -76,6 +76,9 @@ __pycache__/
 # Bundled JS assets (generated)
 android/app/src/main/assets/
 
+# Local keystore credentials
+android/gradle.properties.local
+
 # Yarn
 .yarn/*
 !.yarn/patches

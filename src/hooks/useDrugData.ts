@@ -41,6 +41,11 @@ function getPathologies(): Pathology[] {
 
 export function useDrugData() {
   const drugs = useMemo(() => getDrugs(), []);
+  const drugMap = useMemo(() => {
+    const map = new Map<string, Drug>();
+    for (const d of drugs) map.set(d.id, d);
+    return map;
+  }, [drugs]);
   const categories = useMemo(() => getCategories(), []);
   const emergencyDrugs = useMemo(() => getEmergencyDrugs(), []);
   const antidotes = useMemo(() => getAntidotes(), []);
@@ -56,8 +61,8 @@ export function useDrugData() {
   }, [pathologies]);
 
   const getDrugById = useCallback((id: string): Drug | undefined => {
-    return drugs.find(d => d.id === id);
-  }, [drugs]);
+    return drugMap.get(id);
+  }, [drugMap]);
 
   const getDrugsByChapter = useCallback((chapterId: string): Drug[] => {
     return drugs.filter(d => d.capituloId === chapterId);

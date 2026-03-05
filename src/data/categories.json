@@ -13,7 +13,14 @@
           "unidadId": "u01",
           "drugIds": [
             "paracetamol",
-            "metamizol"
+            "metamizol",
+            "nefopam",
+            "tapentadol",
+            "meperidina",
+            "oxicodona_naloxona",
+            "buprenorfina_parche",
+            "naldemedina",
+            "metilnaltrexona"
           ]
         },
         {
@@ -31,7 +38,20 @@
             "tapentadol",
             "nalbufina",
             "metadona",
-            "hidromorfona"
+            "hidromorfona",
+            "naltrexona",
+            "meperidina",
+            "sufentanilo",
+            "alfentanilo",
+            "oximorfona",
+            "dihidrocodeina",
+            "pentazocina",
+            "levorfanol",
+            "butorfanol",
+            "stiripentol",
+            "everolimus_epilepsia",
+            "clobazam_detalle",
+            "ganaxolona"
           ]
         },
         {
@@ -41,7 +61,24 @@
           "drugIds": [
             "lidocaina",
             "ketamina",
-            "midazolam"
+            "midazolam",
+            "isoflurano",
+            "oxido_nitroso",
+            "droperidol",
+            "levobupivacaina",
+            "articaina",
+            "prilocaina",
+            "cloroprocaina",
+            "mepivacaina",
+            "tetracaina",
+            "benzocaina",
+            "procaina",
+            "brivaracetam",
+            "perampanel",
+            "lacosamida",
+            "cannabidiol",
+            "clobazam",
+            "venlafaxina_xr"
           ]
         },
         {
@@ -67,7 +104,24 @@
             "buspirona",
             "lacosamida",
             "perampanel",
-            "brivaracetam"
+            "brivaracetam",
+            "primidona",
+            "clobazam",
+            "vigabatrina",
+            "zonisamida",
+            "rufinamida",
+            "estiripentol",
+            "valproato_iv",
+            "eslicarbazepina",
+            "cenobamato",
+            "felbamato",
+            "tiagabina",
+            "etosuximida",
+            "fenfluramina_antiepi",
+            "pramipexol",
+            "ropinirol",
+            "brexpiprazol_detalle",
+            "pimavanserin"
           ]
         },
         {
@@ -81,7 +135,19 @@
             "rotigotina",
             "entacapona",
             "selegilina",
-            "rasagilina"
+            "rasagilina",
+            "amantadina",
+            "apomorfina",
+            "safinamida",
+            "opicapona",
+            "istradefilina",
+            "tolcapona",
+            "trihexifenidilo",
+            "carbidopa_levodopa_ec",
+            "prociclidina",
+            "brexpiprazol",
+            "opicapona_detalle",
+            "foslevodopa_foscarbidopa"
           ]
         },
         {
@@ -95,7 +161,26 @@
             "olanzapina",
             "aripiprazol",
             "clozapina",
-            "clorpromazina"
+            "clorpromazina",
+            "paliperidona",
+            "ziprasidona",
+            "cariprazina",
+            "brexpiprazol",
+            "lurasidona",
+            "asenapina",
+            "pimozida",
+            "quetiapina_im",
+            "sulpirida",
+            "tiaprida",
+            "levomepromazina",
+            "iloperidona",
+            "loxapina_inhalada",
+            "perfenazina",
+            "flufenazina",
+            "trifluoperazina",
+            "vilazodona",
+            "vortioxetina",
+            "esketamina"
           ]
         },
         {
@@ -116,7 +201,27 @@
             "paroxetina",
             "citalopram",
             "desvenlafaxina",
-            "fluvoxamina"
+            "fluvoxamina",
+            "vortioxetina",
+            "vilazodona",
+            "nortriptilina",
+            "imipramina",
+            "clomipramina",
+            "moclobemida",
+            "agomelatina",
+            "esketamina_nasal",
+            "doxepina",
+            "maprotilina",
+            "tianeptina",
+            "reboxetina",
+            "milnacipran",
+            "fenelzina",
+            "memantina",
+            "galantamina",
+            "rivastigmina",
+            "donepezilo",
+            "ofatumumab_em",
+            "ponesimod"
           ]
         },
         {
@@ -130,7 +235,88 @@
             "donepezilo",
             "modafinilo",
             "rivastigmina",
-            "galantamina"
+            "galantamina",
+            "lisdexanfetamina",
+            "guanfacina",
+            "pitolisant",
+            "dextroanfetamina",
+            "solriamfetol",
+            "armodafinilo"
+          ]
+        },
+        {
+          "id": "c01_09",
+          "nombre": "Fármacos para Migraña",
+          "unidadId": "u01",
+          "drugIds": [
+            "rizatriptan",
+            "zolmitriptan",
+            "naratriptan",
+            "almotriptan",
+            "eletriptan",
+            "frovatriptan",
+            "lasmiditan",
+            "erenumab",
+            "galcanezumab",
+            "fremanezumab"
+          ]
+        },
+        {
+          "id": "c01_10",
+          "nombre": "Esclerosis Múltiple",
+          "unidadId": "u01",
+          "drugIds": [
+            "fingolimod",
+            "dimetilfumarato",
+            "natalizumab",
+            "ocrelizumab",
+            "teriflunomida",
+            "glatiramer",
+            "siponimod",
+            "cladribina_oral"
+          ]
+        },
+        {
+          "id": "c01_11",
+          "nombre": "Ansiolíticos y Sedantes",
+          "unidadId": "u01",
+          "drugIds": [
+            "clorazepato",
+            "bromazepam",
+            "lormetazepam",
+            "eszopiclona",
+            "ramelteon",
+            "suvorexant",
+            "lemborexant",
+            "zaleplon"
+          ]
+        },
+        {
+          "id": "c01_12",
+          "nombre": "Neurofármacos Especiales",
+          "unidadId": "u01",
+          "drugIds": [
+            "riluzol",
+            "tetrabenazina",
+            "valbenazina",
+            "toxina_botulinica_a",
+            "edaravona",
+            "nusinersen",
+            "betahistina",
+            "flunarizina"
+          ]
+        },
+        {
+          "id": "c01_13",
+          "nombre": "Fármacos para Adicciones",
+          "unidadId": "u01",
+          "drugIds": [
+            "acamprosato",
+            "disulfiram",
+            "vareniclina",
+            "buprenorfina_naloxona",
+            "naloxona_nasal",
+            "lofexidina"
           ]
         }
       ]
@@ -170,7 +356,28 @@
             "ramipril",
             "telmisartan",
             "candesartan",
-            "lercanidipino"
+            "lercanidipino",
+            "sacubitril_valsartan",
+            "olmesartan",
+            "benazepril",
+            "fosinopril",
+            "perindopril",
+            "felodipino",
+            "nicardipino",
+            "nitrendipino",
+            "lisinopril",
+            "quinapril",
+            "eprosartan",
+            "labetalol_cv",
+            "isradipino",
+            "acebutolol",
+            "aliskireno",
+            "lacidipino",
+            "eplerenona",
+            "celiprolol",
+            "azilsartan",
+            "barnidipino",
+            "nebivolol_cv"
           ]
         },
         {
@@ -186,7 +393,19 @@
             "propafenona",
             "sotalol",
             "dronedarona",
-            "vernakalant"
+            "vernakalant",
+            "esmolol",
+            "procainamida",
+            "mexiletina",
+            "dofetilida",
+            "ibutilida",
+            "quinidina",
+            "disopiramida",
+            "ajmalina",
+            "pilsicainida",
+            "vernakalant_oral",
+            "ranolazina",
+            "adenosina_arritmia"
           ]
         },
         {
@@ -200,7 +419,18 @@
             "sildenafilo",
             "hidralazina",
             "minoxidil_oral",
-            "iloprost"
+            "iloprost",
+            "alprostadil",
+            "bosentan",
+            "macitentan",
+            "sacubitril_valsartan",
+            "ivabradina_ic",
+            "hidralazina_ic",
+            "dinitrato_isosorbide_ic",
+            "vericiguat",
+            "omecamtiv",
+            "dapagliflozina_ic",
+            "empagliflozina_ic"
           ]
         },
         {
@@ -219,7 +449,17 @@
             "amilorida",
             "espironolactona_ic2",
             "torasemida",
-            "dapagliflozina_cv"
+            "dapagliflozina_cv",
+            "metolazona",
+            "clorotiazida",
+            "ezetimiba",
+            "fenofibrato",
+            "gemfibrozilo",
+            "alirocumab",
+            "evolocumab",
+            "acido_nicotinico",
+            "colestiramina_lip",
+            "inclisiran"
           ]
         },
         {
@@ -233,7 +473,16 @@
             "ezetimibe",
             "fenofibrato",
             "gemfibrozil",
-            "colestiramina"
+            "colestiramina",
+            "pravastatina",
+            "alirocumab",
+            "evolocumab",
+            "acido_bempedoico",
+            "trimetazidina",
+            "ivabradina_angina",
+            "isosorbide_mononitrato_det",
+            "dipiridamol_cv",
+            "papaverina"
           ]
         },
         {
@@ -245,7 +494,14 @@
             "prasugrel",
             "ivabradina",
             "ranolazina",
-            "trimetazidina"
+            "trimetazidina",
+            "cilostazol",
+            "vorapaxar",
+            "cilostazol_cv",
+            "buflomedil",
+            "naftidrofurilo",
+            "pentoxifilina_cv",
+            "ginkgo_biloba"
           ]
         },
         {
@@ -255,7 +511,72 @@
           "drugIds": [
             "milrinona",
             "levosimendan",
-            "fenoldopam"
+            "fenoldopam",
+            "efedrina",
+            "isoprenalina",
+            "midodrina",
+            "nitroprusiatosodico_nuevo",
+            "digitoxina",
+            "metildigoxina"
+          ]
+        },
+        {
+          "id": "c02_08",
+          "nombre": "Hipertensión Pulmonar",
+          "unidadId": "u02",
+          "drugIds": [
+            "treprostinil",
+            "epoprostenol",
+            "selexipag",
+            "ambrisentan",
+            "riociguat",
+            "tadalafilo_hp",
+            "sildenafilo_hp",
+            "beraprost",
+            "sitaxentan_hist"
+          ]
+        },
+        {
+          "id": "c02_09",
+          "nombre": "Antianginosos Adicionales",
+          "unidadId": "u02",
+          "drugIds": [
+            "nicorandil",
+            "molsidomina",
+            "dinitrato_isosorbide",
+            "mononitrato_isosorbide",
+            "nimodipino_cv",
+            "pentoxifilina",
+            "perhexilina",
+            "fasudil"
+          ]
+        },
+        {
+          "id": "c02_10",
+          "nombre": "Shock y Soporte Hemodinámico",
+          "unidadId": "u02",
+          "drugIds": [
+            "angiotensina_ii",
+            "metaraminol",
+            "fenilefrina_infusion",
+            "terlipresina_shock",
+            "noradrenalina_titulable",
+            "angiotensina_ii_shock",
+            "milrinona_shock",
+            "fenilefrina_shock"
+          ]
+        },
+        {
+          "id": "c02_11",
+          "nombre": "Cardiopatía Congénita y Fetal",
+          "unidadId": "u02",
+          "drugIds": [
+            "alprostadil_ductus",
+            "indometacina_ductus",
+            "ibuprofeno_ductus",
+            "sildenafilo_neonatal",
+            "bosentan_congenita",
+            "iloprost_congenita"
           ]
         }
       ]
@@ -289,7 +610,29 @@
             "ampicilina_sulbactam",
             "ceftolozano_tazobactam",
             "ceftarolina",
-            "ceftazidima_avibactam"
+            "ceftazidima_avibactam",
+            "cefdinir",
+            "cefpodoxima",
+            "cefadroxilo",
+            "dicloxacilina",
+            "doripenem_nuevo",
+            "ceftobiprol",
+            "nafcilina",
+            "oxacilina",
+            "cefaclor",
+            "cefoxitina",
+            "ticarcilina_clavulanico",
+            "cefiderocol",
+            "cefmetazol",
+            "mecilinam",
+            "piperacilina_tazobactam_det",
+            "sultamicilina",
+            "ampicilina_sulbactam_det",
+            "penicilina_v",
+            "penicilina_g_benzatinica",
+            "penicilina_g_procainica",
+            "penicilina_benzatinica",
+            "penicilina_procainica"
           ]
         },
         {
@@ -303,7 +646,26 @@
             "claritromicina",
             "eritromicina",
             "moxifloxacino",
-            "norfloxacino"
+            "norfloxacino",
+            "fidaxomicina",
+            "ofloxacino",
+            "delafloxacino",
+            "espiramicina",
+            "roxitromicina",
+            "gemifloxacino",
+            "telitromicina",
+            "ceftarolina_det",
+            "cefepima_det",
+            "ceftolozano_tazobactam_det",
+            "cefazolina_det",
+            "cefalexina_det",
+            "cefuroxima_det",
+            "cefprozil",
+            "ceftibuten",
+            "cefditoren",
+            "cefoperazona_sulbactam",
+            "imipenem_relebactam",
+            "aztreonam_avibactam"
           ]
         },
         {
@@ -333,7 +695,27 @@
             "aztreonam",
             "tedizolid",
             "meropenem_vaborbactam",
-            "plazomicina"
+            "plazomicina",
+            "cloranfenicol",
+            "polimixina_b",
+            "tobramicina",
+            "meropenem_nuevo",
+            "minociclina_oral",
+            "estreptomicina",
+            "dalvabancina",
+            "oritavancina",
+            "omadaciclina",
+            "lefamulina",
+            "eravaciclina",
+            "netilmicina",
+            "tobramicina_sist",
+            "kanamicina",
+            "plazomicina_det",
+            "sisomicina",
+            "espectinomicina",
+            "amikacina_inhalada",
+            "spectinomicina",
+            "prulifloxacino"
           ]
         },
         {
@@ -357,7 +739,23 @@
             "sofosbuvir",
             "micafungina",
             "anidulafungina",
-            "letermovir"
+            "letermovir",
+            "isavuconazol",
+            "ritonavir",
+            "remdesivir",
+            "posaconazol",
+            "flucitosina",
+            "abacavir",
+            "lamivudina",
+            "dolutegravir",
+            "nirmatrelvir_ritonavir",
+            "norfloxacino_det",
+            "prulifloxacino",
+            "acido_nalidíxico",
+            "acido_pipemidico",
+            "rifabutina",
+            "rifapentina",
+            "dapsona_lepra"
           ]
         },
         {
@@ -369,7 +767,20 @@
             "rifampicina",
             "pirazinamida",
             "etambutol",
-            "bedaquilina"
+            "bedaquilina",
+            "cicloserina",
+            "capreomicina",
+            "delamanid",
+            "pretomanid",
+            "clofazimina",
+            "acido_paraaminosalicilico",
+            "linezolid_tb",
+            "bedaquilina_det",
+            "capreomicina_det",
+            "cicloserina_det",
+            "acido_paraaminosalicilico_det",
+            "anfotericina_liposomal",
+            "rezafungina"
           ]
         },
         {
@@ -383,7 +794,133 @@
             "tinidazol",
             "benznidazol",
             "secnidazol",
-            "praziquantel"
+            "praziquantel",
+            "nitazoxanida",
+            "miltefosina",
+            "mebendazol",
+            "cloroquina",
+            "primaquina",
+            "pirimetamina",
+            "atovacuona",
+            "pentamidina",
+            "artesunato",
+            "artemeter_lumefantrina",
+            "mefloquina",
+            "quinina",
+            "pirantel",
+            "niclosamida",
+            "proguanil_atovacuona",
+            "amodiaquina",
+            "nitazoxanida_det",
+            "benznidazol_det",
+            "nifurtimox",
+            "tinidazol_det",
+            "secnidazol_det",
+            "famciclovir",
+            "valaciclovir",
+            "molnupiravir",
+            "baloxavir_marboxil",
+            "zanamivir",
+            "peramivir",
+            "tecovirimat",
+            "cidofovir",
+            "foscarnet",
+            "maribavir",
+            "ribavirina",
+            "palivizumab",
+            "nirsevimab",
+            "brincidofovir"
+          ]
+        },
+        {
+          "id": "c03_07",
+          "nombre": "Antirretrovirales",
+          "unidadId": "u03",
+          "drugIds": [
+            "zidovudina",
+            "estavudina",
+            "nevirapina",
+            "lopinavir_ritonavir",
+            "darunavir",
+            "raltegravir",
+            "maraviroc",
+            "bictegravir",
+            "cabotegravir",
+            "doravirina",
+            "rilpivirina",
+            "emtricitabina",
+            "tenofovir_alafenamida",
+            "cobicistat",
+            "fostemsavir",
+            "lenacapavir",
+            "abacavir_det",
+            "didanosina",
+            "efavirenz_det",
+            "dolutegravir_det",
+            "atazanavir_det",
+            "nifurtimox",
+            "paromomicina",
+            "estibogluconato_sodico",
+            "suramin",
+            "eflornitina",
+            "tafenoquina",
+            "dietilcarbamazina",
+            "triclabendazol",
+            "furazolidona"
+          ]
+        },
+        {
+          "id": "c03_08",
+          "nombre": "Antivirales Hepatitis y Otros",
+          "unidadId": "u03",
+          "drugIds": [
+            "entecavir",
+            "adefovir",
+            "telbivudina",
+            "ledipasvir_sofosbuvir",
+            "glecaprevir_pibrentasvir",
+            "velpatasvir_sofosbuvir",
+            "elbasvir_grazoprevir",
+            "daclatasvir",
+            "simeprevir",
+            "boceprevir"
+          ]
+        },
+        {
+          "id": "c03_09",
+          "nombre": "Antifúngicos Sistémicos Adicionales",
+          "unidadId": "u03",
+          "drugIds": [
+            "griseofulvina",
+            "terbinafina_sistemica",
+            "ketoconazol_oral",
+            "miconazol_oral",
+            "natamicina",
+            "oteseconazol",
+            "ibrexafungerp",
+            "tavaborol",
+            "caspofungina_det",
+            "micafungina_det",
+            "anidulafungina_det",
+            "posaconazol_det",
+            "isavuconazol_det"
+          ]
+        },
+        {
+          "id": "c03_10",
+          "nombre": "Antivirales Generales",
+          "unidadId": "u03",
+          "drugIds": [
+            "oseltamivir_det",
+            "zanamivir",
+            "baloxavir",
+            "peramivir",
+            "tecovirimat",
+            "cidofovir",
+            "brincidofovir",
+            "nirmatrelvir_ritonavir_det",
+            "molnupiravir",
+            "remdesivir_det"
           ]
         }
       ]
@@ -407,7 +944,25 @@
             "formoterol",
             "salmeterol",
             "teofilina",
-            "fenoterol"
+            "fenoterol",
+            "indacaterol",
+            "glicopirronio",
+            "umeclidinio_vilanterol",
+            "aclidinio",
+            "revefenacina",
+            "olodaterol",
+            "vilanterol",
+            "terbutalina",
+            "bambuterol",
+            "procaterol",
+            "formoterol_det",
+            "indacaterol_det",
+            "vilanterol_det",
+            "olodaterol_det",
+            "terbutalina_inh",
+            "fenoterol_inh",
+            "salbutamol_ipratropio",
+            "fenoterol_ipratropio"
           ]
         },
         {
@@ -421,7 +976,22 @@
             "fluticasona",
             "fluticasona_salmeterol",
             "budesonida_formoterol",
-            "cromoglicato"
+            "cromoglicato",
+            "ciclesonida",
+            "mometasona_inhalada",
+            "fluticasona_furoato",
+            "triamcinolona_inhalada",
+            "beclometasona_formoterol",
+            "fluticasona_umeclidinio_vilanterol",
+            "budesonida_glicopirronio_formoterol",
+            "aclidinio_det",
+            "glicopirronio_inh_det",
+            "umeclidinio",
+            "revefenacina_det",
+            "fluticasona_vilanterol",
+            "indacaterol_glicopirronio",
+            "aclidinio_formoterol",
+            "tiotropio_olodaterol"
           ]
         },
         {
@@ -434,7 +1004,24 @@
             "bromhexina",
             "ambroxol",
             "codeina_antitusivo",
-            "acetilcisteina_inhalada"
+            "acetilcisteina_inhalada",
+            "erdosteina",
+            "carbocisteina",
+            "dornasa_alfa",
+            "guaifenesina",
+            "levodropropizina",
+            "oxolamina",
+            "benzonatato",
+            "mometasona_inh",
+            "ciclesonida_det",
+            "beclometasona_inh",
+            "triamcinolona_inh",
+            "zafirlukast",
+            "nedocromil",
+            "ensifentrine",
+            "fevipiprant",
+            "depemokimab",
+            "pranlukast"
           ]
         },
         {
@@ -447,7 +1034,31 @@
             "difenhidramina",
             "fexofenadina",
             "desloratadina",
-            "hidroxizina"
+            "hidroxizina",
+            "bilastina",
+            "rupatadina",
+            "levocetirizina",
+            "ebastina",
+            "azelastina",
+            "olopatadina",
+            "ketotifeno",
+            "clemastina",
+            "meclizina",
+            "dimenhidrinato",
+            "mepolizumab_det",
+            "benralizumab_det",
+            "dupilumab_asma",
+            "tezepelumab_det",
+            "fevipiprant",
+            "zileuton",
+            "doxapram",
+            "almitrina",
+            "alfa1_antitripsina",
+            "nafazolina",
+            "cromoglicato_nasal",
+            "surfactante_poractant",
+            "calfactant",
+            "pamrevlumab"
           ]
         },
         {
@@ -462,7 +1073,79 @@
             "mepolizumab",
             "benralizumab",
             "pirfenidona",
-            "nintedanib"
+            "nintedanib",
+            "dupilumab_respiratorio",
+            "tezepelumab",
+            "reslizumab",
+            "itepekimab",
+            "doxofylina",
+            "epinefrina_inhalada",
+            "acetilcisteina_iv",
+            "heliox",
+            "surfactante_beractant",
+            "erdosteina_det",
+            "bromhexina_det",
+            "sobrerrol",
+            "caramifeno"
+          ]
+        },
+        {
+          "id": "c04_06",
+          "nombre": "Fibrosis Quística",
+          "unidadId": "u04",
+          "drugIds": [
+            "ivacaftor",
+            "lumacaftor_ivacaftor",
+            "tezacaftor_ivacaftor",
+            "elexacaftor_tezacaftor_ivacaftor",
+            "tobramicina_inhalada",
+            "aztreonam_inhalado",
+            "dornasa_alfa_fq",
+            "solucion_salina_hipertonica"
+          ]
+        },
+        {
+          "id": "c04_07",
+          "nombre": "Antitusígenos y Descongestionantes",
+          "unidadId": "u04",
+          "drugIds": [
+            "fenilefrina_oral",
+            "pseudoefedrina",
+            "noscapina",
+            "butamirato",
+            "cloperastina",
+            "difenhidramina_jarabe",
+            "oxymetazolina",
+            "xilometazolina",
+            "levodropropizina_det",
+            "butamirato_det",
+            "cloperastina_det"
+          ]
+        },
+        {
+          "id": "c04_08",
+          "nombre": "Antifibróticos Pulmonares",
+          "unidadId": "u04",
+          "drugIds": [
+            "pirfenidona_det",
+            "nintedanib_det",
+            "pentraxina",
+            "pamrevlumab"
+          ]
+        },
+        {
+          "id": "c04_10",
+          "nombre": "Hipertensión Pulmonar",
+          "drugIds": [
+            "bosentan_pulmonar",
+            "ambrisentan",
+            "macitentan",
+            "sildenafilo_pulmonar",
+            "tadalafilo_pulmonar",
+            "riociguat",
+            "epoprostenol",
+            "treprostinil",
+            "selexipag"
           ]
         }
       ]
@@ -487,7 +1170,24 @@
             "famotidina",
             "rabeprazol",
             "vonoprazan",
-            "pantoprazol_iv"
+            "pantoprazol_iv",
+            "bismuto",
+            "dexlansoprazol",
+            "famotidina_iv",
+            "sucralfato_susp",
+            "misoprostol_gastrico",
+            "almagato",
+            "magaldrato",
+            "hidroxido_aluminio_magnesio",
+            "pirenzepina",
+            "tegoprazan",
+            "bismuto_subsalicilato",
+            "vonoprazan_detalle",
+            "tenatoprazol",
+            "ilaprazol",
+            "esomeprazol_iv_detalle",
+            "pantoprazol_iv_detalle",
+            "tegoprazan_detalle"
           ]
         },
         {
@@ -500,7 +1200,22 @@
             "domperidona",
             "granisetron",
             "aprepitant",
-            "escopolamina"
+            "escopolamina",
+            "palonosetron",
+            "fosaprepitant",
+            "netupitant_palonos",
+            "rolapitant",
+            "trimethobenzamida",
+            "dronabinol",
+            "nabilona",
+            "prometazina_antiemetica",
+            "ciclizina",
+            "alizaprida",
+            "netupitant_palonos_detalle",
+            "rolapitant_detalle",
+            "trimethobenzamida_detalle",
+            "scopolamina_transdermica",
+            "olanzapina_antiemetica"
           ]
         },
         {
@@ -519,7 +1234,18 @@
             "prucaloprida",
             "alvimopan",
             "rifaximina",
-            "budesonida_enteral"
+            "budesonida_enteral",
+            "vedolizumab",
+            "somatostatina",
+            "colesevelam",
+            "lubiprostona",
+            "octreotida_hemorragia",
+            "infliximab_eii",
+            "adalimumab_eii",
+            "ustekinumab_eii",
+            "tofacitinib_eii",
+            "ozanimod",
+            "filgotinib"
           ]
         },
         {
@@ -529,7 +1255,14 @@
           "drugIds": [
             "acido_ursodeoxicolico",
             "silimarina",
-            "pancreatina"
+            "pancreatina",
+            "obeticholic_acid",
+            "elafibranor",
+            "seladelpar",
+            "acido_ursodeoxicolico_colestasis",
+            "colestiramina_prurito",
+            "naltrexona_prurito",
+            "ácido_ursodeoxicólico"
           ]
         },
         {
@@ -541,7 +1274,78 @@
             "psyllium",
             "racecadotrilo",
             "linaclotida",
-            "eluxadolina"
+            "eluxadolina",
+            "bisacodilo",
+            "picosulfato",
+            "lactitol",
+            "macrogol_electrolitos",
+            "metilcelulosa",
+            "docusato",
+            "prucaloprida_detalle"
+          ]
+        },
+        {
+          "id": "c05_06",
+          "nombre": "Enfermedad Inflamatoria Intestinal",
+          "unidadId": "u05",
+          "drugIds": [
+            "balsalazida",
+            "olsalazina",
+            "azatioprina_eii",
+            "mercaptopurina_eii",
+            "certolizumab_eii",
+            "golimumab_eii",
+            "risankizumab_eii",
+            "mirikizumab",
+            "sulfasalazina",
+            "mesalazina"
+          ]
+        },
+        {
+          "id": "c05_07",
+          "nombre": "Fármacos Pancreáticos y Biliares",
+          "unidadId": "u05",
+          "drugIds": [
+            "pancrelipasa",
+            "creon",
+            "acido_quenodesoxicolico",
+            "fenofibrato_colestasis",
+            "colesevelam_prurito",
+            "bezafibrato_colestasis",
+            "pancreatina"
+          ]
+        },
+        {
+          "id": "c05_08",
+          "nombre": "Procinéticos y Antiespasmódicos",
+          "unidadId": "u05",
+          "drugIds": [
+            "cinitaprida",
+            "mosapride",
+            "itopride",
+            "trimebutina",
+            "mebeverina",
+            "otilonio",
+            "pinaverio",
+            "hioscina_butilbromuro",
+            "dicyclomine",
+            "alverine"
+          ]
+        },
+        {
+          "id": "c05_09",
+          "nombre": "Antidiarreicos y Absorbentes",
+          "unidadId": "u05",
+          "drugIds": [
+            "diosmectita",
+            "caolin_pectina",
+            "colestiramina_diarrea",
+            "sales_rehidratacion",
+            "probioticos_saccharomyces",
+            "tintura_opio",
+            "difenoxilato_atropina",
+            "crofelemer",
+            "loperamida"
           ]
         }
       ]
@@ -582,7 +1386,33 @@
             "dulaglutida",
             "tirzepatida",
             "albiglutida",
-            "repaglinida"
+            "repaglinida",
+            "insulina_degludec",
+            "saxagliptina",
+            "ertugliflozina",
+            "nateglinida",
+            "tirzepatida_detalle",
+            "insulina_glulisina",
+            "insulina_detemir_detalle",
+            "insulina_degludec_liraglutida",
+            "semaglutida_oral",
+            "exenatida",
+            "exenatida_semanal",
+            "pramlintida",
+            "miglitol",
+            "tolbutamida",
+            "clorpropamida",
+            "rosiglitazona",
+            "alogliptina",
+            "sotagliflozina_endo",
+            "teplizumab",
+            "diazoxido_hipoglucemia",
+            "insulina_icodec",
+            "imeglimina",
+            "sotagliflozina",
+            "semaglutida_oral_detalle",
+            "bexagliflozina",
+            "insulina_glargina_lixisenatida"
           ]
         },
         {
@@ -594,7 +1424,14 @@
             "metimazol",
             "propiltiouracilo",
             "carbimazol",
-            "levotiroxina_iv"
+            "levotiroxina_iv",
+            "liotironina",
+            "lugol",
+            "tiroglobulina",
+            "yodo_131",
+            "perclorato_potasio",
+            "selenio_tiroide",
+            "colestiramina_tiroide"
           ]
         },
         {
@@ -608,7 +1445,19 @@
             "metilprednisolona",
             "betametasona_sistemica",
             "deflazacort",
-            "fludrocortisona"
+            "fludrocortisona",
+            "hidrocortisona",
+            "prednisolona",
+            "cortisona",
+            "budesonida_sistemica",
+            "triamcinolona_sistemica",
+            "parametasona",
+            "rimexolona",
+            "meprednisona",
+            "osilodrostat_detalle",
+            "pasireotida_detalle",
+            "lenzilumab",
+            "pegvisomant_detalle"
           ]
         },
         {
@@ -619,7 +1468,14 @@
             "desmopresina",
             "calcitriol",
             "cinacalcet",
-            "dapagliflozina_ic"
+            "dapagliflozina_ic",
+            "bromocriptina",
+            "paricalcitol",
+            "etelcalcetida",
+            "liraglutida_obesidad",
+            "semaglutida_obesidad",
+            "orlistat",
+            "octreótida"
           ]
         },
         {
@@ -630,7 +1486,71 @@
             "octreotida",
             "lanreotida",
             "somatropina",
-            "terlipresina"
+            "terlipresina",
+            "tirzepatida_detalle2"
+          ]
+        },
+        {
+          "id": "c06_06",
+          "nombre": "Hormonas Suprarrenales",
+          "unidadId": "u06",
+          "drugIds": [
+            "mitotano",
+            "ketoconazol_cushing",
+            "metirapona",
+            "osilodrostat",
+            "levoketoconazol",
+            "pasireotida",
+            "mifepristona_cushing",
+            "cosintropina",
+            "fludrocortisona"
+          ]
+        },
+        {
+          "id": "c06_07",
+          "nombre": "Fármacos para Metabolismo Óseo-Mineral",
+          "unidadId": "u06",
+          "drugIds": [
+            "etelcalcetida_detalle",
+            "paratormona_recombinante",
+            "abaloparatida",
+            "romosozumab",
+            "burosumab",
+            "fosfato_oral",
+            "carbonato_lantano",
+            "sevelamer_carbonato"
+          ]
+        },
+        {
+          "id": "c06_08",
+          "nombre": "Fármacos para Obesidad",
+          "unidadId": "u06",
+          "drugIds": [
+            "naltrexona_bupropion",
+            "fentermina",
+            "fentermina_topiramato",
+            "lisdexanfetamina_ta",
+            "cellulose_mcp",
+            "setmelanotida",
+            "gelesis"
+          ]
+        },
+        {
+          "id": "c06_09",
+          "nombre": "Análogos y Antagonistas Hormonales",
+          "unidadId": "u06",
+          "drugIds": [
+            "pegvisomant",
+            "cabergolina_prolactinoma",
+            "leuprolida",
+            "goserelina",
+            "triptorelina",
+            "nafarelina",
+            "degarelix",
+            "cetrorelix",
+            "ganirelix",
+            "abiraterona",
+            "enzalutamida"
           ]
         }
       ]
@@ -655,7 +1575,20 @@
             "dinoprostona",
             "atosiban",
             "ritodrina",
-            "betametasona_prenatal"
+            "betametasona_prenatal",
+            "metilergometrina",
+            "carboprost",
+            "carbetocina_detalle",
+            "indometacina_tocolitico",
+            "nifedipino_tocolitico",
+            "terbutalina_tocolitica",
+            "prostaglandina_e1",
+            "methylergonovine",
+            "segesterona_etinilestradiol",
+            "drospirenona_sola",
+            "etonogestrel_implante_det",
+            "diu_levonorgestrel_52",
+            "ulipristal_anticoncepcion"
           ]
         },
         {
@@ -669,7 +1602,15 @@
             "alendronato",
             "tiamina",
             "colecalciferol",
-            "hierro_polimaltosato"
+            "hierro_polimaltosato",
+            "magnesio_oral",
+            "zinc_oral",
+            "hierro_dextrano",
+            "hierro_isomaltosido",
+            "piridoxina_embarazo",
+            "cianocobalamina_embarazo",
+            "vitamina_e_gestacional",
+            "cetrorelix_detalle"
           ]
         },
         {
@@ -680,7 +1621,17 @@
             "tamsulosina",
             "finasteride",
             "dutasteride",
-            "mirabegron"
+            "mirabegron",
+            "solifenacina",
+            "darifenacina",
+            "tolterodina",
+            "oxibutinina",
+            "fesoterodina",
+            "vibegron",
+            "alfuzosina",
+            "silodosina",
+            "vibegron_detalle",
+            "mirabegron_detalle"
           ]
         },
         {
@@ -691,7 +1642,10 @@
             "labetalol",
             "sulfato_magnesio_obstetrico",
             "nifedipino_obstetrico",
-            "metildopa_obstetrico"
+            "metildopa_obstetrico",
+            "hidralazina_preeclampsia",
+            "diazepam_eclampsia",
+            "dexametasona_prenatal"
           ]
         },
         {
@@ -707,7 +1661,18 @@
             "tamoxifeno",
             "etinilestradiol_desogestrel",
             "letrozol",
-            "noretisterona"
+            "noretisterona",
+            "dienogest",
+            "etonogestrel_implante",
+            "ulipristal",
+            "drospirenona",
+            "gestodeno",
+            "ciproterona",
+            "desogestrel",
+            "norgestimato",
+            "megestrol",
+            "danazol",
+            "tibolona"
           ]
         },
         {
@@ -720,7 +1685,62 @@
             "acido_zoledronico",
             "denosumab",
             "calcitonina",
-            "teriparatida"
+            "teriparatida",
+            "ibandronato",
+            "pamidronato",
+            "etidronato",
+            "abaloparatida_oseo",
+            "romosozumab_oseo",
+            "bazedoxifeno",
+            "romosozumab_detalle",
+            "denosumab_osteo",
+            "acido_zoledronico_anual"
+          ]
+        },
+        {
+          "id": "c07_07",
+          "nombre": "Fármacos para Fertilidad",
+          "unidadId": "u07",
+          "drugIds": [
+            "gonadotropina_corionica",
+            "menotropinas",
+            "folitropina_alfa",
+            "folitropina_beta",
+            "lutropina",
+            "corifolitropina",
+            "ganirelix_fert",
+            "cetrorelix_fert",
+            "progesterona_micronizada",
+            "dydrogesterona"
+          ]
+        },
+        {
+          "id": "c07_08",
+          "nombre": "Tratamiento de Endometriosis",
+          "unidadId": "u07",
+          "drugIds": [
+            "elagolix",
+            "relugolix",
+            "dienogest_endo",
+            "leuprolida_endo",
+            "goserelina_endo",
+            "nafarelina_endo",
+            "danazol_endo"
+          ]
+        },
+        {
+          "id": "c07_09",
+          "nombre": "Fármacos Prostáticos y Disfunción Eréctil",
+          "unidadId": "u07",
+          "drugIds": [
+            "tadalafilo_de",
+            "vardenafilo",
+            "avanafilo",
+            "alprostadil_de",
+            "enzalutamida_prost",
+            "abiraterona_prost",
+            "apalutamida",
+            "darolutamida"
           ]
         }
       ]
@@ -748,7 +1768,22 @@
             "etoricoxib",
             "ketoprofeno",
             "lornoxicam",
-            "dexketoprofeno"
+            "dexketoprofeno",
+            "aceclofenaco",
+            "ketorolaco_iv",
+            "flurbiprofeno",
+            "sulindaco",
+            "diflunisal",
+            "meclofenato",
+            "tolmetina",
+            "nimesulida",
+            "parecoxib",
+            "tenoxicam",
+            "oxaprozina",
+            "fenbufen",
+            "etoricoxib_detalle",
+            "naproxeno_esomeprazol",
+            "diflunisal_detalle"
           ]
         },
         {
@@ -760,7 +1795,21 @@
             "baclofeno",
             "tizanidina",
             "dantroleno_oral",
-            "metocarbamol"
+            "metocarbamol",
+            "orfenadrina",
+            "clorzoxazona",
+            "carisoprodol",
+            "metaxalona",
+            "pridinol_muscular",
+            "eperisona",
+            "tiocolchicosido",
+            "secukinumab_reum",
+            "ixekizumab_reum",
+            "apremilast_reum",
+            "deucravacitinib_reum",
+            "anifrolumab_detalle",
+            "tofacitinib_detalle",
+            "belimumab_reum"
           ]
         },
         {
@@ -770,7 +1819,13 @@
           "drugIds": [
             "colchicina",
             "alopurinol",
-            "febuxostat"
+            "febuxostat",
+            "probenecid",
+            "rasburicasa",
+            "pegloticase",
+            "benzbromarona",
+            "lesinurad",
+            "sulfinpirazona"
           ]
         },
         {
@@ -782,11 +1837,74 @@
             "hidroxicloroquina",
             "azatioprina",
             "leflunomida",
-            "metotrexato_ar",
             "tofacitinib",
             "adalimumab",
             "ciclosporina",
-            "baricitinib"
+            "baricitinib",
+            "ustekinumab",
+            "tacrolimus",
+            "micofenolato",
+            "rituximab",
+            "infliximab",
+            "etanercept",
+            "tocilizumab",
+            "ixekizumab",
+            "certolizumab",
+            "golimumab",
+            "abatacept",
+            "sarilumab",
+            "guselkumab",
+            "risankizumab_reum",
+            "brodalumab",
+            "filgotinib_reum",
+            "upadacitinib",
+            "deucravacitinib",
+            "anifrolumab"
+          ]
+        },
+        {
+          "id": "c08_05",
+          "nombre": "Fármacos para Osteoporosis y Osteoartritis",
+          "unidadId": "u08",
+          "drugIds": [
+            "tanezumab",
+            "diacereina",
+            "condroitin_sulfato",
+            "glucosamina",
+            "acido_hialuronico_ia",
+            "plasma_rico_plaquetas",
+            "ranelato_estroncio",
+            "romosozumab_musculo"
+          ]
+        },
+        {
+          "id": "c08_06",
+          "nombre": "Miopatías y Distrofias",
+          "unidadId": "u08",
+          "drugIds": [
+            "ataluren",
+            "eteplirsen",
+            "golodirsen",
+            "casimersen",
+            "viltolarsen",
+            "risdiplam",
+            "deflazacort_dmd",
+            "prednisona_dmd"
+          ]
+        },
+        {
+          "id": "c08_07",
+          "nombre": "Analgésicos Tópicos y Locales",
+          "unidadId": "u08",
+          "drugIds": [
+            "diclofenaco_topico",
+            "ketoprofeno_topico",
+            "capsaicina_topica",
+            "lidocaina_parche",
+            "metilsalicilato",
+            "mentol_topico",
+            "piroxicam_topico",
+            "flurbiprofeno_topico"
           ]
         }
       ]
@@ -807,7 +1925,17 @@
             "sulfadiazina_plata",
             "acido_fusidico",
             "minociclina_topica",
-            "metronidazol_topico"
+            "metronidazol_topico",
+            "eritromicina_topica",
+            "clindamicina_topica",
+            "bacitracina",
+            "neomicina_topica",
+            "retapamulina",
+            "ozenoxacino",
+            "gentamicina_topica",
+            "mometasona_topica",
+            "halobetasol_topico",
+            "mometasona_topica_det"
           ]
         },
         {
@@ -818,7 +1946,23 @@
             "hidrocortisona_topica",
             "betametasona_topica",
             "clobetasol",
-            "mometasona_topica"
+            "mometasona_topica",
+            "desonida",
+            "fluocinolona",
+            "fluocinonida",
+            "halcinonida",
+            "diflorasona",
+            "triamcinolona_topica",
+            "prednicarbato",
+            "alclometasona",
+            "desoximetasona",
+            "dupilumab_det",
+            "tralokinumab_det",
+            "nemolizumab_det",
+            "roflumilast_topico",
+            "tapinarof",
+            "bimekizumab_det",
+            "abrocitinib_det"
           ]
         },
         {
@@ -829,7 +1973,13 @@
             "clotrimazol_topico",
             "ketoconazol_topico",
             "terbinafina_topica",
-            "terbinafina_oral"
+            "terbinafina_oral",
+            "econazol",
+            "sertaconazol",
+            "luliconazol",
+            "efinaconazol",
+            "ciclopirox",
+            "ritlecitinib_det"
           ]
         },
         {
@@ -839,7 +1989,12 @@
           "drugIds": [
             "permetrina",
             "lindano",
-            "ivermectina_topica"
+            "ivermectina_topica",
+            "benzoato_bencilo",
+            "crotamiton",
+            "spinosad",
+            "isotretinoina",
+            "acitretina"
           ]
         },
         {
@@ -847,7 +2002,10 @@
           "nombre": "Antivirales Tópicos",
           "unidadId": "u09",
           "drugIds": [
-            "aciclovir_topico"
+            "aciclovir_topico",
+            "penciclovir",
+            "docosanol",
+            "imiquimod"
           ]
         },
         {
@@ -860,7 +2018,15 @@
             "timolol_oftalm",
             "latanoprost",
             "dupilumab",
-            "secukinumab"
+            "secukinumab",
+            "pimecrolimus",
+            "apremilast",
+            "ruxolitinib_topico",
+            "abrocitinib",
+            "tralokinumab",
+            "nemolizumab",
+            "lebrikizumab",
+            "bimekizumab"
           ]
         },
         {
@@ -872,7 +2038,72 @@
             "adapaleno",
             "peroxido_benzoilo",
             "dapsona_topica",
-            "minoxidil_topico"
+            "minoxidil_topico",
+            "tretinoina_topica",
+            "tazaroteno",
+            "trifaroteno",
+            "sarecycline_acne",
+            "clascoterone",
+            "calcipotriol"
+          ]
+        },
+        {
+          "id": "c09_08",
+          "nombre": "Antisépticos y Cicatrizantes",
+          "unidadId": "u09",
+          "drugIds": [
+            "clorhexidina_topica",
+            "povidona_yodada",
+            "nitrato_plata",
+            "colagenasa",
+            "acido_hialuronico_topico",
+            "alantoina",
+            "dexpantenol",
+            "centella_asiatica"
+          ]
+        },
+        {
+          "id": "c09_09",
+          "nombre": "Queratolíticos y Emolientes",
+          "unidadId": "u09",
+          "drugIds": [
+            "acido_salicilico_topico",
+            "urea_topica",
+            "acido_lactico_topico",
+            "vaselina_medicinal",
+            "parafina_liquida",
+            "ceramidas",
+            "petrolato",
+            "coal_tar"
+          ]
+        },
+        {
+          "id": "c09_10",
+          "nombre": "Fotoprotectores y Despigmentantes",
+          "unidadId": "u09",
+          "drugIds": [
+            "hidroquinona",
+            "acido_azelaico",
+            "acido_kojico",
+            "acido_tranexamico_topico",
+            "arbutina",
+            "niacinamida_topica",
+            "filtro_solar_octocrileno",
+            "filtro_solar_oxibenzona"
+          ]
+        },
+        {
+          "id": "c09_11",
+          "nombre": "Fármacos para Alopecia",
+          "unidadId": "u09",
+          "drugIds": [
+            "finasteride_topico",
+            "dutasteride_alopecia",
+            "baricitinib_alopecia",
+            "ritlecitinib",
+            "deuruxolitinib",
+            "bimatoprost_pestanas",
+            "latanoprost_alopecia"
           ]
         }
       ]
@@ -904,7 +2135,34 @@
             "edoxaban",
             "betrixaban",
             "tenecteplasa",
-            "bemiparina"
+            "bemiparina",
+            "bivalirudina",
+            "dipiridamol",
+            "abciximab",
+            "eptifibatida",
+            "tirofiban",
+            "argatroban",
+            "tinzaparina",
+            "nadroparina",
+            "dalteparina",
+            "prasugrel",
+            "ticagrelor",
+            "cangrelor",
+            "vorapaxar",
+            "cilostazol",
+            "sulodexida",
+            "defibrotida",
+            "danaparoide",
+            "caplacizumab",
+            "iloprost_iv",
+            "pentosano_polisulfato",
+            "apixaban_detalle",
+            "heparina_bajo_peso",
+            "rivaroxaban_profilaxis",
+            "alteplasa_tvp",
+            "ticlopidina",
+            "abelacimab",
+            "milvexian"
           ]
         },
         {
@@ -922,7 +2180,29 @@
             "complejo_protrombinico",
             "hierro_carboximaltosa",
             "eltrombopag",
-            "romiplostim"
+            "romiplostim",
+            "estreptoquinasa",
+            "reteplasa",
+            "urokinasa",
+            "emicizumab",
+            "andexanet_alfa_detalle",
+            "alteplasa_iam",
+            "factor_viii_rec",
+            "factor_ix_rec",
+            "factor_viia_rec",
+            "fibrinogeno_concentrado",
+            "desmopresina_hemat",
+            "complejo_coag_activado",
+            "fitomenadiona_iv",
+            "etamsilato",
+            "acido_epsilon_aminocaproico",
+            "trombina_topica",
+            "plasma_fresco",
+            "concentrado_plaquetas",
+            "acido_aminocaproico_iv",
+            "trombina_recombinante",
+            "sellador_fibrina",
+            "protamina_detalle"
           ]
         },
         {
@@ -933,7 +2213,52 @@
             "cianocobalamina",
             "acido_folico_hematologico",
             "deferoxamina",
-            "hidroxiurea"
+            "hidroxiurea",
+            "hierro_sacarosa",
+            "roxadustat",
+            "hierro_dextrano",
+            "hierro_isomaltoside",
+            "ferumoxitol",
+            "luspatercept",
+            "avatrombopag",
+            "pegfilgrastim",
+            "sargramostim",
+            "plerixafor",
+            "trombopoietina_romiplostim",
+            "luspatercept_detalle",
+            "eltrombopag_detalle",
+            "voxelotor",
+            "crizanlizumab",
+            "hidroxiurea_falciforme"
+          ]
+        },
+        {
+          "id": "c10_04",
+          "nombre": "Trastornos de Coagulación Hereditarios",
+          "drugIds": [
+            "emicizumab_profilaxis",
+            "fitusiran",
+            "concizumab",
+            "sutimlimab",
+            "ravulizumab",
+            "eculizumab_hemat",
+            "iptacopan"
+          ]
+        },
+        {
+          "id": "c10_05",
+          "nombre": "Neoplasias Mieloproliferativas",
+          "drugIds": [
+            "ruxolitinib_hemat",
+            "fedratinib",
+            "anagrelida",
+            "dasatinib",
+            "nilotinib",
+            "ponatinib",
+            "interferón_alfa_mpn",
+            "ropeginterferon",
+            "tisagenlecleucel",
+            "axicabtagene_ciloleucel"
           ]
         }
       ]
@@ -966,7 +2291,37 @@
             "desferoxamina_antidoto",
             "idarucizumab",
             "andexanet_alfa",
-            "sugammadex_emergencia"
+            "sugammadex_emergencia",
+            "andexanet",
+            "piridoxina_antidoto",
+            "succimero",
+            "penicilamina_antidoto",
+            "deferasirox_antidoto",
+            "deferiprone",
+            "leucovorina",
+            "glucarpidasa",
+            "levocarnitina_antidoto",
+            "digibind",
+            "octreotida_antidoto",
+            "lipidos_iv_antidoto",
+            "obidoxima",
+            "silibinina",
+            "antiveneno_polivalente",
+            "antitoxina_botulinica",
+            "nitrito_sodio",
+            "tiosulfato_sodio",
+            "folinato_calcico",
+            "deferoxamina_aguda",
+            "sugammadex_detalle",
+            "idarucizumab_detalle",
+            "andexanet_detalle",
+            "acido_folínico_rescue",
+            "fomepizol_detalle",
+            "hidroxocobalamina_detalle",
+            "octreotida_hipoglucemia",
+            "dantroleno_hipertermia",
+            "flumazenilo_detalle",
+            "atropina_organofosforado"
           ]
         },
         {
@@ -983,7 +2338,58 @@
             "fenilefrina",
             "gluconato_calcio",
             "sulfato_magnesio_emergencia",
-            "alteplasa_acv"
+            "alteplasa_acv",
+            "urapidilo",
+            "amrinona",
+            "acido_tranexamico_emergencia",
+            "glucosa50_emergencia",
+            "adenosina",
+            "amiodarona_emergencia",
+            "lidocaina_emergencia",
+            "isoprenalina",
+            "glucagon_emergencia",
+            "hidrocortisona_emergencia",
+            "terbutalina_emergencia",
+            "aminofilina_emergencia",
+            "dopamina_emergencia",
+            "fentolamina_emergencia",
+            "labetalol_emergencia",
+            "nitroprusiato",
+            "noradrenalina_emergencia",
+            "emulsion_lipidica_20",
+            "glucosa_50_detalle",
+            "diazepam_status",
+            "midazolam_emergencia",
+            "tiamina_iv_emergencia",
+            "acido_tranexamico_masivo",
+            "epinefrina_anafilaxia"
+          ]
+        },
+        {
+          "id": "c11_03",
+          "nombre": "Antídotos para Síndromes Tóxicos",
+          "drugIds": [
+            "ciproheptadina",
+            "bromocriptina_snm",
+            "dantroleno_snm",
+            "diazepam_emergencia",
+            "fenobarbital_emergencia",
+            "clonidina_abstinencia",
+            "lorazepam_emergencia",
+            "naltrexona_emergencia"
+          ]
+        },
+        {
+          "id": "c11_04",
+          "nombre": "Soporte Vital Avanzado",
+          "drugIds": [
+            "adrenalina_autoinyector",
+            "vasopresina_rcp",
+            "calcio_cloruro_rcp",
+            "alteplasa_masivo",
+            "efedrina_anestesia",
+            "etilefrina",
+            "bicarbonato_rcp"
           ]
         }
       ]
@@ -1011,7 +2417,23 @@
             "bupivacaina",
             "ropivacaina",
             "etomidato",
-            "cisatracurio_detalle"
+            "cisatracurio_detalle",
+            "tiopental",
+            "dexmedetomidina_intranasal",
+            "midazolam_anestesia",
+            "fentanilo_anestesia",
+            "sufentanilo",
+            "alfentanilo",
+            "oxido_nitroso",
+            "isoflurano",
+            "halotano",
+            "pancuronio",
+            "atracurio",
+            "mivacurio",
+            "bupivacaina_epidural",
+            "levobupivacaina_epidural",
+            "clorprocaina_epidural",
+            "cisatracurio_detalle2"
           ]
         },
         {
@@ -1031,7 +2453,29 @@
             "albumina_humana",
             "clevidipino",
             "dexmedetomidina_nasal",
-            "fentolamina"
+            "fentolamina",
+            "sevelamero",
+            "cloruro_potasio",
+            "ketamina_infusion",
+            "fosfato_sodico_iv",
+            "esmolol",
+            "nicardipino_infusion",
+            "fenoldopam",
+            "milrinona",
+            "levosimendan",
+            "terlipresina",
+            "octreotida_infusion",
+            "heparina_infusion",
+            "insulina_infusion",
+            "furosemida_infusion",
+            "vasopresina_infusion",
+            "hidralazina_iv",
+            "amiodarona_infusion",
+            "fenilefrina_infusion",
+            "angiotensina_ii_synth",
+            "isoproterenol_infusion",
+            "levosimendan_infusion",
+            "nitroprusiato_infusion"
           ]
         },
         {
@@ -1040,7 +2484,18 @@
           "unidadId": "u12",
           "drugIds": [
             "remifentanilo",
-            "cisatracurio"
+            "cisatracurio",
+            "propofol_infusion",
+            "midazolam_infusion",
+            "dexmedetomidina_infusion",
+            "ketamina_sedacion",
+            "fentanilo_infusion",
+            "morfina_infusion",
+            "clonidina_sedacion",
+            "remifentanilo_infusion",
+            "baclofeno_intratecal",
+            "metadona_iv",
+            "oxido_nitroso_analg"
           ]
         },
         {
@@ -1050,7 +2505,108 @@
           "drugIds": [
             "aminoacidos_parenterales",
             "lipidos_parenterales",
-            "glucosa_parenteral"
+            "glucosa_parenteral",
+            "lipidos_mct_lct",
+            "lipidos_omega3",
+            "smof_lipidos",
+            "glutamina_iv",
+            "multivitaminico_iv",
+            "oligoelementos_iv",
+            "fosfato_potasio_iv",
+            "lipidos_oliva",
+            "dipeptiven",
+            "selenio_iv",
+            "vitamina_c_iv"
+          ]
+        },
+        {
+          "id": "c12_05",
+          "nombre": "Antineoplásicos",
+          "unidadId": "u12",
+          "drugIds": [
+            "ciclofosfamida",
+            "doxorrubicina",
+            "imatinib",
+            "cisplatino",
+            "paclitaxel",
+            "fluorouracilo",
+            "vincristina",
+            "carboplatino",
+            "gemcitabina",
+            "anastrozol",
+            "docetaxel",
+            "nivolumab",
+            "pembrolizumab",
+            "trastuzumab",
+            "bevacizumab",
+            "everolimus",
+            "sorafenib",
+            "lenalidomida",
+            "oxaliplatino",
+            "capecitabina",
+            "exemestano",
+            "mercaptopurina",
+            "irinotecan",
+            "etoposido",
+            "metotrexato_alta_dosis",
+            "rituximab",
+            "bortezomib",
+            "venetoclax",
+            "azacitidina",
+            "citarabina",
+            "temozolomida",
+            "cetuximab",
+            "osimertinib",
+            "durvalumab",
+            "ipilimumab",
+            "sunitinib",
+            "palbociclib",
+            "pertuzumab",
+            "brentuximab",
+            "carfilzomib",
+            "lenvatinib",
+            "abiraterona_onco",
+            "ibrutinib",
+            "olaparib",
+            "lorlatinib",
+            "enfortumab_vedotin",
+            "trastuzumab_deruxtecan"
+          ]
+        },
+        {
+          "id": "c12_06",
+          "nombre": "Soporte Oncológico",
+          "drugIds": [
+            "mesna",
+            "dexrazoxano",
+            "aprepitant",
+            "palonosetron",
+            "rasburicasa",
+            "filgrastim_onco",
+            "zoledronic_onco",
+            "denosumab_onco"
+          ]
+        },
+        {
+          "id": "c12_07",
+          "nombre": "Fluidoterapia y Electrolitos",
+          "drugIds": [
+            "salina_hipertonica",
+            "dextrosa_5",
+            "bicarbonato_infusion",
+            "cloruro_potasio_iv",
+            "gluconato_calcio_iv",
+            "sulfato_magnesio_iv",
+            "plasmalyte",
+            "gelatina_succinilada",
+            "solucion_hartmann",
+            "dextrosa_10",
+            "albumina_5",
+            "hidroxietilalmidon",
+            "manitol_cerebral",
+            "solucion_salina_3",
+            "crioprecipitado",
+            "concentrado_fibrinogeno"
           ]
         }
       ]

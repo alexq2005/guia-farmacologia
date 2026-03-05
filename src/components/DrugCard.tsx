@@ -24,7 +24,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
   const { scale, onPressIn, onPressOut } = useCardPressAnimation();
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut} accessibilityRole="button" accessibilityLabel={`${drug.nombre}, ${drug.familia}`}>
     <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
       <View style={[styles.colorBar, { backgroundColor: unitColor }]} />
       <View style={styles.content}>
@@ -34,6 +34,9 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
             onPress={(e) => { e.stopPropagation(); toggleFavorite(drug.id); }}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             style={styles.favBtn}
+            accessibilityRole="button"
+            accessibilityLabel={fav ? `Quitar ${drug.nombre} de favoritos` : `Agregar ${drug.nombre} a favoritos`}
+            accessibilityState={{ selected: fav }}
           >
             <Text style={styles.favIcon}>{fav ? '\u2764\uFE0F' : '\uD83E\uDD0D'}</Text>
           </TouchableOpacity>

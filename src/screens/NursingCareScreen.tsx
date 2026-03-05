@@ -4,8 +4,9 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useFadeIn } from '../utils/animations';
+import type { NursingCareData, NursingRight, NursingAssessmentCategory, NursingRouteCare, NursingHighRiskCategory, NursingProcedure, NursingDocSection, NursingCalcFormula } from '../types';
 
-const nursingData = require('../data/nursing_care.json');
+const nursingData: NursingCareData = require('../data/nursing_care.json');
 
 type TabKey = 'derechos' | 'valoracion' | 'vias' | 'altoRiesgo' | 'procedimientos' | 'documentacion' | 'calculos';
 
@@ -58,7 +59,7 @@ function DerechosTab() {
   return (
     <View>
       <Text style={styles.tabDescription}>{data.descripcion}</Text>
-      {data.items.map((item: any) => (
+      {data.items.map((item: NursingRight) => (
         <View key={item.numero} style={styles.derechoCard}>
           <View style={styles.derechoHeader}>
             <View style={styles.derechoNumber}>
@@ -83,7 +84,7 @@ function ValoracionTab() {
   return (
     <View>
       <Text style={useMemo(() => createStyles(colors), [colors]).tabDescription}>{data.descripcion}</Text>
-      {data.categorias.map((cat: any, i: number) => (
+      {data.categorias.map((cat: NursingAssessmentCategory, i: number) => (
         <CollapsibleSection
           key={i}
           title={cat.nombre}
@@ -104,7 +105,7 @@ function ViasTab() {
   const viaColors = ['#2563EB', '#DC2626', '#059669', '#D97706', '#7C3AED', '#EC4899'];
   return (
     <View>
-      {data.vias.map((via: any, i: number) => (
+      {data.vias.map((via: NursingRouteCare, i: number) => (
         <CollapsibleSection
           key={i}
           title={via.nombre}
@@ -129,7 +130,7 @@ function AltoRiesgoTab() {
       <View style={styles.apinchBadge}>
         <Text style={styles.apinchText}>A · P · I · N · C · H</Text>
       </View>
-      {data.categorias.map((cat: any, i: number) => (
+      {data.categorias.map((cat: NursingHighRiskCategory, i: number) => (
         <CollapsibleSection key={i} title={cat.nombre} icon="⚠️" accentColor={colors.error} badge={`${cat.farmacos.length}`}>
           <View style={styles.farmacosRow}>
             {cat.farmacos.map((f: string, j: number) => (
@@ -151,7 +152,7 @@ function ProcedimientosTab() {
   const data = nursingData.procedimientosEspeciales;
   return (
     <View>
-      {data.procedimientos.map((proc: any, i: number) => (
+      {data.procedimientos.map((proc: NursingProcedure, i: number) => (
         <CollapsibleSection
           key={i}
           title={proc.nombre}
@@ -171,7 +172,7 @@ function DocumentacionTab() {
   const data = nursingData.documentacionEnfermeria;
   return (
     <View>
-      {data.secciones.map((sec: any, i: number) => (
+      {data.secciones.map((sec: NursingDocSection, i: number) => (
         <CollapsibleSection
           key={i}
           title={sec.nombre}
@@ -193,7 +194,7 @@ function CalculosTab() {
   const data = nursingData.calculosFarmacologicos;
   return (
     <View>
-      {data.formulas.map((form: any, i: number) => (
+      {data.formulas.map((form: NursingCalcFormula, i: number) => (
         <View key={i} style={styles.formulaCard}>
           <Text style={styles.formulaName}>{form.nombre}</Text>
           <View style={styles.formulaBox}>

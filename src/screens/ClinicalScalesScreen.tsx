@@ -8,6 +8,8 @@ import { SCALE_COLORS, SCALE_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { normalizeText } from '../utils/search';
+import { SCALE_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import scalesData from '../data/clinical_scales.json';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -17,19 +19,6 @@ interface Props {
 }
 
 type ScaleCat = ClinicalScale['categoria'];
-
-const CATEGORY_LABELS: Record<string, string> = {
-  neurologia: 'Neurología',
-  neonatologia: 'Neonatología',
-  riesgo_ulceras: 'Riesgo de Úlceras',
-  sepsis: 'Sepsis',
-  via_aerea: 'Vía Aérea',
-  sedacion: 'Sedación',
-  dolor: 'Dolor',
-  trombosis: 'Trombosis',
-  postanestesia: 'Post-anestesia',
-  asa: 'Estado Físico',
-};
 
 const TYPE_LABELS: Record<string, string> = {
   components: 'Componentes',
@@ -63,9 +52,9 @@ export function ClinicalScalesScreen({ navigation }: Props) {
       result = result.filter(s => s.categoria === selectedCategory);
     }
     if (searchQuery.trim().length >= 2) {
-      const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeText(searchQuery);
       result = result.filter(s => {
-        const name = s.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const name = normalizeText(s.nombre);
         const abbr = s.abreviatura.toLowerCase();
         return name.includes(q) || abbr.includes(q);
       });

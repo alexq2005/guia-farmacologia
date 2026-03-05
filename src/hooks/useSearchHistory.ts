@@ -11,9 +11,9 @@ export function useSearchHistory() {
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY).then(raw => {
       if (raw) {
-        try { setHistory(JSON.parse(raw)); } catch {}
+        try { setHistory(JSON.parse(raw)); } catch (e) { console.warn('Failed to parse search history:', e); }
       }
-    });
+    }).catch(e => console.warn('Failed to load search history:', e));
   }, []);
 
   const persist = useCallback((updated: SearchHistoryEntry[]) => {

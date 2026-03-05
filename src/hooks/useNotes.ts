@@ -11,10 +11,10 @@ export function useNotes() {
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY).then(raw => {
       if (raw) {
-        try { setNotes(JSON.parse(raw)); } catch {}
+        try { setNotes(JSON.parse(raw)); } catch (e) { console.warn('Failed to parse saved notes:', e); }
       }
       setLoaded(true);
-    });
+    }).catch(e => console.warn('Failed to load notes:', e));
   }, []);
 
   const persist = useCallback((updated: DrugNote[]) => {

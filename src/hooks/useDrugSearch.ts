@@ -1,14 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Drug, SearchResult } from '../types';
-
-/** Normalize text for search: lowercase, remove accents */
-function normalize(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
-}
+import { normalizeText as normalize } from '../utils/search';
 
 /** Score a drug against a search query */
 function scoreDrug(drug: Drug, query: string): SearchResult | null {

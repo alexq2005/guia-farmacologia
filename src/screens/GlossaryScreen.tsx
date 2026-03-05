@@ -6,6 +6,8 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import glossaryData from '../data/glossary.json';
+import { normalizeText as normalize } from '../utils/search';
+import { GLOSSARY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 
 const CATEGORY_COLORS: Record<string, string> = {
   farmacologia: '#3B82F6',
@@ -14,18 +16,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   abreviatura: '#EA580C',
   general: '#6B7280',
 };
-
-const CATEGORY_LABELS: Record<string, string> = {
-  farmacologia: 'Farmacología',
-  anatomia: 'Anatomía',
-  enfermeria: 'Enfermería',
-  abreviatura: 'Abreviatura',
-  general: 'General',
-};
-
-function normalize(text: string): string {
-  return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
 
 export function GlossaryScreen() {
   const { colors } = useTheme();

@@ -53,6 +53,8 @@ export function CollapsibleSection({
         style={[styles.header, { borderLeftColor: accent }]}
         onPress={toggle}
         activeOpacity={0.7}
+        accessibilityRole="button"
+        accessibilityState={{ expanded: isOpen }}
       >
         <View style={styles.titleRow}>
           {icon ? <Text style={styles.icon}>{icon}</Text> : null}

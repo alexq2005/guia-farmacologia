@@ -6,7 +6,7 @@ const RESULTS_KEY = '@guia_farmaco_quiz_results';
 
 type QuestionType = QuizQuestion['type'];
 
-const QUESTION_TEMPLATES: Record<QuestionType, (drug: Drug) => { q: string; correct: string; field: keyof Drug | string } | null> = {
+const QUESTION_TEMPLATES: Record<QuestionType, (drug: Drug) => { q: string; correct: string; field: keyof Drug } | null> = {
   indication: (d) => {
     if (!d.indicaciones.length) return null;
     return { q: `¿Cuál es una indicación de ${d.nombre}?`, correct: d.indicaciones[0], field: 'indicaciones' };
@@ -56,12 +56,12 @@ function generateDistractors(correct: string, allValues: string[], count: number
   return shuffle(pool).slice(0, count);
 }
 
-function collectFieldValues(drugs: Drug[], field: string): string[] {
+function collectFieldValues(drugs: Drug[], field: keyof Drug): string[] {
   const values = new Set<string>();
   for (const d of drugs) {
-    const val = (d as any)[field];
+    const val = d[field];
     if (Array.isArray(val)) {
-      val.forEach((v: string) => values.add(v));
+      (val as string[]).forEach(v => values.add(v));
     } else if (typeof val === 'string' && val) {
       values.add(val);
     }
@@ -75,14 +75,14 @@ export function useQuiz(drugs: Drug[]) {
   useEffect(() => {
     AsyncStorage.getItem(RESULTS_KEY).then(raw => {
       if (raw) {
-        try { setResults(JSON.parse(raw)); } catch {}
+        try { setResults(JSON.parse(raw)); } catch (e) { console.warn('Failed to parse quiz results:', e); }
       }
-    });
+    }).catch(e => console.warn('Failed to load quiz results:', e));
   }, []);
 
   const fieldValuesCache = useMemo(() => {
-    const cache: Record<string, string[]> = {};
-    const fields = ['indicaciones', 'contraindicaciones', 'viaAdministracion', 'embarazo', 'familia', 'mecanismoAccion', 'efectosAdversos', 'cuidadosEnfermeria'];
+    const fields: (keyof Drug)[] = ['indicaciones', 'contraindicaciones', 'viaAdministracion', 'embarazo', 'familia', 'mecanismoAccion', 'efectosAdversos', 'cuidadosEnfermeria'];
+    const cache: Partial<Record<keyof Drug, string[]>> = {};
     for (const f of fields) {
       cache[f] = collectFieldValues(drugs, f);
     }

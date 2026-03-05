@@ -222,7 +222,7 @@ export function HomeScreen({ navigation }: Props) {
               <TouchableOpacity
                 key={unit.id}
                 style={[styles.systemCard, { backgroundColor: (UNIT_COLORS[unit.id] || colors.primary) + '12' }]}
-                onPress={() => navigation.navigate('Categorias' as any)}
+                onPress={() => navigation.navigate('Categorias')}
                 activeOpacity={0.7}
               >
                 <View style={[styles.systemIcon, { backgroundColor: UNIT_COLORS[unit.id] || colors.primary }]}>

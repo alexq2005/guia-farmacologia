@@ -60,6 +60,28 @@ export interface Drug {
     duracionAccion?: string;
   };
   almacenamiento?: string;
+  preparacionParenteral?: {
+    // Campos básicos
+    reconstitucion?: string;
+    dilucion?: string;
+    volumenAdministracion?: string;
+    velocidadAdministracion?: string;
+    estabilidad?: string;
+    // Guía Son Espases — campos extendidos
+    solucionesCompatibles?: {
+      ssf?: boolean | string;    // NaCl 0.9%: true=compatible, false=incompatible, string=condicional
+      sg5?: boolean | string;    // SG 5%
+      otras?: string;            // Ringer Lactato, etc.
+    };
+    compatibilidadNPT?: {
+      tresEnUno?: string;        // Amino + glucosa + lípidos
+      dosEnUno?: string;         // Amino + glucosa (sin lípidos)
+      observaciones?: string;
+    };
+    proteccionPersonal?: string[];  // Instrucciones manipulación segura
+    medicamentoPeligroso?: boolean; // Flag visual ⚠️
+    observaciones?: string;         // Observaciones adicionales
+  };
   riesgosSobremedicacion?: {
     descripcion: string;
     efectos: string[];
@@ -298,13 +320,86 @@ export interface EmergencyProtocol {
   notasEnfermeria: string[];
 }
 
+/** Datos de Cuidados de Enfermería (nursing_care.json) */
+export interface NursingRight {
+  numero: number;
+  nombre: string;
+  descripcion: string;
+  ejemplo: string;
+}
+
+export interface NursingAssessmentCategory {
+  nombre: string;
+  items: string[];
+}
+
+export interface NursingRouteCare {
+  nombre: string;
+  cuidados: string[];
+}
+
+export interface NursingHighRiskCategory {
+  nombre: string;
+  farmacos: string[];
+  precauciones: string[];
+}
+
+export interface NursingProcedure {
+  nombre: string;
+  pasos: string[];
+}
+
+export interface NursingDocSection {
+  nombre: string;
+  items: string[];
+}
+
+export interface NursingCalcFormula {
+  nombre: string;
+  formula: string;
+  ejemplo: string;
+}
+
+export interface NursingCareData {
+  derechosAdministracion: {
+    titulo: string;
+    descripcion: string;
+    items: NursingRight[];
+  };
+  valoracionPreAdministracion: {
+    titulo: string;
+    descripcion: string;
+    categorias: NursingAssessmentCategory[];
+  };
+  cuidadosPorVia: {
+    titulo: string;
+    vias: NursingRouteCare[];
+  };
+  medicamentosAltoRiesgo: {
+    titulo: string;
+    descripcion: string;
+    categorias: NursingHighRiskCategory[];
+  };
+  procedimientosEspeciales: {
+    titulo: string;
+    procedimientos: NursingProcedure[];
+  };
+  documentacionEnfermeria: {
+    titulo: string;
+    secciones: NursingDocSection[];
+  };
+  calculosFarmacologicos: {
+    titulo: string;
+    formulas: NursingCalcFormula[];
+  };
+}
+
 /** Props de navegación */
 export type RootStackParamList = {
   MainTabs: undefined;
   DrugDetail: { drugId: string };
   ChapterDrugs: { chapterId: string; unitName: string; unitColor: string };
   FormulaDetail: { formulaId: string };
-  FormulaCalculator: { formulaId: string };
   RouteDetail: { routeId: RouteOfAdministration };
   GlossaryScreen: undefined;
   NursingCare: undefined;
@@ -319,6 +414,7 @@ export type RootStackParamList = {
   ProtocolDetail: { protocolId: string };
   QuizScreen: undefined;
   QuizSession: { category?: string; questionCount: number };
+  ParenteralGuide: undefined;
   AboutScreen: undefined;
 };
 

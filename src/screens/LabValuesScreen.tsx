@@ -7,19 +7,9 @@ import { LAB_COLORS, LAB_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { normalizeText } from '../utils/search';
+import { LAB_CATEGORY_LABELS } from '../utils/labels';
 import labValuesData from '../data/lab_values.json';
-
-const LAB_CATEGORY_LABELS: Record<LabCategory, string> = {
-  hematologia: 'Hematología',
-  bioquimica: 'Bioquímica',
-  coagulacion: 'Coagulación',
-  hepatico: 'Hepático',
-  renal: 'Renal',
-  cardiaco: 'Cardíaco',
-  endocrino: 'Endocrino',
-  orina: 'Orina',
-  gasometria: 'Gasometría',
-};
 
 const ALL_LAB_CATEGORIES: LabCategory[] = [
   'hematologia', 'bioquimica', 'coagulacion', 'hepatico',
@@ -64,9 +54,9 @@ export function LabValuesScreen() {
       result = result.filter(v => v.categoria === selectedCategory);
     }
     if (searchQuery.trim().length >= 2) {
-      const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeText(searchQuery);
       result = result.filter(v => {
-        const name = v.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const name = normalizeText(v.nombre);
         const abbr = v.abreviatura.toLowerCase();
         return name.includes(q) || abbr.includes(q);
       });

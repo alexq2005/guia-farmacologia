@@ -165,6 +165,139 @@ export function DrugDetailScreen({ route }: Props) {
           )}
         </View>
 
+        {drug.preparacionParenteral && (
+          <View style={styles.parenteralCard}>
+            <Text style={styles.parenteralSectionTitle}>💉 Guía de Administración Parenteral</Text>
+
+            {drug.preparacionParenteral.medicamentoPeligroso && (
+              <View style={styles.hazardBadge}>
+                <Text style={styles.hazardText}>⚠️ MEDICAMENTO PELIGROSO</Text>
+              </View>
+            )}
+
+            {(drug.preparacionParenteral.reconstitucion || drug.preparacionParenteral.dilucion || drug.preparacionParenteral.volumenAdministracion) && (
+              <CollapsibleSection title="Reconstitución y Dilución" icon="🧪" accentColor={colors.primary} initiallyOpen>
+                {drug.preparacionParenteral.reconstitucion && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>Reconstitución</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.reconstitucion}</Text>
+                  </View>
+                )}
+                {drug.preparacionParenteral.dilucion && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>Dilución</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.dilucion}</Text>
+                  </View>
+                )}
+                {drug.preparacionParenteral.volumenAdministracion && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>Volumen</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.volumenAdministracion}</Text>
+                  </View>
+                )}
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.velocidadAdministracion && (
+              <CollapsibleSection title="Administración" icon="⏱️" accentColor={colors.info} initiallyOpen>
+                <View style={styles.parenteralRow}>
+                  <Text style={styles.parenteralLabel}>Velocidad</Text>
+                  <Text style={styles.parenteralValue}>{drug.preparacionParenteral.velocidadAdministracion}</Text>
+                </View>
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.solucionesCompatibles && (
+              <CollapsibleSection title="Soluciones Compatibles" icon="💧" accentColor="#0891B2">
+                {drug.preparacionParenteral.solucionesCompatibles.ssf != null && (
+                  <View style={styles.compatRow}>
+                    <Text style={[styles.compatIcon, { color: drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '#DC2626' : '#D97706' }]}>
+                      {drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '✅' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '❌' : '⚠️'}
+                    </Text>
+                    <View style={styles.compatInfo}>
+                      <Text style={styles.compatName}>SSF (NaCl 0.9%)</Text>
+                      {typeof drug.preparacionParenteral.solucionesCompatibles.ssf === 'string' && (
+                        <Text style={styles.compatNote}>{drug.preparacionParenteral.solucionesCompatibles.ssf}</Text>
+                      )}
+                    </View>
+                  </View>
+                )}
+                {drug.preparacionParenteral.solucionesCompatibles.sg5 != null && (
+                  <View style={styles.compatRow}>
+                    <Text style={[styles.compatIcon, { color: drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '#DC2626' : '#D97706' }]}>
+                      {drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '✅' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '❌' : '⚠️'}
+                    </Text>
+                    <View style={styles.compatInfo}>
+                      <Text style={styles.compatName}>SG 5%</Text>
+                      {typeof drug.preparacionParenteral.solucionesCompatibles.sg5 === 'string' && (
+                        <Text style={styles.compatNote}>{drug.preparacionParenteral.solucionesCompatibles.sg5}</Text>
+                      )}
+                    </View>
+                  </View>
+                )}
+                {drug.preparacionParenteral.solucionesCompatibles.otras && (
+                  <View style={styles.compatRow}>
+                    <Text style={styles.compatIcon}>ℹ️</Text>
+                    <View style={styles.compatInfo}>
+                      <Text style={styles.compatName}>Otras</Text>
+                      <Text style={styles.compatNote}>{drug.preparacionParenteral.solucionesCompatibles.otras}</Text>
+                    </View>
+                  </View>
+                )}
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.compatibilidadNPT && (
+              <CollapsibleSection title="Compatibilidad con NPT" icon="🍶" accentColor="#7C3AED">
+                {drug.preparacionParenteral.compatibilidadNPT.tresEnUno && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>3-en-1 (amino + glucosa + lípidos)</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.compatibilidadNPT.tresEnUno}</Text>
+                  </View>
+                )}
+                {drug.preparacionParenteral.compatibilidadNPT.dosEnUno && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>2-en-1 (amino + glucosa)</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.compatibilidadNPT.dosEnUno}</Text>
+                  </View>
+                )}
+                {drug.preparacionParenteral.compatibilidadNPT.observaciones && (
+                  <View style={styles.parenteralRow}>
+                    <Text style={styles.parenteralLabel}>Observaciones NPT</Text>
+                    <Text style={styles.parenteralValue}>{drug.preparacionParenteral.compatibilidadNPT.observaciones}</Text>
+                  </View>
+                )}
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.estabilidad && (
+              <CollapsibleSection title="Conservación y Estabilidad" icon="🧊" accentColor="#059669">
+                <View style={styles.parenteralRow}>
+                  <Text style={styles.parenteralLabel}>Estabilidad</Text>
+                  <Text style={styles.parenteralValue}>{drug.preparacionParenteral.estabilidad}</Text>
+                </View>
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.proteccionPersonal && drug.preparacionParenteral.proteccionPersonal.length > 0 && (
+              <CollapsibleSection title="Protección del Personal" icon="🛡️" accentColor="#DC2626" initiallyOpen={drug.preparacionParenteral.medicamentoPeligroso}>
+                {drug.preparacionParenteral.proteccionPersonal.map((item, i) => (
+                  <View key={i} style={styles.proteccionRow}>
+                    <Text style={styles.proteccionBullet}>•</Text>
+                    <Text style={styles.proteccionText}>{item}</Text>
+                  </View>
+                ))}
+              </CollapsibleSection>
+            )}
+
+            {drug.preparacionParenteral.observaciones && (
+              <CollapsibleSection title="Observaciones" icon="📋" accentColor={colors.textSecondary}>
+                <Text style={styles.parenteralValue}>{drug.preparacionParenteral.observaciones}</Text>
+              </CollapsibleSection>
+            )}
+          </View>
+        )}
+
         <View style={styles.nursingCard}>
           <Text style={styles.nursingSectionTitle}>👩‍⚕️ Cuidados de Enfermería</Text>
           <BulletList items={drug.cuidadosEnfermeria} color={colors.nursing} />
@@ -299,6 +432,27 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   pediatricBox: { backgroundColor: colors.pediatric + '10', borderWidth: 1, borderColor: colors.pediatric + '30' },
   doseLabel: { fontSize: 12, fontWeight: '700', color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
   doseValue: { fontSize: 14, color: colors.text, lineHeight: 20 },
+  parenteralCard: {
+    backgroundColor: colors.primary + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16,
+    borderWidth: 2, borderColor: colors.primary + '25',
+  },
+  parenteralSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.primary, marginBottom: 4 },
+  hazardBadge: {
+    backgroundColor: '#DC262615', borderRadius: 10, padding: 10, marginBottom: 10,
+    borderWidth: 1, borderColor: '#DC262640', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+  },
+  hazardText: { fontSize: 14, fontWeight: '800', color: '#DC2626', letterSpacing: 0.5 },
+  parenteralRow: { backgroundColor: colors.background, padding: 10, borderRadius: 8, marginBottom: 6 },
+  parenteralLabel: { fontSize: 12, fontWeight: '700', color: colors.primary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
+  parenteralValue: { fontSize: 14, color: colors.text, lineHeight: 20 },
+  compatRow: { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 6, paddingHorizontal: 4 },
+  compatIcon: { fontSize: 18, marginRight: 10, marginTop: 1 },
+  compatInfo: { flex: 1 },
+  compatName: { fontSize: 14, fontWeight: '600', color: colors.text },
+  compatNote: { fontSize: 13, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
+  proteccionRow: { flexDirection: 'row', marginBottom: 4, paddingRight: 8 },
+  proteccionBullet: { fontSize: 14, color: '#DC2626', marginRight: 8, marginTop: 1 },
+  proteccionText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
   nursingCard: { backgroundColor: colors.nursing + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16, borderWidth: 2, borderColor: colors.nursing + '25' },
   nursingSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.nursing, marginBottom: 10 },
   riskCard: { backgroundColor: colors.error + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16, borderWidth: 2, borderColor: colors.error + '30' },

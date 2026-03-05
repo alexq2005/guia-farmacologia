@@ -1,0 +1,203 @@
+{
+  "titulo": "Guía de Administración Parenteral",
+  "subtitulo": "Basada en el modelo del Hospital Universitario Son Espases",
+  "advertencia": "Esta guía es una herramienta de consulta rápida y no sustituye el criterio clínico del profesional sanitario. Verificar siempre con la ficha técnica del fabricante y los protocolos del centro hospitalario.",
+  "introduccion": {
+    "titulo": "Introducción",
+    "proposito": "Proporcionar al personal de enfermería una guía de consulta rápida sobre la preparación y administración de medicamentos por vía parenteral, garantizando la seguridad del paciente y del profesional.",
+    "destinatarios": "Enfermeros/as asistenciales, estudiantes de enfermería y profesionales sanitarios involucrados en la administración de medicamentos parenterales.",
+    "metodologia": "Información recopilada y adaptada de fichas técnicas de medicamentos, guías de administración parenteral de hospitales de referencia (Son Espases, Vall d'Hebron, La Fe), y protocolos de farmacia hospitalaria.",
+    "contenido": [
+      "Reconstitución y dilución de cada fármaco",
+      "Soluciones compatibles (SSF, SG5%, otras)",
+      "Compatibilidad con nutrición parenteral (NPT)",
+      "Velocidad y vía de administración",
+      "Estabilidad y conservación tras preparación",
+      "Protección del personal para medicamentos peligrosos",
+      "Observaciones específicas relevantes"
+    ]
+  },
+  "secciones": [
+    {
+      "id": "soluciones",
+      "titulo": "Soluciones para Dilución",
+      "icon": "💧",
+      "contenido": [
+        {
+          "subtitulo": "Suero Fisiológico (SSF / SF 0.9%)",
+          "descripcion": "Solución de cloruro de sodio al 0.9% (NaCl 0.9%). Es la solución más utilizada para dilución de medicamentos parenterales.",
+          "puntos": [
+            "pH neutro (~5.5), osmolaridad fisiológica (308 mOsm/L)",
+            "Compatible con la mayoría de medicamentos",
+            "Solución de elección cuando no se especifica otra",
+            "Precaución en pacientes con hipernatremia o sobrecarga de volumen"
+          ]
+        },
+        {
+          "subtitulo": "Suero Glucosado 5% (SG 5%)",
+          "descripcion": "Solución de glucosa (dextrosa) al 5% en agua. Segunda solución más frecuente para dilución IV.",
+          "puntos": [
+            "pH ligeramente ácido (~4.0), hipotónica tras metabolizar glucosa",
+            "Indicada cuando se debe evitar aporte de sodio",
+            "Algunos fármacos precipitan en SG5% (ej: fenitoína, ampicilina)",
+            "No mezclar con sangre ni hemoderivados"
+          ]
+        },
+        {
+          "subtitulo": "Otras Soluciones",
+          "descripcion": "Menos frecuentes pero relevantes en ciertos contextos clínicos.",
+          "puntos": [
+            "Ringer Lactato: para reposición de electrolitos, no compatible con todos los fármacos",
+            "Agua para inyección (API): solo para reconstitución, NO para administración directa IV",
+            "SG 10%: para situaciones de hipoglucemia o como vehículo específico",
+            "Bicarbonato sódico: solo como vehículo si la ficha técnica lo indica específicamente"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "npt",
+      "titulo": "Nutrición Parenteral (NPT)",
+      "icon": "🍶",
+      "contenido": [
+        {
+          "subtitulo": "¿Qué es la NPT?",
+          "descripcion": "La Nutrición Parenteral Total es una mezcla intravenosa de aminoácidos, glucosa, lípidos, electrolitos, vitaminas y oligoelementos administrada por vía central o periférica.",
+          "puntos": [
+            "Se usa cuando el paciente no puede recibir nutrición enteral",
+            "La composición varía según las necesidades del paciente",
+            "Es una mezcla compleja con alto riesgo de incompatibilidad"
+          ]
+        },
+        {
+          "subtitulo": "Mezcla 3-en-1",
+          "descripcion": "Contiene aminoácidos + glucosa + lípidos en la misma bolsa. También llamada mezcla ternaria.",
+          "puntos": [
+            "Mayor riesgo de incompatibilidad con fármacos por la emulsión lipídica",
+            "Los lípidos pueden ocultar precipitados (difícil inspección visual)",
+            "Consultar siempre con farmacia antes de administrar fármacos en Y",
+            "La mayoría de antibióticos son incompatibles con mezcla 3-en-1"
+          ]
+        },
+        {
+          "subtitulo": "Mezcla 2-en-1",
+          "descripcion": "Contiene aminoácidos + glucosa sin lípidos. Los lípidos se administran por separado.",
+          "puntos": [
+            "Mejor tolerancia para administración en Y con algunos fármacos",
+            "Permite inspección visual de precipitados",
+            "Los lípidos se infunden por línea independiente",
+            "Verificar compatibilidad específica de cada fármaco con farmacia"
+          ]
+        },
+        {
+          "subtitulo": "Recomendaciones generales",
+          "descripcion": "Pautas de seguridad para administración simultánea de fármacos con NPT.",
+          "puntos": [
+            "Usar siempre llave de triple vía o conector en Y cuando sea posible",
+            "NO añadir medicamentos directamente a la bolsa de NPT",
+            "Ante la duda, administrar el fármaco por una vía independiente",
+            "Vigilar signos de precipitación: turbidez, partículas visibles, cambio de color",
+            "Registrar en la hoja de enfermería todas las administraciones simultáneas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "proteccion",
+      "titulo": "Protección del Personal",
+      "icon": "🛡️",
+      "contenido": [
+        {
+          "subtitulo": "¿Qué son los Medicamentos Peligrosos?",
+          "descripcion": "Son fármacos que presentan riesgo de carcinogénesis, teratogénesis, toxicidad reproductiva, toxicidad orgánica a bajas dosis, o genotoxicidad (clasificación NIOSH).",
+          "puntos": [
+            "Incluyen la mayoría de antineoplásicos y algunos antivirales, hormonas e inmunosupresores",
+            "La exposición puede ocurrir por inhalación, absorción cutánea o punción accidental",
+            "Todo el personal que manipula estos fármacos debe recibir formación específica",
+            "Las mujeres embarazadas o en período de lactancia NO deben manipular estos fármacos"
+          ]
+        },
+        {
+          "subtitulo": "Equipo de Protección Personal (EPP)",
+          "descripcion": "Material de seguridad obligatorio para la manipulación de medicamentos peligrosos.",
+          "puntos": [
+            "Guantes de quimioterapia (doble guante): cambiar cada 30 min o si rotura",
+            "Bata desechable impermeable de manga larga con puños elásticos",
+            "Protección ocular (gafas o pantalla facial) si riesgo de salpicadura",
+            "Mascarilla FFP2/FFP3 si preparación fuera de cabina",
+            "Cabina de Seguridad Biológica clase II tipo B2 para preparación"
+          ]
+        },
+        {
+          "subtitulo": "Protocolo de Manipulación",
+          "descripcion": "Pasos a seguir durante la preparación y administración de medicamentos peligrosos.",
+          "puntos": [
+            "1. Verificar que el fármaco está etiquetado como peligroso",
+            "2. Preparar en cabina de seguridad biológica siempre que sea posible",
+            "3. Colocar EPP completo antes de manipular",
+            "4. Usar sistemas cerrados de transferencia (CSTD) para preparación",
+            "5. Purgar la línea con solución compatible ANTES de conectar al paciente",
+            "6. No desconectar el sistema durante la infusión",
+            "7. Desechar en contenedores específicos para citotóxicos",
+            "8. Lavado de manos antes y después de cada manipulación"
+          ]
+        },
+        {
+          "subtitulo": "Actuación ante Derrame",
+          "descripcion": "Protocolo inmediato en caso de derrame de medicamento peligroso.",
+          "puntos": [
+            "Colocar EPP completo antes de iniciar la limpieza",
+            "Delimitar la zona del derrame (señalización)",
+            "Cubrir el derrame con material absorbente del kit de derrames",
+            "Limpiar del exterior al interior para evitar dispersión",
+            "Colocar todo el material contaminado en doble bolsa de residuos citotóxicos",
+            "Notificar al Servicio de Prevención de Riesgos Laborales"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reconstitución",
+      "titulo": "Reconstitución y Conservación",
+      "icon": "🧪",
+      "contenido": [
+        {
+          "subtitulo": "Principios de Reconstitución",
+          "descripcion": "Normas generales para la reconstitución de medicamentos liofilizados o en polvo.",
+          "puntos": [
+            "Usar siempre el disolvente indicado en la ficha técnica",
+            "Inyectar el disolvente lentamente por la pared del vial",
+            "Agitar suavemente (rotar) — NO agitar vigorosamente",
+            "Verificar disolución completa antes de extraer la dosis",
+            "Comprobar ausencia de partículas y cambio de color"
+          ]
+        },
+        {
+          "subtitulo": "Conservación tras Preparación",
+          "descripcion": "La estabilidad de un medicamento cambia una vez reconstituido o diluido.",
+          "puntos": [
+            "Respetar siempre los tiempos de estabilidad indicados",
+            "Etiquetar con: nombre, dosis, diluyente, fecha/hora de preparación, caducidad",
+            "Temperatura ambiente: generalmente entre 15-25°C",
+            "Refrigerado: entre 2-8°C (no congelar salvo indicación específica)",
+            "Proteger de la luz cuando sea necesario (usar líneas opacas o envolver)"
+          ]
+        }
+      ]
+    }
+  ],
+  "fuentes": [
+    "Guía de Administración de Medicamentos por Vía Parenteral — Hospital Universitario Son Espases, Servicio de Farmacia (Palma de Mallorca). Disponible en el portal del SSIB.",
+    "Guía Farmacoterapéutica — Hospital Universitari Vall d'Hebron, Servicio de Farmacia (Barcelona)",
+    "Guía de Administración de Medicamentos Inyectables — Hospital Universitari i Politècnic La Fe, Servicio de Farmacia (Valencia)",
+    "Fichas técnicas de medicamentos autorizados en España — CIMA, Agencia Española de Medicamentos y Productos Sanitarios (AEMPS): https://cima.aemps.es",
+    "NIOSH List of Antineoplastic and Other Hazardous Drugs in Healthcare Settings, 2024 — Centers for Disease Control and Prevention (CDC)",
+    "Trissel LA. Handbook on Injectable Drugs, 20th Edition — American Society of Health-System Pharmacists (ASHP), 2018",
+    "Guía de manejo de medicamentos citostáticos — Sociedad Española de Farmacia Hospitalaria (SEFH)",
+    "Protocolos de preparación y administración de medicamentos peligrosos — Instituto Nacional de Seguridad y Salud en el Trabajo (INSST), NTP 1.051 y 1.052",
+    "Nutrición Parenteral: Guía de práctica clínica — Sociedad Española de Nutrición Clínica y Metabolismo (SENPE)",
+    "Medimecum: Guía de Terapia Farmacológica, edición 2024 — Editorial Adis",
+    "Vademecum.es — Base de datos de medicamentos del Consejo General de Colegios Oficiales de Farmacéuticos: https://www.vademecum.es",
+    "Guía de compatibilidad de fármacos en perfusión IV — Servicio de Farmacia, Hospital Universitario 12 de Octubre (Madrid)"
+  ]
+}

@@ -55,9 +55,21 @@ react {
 }
 
 /**
+ * Load local keystore credentials if available (gitignored).
+ */
+def localPropertiesFile = rootProject.file("gradle.properties.local")
+if (localPropertiesFile.exists()) {
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(localPropertiesFile))
+    localProperties.each { key, value ->
+        project.ext.set(key, value)
+    }
+}
+
+/**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -95,9 +107,9 @@ android {
         release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
                 storeFile file(MYAPP_UPLOAD_STORE_FILE)
-                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                storePassword project.ext.has('MYAPP_UPLOAD_STORE_PASSWORD') ? project.ext.MYAPP_UPLOAD_STORE_PASSWORD : MYAPP_UPLOAD_STORE_PASSWORD
                 keyAlias MYAPP_UPLOAD_KEY_ALIAS
-                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+                keyPassword project.ext.has('MYAPP_UPLOAD_KEY_PASSWORD') ? project.ext.MYAPP_UPLOAD_KEY_PASSWORD : MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
     }

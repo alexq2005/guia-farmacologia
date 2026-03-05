@@ -8,15 +8,9 @@ import { UNIT_COLORS, PATHOLOGY_COLORS, PATHOLOGY_ICONS } from '../utils/colors'
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { PATHOLOGY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PathologyDetail'>;
-
-const CATEGORY_LABELS: Record<string, string> = {
-  cardiovascular: 'Cardiovascular', respiratorio: 'Respiratorio', neurologico: 'Neurológico',
-  gastrointestinal: 'Gastrointestinal', endocrino: 'Endocrino', infeccioso: 'Infeccioso',
-  renal: 'Renal', hematologico: 'Hematológico', psiquiatrico: 'Psiquiátrico',
-  obstetrico: 'Obstétrico', musculoesqueletico: 'Musculoesquelético', emergencia: 'Emergencias',
-};
 
 function BulletList({ items, color }: { items: string[]; color?: string }) {
   const { colors } = useTheme();

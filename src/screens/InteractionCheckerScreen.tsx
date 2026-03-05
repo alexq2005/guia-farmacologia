@@ -7,6 +7,7 @@ import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { normalizeText } from '../utils/search';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -115,11 +116,11 @@ export function InteractionCheckerScreen({ navigation }: Props) {
 
   const searchResults = useMemo(() => {
     if (searchQuery.trim().length < 2) return [];
-    const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const q = normalizeText(searchQuery);
     return drugs
       .filter(d => {
-        const name = d.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const generic = d.nombreGenerico.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const name = normalizeText(d.nombre);
+        const generic = normalizeText(d.nombreGenerico);
         return (name.includes(q) || generic.includes(q)) && !selectedDrugs.some(s => s.id === d.id);
       })
       .slice(0, 8);

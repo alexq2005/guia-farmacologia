@@ -41,9 +41,11 @@ export function SearchBar({
         autoCapitalize="none"
         autoCorrect={false}
         returnKeyType="search"
+        accessibilityRole="search"
+        accessibilityLabel="Buscar fármaco"
       />
       {value.length > 0 && (
-        <TouchableOpacity onPress={handleClear} style={styles.clearButton}>
+        <TouchableOpacity onPress={handleClear} style={styles.clearButton} accessibilityRole="button" accessibilityLabel="Limpiar búsqueda">
           <Text style={styles.clearText}>✕</Text>
         </TouchableOpacity>
       )}

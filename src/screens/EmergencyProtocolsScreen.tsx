@@ -8,6 +8,8 @@ import { PROTOCOL_COLORS, PROTOCOL_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { normalizeText } from '../utils/search';
+import { PROTOCOL_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import protocolsData from '../data/emergency_protocols.json';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -15,16 +17,6 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 interface Props {
   navigation: NavigationProp;
 }
-
-const CATEGORY_LABELS: Record<ProtocolCategory, string> = {
-  cardiaco: 'Cardíaco',
-  respiratorio: 'Respiratorio',
-  neurologico: 'Neurológico',
-  metabolico: 'Metabólico',
-  sepsis: 'Sepsis',
-  trauma: 'Trauma',
-  otro: 'Otros',
-};
 
 const ALL_CATEGORIES: ProtocolCategory[] = [
   'cardiaco', 'respiratorio', 'neurologico', 'metabolico', 'sepsis', 'trauma', 'otro',
@@ -51,10 +43,10 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
       result = result.filter(p => p.categoria === selectedCategory);
     }
     if (searchQuery.trim().length >= 2) {
-      const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeText(searchQuery);
       result = result.filter(p => {
-        const name = p.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const desc = p.descripcion.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const name = normalizeText(p.nombre);
+        const desc = normalizeText(p.descripcion);
         return name.includes(q) || desc.includes(q) || (p.abreviatura || '').toLowerCase().includes(q);
       });
     }

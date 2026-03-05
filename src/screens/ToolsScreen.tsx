@@ -98,10 +98,10 @@ export function ToolsScreen({ navigation }: Props) {
     },
     {
       icon: '💉',
-      title: 'Vías de Administración',
-      subtitle: 'Técnicas con imágenes y precauciones',
-      color: '#059669',
-      target: 'routes' as const,
+      title: 'Guía Parenteral',
+      subtitle: 'Administración de medicamentos por vía parenteral',
+      color: '#0891B2',
+      target: 'parenteralGuide' as const,
     },
     {
       icon: '📖',
@@ -144,7 +144,7 @@ export function ToolsScreen({ navigation }: Props) {
                 else if (tool.target === 'scales') navigation.navigate('ClinicalScales');
                 else if (tool.target === 'labValues') navigation.navigate('LabValues');
                 else if (tool.target === 'emergencyProtocols') navigation.navigate('EmergencyProtocols');
-                else if (tool.target === 'routes') navigation.navigate('RouteDetail', { routeId: 'IV' as any });
+                else if (tool.target === 'parenteralGuide') navigation.navigate('ParenteralGuide');
               }}
               activeOpacity={0.7}
             >
@@ -186,7 +186,7 @@ export function ToolsScreen({ navigation }: Props) {
         {/* Routes Quick Access */}
         <Text style={styles.sectionTitle}>💉 Vías de Administración</Text>
         <View style={styles.routesGrid}>
-          {[
+          {([
             { id: 'oral', icon: '💊', name: 'Oral' },
             { id: 'IV', icon: '💉', name: 'Intravenosa' },
             { id: 'IM', icon: '💪', name: 'Intramuscular' },
@@ -195,11 +195,18 @@ export function ToolsScreen({ navigation }: Props) {
             { id: 'inhalatoria', icon: '🌬️', name: 'Inhalatoria' },
             { id: 'topica', icon: '🧴', name: 'Tópica' },
             { id: 'transdermica', icon: '🩹', name: 'Transdérmica' },
-          ].map(r => (
+            { id: 'rectal', icon: '💠', name: 'Rectal' },
+            { id: 'oftalmica', icon: '👁️', name: 'Oftálmica' },
+            { id: 'otica', icon: '👂', name: 'Ótica' },
+            { id: 'nasal', icon: '👃', name: 'Nasal' },
+            { id: 'vaginal', icon: '🔴', name: 'Vaginal' },
+            { id: 'intradermica', icon: '💧', name: 'Intradérmica' },
+            { id: 'epidural', icon: '🔷', name: 'Epidural' },
+          ] as const).map(r => (
             <TouchableOpacity
               key={r.id}
               style={styles.routeCard}
-              onPress={() => navigation.navigate('RouteDetail', { routeId: r.id as any })}
+              onPress={() => navigation.navigate('RouteDetail', { routeId: r.id })}
               activeOpacity={0.7}
             >
               <Text style={styles.routeIcon}>{r.icon}</Text>

@@ -7,19 +7,14 @@ import { PATHOLOGY_COLORS, PATHOLOGY_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { normalizeText } from '../utils/search';
+import { PATHOLOGY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface Props {
   navigation: NavigationProp;
 }
-
-const CATEGORY_LABELS: Record<PathologyCategory, string> = {
-  cardiovascular: 'Cardiovascular', respiratorio: 'Respiratorio', neurologico: 'Neurológico',
-  gastrointestinal: 'Gastrointestinal', endocrino: 'Endocrino', infeccioso: 'Infeccioso',
-  renal: 'Renal', hematologico: 'Hematológico', psiquiatrico: 'Psiquiátrico',
-  obstetrico: 'Obstétrico', musculoesqueletico: 'Musculoesquelético', emergencia: 'Emergencias',
-};
 
 const ALL_CATEGORIES: PathologyCategory[] = [
   'cardiovascular', 'respiratorio', 'neurologico', 'gastrointestinal',
@@ -41,10 +36,10 @@ export function PathologiesScreen({ navigation }: Props) {
       result = result.filter(p => p.categoria === selectedCategory);
     }
     if (searchQuery.trim().length >= 2) {
-      const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = normalizeText(searchQuery);
       result = result.filter(p => {
-        const name = p.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const def = p.definicion.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const name = normalizeText(p.nombre);
+        const def = normalizeText(p.definicion);
         return name.includes(q) || def.includes(q);
       });
     }

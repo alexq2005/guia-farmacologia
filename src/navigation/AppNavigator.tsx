@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View, StyleSheet, Animated } from 'react-native';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { RootStackParamList, TabParamList } from '../types';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
@@ -32,6 +32,7 @@ import { ScaleDetailScreen } from '../screens/ScaleDetailScreen';
 import { LabValuesScreen } from '../screens/LabValuesScreen';
 import { EmergencyProtocolsScreen } from '../screens/EmergencyProtocolsScreen';
 import { ProtocolDetailScreen } from '../screens/ProtocolDetailScreen';
+import { ParenteralGuideScreen } from '../screens/ParenteralGuideScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -89,6 +90,7 @@ function MainTabs() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="🏠" label="Inicio" focused={focused} colors={colors} />,
+          tabBarAccessibilityLabel: 'Inicio',
         }}
       />
       <Tab.Screen
@@ -96,6 +98,7 @@ function MainTabs() {
         component={CategoriesScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="📚" label="Categorías" focused={focused} colors={colors} />,
+          tabBarAccessibilityLabel: 'Categorías',
         }}
       />
       <Tab.Screen
@@ -103,6 +106,7 @@ function MainTabs() {
         component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="🔍" label="Buscar" focused={focused} colors={colors} />,
+          tabBarAccessibilityLabel: 'Buscar fármacos',
         }}
       />
       <Tab.Screen
@@ -110,6 +114,7 @@ function MainTabs() {
         component={SpecialScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="🚨" label="Especial" focused={focused} colors={colors} />,
+          tabBarAccessibilityLabel: 'Medicamentos especiales',
         }}
       />
       <Tab.Screen
@@ -117,6 +122,7 @@ function MainTabs() {
         component={ToolsScreen}
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="🔧" label="Herramientas" focused={focused} colors={colors} />,
+          tabBarAccessibilityLabel: 'Herramientas clínicas',
         }}
       />
     </Tab.Navigator>
@@ -127,7 +133,6 @@ export function AppNavigator() {
   const { colors } = useTheme();
 
   return (
-    <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
@@ -218,6 +223,11 @@ export function AppNavigator() {
           options={{ title: 'Protocolo' }}
         />
         <Stack.Screen
+          name="ParenteralGuide"
+          component={ParenteralGuideScreen}
+          options={{ title: 'Guía Parenteral' }}
+        />
+        <Stack.Screen
           name="QuizScreen"
           component={QuizScreen}
           options={{ title: 'Modo Estudio' }}
@@ -234,7 +244,6 @@ export function AppNavigator() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-    </SafeAreaProvider>
   );
 }
 
