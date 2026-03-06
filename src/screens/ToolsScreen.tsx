@@ -66,6 +66,20 @@ export function ToolsScreen({ navigation }: Props) {
 
   const toolSections = [
     {
+      icon: '❤️',
+      title: 'Mis Favoritos',
+      subtitle: 'Todos tus fármacos marcados como favoritos',
+      color: '#E91E63',
+      target: 'favorites' as const,
+    },
+    {
+      icon: '📝',
+      title: 'Mis Notas',
+      subtitle: 'Notas personales en fármacos',
+      color: '#F59E0B',
+      target: 'notes' as const,
+    },
+    {
       icon: '📊',
       title: 'Dashboard de Estudio',
       subtitle: 'Progreso, estadísticas y racha de estudio',
@@ -174,7 +188,9 @@ export function ToolsScreen({ navigation }: Props) {
               key={i}
               style={[styles.toolCard, { borderLeftColor: tool.color }]}
               onPress={() => {
-                if (tool.target === 'dashboard') navigation.navigate('Dashboard');
+                if (tool.target === 'favorites') navigation.navigate('AllFavorites');
+                else if (tool.target === 'notes') navigation.navigate('AllNotes');
+                else if (tool.target === 'dashboard') navigation.navigate('Dashboard');
                 else if (tool.target === 'quiz') navigation.navigate('QuizScreen');
                 else if (tool.target === 'comparison') navigation.navigate('DrugComparison');
                 else if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');

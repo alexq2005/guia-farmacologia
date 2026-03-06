@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import React, { useMemo, useState, useCallback } from 'react';
+import { View, Text, FlatList, TouchableOpacity, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import type { RootStackParamList, TabParamList } from '../types';
+import type { RootStackParamList, TabParamList, RouteOfAdministration, PregnancyCategory } from '../types';
 import { SearchBar } from '../components/SearchBar';
 import { DrugCard } from '../components/DrugCard';
 import { useDrugData } from '../hooks/useDrugData';
@@ -23,6 +23,17 @@ interface Props {
   navigation: NavigationProp;
 }
 
+const VIA_OPTIONS: { key: RouteOfAdministration; label: string }[] = [
+  { key: 'IV', label: 'IV' },
+  { key: 'IM', label: 'IM' },
+  { key: 'SC', label: 'SC' },
+  { key: 'oral', label: 'VO' },
+  { key: 'inhalatoria', label: 'Inh' },
+  { key: 'topica', label: 'Tóp' },
+];
+
+const PREG_OPTIONS: PregnancyCategory[] = ['A', 'B', 'C', 'D', 'X'];
+
 export function SearchScreen({ navigation }: Props) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
@@ -31,6 +42,15 @@ export function SearchScreen({ navigation }: Props) {
   const { query, results, search, clear, resultCount } = useDrugSearch(drugs);
   const { history, addEntry, removeEntry, clearHistory } = useSearchHistory();
   const fadeIn = useFadeIn(300);
+  const [filterVia, setFilterVia] = useState<RouteOfAdministration | null>(null);
+  const [filterPreg, setFilterPreg] = useState<PregnancyCategory | null>(null);
+
+  const filteredResults = useMemo(() => {
+    let filtered = results;
+    if (filterVia) filtered = filtered.filter(r => r.drug.viaAdministracion.includes(filterVia));
+    if (filterPreg) filtered = filtered.filter(r => r.drug.embarazo === filterPreg);
+    return filtered;
+  }, [results, filterVia, filterPreg]);
 
   return (
     <View style={styles.container}>
@@ -52,11 +72,37 @@ export function SearchScreen({ navigation }: Props) {
 
       {query.length >= 2 ? (
         <Animated.View style={{ flex: 1, opacity: fadeIn }}>
+          {/* Filter chips */}
+          <View style={styles.filtersRow}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filtersScroll}>
+              <Text style={styles.filterLabel}>Vía:</Text>
+              {VIA_OPTIONS.map(v => (
+                <TouchableOpacity
+                  key={v.key}
+                  style={[styles.filterChip, filterVia === v.key && styles.filterChipActive]}
+                  onPress={() => setFilterVia(filterVia === v.key ? null : v.key)}
+                >
+                  <Text style={[styles.filterChipText, filterVia === v.key && styles.filterChipTextActive]}>{v.label}</Text>
+                </TouchableOpacity>
+              ))}
+              <Text style={[styles.filterLabel, { marginLeft: 10 }]}>Emb:</Text>
+              {PREG_OPTIONS.map(p => (
+                <TouchableOpacity
+                  key={p}
+                  style={[styles.filterChip, filterPreg === p && styles.filterChipActive]}
+                  onPress={() => setFilterPreg(filterPreg === p ? null : p)}
+                >
+                  <Text style={[styles.filterChipText, filterPreg === p && styles.filterChipTextActive]}>{p}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
           <Text style={styles.resultCount}>
-            {resultCount} resultado{resultCount !== 1 ? 's' : ''}
+            {filteredResults.length} resultado{filteredResults.length !== 1 ? 's' : ''}
+            {(filterVia || filterPreg) ? ' (filtrado)' : ''}
           </Text>
           <FlatList
-            data={results}
+            data={filteredResults}
             renderItem={({ item }) => (
               <DrugCard
                 drug={item.drug}
@@ -236,5 +282,40 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     color: colors.textSecondary,
     marginBottom: 4,
     lineHeight: 20,
+  },
+  filtersRow: {
+    marginTop: 4,
+    marginBottom: 2,
+  },
+  filtersScroll: {
+    paddingHorizontal: 16,
+    gap: 6,
+    alignItems: 'center',
+  },
+  filterLabel: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: colors.textSecondary,
+    marginRight: 4,
+  },
+  filterChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 14,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  filterChipActive: {
+    backgroundColor: colors.primary,
+    borderColor: colors.primary,
+  },
+  filterChipText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.textSecondary,
+  },
+  filterChipTextActive: {
+    color: '#FFFFFF',
   },
 });

@@ -397,7 +397,7 @@ export interface NursingCareData {
 /** Props de navegación */
 export type RootStackParamList = {
   MainTabs: undefined;
-  DrugDetail: { drugId: string };
+  DrugDetail: { drugId: string; drugName?: string };
   ChapterDrugs: { chapterId: string; unitName: string; unitColor: string };
   FormulaDetail: { formulaId: string };
   RouteDetail: { routeId: RouteOfAdministration };
@@ -418,6 +418,8 @@ export type RootStackParamList = {
   AboutScreen: undefined;
   Dashboard: undefined;
   DrugComparison: { preloadDrugId?: string } | undefined;
+  AllNotes: undefined;
+  AllFavorites: undefined;
 };
 
 export type TabParamList = {

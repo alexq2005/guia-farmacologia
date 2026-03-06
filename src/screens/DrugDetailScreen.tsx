@@ -121,10 +121,11 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   const [showPregModal, setShowPregModal] = useState(false);
   const drug = getDrugById(route.params.drugId);
 
-  // Set drug name as header title
+  // Set drug name as header title + track recent
   useEffect(() => {
     if (drug) {
       navigation.setOptions({ title: drug.nombre });
+      navigation.setParams({ drugName: drug.nombre });
       addRecent(drug.id);
     }
   }, [drug?.id]);

@@ -85,6 +85,18 @@
       "volumenAdministracion": "100 mL (1 g) o 50 mL (500 mg)",
       "velocidadAdministracion": "Infundir en 15 minutos. No administrar en bolo.",
       "estabilidad": "No refrigerar. Usar dentro de las 6h tras apertura."
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Hepatotóxico en sobredosis (>150 mg/kg o >7.5 g en adulto). Ventana de tratamiento limitada.",
+      "efectos": [
+        "Necrosis hepática (24-72h post-ingesta)",
+        "Insuficiencia hepática fulminante",
+        "Coagulopatía",
+        "Encefalopatía hepática",
+        "Fallo multiorgánico"
+      ],
+      "manejo": "Antídoto: N-Acetilcisteína (NAC). Protocolo 21h IV: 150 mg/kg en 1h, luego 50 mg/kg en 4h, luego 100 mg/kg en 16h. Eficaz si se inicia antes de 8h post-ingesta.",
+      "alerta": "Los síntomas iniciales son inespecíficos (náuseas). La hepatotoxicidad se manifiesta a las 24-72h cuando ya puede ser irreversible. Carbón activado si <2h"
     }
   },
   {
@@ -292,6 +304,19 @@
         "ssf": true,
         "sg5": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Opioide atípico con actividad serotoninérgica adicional. Riesgo de convulsiones en sobredosis.",
+      "efectos": [
+        "Convulsiones (incluso a dosis terapéuticas altas)",
+        "Depresión respiratoria",
+        "Síndrome serotoninérgico",
+        "Taquicardia",
+        "Náuseas/vómitos",
+        "Miosis"
+      ],
+      "manejo": "Naloxona para depresión respiratoria (puede aumentar riesgo convulsivo). Benzodiacepinas para convulsiones. NO usar en pacientes con umbral convulsivo bajo.",
+      "alerta": "Máximo 400 mg/día. Las convulsiones pueden ocurrir con dosis terapéuticas"
     }
   },
   {
@@ -3922,6 +3947,18 @@
         "sg5": true
       },
       "observaciones": "Proteger de la luz durante preparación y administración."
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Benzodiacepina de acción corta. Riesgo de depresión respiratoria especialmente combinado con opioides.",
+      "efectos": [
+        "Sedación excesiva",
+        "Depresión respiratoria",
+        "Hipotensión",
+        "Amnesia anterógrada",
+        "Apnea (IV rápido)"
+      ],
+      "manejo": "Antídoto: Flumazenilo 0.2 mg IV cada 60 seg (máx 3-5 mg). Soporte ventilatorio.",
+      "alerta": "Flumazenilo puede precipitar convulsiones en dependientes de benzodiacepinas o en intoxicación mixta con proconvulsivantes"
     }
   },
   {
@@ -4363,6 +4400,18 @@
       "solucionesCompatibles": {
         "ssf": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Opioide sintético 100x más potente que la morfina. Riesgo extremo de depresión respiratoria.",
+      "efectos": [
+        "Depresión respiratoria rápida y profunda",
+        "Rigidez torácica (tronco de madera)",
+        "Bradicardia severa",
+        "Apnea",
+        "Coma"
+      ],
+      "manejo": "Antídoto: Naloxona 0.4-2 mg IV, puede requerir dosis mayores y repetidas. Ventilación asistida. Observación prolongada (parches: ≥24h).",
+      "alerta": "Los parches transdérmicos liberan fentanilo durante horas post-retirada: vigilancia prolongada obligatoria"
     }
   },
   {
@@ -5103,6 +5152,19 @@
         "ssf": true,
         "sg5": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Glucósido cardíaco con margen terapéutico extremadamente estrecho (0.5-2 ng/mL).",
+      "efectos": [
+        "Arritmias (cualquier tipo, especialmente bigeminismo ventricular)",
+        "Bloqueo AV",
+        "Náuseas/vómitos",
+        "Visión amarilla (xantopsia)",
+        "Confusión",
+        "Hiperpotasemia"
+      ],
+      "manejo": "Antídoto: Anticuerpos antidigoxina (Digibind/DigiFab). Corrección de hipopotasemia (potencia toxicidad). Atropina para bradicardia. NO cardiovertir (riesgo FV).",
+      "alerta": "La hipopotasemia, hipomagnesemia e hipercalcemia potencian la toxicidad digitálica. Controlar electrolitos siempre"
     }
   },
   {
@@ -5722,6 +5784,17 @@
         "ssf": true,
         "sg5": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Aminoglucósido con nefrotoxicidad y ototoxicidad dosis-dependiente acumulativa.",
+      "efectos": [
+        "Nefrotoxicidad (aumento creatinina)",
+        "Ototoxicidad vestibular (vértigo, nistagmo)",
+        "Ototoxicidad coclear (hipoacusia, tinnitus)",
+        "Bloqueo neuromuscular"
+      ],
+      "manejo": "Monitorizar niveles séricos (pico y valle). Suspender si creatinina aumenta >0.5 mg/dL del basal. Hemodiálisis en intoxicación severa.",
+      "alerta": "La ototoxicidad puede ser IRREVERSIBLE. Monitorizar niveles valle (<2 mcg/mL) y ajustar intervalo según función renal"
     }
   },
   {
@@ -12476,6 +12549,17 @@
         "ssf": true,
         "sg5": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Aminoglucósido con mayor potencial ototóxico que gentamicina.",
+      "efectos": [
+        "Nefrotoxicidad",
+        "Ototoxicidad coclear (pérdida auditiva frecuencias altas)",
+        "Ototoxicidad vestibular",
+        "Bloqueo neuromuscular"
+      ],
+      "manejo": "Monitorizar niveles séricos (valle <5 mcg/mL). Ajustar dosis según creatinina. Hemodiálisis si necesario.",
+      "alerta": "Mayor riesgo ototóxico que gentamicina. Audiometría basal y periódica en tratamientos prolongados"
     }
   },
   {
@@ -13556,6 +13640,18 @@
       "volumenAdministracion": "SC: 0.1-1 mL según dosis",
       "velocidadAdministracion": "SC 1 vez al día a la misma hora. NO administrar IV.",
       "estabilidad": "Refrigerar sin abrir. Abierto: 28 días a temp ambiente."
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Insulina basal de acción prolongada. Hipoglucemia sostenida si sobredosis.",
+      "efectos": [
+        "Hipoglucemia prolongada (hasta 24h)",
+        "Diaforesis",
+        "Confusión",
+        "Convulsiones",
+        "Coma"
+      ],
+      "manejo": "Infusión continua de dextrosa (la hipoglucemia puede recurrir durante 24h). Monitorización de glucemia horaria. Ingreso hospitalario obligatorio.",
+      "alerta": "Por su larga duración, una sobredosis de glargina puede causar hipoglucemia recurrente durante más de 24h"
     }
   },
   {
@@ -14263,6 +14359,18 @@
         "ssf": true,
         "sg5": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Antimetabolito con toxicidad severa en sobredosis o acumulación renal.",
+      "efectos": [
+        "Pancitopenia (nadir 7-14 días)",
+        "Mucositis severa",
+        "Insuficiencia renal aguda",
+        "Hepatotoxicidad",
+        "Neumonitis"
+      ],
+      "manejo": "Antídoto: Ácido folínico (Leucovorín) 15 mg/m² cada 6h hasta niveles MTX <0.05 µmol/L. Hiperhidratación alcalina. Glucarpidasa si insuficiencia renal.",
+      "alerta": "Error frecuente: confusión entre dosis SEMANAL (artritis) y DIARIA. Administración diaria de dosis semanal es potencialmente letal"
     }
   },
   {
@@ -15301,7 +15409,22 @@
     },
     "almacenamiento": "Temperatura ambiente.",
     "unidadId": "u01",
-    "capituloId": "c01_07"
+    "capituloId": "c01_07",
+    "riesgosSobremedicacion": {
+      "descripcion": "Estabilizador del ánimo con margen terapéutico muy estrecho (0.6-1.2 mEq/L).",
+      "efectos": [
+        "Temblor grueso",
+        "Ataxia",
+        "Disartria",
+        "Hiperreflexia",
+        "Convulsiones",
+        "Insuficiencia renal aguda",
+        "Coma",
+        "Arritmias"
+      ],
+      "manejo": "Niveles >1.5 mEq/L: fluidoterapia agresiva con SSF. Niveles >2.5 mEq/L o síntomas severos: hemodiálisis. No hay antídoto específico.",
+      "alerta": "La deshidratación, AINEs, IECAs y diuréticos tiazídicos aumentan los niveles de litio. Litemia cada 6 meses mínimo"
+    }
   },
   {
     "id": "clozapina",
@@ -28336,7 +28459,18 @@
     },
     "almacenamiento": "Temperatura ambiente. Proteger de la luz.",
     "unidadId": "u10",
-    "capituloId": "c10_01"
+    "capituloId": "c10_01",
+    "riesgosSobremedicacion": {
+      "descripcion": "Anticoagulante oral antagonista de vitamina K, similar a warfarina pero con vida media más corta.",
+      "efectos": [
+        "Hemorragia activa",
+        "INR supraterapéutico",
+        "Hematomas espontáneos",
+        "Hemorragia intracraneal"
+      ],
+      "manejo": "Similar a warfarina: Vitamina K + CCP si sangrado grave. INR elevado sin sangrado: suspender, vitamina K oral 1-5 mg.",
+      "alerta": "Vida media más corta que warfarina (8-11h vs 36-42h): se estabiliza más rápido pero también se descontrola más fácilmente"
+    }
   },
   {
     "id": "protamina",
@@ -38318,6 +38452,18 @@
       "solucionesCompatibles": {
         "ssf": true
       }
+    },
+    "riesgosSobremedicacion": {
+      "descripcion": "Opioide de vida media prolongada e impredecible. Alto riesgo de acumulación.",
+      "efectos": [
+        "Depresión respiratoria retardada (hasta 72h)",
+        "Prolongación QTc → Torsade de Pointes",
+        "Sedación progresiva",
+        "Hipotensión",
+        "Edema pulmonar"
+      ],
+      "manejo": "Naloxona en infusión continua (vida media de metadona >>naloxona). ECG seriados. Monitorización mínimo 72h.",
+      "alerta": "La acumulación es insidiosa: la depresión respiratoria puede aparecer días después del inicio"
     }
   },
   {

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -21,31 +21,26 @@ interface Props {
 
 type Tab = 'emergencias' | 'antidotos' | 'compatibilidades';
 
-function EmergencyTable({ drugs }: { drugs: EmergencyDrug[] }) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
-  const [expanded, setExpanded] = useState<string | null>(null);
+const EmergencyCard = React.memo(({ drug, isExpanded, onToggle, styles, colors }: {
+  drug: EmergencyDrug; isExpanded: boolean; onToggle: (id: string) => void;
+  styles: ReturnType<typeof createStyles>; colors: ThemeColors;
+}) => (
+  <TouchableOpacity
+    style={[styles.emergencyCard, isExpanded && styles.emergencyCardExpanded]}
+    onPress={() => onToggle(drug.id)}
+    activeOpacity={0.7}
+  >
+    <View style={styles.emergencyHeader}>
+      <Text style={styles.emergencyIcon}>🚑</Text>
+      <View style={styles.emergencyInfo}>
+        <Text style={styles.emergencyName}>{drug.nombre}</Text>
+        <Text style={styles.emergencyIndication} numberOfLines={isExpanded ? undefined : 1}>
+          {drug.indicacion}
+        </Text>
+      </View>
+    </View>
 
-  return (
-    <View>
-      {drugs.map(drug => (
-        <TouchableOpacity
-          key={drug.id}
-          style={[styles.emergencyCard, expanded === drug.id && styles.emergencyCardExpanded]}
-          onPress={() => setExpanded(expanded === drug.id ? null : drug.id)}
-          activeOpacity={0.7}
-        >
-          <View style={styles.emergencyHeader}>
-            <Text style={styles.emergencyIcon}>🚑</Text>
-            <View style={styles.emergencyInfo}>
-              <Text style={styles.emergencyName}>{drug.nombre}</Text>
-              <Text style={styles.emergencyIndication} numberOfLines={expanded === drug.id ? undefined : 1}>
-                {drug.indicacion}
-              </Text>
-            </View>
-          </View>
-
-          {expanded === drug.id && (
+    {isExpanded && (
             <View style={styles.emergencyDetails}>
               <View style={styles.detailRow}>
                 <Text style={styles.detailLabel}>Dosis</Text>
@@ -72,9 +67,23 @@ function EmergencyTable({ drugs }: { drugs: EmergencyDrug[] }) {
                   <Text style={styles.notesText}>📝 {drug.notas}</Text>
                 </View>
               ) : null}
-            </View>
-          )}
-        </TouchableOpacity>
+      </View>
+    )}
+  </TouchableOpacity>
+));
+
+function EmergencyTable({ drugs }: { drugs: EmergencyDrug[] }) {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const handleToggle = useCallback((id: string) => {
+    setExpanded(prev => prev === id ? null : id);
+  }, []);
+
+  return (
+    <View>
+      {drugs.map(drug => (
+        <EmergencyCard key={drug.id} drug={drug} isExpanded={expanded === drug.id} onToggle={handleToggle} styles={styles} colors={colors} />
       ))}
     </View>
   );

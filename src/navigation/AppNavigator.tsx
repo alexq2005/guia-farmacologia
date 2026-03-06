@@ -35,6 +35,8 @@ import { ProtocolDetailScreen } from '../screens/ProtocolDetailScreen';
 import { ParenteralGuideScreen } from '../screens/ParenteralGuideScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { DrugComparisonScreen } from '../screens/DrugComparisonScreen';
+import { AllNotesScreen } from '../screens/AllNotesScreen';
+import { AllFavoritesScreen } from '../screens/AllFavoritesScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -152,7 +154,7 @@ export function AppNavigator() {
         <Stack.Screen
           name="DrugDetail"
           component={DrugDetailScreen}
-          options={{ title: 'Fármaco' }}
+          options={({ route }) => ({ title: (route.params as { drugId: string; drugName?: string }).drugName || 'Fármaco' })}
         />
         <Stack.Screen
           name="ChapterDrugs"
@@ -253,6 +255,16 @@ export function AppNavigator() {
           name="AboutScreen"
           component={AboutScreen}
           options={{ title: 'Acerca de' }}
+        />
+        <Stack.Screen
+          name="AllNotes"
+          component={AllNotesScreen}
+          options={{ title: 'Mis Notas' }}
+        />
+        <Stack.Screen
+          name="AllFavorites"
+          component={AllFavoritesScreen}
+          options={{ title: 'Mis Favoritos' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

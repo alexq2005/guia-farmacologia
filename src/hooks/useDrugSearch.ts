@@ -34,6 +34,10 @@ function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string
   const nombre = normalize(drug.nombre);
   const generico = normalize(drug.nombreGenerico);
 
+  const comerciales = drug.nombresComerciales.map(normalize);
+  const familia = normalize(drug.familia);
+  const clasificacion = normalize(drug.clasificacion);
+
   for (const term of terms) {
     // Exact name match
     if (nombre === term || generico === term) {
@@ -52,14 +56,13 @@ function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string
     }
 
     // Check brand names
-    const comerciales = drug.nombresComerciales.map(normalize);
     if (comerciales.some(c => c.includes(term))) {
       totalScore += 2;
       if (!matchedFields.includes('comercial')) matchedFields.push('comercial');
     }
 
     // Check familia/clasificacion
-    if (normalize(drug.familia).includes(term) || normalize(drug.clasificacion).includes(term)) {
+    if (familia.includes(term) || clasificacion.includes(term)) {
       totalScore += 2;
       if (!matchedFields.includes('clasificacion')) matchedFields.push('clasificacion');
     }

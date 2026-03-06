@@ -250,7 +250,11 @@ export function HomeScreen({ navigation }: Props) {
               <TouchableOpacity
                 key={unit.id}
                 style={[styles.systemCard, { backgroundColor: (UNIT_COLORS[unit.id] || colors.primary) + '12' }]}
-                onPress={() => navigation.navigate('Categorias')}
+                onPress={() => navigation.navigate('ChapterDrugs', {
+                  chapterId: unit.capitulos[0]?.id || '',
+                  unitName: unit.nombre,
+                  unitColor: UNIT_COLORS[unit.id] || colors.primary,
+                })}
                 activeOpacity={0.7}
                 accessibilityRole="button"
                 accessibilityLabel={unit.nombre}
