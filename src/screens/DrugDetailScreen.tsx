@@ -175,6 +175,16 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   const unitColor = UNIT_COLORS[drug.unidadId] || colors.primary;
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
 
+  // Parse replacement note from mechanism text
+  const notaMatch = drug.mecanismoAccion?.match(/\s*Nota:\s*(.+)$/);
+  const isReplacement = notaMatch && /reemplaz|sustitu/i.test(notaMatch[1]);
+  const mainMechanism = notaMatch ? drug.mecanismoAccion.replace(/\s*Nota:\s*.+$/, '') : drug.mecanismoAccion;
+  const replacedDrug = isReplacement && notaMatch
+    ? notaMatch[1].match(/reemplazado?\s+a\s+([a-záéíóúñü/\s]+?)(?:\s+(?:en|por|como|debido|,|\())/i)?.[1]?.trim()
+      || notaMatch[1].match(/reemplazan?\s+a\s+([a-záéíóúñü/\s]+?)(?:\s+(?:en|por|como|debido|,|\())/i)?.[1]?.trim()
+      || null
+    : null;
+
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={unitColor} barStyle="light-content" />
@@ -218,6 +228,11 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             <Text style={styles.familyText}>{drug.familia}</Text>
           </View>
         </View>
+        {isReplacement && replacedDrug && (
+          <View style={styles.replacementHeaderBadge}>
+            <Text style={styles.replacementHeaderText}>🔄 Reemplazo de {replacedDrug}</Text>
+          </View>
+        )}
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
@@ -479,8 +494,17 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </View>
         )}
 
+        {isReplacement && notaMatch && (
+          <View style={styles.replacementBanner}>
+            <Text style={styles.replacementBannerText}>{notaMatch[1]}</Text>
+          </View>
+        )}
+
         <CollapsibleSection title="Mecanismo de Acción" icon="⚙️" accentColor={unitColor}>
-          <Text style={styles.bodyText}>{drug.mecanismoAccion || 'Sin datos disponibles'}</Text>
+          <Text style={styles.bodyText}>{mainMechanism || 'Sin datos disponibles'}</Text>
+          {notaMatch && !isReplacement && (
+            <Text style={[styles.bodyText, { marginTop: 8, fontStyle: 'italic', color: colors.textSecondary }]}>Nota: {notaMatch[1]}</Text>
+          )}
         </CollapsibleSection>
 
         <CollapsibleSection title="Indicaciones" icon="✅" accentColor={colors.success} badge={`${drug.indicaciones.length}`}>
@@ -642,6 +666,16 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   riskManejoText: { fontSize: 13, color: colors.text, lineHeight: 19 },
   riskAlerta: { backgroundColor: colors.error + '15', borderRadius: 8, padding: 10 },
   riskAlertaText: { fontSize: 13, fontWeight: '700', color: colors.error, lineHeight: 19 },
+  replacementHeaderBadge: {
+    backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 10,
+    paddingHorizontal: 12, paddingVertical: 6, marginTop: 10, alignSelf: 'flex-start',
+  },
+  replacementHeaderText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
+  replacementBanner: {
+    marginHorizontal: 16, marginTop: 12, backgroundColor: '#0891B2' + '10',
+    borderRadius: 12, padding: 12, borderLeftWidth: 3, borderLeftColor: '#0891B2',
+  },
+  replacementBannerText: { fontSize: 13, color: colors.textSecondary, lineHeight: 20 },
   bodyText: { fontSize: 14, color: colors.text, lineHeight: 21 },
   bulletRow: { flexDirection: 'row', marginBottom: 4, paddingRight: 8 },
   bullet: { fontSize: 14, color: colors.text, marginRight: 8, marginTop: 1 },

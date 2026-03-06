@@ -111030,5 +111030,2465 @@
     ],
     "unidadId": "u11",
     "capituloId": "c11_01"
+  },
+  {
+    "id": "isoxuprina",
+    "nombre": "Isoxuprina",
+    "nombreGenerico": "Isoxuprina clorhidrato",
+    "nombresComerciales": [
+      "Duvadilan",
+      "Vasodilan"
+    ],
+    "familia": "Vasodilatadores periféricos",
+    "clasificacion": "Agonista β-adrenérgico / tocolítico (en desuso)",
+    "mecanismoAccion": "Estimula receptores β2-adrenérgicos del músculo liso uterino y vascular, produciendo relajación uterina y vasodilatación periférica. También tiene débil actividad β1. Nota: Isoxuprina ha sido reemplazada por nifedipino y atosibán como tocolíticos por su perfil de efectos adversos cardiovasculares (taquicardia, hipotensión) y menor evidencia de eficacia.",
+    "indicaciones": [
+      "Amenaza de parto prematuro (uso histórico, actualmente no recomendado como primera línea)",
+      "Insuficiencia vascular periférica (enfermedad de Raynaud)",
+      "Insuficiencia cerebrovascular (uso obsoleto)"
+    ],
+    "contraindicaciones": [
+      "Hemorragia posparto",
+      "Hipotensión arterial",
+      "Cardiopatía isquémica",
+      "Desprendimiento prematuro de placenta"
+    ],
+    "efectosAdversos": [
+      "Taquicardia materna",
+      "Hipotensión",
+      "Náuseas y vómitos",
+      "Temblor",
+      "Palpitaciones",
+      "Edema pulmonar (raro pero grave)"
+    ],
+    "interacciones": [
+      "Potencia hipotensión con antihipertensivos",
+      "Riesgo arritmias con halotano",
+      "Efecto aditivo con otros β-agonistas"
+    ],
+    "viaAdministracion": [
+      "oral",
+      "IM",
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Oral: 10-20 mg cada 6-8h. IM: 5-10 mg cada 8-12h. IV: 0.2-0.5 mg/min en infusión",
+      "pediatrico": "No indicado en pediatría"
+    },
+    "presentaciones": [
+      "Tabletas 10 mg y 20 mg",
+      "Ampolla 10 mg/2 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche materna. Evaluar riesgo/beneficio",
+    "cuidadosEnfermeria": [
+      "Monitorizar FC materna (suspender si >120 lpm)",
+      "Control de TA cada 15 min durante infusión IV",
+      "Vigilar signos de edema pulmonar (disnea, estertores)",
+      "Mantener paciente en decúbito lateral izquierdo",
+      "Hidratación controlada (no exceder 2.5 L/24h)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral bien absorbida, biodisponibilidad variable",
+      "metabolismo": "Hepático por conjugación",
+      "excrecion": "Renal",
+      "vidaMedia": "1.5-3 horas",
+      "inicioAccion": "IV: inmediato. Oral: 30-60 min"
+    },
+    "almacenamiento": "Temperatura ambiente, proteger de la luz",
+    "unidadId": "u07",
+    "capituloId": "c07_01"
+  },
+  {
+    "id": "macitentán",
+    "nombre": "Macitentán",
+    "nombreGenerico": "Macitentán",
+    "nombresComerciales": [
+      "Opsumit"
+    ],
+    "familia": "Antagonistas de endotelina",
+    "clasificacion": "Antagonista dual de receptores ETA/ETB de endotelina",
+    "mecanismoAccion": "Antagonista dual de receptores de endotelina (ETA y ETB) con alta afinidad tisular y disociación lenta. Bloquea los efectos vasoconstrictores y proliferativos de la endotelina-1 en la vasculatura pulmonar. Su metabolito activo ACT-132577 contribuye significativamente al efecto.",
+    "indicaciones": [
+      "Hipertensión arterial pulmonar (grupo 1 OMS) clase funcional II-III",
+      "En combinación con inhibidores de PDE5 o análogos de prostaciclina"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogénico)",
+      "Lactancia",
+      "Insuficiencia hepática severa (Child-Pugh C)",
+      "ALT/AST >3× LSN basal",
+      "Uso concomitante de ciclosporina"
+    ],
+    "efectosAdversos": [
+      "Anemia (disminución Hb)",
+      "Cefalea",
+      "Nasofaringitis",
+      "Bronquitis",
+      "Edema/retención hídrica",
+      "Elevación transaminasas",
+      "Infección urinaria"
+    ],
+    "interacciones": [
+      "Contraindicado con ciclosporina (aumenta niveles)",
+      "Inductores potentes CYP3A4 (rifampicina) reducen eficacia",
+      "Monitorizar con anticoagulantes orales"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "10 mg una vez al día, con o sin alimentos"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 10 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Prueba de embarazo mensual OBLIGATORIA en mujeres fértiles",
+      "Anticoncepción doble durante tratamiento y 1 mes después",
+      "Control hemograma mensual los primeros 4 meses (anemia)",
+      "Monitorizar pruebas hepáticas mensuales",
+      "Educar sobre signos de hepatotoxicidad (ictericia, coluria)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: lenta, Tmáx 8h",
+      "distribucion": "Unión proteínas >99%",
+      "metabolismo": "Hepático CYP3A4/2C19. Metabolito activo ACT-132577",
+      "excrecion": "Fecal (principal)",
+      "vidaMedia": "16 horas (macitentán), 48 horas (metabolito activo)"
+    },
+    "almacenamiento": "Temperatura ambiente. No requiere refrigeración",
+    "unidadId": "u02",
+    "capituloId": "c02_08"
+  },
+  {
+    "id": "mavacamten",
+    "nombre": "Mavacamten",
+    "nombreGenerico": "Mavacamten",
+    "nombresComerciales": [
+      "Camzyos"
+    ],
+    "familia": "Inhibidores de miosina cardíaca",
+    "clasificacion": "Inhibidor selectivo alostérico de la miosina cardíaca",
+    "mecanismoAccion": "Inhibidor selectivo y reversible de la ATPasa de miosina cardíaca. Reduce el número de puentes cruzados actina-miosina, disminuyendo la hipercontractilidad y la obstrucción dinámica del tracto de salida del ventrículo izquierdo (TSVI) en la miocardiopatía hipertrófica obstructiva.",
+    "indicaciones": [
+      "Miocardiopatía hipertrófica obstructiva (MHO) sintomática clase funcional NYHA II-III"
+    ],
+    "contraindicaciones": [
+      "FEVI <55%",
+      "Uso concomitante de inhibidores potentes CYP2D6 + CYP3A4",
+      "Embarazo",
+      "IC descompensada"
+    ],
+    "efectosAdversos": [
+      "Mareo",
+      "Síncope",
+      "Disfunción sistólica (disminución FEVI)",
+      "Fibrilación auricular",
+      "Fatiga"
+    ],
+    "interacciones": [
+      "Inhibidores CYP2D6 y CYP3A4 aumentan niveles significativamente",
+      "Verapamilo y diltiazem: precaución (depresión miocárdica aditiva)",
+      "Disopiramida: no combinar"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 5 mg/día. Ajuste según gradiente TSVI y FEVI cada 4-12 semanas. Rango: 2.5-15 mg/día"
+    },
+    "presentaciones": [
+      "Cápsulas 2.5 mg, 5 mg, 10 mg, 15 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Ecocardiograma OBLIGATORIO antes de inicio y cada ajuste de dosis",
+      "Monitorizar FEVI (suspender si <50%)",
+      "Evaluar fenotipo CYP2D6 antes de iniciar",
+      "Educación: no suspender abruptamente (riesgo rebote obstructivo)",
+      "Vigilar signos de IC (disnea, edemas, ganancia ponderal)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: buena, Tmáx 1h",
+      "metabolismo": "CYP2D6 (principal) y CYP3A4",
+      "excrecion": "Renal y fecal",
+      "vidaMedia": "6-9 días (metabolizadores rápidos), más larga en lentos"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "ubrogepant",
+    "nombre": "Ubrogepant",
+    "nombreGenerico": "Ubrogepant",
+    "nombresComerciales": [
+      "Ubrelvy"
+    ],
+    "familia": "Gepantes (antagonistas CGRP)",
+    "clasificacion": "Antagonista oral del receptor CGRP — tratamiento agudo de migraña",
+    "mecanismoAccion": "Antagonista competitivo del receptor del péptido relacionado con el gen de la calcitonina (CGRP). Bloquea la vasodilatación meníngea y la transmisión nociceptiva trigeminovascular mediadas por CGRP, abortando la crisis de migraña sin vasoconstricción (a diferencia de los triptanes).",
+    "indicaciones": [
+      "Tratamiento agudo de migraña con o sin aura en adultos",
+      "Alternativa en pacientes con contraindicación a triptanes (enfermedad cardiovascular)"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante con inhibidores potentes CYP3A4 (ketoconazol, claritromicina)",
+      "Insuficiencia hepática severa (Child-Pugh C)",
+      "Insuficiencia renal severa (ClCr <15 mL/min)"
+    ],
+    "efectosAdversos": [
+      "Náuseas",
+      "Somnolencia",
+      "Sequedad bucal",
+      "Fatiga"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A4: contraindicado",
+      "Inhibidores moderados CYP3A4: reducir dosis a 50 mg",
+      "Inductores CYP3A4: pueden reducir eficacia"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "50-100 mg al inicio de la migraña. Puede repetir 1 dosis ≥2h después. Máx: 200 mg/24h"
+    },
+    "presentaciones": [
+      "Comprimidos 50 mg y 100 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución. Se desconoce excreción",
+    "cuidadosEnfermeria": [
+      "Educar: tomar al inicio del dolor (no como preventivo)",
+      "Puede tomarse con o sin alimentos",
+      "No exceder 8 dosis/mes (cefalea por uso excesivo)",
+      "Alternativa segura en pacientes cardiovasculares donde triptanes están contraindicados",
+      "Evaluar frecuencia de uso: si >4 crisis/mes, considerar profilaxis"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: Tmáx 1.5h",
+      "metabolismo": "Hepático CYP3A4 (principal)",
+      "excrecion": "Fecal 42%, renal 6%",
+      "vidaMedia": "5-7 horas"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u01",
+    "capituloId": "c01_09"
+  },
+  {
+    "id": "brexanolona",
+    "nombre": "Brexanolona",
+    "nombreGenerico": "Brexanolona",
+    "nombresComerciales": [
+      "Zulresso"
+    ],
+    "familia": "Neuroesteroides",
+    "clasificacion": "Modulador alostérico positivo del receptor GABA-A",
+    "mecanismoAccion": "Análogo sintético de la alopregnanolona (neuroesteroide endógeno). Modula positivamente los receptores GABA-A sinápticos y extrasinápticos, restaurando la función GABAérgica que se encuentra alterada en la depresión postparto por la caída brusca de progesterona/alopregnanolona tras el parto.",
+    "indicaciones": [
+      "Depresión postparto moderada a severa en adultas"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia renal terminal (acumulación del solubilizante SBECD)",
+      "No administrar fuera de programa REMS certificado"
+    ],
+    "efectosAdversos": [
+      "Sedación excesiva",
+      "Pérdida de consciencia (requiere monitorización)",
+      "Mareo",
+      "Cefalea",
+      "Rubor",
+      "Xerostomía",
+      "Reacciones en sitio de infusión"
+    ],
+    "interacciones": [
+      "Potencia sedación con benzodiacepinas, opioides, alcohol",
+      "No interacciones farmacocinéticas significativas"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Infusión IV continua × 60 horas: 0-4h: 30 μg/kg/h → 4-24h: 60 μg/kg/h → 24-52h: 90 μg/kg/h → 52-56h: 60 μg/kg/h → 56-60h: 30 μg/kg/h"
+    },
+    "presentaciones": [
+      "Vial 100 mg/20 mL (5 mg/mL)"
+    ],
+    "embarazo": "N/A",
+    "lactancia": "Alopregnanolona es componente natural de leche materna. Se puede amamantar con monitorización del lactante",
+    "cuidadosEnfermeria": [
+      "Administrar SOLO en centro sanitario certificado REMS",
+      "Monitorización continua con pulsioximetría durante toda la infusión",
+      "Acompañamiento permanente del bebé por otro adulto (no la paciente sola)",
+      "Evaluar sedación cada 2h con escala validada",
+      "Suspender infusión si sedación excesiva o SpO2 <95%",
+      "Disponer de flumazenilo por si pérdida de consciencia",
+      "Evaluar EPDS (Edinburgh) pre y post tratamiento"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Vd: 3 L/kg. Unión proteínas: >99%",
+      "metabolismo": "Hepático por glucuronidación, sulfatación y cetorreducción",
+      "excrecion": "Renal 47%, fecal 42%",
+      "vidaMedia": "9 horas",
+      "inicioAccion": "24-48 horas de inicio de infusión",
+      "duracionAccion": "Efecto sostenido 30+ días post-infusión"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. Proteger de la luz. Diluido: usar en 12h",
+    "unidadId": "u01",
+    "capituloId": "c01_07",
+    "preparacionParenteral": {
+      "dilucion": "Diluir en SSF hasta concentración final de 1 mg/mL. Usar bolsa no PVC",
+      "velocidadAdministracion": "Infusión continua 60h con escalado y desescalado progresivo",
+      "estabilidad": "12h a temperatura ambiente una vez diluido",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": false
+      },
+      "observaciones": "Usar bolsas y líneas NO-PVC. El solubilizante SBECD interactúa con PVC."
+    }
+  },
+  {
+    "id": "ranibizumab",
+    "nombre": "Ranibizumab",
+    "nombreGenerico": "Ranibizumab",
+    "nombresComerciales": [
+      "Lucentis",
+      "Byooviz"
+    ],
+    "familia": "Anti-VEGF",
+    "clasificacion": "Fragmento de anticuerpo monoclonal anti-VEGF-A",
+    "mecanismoAccion": "Fragmento Fab humanizado que se une a todas las isoformas de VEGF-A, inhibiendo la unión a sus receptores VEGFR-1 y VEGFR-2. Reduce la neovascularización patológica y la permeabilidad vascular en la retina.",
+    "indicaciones": [
+      "Degeneración macular asociada a edad (DMAE) neovascular",
+      "Edema macular diabético (EMD)",
+      "Oclusión venosa retiniana (OVR)",
+      "Neovascularización coroidea miópica",
+      "Retinopatía del prematuro (zona I, estadio 1+ a 3+)"
+    ],
+    "contraindicaciones": [
+      "Infección ocular o periocular activa",
+      "Inflamación intraocular severa",
+      "Hipersensibilidad al ranibizumab"
+    ],
+    "efectosAdversos": [
+      "Hemorragia conjuntival",
+      "Dolor ocular",
+      "Miodesopsias (moscas volantes)",
+      "Aumento PIO transitorio",
+      "Endoftalmitis (rara pero grave)",
+      "Desprendimiento de retina (raro)",
+      "Eventos tromboembólicos arteriales (raro)"
+    ],
+    "interacciones": [
+      "No administrar con otros anti-VEGF intravítreos simultáneamente",
+      "Precaución en pacientes anticoagulados (riesgo hemorragia)"
+    ],
+    "viaAdministracion": [
+      "oftalmica"
+    ],
+    "dosis": {
+      "adulto": "0.5 mg (0.05 mL) inyección intravítrea mensual. DMAE: 3 dosis mensuales de carga, luego PRN o treat-and-extend"
+    },
+    "presentaciones": [
+      "Vial 10 mg/mL × 0.23 mL",
+      "Jeringa precargada 0.5 mg/0.05 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución. Absorción sistémica mínima",
+    "cuidadosEnfermeria": [
+      "Inyección intravítrea: procedimiento ESTÉRIL en quirófano/sala limpia",
+      "Profilaxis antibiótica tópica pre y post inyección según protocolo",
+      "Medir PIO antes y 30 min post-inyección",
+      "Educar signos de alarma: dolor intenso, pérdida visual, ojo rojo → acudir urgencias",
+      "Monitorizar agudeza visual en cada visita",
+      "Conservar cadena de frío hasta momento de uso"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Intravítrea: concentración máxima en humor vítreo inmediata",
+      "metabolismo": "Catabolismo proteolítico",
+      "vidaMedia": "Vítreo: 9 días. Sérica: 2 horas",
+      "inicioAccion": "Reducción del edema en 7 días"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar. Proteger de la luz",
+    "unidadId": "u12",
+    "capituloId": "c12_02"
+  },
+  {
+    "id": "aflibercept",
+    "nombre": "Aflibercept",
+    "nombreGenerico": "Aflibercept",
+    "nombresComerciales": [
+      "Eylea",
+      "Zaltrap (oncológico)"
+    ],
+    "familia": "Anti-VEGF",
+    "clasificacion": "Proteína de fusión recombinante anti-VEGF",
+    "mecanismoAccion": "Proteína de fusión que actúa como receptor señuelo (trampa de VEGF). Se une a VEGF-A, VEGF-B y PlGF con mayor afinidad que los receptores nativos, impidiendo la activación de la señalización angiogénica y vascular. Mayor afinidad por VEGF-A que ranibizumab.",
+    "indicaciones": [
+      "DMAE neovascular",
+      "Edema macular diabético",
+      "Retinopatía diabética con EMD",
+      "Edema macular por OVR",
+      "Cáncer colorrectal metastásico (formulación IV)"
+    ],
+    "contraindicaciones": [
+      "Infección ocular o periocular activa",
+      "Inflamación intraocular severa",
+      "Hipersensibilidad"
+    ],
+    "efectosAdversos": [
+      "Hemorragia conjuntival",
+      "Dolor ocular",
+      "Catarata",
+      "Desprendimiento vítreo",
+      "Aumento PIO",
+      "Endoftalmitis (rara)",
+      "Eventos tromboembólicos (raro)"
+    ],
+    "interacciones": [
+      "No combinar con otros anti-VEGF intravítreos",
+      "Formulación IV: toxicidad aditiva con quimioterapia"
+    ],
+    "viaAdministracion": [
+      "oftalmica",
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Intravítrea: 2 mg (0.05 mL) cada 4-8 semanas según indicación. DMAE: 3 dosis mensuales carga, luego cada 8 semanas"
+    },
+    "presentaciones": [
+      "Vial intravítreo 40 mg/mL",
+      "Jeringa precargada 2 mg/0.05 mL",
+      "Vial IV 25 mg/mL (oncológico)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución",
+    "cuidadosEnfermeria": [
+      "Técnica aséptica estricta para inyección intravítrea",
+      "Medir PIO pre y post inyección",
+      "Mantener cadena de frío",
+      "Educar: NO frotar el ojo post-inyección",
+      "Controles de agudeza visual periódicos",
+      "Vigilar signos de endoftalmitis: dolor, visión borrosa, ojo rojo"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Intravítrea: biodisponibilidad local completa",
+      "metabolismo": "Proteólisis",
+      "vidaMedia": "Vítreo: 11.4 días. Plasmática: 5-6 días (libre)",
+      "inicioAccion": "Reducción edema en 1-2 semanas"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar. Proteger de la luz",
+    "unidadId": "u12",
+    "capituloId": "c12_02"
+  },
+  {
+    "id": "faricimab",
+    "nombre": "Faricimab",
+    "nombreGenerico": "Faricimab",
+    "nombresComerciales": [
+      "Vabysmo"
+    ],
+    "familia": "Anticuerpos biespecíficos",
+    "clasificacion": "Anticuerpo biespecífico anti-VEGF-A / anti-Ang-2",
+    "mecanismoAccion": "Primer anticuerpo biespecífico oftálmico. Se une simultáneamente a VEGF-A (antiangiogénico) y Angiopoyetina-2 (estabilizador vascular), abordando dos vías patológicas complementarias. La inhibición dual permite intervalos de dosificación más largos (hasta 16 semanas).",
+    "indicaciones": [
+      "DMAE neovascular",
+      "Edema macular diabético"
+    ],
+    "contraindicaciones": [
+      "Infección ocular o periocular activa",
+      "Inflamación intraocular activa",
+      "Hipersensibilidad"
+    ],
+    "efectosAdversos": [
+      "Hemorragia conjuntival",
+      "Dolor ocular",
+      "Catarata",
+      "Miodesopsias",
+      "Aumento PIO transitorio",
+      "Vasculitis retiniana (rara)",
+      "Endoftalmitis (rara)"
+    ],
+    "interacciones": [
+      "No administrar con otros anti-VEGF intravítreos"
+    ],
+    "viaAdministracion": [
+      "oftalmica"
+    ],
+    "dosis": {
+      "adulto": "6 mg (0.05 mL) intravítrea. DMAE: 4 dosis cada 4 sem, luego cada 8-16 sem. EMD: 6 dosis cada 4 sem, luego cada 8-16 sem"
+    },
+    "presentaciones": [
+      "Vial 120 mg/mL (6 mg/0.05 mL)",
+      "Jeringa precargada 6 mg/0.05 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución",
+    "cuidadosEnfermeria": [
+      "Técnica aséptica estricta",
+      "Medir PIO pre y post inyección",
+      "Ventaja clave: intervalos hasta 16 semanas (menos visitas)",
+      "Educar paciente sobre menor frecuencia de inyecciones vs otros anti-VEGF",
+      "Vigilar vasculitis retiniana (visión borrosa + dolor → urgencia)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Intravítrea: absorción sistémica mínima",
+      "metabolismo": "Catabolismo proteolítico",
+      "vidaMedia": "Vítreo: ~7.5 días",
+      "inicioAccion": "1-2 semanas"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar",
+    "unidadId": "u12",
+    "capituloId": "c12_02"
+  },
+  {
+    "id": "patiromero",
+    "nombre": "Patirómero",
+    "nombreGenerico": "Patirómero sorbitex cálcico",
+    "nombresComerciales": [
+      "Veltassa"
+    ],
+    "familia": "Quelantes de potasio",
+    "clasificacion": "Polímero quelante de potasio no absorbible",
+    "mecanismoAccion": "Polímero catiónico de intercambio no absorbible que se une al potasio en el lumen del colon (donde la concentración de K+ es mayor), intercambiándolo por calcio. Aumenta la excreción fecal de potasio, reduciendo los niveles séricos.",
+    "indicaciones": [
+      "Hiperpotasemia en adultos",
+      "Mantenimiento de normopotasemia en pacientes con IC o ERC que requieren IECA/ARA-II/ARM"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Obstrucción intestinal"
+    ],
+    "efectosAdversos": [
+      "Estreñimiento",
+      "Diarrea",
+      "Dolor abdominal",
+      "Flatulencia",
+      "Hipomagnesemia",
+      "Hipopotasemia (sobredosis)"
+    ],
+    "interacciones": [
+      "Separar 3 horas de otros medicamentos orales (puede reducir absorción)",
+      "Monitorizar magnesio (puede quelar Mg²+)",
+      "Puede reducir absorción de levotiroxina, quinolonas"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 8.4 g/día en 1 toma. Ajustar cada 1-2 semanas. Rango: 8.4-25.2 g/día",
+      "pediatrico": "No establecida"
+    },
+    "presentaciones": [
+      "Sobres de 8.4 g, 16.8 g, 25.2 g de polvo para suspensión oral"
+    ],
+    "embarazo": "C",
+    "lactancia": "No absorbido sistémicamente. Probablemente seguro",
+    "cuidadosEnfermeria": [
+      "Mezclar con agua (no caliente), agitar y beber inmediatamente",
+      "Administrar con alimentos para mejorar tolerancia",
+      "Separar 3 HORAS de otros medicamentos orales",
+      "Control de potasio sérico semanal al inicio, luego mensual",
+      "Vigilar magnesio sérico (suplementar si necesario)",
+      "Educar: no calentar ni mezclar con alimentos calientes"
+    ],
+    "farmacocinetica": {
+      "absorcion": "No se absorbe (actúa localmente en colon)",
+      "excrecion": "Fecal (100%)",
+      "inicioAccion": "4-7 horas (reducción K+ sérico en 24-48h)"
+    },
+    "almacenamiento": "Refrigerar. Una vez sacado: estable 3 meses a temperatura ambiente",
+    "unidadId": "u12",
+    "capituloId": "c12_07"
+  },
+  {
+    "id": "crizotinib",
+    "nombre": "Crizotinib",
+    "nombreGenerico": "Crizotinib",
+    "nombresComerciales": [
+      "Xalkori"
+    ],
+    "familia": "Inhibidores de tirosina quinasa",
+    "clasificacion": "Inhibidor de ALK / ROS1 / MET",
+    "mecanismoAccion": "Inhibidor selectivo de tirosina quinasas ALK (cinasa del linfoma anaplásico), ROS1 y MET/HGFR. Bloquea la proliferación y supervivencia celular tumoral dependiente de estas vías oncogénicas en cáncer de pulmón con reordenamientos genéticos.",
+    "indicaciones": [
+      "CPNM ALK-positivo avanzado o metastásico",
+      "CPNM ROS1-positivo avanzado"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Prolongación QT congénita",
+      "Insuficiencia hepática severa con ALT >5× LSN"
+    ],
+    "efectosAdversos": [
+      "Trastornos visuales (destellos, visión borrosa)",
+      "Náuseas y vómitos",
+      "Diarrea",
+      "Edema",
+      "Bradicardia",
+      "Prolongación QT",
+      "Hepatotoxicidad (elevación transaminasas)",
+      "Neumonitis intersticial (rara, potencialmente fatal)",
+      "Neutropenia"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A4 aumentan niveles",
+      "Inductores CYP3A4 disminuyen eficacia",
+      "Precaución con fármacos bradicardizantes y que prolongan QT"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "250 mg cada 12h, con o sin alimentos. Continuar hasta progresión o toxicidad inaceptable"
+    },
+    "presentaciones": [
+      "Cápsulas 200 mg y 250 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Confirmar ALK+ o ROS1+ por test molecular ANTES de iniciar",
+      "ECG basal y periódico (QTc)",
+      "Control hepático cada 2 semanas × 2 meses, luego mensual",
+      "Hemograma con diferencial mensual",
+      "Evaluar síntomas visuales en cada visita",
+      "Educación: tos seca + disnea nueva → consultar inmediatamente (neumonitis)",
+      "No triturar ni abrir cápsulas"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: 43% biodisponibilidad. Tmáx 4-6h",
+      "metabolismo": "Hepático CYP3A4/5",
+      "excrecion": "Fecal 63%, renal 22%",
+      "vidaMedia": "42 horas"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u12",
+    "capituloId": "c12_05"
+  },
+  {
+    "id": "niraparib",
+    "nombre": "Niraparib",
+    "nombreGenerico": "Niraparib tosilato",
+    "nombresComerciales": [
+      "Zejula"
+    ],
+    "familia": "Inhibidores de PARP",
+    "clasificacion": "Inhibidor de poli-ADP-ribosa polimerasa (PARP) 1/2",
+    "mecanismoAccion": "Inhibe PARP-1 y PARP-2, enzimas clave en la reparación del ADN por escisión de bases. En células tumorales con deficiencia en la reparación por recombinación homóloga (ej: mutaciones BRCA), la inhibición de PARP produce letalidad sintética por acumulación de daño al ADN irreparable.",
+    "indicaciones": [
+      "Mantenimiento en cáncer de ovario platino-sensible (recurrente o primera línea)",
+      "Cáncer de ovario avanzado con mutación BRCA"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Síndrome mielodisplásico o leucemia mieloide aguda"
+    ],
+    "efectosAdversos": [
+      "Trombocitopenia (frecuente y a veces severa)",
+      "Anemia",
+      "Neutropenia",
+      "Náuseas",
+      "Fatiga",
+      "Insomnio",
+      "Hipertensión",
+      "Cefalea",
+      "SMD/LMA (raro pero grave)"
+    ],
+    "interacciones": [
+      "No interacciones CYP significativas",
+      "Precaución con otros mielotóxicos"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "200-300 mg/día según peso y plaquetas basales. ≥77 kg Y plaquetas ≥150.000: 300 mg/día. <77 kg O plaquetas <150.000: 200 mg/día"
+    },
+    "presentaciones": [
+      "Cápsulas 100 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Hemograma SEMANAL el primer mes, luego mensual",
+      "Ajustar dosis según plaquetas (suspender si <10.000)",
+      "Monitorizar TA (hipertensión frecuente)",
+      "Tomar a la misma hora cada día, al acostarse (reduce náuseas)",
+      "Educación: moretones inusuales, sangrado → consultar inmediatamente",
+      "Anticoncepción efectiva durante y 6 meses después"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: 73% biodisponibilidad",
+      "metabolismo": "Carboxilesterasas (principal), no CYP",
+      "excrecion": "Renal 48%, fecal 39%",
+      "vidaMedia": "36 horas"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u12",
+    "capituloId": "c12_05"
+  },
+  {
+    "id": "pomalidomida",
+    "nombre": "Pomalidomida",
+    "nombreGenerico": "Pomalidomida",
+    "nombresComerciales": [
+      "Pomalyst",
+      "Imnovid"
+    ],
+    "familia": "Inmunomoduladores (IMiDs)",
+    "clasificacion": "Agente inmunomodulador — análogo de talidomida de 3ra generación",
+    "mecanismoAccion": "Se une a cereblón (componente de la E3 ubiquitina ligasa), induciendo la degradación de factores de transcripción Ikaros y Aiolos esenciales para la supervivencia del mieloma. Efecto antiproliferativo directo, antiangiogénico e inmunomodulador (estimula células NK y T).",
+    "indicaciones": [
+      "Mieloma múltiple recidivante/refractario (tras ≥2 líneas previas incluyendo lenalidomida y bortezomib)"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogénico severo — programa REMS obligatorio)",
+      "Lactancia",
+      "Neutropenia <1000 o plaquetas <75.000 al inicio"
+    ],
+    "efectosAdversos": [
+      "Neutropenia (severa)",
+      "Anemia",
+      "Trombocitopenia",
+      "Fatiga",
+      "Neuropatía periférica",
+      "Tromboembolismo venoso (TEV)",
+      "Infecciones",
+      "Rash",
+      "Segunda neoplasia primaria (raro)"
+    ],
+    "interacciones": [
+      "CYP1A2 parcialmente involucrado",
+      "Requiere profilaxis antitrombótica concomitante",
+      "No combinar con otros mielotóxicos sin ajuste"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "4 mg/día × 21 días de ciclo de 28, con dexametasona 40 mg semanal. Ajustar según toxicidad hematológica"
+    },
+    "presentaciones": [
+      "Cápsulas 1 mg, 2 mg, 3 mg, 4 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Programa REMS: prueba embarazo semanal primer mes, luego mensual",
+      "Anticoncepción DOBLE obligatoria (4 sem antes, durante y 4 sem después)",
+      "Hemograma semanal las primeras 8 semanas",
+      "Profilaxis antitrombótica (AAS o HBPM) durante todo el tratamiento",
+      "No abrir ni triturar cápsulas (manipulación con guantes)",
+      "Educar sobre señales TEV: dolor/hinchazón pierna, disnea súbita"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: 73%. Tmáx 2-3h",
+      "metabolismo": "Hepático CYP1A2, CYP3A4",
+      "excrecion": "Renal 73%, fecal 15%",
+      "vidaMedia": "7.5 horas"
+    },
+    "almacenamiento": "Temperatura ambiente. No refrigerar",
+    "unidadId": "u12",
+    "capituloId": "c12_05"
+  },
+  {
+    "id": "acalabrutinib",
+    "nombre": "Acalabrutinib",
+    "nombreGenerico": "Acalabrutinib maleato",
+    "nombresComerciales": [
+      "Calquence"
+    ],
+    "familia": "Inhibidores de BTK",
+    "clasificacion": "Inhibidor selectivo de segunda generación de tirosina quinasa de Bruton (BTK)",
+    "mecanismoAccion": "Se une covalentemente a Cys481 de BTK, inhibiendo irreversiblemente su actividad quinasa. Bloquea la señalización del receptor de células B (BCR), suprimiendo proliferación y supervivencia de linfocitos B malignos. Mayor selectividad para BTK que ibrutinib, con menor inhibición off-target de EGFR, ITK y TEC.",
+    "indicaciones": [
+      "Leucemia linfocítica crónica (LLC) / linfoma linfocítico pequeño",
+      "Linfoma de células del manto (LCM) recidivante"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Uso con inhibidores potentes CYP3A4 durante >7 días"
+    ],
+    "efectosAdversos": [
+      "Cefalea",
+      "Diarrea",
+      "Artralgias/mialgias",
+      "Infecciones respiratorias",
+      "Neutropenia",
+      "Anemia",
+      "Fibrilación auricular (menor que ibrutinib)",
+      "Hemorragia",
+      "Segunda neoplasia"
+    ],
+    "interacciones": [
+      "Inhibidores CYP3A4 aumentan exposición",
+      "Anticoagulantes/antiplaquetarios: mayor riesgo sangrado",
+      "IBP reducen absorción (evitar; preferir anti-H2 separado 2h)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "100 mg cada 12h. Tragar entero con agua, con o sin alimentos"
+    },
+    "presentaciones": [
+      "Cápsulas 100 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Hemograma mensual los primeros 3 meses",
+      "Evitar IBP (reducen absorción). Si necesario: anti-H2 separado 2h",
+      "Suspender 3-7 días antes de cirugía (riesgo sangrado)",
+      "Monitorizar signos fibrilación auricular (palpitaciones, mareo)",
+      "Vigilar infecciones oportunistas",
+      "No abrir, romper ni masticar cápsulas"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral rápida. Tmáx 0.75h",
+      "metabolismo": "CYP3A4 (principal). Metabolito activo ACP-5862",
+      "excrecion": "Fecal 12%, renal 84%",
+      "vidaMedia": "1 hora (pero inhibición BTK irreversible)"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u12",
+    "capituloId": "c12_05"
+  },
+  {
+    "id": "gadolinio_gadopentetato",
+    "nombre": "Gadolinio (Gadopentetato de dimeglumina)",
+    "nombreGenerico": "Gadopentetato de dimeglumina",
+    "nombresComerciales": [
+      "Magnevist",
+      "Gadovist",
+      "Dotarem",
+      "ProHance"
+    ],
+    "familia": "Medios de contraste paramagnéticos",
+    "clasificacion": "Contraste para resonancia magnética — quelato de gadolinio",
+    "mecanismoAccion": "El ion gadolinio (Gd³⁺) quelado tiene propiedades paramagnéticas que acortan los tiempos de relajación T1 y T2 de los protones de agua circundantes, aumentando la intensidad de señal en imágenes T1 de RM. Permite visualizar vascularización, permeabilidad de barrera hematoencefálica y realce de lesiones.",
+    "indicaciones": [
+      "RM con contraste de SNC (tumores, inflamación, desmielinización)",
+      "Angio-RM (vasos cerebrales, torácicos, abdominales)",
+      "RM cardíaca (viabilidad miocárdica, fibrosis)",
+      "RM hepática y de cuerpo entero"
+    ],
+    "contraindicaciones": [
+      "TFGe <30 mL/min (riesgo fibrosis sistémica nefrogénica)",
+      "Hipersensibilidad a gadolinio",
+      "Embarazo (contraindicación relativa)"
+    ],
+    "efectosAdversos": [
+      "Náuseas",
+      "Cefalea",
+      "Mareo",
+      "Sensación de calor/frío en sitio de inyección",
+      "Reacción alérgica/anafilactoide (rara)",
+      "Fibrosis sistémica nefrogénica (FSN) en IRC severa",
+      "Depósito cerebral de gadolinio (significado clínico incierto)"
+    ],
+    "interacciones": [
+      "No interacciones farmacológicas significativas",
+      "Metformina: no requiere suspensión (a diferencia del yodado)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "0.1-0.2 mmol/kg (0.2-0.4 mL/kg según formulación). Inyección IV en bolo o infusión rápida"
+    },
+    "presentaciones": [
+      "Viales y jeringas precargadas de 5, 10, 15, 20 mL según formulación"
+    ],
+    "embarazo": "C",
+    "lactancia": "Excreción mínima en leche (<0.04%). Se puede amamantar",
+    "cuidadosEnfermeria": [
+      "Verificar función renal (creatinina/TFGe) ANTES de administrar",
+      "Contraindicado si TFGe <30 (fibrosis sistémica nefrogénica)",
+      "Tener equipo de reanimación disponible (anafilaxia)",
+      "Preguntar alergias previas a gadolinio",
+      "Canalizar vía IV de calibre adecuado (20G mínimo)",
+      "Observar 30 min post-administración",
+      "Hidratar adecuadamente para facilitar eliminación renal"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Extracelular. No cruza BHE intacta",
+      "metabolismo": "No metabolizado",
+      "excrecion": "Renal 100% (>95% en 24h)",
+      "vidaMedia": "1.5-2 horas (función renal normal)",
+      "inicioAccion": "Realce visible en segundos"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz. No congelar",
+    "unidadId": "u12",
+    "capituloId": "c12_02",
+    "preparacionParenteral": {
+      "reconstitucion": "Listo para uso. No diluir",
+      "velocidadAdministracion": "Bolo IV: 2-5 mL/segundo según protocolo de RM",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": true
+      },
+      "observaciones": "Administrar mediante inyector automático de RM para timing preciso"
+    }
+  },
+  {
+    "id": "iohexol",
+    "nombre": "Iohexol",
+    "nombreGenerico": "Iohexol",
+    "nombresComerciales": [
+      "Omnipaque",
+      "Iohexol GE"
+    ],
+    "familia": "Medios de contraste yodados",
+    "clasificacion": "Contraste radiológico no iónico de baja osmolalidad",
+    "mecanismoAccion": "Compuesto yodado no iónico que atenúa los rayos X proporcionalmente a su concentración. Los átomos de yodo absorben fotones de rayos X, generando contraste radiológico en TC, angiografía y otros estudios. La formulación no iónica y de baja osmolalidad reduce significativamente las reacciones adversas.",
+    "indicaciones": [
+      "TC con contraste (cráneo, tórax, abdomen, pelvis)",
+      "Angiografía (coronaria, cerebral, periférica)",
+      "Urografía excretora",
+      "Mielografía (formulación intratecal)",
+      "Artrografía"
+    ],
+    "contraindicaciones": [
+      "Alergia severa previa a contrastes yodados",
+      "Tirotoxicosis descompensada",
+      "Mielografía: no usar formulaciones no aptas para vía intratecal"
+    ],
+    "efectosAdversos": [
+      "Sensación de calor",
+      "Náuseas",
+      "Sabor metálico",
+      "Nefropatía por contraste (NPC)",
+      "Reacciones alérgicas/anafilactoides",
+      "Extravasación (necrosis tisular)",
+      "Tirotoxicosis inducida por yodo (pacientes susceptibles)"
+    ],
+    "interacciones": [
+      "Metformina: suspender 48h pre y post (riesgo acidosis láctica si NPC)",
+      "Nefrotóxicos (aminoglucósidos, AINE): mayor riesgo NPC",
+      "Betabloqueantes: pueden dificultar tratamiento de anafilaxia"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "intratecal"
+    ],
+    "dosis": {
+      "adulto": "TC: 1-2 mL/kg de solución al 300-350 mgI/mL. Angiografía coronaria: 5-8 mL por inyección. Varía según estudio y protocolo"
+    },
+    "presentaciones": [
+      "Frascos 50-200 mL en concentraciones 240, 300, 350 mgI/mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Excreción mínima. Se puede amamantar",
+    "cuidadosEnfermeria": [
+      "Verificar función renal (creatinina/TFGe) previa",
+      "Suspender metformina 48h antes y reiniciar solo con Cr normal post-48h",
+      "Hidratación previa: SSF 1 mL/kg/h × 6-12h pre y 6-12h post",
+      "Tener carro de paros accesible (reacciones anafilactoides)",
+      "Preguntar: alergias a yodo/mariscos, asma, alergias previas a contraste",
+      "Premedicación si alergia previa: prednisona 50 mg -13h, -7h, -1h + difenhidramina 50 mg -1h",
+      "Vigilar extravasación: dolor, hinchazón en sitio IV → detener inmediatamente",
+      "Control Cr a las 48-72h post-contraste en pacientes de riesgo"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Extracelular. No cruza BHE intacta",
+      "metabolismo": "No metabolizado",
+      "excrecion": "Renal >90% en 24h (filtración glomerular)",
+      "vidaMedia": "2 horas (función renal normal)",
+      "inicioAccion": "Opacificación inmediata"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz. No usar si cristalizado",
+    "unidadId": "u12",
+    "capituloId": "c12_02",
+    "preparacionParenteral": {
+      "reconstitucion": "Listo para uso. Atemperar antes de inyectar (reduce viscosidad y dolor)",
+      "velocidadAdministracion": "TC: 2-5 mL/s mediante inyector automático. Manual: según protocolo",
+      "observaciones": "Atemperar a 37°C en calentador de contraste antes de usar. NUNCA por vía intratecal a menos que sea formulación específica."
+    }
+  },
+  {
+    "id": "remimazolam",
+    "nombre": "Remimazolam",
+    "nombreGenerico": "Remimazolam besilato",
+    "nombresComerciales": [
+      "Byfavo"
+    ],
+    "familia": "Benzodiacepinas de acción ultracorta",
+    "clasificacion": "Sedante/hipnótico — benzodiacepina de acción ultracorta",
+    "mecanismoAccion": "Agonista del receptor GABA-A con metabolismo por esterasas tisulares (no CYP), lo que le confiere acción ultracorta y recuperación predecible independiente de función hepática/renal. Nota: Remimazolam ha reemplazado parcialmente a midazolam en sedación procedural por su recuperación más rápida y predecible, y es reversible con flumazenilo.",
+    "indicaciones": [
+      "Sedación procedural (endoscopia, broncoscopia)",
+      "Inducción y mantenimiento de anestesia general",
+      "Sedación en UCI (uso emergente)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a benzodiacepinas",
+      "Miastenia gravis severa",
+      "Insuficiencia respiratoria severa sin ventilación mecánica"
+    ],
+    "efectosAdversos": [
+      "Hipotensión",
+      "Depresión respiratoria",
+      "Náuseas",
+      "Bradicardia",
+      "Cefalea",
+      "Hipo"
+    ],
+    "interacciones": [
+      "Opioides: depresión respiratoria sinérgica (reducir dosis)",
+      "No interacciones CYP (metabolismo por esterasas)",
+      "Flumazenilo revierte efecto"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Sedación procedural: 5 mg bolo IV en 1 min, redosis 2.5 mg cada 2 min si necesario. Anestesia: inducción 6-12 mg/kg/h, mantenimiento 1-2 mg/kg/h"
+    },
+    "presentaciones": [
+      "Vial liofilizado 20 mg para reconstitución"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución. Probablemente seguro por vida media ultracorta",
+    "cuidadosEnfermeria": [
+      "Monitorización continua: SpO2, capnografía, TA, FC",
+      "Tener flumazenilo disponible",
+      "Equipos de vía aérea y reanimación accesibles",
+      "No requiere ajuste en insuficiencia hepática o renal",
+      "Recuperación rápida: paciente alerta en ~12 min post-última dosis",
+      "No mezclar con Ringer Lactato (precipita)"
+    ],
+    "farmacocinetica": {
+      "metabolismo": "Esterasas tisulares (no CYP450)",
+      "excrecion": "Renal (metabolito inactivo)",
+      "vidaMedia": "7-11 minutos",
+      "inicioAccion": "1-3 minutos",
+      "duracionAccion": "10-15 minutos tras bolo único"
+    },
+    "almacenamiento": "Temperatura ambiente. Reconstituido: usar en 24h",
+    "unidadId": "u12",
+    "capituloId": "c12_03",
+    "preparacionParenteral": {
+      "reconstitucion": "Reconstituir 20 mg con 8.2 mL SSF = 2.5 mg/mL",
+      "velocidadAdministracion": "Bolo IV en 1 minuto",
+      "estabilidad": "24h a temperatura ambiente reconstituido",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": true,
+        "otras": "INCOMPATIBLE con Ringer Lactato"
+      }
+    }
+  },
+  {
+    "id": "inmunoglobulina_iv",
+    "nombre": "Inmunoglobulina Humana IV (IgIV)",
+    "nombreGenerico": "Inmunoglobulina humana normal intravenosa",
+    "nombresComerciales": [
+      "Privigen",
+      "Gamunex-C",
+      "Octagam",
+      "Flebogamma",
+      "Kiovig"
+    ],
+    "familia": "Inmunoglobulinas",
+    "clasificacion": "Hemoderivado — inmunoglobulina policlonal IgG",
+    "mecanismoAccion": "Preparado de IgG policlonal purificada de plasma de miles de donantes. Múltiples mecanismos: neutralización de patógenos y toxinas, modulación inmune (bloqueo receptores Fc, regulación de citocinas, inhibición de complemento), reposición de anticuerpos en inmunodeficiencias. A dosis altas tiene efecto inmunomodulador/antiinflamatorio.",
+    "indicaciones": [
+      "Inmunodeficiencias primarias (agammaglobulinemia, inmunodeficiencia común variable)",
+      "Púrpura trombocitopénica inmune (PTI)",
+      "Síndrome de Guillain-Barré",
+      "Enfermedad de Kawasaki",
+      "Polineuropatía desmielinizante inflamatoria crónica (CIDP)",
+      "Prevención infecciones en trasplante",
+      "Miastenia gravis (crisis)"
+    ],
+    "contraindicaciones": [
+      "Deficiencia de IgA con anticuerpos anti-IgA (anafilaxia)",
+      "Hipersensibilidad previa a inmunoglobulinas",
+      "Intolerancia hereditaria a fructosa (formulaciones con sorbitol)"
+    ],
+    "efectosAdversos": [
+      "Cefalea (frecuente)",
+      "Fiebre y escalofríos",
+      "Náuseas",
+      "Mialgias",
+      "Reacciones infusionales (flush, taquicardia)",
+      "Meningitis aséptica",
+      "Insuficiencia renal aguda (formulaciones con sacarosa)",
+      "Eventos tromboembólicos (raro)",
+      "Hemólisis (raro, pacientes grupo A/B/AB)"
+    ],
+    "interacciones": [
+      "Vacunas vivas: esperar 3-11 meses post-IgIV (reduce eficacia vacunal)",
+      "Puede interferir con determinaciones serológicas"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Reposición: 400-600 mg/kg cada 3-4 semanas. Inmunomodulación (PTI, Guillain-Barré): 1-2 g/kg dividido en 2-5 días. Kawasaki: 2 g/kg dosis única",
+      "pediatrico": "Kawasaki: 2 g/kg IV en 10-12h. Reposición: 400-600 mg/kg cada 3-4 semanas"
+    },
+    "presentaciones": [
+      "Solución al 5% (50 mg/mL) y 10% (100 mg/mL) en viales de 50-400 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Probablemente seguro",
+    "cuidadosEnfermeria": [
+      "Premedicación: paracetamol + antihistamínico 30 min antes",
+      "Iniciar infusión LENTA: 0.5 mL/kg/h × 30 min, luego escalar cada 15-30 min hasta máx 4-8 mL/kg/h",
+      "Monitorizar signos vitales cada 15 min primera hora, luego cada 30 min",
+      "Detener si fiebre >38.5°C, escalofríos severos, hipotensión, disnea",
+      "Hidratación pre y post (prevención IRA)",
+      "Vigilar cefalea severa post-infusión (meningitis aséptica)",
+      "Registrar lote y marca para trazabilidad de hemoderivados",
+      "No mezclar con otros fármacos o fluidos"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Vd: 0.05-0.13 L/kg. Distribución intravascular → extravascular en 3-5 días",
+      "metabolismo": "Catabolismo en sistema reticuloendotelial",
+      "vidaMedia": "21-35 días (IgG endógena)",
+      "inicioAccion": "PTI: elevación plaquetas en 24-48h"
+    },
+    "almacenamiento": "Refrigerar 2-8°C o según fabricante. No congelar. Atemperar antes de infundir",
+    "unidadId": "u12",
+    "capituloId": "c12_02",
+    "preparacionParenteral": {
+      "reconstitucion": "Lista para uso (solución al 5% o 10%)",
+      "velocidadAdministracion": "Iniciar 0.5 mL/kg/h, escalar cada 15-30 min hasta máx 4-8 mL/kg/h según tolerancia",
+      "estabilidad": "Usar inmediatamente tras apertura. No reutilizar sobrante",
+      "solucionesCompatibles": {
+        "ssf": false,
+        "sg5": false,
+        "otras": "NO diluir ni mezclar con ningún otro fluido o fármaco. Administrar pura por línea dedicada"
+      },
+      "observaciones": "Requiere consentimiento informado en muchos centros (hemoderivado). Registrar lote obligatorio."
+    }
+  },
+  {
+    "id": "suero_antiofidico",
+    "nombre": "Suero Antiofídico Polivalente",
+    "nombreGenerico": "Antiveneno polivalente (fragmentos F(ab')₂ equinos)",
+    "nombresComerciales": [
+      "Antivipmyn",
+      "CroFab",
+      "Suero Antiofídico INS",
+      "Polyvalent Snake Antivenom"
+    ],
+    "familia": "Antivenenos",
+    "clasificacion": "Antídoto — inmunoglobulina equina antiofídica",
+    "mecanismoAccion": "Fragmentos F(ab')₂ de inmunoglobulina equina purificada obtenidos por inmunización de caballos con venenos de serpientes. Los anticuerpos neutralizan las toxinas del veneno (fosfolipasas, metaloproteasas, neurotoxinas, hemotoxinas) impidiendo su unión a tejidos diana.",
+    "indicaciones": [
+      "Envenenamiento por mordedura de serpiente con signos de toxicidad sistémica",
+      "Coagulopatía por veneno ofídico",
+      "Síndrome compartimental por envenenamiento"
+    ],
+    "contraindicaciones": [
+      "No hay contraindicación absoluta en envenenamiento grave (beneficio > riesgo)",
+      "Hipersensibilidad conocida a proteínas equinas (premedicar y vigilar)"
+    ],
+    "efectosAdversos": [
+      "Reacción anafiláctica/anafilactoide (5-25%)",
+      "Enfermedad del suero (5-7 días post: fiebre, artralgias, rash, adenopatías)",
+      "Fiebre",
+      "Urticaria",
+      "Broncoespasmo",
+      "Hipotensión"
+    ],
+    "interacciones": [
+      "Adrenalina debe estar disponible para anafilaxia",
+      "Corticoides y antihistamínicos como premedicación"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Según gravedad: Leve: 4-6 viales. Moderado: 8-12 viales. Grave: 15-25 viales. Diluir en 250-500 mL SSF e infundir en 1-2h. Puede repetirse según evolución clínica",
+      "pediatrico": "MISMA dosis que adultos (se neutraliza veneno, no se ajusta por peso)"
+    },
+    "presentaciones": [
+      "Viales liofilizados para reconstitución (contenido varía por fabricante y región)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Administrar si indicado (emergencia vital)",
+    "cuidadosEnfermeria": [
+      "EMERGENCIA: no retrasar administración por pruebas cutáneas",
+      "Premedicación: hidrocortisona 200 mg IV + difenhidramina 50 mg IV + ranitidina 50 mg IV",
+      "Iniciar infusión lenta (10 mL/h × 10 min) y escalar si tolera",
+      "Tener ADRENALINA PREPARADA junto a la cama",
+      "Monitorización continua: TA, FC, SpO2, FR",
+      "NO aplicar torniquete, hielo, ni succionar la herida",
+      "Inmovilizar miembro afectado por debajo del nivel del corazón",
+      "Marcar borde del edema y hora para seguimiento de progresión",
+      "Control de coagulación seriado (TP, TTPa, fibrinógeno, plaquetas) cada 6h",
+      "Vigilar signos de enfermedad del suero 5-14 días post (tratar con prednisona)"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Intravascular inicialmente, luego extravascular",
+      "vidaMedia": "F(ab')₂: 12-24 horas. Fab: 15-20 horas",
+      "inicioAccion": "Corrección coagulopatía en 6-12h"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar. Verificar fecha de caducidad",
+    "unidadId": "u11",
+    "capituloId": "c11_01",
+    "preparacionParenteral": {
+      "reconstitucion": "Reconstituir cada vial con diluyente provisto o 10 mL de agua estéril. Agitar suavemente (no sacudir)",
+      "dilucion": "Diluir la dosis total en 250-500 mL de SSF",
+      "velocidadAdministracion": "Iniciar 25-50 mL/h × 10 min, luego escalar a 250 mL/h si tolera",
+      "estabilidad": "Usar inmediatamente tras reconstitución",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": false
+      }
+    }
+  },
+  {
+    "id": "bcg_vesical",
+    "nombre": "BCG Vesical (Bacilo Calmette-Guérin)",
+    "nombreGenerico": "BCG liofilizado para instilación vesical",
+    "nombresComerciales": [
+      "OncoTICE",
+      "TheraCys",
+      "BCG-medac"
+    ],
+    "familia": "Inmunoterapia vesical",
+    "clasificacion": "Inmunoestimulante — micobacteria atenuada para uso intravesical",
+    "mecanismoAccion": "Cepa atenuada de Mycobacterium bovis que al instilarse en vejiga provoca respuesta inmune local intensa: reclutamiento de linfocitos T CD4+, células NK, macrófagos y liberación de citocinas (IL-2, TNF-α, IFN-γ) que destruyen células tumorales uroteliales residuales. Mecanismo de inmunoterapia intravesical más eficaz para prevención de recurrencia tumoral.",
+    "indicaciones": [
+      "Carcinoma urotelial de vejiga no músculo-invasivo (CIS, Ta, T1)",
+      "Prevención de recurrencia post-resección transuretral de tumor vesical (RTUV)",
+      "Carcinoma in situ (CIS) vesical"
+    ],
+    "contraindicaciones": [
+      "Infección urinaria activa",
+      "Hematuria macroscópica",
+      "Traumatismo uretral reciente o cateterismo traumático",
+      "Inmunosupresión severa (VIH con CD4 <200, quimioterapia sistémica)",
+      "Tuberculosis activa",
+      "Embarazo"
+    ],
+    "efectosAdversos": [
+      "Cistitis por BCG (disuria, frecuencia, hematuria — muy frecuente)",
+      "Síndrome gripal (fiebre, malestar, mialgias — frecuente)",
+      "Fiebre >38.5°C persistente",
+      "BCGosis (diseminación sistémica — rara pero grave)",
+      "Prostatitis granulomatosa",
+      "Epididimitis",
+      "Neumonitis",
+      "Hepatitis granulomatosa"
+    ],
+    "interacciones": [
+      "Antibióticos: no administrar quinolonas 48h antes/después (inhiben BCG)",
+      "Inmunosupresores reducen eficacia",
+      "No usar con instilación vesical de otros agentes"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Inducción: 1 vial intravesical semanal × 6 semanas (inicio 2-4 sem post-RTUV). Mantenimiento: 1 vial semanal × 3 semanas a meses 3, 6, 12, 18, 24, 30, 36"
+    },
+    "presentaciones": [
+      "Vial liofilizado con 1-8 × 10⁸ UFC de M. bovis BCG para reconstitución"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Administración INTRAVESICAL mediante sonda Foley (no confundir con IV)",
+      "Verificar urocultivo negativo antes de cada instilación",
+      "Si hematuria macroscópica o ITU: POSPONER instilación",
+      "Técnica estéril. Personal con EPI (guantes, mascarilla, bata)",
+      "Paciente retiene en vejiga 2 horas, rotando posición cada 15 min",
+      "Tras micción: desinfectar inodoro con lejía durante 6h",
+      "Educar: hidratación abundante post-instilación",
+      "Fiebre >38.5°C que persiste >48h → sospechar BCGosis → contactar urología urgente",
+      "BCGosis es emergencia: requiere triple terapia antituberculosa"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Local vesical. Absorción sistémica mínima en mucosa intacta",
+      "inicioAccion": "Respuesta inmune local en 2-4 semanas"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. Proteger de la luz. Es MICROORGANISMO VIVO",
+    "unidadId": "u12",
+    "capituloId": "c12_05"
+  },
+  {
+    "id": "finerenona",
+    "nombre": "Finerenona",
+    "nombreGenerico": "Finerenona",
+    "nombresComerciales": [
+      "Kerendia"
+    ],
+    "familia": "Antagonistas del receptor mineralocorticoide",
+    "clasificacion": "ARM no esteroideo selectivo",
+    "mecanismoAccion": "Antagonista no esteroideo altamente selectivo del receptor mineralocorticoide (MR). A diferencia de espironolactona y eplerenona (esteroideos), finerenona tiene mayor selectividad por MR, distribución equilibrada corazón-riñón, y menor riesgo de ginecomastia e hiperpotasemia. Reduce inflamación y fibrosis cardíaca y renal mediadas por la sobreactivación del MR.",
+    "indicaciones": [
+      "Enfermedad renal crónica asociada a diabetes tipo 2 (con albuminuria)",
+      "Reducción de riesgo cardiovascular en ERC + DM2"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Insuficiencia suprarrenal",
+      "Uso con inhibidores potentes CYP3A4 + potasio >5 mEq/L",
+      "Potasio >5.5 mEq/L al inicio"
+    ],
+    "efectosAdversos": [
+      "Hiperpotasemia",
+      "Hipotensión",
+      "Hiponatremia",
+      "Disminución de TFGe (transitoria al inicio)"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A4 (ketoconazol, claritromicina): contraindicado",
+      "Inductores CYP3A4 (rifampicina): reducen eficacia",
+      "Suplementos de potasio, IECA, ARA-II: mayor riesgo hiperpotasemia",
+      "Pomelo: evitar"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio según potasio: K+ ≤4.8: 20 mg/día. K+ 4.8-5.0: 10 mg/día. K+ >5: no iniciar. Titular a 10-20 mg/día según K+"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg y 20 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado",
+    "cuidadosEnfermeria": [
+      "Verificar potasio sérico ANTES de iniciar (no iniciar si >5 mEq/L)",
+      "Control de potasio a las 4 semanas, luego cada 4 meses",
+      "Ajustar si K+ >5.5: reducir o suspender",
+      "Puede tomarse con o sin alimentos",
+      "Educar: evitar sustitutos de sal (cloruro de potasio)",
+      "Vigilar TFGe (descenso inicial es esperado y no requiere suspensión)"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral: biodisponibilidad 44%",
+      "metabolismo": "Hepático CYP3A4 (principal), CYP2C8",
+      "excrecion": "Renal 80%",
+      "vidaMedia": "2-3 horas",
+      "inicioAccion": "Reducción albuminuria en 1-4 meses"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u02",
+    "capituloId": "c02_04"
+  },
+  {
+    "id": "risankizumab",
+    "nombre": "Risankizumab",
+    "nombreGenerico": "Risankizumab-rzaa",
+    "nombresComerciales": [
+      "Skyrizi"
+    ],
+    "familia": "Anticuerpos anti-IL-23",
+    "clasificacion": "Anticuerpo monoclonal humanizado anti-subunidad p19 de IL-23",
+    "mecanismoAccion": "Se une selectivamente a la subunidad p19 de IL-23, bloqueando su interacción con el receptor IL-23R. Inhibe la diferenciación y activación de células Th17 sin afectar IL-12 (a diferencia de ustekinumab). Reduce la producción de IL-17A, IL-17F e IL-22 responsables de la inflamación y proliferación queratinocítica en psoriasis.",
+    "indicaciones": [
+      "Psoriasis en placas moderada a severa en adultos",
+      "Artritis psoriásica activa",
+      "Enfermedad de Crohn moderada a severa"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Infección activa clínicamente relevante (incluyendo TB activa)"
+    ],
+    "efectosAdversos": [
+      "Infección respiratoria superior",
+      "Cefalea",
+      "Fatiga",
+      "Reacciones en sitio de inyección",
+      "Tiña (infecciones fúngicas superficiales)"
+    ],
+    "interacciones": [
+      "No interacciones CYP significativas",
+      "Evitar vacunas vivas durante tratamiento",
+      "Descartar TB latente antes de iniciar (test IGRA/PPD)"
+    ],
+    "viaAdministracion": [
+      "SC"
+    ],
+    "dosis": {
+      "adulto": "Psoriasis: 150 mg SC en semanas 0 y 4, luego cada 12 semanas. Crohn: inducción IV 600 mg sem 0, 4, 8, luego 360 mg SC cada 8 sem"
+    },
+    "presentaciones": [
+      "Jeringa/pluma precargada 75 mg/0.83 mL y 150 mg/mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Probablemente seguro (IgG monoclonal)",
+    "cuidadosEnfermeria": [
+      "Descartar TB antes de iniciar (Quantiferón o PPD + Rx tórax)",
+      "Enseñar autoadministración SC al paciente",
+      "Sacar de nevera 30 min antes",
+      "No inyectar en piel con placas activas, moretones o cicatrices",
+      "Intervalo largo (cada 12 sem) favorece adherencia",
+      "Vigilar infecciones, especialmente fúngicas superficiales"
+    ],
+    "farmacocinetica": {
+      "absorcion": "SC: biodisponibilidad 89%. Tmáx 3-14 días",
+      "metabolismo": "Catabolismo proteolítico",
+      "vidaMedia": "28 días",
+      "inicioAccion": "Mejoría PASI visible a semana 4"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar. Proteger de la luz",
+    "unidadId": "u09",
+    "capituloId": "c09_06"
+  },
+  {
+    "id": "vedolizumab_new",
+    "nombre": "Vedolizumab",
+    "nombreGenerico": "Vedolizumab",
+    "nombresComerciales": [
+      "Entyvio"
+    ],
+    "familia": "Anticuerpos anti-integrinas",
+    "clasificacion": "Anticuerpo monoclonal humanizado anti-integrina α4β7",
+    "mecanismoAccion": "Se une selectivamente a la integrina α4β7, bloqueando la interacción con MAdCAM-1 (molécula de adhesión endotelial intestinal). Impide la migración de linfocitos T al tejido intestinal inflamado. Es selectivo para el intestino (no afecta tráfico linfocitario cerebral como natalizumab), lo que elimina el riesgo de leucoencefalopatía multifocal progresiva.",
+    "indicaciones": [
+      "Colitis ulcerosa moderada a severa refractaria a convencional o anti-TNF",
+      "Enfermedad de Crohn moderada a severa refractaria",
+      "Pouchitis crónica"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Infección activa severa"
+    ],
+    "efectosAdversos": [
+      "Nasofaringitis",
+      "Cefalea",
+      "Artralgia",
+      "Náuseas",
+      "Fiebre",
+      "Infección respiratoria superior",
+      "Fatiga",
+      "Reacciones infusionales"
+    ],
+    "interacciones": [
+      "No combinar con anti-TNF ni natalizumab",
+      "Precaución con inmunosupresores (efecto aditivo)",
+      "Vacunas vivas: administrar antes de iniciar si posible"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "SC"
+    ],
+    "dosis": {
+      "adulto": "IV: 300 mg en semanas 0, 2, 6, luego cada 8 semanas. SC (mantenimiento): 108 mg cada 2 semanas tras inducción IV"
+    },
+    "presentaciones": [
+      "Vial 300 mg liofilizado para infusión IV",
+      "Jeringa precargada 108 mg/0.68 mL SC"
+    ],
+    "embarazo": "B",
+    "lactancia": "Probablemente seguro",
+    "cuidadosEnfermeria": [
+      "Descartar TB antes de iniciar",
+      "Infusión IV en 30 min. Observar 1-2h post-infusión",
+      "Premedicación no rutinaria (solo si reacciones previas)",
+      "Si transición a SC: primera dosis SC a las 2 sem de última IV",
+      "Evaluar respuesta: mejoría endoscópica y clínica a semana 14",
+      "Enseñar autoinyección SC si mantenimiento subcutáneo"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Principalmente intravascular",
+      "metabolismo": "Catabolismo proteolítico",
+      "vidaMedia": "IV: 25 días. SC: 26 días",
+      "inicioAccion": "Respuesta clínica: 6-14 semanas"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar",
+    "unidadId": "u05",
+    "capituloId": "c05_06",
+    "preparacionParenteral": {
+      "reconstitucion": "Reconstituir 300 mg con 4.8 mL agua estéril. Agitar suavemente 15 seg. Dejar reposar 20 min",
+      "dilucion": "Diluir en 250 mL SSF",
+      "velocidadAdministracion": "Infusión IV en 30 minutos",
+      "estabilidad": "12h refrigerado o 8h a temperatura ambiente una vez reconstituido",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": false
+      }
+    }
+  },
+  {
+    "id": "migalastat",
+    "nombre": "Migalastat",
+    "nombreGenerico": "Migalastat clorhidrato",
+    "nombresComerciales": [
+      "Galafold"
+    ],
+    "familia": "Chaperonas farmacológicas",
+    "clasificacion": "Chaperona farmacológica para α-galactosidasa A",
+    "mecanismoAccion": "Iminoazúcar análogo de galactosa que se une de forma reversible al sitio activo de la α-galactosidasa A (α-Gal A) mutante con mutaciones susceptibles. Estabiliza la enzima mal plegada en el retículo endoplásmico, facilitando su tránsito al lisosoma donde se disocia y permite que la enzima degrade su sustrato natural (globotriaosilceramida/Gb3). Solo funciona en mutaciones 'susceptibles' (~60% de las mutaciones).",
+    "indicaciones": [
+      "Enfermedad de Fabry en adultos con mutación susceptible confirmada"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Mutaciones de α-Gal A no susceptibles a migalastat"
+    ],
+    "efectosAdversos": [
+      "Cefalea",
+      "Nasofaringitis",
+      "ITU",
+      "Fiebre",
+      "Náuseas",
+      "Dolor abdominal"
+    ],
+    "interacciones": [
+      "No interacciones CYP significativas",
+      "No tomar con alimentos (reducen absorción 40%)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "123 mg (1 cápsula) en días alternos, en ayunas (2h antes o después de comida)"
+    },
+    "presentaciones": [
+      "Cápsulas 123 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "No recomendado",
+    "cuidadosEnfermeria": [
+      "CONFIRMAR mutación susceptible antes de iniciar (test genético + consulta en galafoldamenabilitytable.com)",
+      "Tomar en AYUNAS: 2h sin comida antes y después",
+      "Días ALTERNOS (no diario) — establecer calendario",
+      "Monitorizar función renal (TFGe) y cardíaca (eco, ECG) cada 6-12 meses",
+      "Control de Gb3 en plasma y orina como biomarcador",
+      "Educar: si olvida dosis, no compensar — seguir calendario normal"
+    ],
+    "farmacocinetica": {
+      "absorcion": "Oral en ayunas: rápida. Tmáx 3h. Alimentos reducen 40%",
+      "metabolismo": "No metabolizado significativamente",
+      "excrecion": "Renal (>50% inalterado)",
+      "vidaMedia": "3-5 horas (pero efecto chaperona persiste)"
+    },
+    "almacenamiento": "Temperatura ambiente. No refrigerar",
+    "unidadId": "u06",
+    "capituloId": "c06_04"
+  },
+  {
+    "id": "cloruro_sodio",
+    "nombre": "Cloruro de Sodio (Solución Salina)",
+    "nombreGenerico": "Cloruro de sodio",
+    "nombresComerciales": [
+      "SSF 0.9%",
+      "NaCl 0.9%",
+      "Solución Salina 3% (hipertónica)",
+      "NaCl 0.45% (hipotónica)"
+    ],
+    "familia": "Soluciones cristaloides",
+    "clasificacion": "Solución de reposición hidroelectrolítica",
+    "mecanismoAccion": "Solución isotónica (0.9%) con osmolaridad de 308 mOsm/L, similar al plasma. Expande el volumen del líquido extracelular. Por cada litro infundido, ~250 mL permanecen intravascular y ~750 mL pasan al intersticio. La solución hipertónica (3%) genera gradiente osmótico que moviliza agua del espacio intracelular al extracelular, útil en hiponatremia severa y edema cerebral.",
+    "indicaciones": [
+      "Reposición de volumen en deshidratación",
+      "Diluyente universal para medicamentos IV",
+      "Lavado de heridas y vías intravenosas",
+      "Hiponatremia sintomática severa (SSF 3%)",
+      "Shock hipovolémico (resucitación inicial)",
+      "Alcalosis hipoclorémica"
+    ],
+    "contraindicaciones": [
+      "Hipernatremia",
+      "Retención hídrica/edema severo",
+      "Insuficiencia cardíaca descompensada (precaución)",
+      "SSF 3%: no por vía periférica prolongada"
+    ],
+    "efectosAdversos": [
+      "Acidosis hiperclorémica (uso excesivo)",
+      "Sobrecarga hídrica/edema pulmonar",
+      "Hipernatremia (con SSF 3%)",
+      "Edema periférico",
+      "Hipopotasemia dilucional"
+    ],
+    "interacciones": [
+      "Compatible con la mayoría de medicamentos IV",
+      "Incompatible con anfotericina B (usar SG5%)",
+      "Incompatible con levosimendán (usar SG5%)",
+      "No mezclar con sangre en misma línea"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Mantenimiento: 1500-2500 mL/24h. Resucitación: bolos 250-500 mL rápidos. Hiponatremia severa (3%): 100-150 mL en 10-20 min. Máx corrección Na+: 8-10 mEq/L en 24h",
+      "pediatrico": "Mantenimiento: Holliday-Segar (4-2-1 mL/kg/h). Resucitación: bolos 20 mL/kg en 15-20 min"
+    },
+    "presentaciones": [
+      "Bolsa SSF 0.9% 100, 250, 500, 1000 mL",
+      "Ampolla NaCl 20% 10 mL",
+      "Bolsa SSF 3% 250-500 mL",
+      "Bolsa NaCl 0.45% 500-1000 mL",
+      "Ampollas SSF 0.9% 5-10 mL (lavado)"
+    ],
+    "embarazo": "A",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "SSF 0.9% = diluyente más usado: verificar compatibilidad con cada fármaco",
+      "Balance hídrico estricto: registrar ingresos y egresos",
+      "Vigilar signos de sobrecarga: disnea, crepitantes, edema, ingurgitación yugular",
+      "SSF 3%: preferiblemente por vía CENTRAL",
+      "En hiponatremia: control Na+ sérico cada 2-4h (riesgo mielinólisis si corrección >10 mEq/L/24h)",
+      "Uso excesivo de SSF 0.9% causa acidosis hiperclorémica → considerar Ringer Lactato",
+      "No calentar en microondas"
+    ],
+    "farmacocinetica": {
+      "distribucion": "LEC: 75% intersticial, 25% intravascular",
+      "excrecion": "Renal",
+      "inicioAccion": "Expansión de volumen inmediata"
+    },
+    "almacenamiento": "Temperatura ambiente. Desechar sobrante de bolsa abierta en 24h",
+    "unidadId": "u12",
+    "capituloId": "c12_07"
+  },
+  {
+    "id": "acido_ascorbico",
+    "nombre": "Ácido Ascórbico (Vitamina C)",
+    "nombreGenerico": "Ácido ascórbico",
+    "nombresComerciales": [
+      "Redoxon",
+      "Cebión",
+      "Cevalin"
+    ],
+    "familia": "Vitaminas",
+    "clasificacion": "Vitamina hidrosoluble — antioxidante",
+    "mecanismoAccion": "Cofactor en múltiples reacciones enzimáticas: síntesis de colágeno (hidroxilación de prolina y lisina), biosíntesis de carnitina y catecolaminas, y absorción de hierro no hemo. Potente antioxidante que neutraliza radicales libres. Su déficit causa escorbuto.",
+    "indicaciones": [
+      "Escorbuto (déficit severo de vitamina C)",
+      "Suplementación en pacientes críticos/quemados",
+      "Mejora absorción de hierro oral",
+      "Metahemoglobinemia (coadyuvante)",
+      "Déficit nutricional en alcohólicos",
+      "Cicatrización de heridas"
+    ],
+    "contraindicaciones": [
+      "Litiasis renal por oxalato (dosis altas)",
+      "Hemocromatosis",
+      "Déficit de G6PD (dosis altas IV)"
+    ],
+    "efectosAdversos": [
+      "Diarrea (dosis altas)",
+      "Dolor abdominal",
+      "Náuseas",
+      "Cálculos renales de oxalato (>2 g/día)",
+      "Hemólisis en déficit G6PD"
+    ],
+    "interacciones": [
+      "Hierro oral: aumenta absorción (administrar juntos)",
+      "Warfarina: dosis altas pueden reducir efecto anticoagulante",
+      "Deferoxamina: no administrar simultáneamente (toxicidad cardíaca)"
+    ],
+    "viaAdministracion": [
+      "VO",
+      "IV",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "Déficit: 100-250 mg VO c/12h. Escorbuto: 1-2 g/día. Sepsis (protocolo): 1.5 g IV c/6h. Suplemento: 60-100 mg/día",
+      "pediatrico": "Déficit: 100-300 mg/día divididos c/8h. Suplemento: 25-45 mg/día"
+    },
+    "presentaciones": [
+      "Comprimidos 500 mg",
+      "Comprimidos efervescentes 1 g",
+      "Ampolla 500 mg/5 mL",
+      "Ampolla 1 g/5 mL",
+      "Gotas orales 100 mg/mL"
+    ],
+    "embarazo": "A",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "IV: diluir en SSF o SG5%, administrar lento",
+      "Administrar junto con hierro oral para mejorar su absorción",
+      "Dosis >1 g/día: vigilar función renal y riesgo de litiasis",
+      "Puede interferir con glucómetros (lecturas falsamente elevadas)",
+      "Conservar protegido de la luz (se oxida fácilmente)",
+      "En pacientes críticos: existe evidencia de beneficio en sepsis y quemados"
+    ],
+    "farmacocinetica": {
+      "biodisponibilidad": "70-90% VO (se reduce con dosis altas)",
+      "excrecion": "Renal",
+      "vidaMedia": "10h"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz. Desechar si oscurece",
+    "unidadId": "u06",
+    "capituloId": "c06_05"
+  },
+  {
+    "id": "inmunoglobulina_anti_d",
+    "nombre": "Inmunoglobulina Anti-D",
+    "nombreGenerico": "Inmunoglobulina anti-D (Rh)",
+    "nombresComerciales": [
+      "RhoGAM",
+      "Rhophylac",
+      "Inmunoglobulina Anti-D Grifols",
+      "WinRho"
+    ],
+    "familia": "Inmunoglobulinas específicas",
+    "clasificacion": "Inmunoglobulina — prevención de isoinmunización Rh",
+    "mecanismoAccion": "Anticuerpos IgG anti-D que se unen a los hematíes Rh(D) positivos fetales que hayan pasado a la circulación materna, promoviendo su eliminación antes de que el sistema inmune materno los reconozca y genere anticuerpos propios. Previene la enfermedad hemolítica del recién nacido (EHRN) en embarazos futuros.",
+    "indicaciones": [
+      "Prevención isoinmunización Rh en madre Rh negativa (semana 28)",
+      "Post-parto si recién nacido Rh positivo (dentro de 72h)",
+      "Post-aborto (espontáneo o provocado)",
+      "Post-amniocentesis o procedimiento invasivo fetal",
+      "Post-embarazo ectópico o molar",
+      "Traumatismo abdominal en embarazo",
+      "Post-transfusión incompatible Rh"
+    ],
+    "contraindicaciones": [
+      "Paciente Rh(D) positiva",
+      "Paciente ya sensibilizada (anti-D positivo)",
+      "Déficit conocido de IgA con anticuerpos anti-IgA"
+    ],
+    "efectosAdversos": [
+      "Dolor en sitio de inyección",
+      "Febrícula",
+      "Malestar general",
+      "Reacción alérgica (rara)",
+      "Anemia hemolítica leve"
+    ],
+    "interacciones": [
+      "Vacunas de virus vivos (sarampión, rubéola, varicela): esperar 3 meses post-anti-D",
+      "No interfiere con vacunas inactivadas"
+    ],
+    "viaAdministracion": [
+      "IM",
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Profilaxis prenatal (28 sem): 300 mcg (1500 UI) IM. Post-parto: 300 mcg IM dentro de 72h. Aborto <12 sem: 50-120 mcg. Aborto >12 sem: 300 mcg. Transfusión incompatible: 20 mcg por mL de sangre Rh+ transfundida",
+      "pediatrico": "No aplicable (uso materno)"
+    },
+    "presentaciones": [
+      "Jeringa precargada 300 mcg (1500 UI)",
+      "Jeringa precargada 50 mcg (250 UI)",
+      "Vial 300 mcg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "Verificar SIEMPRE: madre Rh NEGATIVA + Coombs indirecto NEGATIVO",
+      "Administrar antes de 72h post-parto/evento (ideal <24h)",
+      "Vía IM: deltoides o glúteo (NUNCA IV con preparados IM)",
+      "Registrar lote en historia clínica de la madre Y del recién nacido",
+      "En parto: enviar sangre de cordón para grupo y Coombs del RN",
+      "Realizar test de Kleihauer-Betke si hemorragia feto-materna significativa",
+      "Conservar refrigerado (2-8°C). No congelar"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "Aclaramiento de hematíes Rh+ en 24-48h",
+      "vidaMedia": "23-26 días",
+      "distribucion": "Intravascular inicialmente, luego redistribución"
+    },
+    "almacenamiento": "Refrigerar 2-8°C. No congelar. Proteger de la luz",
+    "unidadId": "u07",
+    "capituloId": "c07_01"
+  },
+  {
+    "id": "concentrado_hematies",
+    "nombre": "Concentrado de Hematíes",
+    "nombreGenerico": "Concentrado de glóbulos rojos",
+    "nombresComerciales": [
+      "Concentrado de Hematíes",
+      "Packed Red Blood Cells (pRBC)"
+    ],
+    "familia": "Hemoderivados",
+    "clasificacion": "Componente sanguíneo — hemoderivado",
+    "mecanismoAccion": "Aporta eritrocitos para restaurar la capacidad de transporte de oxígeno. Cada unidad (~300 mL, Hto 55-65%) eleva la hemoglobina aproximadamente 1 g/dL y el hematocrito 3% en un adulto de 70 kg.",
+    "indicaciones": [
+      "Anemia aguda sintomática (hemorragia)",
+      "Anemia crónica con Hb <7 g/dL (umbral restrictivo)",
+      "Hb <8 g/dL en cardiopatía isquémica o inestabilidad hemodinámica",
+      "Shock hemorrágico",
+      "Exanguinotransfusión neonatal"
+    ],
+    "contraindicaciones": [
+      "Transfusión no indicada clínicamente (Hb >10 g/dL generalmente no requiere)",
+      "Incompatibilidad ABO confirmada"
+    ],
+    "efectosAdversos": [
+      "Reacción transfusional hemolítica aguda (incompatibilidad ABO — GRAVE)",
+      "Reacción febril no hemolítica",
+      "Reacción alérgica/urticarial",
+      "TRALI (lesión pulmonar aguda)",
+      "TACO (sobrecarga circulatoria)",
+      "Infección transmitida por transfusión (muy raro)",
+      "Hiperpotasemia (sangre almacenada)",
+      "Hipocalcemia (citrato)"
+    ],
+    "interacciones": [
+      "NUNCA mezclar con medicamentos en misma línea",
+      "NUNCA infundir con Ringer Lactato (el calcio causa coagulación)",
+      "Solo compatible con SSF 0.9% en misma línea"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "1 unidad eleva Hb ~1 g/dL. Transfundir según clínica, no solo por cifra. Hemorragia masiva: protocolo de transfusión masiva (1:1:1 con plasma y plaquetas)",
+      "pediatrico": "10-15 mL/kg por transfusión"
+    },
+    "presentaciones": [
+      "Bolsa ~280-350 mL por unidad",
+      "Concentrado irradiado",
+      "Concentrado leucodepletado",
+      "Concentrado lavado"
+    ],
+    "embarazo": "Compatible cuando indicado",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "VERIFICACIÓN DE IDENTIDAD: doble check paciente-bolsa-grupo sanguíneo AL PIE DE CAMA",
+      "Registrar: lote, hora inicio/fin, signos vitales pre-intra-post",
+      "Iniciar lento (primeros 15 min a goteo lento) y vigilar reacción",
+      "Controles: TA, FC, Tª a los 0, 15, 30 min y al finalizar",
+      "Si reacción: PARAR inmediatamente, mantener vía con SSF, avisar médico, enviar bolsa a banco de sangre",
+      "Completar transfusión en máximo 4 HORAS (riesgo contaminación bacteriana)",
+      "NO calentar en microondas ni baño maría >37°C",
+      "Usar filtro estándar de 170-200 micras",
+      "Vía exclusiva o solo con SSF 0.9%",
+      "Conservar en banco de sangre hasta momento de uso (2-6°C). Una vez fuera, no devolver si >30 min"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "Aumento de Hb en 15-30 min post-transfusión",
+      "vidaMedia": "Hematíes: 120 días (propios), ~25-35 días (transfundidos)",
+      "distribucion": "Intravascular"
+    },
+    "almacenamiento": "Banco de sangre: 2-6°C hasta 42 días (según conservante). No congelar",
+    "unidadId": "u10",
+    "capituloId": "c10_03"
+  },
+  {
+    "id": "plasma_fresco_congelado",
+    "nombre": "Plasma Fresco Congelado (PFC)",
+    "nombreGenerico": "Plasma fresco congelado",
+    "nombresComerciales": [
+      "PFC",
+      "Fresh Frozen Plasma (FFP)"
+    ],
+    "familia": "Hemoderivados",
+    "clasificacion": "Componente sanguíneo — hemoderivado",
+    "mecanismoAccion": "Contiene todos los factores de coagulación, albúmina, inmunoglobulinas y proteínas plasmáticas. Repone factores de coagulación deficientes, corrigiendo coagulopatías. Cada unidad aporta ~200-250 mL con niveles fisiológicos de todos los factores.",
+    "indicaciones": [
+      "Hemorragia activa con coagulopatía (INR >1.5)",
+      "Transfusión masiva (protocolo 1:1:1 con CH y plaquetas)",
+      "CID con sangrado activo",
+      "Reversión de ACOs cuando CCP no disponible",
+      "PTT/SHU (plasmaféresis terapéutica)",
+      "Déficit de múltiples factores de coagulación",
+      "Cirugía urgente con coagulopatía"
+    ],
+    "contraindicaciones": [
+      "Corrección de INR sin sangrado activo",
+      "Expansión de volumen (usar cristaloides/coloides)",
+      "Como aporte nutricional",
+      "Coagulopatía corregible con vitamina K (no urgente)",
+      "Incompatibilidad ABO"
+    ],
+    "efectosAdversos": [
+      "TRALI (lesión pulmonar)",
+      "TACO (sobrecarga)",
+      "Reacciones alérgicas",
+      "Reacción febril",
+      "Transmisión infecciosa (muy raro)",
+      "Hipocalcemia (citrato)",
+      "Hipotermia (si no se calienta)"
+    ],
+    "interacciones": [
+      "NUNCA mezclar con medicamentos",
+      "Solo compatible con SSF 0.9% en misma línea"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "10-15 mL/kg. Habitualmente 2-4 unidades. Transfusión masiva: ratio 1:1:1 (PFC:CH:Plaquetas)",
+      "pediatrico": "10-15 mL/kg"
+    },
+    "presentaciones": [
+      "Bolsa ~200-250 mL por unidad"
+    ],
+    "embarazo": "Compatible cuando indicado",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "Descongelar en baño a 30-37°C o dispositivo aprobado (20-30 min)",
+      "Una vez descongelado: transfundir ANTES DE 4-6 HORAS",
+      "Verificar compatibilidad ABO (no requiere Rh)",
+      "Mismos controles que concentrado de hematíes: identidad, signos vitales",
+      "Usar filtro estándar 170-200 micras",
+      "Velocidad: 10-20 mL/min (o según tolerancia hemodinámica)",
+      "Si reacción: parar, SSF, avisar, enviar muestra",
+      "NO recongelar una vez descongelado",
+      "Registrar trazabilidad: lote, hora, volumen"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "Corrección de INR en 30-60 min",
+      "distribucion": "Intravascular",
+      "vidaMedia": "Variable según factor (VII: 4-6h es el más corto)"
+    },
+    "almacenamiento": "Congelado a -18°C o menos (hasta 36 meses). Una vez descongelado: 2-6°C máx 24h",
+    "unidadId": "u10",
+    "capituloId": "c10_03"
+  },
+  {
+    "id": "agua_esteril_inyeccion",
+    "nombre": "Agua Estéril para Inyección",
+    "nombreGenerico": "Agua para inyección",
+    "nombresComerciales": [
+      "Agua estéril",
+      "Water for Injection (WFI)"
+    ],
+    "familia": "Solventes y diluyentes",
+    "clasificacion": "Vehículo farmacéutico — solvente para reconstitución",
+    "mecanismoAccion": "Agua purificada, estéril y apirógena, utilizada exclusivamente como diluyente o solvente para la reconstitución de medicamentos liofilizados. No contiene electrolitos ni solutos. Es hipotónica (osmolaridad 0 mOsm/L), por lo que NUNCA debe administrarse IV directamente sin soluto añadido, ya que causa hemólisis y edema celular.",
+    "indicaciones": [
+      "Reconstitución de medicamentos liofilizados (antibióticos, electrolitos concentrados)",
+      "Diluyente para preparaciones parenterales",
+      "Irrigación estéril de heridas (uso limitado)",
+      "Preparación de soluciones magistrales"
+    ],
+    "contraindicaciones": [
+      "NUNCA administrar IV pura (causa hemólisis masiva)",
+      "No usar como fluido de reposición de volumen",
+      "No usar para diluir albúmina concentrada"
+    ],
+    "efectosAdversos": [
+      "Hemólisis aguda (si se administra IV pura)",
+      "Hiponatremia severa (si se administra sin soluto)",
+      "Edema cerebral (por hipotonicidad)"
+    ],
+    "interacciones": [
+      "Verificar compatibilidad con cada medicamento a reconstituir",
+      "Algunos fármacos requieren SSF como diluyente, NO agua estéril"
+    ],
+    "viaAdministracion": [
+      "IV (solo como vehículo, NUNCA sola)"
+    ],
+    "dosis": {
+      "adulto": "Según medicamento a reconstituir. Habitualmente 5-20 mL por vial",
+      "pediatrico": "Según medicamento a reconstituir"
+    },
+    "presentaciones": [
+      "Ampolla 5 mL",
+      "Ampolla 10 mL",
+      "Ampolla 20 mL",
+      "Frasco 100-500 mL (irrigación)"
+    ],
+    "embarazo": "A",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "⚠️ NUNCA infundir IV pura — causa HEMÓLISIS FATAL",
+      "Rotular claramente: 'NO ADMINISTRAR DIRECTAMENTE'",
+      "Usar solo para reconstitución de medicamentos liofilizados",
+      "NO confundir con SSF 0.9% (la SSF sí puede infundirse sola)",
+      "NO usar para diluir albúmina al 20-25% (hemólisis)",
+      "Desechar sobrante de ampolla abierta (no conservar)",
+      "Verificar que el medicamento requiere agua estéril y no SSF como diluyente"
+    ],
+    "farmacocinetica": {
+      "distribucion": "Se distribuye según el soluto añadido",
+      "excrecion": "Renal"
+    },
+    "almacenamiento": "Temperatura ambiente. Ampolla de un solo uso",
+    "unidadId": "u12",
+    "capituloId": "c12_07"
+  },
+  {
+    "id": "suero_glucosalino",
+    "nombre": "Suero Glucosalino",
+    "nombreGenerico": "Glucosa 5% + Cloruro de sodio 0.9%",
+    "nombresComerciales": [
+      "Glucosalino",
+      "Suero glucosalino 1/3",
+      "Suero glucosalino 1/5",
+      "Isofundin glucosado"
+    ],
+    "familia": "Soluciones cristaloides",
+    "clasificacion": "Solución de mantenimiento hidroelectrolítico",
+    "mecanismoAccion": "Solución combinada que aporta simultáneamente agua libre (glucosa), sodio y cloro. La glucosa se metaboliza rápidamente, dejando agua libre que se distribuye al espacio intracelular, mientras que el NaCl mantiene el volumen extracelular. Existen varias proporciones: 1/3 (glucosa 3.3% + NaCl 0.3%), 1/5 (glucosa 4% + NaCl 0.18%), e isotónico (glucosa 5% + NaCl 0.9%).",
+    "indicaciones": [
+      "Fluidoterapia de mantenimiento",
+      "Prevención de deshidratación en ayuno",
+      "Aporte basal de agua y electrolitos en postoperatorio",
+      "Vehículo para medicación IV continua",
+      "Prevención de cetosis de ayuno (aporte calórico mínimo)"
+    ],
+    "contraindicaciones": [
+      "Diabetes mellitus descompensada (precaución)",
+      "Edema cerebral",
+      "Hipernatremia (glucosalino isotónico)",
+      "Hiponatremia (glucosalino hipotónico)"
+    ],
+    "efectosAdversos": [
+      "Hiperglucemia",
+      "Hiponatremia (con formulaciones hipotónicas)",
+      "Sobrecarga hídrica",
+      "Flebitis (por glucosa)"
+    ],
+    "interacciones": [
+      "Compatible con la mayoría de medicamentos IV",
+      "Incompatible con anfotericina B",
+      "Incompatible con fenitoína (precipita)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Mantenimiento: 1500-2500 mL/24h según peso y pérdidas. Ajustar según glucemia y natremia",
+      "pediatrico": "Según fórmula Holliday-Segar: 4-2-1 mL/kg/h. Preferir glucosalino 1/3 o isotónico en pediatría"
+    },
+    "presentaciones": [
+      "Bolsa glucosalino isotónico 500-1000 mL",
+      "Bolsa glucosalino 1/3 500-1000 mL",
+      "Bolsa glucosalino 1/5 500-1000 mL"
+    ],
+    "embarazo": "A",
+    "lactancia": "Seguro",
+    "cuidadosEnfermeria": [
+      "Control de glucemia en diabéticos y pacientes críticos",
+      "El glucosalino 1/3 y 1/5 son HIPOTÓNICOS: riesgo de hiponatremia",
+      "En pediatría: las guías actuales prefieren cristaloides isotónicos",
+      "Registrar en balance hídrico como ingreso IV",
+      "Verificar tipo exacto prescrito: isotónico vs 1/3 vs 1/5 (muy diferente osmolaridad)",
+      "No calentar en microondas"
+    ],
+    "farmacocinetica": {
+      "distribucion": "LEC (NaCl) + LIC (agua libre de glucosa)",
+      "excrecion": "Renal",
+      "inicioAccion": "Expansión de volumen inmediata"
+    },
+    "almacenamiento": "Temperatura ambiente. Desechar sobrante en 24h",
+    "unidadId": "u12",
+    "capituloId": "c12_07"
+  },
+  {
+    "id": "peroxido_hidrogeno",
+    "nombre": "Peróxido de Hidrógeno (Agua Oxigenada)",
+    "nombreGenerico": "Peróxido de hidrógeno",
+    "nombresComerciales": [
+      "Agua oxigenada",
+      "Hydrogen Peroxide",
+      "Cristalmina Oxigenada"
+    ],
+    "familia": "Antisépticos oxidantes",
+    "clasificacion": "Antiséptico — agente oxidante",
+    "mecanismoAccion": "Agente oxidante que libera oxígeno naciente al contacto con la catalasa tisular, generando efecto efervescente que arrastra mecánicamente detritos y bacterias. Efecto antiséptico de corta duración. Activo contra bacterias anaerobias (por el oxígeno liberado). También tiene efecto hemostático leve en sangrados capilares.",
+    "indicaciones": [
+      "Limpieza de heridas contaminadas (arrastre mecánico)",
+      "Desbridamiento de tejido necrótico (efecto efervescente)",
+      "Sangrado capilar menor (efecto hemostático)",
+      "Limpieza de úlceras con tejido desvitalizado",
+      "Enjuague bucal diluido (estomatitis, gingivitis)"
+    ],
+    "contraindicaciones": [
+      "Heridas profundas o cavidades cerradas (riesgo embolia gaseosa)",
+      "Irrigación de cavidades corporales (abdomen, vejiga)",
+      "Heridas limpias en fase de granulación (citotóxico para fibroblastos)",
+      "No inyectar"
+    ],
+    "efectosAdversos": [
+      "Irritación local",
+      "Dolor/escozor",
+      "Retraso en cicatrización (uso prolongado)",
+      "Embolia gaseosa (si se usa en cavidades cerradas)",
+      "Quemadura química (concentraciones >3%)"
+    ],
+    "interacciones": [
+      "Se inactiva rápidamente por materia orgánica",
+      "No mezclar con permanganato (reacción violenta)",
+      "Incompatible con yodados"
+    ],
+    "viaAdministracion": [
+      "Tópica"
+    ],
+    "dosis": {
+      "adulto": "Solución 3% (10 vol): aplicar directamente sobre herida. Enjuague bucal: diluir 1:1 con agua",
+      "pediatrico": "Misma concentración con precaución"
+    },
+    "presentaciones": [
+      "Frasco 3% (10 vol) 250-500 mL",
+      "Frasco 10% (uso profesional)",
+      "Spray 3%"
+    ],
+    "embarazo": "A",
+    "lactancia": "Seguro (uso tópico)",
+    "cuidadosEnfermeria": [
+      "NO usar en heridas limpias en granulación (destruye tejido nuevo)",
+      "NO irrigar cavidades cerradas ni heridas profundas (riesgo embolia gaseosa)",
+      "Uso limitado a limpieza INICIAL de heridas sucias",
+      "Efecto antiséptico MUY breve — no es sustituto de clorhexidina/povidona",
+      "Utilidad principal: arrastre mecánico por efervescencia",
+      "Concentraciones >3%: solo uso profesional supervisado",
+      "Las guías actuales prefieren SSF para lavado de heridas y clorhexidina como antiséptico"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "Inmediato (efervescencia al contacto)",
+      "duracion": "Segundos-minutos"
+    },
+    "almacenamiento": "Temperatura ambiente, frasco oscuro. Proteger de la luz y calor",
+    "unidadId": "u09",
+    "capituloId": "c09_04"
+  },
+  {
+    "id": "simeticona",
+    "nombre": "Simeticona (Dimeticona)",
+    "nombreGenerico": "Simeticona",
+    "nombresComerciales": [
+      "Aerored",
+      "Flatoril",
+      "Imonogas",
+      "Gaseovet"
+    ],
+    "familia": "Antiflatulentos",
+    "clasificacion": "Agente antiflatulento — tensioactivo",
+    "mecanismoAccion": "Polímero de silicona inerte que reduce la tensión superficial de las burbujas de gas en el tracto GI, provocando su coalescencia y facilitando su eliminación por eructo o flatulencia. No se absorbe ni se metaboliza; actúa de forma puramente física.",
+    "indicaciones": [
+      "Meteorismo y flatulencia",
+      "Distensión abdominal por gases",
+      "Cólico del lactante",
+      "Preparación para ecografía/endoscopia abdominal (reducir gas)",
+      "Postoperatorio abdominal (íleo)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad",
+      "Obstrucción intestinal mecánica"
+    ],
+    "efectosAdversos": [
+      "Prácticamente ninguno (no se absorbe)",
+      "Muy rara: reacción alérgica cutánea"
+    ],
+    "interacciones": [
+      "Puede reducir absorción de levotiroxina (separar 2h)",
+      "No interacciones sistémicas significativas (no se absorbe)"
+    ],
+    "viaAdministracion": [
+      "VO"
+    ],
+    "dosis": {
+      "adulto": "40-125 mg después de cada comida y al acostarse. Máx: 500 mg/día",
+      "pediatrico": "Lactantes: 20 mg (0.5 mL) antes de cada toma. Niños: 40 mg c/8h"
+    },
+    "presentaciones": [
+      "Comprimidos masticables 40-120 mg",
+      "Gotas orales 40 mg/mL (frasco 30 mL)",
+      "Cápsulas 120 mg",
+      "Comprimidos 240 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Seguro (no se absorbe)",
+    "cuidadosEnfermeria": [
+      "Administrar DESPUÉS de las comidas",
+      "Comprimidos masticables: masticar completamente antes de tragar",
+      "Gotas: agitar bien antes de usar, medir con cuentagotas",
+      "Seguro en lactantes (no se absorbe)",
+      "No confundir con antiácidos — la simeticona NO reduce acidez",
+      "Útil como preparación previa a ecografía abdominal",
+      "Si persisten síntomas: descartar causa orgánica"
+    ],
+    "farmacocinetica": {
+      "biodisponibilidad": "0% (no se absorbe)",
+      "excrecion": "Heces (inalterada)",
+      "inicioAccion": "15-30 min"
+    },
+    "almacenamiento": "Temperatura ambiente",
+    "unidadId": "u05",
+    "capituloId": "c05_04"
+  },
+  {
+    "id": "toxina_botulinica",
+    "nombre": "Toxina Botulínica Tipo A",
+    "nombreGenerico": "Toxina botulínica tipo A",
+    "nombresComerciales": [
+      "Botox",
+      "Dysport",
+      "Xeomin",
+      "Bocouture"
+    ],
+    "familia": "Relajantes musculares",
+    "clasificacion": "Neurotoxina — bloqueante de unión neuromuscular",
+    "mecanismoAccion": "Neurotoxina producida por Clostridium botulinum que bloquea la liberación de acetilcolina en la unión neuromuscular al escindir la proteína SNAP-25 del complejo SNARE. Produce parálisis muscular flácida localizada y reversible. También bloquea fibras autonómicas colinérgicas (efecto en hiperhidrosis y vejiga).",
+    "indicaciones": [
+      "Espasticidad focal (post-ACV, parálisis cerebral)",
+      "Distonía cervical (tortícolis espasmódica)",
+      "Blefaroespasmo",
+      "Espasmo hemifacial",
+      "Hiperhidrosis axilar/palmar severa",
+      "Migraña crónica (>15 días/mes)",
+      "Vejiga hiperactiva refractaria",
+      "Estrabismo",
+      "Uso estético (arrugas de expresión)"
+    ],
+    "contraindicaciones": [
+      "Infección en sitio de inyección",
+      "Miastenia gravis",
+      "Síndrome de Lambert-Eaton",
+      "Hipersensibilidad a albúmina humana o toxina",
+      "Embarazo y lactancia"
+    ],
+    "efectosAdversos": [
+      "Debilidad muscular excesiva local",
+      "Dolor en sitio de inyección",
+      "Disfagia (inyección cervical)",
+      "Ptosis palpebral",
+      "Sequedad bucal",
+      "Cefalea",
+      "Síntomas pseudogripales",
+      "Diseminación a distancia (raro, grave)"
+    ],
+    "interacciones": [
+      "Aminoglucósidos: potencian bloqueo neuromuscular",
+      "Relajantes musculares: efecto aditivo",
+      "Anticoagulantes: mayor riesgo de hematoma en sitio de inyección"
+    ],
+    "viaAdministracion": [
+      "IM (inyección local)"
+    ],
+    "dosis": {
+      "adulto": "Varía según indicación y músculo. Espasticidad: 75-400 U por sesión (Botox). Migraña: 155-195 U distribuidas en 31-39 puntos. Intervalo mínimo entre sesiones: 12 semanas",
+      "pediatrico": "Espasticidad: 4-8 U/kg por sesión (máx 200 U). Solo >2 años"
+    },
+    "presentaciones": [
+      "Vial liofilizado Botox 50, 100, 200 U",
+      "Vial Dysport 300, 500 U",
+      "Vial Xeomin 50, 100, 200 U"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicada",
+    "cuidadosEnfermeria": [
+      "Las unidades NO son intercambiables entre marcas (Botox ≠ Dysport ≠ Xeomin)",
+      "Reconstituir con SSF 0.9% SIN conservantes. No agitar (desnaturaliza)",
+      "Conservar reconstituido en refrigerador, usar en 24h",
+      "Administración SOLO por profesional entrenado y con conocimiento anatómico",
+      "Vigilar disfagia/disfonía post-inyección cervical (tener protocolo de aspiración)",
+      "Inicio de efecto: 2-7 días. Máximo efecto: 2-6 semanas",
+      "No repetir antes de 12 semanas (riesgo anticuerpos neutralizantes)",
+      "Educación al paciente: el efecto es TEMPORAL (3-6 meses)"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "2-7 días",
+      "duracion": "3-6 meses",
+      "distribucion": "Local (difusión limitada desde sitio de inyección)",
+      "metabolismo": "Degradación proteolítica local"
+    },
+    "almacenamiento": "Refrigerar 2-8°C (Botox, Dysport). Xeomin: temperatura ambiente. Reconstituido: refrigerar, usar en 24h",
+    "unidadId": "u08",
+    "capituloId": "c08_03"
+  },
+  {
+    "id": "finasterida",
+    "nombre": "Finasterida",
+    "nombreGenerico": "Finasterida",
+    "nombresComerciales": [
+      "Proscar",
+      "Propecia",
+      "Finasterida Kern"
+    ],
+    "familia": "Inhibidores de 5-alfa-reductasa",
+    "clasificacion": "Antiandrógeno selectivo",
+    "mecanismoAccion": "Inhibe selectivamente la 5-alfa-reductasa tipo II, enzima que convierte testosterona en dihidrotestosterona (DHT) en próstata, piel y folículo piloso. Reduce los niveles de DHT sérica en un 70%. En hiperplasia prostática, disminuye el volumen prostático un 20-30% en 6-12 meses. En alopecia, revierte la miniaturización folicular.",
+    "indicaciones": [
+      "Hiperplasia benigna de próstata (HBP) sintomática",
+      "Alopecia androgénica masculina",
+      "Reducción de sangrado prostático preoperatorio",
+      "Reducción de riesgo de retención aguda de orina en HBP"
+    ],
+    "contraindicaciones": [
+      "Mujeres (especialmente embarazadas — teratogénico)",
+      "Niños",
+      "Hipersensibilidad",
+      "Cáncer de próstata (puede enmascarar PSA)"
+    ],
+    "efectosAdversos": [
+      "Disfunción eréctil (3-4%)",
+      "Disminución de libido",
+      "Disminución del volumen eyaculado",
+      "Ginecomastia/mastalgia",
+      "Depresión (reportes post-comercialización)",
+      "Reduce PSA un 50% (ajustar en cribado de cáncer)"
+    ],
+    "interacciones": [
+      "No interacciones farmacológicas clínicamente significativas",
+      "PSA: multiplicar x2 el valor obtenido para interpretar correctamente"
+    ],
+    "viaAdministracion": [
+      "VO"
+    ],
+    "dosis": {
+      "adulto": "HBP: 5 mg/día. Alopecia: 1 mg/día. Efecto máximo: 6-12 meses de tratamiento continuado",
+      "pediatrico": "No indicado"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 5 mg (Proscar)",
+      "Comprimidos recubiertos 1 mg (Propecia)"
+    ],
+    "embarazo": "X (teratogénico — feminización de feto masculino)",
+    "lactancia": "No aplica (uso masculino)",
+    "cuidadosEnfermeria": [
+      "⚠️ Mujeres embarazadas NO deben manipular comprimidos rotos/triturados (absorción transcutánea → teratógeno)",
+      "Efecto terapéutico tarda 3-6 meses (informar al paciente para adherencia)",
+      "Reduce PSA un 50%: si PSA se solicita, avisar al laboratorio del uso de finasterida",
+      "Educación: si se suspende, los síntomas prostáticos vuelven en 6-8 meses",
+      "Monitorizar: síntomas prostáticos (IPSS), flujo urinario",
+      "Puede donar sangre solo 1 mes después de suspender (riesgo para embarazadas receptoras)"
+    ],
+    "farmacocinetica": {
+      "biodisponibilidad": "63% VO",
+      "vidaMedia": "6-8h (jóvenes), hasta 14h (>70 años)",
+      "metabolismo": "Hepático (CYP3A4)",
+      "excrecion": "Heces (57%) y orina (39%)",
+      "inicioAccion": "Reducción DHT en 24h. Efecto clínico: 3-6 meses"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la humedad",
+    "unidadId": "u07",
+    "capituloId": "c07_02"
+  },
+  {
+    "id": "hierro_sacarosa_iv",
+    "nombre": "Hierro Sacarosa IV",
+    "nombreGenerico": "Hierro sacarosa (complejo de hidróxido férrico-sacarosa)",
+    "nombresComerciales": [
+      "Venofer",
+      "Feriv",
+      "Iron Sucrose"
+    ],
+    "familia": "Antianémicos — hierro parenteral",
+    "clasificacion": "Hierro intravenoso — antianémico",
+    "mecanismoAccion": "Complejo de hidróxido de hierro (III) con sacarosa que libera hierro de forma controlada al sistema reticuloendotelial, donde se incorpora a la ferritina y transferrina para su transporte a la médula ósea. Se utiliza cuando el hierro oral es insuficiente, no tolerado o se necesita reposición rápida de depósitos.",
+    "indicaciones": [
+      "Anemia ferropénica con intolerancia al hierro oral",
+      "Anemia en insuficiencia renal crónica (hemodiálisis/diálisis peritoneal)",
+      "Déficit de hierro funcional en tratamiento con EPO",
+      "Anemia ferropénica en enfermedad inflamatoria intestinal",
+      "Anemia perioperatoria (reposición rápida)",
+      "Anemia del embarazo (2°-3° trimestre) con intolerancia oral"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a hierro parenteral",
+      "Sobrecarga de hierro (hemocromatosis, hemosiderosis)",
+      "Anemia no ferropénica",
+      "Primer trimestre de embarazo",
+      "Infección activa no controlada"
+    ],
+    "efectosAdversos": [
+      "Reacción anafilactoide (rara pero grave)",
+      "Hipotensión (infusión rápida)",
+      "Náuseas",
+      "Cefalea",
+      "Sabor metálico",
+      "Dolor/flebitis en sitio de inyección",
+      "Artralgia/mialgia",
+      "Tinción marrón de piel (extravasación)"
+    ],
+    "interacciones": [
+      "No administrar con hierro oral simultáneamente (suspender oral 24-48h antes)",
+      "Inhibidores de la ECA: mayor incidencia de reacciones sistémicas (hipotensión)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "200 mg (2 ampollas) diluidas en 200 mL SSF, infundir en 30 min. Dosis total según fórmula de Ganzoni: Fe (mg) = peso × (Hb objetivo - Hb actual) × 2.4 + 500. Máx: 200 mg por sesión, 3 sesiones/semana",
+      "pediatrico": ">3 años: 3 mg/kg por sesión (máx 200 mg). Infundir en 30-60 min"
+    },
+    "presentaciones": [
+      "Ampolla 100 mg/5 mL (20 mg Fe/mL)",
+      "Ampolla 200 mg/10 mL"
+    ],
+    "embarazo": "B (2°-3° trimestre)",
+    "lactancia": "Compatible",
+    "cuidadosEnfermeria": [
+      "⚠️ Tener preparado equipo de ANAFILAXIA (adrenalina, corticoides, O2)",
+      "Dosis de prueba NO requerida con hierro sacarosa (sí con hierro dextrano)",
+      "Infundir en mínimo 15 min por 100 mg (ideal 30 min para 200 mg)",
+      "Diluir SOLO en SSF 0.9% (no SG5%, no agua estéril)",
+      "Monitorizar TA, FC durante infusión y 30 min post",
+      "Si extravasación: dolor y tinción marrón permanente de la piel",
+      "Vigilar signos de reacción: rubor, disnea, dolor torácico, hipotensión",
+      "Suspender hierro oral 24-48h antes de la infusión",
+      "La ferritina se eleva transitoriamente post-infusión — medir a las 2 semanas"
+    ],
+    "farmacocinetica": {
+      "vidaMedia": "6h (eliminación del complejo)",
+      "distribucion": "Sistema reticuloendotelial → ferritina/transferrina",
+      "excrecion": "Mínima urinaria (<5%)",
+      "inicioAccion": "Aumento de reticulocitos en 3-5 días. Hb sube en 2-4 semanas"
+    },
+    "almacenamiento": "Temperatura ambiente. No congelar. Proteger de la luz",
+    "unidadId": "u10",
+    "capituloId": "c10_01"
+  },
+  {
+    "id": "nitrofurazona",
+    "nombre": "Nitrofurazona (Furacina)",
+    "nombreGenerico": "Nitrofurazona",
+    "nombresComerciales": [
+      "Furacina",
+      "Furacin",
+      "Nitrofural"
+    ],
+    "familia": "Antibacterianos tópicos",
+    "clasificacion": "Antiséptico/antibacteriano tópico — derivado nitrofurano",
+    "mecanismoAccion": "Derivado nitrofurano con acción bactericida de amplio espectro. Inhibe enzimas bacterianas implicadas en el metabolismo aeróbico y anaeróbico del piruvato y en la degradación de la glucosa. Activo contra Staphylococcus aureus, Streptococcus, E. coli, Proteus, Clostridium y Enterobacter. Menor desarrollo de resistencias que otros antibacterianos tópicos.",
+    "indicaciones": [
+      "Quemaduras de 2° y 3° grado (prevención y tratamiento de infección)",
+      "Heridas infectadas o con riesgo de infección",
+      "Úlceras cutáneas infectadas",
+      "Injertos cutáneos (prevención de infección)",
+      "Heridas quirúrgicas abiertas"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a nitrofurazona o nitrofuranos",
+      "Insuficiencia renal (absorción sistémica en grandes superficies)"
+    ],
+    "efectosAdversos": [
+      "Dermatitis de contacto alérgica",
+      "Irritación local",
+      "Prurito",
+      "Eritema",
+      "Sensibilización cutánea (uso prolongado)",
+      "Nefrotoxicidad (absorción en quemaduras extensas — raro)"
+    ],
+    "interacciones": [
+      "No se conocen interacciones tópicas significativas",
+      "En quemaduras extensas: precaución con otros nefrotóxicos por absorción sistémica"
+    ],
+    "viaAdministracion": [
+      "Tópica"
+    ],
+    "dosis": {
+      "adulto": "Aplicar directamente sobre la herida o sobre gasa/apósito 1-2 veces al día. En quemaduras: aplicar capa fina con cada cambio de cura",
+      "pediatrico": "Misma posología que adulto"
+    },
+    "presentaciones": [
+      "Crema 0.2% tubo 30-60 g",
+      "Pomada soluble 0.2% tubo 30-100 g",
+      "Gasa impregnada (Furacin gasa)",
+      "Solución tópica 0.2%"
+    ],
+    "embarazo": "C",
+    "lactancia": "Precaución (uso en áreas limitadas)",
+    "cuidadosEnfermeria": [
+      "Limpiar la herida con SSF antes de aplicar",
+      "Aplicar capa fina uniforme directamente o sobre gasa estéril",
+      "Cambiar apósito cada 12-24h según exudado",
+      "Si aparece dermatitis de contacto: suspender y cambiar a otro tópico",
+      "En quemaduras extensas (>20% SCQ): vigilar función renal (absorción sistémica)",
+      "Las gasas impregnadas facilitan la aplicación y reducen dolor al retirar",
+      "No usar en heridas limpias en granulación avanzada (puede retrasar cierre)",
+      "Almacenar protegido de la luz (se degrada)"
+    ],
+    "farmacocinetica": {
+      "inicioAccion": "Efecto antibacteriano local inmediato",
+      "distribucion": "Tópico local. Absorción sistémica mínima (excepto en quemaduras extensas)",
+      "excrecion": "Renal (si absorción sistémica)"
+    },
+    "almacenamiento": "Temperatura ambiente. Proteger de la luz (se oscurece pero no pierde eficacia si leve)",
+    "unidadId": "u09",
+    "capituloId": "c09_04"
   }
 ]

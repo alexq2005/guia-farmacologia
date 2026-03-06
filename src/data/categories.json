@@ -221,7 +221,8 @@
             "rivastigmina",
             "donepezilo",
             "ofatumumab_em",
-            "ponesimod"
+            "ponesimod",
+            "brexanolona"
           ]
         },
         {
@@ -258,7 +259,8 @@
             "lasmiditan",
             "erenumab",
             "galcanezumab",
-            "fremanezumab"
+            "fremanezumab",
+            "ubrogepant"
           ]
         },
         {
@@ -459,7 +461,8 @@
             "evolocumab",
             "acido_nicotinico",
             "colestiramina_lip",
-            "inclisiran"
+            "inclisiran",
+            "finerenona"
           ]
         },
         {
@@ -482,7 +485,8 @@
             "ivabradina_angina",
             "isosorbide_mononitrato_det",
             "dipiridamol_cv",
-            "papaverina"
+            "papaverina",
+            "inclisiran"
           ]
         },
         {
@@ -533,7 +537,8 @@
             "tadalafilo_hp",
             "sildenafilo_hp",
             "beraprost",
-            "sitaxentan_hist"
+            "sitaxentan_hist",
+            "macitentán"
           ]
         },
         {
@@ -576,7 +581,8 @@
             "ibuprofeno_ductus",
             "sildenafilo_neonatal",
             "bosentan_congenita",
-            "iloprost_congenita"
+            "iloprost_congenita",
+            "mavacamten"
           ]
         }
       ]
@@ -1262,7 +1268,8 @@
             "acido_ursodeoxicolico_colestasis",
             "colestiramina_prurito",
             "naltrexona_prurito",
-            "ácido_ursodeoxicólico"
+            "ácido_ursodeoxicólico",
+            "simeticona"
           ]
         },
         {
@@ -1298,7 +1305,8 @@
             "risankizumab_eii",
             "mirikizumab",
             "sulfasalazina",
-            "mesalazina"
+            "mesalazina",
+            "vedolizumab_new"
           ]
         },
         {
@@ -1475,7 +1483,8 @@
             "liraglutida_obesidad",
             "semaglutida_obesidad",
             "orlistat",
-            "octreótida"
+            "octreótida",
+            "migalastat"
           ]
         },
         {
@@ -1487,7 +1496,8 @@
             "lanreotida",
             "somatropina",
             "terlipresina",
-            "tirzepatida_detalle2"
+            "tirzepatida_detalle2",
+            "acido_ascorbico"
           ]
         },
         {
@@ -1588,7 +1598,9 @@
             "drospirenona_sola",
             "etonogestrel_implante_det",
             "diu_levonorgestrel_52",
-            "ulipristal_anticoncepcion"
+            "ulipristal_anticoncepcion",
+            "isoxuprina",
+            "inmunoglobulina_anti_d"
           ]
         },
         {
@@ -1610,7 +1622,8 @@
             "piridoxina_embarazo",
             "cianocobalamina_embarazo",
             "vitamina_e_gestacional",
-            "cetrorelix_detalle"
+            "cetrorelix_detalle",
+            "finasterida"
           ]
         },
         {
@@ -1825,7 +1838,8 @@
             "pegloticase",
             "benzbromarona",
             "lesinurad",
-            "sulfinpirazona"
+            "sulfinpirazona",
+            "toxina_botulinica"
           ]
         },
         {
@@ -1994,7 +2008,9 @@
             "crotamiton",
             "spinosad",
             "isotretinoina",
-            "acitretina"
+            "acitretina",
+            "peroxido_hidrogeno",
+            "nitrofurazona"
           ]
         },
         {
@@ -2026,7 +2042,8 @@
             "tralokinumab",
             "nemolizumab",
             "lebrikizumab",
-            "bimekizumab"
+            "bimekizumab",
+            "risankizumab"
           ]
         },
         {
@@ -2162,7 +2179,8 @@
             "alteplasa_tvp",
             "ticlopidina",
             "abelacimab",
-            "milvexian"
+            "milvexian",
+            "hierro_sacarosa_iv"
           ]
         },
         {
@@ -2229,7 +2247,9 @@
             "eltrombopag_detalle",
             "voxelotor",
             "crizanlizumab",
-            "hidroxiurea_falciforme"
+            "hidroxiurea_falciforme",
+            "concentrado_hematies",
+            "plasma_fresco_congelado"
           ]
         },
         {
@@ -2322,7 +2342,8 @@
             "dantroleno_hipertermia",
             "flumazenilo_detalle",
             "atropina_organofosforado",
-            "icatibant"
+            "icatibant",
+            "suero_antiofidico"
           ]
         },
         {
@@ -2476,7 +2497,13 @@
             "angiotensina_ii_synth",
             "isoproterenol_infusion",
             "levosimendan_infusion",
-            "nitroprusiato_infusion"
+            "nitroprusiato_infusion",
+            "ranibizumab",
+            "aflibercept",
+            "faricimab",
+            "gadolinio_gadopentetato",
+            "iohexol",
+            "inmunoglobulina_iv"
           ]
         },
         {
@@ -2496,7 +2523,8 @@
             "remifentanilo_infusion",
             "baclofeno_intratecal",
             "metadona_iv",
-            "oxido_nitroso_analg"
+            "oxido_nitroso_analg",
+            "remimazolam"
           ]
         },
         {
@@ -2573,7 +2601,12 @@
             "enfortumab_vedotin",
             "trastuzumab_deruxtecan",
             "atezolizumab",
-            "alectinib"
+            "alectinib",
+            "crizotinib",
+            "niraparib",
+            "pomalidomida",
+            "acalabrutinib",
+            "bcg_vesical"
           ]
         },
         {
@@ -2609,7 +2642,11 @@
             "manitol_cerebral",
             "solucion_salina_3",
             "crioprecipitado",
-            "concentrado_fibrinogeno"
+            "concentrado_fibrinogeno",
+            "patiromero",
+            "cloruro_sodio",
+            "agua_esteril_inyeccion",
+            "suero_glucosalino"
           ]
         }
       ]
