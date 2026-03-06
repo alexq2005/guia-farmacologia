@@ -229,6 +229,22 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             <Text style={styles.familyText}>{drug.familia}</Text>
           </View>
         </View>
+        {(drug.grupoTerapeutico || drug.grupoFarmacologico) && (
+          <View style={styles.grupoRow}>
+            {drug.grupoTerapeutico && (
+              <View style={styles.grupoBadge}>
+                <Text style={styles.grupoLabel}>GT</Text>
+                <Text style={styles.grupoText}>{drug.grupoTerapeutico}</Text>
+              </View>
+            )}
+            {drug.grupoFarmacologico && (
+              <View style={styles.grupoBadge}>
+                <Text style={styles.grupoLabel}>GF</Text>
+                <Text style={styles.grupoText}>{drug.grupoFarmacologico}</Text>
+              </View>
+            )}
+          </View>
+        )}
         {isReplacement && replacedDrug && (
           <View style={styles.replacementHeaderBadge}>
             <Text style={styles.replacementHeaderText}>🔄 Reemplazo de {replacedDrug}</Text>
@@ -619,6 +635,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   pregText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
   familyBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.2)' },
   familyText: { color: '#FFFFFF', fontSize: 12, fontWeight: '600' },
+  grupoRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
+  grupoBadge: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3 },
+  grupoLabel: { color: 'rgba(255,255,255,0.7)', fontSize: 10, fontWeight: '800', marginRight: 5 },
+  grupoText: { color: '#FFFFFF', fontSize: 11, fontWeight: '500' },
   scroll: { flex: 1, marginTop: -12 },
   doseCard: {
     backgroundColor: colors.surface, marginHorizontal: 16, marginTop: 16, padding: 16, borderRadius: 16,

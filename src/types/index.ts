@@ -88,6 +88,8 @@ export interface Drug {
     manejo: string;
     alerta?: string;
   };
+  grupoFarmacologico?: string;  // Pharmacological group (by mechanism)
+  grupoTerapeutico?: string;    // Therapeutic group (by clinical use/system)
   unidadId: string;
   capituloId: string;
   searchText?: string; // Deprecated: generated at runtime

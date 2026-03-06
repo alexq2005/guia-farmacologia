@@ -17,6 +17,8 @@ function buildSearchText(drug: Drug): string {
     drug.embarazo,
     drug.lactancia,
     ...drug.viaAdministracion,
+    drug.grupoFarmacologico,
+    drug.grupoTerapeutico,
   ].filter(Boolean).join(' ');
 }
 

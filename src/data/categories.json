@@ -170,7 +170,8 @@
             "sulpirida",
             "tiaprida",
             "trifluoperazina",
-            "ziprasidona"
+            "ziprasidona",
+            "tiapride"
           ]
         },
         {
@@ -291,7 +292,8 @@
             "riluzol",
             "tetrabenazina",
             "toxina_botulinica_a",
-            "valbenazina"
+            "valbenazina",
+            "onasemnogene"
           ]
         },
         {
@@ -365,7 +367,10 @@
             "sacubitril_valsartan",
             "telmisartan",
             "valsartan",
-            "verapamilo"
+            "verapamilo",
+            "trandolapril",
+            "manidipino",
+            "cilazapril"
           ]
         },
         {
@@ -441,7 +446,8 @@
             "indapamida",
             "metolazona",
             "tolvaptan",
-            "torasemida"
+            "torasemida",
+            "finerenona_dm"
           ]
         },
         {
@@ -1074,7 +1080,8 @@
             "lumacaftor_ivacaftor",
             "solucion_salina_hipertonica",
             "tezacaftor_ivacaftor",
-            "tobramicina_inhalada"
+            "tobramicina_inhalada",
+            "alfa_dornasa"
           ]
         },
         {
@@ -1248,7 +1255,8 @@
             "prucaloprida_detalle",
             "psyllium",
             "racecadotrilo",
-            "senosidos"
+            "senosidos",
+            "lubiprostone"
           ]
         },
         {
@@ -1277,7 +1285,9 @@
             "colesevelam_prurito",
             "creon",
             "fenofibrato_colestasis",
-            "pancrelipasa"
+            "pancrelipasa",
+            "pancrealipasa",
+            "odevixibat"
           ]
         },
         {
@@ -1294,7 +1304,8 @@
             "mosapride",
             "otilonio",
             "pinaverio",
-            "trimebutina"
+            "trimebutina",
+            "alverino"
           ]
         },
         {
@@ -1376,7 +1387,8 @@
             "tirzepatida",
             "tirzepatida_detalle",
             "tolbutamida",
-            "vildagliptina"
+            "vildagliptina",
+            "dapagliflozina_dm"
           ]
         },
         {
@@ -1453,7 +1465,8 @@
             "octreotida",
             "somatropina",
             "terlipresina",
-            "tirzepatida_detalle2"
+            "tirzepatida_detalle2",
+            "mecasermina"
           ]
         },
         {
@@ -1483,7 +1496,9 @@
             "fosfato_oral",
             "paratormona_recombinante",
             "romosozumab",
-            "sevelamer_carbonato"
+            "sevelamer_carbonato",
+            "alfacalcidol",
+            "calcifediol"
           ]
         },
         {
@@ -1599,7 +1614,8 @@
             "tamsulosina",
             "tolterodina",
             "vibegron",
-            "vibegron_detalle"
+            "vibegron_detalle",
+            "citrato_potasico"
           ]
         },
         {
@@ -1662,7 +1678,8 @@
             "risedronato",
             "romosozumab_detalle",
             "romosozumab_oseo",
-            "teriparatida"
+            "teriparatida",
+            "zoledronato"
           ]
         },
         {
@@ -1708,7 +1725,9 @@
             "darolutamida",
             "enzalutamida_prost",
             "tadalafilo_de",
-            "vardenafilo"
+            "vardenafilo",
+            "dutasterida",
+            "terazosina"
           ]
         }
       ]
@@ -1903,7 +1922,9 @@
             "neomicina_topica",
             "ozenoxacino",
             "retapamulina",
-            "sulfadiazina_plata"
+            "sulfadiazina_plata",
+            "tobramicina_oftalm",
+            "moxifloxacino_oftalm"
           ]
         },
         {
@@ -1996,7 +2017,8 @@
             "secukinumab",
             "tacrolimus_topico",
             "timolol_oftalm",
-            "tralokinumab"
+            "tralokinumab",
+            "dupilumab_derm"
           ]
         },
         {
@@ -2028,7 +2050,13 @@
             "colagenasa",
             "dexpantenol",
             "nitrato_plata",
-            "povidona_yodada"
+            "povidona_yodada",
+            "brimonidina",
+            "dorzolamida",
+            "tropicamida",
+            "ciclopentolato",
+            "atropina_oftalmica",
+            "bevacizumab_oftalm"
           ]
         },
         {
@@ -2550,7 +2578,8 @@
             "dexrazoxano",
             "filgrastim_onco",
             "mesna",
-            "zoledronic_onco"
+            "zoledronic_onco",
+            "amifostina"
           ]
         },
         {
