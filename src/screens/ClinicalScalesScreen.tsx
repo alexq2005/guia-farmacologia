@@ -10,6 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { SCALE_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
+import { PremiumGate } from '../components/PremiumGate';
 import scalesData from '../data/clinical_scales.json';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -144,6 +145,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
   const keyExtractor = useCallback((item: ClinicalScale) => item.id, []);
 
   return (
+    <PremiumGate feature="Escalas Clínicas">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
       <View style={styles.header}>
@@ -176,6 +178,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
         contentContainerStyle={{ paddingBottom: 40 }}
       />
     </Animated.View>
+    </PremiumGate>
   );
 }
 

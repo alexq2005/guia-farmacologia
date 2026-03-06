@@ -8,6 +8,7 @@ import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useDrugData } from '../hooks/useDrugData';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
+import { PremiumGate } from '../components/PremiumGate';
 
 const guideData = require('../data/parenteral_guide.json');
 
@@ -243,6 +244,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
   };
 
   return (
+    <PremiumGate feature="Guía Parenteral">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={ACCENT} barStyle="light-content" />
 
@@ -276,6 +278,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
         </ScrollView>
       )}
     </Animated.View>
+    </PremiumGate>
   );
 }
 

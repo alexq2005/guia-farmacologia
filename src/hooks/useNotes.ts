@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { DrugNote } from '../types';
 
 const STORAGE_KEY = '@guia_farmaco_notes';
+const FREE_NOTES_LIMIT = 5;
 
-export function useNotes() {
+export function useNotes(isPremium: boolean = true) {
   const [notes, setNotes] = useState<DrugNote[]>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -30,13 +32,22 @@ export function useNotes() {
     const existing = notes.findIndex(n => n.drugId === drugId);
     const entry: DrugNote = { drugId, text, updatedAt: Date.now() };
     if (existing >= 0) {
+      // Editing an existing note — always allowed
       const updated = [...notes];
       updated[existing] = entry;
       persist(updated);
     } else {
+      if (!isPremium && notes.length >= FREE_NOTES_LIMIT) {
+        Alert.alert(
+          'Límite alcanzado',
+          `En la versión gratuita puedes tener hasta ${FREE_NOTES_LIMIT} notas. Actualiza a Premium para notas ilimitadas.`,
+          [{ text: 'Entendido' }],
+        );
+        return;
+      }
       persist([...notes, entry]);
     }
-  }, [notes, persist]);
+  }, [notes, persist, isPremium]);
 
   const deleteNote = useCallback((drugId: string) => {
     persist(notes.filter(n => n.drugId !== drugId));

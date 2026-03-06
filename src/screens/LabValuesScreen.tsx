@@ -9,6 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { LAB_CATEGORY_LABELS } from '../utils/labels';
+import { PremiumGate } from '../components/PremiumGate';
 import labValuesData from '../data/lab_values.json';
 
 const ALL_LAB_CATEGORIES: LabCategory[] = [
@@ -208,6 +209,7 @@ export function LabValuesScreen() {
   const keyExtractor = useCallback((item: LabValue) => item.id, []);
 
   return (
+    <PremiumGate feature="Valores de Laboratorio">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#2563EB" barStyle="light-content" />
       <View style={styles.header}>
@@ -242,6 +244,7 @@ export function LabValuesScreen() {
         extraData={expandedIds}
       />
     </Animated.View>
+    </PremiumGate>
   );
 }
 

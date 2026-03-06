@@ -10,6 +10,7 @@ import { useFavoritesContext } from '../context/FavoritesContext';
 import { useNotesContext } from '../context/NotesContext';
 import { useQuiz } from '../hooks/useQuiz';
 import { useTheme } from '../context/ThemeContext';
+import { usePremium } from '../context/PremiumContext';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn, useStaggeredEntrance } from '../utils/animations';
@@ -33,6 +34,7 @@ export function HomeScreen({ navigation }: Props) {
   const { recentNotes, noteCount } = useNotesContext();
   const { results: quizResults, averageScore } = useQuiz(drugs);
   const { recentDrugs } = useRecentDrugs();
+  const { isTrialActive, trialDaysLeft, isSubscribed, isFreeBuild } = usePremium();
   const [dailyDrug, setDailyDrug] = useState<Drug | null>(null);
   const fadeIn = useFadeIn(400);
   const stagger = useStaggeredEntrance(5, 100);
@@ -101,6 +103,29 @@ export function HomeScreen({ navigation }: Props) {
             </TouchableOpacity>
           ))}
         </Animated.View>
+
+        {/* Trial Banner — hidden in free build */}
+        {!isFreeBuild && !isSubscribed && (
+          <TouchableOpacity
+            style={[styles.trialBanner, {
+              backgroundColor: isTrialActive ? colors.primary + '10' : colors.warning + '10',
+              borderColor: isTrialActive ? colors.primary + '30' : colors.warning + '30',
+            }]}
+            onPress={() => navigation.navigate('PremiumScreen')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.trialBannerIcon}>{isTrialActive ? '⭐' : '🔒'}</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.trialBannerTitle, { color: isTrialActive ? colors.primary : colors.warning }]}>
+                {isTrialActive ? `Te quedan ${trialDaysLeft} días de prueba Premium` : 'Tu prueba Premium ha expirado'}
+              </Text>
+              <Text style={styles.trialBannerSubtitle}>
+                {isTrialActive ? 'Todas las funciones desbloqueadas' : 'Suscríbete para recuperar el acceso'}
+              </Text>
+            </View>
+            <Text style={[styles.trialBannerArrow, { color: isTrialActive ? colors.primary : colors.warning }]}>→</Text>
+          </TouchableOpacity>
+        )}
 
         {/* Drug of the Day */}
         {dailyDrug && (
@@ -409,6 +434,32 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontWeight: '600',
     marginTop: 4,
     textAlign: 'center',
+  },
+  trialBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 16,
+    marginBottom: 8,
+    padding: 14,
+    borderRadius: 14,
+    borderWidth: 1,
+  },
+  trialBannerIcon: {
+    fontSize: 28,
+    marginRight: 12,
+  },
+  trialBannerTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  trialBannerSubtitle: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    marginTop: 2,
+  },
+  trialBannerArrow: {
+    fontSize: 20,
+    fontWeight: '700',
   },
   section: {
     marginBottom: 8,

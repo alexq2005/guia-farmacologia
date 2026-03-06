@@ -1,10 +1,11 @@
-import React, { useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Linking, StatusBar, Animated } from 'react-native';
+import React, { useMemo, useState, useRef, useCallback } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Linking, StatusBar, Animated, TextInput, Alert, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useDrugData } from '../hooks/useDrugData';
+import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
 import scalesData from '../data/clinical_scales.json';
@@ -17,8 +18,37 @@ export function AboutScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { getDrugCount, pathologies } = useDrugData();
+  const { isFreeBuild, isCodeActivated, activateWithCode } = usePremium();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const fadeIn = useFadeIn(400);
+
+  // Easter egg: tap version 5 times to reveal activation input
+  const tapCount = useRef(0);
+  const tapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [showActivation, setShowActivation] = useState(false);
+  const [activationCode, setActivationCode] = useState('');
+
+  const handleVersionTap = useCallback(() => {
+    tapCount.current++;
+    if (tapTimer.current) clearTimeout(tapTimer.current);
+    tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 2000);
+    if (tapCount.current >= 5) {
+      tapCount.current = 0;
+      setShowActivation(true);
+    }
+  }, []);
+
+  const handleActivate = useCallback(async () => {
+    if (!activationCode.trim()) return;
+    const success = await activateWithCode(activationCode);
+    if (success) {
+      setShowActivation(false);
+      setActivationCode('');
+      Alert.alert('Activado', 'Todas las funciones han sido desbloqueadas permanentemente.');
+    } else {
+      Alert.alert('Código incorrecto', 'El código de activación no es válido.');
+    }
+  }, [activationCode, activateWithCode]);
 
   const handleEmail = () => {
     Linking.openURL(`mailto:${CONTACT_EMAIL}?subject=Guía Farmacológica - Contacto`);
@@ -54,10 +84,45 @@ export function AboutScreen() {
           </View>
 
           <Text style={styles.appName}>Guía Farmacológica{'\n'}Integral de Enfermería</Text>
-          <View style={styles.versionBadge}>
-            <Text style={styles.versionText}>v2.0</Text>
-          </View>
+          <TouchableOpacity style={styles.versionBadge} onPress={handleVersionTap} activeOpacity={0.8}>
+            <Text style={styles.versionText}>
+              v0.1{isCodeActivated ? ' ✓' : ''}
+            </Text>
+          </TouchableOpacity>
         </View>
+
+        {/* Activation Modal */}
+        <Modal visible={showActivation} transparent animationType="fade" onRequestClose={() => setShowActivation(false)}>
+          <View style={styles.modalOverlay}>
+            <View style={[styles.modalContent, { backgroundColor: colors.surface }]}>
+              <Text style={[styles.modalTitle, { color: colors.text }]}>Código de Activación</Text>
+              <TextInput
+                style={[styles.modalInput, { color: colors.text, borderColor: colors.border, backgroundColor: colors.background }]}
+                value={activationCode}
+                onChangeText={setActivationCode}
+                placeholder="Ingresa el código..."
+                placeholderTextColor={colors.textSecondary}
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry
+              />
+              <View style={styles.modalButtons}>
+                <TouchableOpacity
+                  style={[styles.modalBtn, { backgroundColor: colors.border }]}
+                  onPress={() => { setShowActivation(false); setActivationCode(''); }}
+                >
+                  <Text style={[styles.modalBtnText, { color: colors.text }]}>Cancelar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.modalBtn, { backgroundColor: colors.primary }]}
+                  onPress={handleActivate}
+                >
+                  <Text style={[styles.modalBtnText, { color: '#FFFFFF' }]}>Activar</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
 
         {/* Description */}
         <View style={styles.card}>
@@ -161,9 +226,20 @@ export function AboutScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Legal Links */}
+        {/* Legal & Premium */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Legal</Text>
+          <Text style={styles.cardTitle}>{isFreeBuild ? 'Legal' : 'Legal y suscripción'}</Text>
+          {!isFreeBuild && (
+            <TouchableOpacity
+              style={styles.legalRow}
+              onPress={() => navigation.navigate('PremiumScreen')}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.legalIcon}>⭐</Text>
+              <Text style={styles.legalText}>Premium</Text>
+              <Text style={styles.legalArrow}>›</Text>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity
             style={styles.legalRow}
             onPress={() => navigation.navigate('PrivacyPolicy')}
@@ -481,5 +557,45 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontSize: 22,
     color: colors.textLight,
     fontWeight: '300',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 32,
+  },
+  modalContent: {
+    width: '100%',
+    borderRadius: 16,
+    padding: 24,
+    elevation: 10,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 12,
+    fontSize: 15,
+    marginBottom: 16,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  modalBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalBtnText: {
+    fontSize: 15,
+    fontWeight: '600',
   },
 });

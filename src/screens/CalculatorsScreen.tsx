@@ -5,6 +5,7 @@ import {
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { PremiumGate } from '../components/PremiumGate';
 
 // ─── Calculator Tabs ────────────────────────────────────────
 type CalcKey = 'dosis' | 'goteo' | 'imc' | 'bsa' | 'creatinina' | 'dilucion' | 'sodio'
@@ -956,6 +957,7 @@ export function CalculatorsScreen() {
   };
 
   return (
+    <PremiumGate feature="Calculadoras Clínicas">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={activeData.color} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: activeData.color }]}>
@@ -1001,6 +1003,7 @@ export function CalculatorsScreen() {
         <View style={{ height: 40 }} />
       </ScrollView>
     </Animated.View>
+    </PremiumGate>
   );
 }
 

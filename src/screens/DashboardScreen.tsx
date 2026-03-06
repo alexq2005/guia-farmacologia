@@ -9,6 +9,7 @@ import { useNotesContext } from '../context/NotesContext';
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
+import { PremiumGate } from '../components/PremiumGate';
 
 function ProgressBar({ label, value, max, color, colors }: { label: string; value: number; max: number; color: string; colors: ThemeColors }) {
   const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
@@ -88,6 +89,7 @@ export function DashboardScreen() {
   const catColors = ['#3B82F6', '#DC2626', '#16A34A', '#F59E0B', '#8B5CF6', '#EC4899', '#0EA5E9', '#EA580C'];
 
   return (
+    <PremiumGate feature="Dashboard de Progreso">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
@@ -187,6 +189,7 @@ export function DashboardScreen() {
         <View style={{ height: 40 }} />
       </ScrollView>
     </Animated.View>
+    </PremiumGate>
   );
 }
 

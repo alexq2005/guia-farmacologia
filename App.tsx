@@ -9,6 +9,7 @@ import { AppNavigator } from './src/navigation/AppNavigator';
 import { FavoritesProvider } from './src/context/FavoritesContext';
 import { NotesProvider } from './src/context/NotesContext';
 import { ThemeProvider } from './src/context/ThemeContext';
+import { PremiumProvider } from './src/context/PremiumContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
     <ErrorBoundary>
       <SafeAreaProvider>
         <ThemeProvider>
-          <FavoritesProvider>
-            <NotesProvider>
-              <AppNavigator />
-            </NotesProvider>
-          </FavoritesProvider>
+          <PremiumProvider>
+            <FavoritesProvider>
+              <NotesProvider>
+                <AppNavigator />
+              </NotesProvider>
+            </FavoritesProvider>
+          </PremiumProvider>
         </ThemeProvider>
       </SafeAreaProvider>
     </ErrorBoundary>

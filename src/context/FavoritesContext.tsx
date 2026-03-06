@@ -1,12 +1,14 @@
 import React, { createContext, useContext } from 'react';
 import { useFavorites } from '../hooks/useFavorites';
+import { usePremium } from './PremiumContext';
 
 type FavoritesContextType = ReturnType<typeof useFavorites>;
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const favoritesState = useFavorites();
+  const { isPremium } = usePremium();
+  const favoritesState = useFavorites(isPremium);
   return (
     <FavoritesContext.Provider value={favoritesState}>
       {children}

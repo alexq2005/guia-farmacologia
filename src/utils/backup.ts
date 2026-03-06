@@ -31,7 +31,15 @@ function safeJsonParse<T>(raw: string | null, fallback: T): T {
   try { return JSON.parse(raw); } catch { return fallback; }
 }
 
-export async function exportUserData(): Promise<void> {
+export async function exportUserData(isPremium: boolean = true): Promise<void> {
+  if (!isPremium) {
+    Alert.alert(
+      'Función Premium',
+      'La exportación de datos es una función Premium. Actualiza tu plan para acceder.',
+      [{ text: 'Entendido' }],
+    );
+    return;
+  }
   const [favRaw, notesRaw, quizRaw, histRaw, recentRaw] = await Promise.all([
     AsyncStorage.getItem(KEYS.favorites).catch(() => null),
     AsyncStorage.getItem(KEYS.notes).catch(() => null),
@@ -57,7 +65,10 @@ export async function exportUserData(): Promise<void> {
   });
 }
 
-export async function importUserData(json: string): Promise<{ imported: boolean; message: string }> {
+export async function importUserData(json: string, isPremium: boolean = true): Promise<{ imported: boolean; message: string }> {
+  if (!isPremium) {
+    return { imported: false, message: 'La importación de datos es una función Premium. Actualiza tu plan para acceder.' };
+  }
   let data: BackupData;
   try {
     data = JSON.parse(json);

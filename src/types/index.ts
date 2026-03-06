@@ -424,6 +424,7 @@ export type RootStackParamList = {
   AllFavorites: undefined;
   PrivacyPolicy: undefined;
   Terms: undefined;
+  PremiumScreen: undefined;
 };
 
 export type TabParamList = {

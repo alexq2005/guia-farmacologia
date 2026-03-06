@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="300dp"
+    android:height="300dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- ========== OUTER DECORATIVE RING ========== -->
+    <!-- Outer circle ring -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.15"
+        android:pathData="M256,16 A240,240,0,1,1,255.99,16 Z M256,32 A224,224,0,1,0,256.01,32 Z" />
+
+    <!-- Inner circle ring -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.25"
+        android:pathData="M256,40 A216,216,0,1,1,255.99,40 Z M256,52 A204,204,0,1,0,256.01,52 Z" />
+
+    <!-- ========== MEDICAL CROSS (centered, large, rounded) ========== -->
+    <!-- Cross shadow -->
+    <path
+        android:fillColor="#000000"
+        android:fillAlpha="0.12"
+        android:pathData="M222,102 L290,102 Q296,102,296,108 L296,164 L352,164 Q358,164,358,170 L358,238 Q358,244,352,244 L296,244 L296,300 Q296,306,290,306 L222,306 Q216,306,216,300 L216,244 L160,244 Q154,244,154,238 L154,170 Q154,164,160,164 L216,164 L216,108 Q216,102,222,102 Z" />
+
+    <!-- Cross main body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M220,98 L288,98 Q294,98,294,104 L294,160 L350,160 Q356,160,356,166 L356,234 Q356,240,350,240 L294,240 L294,296 Q294,302,288,302 L220,302 Q214,302,214,296 L214,240 L158,240 Q152,240,152,234 L152,166 Q152,160,158,160 L214,160 L214,104 Q214,98,220,98 Z" />
+
+    <!-- Cross inner highlight -->
+    <path
+        android:fillColor="#93C5FD"
+        android:fillAlpha="0.35"
+        android:pathData="M228,110 L280,110 Q284,110,284,114 L284,168 L340,168 Q344,168,344,172 L344,228 Q344,232,340,232 L284,232 L284,286 Q284,290,280,290 L228,290 Q224,290,224,286 L224,232 L168,232 Q164,232,164,228 L164,172 Q164,168,168,168 L224,168 L224,114 Q224,110,228,110 Z" />
+
+    <!-- ========== OPEN BOOK (below cross) ========== -->
+    <!-- Left page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M256,348 L256,316 Q256,310,248,308 L192,296 Q186,294,186,300 L186,340 Q186,346,192,345 L248,352 Q256,354,256,348 Z" />
+
+    <!-- Right page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M256,348 L256,316 Q256,310,264,308 L320,296 Q326,294,326,300 L326,340 Q326,346,320,345 L264,352 Q256,354,256,348 Z" />
+
+    <!-- Book spine -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeAlpha="0.5"
+        android:pathData="M256,312 L256,352"
+        android:fillColor="#00000000" />
+
+    <!-- Left page text lines -->
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M198,310 L248,318"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M198,318 L248,326"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M198,326 L248,334"
+        android:fillColor="#00000000" />
+
+    <!-- Right page text lines -->
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M264,318 L314,310"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M264,326 L314,318"
+        android:fillColor="#00000000" />
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.2"
+        android:strokeAlpha="0.5"
+        android:pathData="M264,334 L314,326"
+        android:fillColor="#00000000" />
+
+    <!-- ========== HEARTBEAT / ECG LINE ========== -->
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="2.5"
+        android:pathData="M160,380 L220,380 L232,380 L240,368 L248,392 L256,362 L264,388 L272,374 L280,380 L352,380"
+        android:fillColor="#00000000" />
+
+    <!-- ========== CAPSULE / PILL ACCENT ========== -->
+    <!-- Capsule body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.8"
+        android:pathData="M340,360 L358,342 A10,10,0,0,1,372,356 L354,374 A10,10,0,0,1,340,360 Z" />
+
+    <!-- Capsule divider line -->
+    <path
+        android:strokeColor="#93C5FD"
+        android:strokeWidth="1.5"
+        android:pathData="M349,351 L363,365"
+        android:fillColor="#00000000" />
+
+    <!-- Small pill accent left side -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.4"
+        android:pathData="M148,356 A7,7,0,1,1,162,356 A7,7,0,1,1,148,356 Z" />
+
+    <!-- ========== TEXT: GUÍA FARMACOLÓGICA ========== -->
+    <!-- G -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M120,410 L120,406 Q120,400,126,400 L138,400 Q144,400,144,406 L144,408 L140,408 L140,406 Q140,404,138,404 L126,404 Q124,404,124,406 L124,418 Q124,420,126,420 L138,420 Q140,420,140,418 L140,414 L134,414 L134,410 L144,410 L144,418 Q144,424,138,424 L126,424 Q120,424,120,418 Z" />
+    <!-- U -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M148,400 L152,400 L152,418 Q152,420,154,420 L162,420 Q164,420,164,418 L164,400 L168,400 L168,418 Q168,424,162,424 L154,424 Q148,424,148,418 Z" />
+    <!-- Í -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M172,400 L184,400 L184,404 L180,404 L180,420 L184,420 L184,424 L172,424 L172,420 L176,420 L176,404 L172,404 Z" />
+    <!-- Accent on Í -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M176,394 L180,390 L184,394 Z" />
+    <!-- A -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M188,424 L194,400 L200,400 L206,424 L202,424 L200,416 L194,416 L192,424 Z M195,412 L199,412 L197,404 Z" />
+
+    <!-- Space -->
+
+    <!-- F -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M216,400 L232,400 L232,404 L220,404 L220,410 L230,410 L230,414 L220,414 L220,424 L216,424 Z" />
+    <!-- A -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M234,424 L240,400 L246,400 L252,424 L248,424 L246,416 L240,416 L238,424 Z M241,412 L245,412 L243,404 Z" />
+    <!-- R -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M256,400 L268,400 Q274,400,274,406 L274,410 Q274,414,270,415 L276,424 L272,424 L266,415 L260,415 L260,424 L256,424 Z M260,404 L260,411 L268,411 Q270,411,270,409 L270,406 Q270,404,268,404 Z" />
+    <!-- M -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M278,400 L284,400 L289,412 L294,400 L300,400 L300,424 L296,424 L296,406 L291,418 L287,418 L282,406 L282,424 L278,424 Z" />
+    <!-- A -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M304,424 L310,400 L316,400 L322,424 L318,424 L316,416 L310,416 L308,424 Z M311,412 L315,412 L313,404 Z" />
+    <!-- C -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M326,406 Q326,400,332,400 L340,400 Q346,400,346,406 L346,408 L342,408 L342,406 Q342,404,340,404 L332,404 Q330,404,330,406 L330,418 Q330,420,332,420 L340,420 Q342,420,342,418 L342,416 L346,416 L346,418 Q346,424,340,424 L332,424 Q326,424,326,418 Z" />
+    <!-- O -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M350,406 Q350,400,356,400 L364,400 Q370,400,370,406 L370,418 Q370,424,364,424 L356,424 Q350,424,350,418 Z M354,406 L354,418 Q354,420,356,420 L364,420 Q366,420,366,418 L366,406 Q366,404,364,404 L356,404 Q354,404,354,406 Z" />
+    <!-- L -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M374,400 L378,400 L378,420 L392,420 L392,424 L374,424 Z" />
+
+    <!-- ========== TEXT: de Enfermería (smaller, centered) ========== -->
+    <!-- d -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M194,436 L202,436 Q206,436,206,440 L206,448 Q206,452,202,452 L198,452 L198,456 L194,456 Z M198,440 L198,448 L202,448 Q204,448,204,446 L204,442 Q204,440,202,440 Z" />
+    <!-- e -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M210,440 Q210,436,214,436 L220,436 Q224,436,224,440 L224,444 L214,444 L214,448 Q214,450,216,450 L222,450 L222,452 L214,452 Q210,452,210,448 Z M214,440 L214,442 L220,442 L220,440 Q220,438,218,438 L216,438 Q214,438,214,440 Z" />
+
+    <!-- Space -->
+
+    <!-- E -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M236,436 L250,436 L250,440 L240,440 L240,442 L248,442 L248,446 L240,446 L240,448 L250,448 L250,452 L236,452 Z" />
+    <!-- n -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M254,436 L258,436 L258,438 Q260,436,264,436 Q268,436,268,440 L268,452 L264,452 L264,440 Q264,438,262,438 L260,438 Q258,438,258,440 L258,452 L254,452 Z" />
+    <!-- f -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M272,440 Q272,436,276,436 L280,436 L280,438 L276,438 Q274,438,274,440 L274,442 L280,442 L280,444 L274,444 L274,452 L272,452 Z" />
+    <!-- e -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M282,440 Q282,436,286,436 L292,436 Q296,436,296,440 L296,444 L286,444 L286,448 Q286,450,288,450 L294,450 L294,452 L286,452 Q282,452,282,448 Z M286,440 L286,442 L292,442 L292,440 Q292,438,290,438 L288,438 Q286,438,286,440 Z" />
+    <!-- r -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M300,436 L304,436 L304,440 Q306,436,310,436 L310,440 L308,440 Q304,440,304,444 L304,452 L300,452 Z" />
+    <!-- m -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M312,436 L316,436 L316,438 Q318,436,322,436 Q326,436,326,440 L326,452 L322,452 L322,440 Q322,438,320,438 L318,438 Q316,438,316,440 L316,452 L312,452 Z" />
+    <!-- e -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M330,440 Q330,436,334,436 L340,436 Q344,436,344,440 L344,444 L334,444 L334,448 Q334,450,336,450 L342,450 L342,452 L334,452 Q330,452,330,448 Z M334,440 L334,442 L340,442 L340,440 Q340,438,338,438 L336,438 Q334,438,334,440 Z" />
+
+    <!-- ========== SMALL DECORATIVE DOTS ========== -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.3"
+        android:pathData="M170,66 A3,3,0,1,1,176,66 A3,3,0,1,1,170,66 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.3"
+        android:pathData="M336,66 A3,3,0,1,1,342,66 A3,3,0,1,1,336,66 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.3"
+        android:pathData="M80,200 A3,3,0,1,1,86,200 A3,3,0,1,1,80,200 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.3"
+        android:pathData="M426,200 A3,3,0,1,1,432,200 A3,3,0,1,1,426,200 Z" />
+
+</vector>

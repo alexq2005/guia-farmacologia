@@ -10,6 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { PROTOCOL_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
+import { PremiumGate } from '../components/PremiumGate';
 import protocolsData from '../data/emergency_protocols.json';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -134,6 +135,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
   const keyExtractor = useCallback((item: EmergencyProtocol) => item.id, []);
 
   return (
+    <PremiumGate feature="Protocolos de Emergencia">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#DC2626" barStyle="light-content" />
       <View style={styles.header}>
@@ -166,6 +168,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
         contentContainerStyle={{ paddingBottom: 40 }}
       />
     </Animated.View>
+    </PremiumGate>
   );
 }
 

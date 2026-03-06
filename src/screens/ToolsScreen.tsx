@@ -9,6 +9,7 @@ import type { RootStackParamList, TabParamList } from '../types';
 import { FORMULA_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { usePremium } from '../context/PremiumContext';
 import { useFadeIn } from '../utils/animations';
 import formulas from '../data/formulas.json';
 import pathologies from '../data/pathologies.json';
@@ -35,8 +36,14 @@ const categoryLabels: Record<string, string> = {
   renal: '🫘 Función Renal',
 };
 
+const PREMIUM_TARGETS = new Set([
+  'dashboard', 'quiz', 'comparison', 'interactions', 'calculators',
+  'scales', 'labValues', 'emergencyProtocols', 'parenteralGuide',
+]);
+
 export function ToolsScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const { isPremium, isFreeBuild } = usePremium();
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const fadeIn = useFadeIn();
@@ -44,7 +51,7 @@ export function ToolsScreen({ navigation }: Props) {
   const [importText, setImportText] = useState('');
 
   const handleExport = async () => {
-    try { await exportUserData(); }
+    try { await exportUserData(isPremium); }
     catch (e) { Alert.alert('Error', 'No se pudo exportar los datos.'); }
   };
 
@@ -54,7 +61,7 @@ export function ToolsScreen({ navigation }: Props) {
       Alert.alert('Vacío', 'Pega el JSON de backup en el campo de texto.');
       return;
     }
-    const result = await importUserData(text);
+    const result = await importUserData(text, isPremium);
     Alert.alert(result.imported ? 'Importado' : 'Error', result.message);
     if (result.imported) { setShowImport(false); setImportText(''); }
   };
@@ -207,7 +214,10 @@ export function ToolsScreen({ navigation }: Props) {
             >
               <Text style={styles.toolIcon}>{tool.icon}</Text>
               <View style={styles.toolText}>
-                <Text style={styles.toolTitle}>{tool.title}</Text>
+                <Text style={styles.toolTitle}>
+                  {tool.title}
+                  {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) ? ' 🔒' : ''}
+                </Text>
                 <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
               </View>
               <Text style={styles.toolArrow}>→</Text>

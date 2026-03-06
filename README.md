@@ -1,97 +1,127 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Guia Farmacologica de Enfermeria
 
-# Getting Started
+Aplicacion movil Android de referencia farmacologica para profesionales de enfermeria. Contiene informacion detallada de **1781 farmacos**, escalas clinicas, protocolos de emergencia, valores de laboratorio, calculadoras medicas y herramientas de estudio.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Descripcion General
 
-## Step 1: Start Metro
+Herramienta de consulta rapida para el ambito hospitalario y ambulatorio:
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **1781 farmacos** con mecanismo de accion, indicaciones, contraindicaciones, dosis, interacciones y cuidados de enfermeria
+- **14 protocolos de emergencia** con pasos cronometrados (ACLS, anafilaxia, IAM, ACV, sepsis...)
+- **13 escalas clinicas** interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells...)
+- **53 valores de laboratorio** con rangos por sexo y pediatricos
+- **15 calculadoras medicas** (dosis, goteo, IMC, aclaramiento creatinina, APACHE II...)
+- **Guia parenteral** con compatibilidades IV (460 farmacos enriquecidos)
+- **60 patologias** con farmacos vinculados y cuidados de enfermeria
+- Quiz de estudio, favoritos, notas personales, modo oscuro, exportacion de datos
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Requisitos del Sistema
 
-```sh
-# Using npm
+| Requisito | Version |
+|-----------|---------|
+| Node.js | >= 22.11.0 |
+| Java JDK | 25 |
+| Android SDK | API 24-36 |
+| Gradle | 9.0.0 |
+| React Native | 0.84.1 |
+| Android minimo | 7.0 Nougat (API 24) |
+
+## Inicio Rapido
+
+### 1. Instalar dependencias
+
+```bash
+cd GuiaFarmacologica
+npm install
+```
+
+### 2. Iniciar Metro Bundler
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### 3. Compilar y ejecutar (debug)
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
+# En otra terminal
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### 4. Compilar APK de release
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+export JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED"
+cd android && ./gradlew assemblePremiumRelease assembleFreeRelease
 ```
 
-Then, and every time you update your native dependencies, run:
+APKs generadas en:
+- **Premium**: `android/app/build/outputs/apk/release/`
+- **Free**: `android/app/build/outputs/apk/release/Nueva carpeta/`
 
-```sh
-bundle exec pod install
+## Variantes de Compilacion (Flavors)
+
+| Flavor | Application ID | Descripcion |
+|--------|---------------|-------------|
+| `free` | `com.guiafarmacologica.free` | Todas las funcionalidades desbloqueadas, sin sistema de suscripcion |
+| `premium` | `com.guiafarmacologica` | Trial de 14 dias + suscripcion premium |
+
+```bash
+./gradlew assembleFreeDebug       # Debug libre
+./gradlew assemblePremiumDebug    # Debug premium
+./gradlew assembleFreeRelease     # Release libre
+./gradlew assemblePremiumRelease  # Release premium
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Estructura del Proyecto
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```
+GuiaFarmacologica/
+  src/
+    screens/          31 pantallas
+    components/       7 componentes reutilizables
+    context/          4 providers (Theme, Premium, Favorites, Notes)
+    hooks/            7 custom hooks
+    navigation/       AppNavigator (tabs + stack)
+    types/            Interfaces TypeScript
+    utils/            Utilidades compartidas
+    data/             14 archivos JSON con datos clinicos
+  android/            Proyecto nativo Android
+  scripts/            Scripts de generacion de datos
+  docs/               Documentacion tecnica
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Documentacion
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+| Documento | Contenido |
+|-----------|-----------|
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura, navegacion, providers, flujo de datos |
+| [DEVELOPMENT.md](docs/DEVELOPMENT.md) | Guia de desarrollo, patrones, como agregar contenido |
+| [DATA.md](docs/DATA.md) | Modelo de datos, interfaces, archivos JSON |
+| [FEATURES.md](docs/FEATURES.md) | Catalogo completo de funcionalidades |
 
-## Step 3: Modify your app
+## Stack Tecnologico
 
-Now that you have successfully run the app, let's make changes!
+- **Framework**: React Native CLI 0.84.1 (sin Expo)
+- **Lenguaje**: TypeScript 5.8
+- **Navegacion**: React Navigation 7 (bottom tabs + native stack)
+- **Motor JS**: Hermes
+- **Almacenamiento**: AsyncStorage
+- **Graficos**: react-native-svg
+- **Datos**: JSON embebido (sin backend ni API externa)
+- **Dependencias externas**: 5 librerias (AsyncStorage, Clipboard, Navigation, SafeArea, SVG)
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Contenido Clinico
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+| Tipo | Cantidad |
+|------|----------|
+| Farmacos | 1,781 |
+| Patologias | 60 |
+| Escalas clinicas | 13 |
+| Protocolos emergencia | 14 |
+| Valores laboratorio | 53 |
+| Calculadoras | 15 |
+| Formulas | 15 |
+| Vias administracion | 16 |
+| Glosario | 65+ terminos |
+| Categorias terapeuticas | 14 unidades, 60+ capitulos |

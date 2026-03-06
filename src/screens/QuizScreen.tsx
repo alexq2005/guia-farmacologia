@@ -7,6 +7,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { useQuiz } from '../hooks/useQuiz';
 import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
+import { PremiumGate } from '../components/PremiumGate';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizScreen'>;
 
@@ -26,6 +27,7 @@ export function QuizScreen({ navigation }: Props) {
   ];
 
   return (
+    <PremiumGate feature="Test Farmacológico">
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: colors.quiz }]}>
@@ -133,6 +135,7 @@ export function QuizScreen({ navigation }: Props) {
         <View style={{ height: 40 }} />
       </Animated.ScrollView>
     </View>
+    </PremiumGate>
   );
 }
 

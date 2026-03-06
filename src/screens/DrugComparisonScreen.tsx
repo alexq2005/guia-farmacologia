@@ -9,6 +9,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
+import { PremiumGate } from '../components/PremiumGate';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugComparison'>;
 
@@ -84,6 +85,7 @@ export function DrugComparisonScreen({ route }: Props) {
   }, []);
 
   return (
+    <PremiumGate feature="Comparador de Fármacos">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#0891B2" barStyle="light-content" />
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
@@ -202,6 +204,7 @@ export function DrugComparisonScreen({ route }: Props) {
         <View style={{ height: 40 }} />
       </ScrollView>
     </Animated.View>
+    </PremiumGate>
   );
 }
 
