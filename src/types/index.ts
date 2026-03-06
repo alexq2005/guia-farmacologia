@@ -422,6 +422,8 @@ export type RootStackParamList = {
   DrugComparison: { preloadDrugId?: string } | undefined;
   AllNotes: undefined;
   AllFavorites: undefined;
+  PrivacyPolicy: undefined;
+  Terms: undefined;
 };
 
 export type TabParamList = {

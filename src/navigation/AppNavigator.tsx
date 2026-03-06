@@ -37,6 +37,8 @@ import { DashboardScreen } from '../screens/DashboardScreen';
 import { DrugComparisonScreen } from '../screens/DrugComparisonScreen';
 import { AllNotesScreen } from '../screens/AllNotesScreen';
 import { AllFavoritesScreen } from '../screens/AllFavoritesScreen';
+import { PrivacyPolicyScreen } from '../screens/PrivacyPolicyScreen';
+import { TermsScreen } from '../screens/TermsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -265,6 +267,16 @@ export function AppNavigator() {
           name="AllFavorites"
           component={AllFavoritesScreen}
           options={{ title: 'Mis Favoritos' }}
+        />
+        <Stack.Screen
+          name="PrivacyPolicy"
+          component={PrivacyPolicyScreen}
+          options={{ title: 'Política de Privacidad' }}
+        />
+        <Stack.Screen
+          name="Terms"
+          component={TermsScreen}
+          options={{ title: 'Términos y Condiciones' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

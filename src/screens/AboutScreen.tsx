@@ -1,5 +1,8 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Linking, StatusBar, Animated } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { useDrugData } from '../hooks/useDrugData';
 import type { ThemeColors } from '../utils/colors';
@@ -14,6 +17,7 @@ export function AboutScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { getDrugCount, pathologies } = useDrugData();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const fadeIn = useFadeIn(400);
 
   const handleEmail = () => {
@@ -131,11 +135,16 @@ export function AboutScreen() {
           </View>
         </View>
 
-        {/* Disclaimer */}
+        {/* Disclaimer — Prominent medical disclaimer */}
         <View style={[styles.card, styles.disclaimerCard]}>
-          <Text style={styles.disclaimerTitle}>⚕️ Aviso legal</Text>
+          <Text style={styles.disclaimerTitle}>⚕️ Aviso médico importante</Text>
           <Text style={styles.disclaimerText}>
-            Esta aplicación es una herramienta de consulta y apoyo educativo. No reemplaza el criterio clínico profesional ni la consulta de fuentes primarias actualizadas. Verificá siempre la información con los protocolos de tu institución antes de administrar cualquier medicamento.
+            Esta aplicación es una herramienta de CONSULTA EDUCATIVA y REFERENCIA RÁPIDA.
+            No constituye consejo médico, diagnóstico ni tratamiento.
+          </Text>
+          <Text style={[styles.disclaimerText, { fontWeight: '700', marginTop: 6 }]}>
+            SIEMPRE verifique la información con fuentes primarias y los protocolos de su
+            institución antes de administrar cualquier medicamento.
           </Text>
         </View>
 
@@ -149,6 +158,29 @@ export function AboutScreen() {
           <TouchableOpacity style={styles.emailButton} onPress={handleEmail} activeOpacity={0.7}>
             <Text style={styles.emailIcon}>✉️</Text>
             <Text style={styles.emailText}>{CONTACT_EMAIL}</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Legal Links */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Legal</Text>
+          <TouchableOpacity
+            style={styles.legalRow}
+            onPress={() => navigation.navigate('PrivacyPolicy')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.legalIcon}>🔒</Text>
+            <Text style={styles.legalText}>Política de Privacidad</Text>
+            <Text style={styles.legalArrow}>›</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.legalRow}
+            onPress={() => navigation.navigate('Terms')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.legalIcon}>📄</Text>
+            <Text style={styles.legalText}>Términos y Condiciones</Text>
+            <Text style={styles.legalArrow}>›</Text>
           </TouchableOpacity>
         </View>
 
@@ -396,9 +428,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     flex: 1,
   },
   disclaimerCard: {
-    backgroundColor: colors.warning + '10',
-    borderWidth: 1,
-    borderColor: colors.warning + '30',
+    backgroundColor: colors.danger + '08',
+    borderWidth: 2,
+    borderColor: colors.danger + '30',
   },
   disclaimerTitle: {
     fontSize: 15,
@@ -427,5 +459,27 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontSize: 11,
     color: colors.textLight,
     marginTop: 8,
+  },
+  legalRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  legalIcon: {
+    fontSize: 18,
+    marginRight: 12,
+  },
+  legalText: {
+    fontSize: 15,
+    color: colors.text,
+    fontWeight: '500',
+    flex: 1,
+  },
+  legalArrow: {
+    fontSize: 22,
+    color: colors.textLight,
+    fontWeight: '300',
   },
 });
