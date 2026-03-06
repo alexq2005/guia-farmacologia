@@ -66,7 +66,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
       setShowResult(false);
     } else {
       const finalCorrect = selectedAnswer === currentQuestion?.correctIndex
-        ? correctCount
+        ? correctCount + 1
         : correctCount;
       const result: QuizResult = {
         id: Date.now().toString(),

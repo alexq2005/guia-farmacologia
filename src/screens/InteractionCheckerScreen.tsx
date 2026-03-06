@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Drug } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { UNIT_COLORS } from '../utils/colors';
@@ -9,11 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
-
-interface Props {
-  navigation: NavigationProp;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'InteractionChecker'>;
 
 interface InteractionResult {
   drug1: Drug;
@@ -106,13 +102,25 @@ function findInteractions(drug1: Drug, drug2: Drug): InteractionResult | null {
   return { drug1, drug2, interactions, severity };
 }
 
-export function InteractionCheckerScreen({ navigation }: Props) {
+export function InteractionCheckerScreen({ navigation, route }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const { drugs } = useDrugData();
   const [selectedDrugs, setSelectedDrugs] = useState<Drug[]>([]);
   const fadeIn = useFadeIn();
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Preload drug if navigated with preloadDrugId
+  useEffect(() => {
+    const preloadId = route.params?.preloadDrugId;
+    if (preloadId && drugs.length > 0) {
+      const drug = drugs.find(d => d.id === preloadId);
+      if (drug && !selectedDrugs.some(s => s.id === drug.id)) {
+        setSelectedDrugs([drug]);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route.params?.preloadDrugId, drugs]);
 
   const searchResults = useMemo(() => {
     if (searchQuery.trim().length < 2) return [];

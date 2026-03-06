@@ -83,6 +83,62 @@ export function AboutScreen() {
           </View>
         </View>
 
+        {/* Features */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Funcionalidades</Text>
+          <View style={styles.featureList}>
+            {[
+              { icon: '🔍', text: 'Búsqueda inteligente con coincidencia sin acentos' },
+              { icon: '⭐', text: 'Sistema de favoritos con persistencia local' },
+              { icon: '📝', text: 'Notas personales por fármaco con autoguardado' },
+              { icon: '🧠', text: 'Test interactivo con 8 tipos de preguntas' },
+              { icon: '⚠️', text: 'Verificador de interacciones medicamentosas' },
+              { icon: '💉', text: 'Guía parenteral (Son Espases) con compatibilidades' },
+              { icon: '🌙', text: 'Modo oscuro con 3 opciones (claro/oscuro/sistema)' },
+              { icon: '📤', text: 'Compartir información de fármacos' },
+              { icon: '📊', text: 'Historial de búsquedas recientes' },
+            ].map((f, i) => (
+              <View key={i} style={styles.featureRow}>
+                <Text style={styles.featureIcon}>{f.icon}</Text>
+                <Text style={styles.featureText}>{f.text}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Sources */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Fuentes y referencias</Text>
+          <Text style={styles.cardText}>
+            La información farmacológica ha sido recopilada y verificada a partir de las siguientes fuentes:
+          </Text>
+          <View style={styles.sourceList}>
+            {[
+              'Vademécum Farmacológico Nacional (ANMAT)',
+              'Manual de Enfermería Farmacológica — Castells & Hernández',
+              'Guía Terapéutica Antimicrobiana (Sanford)',
+              'Guía de Administración Parenteral — Hospital Son Espases',
+              'British National Formulary (BNF)',
+              'UpToDate® Clinical Database',
+              'Medscape Drug Reference',
+              'Fichas técnicas AEMPS / EMA',
+            ].map((src, i) => (
+              <View key={i} style={styles.sourceRow}>
+                <Text style={styles.sourceBullet}>📖</Text>
+                <Text style={styles.sourceText}>{src}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+
+        {/* Disclaimer */}
+        <View style={[styles.card, styles.disclaimerCard]}>
+          <Text style={styles.disclaimerTitle}>⚕️ Aviso legal</Text>
+          <Text style={styles.disclaimerText}>
+            Esta aplicación es una herramienta de consulta y apoyo educativo. No reemplaza el criterio clínico profesional ni la consulta de fuentes primarias actualizadas. Verificá siempre la información con los protocolos de tu institución antes de administrar cualquier medicamento.
+          </Text>
+        </View>
+
         {/* Contact */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Contacto</Text>
@@ -300,6 +356,60 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   badgeText: {
     fontSize: 13,
     fontWeight: '700',
+  },
+  featureList: {
+    marginTop: 4,
+  },
+  featureRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 8,
+  },
+  featureIcon: {
+    fontSize: 15,
+    marginRight: 10,
+    marginTop: 2,
+  },
+  featureText: {
+    fontSize: 13,
+    color: colors.textSecondary,
+    lineHeight: 19,
+    flex: 1,
+  },
+  sourceList: {
+    marginTop: 8,
+  },
+  sourceRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 6,
+  },
+  sourceBullet: {
+    fontSize: 12,
+    marginRight: 8,
+    marginTop: 1,
+  },
+  sourceText: {
+    fontSize: 13,
+    color: colors.textSecondary,
+    lineHeight: 18,
+    flex: 1,
+  },
+  disclaimerCard: {
+    backgroundColor: colors.warning + '10',
+    borderWidth: 1,
+    borderColor: colors.warning + '30',
+  },
+  disclaimerTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: colors.text,
+    marginBottom: 8,
+  },
+  disclaimerText: {
+    fontSize: 13,
+    color: colors.textSecondary,
+    lineHeight: 19,
   },
   footer: {
     alignItems: 'center',

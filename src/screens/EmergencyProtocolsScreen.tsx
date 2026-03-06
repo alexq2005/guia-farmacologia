@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
+  View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, EmergencyProtocol, ProtocolCategory } from '../types';
@@ -53,6 +53,86 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
     return result;
   }, [protocols, selectedCategory, searchQuery]);
 
+  const renderItem = useCallback(({ item: protocol }: { item: EmergencyProtocol }) => {
+    const prioConfig = PRIORITY_CONFIG[protocol.prioridad];
+    const catColor = PROTOCOL_COLORS[protocol.categoria];
+    return (
+      <TouchableOpacity
+        style={[styles.protocolCard, { borderLeftColor: catColor }]}
+        onPress={() => navigation.navigate('ProtocolDetail', { protocolId: protocol.id })}
+        activeOpacity={0.7}
+      >
+        <View style={styles.cardHeader}>
+          <Text style={styles.cardIcon}>{PROTOCOL_ICONS[protocol.categoria]}</Text>
+          <View style={styles.cardTitleArea}>
+            <Text style={styles.cardTitle}>{protocol.nombre}</Text>
+            <Text style={[styles.cardCategory, { color: catColor }]}>
+              {CATEGORY_LABELS[protocol.categoria]}
+              {protocol.abreviatura ? ` · ${protocol.abreviatura}` : ''}
+            </Text>
+          </View>
+          <View style={[styles.priorityBadge, { backgroundColor: prioConfig.bg }]}>
+            <Text style={[styles.priorityText, { color: prioConfig.color }]}>{prioConfig.label}</Text>
+          </View>
+        </View>
+        <Text style={styles.cardDescription} numberOfLines={2}>{protocol.descripcion}</Text>
+        <View style={styles.cardFooter}>
+          <Text style={styles.cardStepCount}>📋 {protocol.pasos.length} pasos</Text>
+          <Text style={styles.cardDrugCount}>💊 {protocol.resumenFarmacos.length} fármacos</Text>
+          <Text style={styles.cardArrow}>→</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }, [styles, navigation]);
+
+  const ListHeader = useMemo(() => (
+    <>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.chipsScroll}
+        contentContainerStyle={styles.chipsContainer}
+      >
+        <TouchableOpacity
+          style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
+          onPress={() => setSelectedCategory('all')}
+        >
+          <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
+            Todos ({protocols.length})
+          </Text>
+        </TouchableOpacity>
+        {ALL_CATEGORIES.map(cat => {
+          const count = protocols.filter(p => p.categoria === cat).length;
+          if (count === 0) return null;
+          return (
+            <TouchableOpacity
+              key={cat}
+              style={[styles.chip, selectedCategory === cat && { backgroundColor: PROTOCOL_COLORS[cat] }]}
+              onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
+            >
+              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                {PROTOCOL_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+      {searchQuery.length >= 2 && (
+        <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
+      )}
+    </>
+  ), [selectedCategory, searchQuery, filtered.length, protocols.length, styles]);
+
+  const ListEmpty = useMemo(() => (
+    <View style={styles.emptyState}>
+      <Text style={styles.emptyIcon}>🚨</Text>
+      <Text style={styles.emptyText}>No se encontraron protocolos</Text>
+      <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
+    </View>
+  ), [styles]);
+
+  const keyExtractor = useCallback((item: EmergencyProtocol) => item.id, []);
+
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#DC2626" barStyle="light-content" />
@@ -76,85 +156,15 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
         </View>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsScroll}
-          contentContainerStyle={styles.chipsContainer}
-        >
-          <TouchableOpacity
-            style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
-            onPress={() => setSelectedCategory('all')}
-          >
-            <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
-              Todos ({protocols.length})
-            </Text>
-          </TouchableOpacity>
-          {ALL_CATEGORIES.map(cat => {
-            const count = protocols.filter(p => p.categoria === cat).length;
-            if (count === 0) return null;
-            return (
-              <TouchableOpacity
-                key={cat}
-                style={[styles.chip, selectedCategory === cat && { backgroundColor: PROTOCOL_COLORS[cat] }]}
-                onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
-              >
-                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                  {PROTOCOL_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-
-        {searchQuery.length >= 2 && (
-          <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
-        )}
-
-        {filtered.map(protocol => {
-          const prioConfig = PRIORITY_CONFIG[protocol.prioridad];
-          const catColor = PROTOCOL_COLORS[protocol.categoria];
-          return (
-            <TouchableOpacity
-              key={protocol.id}
-              style={[styles.protocolCard, { borderLeftColor: catColor }]}
-              onPress={() => navigation.navigate('ProtocolDetail', { protocolId: protocol.id })}
-              activeOpacity={0.7}
-            >
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>{PROTOCOL_ICONS[protocol.categoria]}</Text>
-                <View style={styles.cardTitleArea}>
-                  <Text style={styles.cardTitle}>{protocol.nombre}</Text>
-                  <Text style={[styles.cardCategory, { color: catColor }]}>
-                    {CATEGORY_LABELS[protocol.categoria]}
-                    {protocol.abreviatura ? ` · ${protocol.abreviatura}` : ''}
-                  </Text>
-                </View>
-                <View style={[styles.priorityBadge, { backgroundColor: prioConfig.bg }]}>
-                  <Text style={[styles.priorityText, { color: prioConfig.color }]}>{prioConfig.label}</Text>
-                </View>
-              </View>
-              <Text style={styles.cardDescription} numberOfLines={2}>{protocol.descripcion}</Text>
-              <View style={styles.cardFooter}>
-                <Text style={styles.cardStepCount}>📋 {protocol.pasos.length} pasos</Text>
-                <Text style={styles.cardDrugCount}>💊 {protocol.resumenFarmacos.length} fármacos</Text>
-                <Text style={styles.cardArrow}>→</Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-
-        {filtered.length === 0 && (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>🚨</Text>
-            <Text style={styles.emptyText}>No se encontraron protocolos</Text>
-            <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
-          </View>
-        )}
-
-        <View style={{ height: 40 }} />
-      </ScrollView>
+      <FlatList
+        data={filtered}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={ListHeader}
+        ListEmptyComponent={ListEmpty}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      />
     </Animated.View>
   );
 }
@@ -174,9 +184,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   searchIcon: { fontSize: 16, marginRight: 8 },
   searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
-  scroll: { flex: 1 },
-  chipsScroll: { maxHeight: 50 },
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row' },
+  chipsScroll: {},
+  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
   chip: {
     paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
     backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,

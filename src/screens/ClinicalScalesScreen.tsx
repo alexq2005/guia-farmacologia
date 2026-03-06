@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
+  View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, ClinicalScale } from '../types';
@@ -62,6 +62,87 @@ export function ClinicalScalesScreen({ navigation }: Props) {
     return result;
   }, [scales, selectedCategory, searchQuery]);
 
+  const renderItem = useCallback(({ item: scale }: { item: ClinicalScale }) => {
+    const catColor = SCALE_COLORS[scale.categoria] || '#7C3AED';
+    return (
+      <TouchableOpacity
+        style={[styles.scaleCard, { borderLeftColor: catColor }]}
+        onPress={() => navigation.navigate('ScaleDetail', { scaleId: scale.id })}
+        activeOpacity={0.7}
+      >
+        <View style={styles.cardHeader}>
+          <Text style={styles.cardIcon}>{SCALE_ICONS[scale.categoria] || '📊'}</Text>
+          <View style={styles.cardTitleArea}>
+            <Text style={styles.cardTitle}>{scale.nombre}</Text>
+            <Text style={[styles.cardAbbr, { color: catColor }]}>{scale.abreviatura}</Text>
+          </View>
+          <View style={styles.cardMeta}>
+            <View style={[styles.typeBadge, { backgroundColor: catColor + '18' }]}>
+              <Text style={[styles.typeText, { color: catColor }]}>
+                {TYPE_ICONS[scale.tipo]} {TYPE_LABELS[scale.tipo]}
+              </Text>
+            </View>
+            <Text style={styles.rangeText}>
+              {scale.rangoTotal[0]}–{scale.rangoTotal[1]} pts
+            </Text>
+          </View>
+        </View>
+        <Text style={styles.cardDesc} numberOfLines={2}>{scale.descripcion}</Text>
+        <View style={styles.cardFooter}>
+          <Text style={styles.cardContext} numberOfLines={1}>{scale.contextoClinico}</Text>
+          <Text style={styles.cardArrow}>→</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }, [styles, navigation]);
+
+  const ListHeader = useMemo(() => (
+    <>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.chipsScroll}
+        contentContainerStyle={styles.chipsContainer}
+      >
+        <TouchableOpacity
+          style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
+          onPress={() => setSelectedCategory('all')}
+        >
+          <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
+            Todas ({scales.length})
+          </Text>
+        </TouchableOpacity>
+        {categories.map(cat => {
+          const count = scales.filter(s => s.categoria === cat).length;
+          return (
+            <TouchableOpacity
+              key={cat}
+              style={[styles.chip, selectedCategory === cat && { backgroundColor: SCALE_COLORS[cat] }]}
+              onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
+            >
+              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                {SCALE_ICONS[cat] || '📊'} {CATEGORY_LABELS[cat] || cat} ({count})
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+      {searchQuery.length >= 2 && (
+        <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
+      )}
+    </>
+  ), [selectedCategory, searchQuery, filtered.length, scales.length, categories, styles]);
+
+  const ListEmpty = useMemo(() => (
+    <View style={styles.emptyState}>
+      <Text style={styles.emptyIcon}>📊</Text>
+      <Text style={styles.emptyText}>No se encontraron escalas</Text>
+      <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
+    </View>
+  ), [styles]);
+
+  const keyExtractor = useCallback((item: ClinicalScale) => item.id, []);
+
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
@@ -85,86 +166,15 @@ export function ClinicalScalesScreen({ navigation }: Props) {
         </View>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsScroll}
-          contentContainerStyle={styles.chipsContainer}
-        >
-          <TouchableOpacity
-            style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
-            onPress={() => setSelectedCategory('all')}
-          >
-            <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
-              Todas ({scales.length})
-            </Text>
-          </TouchableOpacity>
-          {categories.map(cat => {
-            const count = scales.filter(s => s.categoria === cat).length;
-            return (
-              <TouchableOpacity
-                key={cat}
-                style={[styles.chip, selectedCategory === cat && { backgroundColor: SCALE_COLORS[cat] }]}
-                onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
-              >
-                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                  {SCALE_ICONS[cat] || '📊'} {CATEGORY_LABELS[cat] || cat} ({count})
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-
-        {searchQuery.length >= 2 && (
-          <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
-        )}
-
-        {filtered.map(scale => {
-          const catColor = SCALE_COLORS[scale.categoria] || '#7C3AED';
-          return (
-            <TouchableOpacity
-              key={scale.id}
-              style={[styles.scaleCard, { borderLeftColor: catColor }]}
-              onPress={() => navigation.navigate('ScaleDetail', { scaleId: scale.id })}
-              activeOpacity={0.7}
-            >
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>{SCALE_ICONS[scale.categoria] || '📊'}</Text>
-                <View style={styles.cardTitleArea}>
-                  <Text style={styles.cardTitle}>{scale.nombre}</Text>
-                  <Text style={[styles.cardAbbr, { color: catColor }]}>{scale.abreviatura}</Text>
-                </View>
-                <View style={styles.cardMeta}>
-                  <View style={[styles.typeBadge, { backgroundColor: catColor + '18' }]}>
-                    <Text style={[styles.typeText, { color: catColor }]}>
-                      {TYPE_ICONS[scale.tipo]} {TYPE_LABELS[scale.tipo]}
-                    </Text>
-                  </View>
-                  <Text style={styles.rangeText}>
-                    {scale.rangoTotal[0]}–{scale.rangoTotal[1]} pts
-                  </Text>
-                </View>
-              </View>
-              <Text style={styles.cardDesc} numberOfLines={2}>{scale.descripcion}</Text>
-              <View style={styles.cardFooter}>
-                <Text style={styles.cardContext} numberOfLines={1}>{scale.contextoClinico}</Text>
-                <Text style={styles.cardArrow}>→</Text>
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-
-        {filtered.length === 0 && (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>📊</Text>
-            <Text style={styles.emptyText}>No se encontraron escalas</Text>
-            <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
-          </View>
-        )}
-
-        <View style={{ height: 40 }} />
-      </ScrollView>
+      <FlatList
+        data={filtered}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={ListHeader}
+        ListEmptyComponent={ListEmpty}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      />
     </Animated.View>
   );
 }
@@ -184,9 +194,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   searchIcon: { fontSize: 16, marginRight: 8 },
   searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
-  scroll: { flex: 1 },
-  chipsScroll: { maxHeight: 50 },
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row' },
+  chipsScroll: {},
+  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
   chip: {
     paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
     backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,

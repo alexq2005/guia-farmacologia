@@ -1,7 +1,7 @@
-import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
+import React, { useState, useMemo, useCallback } from 'react';
+import { View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList, PathologyCategory } from '../types';
+import type { RootStackParamList, PathologyCategory, Pathology } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { PATHOLOGY_COLORS, PATHOLOGY_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
@@ -46,6 +46,75 @@ export function PathologiesScreen({ navigation }: Props) {
     return result;
   }, [pathologies, selectedCategory, searchQuery]);
 
+  const renderItem = useCallback(({ item: pathology }: { item: Pathology }) => (
+    <TouchableOpacity
+      style={[styles.pathologyCard, { borderLeftColor: PATHOLOGY_COLORS[pathology.categoria] }]}
+      onPress={() => navigation.navigate('PathologyDetail', { pathologyId: pathology.id })}
+      activeOpacity={0.7}
+    >
+      <View style={styles.cardHeader}>
+        <Text style={styles.cardIcon}>{PATHOLOGY_ICONS[pathology.categoria]}</Text>
+        <View style={styles.cardTitleArea}>
+          <Text style={styles.cardTitle}>{pathology.nombre}</Text>
+          <Text style={[styles.cardCategory, { color: PATHOLOGY_COLORS[pathology.categoria] }]}>
+            {CATEGORY_LABELS[pathology.categoria]}
+          </Text>
+        </View>
+        <View style={styles.drugCountBadge}>
+          <Text style={styles.drugCountText}>{pathology.farmacosRelacionados.length}</Text>
+          <Text style={styles.drugCountLabel}>fármacos</Text>
+        </View>
+      </View>
+      <Text style={styles.cardDefinition} numberOfLines={2}>{pathology.definicion}</Text>
+      <View style={styles.cardFooter}>
+        <Text style={styles.cardAlarmCount}>⚠️ {pathology.criteriosAlarma.length} criterios de alarma</Text>
+        <Text style={styles.cardArrow}>→</Text>
+      </View>
+    </TouchableOpacity>
+  ), [styles, navigation]);
+
+  const ListHeader = useMemo(() => (
+    <>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.chipsScroll} contentContainerStyle={styles.chipsContainer}>
+        <TouchableOpacity
+          style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
+          onPress={() => setSelectedCategory('all')}
+        >
+          <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
+            Todas ({pathologies.length})
+          </Text>
+        </TouchableOpacity>
+        {ALL_CATEGORIES.map(cat => {
+          const count = pathologies.filter(p => p.categoria === cat).length;
+          return (
+            <TouchableOpacity
+              key={cat}
+              style={[styles.chip, selectedCategory === cat && { backgroundColor: PATHOLOGY_COLORS[cat] }]}
+              onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
+            >
+              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                {PATHOLOGY_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+      {searchQuery.length >= 2 && (
+        <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
+      )}
+    </>
+  ), [selectedCategory, searchQuery, filtered.length, pathologies.length, styles]);
+
+  const ListEmpty = useMemo(() => (
+    <View style={styles.emptyState}>
+      <Text style={styles.emptyIcon}>🔍</Text>
+      <Text style={styles.emptyText}>No se encontraron patologías</Text>
+      <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
+    </View>
+  ), [styles]);
+
+  const keyExtractor = useCallback((item: Pathology) => item.id, []);
+
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor="#0F766E" barStyle="light-content" />
@@ -69,74 +138,15 @@ export function PathologiesScreen({ navigation }: Props) {
         </View>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.chipsScroll} contentContainerStyle={styles.chipsContainer}>
-          <TouchableOpacity
-            style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
-            onPress={() => setSelectedCategory('all')}
-          >
-            <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
-              Todas ({pathologies.length})
-            </Text>
-          </TouchableOpacity>
-          {ALL_CATEGORIES.map(cat => {
-            const count = pathologies.filter(p => p.categoria === cat).length;
-            return (
-              <TouchableOpacity
-                key={cat}
-                style={[styles.chip, selectedCategory === cat && { backgroundColor: PATHOLOGY_COLORS[cat] }]}
-                onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
-              >
-                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                  {PATHOLOGY_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-
-        {searchQuery.length >= 2 && (
-          <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
-        )}
-
-        {filtered.map(pathology => (
-          <TouchableOpacity
-            key={pathology.id}
-            style={[styles.pathologyCard, { borderLeftColor: PATHOLOGY_COLORS[pathology.categoria] }]}
-            onPress={() => navigation.navigate('PathologyDetail', { pathologyId: pathology.id })}
-            activeOpacity={0.7}
-          >
-            <View style={styles.cardHeader}>
-              <Text style={styles.cardIcon}>{PATHOLOGY_ICONS[pathology.categoria]}</Text>
-              <View style={styles.cardTitleArea}>
-                <Text style={styles.cardTitle}>{pathology.nombre}</Text>
-                <Text style={[styles.cardCategory, { color: PATHOLOGY_COLORS[pathology.categoria] }]}>
-                  {CATEGORY_LABELS[pathology.categoria]}
-                </Text>
-              </View>
-              <View style={styles.drugCountBadge}>
-                <Text style={styles.drugCountText}>{pathology.farmacosRelacionados.length}</Text>
-                <Text style={styles.drugCountLabel}>fármacos</Text>
-              </View>
-            </View>
-            <Text style={styles.cardDefinition} numberOfLines={2}>{pathology.definicion}</Text>
-            <View style={styles.cardFooter}>
-              <Text style={styles.cardAlarmCount}>⚠️ {pathology.criteriosAlarma.length} criterios de alarma</Text>
-              <Text style={styles.cardArrow}>→</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-
-        {filtered.length === 0 && (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>🔍</Text>
-            <Text style={styles.emptyText}>No se encontraron patologías</Text>
-            <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
-          </View>
-        )}
-
-        <View style={{ height: 40 }} />
-      </ScrollView>
+      <FlatList
+        data={filtered}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={ListHeader}
+        ListEmptyComponent={ListEmpty}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      />
     </Animated.View>
   );
 }
@@ -150,9 +160,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   searchIcon: { fontSize: 16, marginRight: 8 },
   searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
   clearBtn: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
-  scroll: { flex: 1 },
-  chipsScroll: { maxHeight: 50 },
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row' },
+  chipsScroll: {},
+  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
   chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },

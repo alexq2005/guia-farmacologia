@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, TextInput, Alert } from 'react-native';
+import ClipboardService from '@react-native-clipboard/clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -15,6 +16,7 @@ import scalesData from '../data/clinical_scales.json';
 import protocolsData from '../data/emergency_protocols.json';
 import labValuesData from '../data/lab_values.json';
 import type { Formula } from '../types';
+import { exportUserData, importUserData } from '../utils/backup';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Herramientas'>,
@@ -38,14 +40,51 @@ export function ToolsScreen({ navigation }: Props) {
   const insets = useSafeAreaInsets();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const fadeIn = useFadeIn();
+  const [showImport, setShowImport] = useState(false);
+  const [importText, setImportText] = useState('');
+
+  const handleExport = async () => {
+    try { await exportUserData(); }
+    catch (e) { Alert.alert('Error', 'No se pudo exportar los datos.'); }
+  };
+
+  const handleImport = async () => {
+    const text = importText.trim();
+    if (!text) {
+      Alert.alert('Vacío', 'Pega el JSON de backup en el campo de texto.');
+      return;
+    }
+    const result = await importUserData(text);
+    Alert.alert(result.imported ? 'Importado' : 'Error', result.message);
+    if (result.imported) { setShowImport(false); setImportText(''); }
+  };
+
+  const handlePaste = async () => {
+    const text = await ClipboardService.getString();
+    if (text) setImportText(text);
+  };
 
   const toolSections = [
     {
+      icon: '📊',
+      title: 'Dashboard de Estudio',
+      subtitle: 'Progreso, estadísticas y racha de estudio',
+      color: colors.quiz,
+      target: 'dashboard' as const,
+    },
+    {
       icon: '🧠',
       title: 'Modo Estudio',
-      subtitle: 'Quiz interactivo de farmacología',
+      subtitle: 'Test interactivo de farmacología',
       color: colors.quiz,
       target: 'quiz' as const,
+    },
+    {
+      icon: '⚖️',
+      title: 'Comparador de Fármacos',
+      subtitle: 'Compara hasta 3 fármacos lado a lado',
+      color: '#0891B2',
+      target: 'comparison' as const,
     },
     {
       icon: '🏥',
@@ -135,7 +174,9 @@ export function ToolsScreen({ navigation }: Props) {
               key={i}
               style={[styles.toolCard, { borderLeftColor: tool.color }]}
               onPress={() => {
-                if (tool.target === 'quiz') navigation.navigate('QuizScreen');
+                if (tool.target === 'dashboard') navigation.navigate('Dashboard');
+                else if (tool.target === 'quiz') navigation.navigate('QuizScreen');
+                else if (tool.target === 'comparison') navigation.navigate('DrugComparison');
                 else if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');
                 else if (tool.target === 'nursing') navigation.navigate('NursingCare');
                 else if (tool.target === 'pathologies') navigation.navigate('PathologiesScreen');
@@ -156,6 +197,46 @@ export function ToolsScreen({ navigation }: Props) {
               <Text style={styles.toolArrow}>→</Text>
             </TouchableOpacity>
           ))}
+        </View>
+
+        {/* Backup Section */}
+        <Text style={styles.sectionTitle}>💾 Mis Datos</Text>
+        <View style={styles.backupSection}>
+          <TouchableOpacity style={[styles.backupButton, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]} onPress={handleExport} activeOpacity={0.7}>
+            <Text style={styles.backupIcon}>📤</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.backupTitle, { color: colors.success }]}>Exportar datos</Text>
+              <Text style={styles.backupSubtitle}>Favoritos, notas, tests, historial</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.backupButton, { backgroundColor: colors.info + '15', borderColor: colors.info + '30' }]} onPress={() => setShowImport(!showImport)} activeOpacity={0.7}>
+            <Text style={styles.backupIcon}>📥</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={[styles.backupTitle, { color: colors.info }]}>Importar datos</Text>
+              <Text style={styles.backupSubtitle}>Restaurar desde backup JSON</Text>
+            </View>
+          </TouchableOpacity>
+          {showImport && (
+            <View style={styles.importArea}>
+              <TextInput
+                style={[styles.importInput, { color: colors.text, borderColor: colors.border, backgroundColor: colors.surface }]}
+                value={importText}
+                onChangeText={setImportText}
+                placeholder="Pega el JSON de backup aquí..."
+                placeholderTextColor={colors.textLight}
+                multiline
+                textAlignVertical="top"
+              />
+              <View style={styles.importButtons}>
+                <TouchableOpacity style={[styles.importBtn, { backgroundColor: colors.surface, borderColor: colors.border }]} onPress={handlePaste}>
+                  <Text style={[styles.importBtnText, { color: colors.text }]}>📋 Pegar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.importBtn, { backgroundColor: colors.info, borderColor: colors.info }]} onPress={handleImport}>
+                  <Text style={[styles.importBtnText, { color: '#FFFFFF' }]}>Importar</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
         </View>
 
         {/* Formula Quick Access */}
@@ -299,4 +380,18 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   routeIcon: { fontSize: 28 },
   routeName: { fontSize: 11, color: colors.text, fontWeight: '600', marginTop: 4, textAlign: 'center' },
+  backupSection: { paddingHorizontal: 16, gap: 8 },
+  backupButton: {
+    flexDirection: 'row', alignItems: 'center', padding: 14, borderRadius: 14, borderWidth: 1,
+  },
+  backupIcon: { fontSize: 28, marginRight: 12 },
+  backupTitle: { fontSize: 15, fontWeight: '700' },
+  backupSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  importArea: { marginTop: 8 },
+  importInput: {
+    minHeight: 80, borderRadius: 10, padding: 12, fontSize: 13, borderWidth: 1,
+  },
+  importButtons: { flexDirection: 'row', gap: 8, marginTop: 8, justifyContent: 'flex-end' },
+  importBtn: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 10, borderWidth: 1 },
+  importBtnText: { fontSize: 13, fontWeight: '600' },
 });

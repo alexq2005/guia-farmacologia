@@ -13,6 +13,7 @@ import { useTheme } from '../context/ThemeContext';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn, useStaggeredEntrance } from '../utils/animations';
+import { useRecentDrugs } from '../hooks/useRecentDrugs';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Inicio'>,
@@ -31,6 +32,7 @@ export function HomeScreen({ navigation }: Props) {
   const { favorites, favoriteCount } = useFavoritesContext();
   const { recentNotes, noteCount } = useNotesContext();
   const { results: quizResults, averageScore } = useQuiz(drugs);
+  const { recentDrugs } = useRecentDrugs();
   const [dailyDrug, setDailyDrug] = useState<Drug | null>(null);
   const fadeIn = useFadeIn(400);
   const stagger = useStaggeredEntrance(5, 100);
@@ -43,7 +45,7 @@ export function HomeScreen({ navigation }: Props) {
 
   const quickActions = [
     { icon: '🔍', label: 'Buscar', onPress: () => navigation.navigate('Busqueda') },
-    { icon: '🧠', label: 'Quiz', onPress: () => navigation.navigate('QuizScreen') },
+    { icon: '🧠', label: 'Test', onPress: () => navigation.navigate('QuizScreen') },
     { icon: '🚨', label: 'Protocolos', onPress: () => navigation.navigate('EmergencyProtocols') },
     { icon: '📊', label: 'Escalas', onPress: () => navigation.navigate('ClinicalScales') },
     { icon: '🔬', label: 'Laboratorio', onPress: () => navigation.navigate('LabValues') },
@@ -132,6 +134,32 @@ export function HomeScreen({ navigation }: Props) {
           </Animated.View>
         )}
 
+        {/* Recently Viewed */}
+        {recentDrugs.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>🕐 Vistos Recientemente</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
+              {recentDrugs.slice(0, 10).map(drugId => {
+                const recentDrug = getDrugById(drugId);
+                if (!recentDrug) return null;
+                const rColor = UNIT_COLORS[recentDrug.unidadId] || colors.primary;
+                return (
+                  <TouchableOpacity
+                    key={drugId}
+                    style={[styles.favoriteCard, { borderTopColor: rColor }]}
+                    onPress={() => navigation.navigate('DrugDetail', { drugId })}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.favoriteName} numberOfLines={1}>{recentDrug.nombre}</Text>
+                    <Text style={styles.favoriteGeneric} numberOfLines={1}>{recentDrug.nombreGenerico}</Text>
+                    <Text style={[styles.favoriteFamily, { color: rColor }]}>{recentDrug.familia}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+          </View>
+        )}
+
         {/* Study Progress */}
         {quizResults.length > 0 && (
           <Animated.View style={[styles.section, { opacity: stagger[2] || 1 }]}>
@@ -218,12 +246,14 @@ export function HomeScreen({ navigation }: Props) {
         <Animated.View style={[styles.section, { opacity: stagger[4] || 1 }]}>
           <Text style={styles.sectionTitle}>📚 Explorar por Sistema</Text>
           <View style={styles.systemsGrid}>
-            {categories.unidades.slice(0, 8).map(unit => (
+            {categories.unidades.map(unit => (
               <TouchableOpacity
                 key={unit.id}
                 style={[styles.systemCard, { backgroundColor: (UNIT_COLORS[unit.id] || colors.primary) + '12' }]}
                 onPress={() => navigation.navigate('Categorias')}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={unit.nombre}
               >
                 <View style={[styles.systemIcon, { backgroundColor: UNIT_COLORS[unit.id] || colors.primary }]}>
                   <Text style={styles.systemIconText}>{unit.icon === 'brain' ? '🧠' : unit.numero.toString()}</Text>
@@ -259,9 +289,8 @@ export function HomeScreen({ navigation }: Props) {
           <Text style={styles.footerText}>
             Guía Farmacológica Integral de Enfermería
           </Text>
-          <Text style={styles.footerVersion}>v1.0 — 100% Offline</Text>
           <View style={styles.offlineBadge}>
-            <Text style={styles.offlineBadgeText}>📱 100% Offline</Text>
+            <Text style={styles.offlineBadgeText}>📱 v2.0 — 100% Offline</Text>
           </View>
           <TouchableOpacity
             onPress={() => Linking.openURL('mailto:alexq2005@gmail.com?subject=Guía Farmacológica - Contacto')}

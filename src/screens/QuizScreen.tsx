@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
@@ -18,6 +18,7 @@ export function QuizScreen({ navigation }: Props) {
   const { drugs, categories } = useDrugData();
   const { results, averageScore } = useQuiz(drugs);
   const fadeIn = useFadeIn();
+  const [selectedCount, setSelectedCount] = useState(10);
 
   const unitOptions = [
     { id: undefined, label: 'Todas las categorías', icon: '📚' },
@@ -28,7 +29,7 @@ export function QuizScreen({ navigation }: Props) {
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: colors.quiz }]}>
-        <Text style={styles.headerTitle}>🧠 Modo Estudio</Text>
+        <Text style={styles.headerTitle}>🧠 Test Farmacológico</Text>
         <Text style={styles.headerSubtitle}>Pon a prueba tus conocimientos</Text>
       </View>
 
@@ -60,34 +61,44 @@ export function QuizScreen({ navigation }: Props) {
           </View>
         )}
 
-        {/* Quick Start */}
-        <Text style={styles.sectionTitle}>⚡ Inicio Rápido</Text>
+        {/* Question Count Selector */}
+        <Text style={styles.sectionTitle}>⚡ Preguntas</Text>
         <View style={styles.quickGrid}>
           {QUESTION_COUNTS.map(count => (
             <TouchableOpacity
               key={count}
-              style={styles.quickCard}
-              onPress={() => navigation.navigate('QuizSession', { questionCount: count })}
+              style={[styles.quickCard, selectedCount === count && { backgroundColor: colors.quiz, borderColor: colors.quiz }]}
+              onPress={() => setSelectedCount(count)}
               activeOpacity={0.7}
             >
-              <Text style={styles.quickNumber}>{count}</Text>
-              <Text style={styles.quickLabel}>preguntas</Text>
+              <Text style={[styles.quickNumber, selectedCount === count && { color: '#FFFFFF' }]}>{count}</Text>
+              <Text style={[styles.quickLabel, selectedCount === count && { color: 'rgba(255,255,255,0.8)' }]}>preguntas</Text>
             </TouchableOpacity>
           ))}
         </View>
 
-        {/* By Category */}
+        {/* Quick Start with selected count */}
+        <TouchableOpacity
+          style={[styles.startButton, { backgroundColor: colors.quiz }]}
+          onPress={() => navigation.navigate('QuizSession', { questionCount: selectedCount })}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.startButtonText}>Iniciar test — {selectedCount} preguntas</Text>
+        </TouchableOpacity>
+
+        {/* By Category — uses selected count */}
         <Text style={styles.sectionTitle}>📂 Por Categoría</Text>
         <View style={styles.categoryList}>
           {unitOptions.map((unit, i) => (
             <TouchableOpacity
               key={i}
               style={styles.categoryCard}
-              onPress={() => navigation.navigate('QuizSession', { category: unit.id, questionCount: 10 })}
+              onPress={() => navigation.navigate('QuizSession', { category: unit.id, questionCount: selectedCount })}
               activeOpacity={0.7}
             >
               <Text style={styles.categoryIcon}>{unit.icon}</Text>
               <Text style={styles.categoryLabel} numberOfLines={1}>{unit.label}</Text>
+              <Text style={styles.categoryCount}>{selectedCount}</Text>
               <Text style={styles.categoryArrow}>›</Text>
             </TouchableOpacity>
           ))}
@@ -160,7 +171,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   categoryIcon: { fontSize: 24, marginRight: 12 },
   categoryLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text },
+  categoryCount: { fontSize: 12, fontWeight: '700', color: colors.quiz, marginRight: 4, backgroundColor: colors.quiz + '15', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 8 },
   categoryArrow: { fontSize: 20, color: colors.textLight },
+  startButton: { marginHorizontal: 16, marginTop: 12, paddingVertical: 16, borderRadius: 14, alignItems: 'center' },
+  startButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
   resultCard: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
     marginHorizontal: 16, marginBottom: 6, padding: 12, borderRadius: 12, elevation: 1,

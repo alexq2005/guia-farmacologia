@@ -1,9 +1,27 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import type { Drug, SearchResult } from '../types';
 import { normalizeText as normalize } from '../utils/search';
 
+/** Build search text from drug fields (replaces precalculated searchText) */
+function buildSearchText(drug: Drug): string {
+  return [
+    drug.nombre,
+    drug.nombreGenerico,
+    ...drug.nombresComerciales,
+    drug.familia,
+    drug.clasificacion,
+    ...drug.indicaciones,
+    ...drug.contraindicaciones,
+    ...drug.efectosAdversos,
+    drug.mecanismoAccion,
+    drug.embarazo,
+    drug.lactancia,
+    ...drug.viaAdministracion,
+  ].filter(Boolean).join(' ');
+}
+
 /** Score a drug against a search query */
-function scoreDrug(drug: Drug, query: string): SearchResult | null {
+function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string): SearchResult | null {
   const normalizedQuery = normalize(query);
   const terms = normalizedQuery.split(/\s+/).filter(t => t.length >= 2);
 
@@ -52,8 +70,8 @@ function scoreDrug(drug: Drug, query: string): SearchResult | null {
       if (!matchedFields.includes('indicaciones')) matchedFields.push('indicaciones');
     }
 
-    // Check searchText (catch-all)
-    if (totalScore === 0 && normalize(drug.searchText).includes(term)) {
+    // Check searchText (catch-all, generated at runtime)
+    if (totalScore === 0 && normalize(searchTextMap.get(drug.id) || '').includes(term)) {
       totalScore += 0.5;
       matchedFields.push('otro');
     }
@@ -66,18 +84,35 @@ function scoreDrug(drug: Drug, query: string): SearchResult | null {
 
 export function useDrugSearch(drugs: Drug[]) {
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => setDebouncedQuery(query), 150);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+  }, [query]);
+
+  // Precompute search text once for all drugs (replaces JSON searchText field)
+  const searchTextMap = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const drug of drugs) {
+      map.set(drug.id, buildSearchText(drug));
+    }
+    return map;
+  }, [drugs]);
 
   const results = useMemo((): SearchResult[] => {
-    if (query.trim().length < 2) return [];
+    if (debouncedQuery.trim().length < 2) return [];
 
     const scored = drugs
-      .map(drug => scoreDrug(drug, query))
+      .map(drug => scoreDrug(drug, searchTextMap, debouncedQuery))
       .filter((r): r is SearchResult => r !== null);
 
     scored.sort((a, b) => b.score - a.score);
 
     return scored.slice(0, 50); // Limit to 50 results
-  }, [drugs, query]);
+  }, [drugs, debouncedQuery, searchTextMap]);
 
   const search = useCallback((text: string) => {
     setQuery(text);

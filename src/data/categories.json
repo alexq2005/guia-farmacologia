@@ -2321,7 +2321,8 @@
             "octreotida_hipoglucemia",
             "dantroleno_hipertermia",
             "flumazenilo_detalle",
-            "atropina_organofosforado"
+            "atropina_organofosforado",
+            "icatibant"
           ]
         },
         {
@@ -2570,7 +2571,9 @@
             "olaparib",
             "lorlatinib",
             "enfortumab_vedotin",
-            "trastuzumab_deruxtecan"
+            "trastuzumab_deruxtecan",
+            "atezolizumab",
+            "alectinib"
           ]
         },
         {

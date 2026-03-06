@@ -90,7 +90,7 @@ export interface Drug {
   };
   unidadId: string;
   capituloId: string;
-  searchText: string; // Precalculated for search
+  searchText?: string; // Deprecated: generated at runtime
 }
 
 /** Unidad temática (ej: Sistema Nervioso) */
@@ -405,7 +405,7 @@ export type RootStackParamList = {
   NursingCare: undefined;
   PathologiesScreen: undefined;
   PathologyDetail: { pathologyId: string };
-  InteractionChecker: undefined;
+  InteractionChecker: { preloadDrugId?: string } | undefined;
   Calculators: undefined;
   ClinicalScales: undefined;
   ScaleDetail: { scaleId: string };
@@ -416,6 +416,8 @@ export type RootStackParamList = {
   QuizSession: { category?: string; questionCount: number };
   ParenteralGuide: undefined;
   AboutScreen: undefined;
+  Dashboard: undefined;
+  DrugComparison: { preloadDrugId?: string } | undefined;
 };
 
 export type TabParamList = {

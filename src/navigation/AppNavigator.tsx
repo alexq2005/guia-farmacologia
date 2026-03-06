@@ -33,6 +33,8 @@ import { LabValuesScreen } from '../screens/LabValuesScreen';
 import { EmergencyProtocolsScreen } from '../screens/EmergencyProtocolsScreen';
 import { ProtocolDetailScreen } from '../screens/ProtocolDetailScreen';
 import { ParenteralGuideScreen } from '../screens/ParenteralGuideScreen';
+import { DashboardScreen } from '../screens/DashboardScreen';
+import { DrugComparisonScreen } from '../screens/DrugComparisonScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -150,7 +152,7 @@ export function AppNavigator() {
         <Stack.Screen
           name="DrugDetail"
           component={DrugDetailScreen}
-          options={{ title: 'Detalle del Fármaco' }}
+          options={{ title: 'Fármaco' }}
         />
         <Stack.Screen
           name="ChapterDrugs"
@@ -230,12 +232,22 @@ export function AppNavigator() {
         <Stack.Screen
           name="QuizScreen"
           component={QuizScreen}
-          options={{ title: 'Modo Estudio' }}
+          options={{ title: 'Test Farmacológico' }}
         />
         <Stack.Screen
           name="QuizSession"
           component={QuizSessionScreen}
-          options={{ title: 'Quiz' }}
+          options={{ title: 'Test' }}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={DashboardScreen}
+          options={{ title: 'Mi Progreso' }}
+        />
+        <Stack.Screen
+          name="DrugComparison"
+          component={DrugComparisonScreen}
+          options={{ title: 'Comparador de Fármacos' }}
         />
         <Stack.Screen
           name="AboutScreen"

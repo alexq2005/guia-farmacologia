@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
+  View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
 import type { LabValue, LabCategory } from '../types';
 import { LAB_COLORS, LAB_ICONS } from '../utils/colors';
@@ -39,14 +39,14 @@ export function LabValuesScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
-  const toggleExpand = (id: string) => {
+  const toggleExpand = useCallback((id: string) => {
     setExpandedIds(prev => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
     });
-  };
+  }, []);
 
   const filtered = useMemo(() => {
     let result = labValues;
@@ -63,6 +63,149 @@ export function LabValuesScreen() {
     }
     return result;
   }, [labValues, selectedCategory, searchQuery]);
+
+  const renderItem = useCallback(({ item: value }: { item: LabValue }) => {
+    const isExpanded = expandedIds.has(value.id);
+    const catColor = LAB_COLORS[value.categoria];
+    return (
+      <TouchableOpacity
+        style={[styles.labCard, { borderLeftColor: catColor }]}
+        onPress={() => toggleExpand(value.id)}
+        activeOpacity={0.7}
+      >
+        <View style={styles.cardHeader}>
+          <Text style={styles.cardIcon}>{LAB_ICONS[value.categoria]}</Text>
+          <View style={styles.cardTitleArea}>
+            <Text style={styles.cardTitle}>{value.nombre}</Text>
+            <Text style={[styles.cardAbbr, { color: catColor }]}>{value.abreviatura}</Text>
+          </View>
+          <View style={styles.cardBadge}>
+            <Text style={[styles.cardBadgeText, { color: catColor }]}>
+              {value.rangos.adulto
+                ? `${value.rangos.adulto.min}-${value.rangos.adulto.max}`
+                : value.rangos.adultoHombre
+                  ? `${value.rangos.adultoHombre.min}-${value.rangos.adultoHombre.max}`
+                  : '—'}
+            </Text>
+            <Text style={styles.cardBadgeUnit}>
+              {value.rangos.adulto?.unidad || value.rangos.adultoHombre?.unidad || ''}
+            </Text>
+          </View>
+          <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}>▼</Text>
+        </View>
+
+        {isExpanded && (
+          <View style={styles.expandedContent}>
+            <Text style={styles.sectionLabel}>RANGOS NORMALES</Text>
+            {value.rangos.adulto && (
+              <RangeBar label="Adulto" range={value.rangos.adulto} colors={colors} />
+            )}
+            {value.rangos.adultoHombre && (
+              <RangeBar label="♂ Hombre" range={value.rangos.adultoHombre} colors={colors} />
+            )}
+            {value.rangos.adultoMujer && (
+              <RangeBar label="♀ Mujer" range={value.rangos.adultoMujer} colors={colors} />
+            )}
+            {value.rangos.pediatrico && (
+              <RangeBar label="👶 Pediátrico" range={value.rangos.pediatrico} colors={colors} />
+            )}
+
+            <View style={styles.significanceRow}>
+              <View style={[styles.significanceBox, { backgroundColor: colors.error + '10', borderColor: colors.error + '30' }]}>
+                <Text style={[styles.sigLabel, { color: colors.error }]}>↑ ELEVADO</Text>
+                <Text style={styles.sigText}>{value.significadoAlto}</Text>
+              </View>
+              <View style={[styles.significanceBox, { backgroundColor: colors.info + '10', borderColor: colors.info + '30' }]}>
+                <Text style={[styles.sigLabel, { color: colors.info }]}>↓ DISMINUIDO</Text>
+                <Text style={styles.sigText}>{value.significadoBajo}</Text>
+              </View>
+            </View>
+
+            {value.farmacosAlteran.length > 0 && (
+              <>
+                <Text style={styles.sectionLabel}>FÁRMACOS QUE ALTERAN</Text>
+                <View style={styles.tagsRow}>
+                  {value.farmacosAlteran.map((f, i) => (
+                    <View key={i} style={styles.drugTag}>
+                      <Text style={styles.drugTagText}>💊 {f}</Text>
+                    </View>
+                  ))}
+                </View>
+              </>
+            )}
+
+            {value.implicacionesEnfermeria.length > 0 && (
+              <>
+                <Text style={styles.sectionLabel}>IMPLICACIONES DE ENFERMERÍA</Text>
+                {value.implicacionesEnfermeria.map((imp, i) => (
+                  <View key={i} style={styles.nursingRow}>
+                    <Text style={styles.nursingBullet}>•</Text>
+                    <Text style={styles.nursingText}>{imp}</Text>
+                  </View>
+                ))}
+              </>
+            )}
+          </View>
+        )}
+      </TouchableOpacity>
+    );
+  }, [expandedIds, colors, styles, toggleExpand]);
+
+  const ListHeader = useMemo(() => (
+    <>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={styles.chipsScroll}
+        contentContainerStyle={styles.chipsContainer}
+      >
+        <TouchableOpacity
+          style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
+          onPress={() => setSelectedCategory('all')}
+        >
+          <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
+            Todos ({labValues.length})
+          </Text>
+        </TouchableOpacity>
+        {ALL_LAB_CATEGORIES.map(cat => {
+          const count = labValues.filter(v => v.categoria === cat).length;
+          if (count === 0) return null;
+          return (
+            <TouchableOpacity
+              key={cat}
+              style={[styles.chip, selectedCategory === cat && { backgroundColor: LAB_COLORS[cat] }]}
+              onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
+            >
+              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                {LAB_ICONS[cat]} {LAB_CATEGORY_LABELS[cat]} ({count})
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+      {searchQuery.length >= 2 && (
+        <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
+      )}
+    </>
+  ), [selectedCategory, searchQuery, filtered.length, labValues.length, styles, colors]);
+
+  const ListFooter = useMemo(() => (
+    <View style={styles.disclaimer}>
+      <Text style={styles.disclaimerText}>
+        ⚕️ Los rangos de referencia pueden variar según el laboratorio y el método de análisis. Siempre consultar con los valores de referencia del laboratorio local.
+      </Text>
+    </View>
+  ), [styles]);
+
+  const ListEmpty = useMemo(() => (
+    <View style={styles.emptyState}>
+      <Text style={styles.emptyIcon}>🔬</Text>
+      <Text style={styles.emptyText}>No se encontraron valores</Text>
+      <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
+    </View>
+  ), [styles]);
+
+  const keyExtractor = useCallback((item: LabValue) => item.id, []);
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
@@ -87,149 +230,17 @@ export function LabValuesScreen() {
         </View>
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.chipsScroll}
-          contentContainerStyle={styles.chipsContainer}
-        >
-          <TouchableOpacity
-            style={[styles.chip, selectedCategory === 'all' && styles.chipActive]}
-            onPress={() => setSelectedCategory('all')}
-          >
-            <Text style={[styles.chipText, selectedCategory === 'all' && styles.chipTextActive]}>
-              Todos ({labValues.length})
-            </Text>
-          </TouchableOpacity>
-          {ALL_LAB_CATEGORIES.map(cat => {
-            const count = labValues.filter(v => v.categoria === cat).length;
-            if (count === 0) return null;
-            return (
-              <TouchableOpacity
-                key={cat}
-                style={[styles.chip, selectedCategory === cat && { backgroundColor: LAB_COLORS[cat] }]}
-                onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
-              >
-                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                  {LAB_ICONS[cat]} {LAB_CATEGORY_LABELS[cat]} ({count})
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
-
-        {searchQuery.length >= 2 && (
-          <Text style={styles.resultCount}>{filtered.length} resultado{filtered.length !== 1 ? 's' : ''}</Text>
-        )}
-
-        {filtered.map(value => {
-          const isExpanded = expandedIds.has(value.id);
-          const catColor = LAB_COLORS[value.categoria];
-          return (
-            <TouchableOpacity
-              key={value.id}
-              style={[styles.labCard, { borderLeftColor: catColor }]}
-              onPress={() => toggleExpand(value.id)}
-              activeOpacity={0.7}
-            >
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>{LAB_ICONS[value.categoria]}</Text>
-                <View style={styles.cardTitleArea}>
-                  <Text style={styles.cardTitle}>{value.nombre}</Text>
-                  <Text style={[styles.cardAbbr, { color: catColor }]}>{value.abreviatura}</Text>
-                </View>
-                <View style={styles.cardBadge}>
-                  <Text style={[styles.cardBadgeText, { color: catColor }]}>
-                    {value.rangos.adulto
-                      ? `${value.rangos.adulto.min}-${value.rangos.adulto.max}`
-                      : value.rangos.adultoHombre
-                        ? `${value.rangos.adultoHombre.min}-${value.rangos.adultoHombre.max}`
-                        : '—'}
-                  </Text>
-                  <Text style={styles.cardBadgeUnit}>
-                    {value.rangos.adulto?.unidad || value.rangos.adultoHombre?.unidad || ''}
-                  </Text>
-                </View>
-                <Text style={[styles.chevron, isExpanded && styles.chevronExpanded]}>▼</Text>
-              </View>
-
-              {isExpanded && (
-                <View style={styles.expandedContent}>
-                  {/* Ranges */}
-                  <Text style={styles.sectionLabel}>RANGOS NORMALES</Text>
-                  {value.rangos.adulto && (
-                    <RangeBar label="Adulto" range={value.rangos.adulto} colors={colors} />
-                  )}
-                  {value.rangos.adultoHombre && (
-                    <RangeBar label="♂ Hombre" range={value.rangos.adultoHombre} colors={colors} />
-                  )}
-                  {value.rangos.adultoMujer && (
-                    <RangeBar label="♀ Mujer" range={value.rangos.adultoMujer} colors={colors} />
-                  )}
-                  {value.rangos.pediatrico && (
-                    <RangeBar label="👶 Pediátrico" range={value.rangos.pediatrico} colors={colors} />
-                  )}
-
-                  {/* Significance */}
-                  <View style={styles.significanceRow}>
-                    <View style={[styles.significanceBox, { backgroundColor: '#DC262610', borderColor: '#DC262630' }]}>
-                      <Text style={[styles.sigLabel, { color: '#DC2626' }]}>↑ ELEVADO</Text>
-                      <Text style={styles.sigText}>{value.significadoAlto}</Text>
-                    </View>
-                    <View style={[styles.significanceBox, { backgroundColor: '#2563EB10', borderColor: '#2563EB30' }]}>
-                      <Text style={[styles.sigLabel, { color: '#2563EB' }]}>↓ DISMINUIDO</Text>
-                      <Text style={styles.sigText}>{value.significadoBajo}</Text>
-                    </View>
-                  </View>
-
-                  {/* Drugs that alter */}
-                  {value.farmacosAlteran.length > 0 && (
-                    <>
-                      <Text style={styles.sectionLabel}>FÁRMACOS QUE ALTERAN</Text>
-                      <View style={styles.tagsRow}>
-                        {value.farmacosAlteran.map((f, i) => (
-                          <View key={i} style={styles.drugTag}>
-                            <Text style={styles.drugTagText}>💊 {f}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    </>
-                  )}
-
-                  {/* Nursing implications */}
-                  {value.implicacionesEnfermeria.length > 0 && (
-                    <>
-                      <Text style={styles.sectionLabel}>IMPLICACIONES DE ENFERMERÍA</Text>
-                      {value.implicacionesEnfermeria.map((imp, i) => (
-                        <View key={i} style={styles.nursingRow}>
-                          <Text style={styles.nursingBullet}>•</Text>
-                          <Text style={styles.nursingText}>{imp}</Text>
-                        </View>
-                      ))}
-                    </>
-                  )}
-                </View>
-              )}
-            </TouchableOpacity>
-          );
-        })}
-
-        {filtered.length === 0 && (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>🔬</Text>
-            <Text style={styles.emptyText}>No se encontraron valores</Text>
-            <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
-          </View>
-        )}
-
-        <View style={styles.disclaimer}>
-          <Text style={styles.disclaimerText}>
-            ⚕️ Los rangos de referencia pueden variar según el laboratorio y el método de análisis. Siempre consultar con los valores de referencia del laboratorio local.
-          </Text>
-        </View>
-        <View style={{ height: 40 }} />
-      </ScrollView>
+      <FlatList
+        data={filtered}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        ListHeaderComponent={ListHeader}
+        ListFooterComponent={filtered.length > 0 ? ListFooter : undefined}
+        ListEmptyComponent={ListEmpty}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+        extraData={expandedIds}
+      />
     </Animated.View>
   );
 }
@@ -249,9 +260,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   searchIcon: { fontSize: 16, marginRight: 8 },
   searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
-  scroll: { flex: 1 },
-  chipsScroll: { maxHeight: 50 },
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row' },
+  chipsScroll: {},
+  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
   chip: {
     paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
     backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,
