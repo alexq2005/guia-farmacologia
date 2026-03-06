@@ -1,8 +1,10 @@
-import React, { useMemo, useState, useEffect, useRef } from 'react';
-import { View, Text, ScrollView, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
+import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
+import { View, Text, ScrollView, StyleSheet, StatusBar, TextInput, Animated, Modal, Pressable } from 'react-native';
+import ClipboardService from '@react-native-clipboard/clipboard';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useDrugData } from '../hooks/useDrugData';
 import { useFavoritesContext } from '../context/FavoritesContext';
@@ -12,6 +14,8 @@ import { UNIT_COLORS, PREGNANCY_COLORS, ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { shareDrug } from '../utils/share';
 import { useFadeIn } from '../utils/animations';
+import { useRecentDrugs } from '../hooks/useRecentDrugs';
+import { SkeletonDrugDetail } from '../components/Skeleton';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugDetail'>;
 
@@ -42,14 +46,96 @@ function InfoRow({ label, value }: { label: string; value: string }) {
   );
 }
 
-export function DrugDetailScreen({ route }: Props) {
+const PREGNANCY_INFO: Record<string, { label: string; desc: string; risk: string }> = {
+  A: { label: 'Categoría A', desc: 'Estudios controlados en mujeres no han demostrado riesgo fetal en el primer trimestre y no hay evidencia de riesgo en trimestres posteriores.', risk: 'Sin riesgo' },
+  B: { label: 'Categoría B', desc: 'Estudios en animales no han mostrado riesgo fetal, pero no hay estudios controlados en mujeres embarazadas. O estudios en animales mostraron efectos adversos no confirmados en humanos.', risk: 'Sin evidencia de riesgo' },
+  C: { label: 'Categoría C', desc: 'Estudios en animales han mostrado efectos adversos sobre el feto. No hay estudios controlados en humanos. El fármaco solo debe usarse si el beneficio potencial justifica el riesgo.', risk: 'Riesgo no descartable' },
+  D: { label: 'Categoría D', desc: 'Existe evidencia positiva de riesgo fetal humano basada en datos de reacciones adversas. Sin embargo, los beneficios del uso en embarazadas pueden ser aceptables a pesar del riesgo (ej: situación de riesgo vital).', risk: 'Evidencia de riesgo' },
+  X: { label: 'Categoría X', desc: 'Estudios en animales o humanos han demostrado anomalías fetales y/o existe evidencia positiva de riesgo fetal. Los riesgos superan claramente cualquier beneficio posible. Contraindicado en embarazo.', risk: 'Contraindicado' },
+  'N/A': { label: 'No clasificado', desc: 'No se ha asignado categoría de riesgo en embarazo para este fármaco. Consultar ficha técnica actualizada.', risk: 'Sin clasificar' },
+};
+
+function PregnancyModal({ visible, onClose, current }: { visible: boolean; onClose: () => void; current: string }) {
+  const { colors } = useTheme();
+  const s = useMemo(() => createStyles(colors), [colors]);
+  return (
+    <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
+      <Pressable style={s.modalOverlay} onPress={onClose}>
+        <Pressable style={s.modalContent} onPress={e => e.stopPropagation()}>
+          <Text style={s.modalTitle}>📋 Categorías de Embarazo (FDA)</Text>
+          <Text style={s.modalSubtitle}>Clasificación de riesgo fetal</Text>
+          {(['A', 'B', 'C', 'D', 'X'] as const).map(cat => {
+            const info = PREGNANCY_INFO[cat];
+            const color = PREGNANCY_COLORS[cat] || colors.textLight;
+            const isCurrent = cat === current;
+            return (
+              <View key={cat} style={[s.pregModalRow, isCurrent && { backgroundColor: color + '15', borderColor: color + '40' }]}>
+                <View style={[s.pregModalBadge, { backgroundColor: color }]}>
+                  <Text style={s.pregModalBadgeText}>{cat}</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={[s.pregModalRisk, { color }]}>{info.risk}</Text>
+                  <Text style={s.pregModalDesc}>{info.desc}</Text>
+                </View>
+                {isCurrent && <Text style={{ fontSize: 16 }}>◀</Text>}
+              </View>
+            );
+          })}
+          <TouchableOpacity style={[s.modalCloseBtn, { backgroundColor: colors.primary }]} onPress={onClose}>
+            <Text style={s.modalCloseBtnText}>Entendido</Text>
+          </TouchableOpacity>
+        </Pressable>
+      </Pressable>
+    </Modal>
+  );
+}
+
+function CopyButton({ text, colors: c }: { text: string; colors: ThemeColors }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = useCallback(() => {
+    ClipboardService.setString(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [text]);
+  return (
+    <TouchableOpacity
+      onPress={handleCopy}
+      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      style={{ paddingHorizontal: 6, paddingVertical: 2 }}
+    >
+      <Text style={{ fontSize: 14, color: copied ? c.success : c.textLight }}>
+        {copied ? '✓' : '📋'}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+export function DrugDetailScreen({ route, navigation }: Props) {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
-  const { getDrugById, getUnitById } = useDrugData();
+  const { getDrugById, getUnitById, pathologies } = useDrugData();
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const { getNote, saveNote } = useNotesContext();
+  const { addRecent } = useRecentDrugs();
   const fadeIn = useFadeIn(350);
+  const [showPregModal, setShowPregModal] = useState(false);
   const drug = getDrugById(route.params.drugId);
+
+  // Set drug name as header title
+  useEffect(() => {
+    if (drug) {
+      navigation.setOptions({ title: drug.nombre });
+      addRecent(drug.id);
+    }
+  }, [drug?.id]);
+
+  // Reverse lookup: find pathologies that reference this drug
+  const relatedPathologies = useMemo(() => {
+    if (!drug) return [];
+    return pathologies.filter(p =>
+      p.farmacosRelacionados?.some(f => f.drugId === drug.id)
+    );
+  }, [drug?.id, pathologies]);
 
   const existingNote = drug ? getNote(drug.id) : undefined;
   const [noteText, setNoteText] = useState(existingNote?.text || '');
@@ -73,7 +159,14 @@ export function DrugDetailScreen({ route }: Props) {
   if (!drug) {
     return (
       <View style={styles.errorContainer}>
+        <Text style={{ fontSize: 48, marginBottom: 12 }}>💊</Text>
         <Text style={styles.errorText}>Fármaco no encontrado</Text>
+        <TouchableOpacity
+          style={{ marginTop: 16, backgroundColor: colors.primary, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>← Volver</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -107,12 +200,20 @@ export function DrugDetailScreen({ route }: Props) {
         <View style={styles.classificationBadge}>
           <Text style={styles.classificationText}>{drug.clasificacion}</Text>
         </View>
-        <Text style={styles.drugName}>{drug.nombre}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[styles.drugName, { flex: 1 }]}>{drug.nombre}</Text>
+          <CopyButton text={`${drug.nombre} (${drug.nombreGenerico})`} colors={{ ...colors, textLight: 'rgba(255,255,255,0.6)', success: '#34D399' }} />
+        </View>
         <Text style={styles.genericName}>{drug.nombreGenerico}</Text>
         <View style={styles.headerBadges}>
-          <View style={[styles.pregBadge, { backgroundColor: pregColor }]}>
-            <Text style={styles.pregText}>Embarazo: {drug.embarazo}</Text>
-          </View>
+          <TouchableOpacity
+            style={[styles.pregBadge, { backgroundColor: pregColor }]}
+            onPress={() => setShowPregModal(true)}
+            accessibilityRole="button"
+            accessibilityLabel={`Categoría de embarazo ${drug.embarazo}. Toca para más información`}
+          >
+            <Text style={styles.pregText}>Embarazo: {drug.embarazo} ⓘ</Text>
+          </TouchableOpacity>
           <View style={styles.familyBadge}>
             <Text style={styles.familyText}>{drug.familia}</Text>
           </View>
@@ -120,6 +221,42 @@ export function DrugDetailScreen({ route }: Props) {
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+        {(() => {
+          const missing = [
+            !drug.farmacocinetica && 'Farmacocinética',
+            !drug.dosis.ajusteRenal && 'Ajuste renal',
+            !drug.dosis.ajusteHepatico && 'Ajuste hepático',
+            !drug.dosis.pediatrico && 'Dosis pediátrica',
+            !drug.almacenamiento && 'Almacenamiento',
+          ].filter(Boolean);
+          return missing.length > 0 ? (
+            <View style={styles.incompleteBadge}>
+              <Text style={styles.incompleteBadgeText}>ℹ️ Información parcial — faltan: {missing.join(', ')}</Text>
+            </View>
+          ) : null;
+        })()}
+
+        {/* Quick action buttons */}
+        <View style={styles.quickActionRow}>
+          <TouchableOpacity
+            style={[styles.quickActionBtn, { backgroundColor: colors.info + '12', borderColor: colors.info + '30' }]}
+            onPress={() => navigation.navigate('InteractionChecker', { preloadDrugId: drug.id })}
+            accessibilityRole="button"
+            accessibilityLabel="Comprobar interacciones"
+          >
+            <Text style={styles.quickActionIcon}>🔄</Text>
+            <Text style={[styles.quickActionLabel, { color: colors.info }]}>Interacciones</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.quickActionBtn, { backgroundColor: colors.primary + '12', borderColor: colors.primary + '30' }]}
+            onPress={() => navigation.navigate('DrugComparison', { preloadDrugId: drug.id })}
+            accessibilityRole="button"
+            accessibilityLabel="Comparar fármaco"
+          >
+            <Text style={styles.quickActionIcon}>⚖️</Text>
+            <Text style={[styles.quickActionLabel, { color: colors.primary }]}>Comparar</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.doseCard}>
           <Text style={styles.doseSectionTitle}>💊 Vía y Dosis</Text>
 
@@ -132,34 +269,49 @@ export function DrugDetailScreen({ route }: Props) {
           </View>
 
           <View style={styles.doseBox}>
-            <Text style={styles.doseLabel}>Adulto</Text>
+            <View style={styles.doseLabelRow}>
+              <Text style={styles.doseLabel}>Adulto</Text>
+              <CopyButton text={`${drug.nombre} — Adulto: ${drug.dosis.adulto}`} colors={colors} />
+            </View>
             <Text style={styles.doseValue}>{drug.dosis.adulto}</Text>
           </View>
 
           {drug.dosis.pediatrico && (
             <View style={[styles.doseBox, styles.pediatricBox]}>
-              <Text style={[styles.doseLabel, { color: colors.pediatric }]}>👶 Pediátrico</Text>
+              <View style={styles.doseLabelRow}>
+                <Text style={[styles.doseLabel, { color: colors.pediatric }]}>👶 Pediátrico</Text>
+                <CopyButton text={`${drug.nombre} — Pediátrico: ${drug.dosis.pediatrico}`} colors={colors} />
+              </View>
               <Text style={styles.doseValue}>{drug.dosis.pediatrico}</Text>
             </View>
           )}
 
           {drug.dosis.geriatrico && (
             <View style={styles.doseBox}>
-              <Text style={styles.doseLabel}>Geriátrico</Text>
+              <View style={styles.doseLabelRow}>
+                <Text style={styles.doseLabel}>Geriátrico</Text>
+                <CopyButton text={`${drug.nombre} — Geriátrico: ${drug.dosis.geriatrico}`} colors={colors} />
+              </View>
               <Text style={styles.doseValue}>{drug.dosis.geriatrico}</Text>
             </View>
           )}
 
           {drug.dosis.ajusteRenal && (
             <View style={styles.doseBox}>
-              <Text style={styles.doseLabel}>Ajuste renal</Text>
+              <View style={styles.doseLabelRow}>
+                <Text style={styles.doseLabel}>Ajuste renal</Text>
+                <CopyButton text={`${drug.nombre} — Ajuste renal: ${drug.dosis.ajusteRenal}`} colors={colors} />
+              </View>
               <Text style={styles.doseValue}>{drug.dosis.ajusteRenal}</Text>
             </View>
           )}
 
           {drug.dosis.ajusteHepatico && (
             <View style={styles.doseBox}>
-              <Text style={styles.doseLabel}>Ajuste hepático</Text>
+              <View style={styles.doseLabelRow}>
+                <Text style={styles.doseLabel}>Ajuste hepático</Text>
+                <CopyButton text={`${drug.nombre} — Ajuste hepático: ${drug.dosis.ajusteHepatico}`} colors={colors} />
+              </View>
               <Text style={styles.doseValue}>{drug.dosis.ajusteHepatico}</Text>
             </View>
           )}
@@ -328,7 +480,7 @@ export function DrugDetailScreen({ route }: Props) {
         )}
 
         <CollapsibleSection title="Mecanismo de Acción" icon="⚙️" accentColor={unitColor}>
-          <Text style={styles.bodyText}>{drug.mecanismoAccion}</Text>
+          <Text style={styles.bodyText}>{drug.mecanismoAccion || 'Sin datos disponibles'}</Text>
         </CollapsibleSection>
 
         <CollapsibleSection title="Indicaciones" icon="✅" accentColor={colors.success} badge={`${drug.indicaciones.length}`}>
@@ -343,7 +495,7 @@ export function DrugDetailScreen({ route }: Props) {
           <BulletList items={drug.efectosAdversos} color={colors.warning} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Interacciones" icon="🔄" accentColor={colors.info}>
+        <CollapsibleSection title="Interacciones" icon="🔄" accentColor={colors.info} badge={`${drug.interacciones.length}`}>
           <BulletList items={drug.interacciones} color={colors.info} />
         </CollapsibleSection>
 
@@ -369,13 +521,36 @@ export function DrugDetailScreen({ route }: Props) {
         )}
 
         <CollapsibleSection title="Lactancia" icon="🤱" accentColor={colors.pediatric}>
-          <Text style={styles.bodyText}>{drug.lactancia}</Text>
+          <Text style={styles.bodyText}>{drug.lactancia || 'Sin datos disponibles'}</Text>
         </CollapsibleSection>
 
         {drug.almacenamiento && (
           <CollapsibleSection title="Almacenamiento" icon="🏪" accentColor={colors.textSecondary}>
             <Text style={styles.bodyText}>{drug.almacenamiento}</Text>
           </CollapsibleSection>
+        )}
+
+        {/* Related Pathologies */}
+        {relatedPathologies.length > 0 && (
+          <CollapsibleSection title="Patologías Relacionadas" icon="🏥" accentColor={colors.emergency} badge={`${relatedPathologies.length}`}>
+            {relatedPathologies.map(p => (
+              <TouchableOpacity
+                key={p.id}
+                style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}
+                onPress={() => navigation.navigate('PathologyDetail', { pathologyId: p.id })}
+              >
+                <Text style={{ fontSize: 14, color: colors.primary, fontWeight: '600', flex: 1 }}>{p.nombre}</Text>
+                <Text style={{ fontSize: 12, color: colors.textLight }}>→</Text>
+              </TouchableOpacity>
+            ))}
+          </CollapsibleSection>
+        )}
+
+        {/* Embarazo Nota */}
+        {drug.embarazoNota && (
+          <View style={{ marginHorizontal: 16, marginTop: 6, backgroundColor: colors.warning + '10', borderRadius: 8, padding: 10, borderWidth: 1, borderColor: colors.warning + '25' }}>
+            <Text style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 17 }}>📋 {drug.embarazoNota}</Text>
+          </View>
         )}
 
         {/* Personal Notes */}
@@ -397,6 +572,7 @@ export function DrugDetailScreen({ route }: Props) {
 
         <View style={styles.bottomSpacer} />
       </ScrollView>
+      <PregnancyModal visible={showPregModal} onClose={() => setShowPregModal(false)} current={drug.embarazo} />
     </Animated.View>
   );
 }
@@ -430,6 +606,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   routeChipText: { fontSize: 13, fontWeight: '600' },
   doseBox: { backgroundColor: colors.background, padding: 10, borderRadius: 8, marginBottom: 6 },
   pediatricBox: { backgroundColor: colors.pediatric + '10', borderWidth: 1, borderColor: colors.pediatric + '30' },
+  doseLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   doseLabel: { fontSize: 12, fontWeight: '700', color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
   doseValue: { fontSize: 14, color: colors.text, lineHeight: 20 },
   parenteralCard: {
@@ -487,7 +664,42 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     color: colors.text, minHeight: 80, borderWidth: 1, borderColor: colors.border,
   },
   notesSaved: { fontSize: 11, color: colors.textLight, marginTop: 4, textAlign: 'right', fontStyle: 'italic' },
+  quickActionRow: {
+    flexDirection: 'row', gap: 8, marginHorizontal: 16, marginTop: 12,
+  },
+  quickActionBtn: {
+    flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    paddingVertical: 10, borderRadius: 12, borderWidth: 1,
+  },
+  quickActionIcon: { fontSize: 16, marginRight: 6 },
+  quickActionLabel: { fontSize: 13, fontWeight: '600' },
+  incompleteBadge: {
+    marginHorizontal: 16, marginTop: 12, backgroundColor: colors.info + '10',
+    borderRadius: 10, padding: 10, borderWidth: 1, borderColor: colors.info + '25',
+  },
+  incompleteBadgeText: { fontSize: 12, color: colors.info, lineHeight: 17 },
   bottomSpacer: { height: 40 },
   errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   errorText: { fontSize: 16, color: colors.error },
+  modalOverlay: {
+    flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center', padding: 20,
+  },
+  modalContent: {
+    backgroundColor: colors.surface, borderRadius: 20, padding: 20, width: '100%', maxHeight: '85%',
+    elevation: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8,
+  },
+  modalTitle: { fontSize: 18, fontWeight: '800', color: colors.text, textAlign: 'center' },
+  modalSubtitle: { fontSize: 13, color: colors.textSecondary, textAlign: 'center', marginBottom: 16, marginTop: 2 },
+  pregModalRow: {
+    flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 10, paddingHorizontal: 10,
+    borderRadius: 12, borderWidth: 1, borderColor: 'transparent', marginBottom: 6,
+  },
+  pregModalBadge: {
+    width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginRight: 12, marginTop: 2,
+  },
+  pregModalBadgeText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
+  pregModalRisk: { fontSize: 13, fontWeight: '700', marginBottom: 2 },
+  pregModalDesc: { fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
+  modalCloseBtn: { marginTop: 16, paddingVertical: 12, borderRadius: 12, alignItems: 'center' },
+  modalCloseBtnText: { color: '#FFFFFF', fontSize: 15, fontWeight: '700' },
 });

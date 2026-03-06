@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-n
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, RouteInfo } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
+import { RouteIllustrationSVG } from '../components/RouteIllustrationSVG';
 import { ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
@@ -10,134 +11,6 @@ import { useFadeIn } from '../utils/animations';
 import routes from '../data/routes.json';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RouteDetail'>;
-
-function RouteIllustration({ route }: { route: RouteInfo }) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
-  const color = ROUTE_COLORS[route.id] || colors.primary;
-
-  const diagrams: Record<string, string> = {
-    IV: `
-    ┌─────────────────────┐
-    │    PIEL              │
-    │  ═══════════════     │
-    │    TEJIDO SC         │
-    │  ═══════════════     │
-    │    MÚSCULO           │
-    │  ═══════════════     │
-    │  ──→ VENA ◉ ←──     │  ← Aguja 90°
-    │  ═══════════════     │
-    │  Biodisponibilidad:  │
-    │       100%           │
-    └─────────────────────┘`,
-    IM: `
-    ┌─────────────────────┐
-    │    PIEL              │
-    │  ═══════════════     │
-    │    TEJIDO SC         │
-    │  ═══════════════     │
-    │    ↓ MÚSCULO ◉ ←──  │  ← Aguja 90°
-    │  ═══════════════     │
-    │                      │
-    │  Volumen máx:        │
-    │  Glúteo: 5 mL       │
-    │  Deltoides: 2 mL    │
-    └─────────────────────┘`,
-    SC: `
-    ┌─────────────────────┐
-    │    PIEL              │
-    │  ═══════════════     │
-    │  ↓ TEJIDO SC ◉ ←──  │  ← Aguja 45°
-    │  ═══════════════     │
-    │    MÚSCULO           │
-    │  ═══════════════     │
-    │                      │
-    │  Pellizcar pliegue   │
-    │  Volumen máx: 1-2 mL│
-    └─────────────────────┘`,
-    intradermica: `
-    ┌─────────────────────┐
-    │  ↓ EPIDERMIS ◉ ←──  │  ← Aguja 5-15°
-    │  ═══════════════     │     Bisel arriba
-    │    DERMIS            │
-    │  ═══════════════     │
-    │    TEJIDO SC         │
-    │  ═══════════════     │
-    │                      │
-    │  Formar HABÓN        │
-    │  Vol: 0.1-0.5 mL    │
-    └─────────────────────┘`,
-    oral: `
-    ┌─────────────────────┐
-    │   💊 → BOCA         │
-    │        ↓             │
-    │     ESÓFAGO          │
-    │        ↓             │
-    │     ESTÓMAGO         │
-    │        ↓             │
-    │  INTESTINO DELGADO   │
-    │    (Absorción)       │
-    │        ↓             │
-    │  HÍGADO → SANGRE    │
-    │  (Primer paso)       │
-    └─────────────────────┘`,
-    sublingual: `
-    ┌─────────────────────┐
-    │                      │
-    │    LENGUA            │
-    │  ═══════════════     │
-    │  💊 SUBLINGUAL ◉    │
-    │     (Absorción)      │
-    │        ↓             │
-    │  PLEXO VENOSO        │
-    │        ↓             │
-    │  CIRCULACIÓN         │
-    │  (Evita 1er paso)    │
-    └─────────────────────┘`,
-    inhalatoria: `
-    ┌─────────────────────┐
-    │   NARIZ/BOCA         │
-    │        ↓             │
-    │    LARINGE           │
-    │        ↓             │
-    │    TRÁQUEA           │
-    │       / \\            │
-    │  BRONQUIOS           │
-    │     /   \\            │
-    │ BRONQUIOLOS          │
-    │    /     \\           │
-    │  ALVÉOLOS ◉          │
-    │  (Absorción)         │
-    └─────────────────────┘`,
-    transdermica: `
-    ┌─────────────────────┐
-    │  ▓▓▓ PARCHE ▓▓▓     │
-    │  ═══════════════     │
-    │  EPIDERMIS           │
-    │  ─ ─ ─ ─ ─ ─ ─      │
-    │  DERMIS              │
-    │     ↓ ↓ ↓            │
-    │  CAPILARES           │
-    │     ↓ ↓ ↓            │
-    │  CIRCULACIÓN         │
-    │  (Liberación lenta)  │
-    └─────────────────────┘`,
-  };
-
-  return (
-    <View style={[styles.illustrationBox, { borderColor: color + '40' }]}>
-      <Text style={styles.illustrationTitle}>📐 Diagrama</Text>
-      <Text style={[styles.illustrationText, { color }]}>
-        {diagrams[route.id] || `Vía: ${route.nombre}\n\nConsultar imagen de referencia`}
-      </Text>
-      {route.angulo && (
-        <View style={[styles.angleBadge, { backgroundColor: color + '15' }]}>
-          <Text style={[styles.angleText, { color }]}>Ángulo: {route.angulo}</Text>
-        </View>
-      )}
-    </View>
-  );
-}
 
 export function RouteDetailScreen({ route: navRoute }: Props) {
   const { colors } = useTheme();
@@ -170,7 +43,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <RouteIllustration route={routeInfo} />
+        <RouteIllustrationSVG routeId={routeInfo.id} accentColor={color} colors={colors} />
 
         {routeInfo.zonas && routeInfo.zonas.length > 0 && (
           <CollapsibleSection title="Zonas de aplicación" icon="📍" accentColor={color} initiallyOpen>
@@ -230,33 +103,6 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   speedText: { color: '#FFFFFF', fontSize: 12, fontWeight: '600' },
   scroll: { flex: 1 },
-  illustrationBox: {
-    marginHorizontal: 16,
-    marginTop: 16,
-    padding: 16,
-    backgroundColor: colors.surfaceElevated,
-    borderRadius: 16,
-    borderWidth: 2,
-  },
-  illustrationTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: colors.textSecondary,
-    marginBottom: 8,
-  },
-  illustrationText: {
-    fontSize: 12,
-    fontFamily: 'monospace',
-    lineHeight: 16,
-  },
-  angleBadge: {
-    marginTop: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-  },
-  angleText: { fontSize: 12, fontWeight: '700' },
   zoneRow: {
     flexDirection: 'row',
     alignItems: 'center',
