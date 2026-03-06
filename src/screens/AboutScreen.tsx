@@ -31,7 +31,7 @@ export function AboutScreen() {
   const handleVersionTap = useCallback(() => {
     tapCount.current++;
     if (tapTimer.current) clearTimeout(tapTimer.current);
-    tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 2000);
+    tapTimer.current = setTimeout(() => { tapCount.current = 0; }, 4000);
     if (tapCount.current >= 5) {
       tapCount.current = 0;
       setShowActivation(true);
@@ -84,11 +84,11 @@ export function AboutScreen() {
           </View>
 
           <Text style={styles.appName}>Guía Farmacológica{'\n'}Integral de Enfermería</Text>
-          <TouchableOpacity style={styles.versionBadge} onPress={handleVersionTap} activeOpacity={0.8}>
+          <View style={styles.versionBadge}>
             <Text style={styles.versionText}>
               v0.1{isCodeActivated ? ' ✓' : ''}
             </Text>
-          </TouchableOpacity>
+          </View>
         </View>
 
         {/* Activation Modal */}
@@ -262,10 +262,14 @@ export function AboutScreen() {
 
         {/* Badges */}
         <View style={styles.badgesRow}>
-          <View style={[styles.badge, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]}>
+          <TouchableOpacity
+            style={[styles.badge, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]}
+            onPress={handleVersionTap}
+            activeOpacity={0.8}
+          >
             <Text style={styles.badgeIcon}>📱</Text>
             <Text style={[styles.badgeText, { color: colors.success }]}>100% Offline</Text>
-          </View>
+          </TouchableOpacity>
           <View style={[styles.badge, { backgroundColor: colors.primaryLight + '15', borderColor: colors.primaryLight + '30' }]}>
             <Text style={styles.badgeIcon}>🇦🇷</Text>
             <Text style={[styles.badgeText, { color: colors.primaryLight }]}>Hecho en Argentina</Text>
