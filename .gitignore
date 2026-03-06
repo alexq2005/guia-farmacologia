@@ -79,6 +79,10 @@ android/app/src/main/assets/
 # Local keystore credentials
 android/gradle.properties.local
 
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
+
 # Yarn
 .yarn/*
 !.yarn/patches
