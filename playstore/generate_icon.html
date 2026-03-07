@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Play Store Icon Generator</title>
+  <style>
+    body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f0f0; font-family: sans-serif; flex-direction: column; gap: 20px; }
+    canvas { border: 1px solid #ccc; }
+    button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #1E40AF; color: white; border: none; border-radius: 8px; }
+    button:hover { background: #1E3A8A; }
+    p { color: #666; }
+  </style>
+</head>
+<body>
+  <h2>Guia Farmacologica - Play Store Icon 512x512</h2>
+  <canvas id="icon" width="512" height="512"></canvas>
+  <button onclick="download()">Descargar icon_512.png</button>
+  <p>Click para descargar el icono en 512x512</p>
+
+  <script>
+    const canvas = document.getElementById('icon');
+    const ctx = canvas.getContext('2d');
+    const S = 512;
+
+    // Background - rounded square (Play Store will mask it)
+    ctx.fillStyle = '#1E40AF';
+    ctx.fillRect(0, 0, S, S);
+
+    // Subtle gradient overlay
+    const grad = ctx.createLinearGradient(0, 0, S, S);
+    grad.addColorStop(0, 'rgba(255,255,255,0.08)');
+    grad.addColorStop(1, 'rgba(0,0,0,0.08)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, S, S);
+
+    // Cross (medical)
+    const crossCx = S / 2;
+    const crossCy = S * 0.30;
+    const crossW = 36;
+    const crossH = 100;
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.shadowColor = 'rgba(0,0,0,0.15)';
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 2;
+
+    // Vertical bar
+    roundRect(ctx, crossCx - crossW/2, crossCy - crossH/2, crossW, crossH, 8);
+    ctx.fill();
+    // Horizontal bar
+    roundRect(ctx, crossCx - crossH/2, crossCy - crossW/2, crossH, crossW, 8);
+    ctx.fill();
+
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+
+    // Open book
+    const bookCx = S / 2;
+    const bookCy = S * 0.62;
+    const bookW = 200;
+    const bookH = 140;
+    const pageW = bookW / 2 - 6;
+
+    // Left page
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.shadowColor = 'rgba(0,0,0,0.12)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 3;
+
+    ctx.save();
+    ctx.translate(bookCx - 6, bookCy - bookH * 0.15);
+    ctx.transform(1, 0, -0.08, 1, 0, 0); // slight skew
+    roundRect(ctx, -pageW, 0, pageW, bookH, 6);
+    ctx.fill();
+
+    // Lines on left page
+    ctx.fillStyle = 'rgba(30,64,175,0.2)';
+    for (let i = 0; i < 4; i++) {
+      roundRect(ctx, -pageW + 18, 22 + i * 26, pageW - 36, 4, 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // Right page
+    ctx.fillStyle = 'rgba(255,255,255,0.78)';
+    ctx.save();
+    ctx.translate(bookCx + 6, bookCy - bookH * 0.15);
+    ctx.transform(1, 0, 0.08, 1, 0, 0); // slight skew
+    roundRect(ctx, 0, 0, pageW, bookH, 6);
+    ctx.fill();
+
+    // Lines on right page
+    ctx.fillStyle = 'rgba(30,64,175,0.2)';
+    for (let i = 0; i < 4; i++) {
+      roundRect(ctx, 18, 22 + i * 26, pageW - 36, 4, 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // Spine
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.fillRect(bookCx - 3, bookCy - bookH * 0.15 - 4, 6, bookH + 8);
+
+    ctx.shadowBlur = 0;
+
+    // Pill icon on right page
+    ctx.fillStyle = 'rgba(30,64,175,0.35)';
+    ctx.beginPath();
+    ctx.ellipse(bookCx + pageW/2 + 6, bookCy + bookH * 0.55, 16, 10, Math.PI/6, 0, Math.PI * 2);
+    ctx.fill();
+
+    // "Rx" text hint on left page
+    ctx.font = 'bold 28px serif';
+    ctx.fillStyle = 'rgba(30,64,175,0.25)';
+    ctx.textAlign = 'center';
+    ctx.fillText('Rx', bookCx - pageW/2 - 6, bookCy + bookH * 0.65);
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function download() {
+      const link = document.createElement('a');
+      link.download = 'icon_512.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>

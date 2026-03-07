@@ -1,0 +1,103 @@
+============================================================
+FICHA DE GOOGLE PLAY STORE
+Guía Farmacológica de Enfermería
+============================================================
+
+NOMBRE DE LA APP (máx. 30 caracteres):
+Guía Farmacológica Enfermería
+
+────────────────────────────────────────
+
+DESCRIPCIÓN BREVE (máx. 80 caracteres):
+Guía de fármacos offline para enfermería: 1781 medicamentos, escalas y más.
+
+────────────────────────────────────────
+
+DESCRIPCIÓN COMPLETA (máx. 4000 caracteres):
+
+La guía farmacológica más completa para profesionales y estudiantes de enfermería. Toda la información que necesitas, siempre disponible, sin conexión a internet.
+
+CONTENIDO INCLUIDO
+- 1781 fármacos con información completa: indicaciones, contraindicaciones, dosis (adulto, pediátrico, geriátrico), efectos adversos, interacciones, cuidados de enfermería, farmacocinética y más.
+- 60 patologías clínicas vinculadas a fármacos relacionados.
+- 13 escalas clínicas interactivas: Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells, EVA, Aldrete, qSOFA, NIHSS, Mallampati y ASA.
+- 53 valores de laboratorio con rangos de referencia por sexo y edad, significado clínico e implicaciones de enfermería.
+- 14 protocolos de emergencia: ACLS, anafilaxia, IAM, ACV, sepsis y más, con pasos cronometrados y dosis de fármacos.
+- 15 calculadoras clínicas: IMC, ClCr, goteo IV, BSA, Parkland, APACHE II, Glasgow, QTc y más.
+- Guía de administración parenteral basada en el Hospital Son Espases.
+- Glosario con más de 65 términos farmacológicos.
+- 15 vías de administración con técnica y precauciones.
+
+HERRAMIENTAS DE ESTUDIO
+- Test farmacológico interactivo con 8 tipos de preguntas generadas desde los 1781 fármacos.
+- Dashboard de progreso con estadísticas de estudio y racha.
+- Comparador de fármacos: compara hasta 3 medicamentos lado a lado.
+- Verificador de interacciones medicamentosas con niveles de severidad.
+
+FUNCIONES PERSONALES
+- Favoritos y notas personales por fármaco con autoguardado.
+- Historial de búsquedas recientes.
+- Exportación e importación de datos (favoritos, notas, resultados de test).
+- Fármaco del día y medicamentos vistos recientemente.
+
+DISEÑO Y ACCESIBILIDAD
+- 100% offline: funciona sin conexión a internet.
+- Modo oscuro con 3 opciones (claro, oscuro, automático del sistema).
+- Búsqueda inteligente sin importar acentos ni mayúsculas.
+- Interfaz limpia y rápida, optimizada para consulta en el hospital.
+
+MODELO FREEMIUM
+- Descarga gratuita con acceso a los 1781 fármacos, búsqueda, navegación por categorías, favoritos (5), notas (5) y modo oscuro.
+- 14 días de prueba gratuita con todas las funciones premium.
+- Suscripción premium: test, calculadoras, escalas, valores de laboratorio, protocolos, comparador, interacciones, dashboard, guía parenteral, favoritos y notas ilimitados.
+
+AVISO IMPORTANTE
+Esta aplicación es una herramienta de consulta educativa y referencia rápida. No constituye consejo médico, diagnóstico ni tratamiento. Siempre verifique la información con fuentes primarias y los protocolos de su institución.
+
+Desarrollada con dedicación para la comunidad de enfermería.
+
+────────────────────────────────────────
+
+CATEGORÍA: Medicina
+CLASIFICACIÓN DE CONTENIDO: Todos (Everyone)
+POLÍTICA DE PRIVACIDAD: (URL de tu política)
+CORREO DE CONTACTO: alexq2005@gmail.com
+
+────────────────────────────────────────
+
+ETIQUETAS / PALABRAS CLAVE (Play Store usa hasta 5 tags):
+1. Farmacología
+2. Enfermería
+3. Medicamentos
+4. Salud
+5. Educación médica
+
+────────────────────────────────────────
+
+CAPTURAS DE PANTALLA REQUERIDAS:
+- Mínimo 2, recomendado 5-8
+- Tamaño: 1080x1920 px (portrait) o 1920x1080 (landscape)
+- Formato: JPEG o PNG de 24 bits, sin alfa
+
+Capturas sugeridas (ejecutar script screenshots.sh):
+1. HomeScreen — pantalla principal con fármaco del día
+2. DrugDetail — detalle de un fármaco completo
+3. SearchScreen — búsqueda con resultados
+4. QuizScreen — test farmacológico
+5. ClinicalScales — escala de Glasgow interactiva
+6. LabValues — valores de laboratorio
+7. EmergencyProtocols — protocolo de emergencia
+8. Calculators — calculadora clínica
+
+────────────────────────────────────────
+
+ICONO DE LA APP:
+- 512x512 px, PNG de 32 bits (con alfa)
+- Generar desde: playstore/generate_icon.html
+- O usar el existente escalado a 512x512
+
+────────────────────────────────────────
+
+GRÁFICO DESTACADO (Feature Graphic):
+- 1024x500 px, JPG o PNG de 24 bits
+- Generar desde: playstore/generate_feature_graphic.html

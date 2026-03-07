@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feature Graphic Generator</title>
+  <style>
+    body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f0f0; font-family: sans-serif; flex-direction: column; gap: 20px; }
+    canvas { border: 1px solid #ccc; max-width: 90vw; }
+    button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #1E40AF; color: white; border: none; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Feature Graphic 1024x500</h2>
+  <canvas id="fg" width="1024" height="500"></canvas>
+  <button onclick="download()">Descargar feature_graphic.png</button>
+
+  <script>
+    const canvas = document.getElementById('fg');
+    const ctx = canvas.getContext('2d');
+    const W = 1024, H = 500;
+
+    // Background gradient
+    const bg = ctx.createLinearGradient(0, 0, W, H);
+    bg.addColorStop(0, '#1E3A8A');
+    bg.addColorStop(0.5, '#1E40AF');
+    bg.addColorStop(1, '#2563EB');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle pattern - dots
+    ctx.fillStyle = 'rgba(255,255,255,0.04)';
+    for (let x = 0; x < W; x += 30) {
+      for (let y = 0; y < H; y += 30) {
+        ctx.beginPath();
+        ctx.arc(x, y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Left side - Icon representation
+    const iconX = 180, iconY = H / 2;
+
+    // Icon background circle
+    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    ctx.beginPath();
+    ctx.arc(iconX, iconY, 110, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.beginPath();
+    ctx.arc(iconX, iconY, 130, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Cross
+    ctx.fillStyle = '#FFFFFF';
+    ctx.shadowColor = 'rgba(0,0,0,0.2)';
+    ctx.shadowBlur = 10;
+    roundRect(ctx, iconX - 12, iconY - 50, 24, 60, 5);
+    ctx.fill();
+    roundRect(ctx, iconX - 30, iconY - 32, 60, 24, 5);
+    ctx.fill();
+
+    // Book
+    ctx.shadowBlur = 6;
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.save();
+    ctx.translate(iconX - 4, iconY + 20);
+    ctx.transform(1, 0, -0.06, 1, 0, 0);
+    roundRect(ctx, -55, 0, 55, 60, 4);
+    ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.save();
+    ctx.translate(iconX + 4, iconY + 20);
+    ctx.transform(1, 0, 0.06, 1, 0, 0);
+    roundRect(ctx, 0, 0, 55, 60, 4);
+    ctx.fill();
+    ctx.restore();
+
+    // Spine
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillRect(iconX - 2, iconY + 16, 4, 68);
+
+    // Right side - Text
+    ctx.shadowBlur = 0;
+    const textX = 380;
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 44px -apple-system, Segoe UI, Arial, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('Guía Farmacológica', textX, H * 0.32);
+
+    ctx.font = '600 36px -apple-system, Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.fillText('de Enfermería', textX, H * 0.45);
+
+    // Divider line
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    roundRect(ctx, textX, H * 0.53, 120, 3, 2);
+    ctx.fill();
+
+    // Stats
+    ctx.font = '600 18px -apple-system, Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.75)';
+    const stats = [
+      '💊 1781 Fármacos',
+      '📊 13 Escalas',
+      '🚨 14 Protocolos',
+      '🧮 15 Calculadoras',
+    ];
+    stats.forEach((s, i) => {
+      ctx.fillText(s, textX + (i % 2) * 260, H * 0.65 + Math.floor(i / 2) * 34);
+    });
+
+    // Bottom badge
+    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    roundRect(ctx, textX, H * 0.82, 240, 32, 16);
+    ctx.fill();
+    ctx.font = '600 14px -apple-system, Segoe UI, Arial, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.fillText('📱 100% Offline  •  Gratis con Premium', textX + 14, H * 0.82 + 17);
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function download() {
+      const link = document.createElement('a');
+      link.download = 'feature_graphic_1024x500.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>
