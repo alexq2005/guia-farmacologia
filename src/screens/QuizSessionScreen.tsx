@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar, Animated, ScrollView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, QuizQuestion, QuizResult } from '../types';
@@ -159,7 +159,8 @@ export function QuizSessionScreen({ route, navigation }: Props) {
         <Text style={styles.progressText}>{currentIndex + 1}/{questions.length}</Text>
       </View>
 
-      <Animated.View style={[styles.questionContainer, { opacity: fadeIn }]}>
+      <ScrollView style={styles.questionContainer} contentContainerStyle={styles.questionContent} showsVerticalScrollIndicator={false}>
+      <Animated.View style={{ opacity: fadeIn }}>
         {/* Type Badge */}
         <View style={styles.typeBadge}>
           <Text style={styles.typeText}>{TYPE_LABELS[currentQuestion.type] || currentQuestion.type}</Text>
@@ -211,6 +212,17 @@ export function QuizSessionScreen({ route, navigation }: Props) {
           })}
         </View>
 
+        {/* Explanation on wrong answer */}
+        {showResult && selectedAnswer !== currentQuestion.correctIndex && (
+          <View style={styles.explanationBox}>
+            <View style={styles.explanationHeader}>
+              <MaterialCommunityIcons name="lightbulb-on-outline" size={18} color={colors.warning} />
+              <Text style={styles.explanationTitle}>Explicación</Text>
+            </View>
+            <Text style={styles.explanationText}>{currentQuestion.explanation}</Text>
+          </View>
+        )}
+
         {/* Score Counter */}
         <View style={styles.scoreCounter}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -237,6 +249,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
           </TouchableOpacity>
         )}
       </Animated.View>
+      </ScrollView>
     </View>
   );
 }
@@ -253,7 +266,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   progressFill: { height: '100%', borderRadius: 4 },
   progressText: { fontSize: 14, fontWeight: '700', color: colors.textSecondary },
-  questionContainer: { flex: 1, paddingHorizontal: 16 },
+  questionContainer: { flex: 1 },
+  questionContent: { paddingHorizontal: 16, paddingBottom: 24 },
   typeBadge: {
     alignSelf: 'flex-start', backgroundColor: colors.quiz + '15', paddingHorizontal: 12,
     paddingVertical: 4, borderRadius: 12, marginBottom: 8,
@@ -278,6 +292,19 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   optionTextWrong: { color: colors.quizWrong },
   checkMark: { fontSize: 20, color: colors.quizCorrect, fontWeight: '800', marginLeft: 8 },
   crossMark: { fontSize: 20, color: colors.quizWrong, fontWeight: '800', marginLeft: 8 },
+  explanationBox: {
+    marginTop: 16, backgroundColor: colors.warning + '12', borderRadius: 14,
+    padding: 14, borderLeftWidth: 4, borderLeftColor: colors.warning,
+  },
+  explanationHeader: {
+    flexDirection: 'row', alignItems: 'center', marginBottom: 6,
+  },
+  explanationTitle: {
+    fontSize: 14, fontWeight: '700', color: colors.warning, marginLeft: 6,
+  },
+  explanationText: {
+    fontSize: 14, color: colors.text, lineHeight: 20,
+  },
   scoreCounter: { marginTop: 16, alignItems: 'center' },
   scoreCounterText: { fontSize: 14, color: colors.quizCorrect, fontWeight: '600' },
   nextButton: {

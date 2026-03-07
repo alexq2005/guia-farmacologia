@@ -6,39 +6,74 @@ const RESULTS_KEY = '@guia_farmaco_quiz_results';
 
 type QuestionType = QuizQuestion['type'];
 
-const QUESTION_TEMPLATES: Record<QuestionType, (drug: Drug) => { q: string; correct: string; field: keyof Drug } | null> = {
+type TemplateResult = { q: string; correct: string; field: keyof Drug; explanation: string } | null;
+
+function buildExplanation(drug: Drug, type: QuestionType, correct: string): string {
+  const name = drug.nombre;
+  const family = drug.familia ? `Pertenece a la familia: ${drug.familia}.` : '';
+  const mechanism = drug.mecanismoAccion ? ` Su mecanismo de acción es: ${drug.mecanismoAccion}.` : '';
+
+  switch (type) {
+    case 'indication':
+      return `${name} está indicado para: ${drug.indicaciones.slice(0, 3).join(', ')}.${mechanism}`;
+    case 'contraindication':
+      return `${name} está contraindicado en: ${drug.contraindicaciones.slice(0, 3).join(', ')}. ${family}`;
+    case 'route':
+      return `${name} se administra por vía: ${drug.viaAdministracion.join(', ')}. ${family}`;
+    case 'pregnancy':
+      return `${name} tiene categoría "${correct}" en embarazo. ${family}${mechanism}`;
+    case 'family':
+      return `${name} pertenece a ${correct}.${mechanism}`;
+    case 'mechanism':
+      return `${name}: ${correct}. ${family}`;
+    case 'adverse':
+      return `Efectos adversos de ${name}: ${drug.efectosAdversos.slice(0, 4).join(', ')}. ${family}`;
+    case 'nursing':
+      return `Cuidados de enfermería para ${name}: ${drug.cuidadosEnfermeria.slice(0, 3).join('. ')}. ${family}`;
+    default:
+      return `La respuesta correcta es: ${correct}. ${family}`;
+  }
+}
+
+const QUESTION_TEMPLATES: Record<QuestionType, (drug: Drug) => TemplateResult> = {
   indication: (d) => {
     if (!d.indicaciones.length) return null;
-    return { q: `¿Cuál es una indicación de ${d.nombre}?`, correct: d.indicaciones[0], field: 'indicaciones' };
+    const correct = d.indicaciones[0];
+    return { q: `¿Cuál es una indicación de ${d.nombre}?`, correct, field: 'indicaciones', explanation: buildExplanation(d, 'indication', correct) };
   },
   contraindication: (d) => {
     if (!d.contraindicaciones.length) return null;
-    return { q: `¿Cuál es una contraindicación de ${d.nombre}?`, correct: d.contraindicaciones[0], field: 'contraindicaciones' };
+    const correct = d.contraindicaciones[0];
+    return { q: `¿Cuál es una contraindicación de ${d.nombre}?`, correct, field: 'contraindicaciones', explanation: buildExplanation(d, 'contraindication', correct) };
   },
   route: (d) => {
     if (!d.viaAdministracion.length) return null;
-    return { q: `¿Por qué vía se administra ${d.nombre}?`, correct: d.viaAdministracion[0], field: 'viaAdministracion' };
+    const correct = d.viaAdministracion[0];
+    return { q: `¿Por qué vía se administra ${d.nombre}?`, correct, field: 'viaAdministracion', explanation: buildExplanation(d, 'route', correct) };
   },
   pregnancy: (d) => {
     if (d.embarazo === 'N/A') return null;
-    return { q: `¿Cuál es la categoría de embarazo de ${d.nombre}?`, correct: d.embarazo, field: 'embarazo' };
+    const correct = d.embarazo;
+    return { q: `¿Cuál es la categoría de embarazo de ${d.nombre}?`, correct, field: 'embarazo', explanation: buildExplanation(d, 'pregnancy', correct) };
   },
-  family: (d) => ({
-    q: `¿A qué familia pertenece ${d.nombre}?`,
-    correct: d.familia,
-    field: 'familia',
-  }),
+  family: (d) => {
+    const correct = d.familia;
+    return { q: `¿A qué familia pertenece ${d.nombre}?`, correct, field: 'familia', explanation: buildExplanation(d, 'family', correct) };
+  },
   mechanism: (d) => {
     if (!d.mecanismoAccion) return null;
-    return { q: `¿Cuál es el mecanismo de acción de ${d.nombre}?`, correct: d.mecanismoAccion, field: 'mecanismoAccion' };
+    const correct = d.mecanismoAccion;
+    return { q: `¿Cuál es el mecanismo de acción de ${d.nombre}?`, correct, field: 'mecanismoAccion', explanation: buildExplanation(d, 'mechanism', correct) };
   },
   adverse: (d) => {
     if (!d.efectosAdversos.length) return null;
-    return { q: `¿Cuál es un efecto adverso de ${d.nombre}?`, correct: d.efectosAdversos[0], field: 'efectosAdversos' };
+    const correct = d.efectosAdversos[0];
+    return { q: `¿Cuál es un efecto adverso de ${d.nombre}?`, correct, field: 'efectosAdversos', explanation: buildExplanation(d, 'adverse', correct) };
   },
   nursing: (d) => {
     if (!d.cuidadosEnfermeria.length) return null;
-    return { q: `¿Cuál es un cuidado de enfermería para ${d.nombre}?`, correct: d.cuidadosEnfermeria[0], field: 'cuidadosEnfermeria' };
+    const correct = d.cuidadosEnfermeria[0];
+    return { q: `¿Cuál es un cuidado de enfermería para ${d.nombre}?`, correct, field: 'cuidadosEnfermeria', explanation: buildExplanation(d, 'nursing', correct) };
   },
 };
 
@@ -130,6 +165,7 @@ export function useQuiz(drugs: Drug[]) {
         options,
         correctIndex,
         drugName: drug.nombre,
+        explanation: result.explanation,
       });
 
       usedDrugIds.add(`${drug.id}-${type}`);

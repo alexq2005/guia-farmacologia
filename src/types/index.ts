@@ -461,6 +461,7 @@ export interface QuizQuestion {
   options: string[];
   correctIndex: number;
   drugName: string;
+  explanation: string;
 }
 
 /** Sesión activa de quiz */
