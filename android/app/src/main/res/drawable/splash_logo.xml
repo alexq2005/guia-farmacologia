@@ -125,6 +125,11 @@
         android:pathData="M148,356 A7,7,0,1,1,162,356 A7,7,0,1,1,148,356 Z" />
 
     <!-- ========== TEXT: GUÍA FARMACOLÓGICA ========== -->
+    <group
+        android:scaleX="0.82"
+        android:translateX="-43"
+        android:pivotX="256"
+        android:pivotY="412">
     <!-- G -->
     <path
         android:fillColor="#FFFFFF"
@@ -193,13 +198,45 @@
         android:fillColor="#FFFFFF"
         android:fillAlpha="0.95"
         android:pathData="M374,400 L378,400 L378,420 L392,420 L392,424 L374,424 Z" />
+    <!-- Ó -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M394,406 Q394,400,400,400 L408,400 Q414,400,414,406 L414,418 Q414,424,408,424 L400,424 Q394,424,394,418 Z M398,406 L398,418 Q398,420,400,420 L408,420 Q410,420,410,418 L410,406 Q410,404,408,404 L400,404 Q398,404,398,406 Z" />
+    <!-- Accent on Ó -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M402,394 L406,390 L410,394 Z" />
+    <!-- G -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M416,410 L416,406 Q416,400,422,400 L434,400 Q440,400,440,406 L440,408 L436,408 L436,406 Q436,404,434,404 L422,404 Q420,404,420,406 L420,418 Q420,420,422,420 L434,420 Q436,420,436,418 L436,414 L430,414 L430,410 L440,410 L440,418 Q440,424,434,424 L422,424 Q416,424,416,418 Z" />
+    <!-- I -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M442,400 L454,400 L454,404 L450,404 L450,420 L454,420 L454,424 L442,424 L442,420 L446,420 L446,404 L442,404 Z" />
+    <!-- C -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M456,406 Q456,400,462,400 L470,400 Q476,400,476,406 L476,408 L472,408 L472,406 Q472,404,470,404 L462,404 Q460,404,460,406 L460,418 Q460,420,462,420 L470,420 Q472,420,472,418 L472,416 L476,416 L476,418 Q476,424,470,424 L462,424 Q456,424,456,418 Z" />
+    <!-- A -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.95"
+        android:pathData="M478,424 L484,400 L490,400 L496,424 L492,424 L490,416 L484,416 L482,424 Z M485,412 L489,412 L487,404 Z" />
+    </group>
 
     <!-- ========== TEXT: de Enfermería (smaller, centered) ========== -->
+    <group android:translateX="-35">
     <!-- d -->
     <path
         android:fillColor="#FFFFFF"
         android:fillAlpha="0.7"
-        android:pathData="M194,436 L202,436 Q206,436,206,440 L206,448 Q206,452,202,452 L198,452 L198,456 L194,456 Z M198,440 L198,448 L202,448 Q204,448,204,446 L204,442 Q204,440,202,440 Z" />
+        android:pathData="M202,430 L206,430 L206,448 Q206,452,202,452 L198,452 Q194,452,194,448 L194,440 Q194,436,198,436 L202,436 Z M198,440 L198,448 L202,448 L202,440 Z" />
     <!-- e -->
     <path
         android:fillColor="#FFFFFF"
@@ -233,16 +270,37 @@
         android:fillColor="#FFFFFF"
         android:fillAlpha="0.7"
         android:pathData="M300,436 L304,436 L304,440 Q306,436,310,436 L310,440 L308,440 Q304,440,304,444 L304,452 L300,452 Z" />
-    <!-- m -->
+    <!-- m (two humps) -->
     <path
         android:fillColor="#FFFFFF"
         android:fillAlpha="0.7"
-        android:pathData="M312,436 L316,436 L316,438 Q318,436,322,436 Q326,436,326,440 L326,452 L322,452 L322,440 Q322,438,320,438 L318,438 Q316,438,316,440 L316,452 L312,452 Z" />
+        android:pathData="M312,436 L316,436 L316,438 Q318,436,320,436 Q324,436,324,440 L324,438 Q326,436,328,436 Q332,436,332,440 L332,452 L328,452 L328,440 Q328,438,326,438 Q324,438,324,440 L324,452 L320,452 L320,440 Q320,438,318,438 Q316,438,316,440 L316,452 L312,452 Z" />
     <!-- e -->
     <path
         android:fillColor="#FFFFFF"
         android:fillAlpha="0.7"
-        android:pathData="M330,440 Q330,436,334,436 L340,436 Q344,436,344,440 L344,444 L334,444 L334,448 Q334,450,336,450 L342,450 L342,452 L334,452 Q330,452,330,448 Z M334,440 L334,442 L340,442 L340,440 Q340,438,338,438 L336,438 Q334,438,334,440 Z" />
+        android:pathData="M336,440 Q336,436,340,436 L346,436 Q350,436,350,440 L350,444 L340,444 L340,448 Q340,450,342,450 L348,450 L348,452 L340,452 Q336,452,336,448 Z M340,440 L340,442 L346,442 L346,440 Q346,438,344,438 L342,438 Q340,438,340,440 Z" />
+    <!-- r -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M354,436 L358,436 L358,440 Q360,436,364,436 L364,440 L362,440 Q358,440,358,444 L358,452 L354,452 Z" />
+    <!-- í -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M368,436 L372,436 L372,452 L368,452 Z" />
+    <!-- Accent on í -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M368,430 L370,428 L372,430 Z" />
+    <!-- a -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.7"
+        android:pathData="M384,436 L388,436 L388,452 L380,452 Q376,452,376,448 L376,440 Q376,436,380,436 L384,436 Z M380,440 L380,448 L384,448 L384,440 Z" />
+    </group>
 
     <!-- ========== SMALL DECORATIVE DOTS ========== -->
     <path
