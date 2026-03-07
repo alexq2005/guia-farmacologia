@@ -83,6 +83,12 @@ android/gradle.properties.local
 hs_err_pid*.log
 replay_pid*.log
 
+# CIMA API cache (generated data)
+scripts/cima_cache/
+
+# Generated LogBox drawables from bundle --assets-dest
+android/app/src/main/res/drawable-*/node_modules_*
+
 # Yarn
 .yarn/*
 !.yarn/patches
