@@ -1,7 +1,9 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { neuCardSubtle } from '../utils/neumorphism';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -35,10 +37,11 @@ export function CollapsibleSection({
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     const next = !isOpen;
     setIsOpen(next);
-    Animated.timing(rotateAnim, {
+    Animated.spring(rotateAnim, {
       toValue: next ? 1 : 0,
-      duration: 250,
       useNativeDriver: true,
+      speed: 20,
+      bounciness: 2,
     }).start();
   };
 
@@ -57,7 +60,7 @@ export function CollapsibleSection({
         accessibilityState={{ expanded: isOpen }}
       >
         <View style={styles.titleRow}>
-          {icon ? <Text style={styles.icon}>{icon}</Text> : null}
+          {icon ? <MaterialCommunityIcons name={icon} size={18} color={accent} style={{ marginRight: 8 }} /> : null}
           <Text style={styles.title}>{title}</Text>
           {badge ? (
             <View style={[styles.badge, { backgroundColor: accent + '20' }]}>
@@ -77,14 +80,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     marginHorizontal: 16,
     marginVertical: 4,
-    borderRadius: 10,
-    backgroundColor: colors.surface,
-    elevation: 1,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    overflow: 'hidden',
+    ...neuCardSubtle(colors),
   },
   header: {
     flexDirection: 'row',
@@ -92,6 +88,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     justifyContent: 'space-between',
     padding: 14,
     borderLeftWidth: 4,
+    borderTopLeftRadius: 16,
   },
   titleRow: {
     flexDirection: 'row',

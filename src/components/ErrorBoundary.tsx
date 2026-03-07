@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <View style={styles.container}>
-          <Text style={styles.icon}>⚠️</Text>
+          <MaterialCommunityIcons name="alert-circle-outline" size={48} color="#DC2626" style={styles.icon} />
           <Text style={styles.title}>Algo salió mal</Text>
           <Text style={styles.message}>
             La aplicación encontró un error inesperado.
@@ -63,7 +64,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8FAFC',
   },
   icon: {
-    fontSize: 48,
     marginBottom: 16,
   },
   title: {

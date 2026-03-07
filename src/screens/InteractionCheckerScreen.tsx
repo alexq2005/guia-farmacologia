@@ -1,10 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Drug } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard, neuInset } from '../utils/neumorphism';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
@@ -178,7 +180,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
               <View key={drug.id} style={[styles.selectedChip, { backgroundColor: (UNIT_COLORS[drug.unidadId] || colors.primary) + '20' }]}>
                 <Text style={[styles.selectedChipText, { color: UNIT_COLORS[drug.unidadId] || colors.primary }]}>{drug.nombre}</Text>
                 <TouchableOpacity onPress={() => removeDrug(drug.id)}>
-                  <Text style={styles.removeChip}>✕</Text>
+                  <MaterialCommunityIcons name="close" size={14} color={colors.textLight} />
                 </TouchableOpacity>
               </View>
             ))}
@@ -189,7 +191,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
         {selectedDrugs.length < 6 && (
           <View style={styles.searchSection}>
             <View style={styles.searchBar}>
-              <Text style={styles.searchIcon}>🔍</Text>
+              <MaterialCommunityIcons name="magnify" size={18} color={colors.textLight} style={{ marginRight: 8 }} />
               <TextInput
                 style={styles.searchInput}
                 placeholder="Buscar fármaco para agregar..."
@@ -199,7 +201,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
               />
               {searchQuery.length > 0 && (
                 <TouchableOpacity onPress={() => setSearchQuery('')}>
-                  <Text style={styles.clearSearch}>✕</Text>
+                  <MaterialCommunityIcons name="close" size={18} color={colors.textLight} style={{ padding: 4 }} />
                 </TouchableOpacity>
               )}
             </View>
@@ -223,11 +225,16 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
 
         {selectedDrugs.length >= 2 && (
           <View style={styles.resultsSection}>
-            <Text style={styles.resultsTitle}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
               {interactionResults.length > 0
-                ? `⚠️ ${interactionResults.length} interacci${interactionResults.length === 1 ? 'ón' : 'ones'} encontrada${interactionResults.length === 1 ? '' : 's'}`
-                : '✅ No se encontraron interacciones conocidas'}
-            </Text>
+                ? <MaterialCommunityIcons name="alert-outline" size={20} color={colors.warning} style={{ marginRight: 6 }} />
+                : <MaterialCommunityIcons name="check-circle-outline" size={20} color={colors.success} style={{ marginRight: 6 }} />}
+              <Text style={styles.resultsTitle}>
+                {interactionResults.length > 0
+                  ? `${interactionResults.length} interacci${interactionResults.length === 1 ? 'ón' : 'ones'} encontrada${interactionResults.length === 1 ? '' : 's'}`
+                  : 'No se encontraron interacciones conocidas'}
+              </Text>
+            </View>
 
             {interactionResults.length === 0 && selectedDrugs.length >= 2 && (
               <View style={styles.safeBox}>
@@ -258,7 +265,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
 
         <View style={styles.disclaimer}>
           <Text style={styles.disclaimerText}>
-            ⚕️ Esta herramienta es de apoyo educativo. Las interacciones se basan en la información registrada en la ficha de cada fármaco. Siempre verifique con fuentes clínicas actualizadas y consulte con el equipo médico.
+Esta herramienta es de apoyo educativo. Las interacciones se basan en la información registrada en la ficha de cada fármaco. Siempre verifique con fuentes clínicas actualizadas y consulte con el equipo médico.
           </Text>
         </View>
 
@@ -270,7 +277,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: { backgroundColor: '#7C3AED', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
   headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
   headerSubtitle: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
@@ -283,11 +290,11 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   removeChip: { fontSize: 14, color: colors.textLight },
   emptyHint: { fontSize: 13, color: colors.textLight, fontStyle: 'italic' },
   searchSection: { marginHorizontal: 16, marginBottom: 8 },
-  searchBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, borderRadius: 12, paddingHorizontal: 12, elevation: 1 },
+  searchBar: { ...neuInset(colors), flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
   searchIcon: { fontSize: 16, marginRight: 8 },
   searchInput: { flex: 1, fontSize: 15, color: colors.text, paddingVertical: 10 },
   clearSearch: { color: colors.textLight, fontSize: 16, padding: 4 },
-  searchResults: { marginTop: 4, backgroundColor: colors.surface, borderRadius: 12, elevation: 2, overflow: 'hidden' },
+  searchResults: { marginTop: 4, backgroundColor: colors.neuSurface, borderRadius: 14, elevation: 2, overflow: 'visible' as const },
   searchResult: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
   searchDot: { width: 8, height: 8, borderRadius: 4, marginRight: 10 },
   searchResultText: { flex: 1 },
@@ -298,7 +305,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   resultsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
   safeBox: { backgroundColor: colors.success + '12', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: colors.success + '30' },
   safeText: { fontSize: 13, color: colors.success, lineHeight: 20 },
-  interactionCard: { backgroundColor: colors.surface, borderRadius: 12, padding: 14, marginBottom: 10, borderLeftWidth: 4, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3 },
+  interactionCard: { ...neuCard(colors), padding: 14, marginBottom: 10, borderLeftWidth: 4 },
   interactionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
   interactionDrugs: { fontSize: 14, fontWeight: '700', color: colors.text, flex: 1 },
   severityBadge: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: 10, marginLeft: 8 },

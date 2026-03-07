@@ -1,14 +1,27 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View, StyleSheet, Animated } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import type { RootStackParamList, TabParamList } from '../types';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { neuElevated } from '../utils/neumorphism';
+// Icon names inlined to avoid circular/module issues
+const TAB_ICONS = {
+  home: { active: 'home', inactive: 'home-outline' },
+  categories: { active: 'bookshelf', inactive: 'book-open-page-variant-outline' },
+  search: { active: 'magnify', inactive: 'magnify' },
+  special: { active: 'alert-decagram', inactive: 'alert-decagram-outline' },
+  tools: { active: 'wrench', inactive: 'wrench-outline' },
+};
 
 // Screens
+import { OnboardingScreen } from '../screens/OnboardingScreen';
 import { HomeScreen } from '../screens/HomeScreen';
 import { CategoriesScreen } from '../screens/CategoriesScreen';
 import { SearchScreen } from '../screens/SearchScreen';
@@ -44,27 +57,47 @@ import { PremiumScreen } from '../screens/PremiumScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
-function TabIcon({ icon, label, focused, colors }: { icon: string; label: string; focused: boolean; colors: ThemeColors }) {
-  const scaleAnim = useRef(new Animated.Value(focused ? 1 : 0.85)).current;
+function TabIcon({ iconActive, iconInactive, label, focused, colors }: {
+  iconActive: string; iconInactive: string; label: string; focused: boolean; colors: ThemeColors;
+}) {
+  const scaleAnim = useRef(new Animated.Value(focused ? 1 : 0.9)).current;
+  const bgAnim = useRef(new Animated.Value(focused ? 1 : 0)).current;
 
   useEffect(() => {
-    Animated.spring(scaleAnim, {
-      toValue: focused ? 1 : 0.85,
-      useNativeDriver: true,
-      speed: 20,
-      bounciness: focused ? 12 : 0,
-    }).start();
-  }, [focused, scaleAnim]);
+    Animated.parallel([
+      Animated.spring(scaleAnim, {
+        toValue: focused ? 1 : 0.9,
+        useNativeDriver: true,
+        speed: 18,
+        bounciness: focused ? 8 : 0,
+      }),
+      Animated.timing(bgAnim, {
+        toValue: focused ? 1 : 0,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+    ]).start();
+  }, [focused, scaleAnim, bgAnim]);
+
+  const bgColor = bgAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['transparent', colors.primary + '15'],
+  });
 
   return (
     <Animated.View style={[tabStyles.tabIconContainer, { transform: [{ scale: scaleAnim }] }]}>
-      <Text style={[tabStyles.tabIcon, focused && tabStyles.tabIconFocused]}>{icon}</Text>
+      <Animated.View style={[tabStyles.tabIconBg, { backgroundColor: bgColor }]}>
+        <MaterialCommunityIcons
+          name={focused ? iconActive : iconInactive}
+          size={focused ? 26 : 23}
+          color={focused ? colors.primary : colors.tabBarInactive}
+        />
+      </Animated.View>
       <Text style={[
         tabStyles.tabLabel,
-        { color: focused ? colors.tabBarActive : colors.tabBarInactive },
+        { color: focused ? colors.primary : colors.tabBarInactive },
         focused && tabStyles.tabLabelFocused,
-      ]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>{label}</Text>
-      {focused && <View style={[tabStyles.activeIndicator, { backgroundColor: colors.tabBarActive }]} />}
+      ]} numberOfLines={1}>{label}</Text>
     </Animated.View>
   );
 }
@@ -78,16 +111,14 @@ function MainTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: colors.surface,
+          position: 'absolute',
+          ...neuElevated(colors),
           borderTopWidth: 0,
-          elevation: 8,
-          shadowColor: colors.shadow,
-          shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 8,
-          height: 65 + insets.bottom,
-          paddingBottom: 8 + insets.bottom,
-          paddingTop: 4,
+          marginHorizontal: 12,
+          marginBottom: Math.max(insets.bottom, 8),
+          height: 68,
+          paddingBottom: 0,
+          paddingTop: 0,
         },
         tabBarShowLabel: false,
       }}
@@ -96,7 +127,10 @@ function MainTabs() {
         name="Inicio"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="🏠" label="Inicio" focused={focused} colors={colors} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconActive={TAB_ICONS.home.active} iconInactive={TAB_ICONS.home.inactive}
+              label="Inicio" focused={focused} colors={colors} />
+          ),
           tabBarAccessibilityLabel: 'Inicio',
         }}
       />
@@ -104,7 +138,10 @@ function MainTabs() {
         name="Categorias"
         component={CategoriesScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="📚" label="Categorías" focused={focused} colors={colors} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconActive={TAB_ICONS.categories.active} iconInactive={TAB_ICONS.categories.inactive}
+              label="Categorías" focused={focused} colors={colors} />
+          ),
           tabBarAccessibilityLabel: 'Categorías',
         }}
       />
@@ -112,7 +149,10 @@ function MainTabs() {
         name="Busqueda"
         component={SearchScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="🔍" label="Buscar" focused={focused} colors={colors} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconActive={TAB_ICONS.search.active} iconInactive={TAB_ICONS.search.inactive}
+              label="Buscar" focused={focused} colors={colors} />
+          ),
           tabBarAccessibilityLabel: 'Buscar fármacos',
         }}
       />
@@ -120,7 +160,10 @@ function MainTabs() {
         name="Especial"
         component={SpecialScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="🚨" label="Especial" focused={focused} colors={colors} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconActive={TAB_ICONS.special.active} iconInactive={TAB_ICONS.special.inactive}
+              label="Especial" focused={focused} colors={colors} />
+          ),
           tabBarAccessibilityLabel: 'Medicamentos especiales',
         }}
       />
@@ -128,7 +171,10 @@ function MainTabs() {
         name="Herramientas"
         component={ToolsScreen}
         options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="🔧" label="Herramientas" focused={focused} colors={colors} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconActive={TAB_ICONS.tools.active} iconInactive={TAB_ICONS.tools.inactive}
+              label="Herramientas" focused={focused} colors={colors} />
+          ),
           tabBarAccessibilityLabel: 'Herramientas clínicas',
         }}
       />
@@ -138,6 +184,18 @@ function MainTabs() {
 
 export function AppNavigator() {
   const { colors } = useTheme();
+  const [hasOnboarded, setHasOnboarded] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    AsyncStorage.getItem('@guia_farmaco_onboarding')
+      .then(value => setHasOnboarded(value === 'true'))
+      .catch(() => setHasOnboarded(true));
+  }, []);
+
+  // While loading, return null so the native splash screen stays visible
+  if (hasOnboarded === null) {
+    return null;
+  }
 
   return (
     <NavigationContainer>
@@ -147,8 +205,25 @@ export function AppNavigator() {
           headerTintColor: '#FFFFFF',
           headerTitleStyle: { fontWeight: '700' },
           animation: 'slide_from_right',
+          animationDuration: 250,
+          headerBackground: () => (
+            <LinearGradient
+              colors={[colors.gradientStart, colors.gradientEnd]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={{ flex: 1 }}
+            />
+          ),
         }}
+        initialRouteName={hasOnboarded ? 'MainTabs' : 'Onboarding'}
       >
+        {!hasOnboarded && (
+          <Stack.Screen
+            name="Onboarding"
+            component={OnboardingScreen}
+            options={{ headerShown: false, animation: 'fade' }}
+          />
+        )}
         <Stack.Screen
           name="MainTabs"
           component={MainTabs}
@@ -293,29 +368,24 @@ const tabStyles = StyleSheet.create({
   tabIconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-    paddingHorizontal: 2,
+    width: 64,
+    height: 56,
   },
-  tabIcon: {
-    fontSize: 22,
-    opacity: 0.5,
-  },
-  tabIconFocused: {
-    opacity: 1,
+  tabIconBg: {
+    width: 44,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tabLabel: {
-    fontSize: 9,
-    fontWeight: '700',
-    marginTop: 1,
+    fontSize: 10,
+    fontWeight: '600',
+    marginTop: 2,
     textAlign: 'center',
+    letterSpacing: 0.1,
   },
   tabLabelFocused: {
     fontWeight: '700',
-  },
-  activeIndicator: {
-    width: 20,
-    height: 3,
-    borderRadius: 2,
-    marginTop: 3,
   },
 });

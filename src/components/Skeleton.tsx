@@ -97,7 +97,7 @@ const skeletonStyles = StyleSheet.create({
   card: {
     marginHorizontal: 16,
     marginBottom: 10,
-    borderRadius: 14,
+    borderRadius: 18,
     padding: 16,
   },
   cardHeader: {

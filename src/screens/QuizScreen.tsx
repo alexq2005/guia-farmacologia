@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { useTheme } from '../context/ThemeContext';
@@ -7,6 +8,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { useQuiz } from '../hooks/useQuiz';
 import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 import { PremiumGate } from '../components/PremiumGate';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizScreen'>;
@@ -22,8 +24,8 @@ export function QuizScreen({ navigation }: Props) {
   const [selectedCount, setSelectedCount] = useState(10);
 
   const unitOptions = [
-    { id: undefined, label: 'Todas las categorías', icon: '📚' },
-    ...categories.unidades.map(u => ({ id: u.id, label: u.nombre, icon: u.icon === 'brain' ? '🧠' : '📋' })),
+    { id: undefined, label: 'Todas las categorías', iconName: 'bookshelf' },
+    ...categories.unidades.map(u => ({ id: u.id, label: u.nombre, iconName: u.icon === 'brain' ? 'brain' : 'clipboard-list-outline' })),
   ];
 
   return (
@@ -31,7 +33,10 @@ export function QuizScreen({ navigation }: Props) {
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: colors.quiz }]}>
-        <Text style={styles.headerTitle}>🧠 Test Farmacológico</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="brain" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Test Farmacológico</Text>
+        </View>
         <Text style={styles.headerSubtitle}>Pon a prueba tus conocimientos</Text>
       </View>
 
@@ -39,7 +44,10 @@ export function QuizScreen({ navigation }: Props) {
         {/* Stats */}
         {results.length > 0 && (
           <View style={styles.statsCard}>
-            <Text style={styles.statsTitle}>📊 Tu Progreso</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+              <MaterialCommunityIcons name="chart-bar" size={18} color={colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.statsTitle, { marginBottom: 0 }]}>Tu Progreso</Text>
+            </View>
             <View style={styles.statsRow}>
               <View style={styles.statItem}>
                 <Text style={styles.statNumber}>{results.length}</Text>
@@ -64,7 +72,10 @@ export function QuizScreen({ navigation }: Props) {
         )}
 
         {/* Question Count Selector */}
-        <Text style={styles.sectionTitle}>⚡ Preguntas</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+          <MaterialCommunityIcons name="lightning-bolt" size={20} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Preguntas</Text>
+        </View>
         <View style={styles.quickGrid}>
           {QUESTION_COUNTS.map(count => (
             <TouchableOpacity
@@ -89,7 +100,10 @@ export function QuizScreen({ navigation }: Props) {
         </TouchableOpacity>
 
         {/* By Category — uses selected count */}
-        <Text style={styles.sectionTitle}>📂 Por Categoría</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+          <MaterialCommunityIcons name="folder-outline" size={20} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Por Categoría</Text>
+        </View>
         <View style={styles.categoryList}>
           {unitOptions.map((unit, i) => (
             <TouchableOpacity
@@ -98,7 +112,7 @@ export function QuizScreen({ navigation }: Props) {
               onPress={() => navigation.navigate('QuizSession', { category: unit.id, questionCount: selectedCount })}
               activeOpacity={0.7}
             >
-              <Text style={styles.categoryIcon}>{unit.icon}</Text>
+              <MaterialCommunityIcons name={unit.iconName} size={24} color={colors.quiz} style={{ marginRight: 12 }} />
               <Text style={styles.categoryLabel} numberOfLines={1}>{unit.label}</Text>
               <Text style={styles.categoryCount}>{selectedCount}</Text>
               <Text style={styles.categoryArrow}>›</Text>
@@ -109,7 +123,10 @@ export function QuizScreen({ navigation }: Props) {
         {/* Recent Results */}
         {results.length > 0 && (
           <>
-            <Text style={styles.sectionTitle}>🕐 Resultados Recientes</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+              <MaterialCommunityIcons name="clock-outline" size={20} color={colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Resultados Recientes</Text>
+            </View>
             {results.slice(0, 5).map((r, i) => (
               <View key={i} style={styles.resultCard}>
                 <View style={[styles.resultBadge, {
@@ -140,7 +157,7 @@ export function QuizScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -149,9 +166,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   scroll: { flex: 1 },
   statsCard: {
-    backgroundColor: colors.surface, marginHorizontal: 16, marginTop: 16, padding: 16,
-    borderRadius: 16, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1, shadowRadius: 3,
+    ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 16,
   },
   statsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
   statsRow: { flexDirection: 'row', alignItems: 'center' },
@@ -169,8 +184,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   quickLabel: { fontSize: 12, color: colors.quiz, fontWeight: '600', marginTop: 2 },
   categoryList: { paddingHorizontal: 16, gap: 6 },
   categoryCard: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
-    borderRadius: 12, padding: 14, elevation: 1,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 14,
   },
   categoryIcon: { fontSize: 24, marginRight: 12 },
   categoryLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text },
@@ -179,8 +193,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   startButton: { marginHorizontal: 16, marginTop: 12, paddingVertical: 16, borderRadius: 14, alignItems: 'center' },
   startButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
   resultCard: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
-    marginHorizontal: 16, marginBottom: 6, padding: 12, borderRadius: 12, elevation: 1,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, marginBottom: 6, padding: 12,
   },
   resultBadge: { width: 50, height: 50, borderRadius: 25, alignItems: 'center', justifyContent: 'center' },
   resultPercent: { fontSize: 16, fontWeight: '800' },

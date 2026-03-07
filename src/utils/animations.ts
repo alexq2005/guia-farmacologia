@@ -64,3 +64,51 @@ export function useCardPressAnimation() {
 
   return { scale, onPressIn, onPressOut };
 }
+
+/** Neumorphic press — softer spring with scale to 0.97 */
+export function useNeuPressAnimation() {
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const onPressIn = useCallback(() => {
+    Animated.spring(scale, {
+      toValue: 0.97,
+      useNativeDriver: true,
+      speed: 30,
+      bounciness: 3,
+    }).start();
+  }, [scale]);
+
+  const onPressOut = useCallback(() => {
+    Animated.spring(scale, {
+      toValue: 1,
+      useNativeDriver: true,
+      speed: 30,
+      bounciness: 3,
+    }).start();
+  }, [scale]);
+
+  return { scale, onPressIn, onPressOut };
+}
+
+/** Header shrink on scroll — returns interpolated values */
+export function useScrollHeaderAnimation(scrollY: Animated.Value) {
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, 60],
+    outputRange: [140, 80],
+    extrapolate: 'clamp',
+  });
+
+  const titleScale = scrollY.interpolate({
+    inputRange: [0, 60],
+    outputRange: [1, 0.8],
+    extrapolate: 'clamp',
+  });
+
+  const titleOpacity = scrollY.interpolate({
+    inputRange: [0, 40],
+    outputRange: [1, 0.9],
+    extrapolate: 'clamp',
+  });
+
+  return { headerHeight, titleScale, titleOpacity };
+}

@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useRef, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Linking, StatusBar, Animated, TextInput, Alert, Modal } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
@@ -7,6 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useDrugData } from '../hooks/useDrugData';
 import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard } from '../utils/neumorphism';
 import { useFadeIn } from '../utils/animations';
 import scalesData from '../data/clinical_scales.json';
 import labValuesData from '../data/lab_values.json';
@@ -55,12 +57,12 @@ export function AboutScreen() {
   };
 
   const stats = [
-    { icon: '💊', value: getDrugCount().toString(), label: 'Fármacos' },
-    { icon: '🏥', value: pathologies.length.toString(), label: 'Patologías' },
-    { icon: '📊', value: scalesData.length.toString(), label: 'Escalas' },
-    { icon: '🔬', value: labValuesData.length.toString(), label: 'Lab' },
-    { icon: '🚨', value: protocolsData.length.toString(), label: 'Protocolos' },
-    { icon: '🧮', value: '15', label: 'Calculadoras' },
+    { icon: 'pill', value: getDrugCount().toString(), label: 'Fármacos' },
+    { icon: 'hospital-box-outline', value: pathologies.length.toString(), label: 'Patologías' },
+    { icon: 'chart-timeline-variant-shimmer', value: scalesData.length.toString(), label: 'Escalas' },
+    { icon: 'flask-outline', value: labValuesData.length.toString(), label: 'Lab' },
+    { icon: 'alert-octagon', value: protocolsData.length.toString(), label: 'Protocolos' },
+    { icon: 'calculator-variant-outline', value: '15', label: 'Calculadoras' },
   ];
 
   return (
@@ -85,9 +87,10 @@ export function AboutScreen() {
 
           <Text style={styles.appName}>Guía Farmacológica{'\n'}Integral de Enfermería</Text>
           <View style={styles.versionBadge}>
-            <Text style={styles.versionText}>
-              v0.1{isCodeActivated ? ' ✓' : ''}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.versionText}>v1.0</Text>
+              {isCodeActivated && <MaterialCommunityIcons name="check-circle" size={14} color="#059669" style={{ marginLeft: 4 }} />}
+            </View>
           </View>
         </View>
 
@@ -144,7 +147,7 @@ export function AboutScreen() {
           <View style={styles.statsGrid}>
             {stats.map((stat, i) => (
               <View key={i} style={styles.statItem}>
-                <Text style={styles.statIcon}>{stat.icon}</Text>
+                <MaterialCommunityIcons name={stat.icon} size={24} color={colors.primary} />
                 <Text style={styles.statValue}>{stat.value}</Text>
                 <Text style={styles.statLabel}>{stat.label}</Text>
               </View>
@@ -157,18 +160,18 @@ export function AboutScreen() {
           <Text style={styles.cardTitle}>Funcionalidades</Text>
           <View style={styles.featureList}>
             {[
-              { icon: '🔍', text: 'Búsqueda inteligente con coincidencia sin acentos' },
-              { icon: '⭐', text: 'Sistema de favoritos con persistencia local' },
-              { icon: '📝', text: 'Notas personales por fármaco con autoguardado' },
-              { icon: '🧠', text: 'Test interactivo con 8 tipos de preguntas' },
-              { icon: '⚠️', text: 'Verificador de interacciones medicamentosas' },
-              { icon: '💉', text: 'Guía parenteral (Son Espases) con compatibilidades' },
-              { icon: '🌙', text: 'Modo oscuro con 3 opciones (claro/oscuro/sistema)' },
-              { icon: '📤', text: 'Compartir información de fármacos' },
-              { icon: '📊', text: 'Historial de búsquedas recientes' },
+              { icon: 'magnify', text: 'Búsqueda inteligente con coincidencia sin acentos' },
+              { icon: 'star-outline', text: 'Sistema de favoritos con persistencia local' },
+              { icon: 'note-text-outline', text: 'Notas personales por fármaco con autoguardado' },
+              { icon: 'head-question-outline', text: 'Test interactivo con 8 tipos de preguntas' },
+              { icon: 'swap-horizontal-bold', text: 'Verificador de interacciones medicamentosas' },
+              { icon: 'iv-bag', text: 'Guía parenteral (Son Espases) con compatibilidades' },
+              { icon: 'moon-waning-crescent', text: 'Modo oscuro con 3 opciones (claro/oscuro/sistema)' },
+              { icon: 'share-variant-outline', text: 'Compartir información de fármacos' },
+              { icon: 'history', text: 'Historial de búsquedas recientes' },
             ].map((f, i) => (
               <View key={i} style={styles.featureRow}>
-                <Text style={styles.featureIcon}>{f.icon}</Text>
+                <MaterialCommunityIcons name={f.icon} size={18} color={colors.primary} style={{ marginRight: 10 }} />
                 <Text style={styles.featureText}>{f.text}</Text>
               </View>
             ))}
@@ -193,7 +196,7 @@ export function AboutScreen() {
               'Fichas técnicas AEMPS / EMA',
             ].map((src, i) => (
               <View key={i} style={styles.sourceRow}>
-                <Text style={styles.sourceBullet}>📖</Text>
+                <MaterialCommunityIcons name="book-open-variant" size={12} color={colors.textSecondary} style={{ marginRight: 8, marginTop: 1 }} />
                 <Text style={styles.sourceText}>{src}</Text>
               </View>
             ))}
@@ -202,7 +205,10 @@ export function AboutScreen() {
 
         {/* Disclaimer — Prominent medical disclaimer */}
         <View style={[styles.card, styles.disclaimerCard]}>
-          <Text style={styles.disclaimerTitle}>⚕️ Aviso médico importante</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+            <MaterialCommunityIcons name="medical-bag" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.disclaimerTitle, { marginBottom: 0 }]}>Aviso médico importante</Text>
+          </View>
           <Text style={styles.disclaimerText}>
             Esta aplicación es una herramienta de CONSULTA EDUCATIVA y REFERENCIA RÁPIDA.
             No constituye consejo médico, diagnóstico ni tratamiento.
@@ -221,7 +227,7 @@ export function AboutScreen() {
             No dudes en escribirnos.
           </Text>
           <TouchableOpacity style={styles.emailButton} onPress={handleEmail} activeOpacity={0.7}>
-            <Text style={styles.emailIcon}>✉️</Text>
+            <MaterialCommunityIcons name="email-outline" size={20} color={colors.primaryLight} style={{ marginRight: 10 }} />
             <Text style={styles.emailText}>{CONTACT_EMAIL}</Text>
           </TouchableOpacity>
         </View>
@@ -235,7 +241,7 @@ export function AboutScreen() {
               onPress={() => navigation.navigate('PremiumScreen')}
               activeOpacity={0.7}
             >
-              <Text style={styles.legalIcon}>⭐</Text>
+              <MaterialCommunityIcons name="star" size={18} color={colors.primary} style={{ marginRight: 12 }} />
               <Text style={styles.legalText}>Premium</Text>
               <Text style={styles.legalArrow}>›</Text>
             </TouchableOpacity>
@@ -245,7 +251,7 @@ export function AboutScreen() {
             onPress={() => navigation.navigate('PrivacyPolicy')}
             activeOpacity={0.7}
           >
-            <Text style={styles.legalIcon}>🔒</Text>
+            <MaterialCommunityIcons name="lock-outline" size={18} color={colors.textSecondary} style={{ marginRight: 12 }} />
             <Text style={styles.legalText}>Política de Privacidad</Text>
             <Text style={styles.legalArrow}>›</Text>
           </TouchableOpacity>
@@ -254,7 +260,7 @@ export function AboutScreen() {
             onPress={() => navigation.navigate('Terms')}
             activeOpacity={0.7}
           >
-            <Text style={styles.legalIcon}>📄</Text>
+            <MaterialCommunityIcons name="file-document-outline" size={18} color={colors.textSecondary} style={{ marginRight: 12 }} />
             <Text style={styles.legalText}>Términos y Condiciones</Text>
             <Text style={styles.legalArrow}>›</Text>
           </TouchableOpacity>
@@ -267,11 +273,11 @@ export function AboutScreen() {
             onPress={handleVersionTap}
             activeOpacity={0.8}
           >
-            <Text style={styles.badgeIcon}>📱</Text>
+            <MaterialCommunityIcons name="cellphone" size={18} color={colors.success} style={{ marginRight: 6 }} />
             <Text style={[styles.badgeText, { color: colors.success }]}>100% Offline</Text>
           </TouchableOpacity>
           <View style={[styles.badge, { backgroundColor: colors.primaryLight + '15', borderColor: colors.primaryLight + '30' }]}>
-            <Text style={styles.badgeIcon}>🇦🇷</Text>
+            <MaterialCommunityIcons name="flag-outline" size={18} color={colors.primaryLight} style={{ marginRight: 6 }} />
             <Text style={[styles.badgeText, { color: colors.primaryLight }]}>Hecho en Argentina</Text>
           </View>
         </View>
@@ -291,7 +297,7 @@ export function AboutScreen() {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   logoSection: {
     alignItems: 'center',
@@ -376,16 +382,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     color: '#FFFFFF',
   },
   card: {
-    backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginBottom: 12,
-    padding: 18,
-    borderRadius: 14,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    ...neuCard(colors), margin: 16, marginBottom: 0, padding: 16,
+    marginTop: 12,
   },
   cardTitle: {
     fontSize: 17,

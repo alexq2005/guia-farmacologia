@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Svg, { Rect, Line, Circle, Path, G, Defs, LinearGradient, Stop, Ellipse, Polygon } from 'react-native-svg';
 import type { ThemeColors } from '../utils/colors';
 
@@ -165,7 +166,7 @@ function OralIllustration() {
         stroke="#E8734A" strokeWidth={3} fill="none" strokeLinecap="round" />
       {/* Pill */}
       <Rect x={140} y={5} width={20} height={12} rx={6} fill="#3B82F6" />
-      <SvgText x={145} y={14} fill="#FFF" size={7} bold>💊</SvgText>
+      <SvgText x={145} y={14} fill="#FFF" size={7} bold>Rx</SvgText>
       {/* Labels along the path */}
       <SvgText x={165} y={25} fill="#E8734A" size={10} bold>Boca</SvgText>
       <SvgText x={175} y={55} fill="#E8734A" size={10} bold>Esófago</SvgText>
@@ -502,7 +503,10 @@ export function RouteIllustrationSVG({ routeId, accentColor, colors }: { routeId
 
   return (
     <View style={[localStyles.container, { borderColor: accentColor + '40', backgroundColor: colors.surfaceElevated }]}>
-      <Text style={[localStyles.title, { color: colors.textSecondary }]}>📐 Diagrama anatómico</Text>
+      <View style={localStyles.titleRow}>
+        <MaterialCommunityIcons name="ruler-square" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />
+        <Text style={[localStyles.title, { color: colors.textSecondary }]}>Diagrama anatómico</Text>
+      </View>
       <View style={localStyles.svgWrapper}>
         <Illustration />
       </View>
@@ -519,11 +523,15 @@ const localStyles = StyleSheet.create({
     borderWidth: 2,
     alignItems: 'center',
   },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    marginBottom: 12,
+  },
   title: {
     fontSize: 14,
     fontWeight: '700',
-    marginBottom: 12,
-    alignSelf: 'flex-start',
   },
   svgWrapper: {
     alignItems: 'center',

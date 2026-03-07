@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import {
   View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { LabValue, LabCategory } from '../types';
 import { LAB_COLORS, LAB_ICONS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
@@ -11,16 +12,20 @@ import { normalizeText } from '../utils/search';
 import { LAB_CATEGORY_LABELS } from '../utils/labels';
 import { PremiumGate } from '../components/PremiumGate';
 import labValuesData from '../data/lab_values.json';
+import { neuCard, neuPill } from '../utils/neumorphism';
 
 const ALL_LAB_CATEGORIES: LabCategory[] = [
   'hematologia', 'bioquimica', 'coagulacion', 'hepatico',
   'renal', 'cardiaco', 'endocrino', 'orina', 'gasometria',
 ];
 
-function RangeBar({ label, range, colors }: { label: string; range: { min: number; max: number; unidad: string }; colors: ThemeColors }) {
+function RangeBar({ label, range, colors, iconName }: { label: string; range: { min: number; max: number; unidad: string }; colors: ThemeColors; iconName?: string }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-      <Text style={{ fontSize: 12, color: colors.textSecondary, width: 90 }}>{label}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', width: 90 }}>
+        {iconName && <MaterialCommunityIcons name={iconName} size={13} color={colors.textSecondary} style={{ marginRight: 3 }} />}
+        <Text style={{ fontSize: 12, color: colors.textSecondary }}>{label}</Text>
+      </View>
       <View style={{ flex: 1, backgroundColor: colors.background, borderRadius: 6, paddingHorizontal: 10, paddingVertical: 4 }}>
         <Text style={{ fontSize: 13, fontWeight: '700', color: colors.text }}>
           {range.min} – {range.max} {range.unidad}
@@ -102,22 +107,28 @@ export function LabValuesScreen() {
               <RangeBar label="Adulto" range={value.rangos.adulto} colors={colors} />
             )}
             {value.rangos.adultoHombre && (
-              <RangeBar label="♂ Hombre" range={value.rangos.adultoHombre} colors={colors} />
+              <RangeBar label="Hombre" range={value.rangos.adultoHombre} colors={colors} iconName="gender-male" />
             )}
             {value.rangos.adultoMujer && (
-              <RangeBar label="♀ Mujer" range={value.rangos.adultoMujer} colors={colors} />
+              <RangeBar label="Mujer" range={value.rangos.adultoMujer} colors={colors} iconName="gender-female" />
             )}
             {value.rangos.pediatrico && (
-              <RangeBar label="👶 Pediátrico" range={value.rangos.pediatrico} colors={colors} />
+              <RangeBar label="Pediátrico" range={value.rangos.pediatrico} colors={colors} />
             )}
 
             <View style={styles.significanceRow}>
               <View style={[styles.significanceBox, { backgroundColor: colors.error + '10', borderColor: colors.error + '30' }]}>
-                <Text style={[styles.sigLabel, { color: colors.error }]}>↑ ELEVADO</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons name="arrow-up-bold" size={14} color={colors.error} style={{ marginRight: 3 }} />
+                  <Text style={[styles.sigLabel, { color: colors.error }]}>ELEVADO</Text>
+                </View>
                 <Text style={styles.sigText}>{value.significadoAlto}</Text>
               </View>
               <View style={[styles.significanceBox, { backgroundColor: colors.info + '10', borderColor: colors.info + '30' }]}>
-                <Text style={[styles.sigLabel, { color: colors.info }]}>↓ DISMINUIDO</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons name="arrow-down-bold" size={14} color={colors.info} style={{ marginRight: 3 }} />
+                  <Text style={[styles.sigLabel, { color: colors.info }]}>DISMINUIDO</Text>
+                </View>
                 <Text style={styles.sigText}>{value.significadoBajo}</Text>
               </View>
             </View>
@@ -128,7 +139,10 @@ export function LabValuesScreen() {
                 <View style={styles.tagsRow}>
                   {value.farmacosAlteran.map((f, i) => (
                     <View key={i} style={styles.drugTag}>
-                      <Text style={styles.drugTagText}>💊 {f}</Text>
+                      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <MaterialCommunityIcons name="pill" size={12} color={colors.text} style={{ marginRight: 3 }} />
+                        <Text style={styles.drugTagText}>{f}</Text>
+                      </View>
                     </View>
                   ))}
                 </View>
@@ -193,14 +207,14 @@ export function LabValuesScreen() {
   const ListFooter = useMemo(() => (
     <View style={styles.disclaimer}>
       <Text style={styles.disclaimerText}>
-        ⚕️ Los rangos de referencia pueden variar según el laboratorio y el método de análisis. Siempre consultar con los valores de referencia del laboratorio local.
+Los rangos de referencia pueden variar según el laboratorio y el método de análisis. Siempre consultar con los valores de referencia del laboratorio local.
       </Text>
     </View>
   ), [styles]);
 
   const ListEmpty = useMemo(() => (
     <View style={styles.emptyState}>
-      <Text style={styles.emptyIcon}>🔬</Text>
+      <MaterialCommunityIcons name="microscope" size={48} color={colors.textLight} />
       <Text style={styles.emptyText}>No se encontraron valores</Text>
       <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
     </View>
@@ -216,7 +230,7 @@ export function LabValuesScreen() {
         <Text style={styles.headerTitle}>Valores de Laboratorio</Text>
         <Text style={styles.headerSubtitle}>{labValues.length} valores de referencia clínica</Text>
         <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <MaterialCommunityIcons name="magnify" size={18} color="rgba(255,255,255,0.7)" />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar valor..."
@@ -226,7 +240,7 @@ export function LabValuesScreen() {
           />
           {searchQuery.length > 0 && (
             <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <Text style={styles.clearSearch}>✕</Text>
+              <MaterialCommunityIcons name="close" size={18} color="rgba(255,255,255,0.7)" style={{ padding: 4 }} />
             </TouchableOpacity>
           )}
         </View>
@@ -249,7 +263,7 @@ export function LabValuesScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#2563EB', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -265,20 +279,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
   chipsScroll: {},
   chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: {
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
-    backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,
-  },
+  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
   resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  labCard: {
-    backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10,
-    borderRadius: 14, padding: 16, elevation: 2,
-    shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
-    borderLeftWidth: 4,
-  },
+  labCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
   cardHeader: { flexDirection: 'row', alignItems: 'center' },
   cardIcon: { fontSize: 24, marginRight: 10 },
   cardTitleArea: { flex: 1 },

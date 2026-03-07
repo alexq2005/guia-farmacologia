@@ -1,5 +1,7 @@
 import React, { useMemo, useState, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -13,6 +15,7 @@ import { useSearchHistory } from '../hooks/useSearchHistory';
 import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { neuPill, neuInset, neuCardSubtle } from '../utils/neumorphism';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Busqueda'>,
@@ -55,12 +58,20 @@ export function SearchScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
-        <Text style={styles.headerTitle}>🔍 Búsqueda</Text>
+      <LinearGradient
+        colors={[colors.gradientStart, colors.gradientEnd]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + 12 }]}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="magnify" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Búsqueda</Text>
+        </View>
         <Text style={styles.headerSubtitle}>
           Busca entre {drugs.length} fármacos
         </Text>
-      </View>
+      </LinearGradient>
 
       <SearchBar
         value={query}
@@ -118,7 +129,7 @@ export function SearchScreen({ navigation }: Props) {
             showsVerticalScrollIndicator={false}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
-                <Text style={styles.emptyIcon}>🔍</Text>
+                <MaterialCommunityIcons name="magnify-close" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
                 <Text style={styles.emptyText}>No se encontraron resultados</Text>
                 <Text style={styles.emptySubtext}>
                   Intenta con el nombre genérico o comercial
@@ -132,7 +143,10 @@ export function SearchScreen({ navigation }: Props) {
           {history.length > 0 ? (
             <>
               <View style={styles.historyHeader}>
-                <Text style={styles.suggestionsTitle}>🕐 Búsquedas recientes</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons name="history" size={18} color={colors.text} style={{ marginRight: 6 }} />
+                  <Text style={styles.suggestionsTitle}>Búsquedas recientes</Text>
+                </View>
                 <TouchableOpacity onPress={clearHistory}>
                   <Text style={styles.clearHistoryText}>Limpiar</Text>
                 </TouchableOpacity>
@@ -164,7 +178,10 @@ export function SearchScreen({ navigation }: Props) {
           )}
 
           <View style={styles.tipsContainer}>
-            <Text style={styles.tipsTitle}>💡 Consejos de búsqueda</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+              <MaterialCommunityIcons name="lightbulb-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.tipsTitle, { marginBottom: 0 }]}>Consejos de búsqueda</Text>
+            </View>
             <Text style={styles.tipText}>• Busca por nombre genérico o comercial</Text>
             <Text style={styles.tipText}>• Busca por indicación (ej: "hipertensión")</Text>
             <Text style={styles.tipText}>• Busca por familia (ej: "penicilina")</Text>
@@ -179,10 +196,9 @@ export function SearchScreen({ navigation }: Props) {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   header: {
-    backgroundColor: colors.primary,
     paddingTop: 16,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -267,9 +283,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   tipsContainer: {
     marginTop: 24,
-    backgroundColor: colors.surface,
+    ...neuCardSubtle(colors),
     padding: 16,
-    borderRadius: 14,
   },
   tipsTitle: {
     fontSize: 15,
@@ -299,12 +314,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     marginRight: 4,
   },
   filterChip: {
+    ...neuPill(colors),
     paddingHorizontal: 10,
     paddingVertical: 5,
-    borderRadius: 14,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
   },
   filterChipActive: {
     backgroundColor: colors.primary,

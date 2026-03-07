@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDrugData } from '../hooks/useDrugData';
 import { useQuiz } from '../hooks/useQuiz';
@@ -10,6 +12,7 @@ import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
 import { PremiumGate } from '../components/PremiumGate';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 function ProgressBar({ label, value, max, color, colors }: { label: string; value: number; max: number; color: string; colors: ThemeColors }) {
   const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
@@ -29,7 +32,7 @@ function ProgressBar({ label, value, max, color, colors }: { label: string; valu
 function StatCard({ icon, value, label, color, colors }: { icon: string; value: string | number; label: string; color: string; colors: ThemeColors }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', backgroundColor: color + '10', borderRadius: 14, padding: 14 }}>
-      <Text style={{ fontSize: 24 }}>{icon}</Text>
+      <MaterialCommunityIcons name={icon} size={24} color={color} />
       <Text style={{ fontSize: 22, fontWeight: '800', color, marginTop: 4 }}>{value}</Text>
       <Text style={{ fontSize: 10, color: colors.textSecondary, marginTop: 2, textAlign: 'center' }}>{label}</Text>
     </View>
@@ -92,41 +95,49 @@ export function DashboardScreen() {
     <PremiumGate feature="Dashboard de Progreso">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
+      <LinearGradient
+        colors={[colors.quiz, '#A78BFA']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + 12 }]}
+      >
         <Text style={styles.headerTitle}>Dashboard de Estudio</Text>
         <Text style={styles.headerSubtitle}>Tu progreso de aprendizaje</Text>
-      </View>
+      </LinearGradient>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Quick Stats */}
         <View style={styles.statsGrid}>
-          <StatCard icon="📝" value={quizResults.length} label="Sesiones" color={colors.quiz} colors={colors} />
-          <StatCard icon="📊" value={`${averageScore}%`} label="Promedio" color={averageScore >= 70 ? colors.success : colors.warning} colors={colors} />
-          <StatCard icon="✅" value={totalCorrect} label="Correctas" color={colors.success} colors={colors} />
-          <StatCard icon="🔥" value={streak} label="Racha días" color="#EA580C" colors={colors} />
+          <StatCard icon="note-text-outline" value={quizResults.length} label="Sesiones" color={colors.quiz} colors={colors} />
+          <StatCard icon="chart-arc" value={`${averageScore}%`} label="Promedio" color={averageScore >= 70 ? colors.success : colors.warning} colors={colors} />
+          <StatCard icon="check-circle-outline" value={totalCorrect} label="Correctas" color={colors.success} colors={colors} />
+          <StatCard icon="fire" value={streak} label="Racha días" color="#EA580C" colors={colors} />
         </View>
 
         {/* Usage Overview */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📈 Uso General</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginBottom: 10 }}>
+            <MaterialCommunityIcons name="trending-up" size={20} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginBottom: 0 }]}>Uso General</Text>
+          </View>
           <View style={styles.usageGrid}>
             <View style={[styles.usageItem, { backgroundColor: colors.surface }]}>
-              <Text style={styles.usageIcon}>👁️</Text>
+              <MaterialCommunityIcons name="eye-outline" size={24} color={colors.primary} />
               <Text style={[styles.usageValue, { color: colors.primary }]}>{recentDrugs.length}</Text>
               <Text style={styles.usageLabel}>Fármacos vistos</Text>
             </View>
             <View style={[styles.usageItem, { backgroundColor: colors.surface }]}>
-              <Text style={styles.usageIcon}>📝</Text>
+              <MaterialCommunityIcons name="note-text-outline" size={24} color={colors.info} />
               <Text style={[styles.usageValue, { color: colors.info }]}>{noteCount}</Text>
               <Text style={styles.usageLabel}>Notas escritas</Text>
             </View>
             <View style={[styles.usageItem, { backgroundColor: colors.surface }]}>
-              <Text style={styles.usageIcon}>❤️</Text>
+              <MaterialCommunityIcons name="heart-outline" size={24} color={colors.error} />
               <Text style={[styles.usageValue, { color: colors.error }]}>{favoriteCount}</Text>
               <Text style={styles.usageLabel}>Favoritos</Text>
             </View>
             <View style={[styles.usageItem, { backgroundColor: colors.surface }]}>
-              <Text style={styles.usageIcon}>❓</Text>
+              <MaterialCommunityIcons name="help-circle-outline" size={24} color={colors.quiz} />
               <Text style={[styles.usageValue, { color: colors.quiz }]}>{totalQuestions}</Text>
               <Text style={styles.usageLabel}>Preguntas</Text>
             </View>
@@ -136,7 +147,10 @@ export function DashboardScreen() {
         {/* Progress by Category */}
         {categoryProgress.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>📊 Progreso por Categoría</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginBottom: 10 }}>
+              <MaterialCommunityIcons name="chart-bar" size={20} color={colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginBottom: 0 }]}>Progreso por Categoría</Text>
+            </View>
             <View style={[styles.card, { backgroundColor: colors.surface }]}>
               {categoryProgress.map(([cat, data], i) => (
                 <ProgressBar
@@ -155,7 +169,10 @@ export function DashboardScreen() {
         {/* Recent Sessions */}
         {recentQuizzes.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>🕐 Últimas Sesiones</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginBottom: 10 }}>
+              <MaterialCommunityIcons name="history" size={20} color={colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginBottom: 0 }]}>Últimas Sesiones</Text>
+            </View>
             {recentQuizzes.map(quiz => {
               const scoreColor = quiz.percentage >= 80 ? colors.success : quiz.percentage >= 50 ? colors.warning : colors.error;
               return (
@@ -180,7 +197,7 @@ export function DashboardScreen() {
 
         {quizResults.length === 0 && (
           <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>📚</Text>
+            <MaterialCommunityIcons name="bookshelf" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
             <Text style={[styles.emptyText, { color: colors.text }]}>Aún no hay datos de estudio</Text>
             <Text style={[styles.emptyHint, { color: colors.textSecondary }]}>Completa algunos tests para ver tu progreso aquí</Text>
           </View>
@@ -194,9 +211,9 @@ export function DashboardScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    backgroundColor: colors.quiz, paddingBottom: 20, paddingHorizontal: 20,
+    paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
   headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
@@ -205,9 +222,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   statsGrid: { flexDirection: 'row', paddingHorizontal: 16, paddingTop: 16, gap: 8 },
   section: { marginTop: 20 },
   sectionTitle: { fontSize: 18, fontWeight: '700', color: colors.text, marginHorizontal: 20, marginBottom: 10 },
-  card: { marginHorizontal: 16, padding: 16, borderRadius: 14, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3 },
+  card: { ...neuCard(colors), marginHorizontal: 16, padding: 16 },
   usageGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 12, gap: 8 },
-  usageItem: { width: '47%' as any, borderRadius: 14, padding: 14, alignItems: 'center', elevation: 1, marginHorizontal: '1.5%' as any },
+  usageItem: { width: '47%' as any, ...neuCardSubtle(colors), padding: 14, alignItems: 'center', marginHorizontal: '1.5%' as any },
   usageIcon: { fontSize: 24 },
   usageValue: { fontSize: 22, fontWeight: '800', marginTop: 4 },
   usageLabel: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },

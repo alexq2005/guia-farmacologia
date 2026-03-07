@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Formula, FormulaVariable } from '../types';
 import { FORMULA_COLORS } from '../utils/colors';
@@ -7,6 +8,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import formulas from '../data/formulas.json';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
 
@@ -111,9 +113,12 @@ export function FormulaDetailScreen({ route }: Props) {
             onPress={() => setShowCalc(!showCalc)}
             activeOpacity={0.7}
           >
-            <Text style={[styles.calcToggleText, { color }]}>
-              🧮 {showCalc ? 'Ocultar calculadora' : 'Abrir calculadora interactiva'}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialCommunityIcons name="calculator-variant-outline" size={18} color={color} style={{ marginRight: 6 }} />
+              <Text style={[styles.calcToggleText, { color }]}>
+                {showCalc ? 'Ocultar calculadora' : 'Abrir calculadora interactiva'}
+              </Text>
+            </View>
           </TouchableOpacity>
 
           {showCalc && (
@@ -153,7 +158,10 @@ export function FormulaDetailScreen({ route }: Props) {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📐 Variables</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="ruler-square" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Variables</Text>
+          </View>
           {formula.variables.map((v, i) => (
             <View key={i} style={styles.variableRow}>
               <View style={[styles.variableBadge, { backgroundColor: color + '20' }]}>
@@ -168,14 +176,20 @@ export function FormulaDetailScreen({ route }: Props) {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>📝 Ejemplo</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="note-text-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Ejemplo</Text>
+          </View>
           <View style={styles.exampleBox}>
             <Text style={styles.exampleText}>{formula.ejemplo}</Text>
           </View>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>💡 Explicación</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="lightbulb-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>Explicación</Text>
+          </View>
           <Text style={styles.explanationText}>{formula.explicacion}</Text>
         </View>
 
@@ -186,7 +200,7 @@ export function FormulaDetailScreen({ route }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16,
     paddingBottom: 20,
@@ -202,13 +216,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   title: { fontSize: 22, fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
   scroll: { flex: 1 },
-  formulaBox: {
-    backgroundColor: colors.surfaceElevated,
-    marginHorizontal: 16,
-    marginTop: 16,
-    padding: 20,
-    borderRadius: 16,
-  },
+  formulaBox: { ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 20 },
   formulaLabel: {
     fontSize: 10,
     color: colors.textLight,
@@ -243,13 +251,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
   },
-  calcContainer: {
-    marginTop: 12,
-    backgroundColor: colors.surface,
-    borderRadius: 14,
-    padding: 16,
-    borderWidth: 1,
-  },
+  calcContainer: { ...neuCardSubtle(colors), marginTop: 12, padding: 16, borderWidth: 1 },
   calcTitle: {
     fontSize: 14,
     fontWeight: '600',

@@ -1,7 +1,9 @@
 import React, { useRef, useCallback, useMemo } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
+import { neuInset } from '../utils/neumorphism';
 
 interface Props {
   value: string;
@@ -29,7 +31,7 @@ export function SearchBar({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.icon}>🔍</Text>
+      <MaterialCommunityIcons name="magnify" size={20} color={colors.textLight} style={{ marginRight: 8 }} />
       <TextInput
         ref={inputRef}
         style={styles.input}
@@ -46,7 +48,7 @@ export function SearchBar({
       />
       {value.length > 0 && (
         <TouchableOpacity onPress={handleClear} style={styles.clearButton} accessibilityRole="button" accessibilityLabel="Limpiar búsqueda">
-          <Text style={styles.clearText}>✕</Text>
+          <MaterialCommunityIcons name="close-circle" size={18} color={colors.textLight} />
         </TouchableOpacity>
       )}
     </View>
@@ -57,18 +59,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
-    borderRadius: 12,
+    ...neuInset(colors),
     marginHorizontal: 16,
     marginVertical: 8,
-    paddingHorizontal: 12,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    borderWidth: 1,
-    borderColor: colors.borderLight,
+    paddingHorizontal: 14,
   },
   icon: {
     fontSize: 18,
@@ -76,7 +70,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 15,
     color: colors.text,
     paddingVertical: 12,
   },

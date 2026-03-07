@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard, neuElevated } from '../utils/neumorphism';
 
 interface Props {
   feature: string;
@@ -26,7 +28,7 @@ export function PremiumGate({ feature, children }: Props) {
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.lockCircle}>
-          <Text style={styles.lockIcon}>🔒</Text>
+          <MaterialCommunityIcons name="lock-outline" size={48} color={colors.textSecondary} />
         </View>
         <Text style={styles.title}>Contenido Premium</Text>
         <Text style={styles.feature}>{feature}</Text>
@@ -60,7 +62,7 @@ export function PremiumGate({ feature, children }: Props) {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
@@ -69,6 +71,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     maxWidth: 340,
+    ...neuCard(colors),
+    padding: 32,
   },
   lockCircle: {
     width: 96,
@@ -78,9 +82,6 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 24,
-  },
-  lockIcon: {
-    fontSize: 44,
   },
   title: {
     fontSize: 24,
@@ -120,10 +121,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     backgroundColor: colors.primary,
     paddingVertical: 16,
     paddingHorizontal: 32,
-    borderRadius: 14,
+    borderRadius: 18,
     width: '100%',
     alignItems: 'center',
-    elevation: 3,
+    elevation: 4,
     shadowColor: colors.primary,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,

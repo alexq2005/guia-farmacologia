@@ -1,36 +1,38 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Alert } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard, neuElevated } from '../utils/neumorphism';
 
 const PREMIUM_FEATURES = [
-  { icon: '🧠', text: 'Test farmacológico interactivo' },
-  { icon: '⚖️', text: 'Comparador de fármacos (hasta 3)' },
-  { icon: '⚠️', text: 'Verificador de interacciones' },
-  { icon: '🧮', text: '15 calculadoras clínicas' },
-  { icon: '📊', text: '13 escalas clínicas interactivas' },
-  { icon: '🔬', text: '53 valores de laboratorio' },
-  { icon: '🚨', text: '14 protocolos de emergencia' },
-  { icon: '💉', text: 'Guía parenteral completa' },
-  { icon: '📈', text: 'Dashboard de progreso' },
-  { icon: '❤️', text: 'Favoritos y notas ilimitados' },
-  { icon: '💾', text: 'Exportación/importación de datos' },
+  { iconName: 'brain', text: 'Test farmacológico interactivo' },
+  { iconName: 'scale-balance', text: 'Comparador de fármacos (hasta 3)' },
+  { iconName: 'alert-outline', text: 'Verificador de interacciones' },
+  { iconName: 'calculator-variant-outline', text: '15 calculadoras clínicas' },
+  { iconName: 'chart-bar', text: '13 escalas clínicas interactivas' },
+  { iconName: 'microscope', text: '53 valores de laboratorio' },
+  { iconName: 'alert-octagon', text: '14 protocolos de emergencia' },
+  { iconName: 'needle', text: 'Guía parenteral completa' },
+  { iconName: 'chart-line', text: 'Dashboard de progreso' },
+  { iconName: 'heart', text: 'Favoritos y notas ilimitados' },
+  { iconName: 'content-save-outline', text: 'Exportación/importación de datos' },
 ];
 
 const FREE_FEATURES = [
-  { icon: '💊', text: '1781 fármacos con información completa' },
-  { icon: '📚', text: 'Navegación por categorías y sistemas' },
-  { icon: '🔍', text: 'Búsqueda inteligente sin acentos' },
-  { icon: '🌙', text: 'Modo oscuro' },
-  { icon: '📤', text: 'Compartir información de fármacos' },
+  { iconName: 'pill', text: '1781 fármacos con información completa' },
+  { iconName: 'bookshelf', text: 'Navegación por categorías y sistemas' },
+  { iconName: 'magnify', text: 'Búsqueda inteligente sin acentos' },
+  { iconName: 'moon-waning-crescent', text: 'Modo oscuro' },
+  { iconName: 'export-variant', text: 'Compartir información de fármacos' },
 ];
 
 type PlanType = 'monthly' | 'annual';
 
 export function PremiumScreen() {
   const { colors } = useTheme();
-  const { isPremium, isTrialActive, trialDaysLeft, isSubscribed, restoreSubscription } = usePremium();
+  const { isPremium, isTrialActive, trialDaysLeft, isSubscribed, isCodeActivated, restoreSubscription } = usePremium();
   const styles = useMemo(() => createStyles(colors), [colors]);
   const [selectedPlan, setSelectedPlan] = React.useState<PlanType>('annual');
 
@@ -57,7 +59,7 @@ export function PremiumScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerIcon}>⭐</Text>
+          <MaterialCommunityIcons name="star" size={48} color="#FFD700" />
           <Text style={styles.headerTitle}>Premium</Text>
           <Text style={styles.headerSubtitle}>
             Desbloquea todo el potencial de tu guía farmacológica
@@ -66,10 +68,12 @@ export function PremiumScreen() {
 
         {/* Trial Status */}
         <View style={styles.statusCard}>
-          {isSubscribed ? (
+          {isSubscribed || isCodeActivated ? (
             <>
               <View style={[styles.statusBadge, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]}>
-                <Text style={[styles.statusBadgeText, { color: colors.success }]}>Suscripción Activa</Text>
+                <Text style={[styles.statusBadgeText, { color: colors.success }]}>
+                  {isCodeActivated ? 'Activado con Código' : 'Suscripción Activa'}
+                </Text>
               </View>
               <Text style={styles.statusDescription}>
                 Tienes acceso completo a todas las funciones Premium.
@@ -106,9 +110,9 @@ export function PremiumScreen() {
           <Text style={styles.sectionTitle}>Funciones Premium</Text>
           {PREMIUM_FEATURES.map((f, i) => (
             <View key={i} style={styles.featureRow}>
-              <Text style={styles.featureIcon}>{f.icon}</Text>
+              <MaterialCommunityIcons name={f.iconName} size={18} color={colors.primary} style={{ marginRight: 12, width: 24, textAlign: 'center' }} />
               <Text style={styles.featureText}>{f.text}</Text>
-              {isPremium && <Text style={styles.featureCheck}>✓</Text>}
+              {isPremium && <MaterialCommunityIcons name="check" size={16} color={colors.success} />}
             </View>
           ))}
         </View>
@@ -118,15 +122,15 @@ export function PremiumScreen() {
           <Text style={styles.sectionTitle}>Siempre Gratis</Text>
           {FREE_FEATURES.map((f, i) => (
             <View key={i} style={styles.featureRow}>
-              <Text style={styles.featureIcon}>{f.icon}</Text>
+              <MaterialCommunityIcons name={f.iconName} size={18} color={colors.primary} style={{ marginRight: 12, width: 24, textAlign: 'center' }} />
               <Text style={styles.featureText}>{f.text}</Text>
-              <Text style={styles.featureCheck}>✓</Text>
+              <MaterialCommunityIcons name="check" size={16} color={colors.success} />
             </View>
           ))}
         </View>
 
         {/* Plan Selection & Subscribe */}
-        {!isSubscribed && (
+        {!isSubscribed && !isCodeActivated && (
           <View style={styles.actionSection}>
             {/* Plan Cards */}
             <View style={styles.plansRow}>
@@ -191,7 +195,7 @@ export function PremiumScreen() {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   header: {
     backgroundColor: colors.primary,
@@ -219,17 +223,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     lineHeight: 20,
   },
   statusCard: {
-    backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginTop: -16,
-    padding: 20,
-    borderRadius: 16,
-    elevation: 4,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 6,
-    alignItems: 'center',
+    ...neuElevated(colors), marginHorizontal: 16, marginTop: -16, padding: 20, alignItems: 'center',
   },
   statusBadge: {
     paddingHorizontal: 16,
@@ -271,16 +265,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     lineHeight: 19,
   },
   section: {
-    backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginTop: 12,
-    padding: 18,
-    borderRadius: 14,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    ...neuCard(colors), marginHorizontal: 16, marginTop: 12, padding: 18,
   },
   sectionTitle: {
     fontSize: 17,

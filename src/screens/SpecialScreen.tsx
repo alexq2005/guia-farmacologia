@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -9,6 +11,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Especial'>,
@@ -31,7 +34,7 @@ const EmergencyCard = React.memo(({ drug, isExpanded, onToggle, styles, colors }
     activeOpacity={0.7}
   >
     <View style={styles.emergencyHeader}>
-      <Text style={styles.emergencyIcon}>🚑</Text>
+      <MaterialCommunityIcons name="ambulance" size={24} color={colors.emergency} style={{ marginRight: 10 }} />
       <View style={styles.emergencyInfo}>
         <Text style={styles.emergencyName}>{drug.nombre}</Text>
         <Text style={styles.emergencyIndication} numberOfLines={isExpanded ? undefined : 1}>
@@ -64,7 +67,10 @@ const EmergencyCard = React.memo(({ drug, isExpanded, onToggle, styles, colors }
               </View>
               {drug.notas ? (
                 <View style={styles.notesBox}>
-                  <Text style={styles.notesText}>📝 {drug.notas}</Text>
+                  <View style={{ flexDirection: 'row' }}>
+                  <MaterialCommunityIcons name="note-text-outline" size={14} color={colors.textSecondary} style={{ marginRight: 4, marginTop: 1 }} />
+                  <Text style={[styles.notesText, { flex: 1 }]}>{drug.notas}</Text>
+                </View>
                 </View>
               ) : null}
       </View>
@@ -98,7 +104,7 @@ function AntidoteTable({ antidotes }: { antidotes: Antidote[] }) {
       {antidotes.map(ant => (
         <View key={ant.id} style={styles.antidoteCard}>
           <View style={styles.antidoteHeader}>
-            <Text style={styles.antidoteIcon}>💉</Text>
+            <MaterialCommunityIcons name="needle" size={24} color={colors.error} style={{ marginRight: 10 }} />
             <View style={styles.antidoteHeaderText}>
               <Text style={styles.toxicName}>Tóxico: {ant.toxico}</Text>
               <Text style={styles.antidoteName}>Antídoto: {ant.antidoto}</Text>
@@ -119,7 +125,10 @@ function AntidoteTable({ antidotes }: { antidotes: Antidote[] }) {
             </View>
             {ant.notas ? (
               <View style={styles.notesBox}>
-                <Text style={styles.notesText}>📝 {ant.notas}</Text>
+                <View style={{ flexDirection: 'row' }}>
+                  <MaterialCommunityIcons name="note-text-outline" size={14} color={colors.textSecondary} style={{ marginRight: 4, marginTop: 1 }} />
+                  <Text style={[styles.notesText, { flex: 1 }]}>{ant.notas}</Text>
+                </View>
               </View>
             ) : null}
           </View>
@@ -140,11 +149,17 @@ function CompatibilityTable({ data }: { data: { farmacos: string[]; compatibilid
     desconocido: '#9CA3AF',
   };
 
-  const compatLabels: Record<string, string> = {
-    compatible: '✅ Compatible',
-    incompatible: '❌ Incompatible',
-    variable: '⚠️ Variable',
-    desconocido: '❓ Desconocido',
+  const compatIconNames: Record<string, string> = {
+    compatible: 'check-circle',
+    incompatible: 'close-circle',
+    variable: 'alert-circle',
+    desconocido: 'help-circle',
+  };
+  const compatLabelTexts: Record<string, string> = {
+    compatible: 'Compatible',
+    incompatible: 'Incompatible',
+    variable: 'Variable',
+    desconocido: 'Desconocido',
   };
 
   return (
@@ -157,9 +172,12 @@ function CompatibilityTable({ data }: { data: { farmacos: string[]; compatibilid
             <Text style={styles.compatDrug2}>{entry.farmaco2}</Text>
           </View>
           <View style={[styles.compatBadge, { backgroundColor: (compatColors[entry.compatibilidad] || '#9CA3AF') + '15', borderColor: compatColors[entry.compatibilidad] || '#9CA3AF' }]}>
-            <Text style={[styles.compatText, { color: compatColors[entry.compatibilidad] || '#9CA3AF' }]}>
-              {compatLabels[entry.compatibilidad] || entry.compatibilidad}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialCommunityIcons name={compatIconNames[entry.compatibilidad] || 'help-circle'} size={14} color={compatColors[entry.compatibilidad] || '#9CA3AF'} style={{ marginRight: 4 }} />
+              <Text style={[styles.compatText, { color: compatColors[entry.compatibilidad] || '#9CA3AF' }]}>
+                {compatLabelTexts[entry.compatibilidad] || entry.compatibilidad}
+              </Text>
+            </View>
           </View>
           {entry.notas ? (
             <Text style={styles.compatNotes}>{entry.notas}</Text>
@@ -179,18 +197,26 @@ export function SpecialScreen({ navigation }: Props) {
   const fadeIn = useFadeIn();
 
   const tabs: { key: Tab; label: string; icon: string; count: number }[] = [
-    { key: 'emergencias', label: 'Emergencias', icon: '🚑', count: emergencyDrugs.length },
-    { key: 'antidotos', label: 'Antídotos', icon: '💉', count: antidotes.length },
-    { key: 'compatibilidades', label: 'Compat. IV', icon: '🧪', count: ivCompatibilities.compatibilidades.length },
+    { key: 'emergencias', label: 'Emergencias', icon: 'ambulance', count: emergencyDrugs.length },
+    { key: 'antidotos', label: 'Antídotos', icon: 'needle', count: antidotes.length },
+    { key: 'compatibilidades', label: 'Compat. IV', icon: 'test-tube', count: ivCompatibilities.compatibilidades.length },
   ];
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
-        <Text style={styles.headerTitle}>🚨 Tablas Especiales</Text>
+      <LinearGradient
+        colors={[colors.emergency, '#F87171']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + 12 }]}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="alert-decagram" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Tablas Especiales</Text>
+        </View>
         <Text style={styles.headerSubtitle}>Referencia rápida de emergencia</Text>
-      </View>
+      </LinearGradient>
 
       {/* Tab selector */}
       <View style={styles.tabContainer}>
@@ -201,7 +227,7 @@ export function SpecialScreen({ navigation }: Props) {
             onPress={() => setActiveTab(tab.key)}
             activeOpacity={0.7}
           >
-            <Text style={styles.tabIcon}>{tab.icon}</Text>
+            <MaterialCommunityIcons name={tab.icon} size={20} color={activeTab === tab.key ? colors.emergency : colors.textLight} />
             <Text style={[styles.tabLabel, activeTab === tab.key && styles.tabLabelActive]}>
               {tab.label}
             </Text>
@@ -218,9 +244,10 @@ export function SpecialScreen({ navigation }: Props) {
         {activeTab === 'emergencias' && (
           <View>
             <View style={styles.warningBox}>
-              <Text style={styles.warningText}>
-                ⚠️ Esta tabla es una referencia rápida. Siempre consultar protocolos institucionales y verificar dosis.
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                <MaterialCommunityIcons name="alert-outline" size={16} color={colors.warning} style={{ marginRight: 6, marginTop: 1 }} />
+                <Text style={[styles.warningText, { flex: 1 }]}>Esta tabla es una referencia rápida. Siempre consultar protocolos institucionales y verificar dosis.</Text>
+              </View>
             </View>
             <EmergencyTable drugs={emergencyDrugs} />
           </View>
@@ -229,9 +256,10 @@ export function SpecialScreen({ navigation }: Props) {
         {activeTab === 'antidotos' && (
           <View>
             <View style={styles.warningBox}>
-              <Text style={styles.warningText}>
-                ⚠️ Contactar al centro toxicológico. Las dosis pueden variar según gravedad de la intoxicación.
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                <MaterialCommunityIcons name="alert-outline" size={16} color={colors.warning} style={{ marginRight: 6, marginTop: 1 }} />
+                <Text style={[styles.warningText, { flex: 1 }]}>Contactar al centro toxicológico. Las dosis pueden variar según gravedad de la intoxicación.</Text>
+              </View>
             </View>
             <AntidoteTable antidotes={antidotes} />
           </View>
@@ -240,9 +268,10 @@ export function SpecialScreen({ navigation }: Props) {
         {activeTab === 'compatibilidades' && (
           <View>
             <View style={styles.infoBox}>
-              <Text style={styles.infoText}>
-                🧪 Compatibilidades para administración en Y. Verificar siempre con farmacia hospitalaria.
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                <MaterialCommunityIcons name="test-tube" size={16} color={colors.info} style={{ marginRight: 6, marginTop: 1 }} />
+                <Text style={[styles.infoText, { flex: 1 }]}>Compatibilidades para administración en Y. Verificar siempre con farmacia hospitalaria.</Text>
+              </View>
             </View>
             <CompatibilityTable data={ivCompatibilities} />
           </View>
@@ -255,9 +284,8 @@ export function SpecialScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    backgroundColor: colors.emergency,
     paddingTop: 16,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -270,14 +298,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 16,
     marginTop: 12,
-    backgroundColor: colors.surface,
-    borderRadius: 12,
+    ...neuCardSubtle(colors),
     padding: 4,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
   },
   tab: {
     flex: 1,
@@ -322,12 +344,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   infoText: { fontSize: 12, color: colors.info, lineHeight: 18 },
   emergencyCard: {
-    backgroundColor: colors.surface,
+    ...neuCard(colors),
     marginHorizontal: 16,
     marginTop: 8,
-    borderRadius: 12,
-    elevation: 1,
-    overflow: 'hidden',
     borderLeftWidth: 4,
     borderLeftColor: colors.emergency,
   },

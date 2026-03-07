@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -8,9 +10,26 @@ import type { RootStackParamList, TabParamList, Unit } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
-import { UNIT_ICONS } from '../utils/icons';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { neuCard } from '../utils/neumorphism';
+
+const UNIT_ICON_MAP: Record<string, string> = {
+  'u01': 'brain',
+  'u02': 'heart-pulse',
+  'u03': 'virus-outline',
+  'u04': 'lungs',
+  'u05': 'stomach',
+  'u06': 'diabetes',
+  'u07': 'human-pregnant',
+  'u08': 'bone',
+  'u09': 'hand-back-right-outline',
+  'u10': 'water-outline',
+  'u11': 'alert-decagram-outline',
+  'u12': 'hospital-building',
+  'u13': 'pill',
+  'u14': 'clipboard-text-outline',
+};
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Categorias'>,
@@ -30,13 +49,13 @@ export function CategoriesScreen({ navigation }: Props) {
 
   const renderUnit = ({ item }: { item: Unit }) => {
     const color = UNIT_COLORS[item.id] || colors.primary;
-    const icon = UNIT_ICONS[item.id] || '📋';
+    const iconName = UNIT_ICON_MAP[item.id] || 'clipboard-text-outline';
     const drugCount = getUnitDrugCount(item.id);
 
     return (
       <View style={styles.unitCard}>
         <View style={[styles.unitHeader, { backgroundColor: color }]}>
-          <Text style={styles.unitIcon}>{icon}</Text>
+          <MaterialCommunityIcons name={iconName} size={26} color="#FFFFFF" style={{ marginRight: 12 }} />
           <View style={styles.unitHeaderText}>
             <Text style={styles.unitNumber}>UNIDAD {item.numero}</Text>
             <Text style={styles.unitName}>{item.nombre}</Text>
@@ -76,12 +95,20 @@ export function CategoriesScreen({ navigation }: Props) {
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
-        <Text style={styles.headerTitle}>📚 Categorías</Text>
+      <LinearGradient
+        colors={[colors.gradientStart, colors.gradientEnd]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + 12 }]}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="bookshelf" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Categorías</Text>
+        </View>
         <Text style={styles.headerSubtitle}>
           {categories.unidades.length} unidades temáticas
         </Text>
-      </View>
+      </LinearGradient>
 
       <FlatList
         data={categories.unidades}
@@ -97,10 +124,9 @@ export function CategoriesScreen({ navigation }: Props) {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   header: {
-    backgroundColor: colors.primary,
     paddingTop: 16,
     paddingBottom: 20,
     paddingHorizontal: 20,
@@ -122,15 +148,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     paddingBottom: 32,
   },
   unitCard: {
-    backgroundColor: colors.surface,
-    borderRadius: 16,
+    ...neuCard(colors),
     marginBottom: 16,
-    elevation: 3,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    overflow: 'hidden',
   },
   unitHeader: {
     flexDirection: 'row',

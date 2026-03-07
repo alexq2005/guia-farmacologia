@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { Drug } from '../types';
 import { UNIT_COLORS, PREGNANCY_COLORS, ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { useTheme } from '../context/ThemeContext';
-import { useCardPressAnimation } from '../utils/animations';
+import { useNeuPressAnimation } from '../utils/animations';
+import { neuCard } from '../utils/neumorphism';
 
 interface Props {
   drug: Drug;
@@ -21,7 +23,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const fav = isFavorite(drug.id);
-  const { scale, onPressIn, onPressOut } = useCardPressAnimation();
+  const { scale, onPressIn, onPressOut } = useNeuPressAnimation();
 
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut} accessibilityRole="button" accessibilityLabel={`${drug.nombre}, ${drug.familia}`}>
@@ -38,7 +40,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
             accessibilityLabel={fav ? `Quitar ${drug.nombre} de favoritos` : `Agregar ${drug.nombre} a favoritos`}
             accessibilityState={{ selected: fav }}
           >
-            <Text style={styles.favIcon}>{fav ? '\u2764\uFE0F' : '\uD83E\uDD0D'}</Text>
+            <MaterialCommunityIcons name={fav ? 'heart' : 'heart-outline'} size={18} color={fav ? '#E91E63' : colors.textLight} />
           </TouchableOpacity>
           <View style={[styles.pregnancyBadge, { backgroundColor: pregColor }]}>
             <Text style={styles.pregnancyText}>{drug.embarazo}</Text>
@@ -52,7 +54,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
           {drug.viaAdministracion.slice(0, 4).map(via => (
             <View
               key={via}
-              style={[styles.routeBadge, { backgroundColor: (ROUTE_COLORS[via] || colors.textLight) + '20' }]}
+              style={[styles.routeBadge, { backgroundColor: (ROUTE_COLORS[via] || colors.textLight) + '15' }]}
             >
               <Text style={[styles.routeText, { color: ROUTE_COLORS[via] || colors.textSecondary }]}>
                 {via}
@@ -65,9 +67,10 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
         </View>
 
         {drug.dosis.adulto ? (
-          <Text style={styles.dose} numberOfLines={1}>
-            💊 {drug.dosis.adulto}
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
+            <MaterialCommunityIcons name="pill" size={14} color={colors.textSecondary} style={{ marginRight: 4 }} />
+            <Text style={styles.dose} numberOfLines={1}>{drug.dosis.adulto}</Text>
+          </View>
         ) : null}
       </View>
     </Animated.View>
@@ -78,23 +81,18 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: colors.surface,
-    borderRadius: 12,
+    ...neuCard(colors),
     marginHorizontal: 16,
     marginVertical: 6,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    overflow: 'hidden',
   },
   colorBar: {
     width: 5,
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
   },
   content: {
     flex: 1,
-    padding: 12,
+    padding: 14,
   },
   header: {
     flexDirection: 'row',
@@ -136,8 +134,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   routeBadge: {
     paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 8,
+    paddingVertical: 3,
+    borderRadius: 20,
   },
   routeText: {
     fontSize: 11,
@@ -152,8 +150,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   dose: {
     fontSize: 12,
     color: colors.text,
-    marginTop: 6,
     fontStyle: 'italic',
+    flex: 1,
   },
   favBtn: {
     marginLeft: 6,

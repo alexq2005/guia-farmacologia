@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, Linking } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -13,8 +15,9 @@ import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import { UNIT_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
-import { useFadeIn, useStaggeredEntrance } from '../utils/animations';
+import { useFadeIn, useStaggeredEntrance, useScrollHeaderAnimation } from '../utils/animations';
 import { useRecentDrugs } from '../hooks/useRecentDrugs';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Inicio'>,
@@ -34,10 +37,12 @@ export function HomeScreen({ navigation }: Props) {
   const { recentNotes, noteCount } = useNotesContext();
   const { results: quizResults, averageScore } = useQuiz(drugs);
   const { recentDrugs } = useRecentDrugs();
-  const { isTrialActive, trialDaysLeft, isSubscribed, isFreeBuild } = usePremium();
+  const { isTrialActive, trialDaysLeft, isSubscribed, isFreeBuild, isCodeActivated } = usePremium();
   const [dailyDrug, setDailyDrug] = useState<Drug | null>(null);
   const fadeIn = useFadeIn(400);
   const stagger = useStaggeredEntrance(5, 100);
+  const scrollY = React.useRef(new Animated.Value(0)).current;
+  const { headerHeight, titleScale } = useScrollHeaderAnimation(scrollY);
 
   useEffect(() => {
     const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
@@ -46,11 +51,11 @@ export function HomeScreen({ navigation }: Props) {
   }, [drugs]);
 
   const quickActions = [
-    { icon: '🔍', label: 'Buscar', onPress: () => navigation.navigate('Busqueda') },
-    { icon: '🧠', label: 'Test', onPress: () => navigation.navigate('QuizScreen') },
-    { icon: '🚨', label: 'Protocolos', onPress: () => navigation.navigate('EmergencyProtocols') },
-    { icon: '📊', label: 'Escalas', onPress: () => navigation.navigate('ClinicalScales') },
-    { icon: '🔬', label: 'Laboratorio', onPress: () => navigation.navigate('LabValues') },
+    { icon: 'text-search', label: 'Buscar', color: '#3B82F6', onPress: () => navigation.navigate('Busqueda') },
+    { icon: 'head-question-outline', label: 'Test', color: '#8B5CF6', onPress: () => navigation.navigate('QuizScreen') },
+    { icon: 'hospital-box-outline', label: 'Protocolos', color: '#EF4444', onPress: () => navigation.navigate('EmergencyProtocols') },
+    { icon: 'chart-timeline-variant-shimmer', label: 'Escalas', color: '#F59E0B', onPress: () => navigation.navigate('ClinicalScales') },
+    { icon: 'flask-outline', label: 'Lab', color: '#10B981', onPress: () => navigation.navigate('LabValues') },
   ];
 
   const latestNotes = recentNotes(5);
@@ -59,53 +64,51 @@ export function HomeScreen({ navigation }: Props) {
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
-      {/* App Header */}
-      <View style={[styles.appHeader, { paddingTop: insets.top + 12 }]}>
-        <View style={styles.headerTopRow}>
-          <View style={{ flex: 1 }}>
-            <Text style={styles.appTitle}>Guía Farmacológica</Text>
-            <Text style={styles.appSubtitle}>Enfermería</Text>
+      {/* App Header — scroll-responsive */}
+      <Animated.View style={{ height: headerHeight, overflow: 'hidden' }}>
+        <LinearGradient
+          colors={[colors.gradientStart, colors.gradientEnd]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={[styles.appHeader, { paddingTop: insets.top + 12, flex: 1 }]}
+        >
+          <View style={styles.headerTopRow}>
+            <Animated.View style={{ flex: 1, transform: [{ scale: titleScale }], transformOrigin: 'left center' }}>
+              <Text style={styles.appTitle}>Guía Farmacológica</Text>
+              <Text style={styles.appSubtitle}>Enfermería</Text>
+            </Animated.View>
+            <View style={styles.headerButtons}>
+              <TouchableOpacity onPress={toggleTheme} style={styles.themeToggle}>
+                <MaterialCommunityIcons name={isDark ? 'white-balance-sunny' : 'moon-waning-crescent'} size={20} color="#FFFFFF" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('AboutScreen')} style={styles.themeToggle}>
+                <MaterialCommunityIcons name="information-outline" size={20} color="#FFFFFF" />
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.headerButtons}>
-            <TouchableOpacity onPress={toggleTheme} style={styles.themeToggle}>
-              <Text style={styles.themeToggleIcon}>{isDark ? '☀️' : '🌙'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('AboutScreen')} style={styles.themeToggle}>
-              <Text style={styles.themeToggleIcon}>ℹ️</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.statsRow}>
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{getDrugCount()}</Text>
-            <Text style={styles.statLabel}>Fármacos</Text>
-          </View>
-          <View style={styles.statDivider} />
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{categories.unidades.length}</Text>
-            <Text style={styles.statLabel}>Unidades</Text>
-          </View>
-          <View style={styles.statDivider} />
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{pathologies.length}</Text>
-            <Text style={styles.statLabel}>Patologías</Text>
-          </View>
-        </View>
-      </View>
+        </LinearGradient>
+      </Animated.View>
 
-      <Animated.ScrollView style={[styles.scroll, { opacity: fadeIn }]} showsVerticalScrollIndicator={false}>
+      <Animated.ScrollView
+        style={[styles.scroll, { opacity: fadeIn }]}
+        showsVerticalScrollIndicator={false}
+        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
+        scrollEventThrottle={16}
+      >
         {/* Quick Actions */}
         <Animated.View style={[styles.quickActions, { opacity: stagger[0] || 1 }]}>
           {quickActions.map((action, i) => (
             <TouchableOpacity key={i} style={styles.quickAction} onPress={action.onPress} activeOpacity={0.7}>
-              <Text style={styles.quickIcon}>{action.icon}</Text>
+              <View style={[styles.quickIconBg, { backgroundColor: action.color + '15' }]}>
+                <MaterialCommunityIcons name={action.icon} size={26} color={action.color} />
+              </View>
               <Text style={styles.quickLabel} numberOfLines={1}>{action.label}</Text>
             </TouchableOpacity>
           ))}
         </Animated.View>
 
         {/* Trial Banner — hidden in free build */}
-        {!isFreeBuild && !isSubscribed && (
+        {!isFreeBuild && !isSubscribed && !isCodeActivated && (
           <TouchableOpacity
             style={[styles.trialBanner, {
               backgroundColor: isTrialActive ? colors.primary + '10' : colors.warning + '10',
@@ -114,7 +117,7 @@ export function HomeScreen({ navigation }: Props) {
             onPress={() => navigation.navigate('PremiumScreen')}
             activeOpacity={0.7}
           >
-            <Text style={styles.trialBannerIcon}>{isTrialActive ? '⭐' : '🔒'}</Text>
+            <MaterialCommunityIcons name={isTrialActive ? 'star-four-points' : 'lock-outline'} size={28} color={isTrialActive ? colors.primary : colors.warning} />
             <View style={{ flex: 1 }}>
               <Text style={[styles.trialBannerTitle, { color: isTrialActive ? colors.primary : colors.warning }]}>
                 {isTrialActive ? `Te quedan ${trialDaysLeft} días de prueba Premium` : 'Tu prueba Premium ha expirado'}
@@ -123,14 +126,17 @@ export function HomeScreen({ navigation }: Props) {
                 {isTrialActive ? 'Todas las funciones desbloqueadas' : 'Suscríbete para recuperar el acceso'}
               </Text>
             </View>
-            <Text style={[styles.trialBannerArrow, { color: isTrialActive ? colors.primary : colors.warning }]}>→</Text>
+            <MaterialCommunityIcons name="chevron-right" size={22} color={isTrialActive ? colors.primary : colors.warning} />
           </TouchableOpacity>
         )}
 
         {/* Drug of the Day */}
         {dailyDrug && (
           <Animated.View style={[styles.section, { opacity: stagger[1] || 1 }]}>
-            <Text style={styles.sectionTitle}>💊 Fármaco del Día</Text>
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons name="pill" size={20} color={colors.primary} />
+              <Text style={styles.sectionTitle}>Fármaco del Día</Text>
+            </View>
             <TouchableOpacity
               style={[styles.dailyCard, { borderLeftColor: UNIT_COLORS[dailyDrug.unidadId] || colors.primary }]}
               onPress={() => navigation.navigate('DrugDetail', { drugId: dailyDrug.id })}
@@ -154,7 +160,10 @@ export function HomeScreen({ navigation }: Props) {
               <Text style={styles.dailyDose} numberOfLines={2}>
                 {dailyDrug.dosis.adulto}
               </Text>
-              <Text style={styles.dailyCta}>Ver detalle completo →</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={styles.dailyCta}>Ver detalle completo</Text>
+                <MaterialCommunityIcons name="chevron-right" size={16} color={colors.primaryLight} style={{ marginLeft: 2 }} />
+              </View>
             </TouchableOpacity>
           </Animated.View>
         )}
@@ -162,7 +171,10 @@ export function HomeScreen({ navigation }: Props) {
         {/* Recently Viewed */}
         {recentDrugs.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>🕐 Vistos Recientemente</Text>
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons name="history" size={20} color={colors.primary} />
+              <Text style={styles.sectionTitle}>Vistos Recientemente</Text>
+            </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
               {recentDrugs.slice(0, 10).map(drugId => {
                 const recentDrug = getDrugById(drugId);
@@ -188,7 +200,10 @@ export function HomeScreen({ navigation }: Props) {
         {/* Study Progress */}
         {quizResults.length > 0 && (
           <Animated.View style={[styles.section, { opacity: stagger[2] || 1 }]}>
-            <Text style={styles.sectionTitle}>📊 Progreso de Estudio</Text>
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons name="chart-arc" size={20} color={colors.primary} />
+              <Text style={styles.sectionTitle}>Progreso de Estudio</Text>
+            </View>
             <TouchableOpacity
               style={styles.progressCard}
               onPress={() => navigation.navigate('QuizScreen')}
@@ -210,7 +225,10 @@ export function HomeScreen({ navigation }: Props) {
                   <Text style={styles.progressLabel}>Correctas</Text>
                 </View>
               </View>
-              <Text style={[styles.dailyCta, { textAlign: 'center', marginTop: 8 }]}>Seguir practicando →</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 8 }}>
+                <Text style={[styles.dailyCta, { textAlign: 'center' }]}>Seguir practicando</Text>
+                <MaterialCommunityIcons name="chevron-right" size={16} color={colors.primaryLight} style={{ marginLeft: 2 }} />
+              </View>
             </TouchableOpacity>
           </Animated.View>
         )}
@@ -218,7 +236,10 @@ export function HomeScreen({ navigation }: Props) {
         {/* Recent Notes */}
         {latestNotes.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>📝 Notas Recientes</Text>
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons name="note-text-outline" size={20} color={colors.primary} />
+              <Text style={styles.sectionTitle}>Notas Recientes</Text>
+            </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
               {latestNotes.map(note => {
                 const noteDrug = getDrugById(note.drugId);
@@ -244,7 +265,10 @@ export function HomeScreen({ navigation }: Props) {
         {/* Favorites */}
         {favoriteCount > 0 && (
           <Animated.View style={[styles.section, { opacity: stagger[3] || 1 }]}>
-            <Text style={styles.sectionTitle}>❤️ Mis Favoritos ({favoriteCount})</Text>
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons name="heart" size={20} color="#EF4444" />
+              <Text style={styles.sectionTitle}>Mis Favoritos ({favoriteCount})</Text>
+            </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.favoritesScroll}>
               {favorites.slice(0, 10).map(favId => {
                 const favDrug = getDrugById(favId);
@@ -269,7 +293,10 @@ export function HomeScreen({ navigation }: Props) {
 
         {/* Browse by System */}
         <Animated.View style={[styles.section, { opacity: stagger[4] || 1 }]}>
-          <Text style={styles.sectionTitle}>📚 Explorar por Sistema</Text>
+          <View style={styles.sectionTitleRow}>
+            <MaterialCommunityIcons name="bookshelf" size={20} color={colors.primary} />
+            <Text style={styles.sectionTitle}>Explorar por Sistema</Text>
+          </View>
           <View style={styles.systemsGrid}>
             {categories.unidades.map(unit => (
               <TouchableOpacity
@@ -285,7 +312,7 @@ export function HomeScreen({ navigation }: Props) {
                 accessibilityLabel={unit.nombre}
               >
                 <View style={[styles.systemIcon, { backgroundColor: UNIT_COLORS[unit.id] || colors.primary }]}>
-                  <Text style={styles.systemIconText}>{unit.icon === 'brain' ? '🧠' : unit.numero.toString()}</Text>
+                  <Text style={styles.systemIconText}>{unit.numero}</Text>
                 </View>
                 <Text style={[styles.systemName, { color: UNIT_COLORS[unit.id] || colors.primary }]} numberOfLines={2}>
                   {unit.nombre}
@@ -302,14 +329,16 @@ export function HomeScreen({ navigation }: Props) {
             onPress={() => navigation.navigate('Especial')}
             activeOpacity={0.7}
           >
-            <Text style={styles.emergencyIcon}>🚨</Text>
+            <View style={styles.emergencyIconBg}>
+              <MaterialCommunityIcons name="alert-octagon" size={24} color="#FFFFFF" />
+            </View>
             <View style={styles.emergencyText}>
               <Text style={styles.emergencyTitle}>Fármacos de Emergencia</Text>
               <Text style={styles.emergencySubtitle}>
                 Acceso rápido a {emergencyDrugs.length} fármacos críticos
               </Text>
             </View>
-            <Text style={styles.emergencyArrow}>→</Text>
+            <MaterialCommunityIcons name="chevron-right" size={22} color="#FFFFFF" />
           </TouchableOpacity>
         </View>
 
@@ -319,14 +348,16 @@ export function HomeScreen({ navigation }: Props) {
             Guía Farmacológica Integral de Enfermería
           </Text>
           <View style={styles.offlineBadge}>
-            <Text style={styles.offlineBadgeText}>📱 v2.0 — 100% Offline</Text>
+            <MaterialCommunityIcons name="cellphone-check" size={14} color={colors.textLight} style={{ marginRight: 4 }} />
+            <Text style={styles.offlineBadgeText}>v1.0 — 100% Offline</Text>
           </View>
           <TouchableOpacity
             onPress={() => Linking.openURL('mailto:alexq2005@gmail.com?subject=Guía Farmacológica - Contacto')}
             style={styles.footerEmail}
             activeOpacity={0.7}
           >
-            <Text style={styles.footerEmailText}>✉️ Contacto: alexq2005@gmail.com</Text>
+            <MaterialCommunityIcons name="email-outline" size={14} color={colors.primary} style={{ marginRight: 4 }} />
+            <Text style={styles.footerEmailText}>Contacto: alexq2005@gmail.com</Text>
           </TouchableOpacity>
         </View>
       </Animated.ScrollView>
@@ -337,12 +368,11 @@ export function HomeScreen({ navigation }: Props) {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   appHeader: {
-    backgroundColor: colors.primary,
     paddingTop: 20,
-    paddingBottom: 24,
+    paddingBottom: 16,
     paddingHorizontal: 20,
     borderBottomLeftRadius: 28,
     borderBottomRightRadius: 28,
@@ -417,16 +447,15 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 4,
-    borderRadius: 16,
-    backgroundColor: colors.surface,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
+    ...neuCardSubtle(colors),
   },
-  quickIcon: {
-    fontSize: 28,
+  quickIconBg: {
+    width: 48,
+    height: 48,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 6,
   },
   quickLabel: {
     fontSize: 10,
@@ -464,25 +493,25 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   section: {
     marginBottom: 8,
   },
+  sectionTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 12,
+    gap: 8,
+  },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
     color: colors.text,
-    marginHorizontal: 20,
     marginBottom: 10,
     marginTop: 8,
   },
   dailyCard: {
-    backgroundColor: colors.surface,
+    ...neuCard(colors),
     marginHorizontal: 16,
     padding: 16,
-    borderRadius: 14,
     borderLeftWidth: 5,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
   },
   dailyCardHeader: {
     flexDirection: 'row',
@@ -592,6 +621,15 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontSize: 32,
     marginRight: 12,
   },
+  emergencyIconBg: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: colors.emergency || '#EF4444',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
   emergencyText: {
     flex: 1,
   },
@@ -615,15 +653,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     gap: 10,
   },
   favoriteCard: {
-    backgroundColor: colors.surface,
-    borderRadius: 12,
+    ...neuCardSubtle(colors),
     padding: 12,
     width: 140,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
     borderTopWidth: 3,
   },
   favoriteName: {
@@ -645,7 +677,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   footer: {
     alignItems: 'center',
     paddingVertical: 24,
-    paddingBottom: 40,
+    paddingBottom: 100,
   },
   footerText: {
     fontSize: 12,
@@ -658,6 +690,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     marginTop: 4,
   },
   offlineBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.success + '15',
     paddingHorizontal: 12,
     paddingVertical: 4,
@@ -672,6 +706,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontWeight: '600',
   },
   footerEmail: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 12,
     paddingVertical: 8,
     paddingHorizontal: 16,
@@ -682,16 +718,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     fontWeight: '600',
   },
   progressCard: {
-    backgroundColor: colors.surface,
+    ...neuCard(colors),
     marginHorizontal: 16,
     padding: 16,
-    borderRadius: 14,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    borderWidth: 1,
     borderColor: colors.quiz + '20',
   },
   progressRow: {

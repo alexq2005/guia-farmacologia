@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, QuizQuestion, QuizResult } from '../types';
 import { useTheme } from '../context/ThemeContext';
@@ -7,6 +8,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { useQuiz } from '../hooks/useQuiz';
 import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizSession'>;
 
@@ -95,7 +97,11 @@ export function QuizSessionScreen({ route, navigation }: Props) {
       <View style={styles.container}>
         <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
         <Animated.View style={[styles.finishedContainer, { opacity: fadeIn }]}>
-          <Text style={styles.finishedEmoji}>{pct >= 70 ? '🎉' : pct >= 50 ? '💪' : '📚'}</Text>
+          <MaterialCommunityIcons
+            name={pct >= 70 ? 'party-popper' : pct >= 50 ? 'arm-flex-outline' : 'bookshelf'}
+            size={64}
+            color={pct >= 70 ? colors.quizCorrect : pct >= 50 ? colors.warning : colors.quizWrong}
+          />
           <Text style={styles.finishedTitle}>
             {pct >= 70 ? '¡Excelente!' : pct >= 50 ? '¡Buen intento!' : '¡Sigue practicando!'}
           </Text>
@@ -121,13 +127,19 @@ export function QuizSessionScreen({ route, navigation }: Props) {
                 setFinished(false);
               }}
             >
-              <Text style={styles.actionButtonText}>🔄 Intentar de nuevo</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name="refresh" size={18} color="#FFFFFF" style={{ marginRight: 6 }} />
+                <Text style={styles.actionButtonText}>Intentar de nuevo</Text>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.actionButton, { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border }]}
               onPress={() => navigation.goBack()}
             >
-              <Text style={[styles.actionButtonText, { color: colors.text }]}>← Volver al menú</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name="chevron-left" size={18} color={colors.text} style={{ marginRight: 4 }} />
+                <Text style={[styles.actionButtonText, { color: colors.text }]}>Volver al menú</Text>
+              </View>
             </TouchableOpacity>
           </View>
         </Animated.View>
@@ -154,7 +166,10 @@ export function QuizSessionScreen({ route, navigation }: Props) {
         </View>
 
         {/* Question */}
-        <Text style={styles.drugName}>💊 {currentQuestion.drugName}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+          <MaterialCommunityIcons name="pill" size={14} color={colors.textSecondary} style={{ marginRight: 4 }} />
+          <Text style={[styles.drugName, { marginBottom: 0 }]}>{currentQuestion.drugName}</Text>
+        </View>
         <Text style={styles.questionText}>{currentQuestion.questionText}</Text>
 
         {/* Options */}
@@ -186,10 +201,10 @@ export function QuizSessionScreen({ route, navigation }: Props) {
                 <Text style={styles.optionLetter}>{String.fromCharCode(65 + i)}</Text>
                 <Text style={textStyle} numberOfLines={3}>{option}</Text>
                 {showResult && i === currentQuestion.correctIndex && (
-                  <Text style={styles.checkMark}>✓</Text>
+                  <MaterialCommunityIcons name="check" size={20} color={colors.quizCorrect} style={{ marginLeft: 8 }} />
                 )}
                 {showResult && i === selectedAnswer && i !== currentQuestion.correctIndex && (
-                  <Text style={styles.crossMark}>✗</Text>
+                  <MaterialCommunityIcons name="close" size={20} color={colors.quizWrong} style={{ marginLeft: 8 }} />
                 )}
               </TouchableOpacity>
             );
@@ -198,9 +213,10 @@ export function QuizSessionScreen({ route, navigation }: Props) {
 
         {/* Score Counter */}
         <View style={styles.scoreCounter}>
-          <Text style={styles.scoreCounterText}>
-            ✓ {correctCount} correctas
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="check" size={16} color={colors.quizCorrect} style={{ marginRight: 4 }} />
+            <Text style={styles.scoreCounterText}>{correctCount} correctas</Text>
+          </View>
         </View>
 
         {/* Next Button */}
@@ -210,9 +226,14 @@ export function QuizSessionScreen({ route, navigation }: Props) {
             onPress={handleNext}
             activeOpacity={0.7}
           >
-            <Text style={styles.nextButtonText}>
-              {currentIndex < questions.length - 1 ? 'Siguiente →' : 'Ver resultado'}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.nextButtonText}>
+                {currentIndex < questions.length - 1 ? 'Siguiente' : 'Ver resultado'}
+              </Text>
+              {currentIndex < questions.length - 1 && (
+                <MaterialCommunityIcons name="chevron-right" size={18} color="#FFFFFF" style={{ marginLeft: 4 }} />
+              )}
+            </View>
           </TouchableOpacity>
         )}
       </Animated.View>
@@ -221,7 +242,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   centered: { justifyContent: 'center', alignItems: 'center' },
   loadingText: { fontSize: 16, color: colors.textSecondary },
   progressContainer: {

@@ -88,6 +88,10 @@ export interface Drug {
     manejo: string;
     alerta?: string;
   };
+  preparacionDilucion?: string;       // Top-level dilution instructions
+  reconstitucion?: string;            // Top-level reconstitution instructions
+  solucionesCompatibles?: string[];   // Top-level compatible solutions list
+  observaciones?: string;             // Top-level clinical observations
   grupoFarmacologico?: string;  // Pharmacological group (by mechanism)
   grupoTerapeutico?: string;    // Therapeutic group (by clinical use/system)
   unidadId: string;
@@ -398,6 +402,7 @@ export interface NursingCareData {
 
 /** Props de navegación */
 export type RootStackParamList = {
+  Onboarding: undefined;
   MainTabs: undefined;
   DrugDetail: { drugId: string; drugName?: string };
   ChapterDrugs: { chapterId: string; unitName: string; unitColor: string };

@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, FlatList, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { DrugCard } from '../components/DrugCard';
@@ -7,6 +8,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard } from '../utils/neumorphism';
 import { useFadeIn } from '../utils/animations';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AllFavorites'>;
@@ -35,7 +37,7 @@ export function AllFavoritesScreen({ navigation }: Props) {
         }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
-            <Text style={{ fontSize: 48, marginBottom: 12 }}>❤️</Text>
+            <MaterialCommunityIcons name="heart" size={48} color={colors.error} style={{ marginBottom: 12 }} />
             <Text style={styles.emptyText}>No tienes favoritos aún</Text>
             <Text style={styles.emptySubtext}>Marca fármacos como favoritos desde su detalle</Text>
           </View>
@@ -52,7 +54,7 @@ export function AllFavoritesScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   list: { paddingBottom: 32 },
   count: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginVertical: 8 },
   emptyContainer: { alignItems: 'center', paddingVertical: 60 },

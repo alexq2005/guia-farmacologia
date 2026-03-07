@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, PathologyCategory, Pathology } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
@@ -9,6 +10,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { PATHOLOGY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
+import { neuCard, neuPill } from '../utils/neumorphism';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -53,7 +55,7 @@ export function PathologiesScreen({ navigation }: Props) {
       activeOpacity={0.7}
     >
       <View style={styles.cardHeader}>
-        <Text style={styles.cardIcon}>{PATHOLOGY_ICONS[pathology.categoria]}</Text>
+        <MaterialCommunityIcons name={PATHOLOGY_ICONS[pathology.categoria] || 'clipboard-text-outline'} size={28} color={PATHOLOGY_COLORS[pathology.categoria]} style={{ marginRight: 12 }} />
         <View style={styles.cardTitleArea}>
           <Text style={styles.cardTitle}>{pathology.nombre}</Text>
           <Text style={[styles.cardCategory, { color: PATHOLOGY_COLORS[pathology.categoria] }]}>
@@ -67,8 +69,11 @@ export function PathologiesScreen({ navigation }: Props) {
       </View>
       <Text style={styles.cardDefinition} numberOfLines={2}>{pathology.definicion}</Text>
       <View style={styles.cardFooter}>
-        <Text style={styles.cardAlarmCount}>⚠️ {pathology.criteriosAlarma.length} criterios de alarma</Text>
-        <Text style={styles.cardArrow}>→</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="alert-outline" size={13} color={colors.warning} />
+          <Text style={[styles.cardAlarmCount, { marginLeft: 3 }]}>{pathology.criteriosAlarma.length} criterios de alarma</Text>
+        </View>
+        <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textLight} />
       </View>
     </TouchableOpacity>
   ), [styles, navigation]);
@@ -92,9 +97,12 @@ export function PathologiesScreen({ navigation }: Props) {
               style={[styles.chip, selectedCategory === cat && { backgroundColor: PATHOLOGY_COLORS[cat] }]}
               onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
             >
-              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                {PATHOLOGY_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name={PATHOLOGY_ICONS[cat] || 'clipboard-text-outline'} size={14} color={selectedCategory === cat ? '#FFFFFF' : colors.textSecondary} style={{ marginRight: 4 }} />
+                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                  {CATEGORY_LABELS[cat]} ({count})
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -107,7 +115,7 @@ export function PathologiesScreen({ navigation }: Props) {
 
   const ListEmpty = useMemo(() => (
     <View style={styles.emptyState}>
-      <Text style={styles.emptyIcon}>🔍</Text>
+      <MaterialCommunityIcons name="magnify" size={48} color={colors.textLight} />
       <Text style={styles.emptyText}>No se encontraron patologías</Text>
       <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
     </View>
@@ -122,7 +130,7 @@ export function PathologiesScreen({ navigation }: Props) {
         <Text style={styles.headerTitle}>Patologías</Text>
         <Text style={styles.headerSubtitle}>{pathologies.length} patologías con fármacos vinculados</Text>
         <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <MaterialCommunityIcons name="magnify" size={18} color="rgba(255,255,255,0.7)" />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar patología..."
@@ -132,7 +140,7 @@ export function PathologiesScreen({ navigation }: Props) {
           />
           {searchQuery.length > 0 && (
             <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <Text style={styles.clearBtn}>✕</Text>
+              <MaterialCommunityIcons name="close" size={18} color="rgba(255,255,255,0.7)" style={{ padding: 4 }} />
             </TouchableOpacity>
           )}
         </View>
@@ -152,7 +160,7 @@ export function PathologiesScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: { backgroundColor: '#0F766E', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
   headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
   headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
@@ -162,12 +170,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   clearBtn: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
   chipsScroll: {},
   chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border },
+  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
   resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  pathologyCard: { backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10, borderRadius: 14, padding: 16, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3, borderLeftWidth: 4 },
+  pathologyCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
   cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   cardIcon: { fontSize: 28, marginRight: 12 },
   cardTitleArea: { flex: 1 },

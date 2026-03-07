@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Alert, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { useNotesContext } from '../context/NotesContext';
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
+import { neuCard } from '../utils/neumorphism';
 import { UNIT_COLORS } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
 
@@ -39,7 +41,7 @@ export function AllNotesScreen({ navigation }: Props) {
         contentContainerStyle={styles.list}
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
-            <Text style={{ fontSize: 48, marginBottom: 12 }}>📝</Text>
+            <MaterialCommunityIcons name="note-text-outline" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
             <Text style={styles.emptyText}>No tienes notas aún</Text>
             <Text style={styles.emptySubtext}>Escribe notas en el detalle de cualquier fármaco</Text>
           </View>
@@ -59,7 +61,7 @@ export function AllNotesScreen({ navigation }: Props) {
                   onPress={() => handleDelete(item.drugId, drug?.nombre || item.drugId)}
                   hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                 >
-                  <Text style={styles.deleteBtn}>🗑️</Text>
+                  <MaterialCommunityIcons name="trash-can-outline" size={18} color={colors.textLight} />
                 </TouchableOpacity>
               </View>
               <Text style={styles.noteText} numberOfLines={3}>{item.text}</Text>
@@ -75,15 +77,13 @@ export function AllNotesScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   list: { padding: 16, paddingBottom: 32 },
   emptyContainer: { alignItems: 'center', paddingVertical: 60 },
   emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
   emptySubtext: { fontSize: 13, color: colors.textLight, marginTop: 4 },
   noteCard: {
-    backgroundColor: colors.surface, borderRadius: 14, padding: 14, marginBottom: 10,
-    borderLeftWidth: 4, elevation: 2,
-    shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 2,
+    ...neuCard(colors), padding: 14, marginBottom: 10, borderLeftWidth: 4,
   },
   noteHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
   noteDrug: { fontSize: 16, fontWeight: '700', color: colors.text, flex: 1, marginRight: 8 },

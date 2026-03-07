@@ -8,6 +8,7 @@ import { normalizeText } from '../utils/search';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
+import { neuInset } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChapterDrugs'>;
 
@@ -81,7 +82,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.neuBackground,
   },
   header: {
     paddingTop: 16,
@@ -125,14 +126,5 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 4,
   },
-  filterInput: {
-    backgroundColor: colors.surface,
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    fontSize: 14,
-    color: colors.text,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
+  filterInput: { ...neuInset(colors), paddingHorizontal: 14, paddingVertical: 10, fontSize: 14, color: colors.text },
 });

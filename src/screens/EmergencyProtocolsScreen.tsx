@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import {
   View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, EmergencyProtocol, ProtocolCategory } from '../types';
 import { PROTOCOL_COLORS, PROTOCOL_ICONS } from '../utils/colors';
@@ -12,6 +13,7 @@ import { normalizeText } from '../utils/search';
 import { PROTOCOL_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import { PremiumGate } from '../components/PremiumGate';
 import protocolsData from '../data/emergency_protocols.json';
+import { neuCard, neuPill } from '../utils/neumorphism';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -64,7 +66,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
         activeOpacity={0.7}
       >
         <View style={styles.cardHeader}>
-          <Text style={styles.cardIcon}>{PROTOCOL_ICONS[protocol.categoria]}</Text>
+          <MaterialCommunityIcons name={PROTOCOL_ICONS[protocol.categoria] || 'hospital-building'} size={28} color={catColor} style={{ marginRight: 12 }} />
           <View style={styles.cardTitleArea}>
             <Text style={styles.cardTitle}>{protocol.nombre}</Text>
             <Text style={[styles.cardCategory, { color: catColor }]}>
@@ -78,9 +80,15 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
         </View>
         <Text style={styles.cardDescription} numberOfLines={2}>{protocol.descripcion}</Text>
         <View style={styles.cardFooter}>
-          <Text style={styles.cardStepCount}>📋 {protocol.pasos.length} pasos</Text>
-          <Text style={styles.cardDrugCount}>💊 {protocol.resumenFarmacos.length} fármacos</Text>
-          <Text style={styles.cardArrow}>→</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="clipboard-list-outline" size={13} color={colors.textLight} />
+            <Text style={[styles.cardStepCount, { marginLeft: 3 }]}>{protocol.pasos.length} pasos</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="pill" size={13} color={colors.textLight} />
+            <Text style={[styles.cardDrugCount, { marginLeft: 3 }]}>{protocol.resumenFarmacos.length} fármacos</Text>
+          </View>
+          <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textLight} />
         </View>
       </TouchableOpacity>
     );
@@ -111,9 +119,12 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
               style={[styles.chip, selectedCategory === cat && { backgroundColor: PROTOCOL_COLORS[cat] }]}
               onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
             >
-              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                {PROTOCOL_ICONS[cat]} {CATEGORY_LABELS[cat]} ({count})
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name={PROTOCOL_ICONS[cat] || 'hospital-building'} size={12} color={selectedCategory === cat ? '#FFFFFF' : colors.textSecondary} style={{ marginRight: 4 }} />
+                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                  {CATEGORY_LABELS[cat]} ({count})
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -126,7 +137,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
 
   const ListEmpty = useMemo(() => (
     <View style={styles.emptyState}>
-      <Text style={styles.emptyIcon}>🚨</Text>
+      <MaterialCommunityIcons name="alert-octagon" size={48} color={colors.error} />
       <Text style={styles.emptyText}>No se encontraron protocolos</Text>
       <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
     </View>
@@ -142,7 +153,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
         <Text style={styles.headerTitle}>Protocolos de Emergencia</Text>
         <Text style={styles.headerSubtitle}>{protocols.length} protocolos con fármacos y dosis</Text>
         <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <MaterialCommunityIcons name="magnify" size={18} color="rgba(255,255,255,0.7)" />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar protocolo..."
@@ -152,7 +163,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
           />
           {searchQuery.length > 0 && (
             <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <Text style={styles.clearSearch}>✕</Text>
+              <MaterialCommunityIcons name="close" size={18} color="rgba(255,255,255,0.7)" />
             </TouchableOpacity>
           )}
         </View>
@@ -173,7 +184,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#DC2626', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -189,20 +200,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
   chipsScroll: {},
   chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: {
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
-    backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,
-  },
+  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
   resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  protocolCard: {
-    backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10,
-    borderRadius: 14, padding: 16, elevation: 2,
-    shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
-    borderLeftWidth: 4,
-  },
+  protocolCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
   cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   cardIcon: { fontSize: 28, marginRight: 12 },
   cardTitleArea: { flex: 1 },

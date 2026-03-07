@@ -1,11 +1,13 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Drug } from '../types';
 import { useDrugData } from '../hooks/useDrugData';
 import { PREGNANCY_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
+import { neuCardSubtle } from '../utils/neumorphism';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
@@ -17,26 +19,26 @@ const MAX_DRUGS = 3;
 
 interface ComparisonRow {
   label: string;
-  icon: string;
+  iconName: string;
   getValue: (drug: Drug) => string;
   highlight?: (value: string) => string | undefined;
 }
 
 const ROWS: ComparisonRow[] = [
-  { label: 'Nombre genérico', icon: '💊', getValue: d => d.nombreGenerico },
-  { label: 'Familia', icon: '🏷️', getValue: d => d.familia },
+  { label: 'Nombre genérico', iconName: 'pill', getValue: d => d.nombreGenerico },
+  { label: 'Familia', iconName: 'tag-outline', getValue: d => d.familia },
   {
-    label: 'Embarazo', icon: '🤰',
+    label: 'Embarazo', iconName: 'human-pregnant',
     getValue: d => d.embarazo,
     highlight: v => PREGNANCY_COLORS[v],
   },
-  { label: 'Vías', icon: '💉', getValue: d => d.viaAdministracion.join(', ') },
-  { label: 'Dosis adulto', icon: '📋', getValue: d => d.dosis.adulto },
-  { label: 'Dosis pediátrica', icon: '👶', getValue: d => d.dosis.pediatrico || '—' },
-  { label: 'Contraindicaciones', icon: '🚫', getValue: d => d.contraindicaciones.slice(0, 3).join('; ') || '—' },
-  { label: 'RAM principales', icon: '⚠️', getValue: d => d.efectosAdversos.slice(0, 3).join('; ') || '—' },
-  { label: 'Lactancia', icon: '🤱', getValue: d => d.lactancia || '—' },
-  { label: 'Clasificación', icon: '📚', getValue: d => d.clasificacion },
+  { label: 'Vías', iconName: 'needle', getValue: d => d.viaAdministracion.join(', ') },
+  { label: 'Dosis adulto', iconName: 'clipboard-list-outline', getValue: d => d.dosis.adulto },
+  { label: 'Dosis pediátrica', iconName: 'baby-face-outline', getValue: d => d.dosis.pediatrico || '—' },
+  { label: 'Contraindicaciones', iconName: 'cancel', getValue: d => d.contraindicaciones.slice(0, 3).join('; ') || '—' },
+  { label: 'RAM principales', iconName: 'alert-outline', getValue: d => d.efectosAdversos.slice(0, 3).join('; ') || '—' },
+  { label: 'Lactancia', iconName: 'mother-nursing', getValue: d => d.lactancia || '—' },
+  { label: 'Clasificación', iconName: 'bookshelf', getValue: d => d.clasificacion },
 ];
 
 export function DrugComparisonScreen({ route }: Props) {
@@ -95,7 +97,7 @@ export function DrugComparisonScreen({ route }: Props) {
         {/* Search */}
         {selectedDrugs.length < MAX_DRUGS && (
           <View style={styles.searchContainer}>
-            <Text style={styles.searchIcon}>🔍</Text>
+            <MaterialCommunityIcons name="magnify" size={18} color="rgba(255,255,255,0.7)" />
             <TextInput
               style={styles.searchInput}
               placeholder="Buscar fármaco..."
@@ -105,7 +107,7 @@ export function DrugComparisonScreen({ route }: Props) {
             />
             {searchQuery.length > 0 && (
               <TouchableOpacity onPress={() => setSearchQuery('')}>
-                <Text style={styles.clearSearch}>✕</Text>
+                <MaterialCommunityIcons name="close" size={18} color="rgba(255,255,255,0.7)" style={{ padding: 4 }} />
               </TouchableOpacity>
             )}
           </View>
@@ -121,7 +123,7 @@ export function DrugComparisonScreen({ route }: Props) {
                 onPress={() => removeDrug(drug.id)}
               >
                 <Text style={styles.selectedChipText} numberOfLines={1}>{drug.nombre}</Text>
-                <Text style={styles.selectedChipRemove}>✕</Text>
+                <MaterialCommunityIcons name="close" size={14} color="rgba(255,255,255,0.7)" style={{ marginLeft: 6 }} />
               </TouchableOpacity>
             ))}
           </View>
@@ -171,7 +173,7 @@ export function DrugComparisonScreen({ route }: Props) {
                 {ROWS.map((row, i) => (
                   <View key={row.label} style={[styles.tableRow, i % 2 === 0 && { backgroundColor: colors.background }]}>
                     <View style={styles.tableLabelCell}>
-                      <Text style={styles.tableRowIcon}>{row.icon}</Text>
+                      <MaterialCommunityIcons name={row.iconName} size={14} color={colors.textSecondary} style={{ marginRight: 6 }} />
                       <Text style={styles.tableLabelText}>{row.label}</Text>
                     </View>
                     {selectedDrugs.map(drug => {
@@ -195,7 +197,7 @@ export function DrugComparisonScreen({ route }: Props) {
 
         {selectedDrugs.length < 2 && (
           <View style={styles.emptyState}>
-            <Text style={styles.emptyIcon}>⚖️</Text>
+            <MaterialCommunityIcons name="scale-balance" size={56} color={colors.textLight} style={{ marginBottom: 16 }} />
             <Text style={styles.emptyText}>Selecciona al menos 2 fármacos</Text>
             <Text style={styles.emptyHint}>Usa el buscador para añadir fármacos a la comparación</Text>
           </View>
@@ -209,7 +211,7 @@ export function DrugComparisonScreen({ route }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#0891B2', paddingBottom: 16, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -233,8 +235,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   scroll: { flex: 1 },
   searchResults: { paddingHorizontal: 16, paddingTop: 8 },
   searchResultItem: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
-    padding: 12, borderRadius: 10, marginBottom: 6, elevation: 1,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 12, marginBottom: 6,
   },
   searchResultName: { fontSize: 14, fontWeight: '700', color: colors.text },
   searchResultGeneric: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },

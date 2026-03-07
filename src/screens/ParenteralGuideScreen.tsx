@@ -1,8 +1,10 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, TextInput, FlatList } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, Drug } from '../types';
 import type { ThemeColors } from '../utils/colors';
+import { neuCardSubtle } from '../utils/neumorphism';
 import { useTheme } from '../context/ThemeContext';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useDrugData } from '../hooks/useDrugData';
@@ -16,11 +18,11 @@ type Props = NativeStackScreenProps<RootStackParamList, 'ParenteralGuide'>;
 type TabKey = 'introduccion' | 'soluciones' | 'npt' | 'proteccion' | 'farmacos';
 
 const TABS: { key: TabKey; label: string; icon: string }[] = [
-  { key: 'introduccion', label: 'Introducción', icon: '📖' },
-  { key: 'soluciones', label: 'Soluciones', icon: '💧' },
-  { key: 'npt', label: 'NPT', icon: '🍶' },
-  { key: 'proteccion', label: 'Protección', icon: '🛡️' },
-  { key: 'farmacos', label: 'Fármacos', icon: '💊' },
+  { key: 'introduccion', label: 'Introducción', icon: 'book-open-variant' },
+  { key: 'soluciones', label: 'Soluciones', icon: 'water-outline' },
+  { key: 'npt', label: 'NPT', icon: 'flask' },
+  { key: 'proteccion', label: 'Protección', icon: 'shield-outline' },
+  { key: 'farmacos', label: 'Fármacos', icon: 'pill' },
 ];
 
 const ACCENT = '#0891B2';
@@ -78,12 +80,15 @@ function IntroduccionTab() {
         <Text style={styles.infoCardText}>{intro.metodologia}</Text>
       </View>
 
-      <CollapsibleSection title="Contenido de la Guía" icon="📋" accentColor={ACCENT} initiallyOpen>
+      <CollapsibleSection title="Contenido de la Guía" icon="clipboard-text-outline" accentColor={ACCENT} initiallyOpen>
         <BulletList items={intro.contenido} color={ACCENT} />
       </CollapsibleSection>
 
       <View style={styles.fuentesSection}>
-        <Text style={styles.fuentesTitle}>📚 Fuentes y Referencias</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+          <MaterialCommunityIcons name="bookshelf" size={18} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.fuentesTitle, { marginBottom: 0 }]}>Fuentes y Referencias</Text>
+        </View>
         {guideData.fuentes.map((ref: string, i: number) => (
           <View key={i} style={styles.fuenteRow}>
             <Text style={styles.fuenteNumber}>{i + 1}</Text>
@@ -170,8 +175,8 @@ function FarmacosTab({ navigation }: { navigation: Props['navigation'] }) {
           </View>
         </View>
         <View style={styles.drugItemRight}>
-          {isDangerous && <Text style={styles.dangerIcon}>⚠️</Text>}
-          {hasData && <Text style={styles.dataIcon}>💉</Text>}
+          {isDangerous && <MaterialCommunityIcons name="alert-outline" size={16} color="#DC2626" />}
+          {hasData && <MaterialCommunityIcons name="needle" size={16} color={ACCENT} />}
           {!hasData && <Text style={styles.noDataIcon}>—</Text>}
         </View>
       </TouchableOpacity>
@@ -190,7 +195,7 @@ function FarmacosTab({ navigation }: { navigation: Props['navigation'] }) {
         />
         {search.length > 0 && (
           <TouchableOpacity onPress={() => setSearch('')} style={styles.clearButton}>
-            <Text style={styles.clearText}>✕</Text>
+            <MaterialCommunityIcons name="close-circle" size={18} color={colors.textLight} />
           </TouchableOpacity>
         )}
       </View>
@@ -201,8 +206,14 @@ function FarmacosTab({ navigation }: { navigation: Props['navigation'] }) {
           {search.trim() ? ` (de ${parenteralDrugs.length})` : ''}
         </Text>
         <View style={styles.legendRow}>
-          <Text style={styles.legendItem}>💉 Con datos</Text>
-          <Text style={styles.legendItem}>⚠️ Peligroso</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="needle" size={14} color={ACCENT} style={{ marginRight: 4 }} />
+            <Text style={styles.legendItem}>Con datos</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="alert-outline" size={14} color="#DC2626" style={{ marginRight: 4 }} />
+            <Text style={styles.legendItem}>Peligroso</Text>
+          </View>
         </View>
       </View>
 
@@ -249,7 +260,10 @@ export function ParenteralGuideScreen({ navigation }: Props) {
       <StatusBar backgroundColor={ACCENT} barStyle="light-content" />
 
       <View style={[styles.header, { backgroundColor: ACCENT }]}>
-        <Text style={styles.headerTitle}>💉 Guía de Administración Parenteral</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="needle" size={22} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Guía de Administración Parenteral</Text>
+        </View>
         <Text style={styles.headerSubtitle}>Hospital Universitario Son Espases</Text>
       </View>
 
@@ -261,7 +275,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
             onPress={() => setActiveTab(tab.key)}
             activeOpacity={0.7}
           >
-            <Text style={styles.tabChipIcon}>{tab.icon}</Text>
+            <MaterialCommunityIcons name={tab.icon} size={16} color={activeTab === tab.key ? ACCENT : colors.textSecondary} />
             <Text style={[styles.tabChipLabel, activeTab === tab.key && styles.tabChipLabelActive]}>
               {tab.label}
             </Text>
@@ -283,7 +297,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: { paddingTop: 16, paddingBottom: 16, paddingHorizontal: 20 },
   headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
   headerSubtitle: { fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 2 },
@@ -300,7 +314,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   // Intro
   disclaimerBox: { backgroundColor: colors.warning + '15', marginHorizontal: 16, marginTop: 16, padding: 12, borderRadius: 10, borderLeftWidth: 3, borderLeftColor: colors.warning },
   disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18, fontStyle: 'italic' },
-  infoCard: { backgroundColor: colors.surface, marginHorizontal: 16, marginTop: 10, padding: 14, borderRadius: 12, elevation: 1, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.05, shadowRadius: 2 },
+  infoCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginTop: 10, padding: 14 },
   infoCardTitle: { fontSize: 14, fontWeight: '700', color: '#0891B2', marginBottom: 6 },
   infoCardText: { fontSize: 14, color: colors.text, lineHeight: 20 },
   fuentesSection: { marginHorizontal: 16, marginTop: 16, padding: 14, backgroundColor: colors.surface, borderRadius: 12 },
@@ -330,9 +344,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   drugList: { flex: 1 },
   drugListContent: { paddingHorizontal: 16, paddingBottom: 40 },
   drugItem: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface,
-    padding: 12, borderRadius: 10, marginBottom: 6, elevation: 1,
-    shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.05, shadowRadius: 2,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 12, marginBottom: 6,
   },
   drugItemDangerous: { borderLeftWidth: 3, borderLeftColor: '#DC2626' },
   drugItemLeft: { flex: 1 },

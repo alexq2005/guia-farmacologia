@@ -1,23 +1,35 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useFadeIn } from '../utils/animations';
+import { neuCardSubtle } from '../utils/neumorphism';
 import type { NursingCareData, NursingRight, NursingAssessmentCategory, NursingRouteCare, NursingHighRiskCategory, NursingProcedure, NursingDocSection, NursingCalcFormula } from '../types';
 
 const nursingData: NursingCareData = require('../data/nursing_care.json');
 
 type TabKey = 'derechos' | 'valoracion' | 'vias' | 'altoRiesgo' | 'procedimientos' | 'documentacion' | 'calculos';
 
-const TABS: { key: TabKey; label: string; icon: string }[] = [
-  { key: 'derechos', label: '10 Correctos', icon: '✅' },
-  { key: 'valoracion', label: 'Valoración', icon: '🩺' },
-  { key: 'vias', label: 'Vías', icon: '💉' },
-  { key: 'altoRiesgo', label: 'Alto Riesgo', icon: '⚠️' },
-  { key: 'procedimientos', label: 'Procedimientos', icon: '📋' },
-  { key: 'documentacion', label: 'Documentación', icon: '📝' },
-  { key: 'calculos', label: 'Cálculos', icon: '🧮' },
+const TAB_ICON_MAP: Record<TabKey, string> = {
+  derechos: 'check-circle-outline',
+  valoracion: 'stethoscope',
+  vias: 'needle',
+  altoRiesgo: 'alert-outline',
+  procedimientos: 'clipboard-list-outline',
+  documentacion: 'file-document-edit-outline',
+  calculos: 'calculator-variant-outline',
+};
+
+const TABS: { key: TabKey; label: string; iconName: string }[] = [
+  { key: 'derechos', label: '10 Correctos', iconName: 'check-circle-outline' },
+  { key: 'valoracion', label: 'Valoración', iconName: 'stethoscope' },
+  { key: 'vias', label: 'Vías', iconName: 'needle' },
+  { key: 'altoRiesgo', label: 'Alto Riesgo', iconName: 'alert-outline' },
+  { key: 'procedimientos', label: 'Procedimientos', iconName: 'clipboard-list-outline' },
+  { key: 'documentacion', label: 'Documentación', iconName: 'file-document-edit-outline' },
+  { key: 'calculos', label: 'Cálculos', iconName: 'calculator-variant-outline' },
 ];
 
 function BulletList({ items, color }: { items: string[]; color?: string }) {
@@ -88,7 +100,7 @@ function ValoracionTab() {
         <CollapsibleSection
           key={i}
           title={cat.nombre}
-          icon={cat.nombre === 'Signos Vitales' ? '❤️' : cat.nombre === 'Alergias' ? '🚫' : cat.nombre === 'Estado del Paciente' ? '🏥' : '🔄'}
+          icon={cat.nombre === 'Signos Vitales' ? 'heart' : cat.nombre === 'Alergias' ? 'cancel' : cat.nombre === 'Estado del Paciente' ? 'hospital-box' : 'refresh'}
           accentColor={colors.nursing}
           badge={`${cat.items.length}`}
           initiallyOpen={i === 0}
@@ -109,7 +121,7 @@ function ViasTab() {
         <CollapsibleSection
           key={i}
           title={via.nombre}
-          icon={via.nombre.includes('Oral') ? '💊' : via.nombre.includes('Intravenosa') ? '💉' : via.nombre.includes('Intramuscular') ? '💪' : via.nombre.includes('Subcutánea') ? '🔵' : via.nombre.includes('Inhalatoria') ? '🌬️' : '🩹'}
+          icon={via.nombre.includes('Oral') ? 'pill' : via.nombre.includes('Intravenosa') ? 'needle' : via.nombre.includes('Intramuscular') ? 'arm-flex-outline' : via.nombre.includes('Subcutánea') ? 'circle-medium' : via.nombre.includes('Inhalatoria') ? 'weather-windy' : 'bandage'}
           accentColor={viaColors[i % viaColors.length]}
           badge={`${via.cuidados.length}`}
         >
@@ -131,7 +143,7 @@ function AltoRiesgoTab() {
         <Text style={styles.apinchText}>A · P · I · N · C · H</Text>
       </View>
       {data.categorias.map((cat: NursingHighRiskCategory, i: number) => (
-        <CollapsibleSection key={i} title={cat.nombre} icon="⚠️" accentColor={colors.error} badge={`${cat.farmacos.length}`}>
+        <CollapsibleSection key={i} title={cat.nombre} icon="alert-outline" accentColor={colors.error} badge={`${cat.farmacos.length}`}>
           <View style={styles.farmacosRow}>
             {cat.farmacos.map((f: string, j: number) => (
               <View key={j} style={styles.farmacoChip}>
@@ -156,7 +168,7 @@ function ProcedimientosTab() {
         <CollapsibleSection
           key={i}
           title={proc.nombre}
-          icon={i === 0 ? '🔧' : i === 1 ? '⚗️' : i === 2 ? '🚨' : '💉'}
+          icon={i === 0 ? 'wrench-outline' : i === 1 ? 'flask-outline' : i === 2 ? 'alert-octagon' : 'needle'}
           accentColor={procColors[i]}
           badge={`${proc.pasos.length} pasos`}
         >
@@ -176,7 +188,7 @@ function DocumentacionTab() {
         <CollapsibleSection
           key={i}
           title={sec.nombre}
-          icon={i === 0 ? '✍️' : i === 1 ? '❌' : '⚡'}
+          icon={i === 0 ? 'pencil-outline' : i === 1 ? 'close-circle-outline' : 'lightning-bolt'}
           accentColor={i === 0 ? colors.success : i === 1 ? colors.warning : colors.error}
           badge={`${sec.items.length}`}
           initiallyOpen={i === 0}
@@ -235,7 +247,10 @@ export function NursingCareScreen() {
       <StatusBar backgroundColor={colors.nursing} barStyle="light-content" />
 
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>👩‍⚕️ Cuidados de Enfermería</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="account-heart-outline" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Cuidados de Enfermería</Text>
+        </View>
         <Text style={styles.headerSubtitle}>Protocolos y guías clínicas</Text>
       </View>
 
@@ -247,7 +262,7 @@ export function NursingCareScreen() {
             onPress={() => setActiveTab(tab.key)}
             activeOpacity={0.7}
           >
-            <Text style={styles.tabChipIcon}>{tab.icon}</Text>
+            <MaterialCommunityIcons name={tab.iconName} size={14} color={activeTab === tab.key ? colors.nursing : colors.textSecondary} />
             <Text style={[styles.tabChipLabel, activeTab === tab.key && styles.tabChipLabelActive]}>
               {tab.label}
             </Text>
@@ -257,7 +272,9 @@ export function NursingCareScreen() {
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.contentHeader}>
-          <Text style={styles.contentTitle}>{activeTabData.icon} {nursingData[
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name={activeTabData.iconName} size={20} color={colors.text} style={{ marginRight: 8 }} />
+            <Text style={styles.contentTitle}>{nursingData[
             activeTab === 'derechos' ? 'derechosAdministracion' :
             activeTab === 'valoracion' ? 'valoracionPreAdministracion' :
             activeTab === 'vias' ? 'cuidadosPorVia' :
@@ -266,6 +283,7 @@ export function NursingCareScreen() {
             activeTab === 'documentacion' ? 'documentacionEnfermeria' :
             'calculosFarmacologicos'
           ].titulo}</Text>
+          </View>
         </View>
 
         {renderContent()}
@@ -276,7 +294,7 @@ export function NursingCareScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: { backgroundColor: colors.nursing, paddingTop: 16, paddingBottom: 16, paddingHorizontal: 20 },
   headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
   headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 2 },
@@ -291,7 +309,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   contentHeader: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 8 },
   contentTitle: { fontSize: 18, fontWeight: '700', color: colors.text },
   tabDescription: { fontSize: 14, color: colors.textSecondary, marginHorizontal: 16, marginBottom: 12, lineHeight: 20 },
-  derechoCard: { backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10, padding: 14, borderRadius: 12, elevation: 1, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.05, shadowRadius: 2 },
+  derechoCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginBottom: 10, padding: 14 },
   derechoHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   derechoNumber: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.nursing, alignItems: 'center', justifyContent: 'center', marginRight: 10 },
   derechoNumberText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
@@ -313,7 +331,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   farmacoChip: { backgroundColor: colors.error + '12', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10, borderWidth: 1, borderColor: colors.error + '25' },
   farmacoChipText: { fontSize: 12, fontWeight: '600', color: colors.error },
   precaucionTitle: { fontSize: 13, fontWeight: '700', color: colors.textSecondary, marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 },
-  formulaCard: { backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10, padding: 14, borderRadius: 12, elevation: 1 },
+  formulaCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginBottom: 10, padding: 14 },
   formulaName: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
   formulaBox: { backgroundColor: colors.surfaceElevated, borderRadius: 8, padding: 12, marginBottom: 8 },
   formulaText: { fontSize: 14, color: colors.text, fontFamily: 'monospace', lineHeight: 20 },

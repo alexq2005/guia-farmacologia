@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
@@ -9,6 +10,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { PATHOLOGY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'PathologyDetail'>;
 
@@ -43,7 +45,7 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
   }
 
   const catColor = PATHOLOGY_COLORS[pathology.categoria] || colors.primary;
-  const catIcon = PATHOLOGY_ICONS[pathology.categoria] || '📋';
+  const catIcon = PATHOLOGY_ICONS[pathology.categoria] || 'clipboard-text-outline';
   const linkedDrugs = pathology.farmacosRelacionados.map(id => getDrugById(id)).filter(Boolean);
 
   return (
@@ -52,7 +54,7 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
 
       <View style={[styles.header, { backgroundColor: catColor }]}>
         <View style={styles.headerCategoryRow}>
-          <Text style={styles.categoryIcon}>{catIcon}</Text>
+          <MaterialCommunityIcons name={catIcon} size={20} color="rgba(255,255,255,0.9)" style={{ marginRight: 6 }} />
           <Text style={styles.categoryLabel}>{CATEGORY_LABELS[pathology.categoria]}</Text>
         </View>
         <Text style={styles.pathologyName}>{pathology.nombre}</Text>
@@ -74,33 +76,48 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         <View style={styles.definitionCard}>
-          <Text style={styles.definitionTitle}>📋 Definición</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+            <MaterialCommunityIcons name="clipboard-list-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.definitionTitle, { marginBottom: 0 }]}>Definición</Text>
+          </View>
           <Text style={styles.definitionText}>{pathology.definicion}</Text>
         </View>
 
         <View style={[styles.card, { borderLeftColor: catColor }]}>
-          <Text style={styles.cardTitle}>🔬 Fisiopatología</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="microscope" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.cardTitle, { marginBottom: 0 }]}>Fisiopatología</Text>
+          </View>
           <Text style={styles.cardText}>{pathology.fisiopatologiaBreve}</Text>
         </View>
 
         <View style={[styles.card, { borderLeftColor: '#2563EB' }]}>
-          <Text style={styles.cardTitle}>🩺 Signos y Síntomas</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="stethoscope" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.cardTitle, { marginBottom: 0 }]}>Signos y Síntomas</Text>
+          </View>
           <BulletList items={pathology.signosSintomas} color="#2563EB" />
         </View>
 
         <View style={styles.alarmCard}>
-          <Text style={styles.alarmTitle}>⚠️ Criterios de Alarma</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+            <MaterialCommunityIcons name="alert-outline" size={18} color={colors.error} style={{ marginRight: 6 }} />
+            <Text style={[styles.alarmTitle, { marginBottom: 0 }]}>Criterios de Alarma</Text>
+          </View>
           <Text style={styles.alarmSubtitle}>Situaciones que requieren acción inmediata</Text>
           {pathology.criteriosAlarma.map((item, i) => (
             <View key={i} style={styles.alarmItem}>
-              <Text style={styles.alarmBullet}>🔴</Text>
+              <MaterialCommunityIcons name="circle" size={10} color="#DC2626" style={{ marginRight: 8, marginTop: 3 }} />
               <Text style={styles.alarmText}>{item}</Text>
             </View>
           ))}
         </View>
 
         <View style={[styles.card, { borderLeftColor: colors.nursing }]}>
-          <Text style={styles.cardTitle}>👩‍⚕️ Cuidados de Enfermería</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="account-heart-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.cardTitle, { marginBottom: 0 }]}>Cuidados de Enfermería</Text>
+          </View>
           {pathology.cuidadosEnfermeria.map((item, i) => (
             <View key={i} style={styles.nursingItem}>
               <Text style={styles.nursingNumber}>{i + 1}</Text>
@@ -110,7 +127,10 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
         </View>
 
         <View style={styles.drugsSection}>
-          <Text style={styles.drugsSectionTitle}>💊 Fármacos Relacionados ({linkedDrugs.length})</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 2 }}>
+            <MaterialCommunityIcons name="pill" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.drugsSectionTitle, { marginBottom: 0 }]}>Fármacos Relacionados ({linkedDrugs.length})</Text>
+          </View>
           <Text style={styles.drugsSectionSubtitle}>Toca un fármaco para ver su ficha completa</Text>
           {linkedDrugs.map(drug => {
             if (!drug) return null;
@@ -133,7 +153,7 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
                       <Text key={via} style={styles.drugRouteBadge}>{via}</Text>
                     ))}
                   </View>
-                  <Text style={styles.drugArrow}>→</Text>
+                  <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textLight} />
                 </View>
               </TouchableOpacity>
             );
@@ -147,12 +167,11 @@ export function PathologyDetailScreen({ route, navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   errorText: { fontSize: 16, color: colors.textSecondary },
   header: { paddingTop: 12, paddingBottom: 20, paddingHorizontal: 20, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
   headerCategoryRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 4 },
-  categoryIcon: { fontSize: 20, marginRight: 6 },
   categoryLabel: { fontSize: 13, color: 'rgba(255,255,255,0.8)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1 },
   pathologyName: { fontSize: 24, fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
   headerStats: { flexDirection: 'row', marginTop: 14, gap: 10 },
@@ -160,10 +179,10 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   statNumber: { fontSize: 18, fontWeight: '800', color: '#FFFFFF' },
   statLabel: { fontSize: 10, color: 'rgba(255,255,255,0.7)' },
   scroll: { flex: 1 },
-  definitionCard: { backgroundColor: colors.surface, margin: 16, marginBottom: 8, padding: 16, borderRadius: 14, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3 },
+  definitionCard: { ...neuCard(colors), margin: 16, marginBottom: 8, padding: 16 },
   definitionTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
   definitionText: { fontSize: 14, color: colors.text, lineHeight: 22 },
-  card: { backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 8, padding: 16, borderRadius: 14, elevation: 2, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3, borderLeftWidth: 4 },
+  card: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 8, padding: 16, borderLeftWidth: 4 },
   cardTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 10 },
   cardText: { fontSize: 14, color: colors.text, lineHeight: 22 },
   bulletRow: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
@@ -181,7 +200,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   drugsSection: { marginHorizontal: 16, marginBottom: 8, marginTop: 4 },
   drugsSectionTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 2 },
   drugsSectionSubtitle: { fontSize: 12, color: colors.textSecondary, marginBottom: 12 },
-  drugCard: { backgroundColor: colors.surface, borderRadius: 12, padding: 14, marginBottom: 8, flexDirection: 'row', alignItems: 'center', elevation: 1, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.05, shadowRadius: 2, borderLeftWidth: 4 },
+  drugCard: { ...neuCardSubtle(colors), borderRadius: 12, padding: 14, marginBottom: 8, flexDirection: 'row', alignItems: 'center', borderLeftWidth: 4 },
   drugCardContent: { flex: 1 },
   drugName: { fontSize: 15, fontWeight: '700', color: colors.text },
   drugGeneric: { fontSize: 12, color: colors.textSecondary, fontStyle: 'italic', marginTop: 1 },

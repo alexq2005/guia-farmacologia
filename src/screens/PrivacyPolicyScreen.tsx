@@ -125,7 +125,7 @@ export function PrivacyPolicyScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   content: { padding: 20, paddingBottom: 40 },
   lastUpdated: { fontSize: 12, color: colors.textLight, marginBottom: 20, fontStyle: 'italic' },
   sectionTitle: { fontSize: 17, fontWeight: '700', color: colors.text, marginTop: 20, marginBottom: 8 },

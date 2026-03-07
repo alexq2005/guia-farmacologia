@@ -2,6 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import {
   View, Text, FlatList, ScrollView, TouchableOpacity, StyleSheet, StatusBar, TextInput, Animated,
 } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList, ClinicalScale } from '../types';
 import { SCALE_COLORS, SCALE_ICONS } from '../utils/colors';
@@ -12,6 +13,7 @@ import { normalizeText } from '../utils/search';
 import { SCALE_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import { PremiumGate } from '../components/PremiumGate';
 import scalesData from '../data/clinical_scales.json';
+import { neuCard, neuPill } from '../utils/neumorphism';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -28,9 +30,9 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 const TYPE_ICONS: Record<string, string> = {
-  components: '🔢',
-  selector: '📋',
-  checklist: '✅',
+  components: 'numeric',
+  selector: 'clipboard-text-outline',
+  checklist: 'check-circle-outline',
 };
 
 export function ClinicalScalesScreen({ navigation }: Props) {
@@ -72,15 +74,16 @@ export function ClinicalScalesScreen({ navigation }: Props) {
         activeOpacity={0.7}
       >
         <View style={styles.cardHeader}>
-          <Text style={styles.cardIcon}>{SCALE_ICONS[scale.categoria] || '📊'}</Text>
+          <MaterialCommunityIcons name={SCALE_ICONS[scale.categoria] || 'chart-bar'} size={28} color={catColor} style={{ marginRight: 12 }} />
           <View style={styles.cardTitleArea}>
             <Text style={styles.cardTitle}>{scale.nombre}</Text>
             <Text style={[styles.cardAbbr, { color: catColor }]}>{scale.abreviatura}</Text>
           </View>
           <View style={styles.cardMeta}>
-            <View style={[styles.typeBadge, { backgroundColor: catColor + '18' }]}>
+            <View style={[styles.typeBadge, { backgroundColor: catColor + '18', flexDirection: 'row', alignItems: 'center' }]}>
+              <MaterialCommunityIcons name={TYPE_ICONS[scale.tipo] || 'numeric'} size={10} color={catColor} style={{ marginRight: 3 }} />
               <Text style={[styles.typeText, { color: catColor }]}>
-                {TYPE_ICONS[scale.tipo]} {TYPE_LABELS[scale.tipo]}
+                {TYPE_LABELS[scale.tipo]}
               </Text>
             </View>
             <Text style={styles.rangeText}>
@@ -91,7 +94,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
         <Text style={styles.cardDesc} numberOfLines={2}>{scale.descripcion}</Text>
         <View style={styles.cardFooter}>
           <Text style={styles.cardContext} numberOfLines={1}>{scale.contextoClinico}</Text>
-          <Text style={styles.cardArrow}>→</Text>
+          <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textLight} />
         </View>
       </TouchableOpacity>
     );
@@ -121,9 +124,12 @@ export function ClinicalScalesScreen({ navigation }: Props) {
               style={[styles.chip, selectedCategory === cat && { backgroundColor: SCALE_COLORS[cat] }]}
               onPress={() => setSelectedCategory(cat === selectedCategory ? 'all' : cat)}
             >
-              <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
-                {SCALE_ICONS[cat] || '📊'} {CATEGORY_LABELS[cat] || cat} ({count})
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name={SCALE_ICONS[cat] || 'chart-bar'} size={12} color={selectedCategory === cat ? '#FFFFFF' : colors.textSecondary} style={{ marginRight: 4 }} />
+                <Text style={[styles.chipText, selectedCategory === cat && styles.chipTextActive]}>
+                  {CATEGORY_LABELS[cat] || cat} ({count})
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -136,7 +142,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
 
   const ListEmpty = useMemo(() => (
     <View style={styles.emptyState}>
-      <Text style={styles.emptyIcon}>📊</Text>
+      <MaterialCommunityIcons name="chart-bar" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
       <Text style={styles.emptyText}>No se encontraron escalas</Text>
       <Text style={styles.emptyHint}>Intenta con otro término de búsqueda</Text>
     </View>
@@ -152,7 +158,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
         <Text style={styles.headerTitle}>Escalas Clínicas</Text>
         <Text style={styles.headerSubtitle}>{scales.length} escalas interactivas de valoración</Text>
         <View style={styles.searchContainer}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <MaterialCommunityIcons name="magnify" size={18} color="rgba(255,255,255,0.7)" style={{ marginRight: 8 }} />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar escala..."
@@ -162,7 +168,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
           />
           {searchQuery.length > 0 && (
             <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <Text style={styles.clearSearch}>✕</Text>
+              <MaterialCommunityIcons name="close-circle" size={18} color="rgba(255,255,255,0.7)" style={{ padding: 4 }} />
             </TouchableOpacity>
           )}
         </View>
@@ -183,7 +189,7 @@ export function ClinicalScalesScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#7C3AED', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -199,20 +205,12 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
   chipsScroll: {},
   chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: {
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20,
-    backgroundColor: colors.surface, elevation: 1, borderWidth: 1, borderColor: colors.border,
-  },
+  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
   chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
   resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  scaleCard: {
-    backgroundColor: colors.surface, marginHorizontal: 16, marginBottom: 10,
-    borderRadius: 14, padding: 16, elevation: 2,
-    shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
-    borderLeftWidth: 4,
-  },
+  scaleCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
   cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   cardIcon: { fontSize: 28, marginRight: 12 },
   cardTitleArea: { flex: 1 },

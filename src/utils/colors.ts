@@ -36,7 +36,7 @@ export const LIGHT_COLORS = {
   primaryDark: '#1E3A8A',
   secondary: '#059669',
   accent: '#7C3AED',
-  background: '#F8FAFC',
+  background: '#F0F2F5',
   surface: '#FFFFFF',
   surfaceElevated: '#FFFFFF',
   text: '#1E293B',
@@ -62,6 +62,18 @@ export const LIGHT_COLORS = {
   quizWrong: '#DC2626',
   noteBackground: '#FFFBEB',
   noteBorder: '#FDE68A',
+  // Neumorphic tokens
+  neuBackground: '#F0F2F5',
+  neuSurface: '#FFFFFF',
+  neuSurfacePressed: '#E8EBF0',
+  neuBorderLight: 'rgba(255,255,255,0.9)',
+  neuBorderDark: 'rgba(0,0,0,0.06)',
+  neuInsetBg: '#E8EBF0',
+  neuInsetBorderTop: 'rgba(0,0,0,0.08)',
+  neuInsetBorderBottom: 'rgba(255,255,255,0.8)',
+  gradientStart: '#1E40AF',
+  gradientEnd: '#3B82F6',
+  gradientText: '#FFFFFF',
 };
 
 export const DARK_COLORS: ThemeColors = {
@@ -70,7 +82,7 @@ export const DARK_COLORS: ThemeColors = {
   primaryDark: '#1E40AF',
   secondary: '#10B981',
   accent: '#A78BFA',
-  background: '#0F172A',
+  background: '#0C1222',
   surface: '#1E293B',
   surfaceElevated: '#334155',
   text: '#F1F5F9',
@@ -96,6 +108,18 @@ export const DARK_COLORS: ThemeColors = {
   quizWrong: '#EF4444',
   noteBackground: '#1E293B',
   noteBorder: '#854D0E',
+  // Neumorphic tokens
+  neuBackground: '#0C1222',
+  neuSurface: '#1A2744',
+  neuSurfacePressed: '#0F1B33',
+  neuBorderLight: 'rgba(255,255,255,0.06)',
+  neuBorderDark: 'rgba(0,0,0,0.25)',
+  neuInsetBg: '#0F1B33',
+  neuInsetBorderTop: 'rgba(0,0,0,0.3)',
+  neuInsetBorderBottom: 'rgba(255,255,255,0.04)',
+  gradientStart: '#1E3A8A',
+  gradientEnd: '#2563EB',
+  gradientText: '#FFFFFF',
 };
 
 // Default export for backwards compatibility (used by screens that haven't migrated to useTheme)
@@ -157,16 +181,16 @@ export const SCALE_COLORS: Record<string, string> = {
 };
 
 export const SCALE_ICONS: Record<string, string> = {
-  'neurologia': '🧠',
-  'neonatologia': '👶',
-  'riesgo_ulceras': '🩹',
-  'sepsis': '🦠',
-  'via_aerea': '🫁',
-  'sedacion': '😴',
-  'dolor': '📊',
-  'trombosis': '🩸',
-  'postanestesia': '🏥',
-  'asa': '⚕️',
+  'neurologia': 'brain',
+  'neonatologia': 'baby-face-outline',
+  'riesgo_ulceras': 'bandage',
+  'sepsis': 'virus-outline',
+  'via_aerea': 'lungs',
+  'sedacion': 'sleep',
+  'dolor': 'chart-bar',
+  'trombosis': 'water-outline',
+  'postanestesia': 'hospital-building',
+  'asa': 'medical-bag',
 };
 
 export const LAB_COLORS: Record<string, string> = {
@@ -204,26 +228,26 @@ export const PROTOCOL_COLORS: Record<string, string> = {
 };
 
 export const PROTOCOL_ICONS: Record<string, string> = {
-  'cardiaco': '❤️',
-  'respiratorio': '🫁',
-  'neurologico': '🧠',
-  'metabolico': '⚗️',
-  'sepsis': '🦠',
-  'trauma': '🩸',
-  'otro': '🏥',
+  'cardiaco': 'heart-pulse',
+  'respiratorio': 'lungs',
+  'neurologico': 'brain',
+  'metabolico': 'flask-outline',
+  'sepsis': 'virus-outline',
+  'trauma': 'water-outline',
+  'otro': 'hospital-building',
 };
 
 export const PATHOLOGY_ICONS: Record<string, string> = {
-  'cardiovascular': '\u2764\uFE0F',
-  'respiratorio': '\uD83E\uDEC1',
-  'neurologico': '\uD83E\uDDE0',
-  'gastrointestinal': '\uD83E\uDE7A',
-  'endocrino': '\u2696\uFE0F',
-  'infeccioso': '\uD83E\uDDA0',
-  'renal': '\uD83E\uDEC0',
-  'hematologico': '\uD83E\uDE78',
-  'psiquiatrico': '\uD83E\uDDCA',
-  'obstetrico': '\uD83E\uDD30',
-  'musculoesqueletico': '\uD83E\uDDB4',
-  'emergencia': '\uD83D\uDEA8',
+  'cardiovascular': 'heart-pulse',
+  'respiratorio': 'lungs',
+  'neurologico': 'brain',
+  'gastrointestinal': 'stomach',
+  'endocrino': 'scale-balance',
+  'infeccioso': 'virus',
+  'renal': 'kidney',
+  'hematologico': 'water',
+  'psiquiatrico': 'head-cog-outline',
+  'obstetrico': 'human-pregnant',
+  'musculoesqueletico': 'bone',
+  'emergencia': 'alarm-light',
 };

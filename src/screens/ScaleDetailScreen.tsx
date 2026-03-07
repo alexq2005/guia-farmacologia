@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated,
 } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, ClinicalScale, ScaleInterpretation } from '../types';
 import { SCALE_COLORS, SCALE_ICONS } from '../utils/colors';
@@ -9,6 +10,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import scalesData from '../data/clinical_scales.json';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ScaleDetail'>;
 
@@ -62,7 +64,7 @@ export function ScaleDetailScreen({ route }: Props) {
   if (!scale) {
     return (
       <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-        <Text style={{ fontSize: 48 }}>📊</Text>
+        <MaterialCommunityIcons name="chart-bar" size={48} color={colors.textLight} />
         <Text style={{ color: colors.text, fontSize: 16, marginTop: 12 }}>Escala no encontrada</Text>
       </View>
     );
@@ -165,7 +167,7 @@ export function ScaleDetailScreen({ route }: Props) {
               <Text style={[styles.selectorLabel, isSelected && { fontWeight: '700' }]}>{opt.label}</Text>
               {optInterp && <Text style={[styles.selectorInterp, { color: optInterp.color }]}>{optInterp.label}</Text>}
             </View>
-            {isSelected && <Text style={[styles.selectorCheck, { color: optInterp?.color || catColor }]}>✓</Text>}
+            {isSelected && <MaterialCommunityIcons name="check" size={18} color={optInterp?.color || catColor} />}
           </TouchableOpacity>
         );
       })}
@@ -193,7 +195,7 @@ export function ScaleDetailScreen({ route }: Props) {
               styles.checkbox,
               isChecked && { backgroundColor: catColor, borderColor: catColor },
             ]}>
-              {isChecked && <Text style={styles.checkmark}>✓</Text>}
+              {isChecked && <MaterialCommunityIcons name="check" size={14} color="#FFFFFF" />}
             </View>
             <Text style={[styles.checklistLabel, isChecked && { color: colors.text }]}>{comp.nombre}</Text>
             <View style={[styles.pointsBadge, { backgroundColor: catColor + '18' }]}>
@@ -212,7 +214,7 @@ export function ScaleDetailScreen({ route }: Props) {
       <StatusBar backgroundColor={catColor} barStyle="light-content" />
       <View style={[styles.header, { backgroundColor: catColor }]}>
         <View style={styles.headerTop}>
-          <Text style={styles.headerIcon}>{SCALE_ICONS[scale.categoria] || '📊'}</Text>
+          <MaterialCommunityIcons name={SCALE_ICONS[scale.categoria] || 'chart-bar'} size={36} color="#FFFFFF" />
           <Text style={styles.headerRange}>{scale.rangoTotal[0]}–{scale.rangoTotal[1]} pts</Text>
         </View>
         <Text style={styles.headerTitle}>{scale.nombre}</Text>
@@ -242,9 +244,12 @@ export function ScaleDetailScreen({ route }: Props) {
               <Text style={styles.interpDesc}>{interpretation.descripcion}</Text>
             )}
             {pendingCount > 0 && score !== null && (
-              <Text style={[styles.interpDesc, { color: colors.warning, marginTop: 6 }]}>
-                ⚠️ Faltan {pendingCount} componente{pendingCount > 1 ? 's' : ''} por seleccionar
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
+                <MaterialCommunityIcons name="alert-outline" size={14} color={colors.warning} style={{ marginRight: 4 }} />
+                <Text style={[styles.interpDesc, { color: colors.warning, marginTop: 0 }]}>
+                  Faltan {pendingCount} componente{pendingCount > 1 ? 's' : ''} por seleccionar
+                </Text>
+              </View>
             )}
           </View>
         )}
@@ -281,14 +286,17 @@ export function ScaleDetailScreen({ route }: Props) {
 
         {/* Context */}
         <View style={styles.contextContainer}>
-          <Text style={styles.contextTitle}>📖 Contexto Clínico</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+            <MaterialCommunityIcons name="book-open-variant" size={16} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.contextTitle, { marginBottom: 0 }]}>Contexto Clínico</Text>
+          </View>
           <Text style={styles.contextText}>{scale.contextoClinico}</Text>
           <Text style={styles.referenceText}>Ref: {scale.referencia}</Text>
         </View>
 
         <View style={styles.disclaimer}>
           <Text style={styles.disclaimerText}>
-            ⚕️ Esta herramienta es de apoyo educativo. La interpretación clínica debe realizarse por profesionales de salud en contexto del paciente.
+Esta herramienta es de apoyo educativo. La interpretación clínica debe realizarse por profesionales de salud en contexto del paciente.
           </Text>
         </View>
 
@@ -299,7 +307,7 @@ export function ScaleDetailScreen({ route }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -312,11 +320,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   headerDesc: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 6, lineHeight: 18 },
   scroll: { flex: 1 },
   // Score
-  scoreContainer: {
-    margin: 16, marginBottom: 8, backgroundColor: colors.surface, borderRadius: 16,
-    padding: 20, alignItems: 'center', elevation: 3,
-    borderWidth: 2,
-  },
+  scoreContainer: { ...neuCard(colors), margin: 16, marginBottom: 8, padding: 20, alignItems: 'center', borderWidth: 2 },
   scoreLabel: {
     fontSize: 10, fontWeight: '700', color: colors.textLight, letterSpacing: 1.5,
   },
@@ -328,10 +332,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   interpLabel: { fontSize: 14, fontWeight: '800' },
   interpDesc: { fontSize: 12, color: colors.textSecondary, textAlign: 'center', marginTop: 8, lineHeight: 17 },
   // Component card
-  componentCard: {
-    backgroundColor: colors.surface, margin: 16, marginBottom: 0,
-    borderRadius: 14, padding: 16, elevation: 1,
-  },
+  componentCard: { ...neuCardSubtle(colors), margin: 16, marginBottom: 0, padding: 16 },
   componentTitle: {
     fontSize: 15, fontWeight: '800', color: colors.text, marginBottom: 10,
   },
@@ -378,9 +379,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   resetBtn: { alignItems: 'center', paddingVertical: 12, marginTop: 8 },
   resetBtnText: { fontSize: 13, color: colors.textSecondary, textDecorationLine: 'underline' },
   // Interpretation scale
-  interpScaleContainer: {
-    margin: 16, backgroundColor: colors.surface, borderRadius: 14, padding: 14, elevation: 1,
-  },
+  interpScaleContainer: { ...neuCardSubtle(colors), margin: 16, padding: 14 },
   interpScaleTitle: {
     fontSize: 10, fontWeight: '700', color: colors.textLight, letterSpacing: 1, marginBottom: 8,
   },
@@ -393,9 +392,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   interpScaleLabel: { fontSize: 13, color: colors.textSecondary, flex: 1 },
   interpScaleArrow: { fontSize: 12, fontWeight: '700' },
   // Context
-  contextContainer: {
-    margin: 16, marginTop: 0, backgroundColor: colors.surface, borderRadius: 14, padding: 14, elevation: 1,
-  },
+  contextContainer: { ...neuCardSubtle(colors), margin: 16, marginTop: 0, padding: 14 },
   contextTitle: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 6 },
   contextText: { fontSize: 13, color: colors.textSecondary, lineHeight: 18 },
   referenceText: { fontSize: 11, color: colors.textLight, marginTop: 8, fontStyle: 'italic' },

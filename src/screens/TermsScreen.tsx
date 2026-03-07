@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
@@ -17,7 +18,7 @@ export function TermsScreen() {
 
         {/* DISCLAIMER MÉDICO — el más importante */}
         <View style={styles.medicalDisclaimer}>
-          <Text style={styles.disclaimerIcon}>⚕️</Text>
+          <MaterialCommunityIcons name="medical-bag" size={28} color={colors.danger} style={{ textAlign: 'center', marginBottom: 8, alignSelf: 'center' }} />
           <Text style={styles.disclaimerTitle}>AVISO MÉDICO IMPORTANTE</Text>
           <Text style={styles.disclaimerText}>
             Esta aplicación es una herramienta de CONSULTA EDUCATIVA y REFERENCIA RÁPIDA.
@@ -33,7 +34,10 @@ export function TermsScreen() {
               'La consulta de fichas técnicas oficiales actualizadas (AEMPS, EMA, FDA)',
               'La supervisión de un médico o farmacéutico',
             ].map((item, i) => (
-              <Text key={i} style={styles.disclaimerListItem}>  ✗  {item}</Text>
+              <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 2 }}>
+                <MaterialCommunityIcons name="close" size={14} color={colors.danger} style={{ marginRight: 6, marginTop: 4 }} />
+                <Text style={styles.disclaimerListItem}>{item}</Text>
+              </View>
             ))}
           </View>
           <Text style={[styles.disclaimerText, { fontWeight: '700', marginTop: 8 }]}>
@@ -136,7 +140,7 @@ export function TermsScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   content: { padding: 20, paddingBottom: 40 },
   lastUpdated: { fontSize: 12, color: colors.textLight, marginBottom: 16, fontStyle: 'italic' },
   medicalDisclaimer: {

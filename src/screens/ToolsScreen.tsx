@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, TextInput, Alert } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import ClipboardService from '@react-native-clipboard/clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -11,6 +13,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import { useFadeIn } from '../utils/animations';
+import { neuCard, neuCardSubtle, neuInset } from '../utils/neumorphism';
 import formulas from '../data/formulas.json';
 import pathologies from '../data/pathologies.json';
 import scalesData from '../data/clinical_scales.json';
@@ -28,12 +31,12 @@ interface Props {
   navigation: NavigationProp;
 }
 
-const categoryLabels: Record<string, string> = {
-  dosificacion: '💊 Dosificación',
-  goteo: '💧 Goteo e Infusión',
-  conversion: '🔄 Conversión de Unidades',
-  pediatria: '👶 Pediatría',
-  renal: '🫘 Función Renal',
+const categoryLabels: Record<string, { icon: string; label: string }> = {
+  dosificacion: { icon: 'pill', label: 'Dosificación' },
+  goteo: { icon: 'water-outline', label: 'Goteo e Infusión' },
+  conversion: { icon: 'swap-horizontal', label: 'Conversión de Unidades' },
+  pediatria: { icon: 'baby-face-outline', label: 'Pediatría' },
+  renal: { icon: 'filter-outline', label: 'Función Renal' },
 };
 
 const PREMIUM_TARGETS = new Set([
@@ -73,98 +76,98 @@ export function ToolsScreen({ navigation }: Props) {
 
   const toolSections = [
     {
-      icon: '❤️',
+      icon: 'heart-outline',
       title: 'Mis Favoritos',
       subtitle: 'Todos tus fármacos marcados como favoritos',
       color: '#E91E63',
       target: 'favorites' as const,
     },
     {
-      icon: '📝',
+      icon: 'note-text-outline',
       title: 'Mis Notas',
       subtitle: 'Notas personales en fármacos',
       color: '#F59E0B',
       target: 'notes' as const,
     },
     {
-      icon: '📊',
+      icon: 'chart-arc',
       title: 'Dashboard de Estudio',
       subtitle: 'Progreso, estadísticas y racha de estudio',
       color: colors.quiz,
       target: 'dashboard' as const,
     },
     {
-      icon: '🧠',
+      icon: 'head-question-outline',
       title: 'Modo Estudio',
       subtitle: 'Test interactivo de farmacología',
       color: colors.quiz,
       target: 'quiz' as const,
     },
     {
-      icon: '⚖️',
+      icon: 'scale-balance',
       title: 'Comparador de Fármacos',
       subtitle: 'Compara hasta 3 fármacos lado a lado',
       color: '#0891B2',
       target: 'comparison' as const,
     },
     {
-      icon: '🏥',
+      icon: 'stethoscope',
       title: 'Patologías Clínicas',
       subtitle: `${pathologies.length} patologías con fármacos vinculados`,
       color: '#0F766E',
       target: 'pathologies' as const,
     },
     {
-      icon: '⚠️',
+      icon: 'swap-horizontal-bold',
       title: 'Verificar Interacciones',
       subtitle: 'Comprueba interacciones entre fármacos',
       color: '#7C3AED',
       target: 'interactions' as const,
     },
     {
-      icon: '📊',
+      icon: 'chart-timeline-variant-shimmer',
       title: 'Escalas Clínicas',
       subtitle: `${scalesData.length} escalas interactivas de valoración`,
       color: '#7C3AED',
       target: 'scales' as const,
     },
     {
-      icon: '🔬',
+      icon: 'flask-outline',
       title: 'Valores de Laboratorio',
       subtitle: `${labValuesData.length} valores de referencia clínica`,
       color: '#2563EB',
       target: 'labValues' as const,
     },
     {
-      icon: '🚨',
+      icon: 'hospital-box-outline',
       title: 'Protocolos de Emergencia',
       subtitle: `${protocolsData.length} protocolos con fármacos y dosis`,
       color: '#DC2626',
       target: 'emergencyProtocols' as const,
     },
     {
-      icon: '👩‍⚕️',
+      icon: 'account-heart-outline',
       title: 'Cuidados de Enfermería',
       subtitle: '10 correctos, valoración, alto riesgo, procedimientos',
       color: colors.nursing || '#E91E63',
       target: 'nursing' as const,
     },
     {
-      icon: '🧮',
+      icon: 'calculator-variant-outline',
       title: 'Calculadoras Clínicas',
       subtitle: '15 calculadoras interactivas con interpretación',
       color: '#0891B2',
       target: 'calculators' as const,
     },
     {
-      icon: '💉',
+      icon: 'iv-bag',
       title: 'Guía Parenteral',
       subtitle: 'Administración de medicamentos por vía parenteral',
       color: '#0891B2',
       target: 'parenteralGuide' as const,
     },
     {
-      icon: '📖',
+      icon: 'book-alphabet',
       title: 'Glosario Farmacológico',
       subtitle: 'Términos, abreviaturas y definiciones',
       color: '#7C3AED',
@@ -182,10 +185,18 @@ export function ToolsScreen({ navigation }: Props) {
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <View style={[styles.header, { backgroundColor: colors.accent, paddingTop: insets.top + 12 }]}>
-        <Text style={styles.headerTitle}>🔧 Herramientas</Text>
+      <LinearGradient
+        colors={[colors.accent, '#A78BFA']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={[styles.header, { paddingTop: insets.top + 12 }]}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="wrench-outline" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Herramientas</Text>
+        </View>
         <Text style={styles.headerSubtitle}>Calculadoras, escalas, protocolos y más</Text>
-      </View>
+      </LinearGradient>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Tool Cards */}
@@ -212,31 +223,38 @@ export function ToolsScreen({ navigation }: Props) {
               }}
               activeOpacity={0.7}
             >
-              <Text style={styles.toolIcon}>{tool.icon}</Text>
+              <View style={[styles.toolIconBg, { backgroundColor: tool.color + '15' }]}>
+                <MaterialCommunityIcons name={tool.icon} size={26} color={tool.color} />
+              </View>
               <View style={styles.toolText}>
-                <Text style={styles.toolTitle}>
-                  {tool.title}
-                  {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) ? ' 🔒' : ''}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text style={styles.toolTitle}>{tool.title}</Text>
+                  {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) && (
+                    <MaterialCommunityIcons name="lock-outline" size={14} color={colors.textLight} style={{ marginLeft: 4 }} />
+                  )}
+                </View>
                 <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
               </View>
-              <Text style={styles.toolArrow}>→</Text>
+              <MaterialCommunityIcons name="chevron-right" size={22} color={colors.textLight} />
             </TouchableOpacity>
           ))}
         </View>
 
         {/* Backup Section */}
-        <Text style={styles.sectionTitle}>💾 Mis Datos</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+          <MaterialCommunityIcons name="cloud-sync-outline" size={20} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Mis Datos</Text>
+        </View>
         <View style={styles.backupSection}>
           <TouchableOpacity style={[styles.backupButton, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]} onPress={handleExport} activeOpacity={0.7}>
-            <Text style={styles.backupIcon}>📤</Text>
+            <MaterialCommunityIcons name="upload-outline" size={26} color={colors.success} style={{ marginRight: 12 }} />
             <View style={{ flex: 1 }}>
               <Text style={[styles.backupTitle, { color: colors.success }]}>Exportar datos</Text>
               <Text style={styles.backupSubtitle}>Favoritos, notas, tests, historial</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.backupButton, { backgroundColor: colors.info + '15', borderColor: colors.info + '30' }]} onPress={() => setShowImport(!showImport)} activeOpacity={0.7}>
-            <Text style={styles.backupIcon}>📥</Text>
+            <MaterialCommunityIcons name="download-outline" size={26} color={colors.info} style={{ marginRight: 12 }} />
             <View style={{ flex: 1 }}>
               <Text style={[styles.backupTitle, { color: colors.info }]}>Importar datos</Text>
               <Text style={styles.backupSubtitle}>Restaurar desde backup JSON</Text>
@@ -255,7 +273,7 @@ export function ToolsScreen({ navigation }: Props) {
               />
               <View style={styles.importButtons}>
                 <TouchableOpacity style={[styles.importBtn, { backgroundColor: colors.surface, borderColor: colors.border }]} onPress={handlePaste}>
-                  <Text style={[styles.importBtnText, { color: colors.text }]}>📋 Pegar</Text>
+                  <Text style={[styles.importBtnText, { color: colors.text }]}>Pegar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.importBtn, { backgroundColor: colors.info, borderColor: colors.info }]} onPress={handleImport}>
                   <Text style={[styles.importBtnText, { color: '#FFFFFF' }]}>Importar</Text>
@@ -266,12 +284,18 @@ export function ToolsScreen({ navigation }: Props) {
         </View>
 
         {/* Formula Quick Access */}
-        <Text style={styles.sectionTitle}>🧮 Fórmulas de Cálculo</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+          <MaterialCommunityIcons name="function-variant" size={20} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Fórmulas de Cálculo</Text>
+        </View>
         {Object.entries(groupedFormulas).map(([cat, fms]) => (
           <View key={cat} style={styles.formulaGroup}>
-            <Text style={[styles.formulaCategoryTitle, { color: FORMULA_COLORS[cat] || colors.text }]}>
-              {categoryLabels[cat] || cat}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginBottom: 6 }}>
+              <MaterialCommunityIcons name={categoryLabels[cat]?.icon || 'calculator'} size={16} color={FORMULA_COLORS[cat] || colors.text} style={{ marginRight: 6 }} />
+              <Text style={[styles.formulaCategoryTitle, { color: FORMULA_COLORS[cat] || colors.text, marginHorizontal: 0, marginBottom: 0 }]}>
+                {categoryLabels[cat]?.label || cat}
+              </Text>
+            </View>
             {fms.map(formula => (
               <TouchableOpacity
                 key={formula.id}
@@ -291,24 +315,27 @@ export function ToolsScreen({ navigation }: Props) {
         ))}
 
         {/* Routes Quick Access */}
-        <Text style={styles.sectionTitle}>💉 Vías de Administración</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
+          <MaterialCommunityIcons name="directions-fork" size={20} color={colors.text} style={{ marginRight: 6 }} />
+          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Vías de Administración</Text>
+        </View>
         <View style={styles.routesGrid}>
           {([
-            { id: 'oral', icon: '💊', name: 'Oral' },
-            { id: 'IV', icon: '💉', name: 'Intravenosa' },
-            { id: 'IM', icon: '💪', name: 'Intramuscular' },
-            { id: 'SC', icon: '📌', name: 'Subcutánea' },
-            { id: 'sublingual', icon: '👅', name: 'Sublingual' },
-            { id: 'inhalatoria', icon: '🌬️', name: 'Inhalatoria' },
-            { id: 'topica', icon: '🧴', name: 'Tópica' },
-            { id: 'transdermica', icon: '🩹', name: 'Transdérmica' },
-            { id: 'rectal', icon: '💠', name: 'Rectal' },
-            { id: 'oftalmica', icon: '👁️', name: 'Oftálmica' },
-            { id: 'otica', icon: '👂', name: 'Ótica' },
-            { id: 'nasal', icon: '👃', name: 'Nasal' },
-            { id: 'vaginal', icon: '🔴', name: 'Vaginal' },
-            { id: 'intradermica', icon: '💧', name: 'Intradérmica' },
-            { id: 'epidural', icon: '🔷', name: 'Epidural' },
+            { id: 'oral', icon: 'pill', name: 'Oral' },
+            { id: 'IV', icon: 'iv-bag', name: 'Intravenosa' },
+            { id: 'IM', icon: 'needle', name: 'Intramuscular' },
+            { id: 'SC', icon: 'needle', name: 'Subcutánea' },
+            { id: 'sublingual', icon: 'alpha-s-circle-outline', name: 'Sublingual' },
+            { id: 'inhalatoria', icon: 'weather-windy', name: 'Inhalatoria' },
+            { id: 'topica', icon: 'bottle-tonic-outline', name: 'Tópica' },
+            { id: 'transdermica', icon: 'bandage', name: 'Transdérmica' },
+            { id: 'rectal', icon: 'medical-bag', name: 'Rectal' },
+            { id: 'oftalmica', icon: 'eye-outline', name: 'Oftálmica' },
+            { id: 'otica', icon: 'ear-hearing', name: 'Ótica' },
+            { id: 'nasal', icon: 'head-outline', name: 'Nasal' },
+            { id: 'vaginal', icon: 'circle-outline', name: 'Vaginal' },
+            { id: 'intradermica', icon: 'water-outline', name: 'Intradérmica' },
+            { id: 'epidural', icon: 'spine', name: 'Epidural' },
           ] as const).map(r => (
             <TouchableOpacity
               key={r.id}
@@ -316,7 +343,7 @@ export function ToolsScreen({ navigation }: Props) {
               onPress={() => navigation.navigate('RouteDetail', { routeId: r.id })}
               activeOpacity={0.7}
             >
-              <Text style={styles.routeIcon}>{r.icon}</Text>
+              <MaterialCommunityIcons name={r.icon} size={26} color={colors.primary} />
               <Text style={styles.routeName}>{r.name}</Text>
             </TouchableOpacity>
           ))}
@@ -329,7 +356,7 @@ export function ToolsScreen({ navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16,
     paddingBottom: 20,
@@ -344,21 +371,15 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   toolCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
-    borderRadius: 14,
+    ...neuCard(colors),
     padding: 16,
-    elevation: 2,
-    shadowColor: colors.shadow,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
     borderLeftWidth: 4,
   },
-  toolIcon: { fontSize: 32, marginRight: 14 },
+  toolIconBg: { width: 48, height: 48, borderRadius: 14, alignItems: 'center' as const, justifyContent: 'center' as const, marginRight: 14 },
   toolText: { flex: 1 },
   toolTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
   toolSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
-  toolArrow: { fontSize: 18, color: colors.textLight },
+  toolArrow: { color: colors.textLight },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
@@ -377,12 +398,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   formulaCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
+    ...neuCardSubtle(colors),
     marginHorizontal: 16,
     marginBottom: 6,
-    borderRadius: 10,
-    elevation: 1,
-    overflow: 'hidden',
   },
   formulaColor: { width: 4, alignSelf: 'stretch' },
   formulaContent: { flex: 1, padding: 12 },
@@ -397,20 +415,18 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   routeCard: {
     width: '22%',
-    backgroundColor: colors.surface,
-    borderRadius: 14,
+    ...neuCardSubtle(colors),
     padding: 12,
     alignItems: 'center',
-    elevation: 1,
     marginHorizontal: '1.5%',
   },
-  routeIcon: { fontSize: 28 },
+  routeIcon: { marginBottom: 4 },
   routeName: { fontSize: 11, color: colors.text, fontWeight: '600', marginTop: 4, textAlign: 'center' },
   backupSection: { paddingHorizontal: 16, gap: 8 },
   backupButton: {
     flexDirection: 'row', alignItems: 'center', padding: 14, borderRadius: 14, borderWidth: 1,
   },
-  backupIcon: { fontSize: 28, marginRight: 12 },
+  backupIcon: { marginRight: 12 },
   backupTitle: { fontSize: 15, fontWeight: '700' },
   backupSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
   importArea: { marginTop: 8 },

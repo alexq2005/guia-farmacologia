@@ -1,5 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar, TextInput, Animated, Modal, Pressable } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import ClipboardService from '@react-native-clipboard/clipboard';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
@@ -16,6 +18,7 @@ import { shareDrug } from '../utils/share';
 import { useFadeIn } from '../utils/animations';
 import { useRecentDrugs } from '../hooks/useRecentDrugs';
 import { SkeletonDrugDetail } from '../components/Skeleton';
+import { neuCard } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugDetail'>;
 
@@ -62,7 +65,7 @@ function PregnancyModal({ visible, onClose, current }: { visible: boolean; onClo
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <Pressable style={s.modalOverlay} onPress={onClose}>
         <Pressable style={s.modalContent} onPress={e => e.stopPropagation()}>
-          <Text style={s.modalTitle}>📋 Categorías de Embarazo (FDA)</Text>
+          <Text style={s.modalTitle}>Categorías de Embarazo (FDA)</Text>
           <Text style={s.modalSubtitle}>Clasificación de riesgo fetal</Text>
           {(['A', 'B', 'C', 'D', 'X'] as const).map(cat => {
             const info = PREGNANCY_INFO[cat];
@@ -77,7 +80,7 @@ function PregnancyModal({ visible, onClose, current }: { visible: boolean; onClo
                   <Text style={[s.pregModalRisk, { color }]}>{info.risk}</Text>
                   <Text style={s.pregModalDesc}>{info.desc}</Text>
                 </View>
-                {isCurrent && <Text style={{ fontSize: 16 }}>◀</Text>}
+                {isCurrent && <MaterialCommunityIcons name="arrow-left-bold" size={16} color={color} />}
               </View>
             );
           })}
@@ -103,9 +106,7 @@ function CopyButton({ text, colors: c }: { text: string; colors: ThemeColors }) 
       hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
       style={{ paddingHorizontal: 6, paddingVertical: 2 }}
     >
-      <Text style={{ fontSize: 14, color: copied ? c.success : c.textLight }}>
-        {copied ? '✓' : '📋'}
-      </Text>
+      <MaterialCommunityIcons name={copied ? 'check' : 'content-copy'} size={14} color={copied ? c.success : c.textLight} />
     </TouchableOpacity>
   );
 }
@@ -160,13 +161,16 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   if (!drug) {
     return (
       <View style={styles.errorContainer}>
-        <Text style={{ fontSize: 48, marginBottom: 12 }}>💊</Text>
+        <MaterialCommunityIcons name="pill-off" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
         <Text style={styles.errorText}>Fármaco no encontrado</Text>
         <TouchableOpacity
           style={{ marginTop: 16, backgroundColor: colors.primary, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
           onPress={() => navigation.goBack()}
         >
-          <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>← Volver</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons name="chevron-left" size={18} color="#FFFFFF" style={{ marginRight: 4 }} />
+            <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>Volver</Text>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -190,7 +194,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
       <StatusBar backgroundColor={unitColor} barStyle="light-content" />
 
-      <View style={[styles.header, { backgroundColor: unitColor }]}>
+      <LinearGradient
+        colors={[unitColor, unitColor + 'CC']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.header}
+      >
         <View style={styles.headerTopRow}>
           <Text style={[styles.unitName, { flex: 1 }]}>{unit?.nombre || 'Sin unidad'}</Text>
           <TouchableOpacity
@@ -198,14 +207,14 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             style={styles.favButton}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
-            <Text style={styles.favButtonIcon}>📤</Text>
+            <MaterialCommunityIcons name="share-variant-outline" size={18} color="#FFFFFF" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => toggleFavorite(drug.id)}
             style={[styles.favButton, { marginLeft: 8 }]}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
-            <Text style={styles.favButtonIcon}>{isFavorite(drug.id) ? '\u2764\uFE0F' : '\uD83E\uDD0D'}</Text>
+            <MaterialCommunityIcons name={isFavorite(drug.id) ? 'heart' : 'heart-outline'} size={18} color={isFavorite(drug.id) ? '#E91E63' : '#FFFFFF'} />
           </TouchableOpacity>
         </View>
         <View style={styles.classificationBadge}>
@@ -223,7 +232,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             accessibilityRole="button"
             accessibilityLabel={`Categoría de embarazo ${drug.embarazo}. Toca para más información`}
           >
-            <Text style={styles.pregText}>Embarazo: {drug.embarazo} ⓘ</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={styles.pregText}>Embarazo: {drug.embarazo} </Text>
+              <MaterialCommunityIcons name="information-outline" size={12} color="#FFFFFF" />
+            </View>
           </TouchableOpacity>
           <View style={styles.familyBadge}>
             <Text style={styles.familyText}>{drug.familia}</Text>
@@ -247,10 +259,13 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         )}
         {isReplacement && replacedDrug && (
           <View style={styles.replacementHeaderBadge}>
-            <Text style={styles.replacementHeaderText}>🔄 Reemplazo de {replacedDrug}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialCommunityIcons name="swap-horizontal-circle-outline" size={14} color="#FFFFFF" style={{ marginRight: 4 }} />
+              <Text style={styles.replacementHeaderText}>Reemplazo de {replacedDrug}</Text>
+            </View>
           </View>
         )}
-      </View>
+      </LinearGradient>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {(() => {
@@ -263,7 +278,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           ].filter(Boolean);
           return missing.length > 0 ? (
             <View style={styles.incompleteBadge}>
-              <Text style={styles.incompleteBadgeText}>ℹ️ Información parcial — faltan: {missing.join(', ')}</Text>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                <MaterialCommunityIcons name="information-outline" size={14} color={colors.info} style={{ marginRight: 4, marginTop: 1 }} />
+                <Text style={[styles.incompleteBadgeText, { flex: 1 }]}>Información parcial — faltan: {missing.join(', ')}</Text>
+              </View>
             </View>
           ) : null;
         })()}
@@ -276,7 +294,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             accessibilityRole="button"
             accessibilityLabel="Comprobar interacciones"
           >
-            <Text style={styles.quickActionIcon}>🔄</Text>
+            <MaterialCommunityIcons name="swap-horizontal" size={16} color={colors.info} style={{ marginRight: 6 }} />
             <Text style={[styles.quickActionLabel, { color: colors.info }]}>Interacciones</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -285,12 +303,15 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             accessibilityRole="button"
             accessibilityLabel="Comparar fármaco"
           >
-            <Text style={styles.quickActionIcon}>⚖️</Text>
+            <MaterialCommunityIcons name="scale-balance" size={16} color={colors.primary} style={{ marginRight: 6 }} />
             <Text style={[styles.quickActionLabel, { color: colors.primary }]}>Comparar</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.doseCard}>
-          <Text style={styles.doseSectionTitle}>💊 Vía y Dosis</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+            <Text style={[styles.doseSectionTitle, { marginBottom: 0 }]}>Vía y Dosis</Text>
+          </View>
 
           <View style={styles.routesContainer}>
             {drug.viaAdministracion.map(via => (
@@ -311,7 +332,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           {drug.dosis.pediatrico && (
             <View style={[styles.doseBox, styles.pediatricBox]}>
               <View style={styles.doseLabelRow}>
-                <Text style={[styles.doseLabel, { color: colors.pediatric }]}>👶 Pediátrico</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons name="baby-face-outline" size={14} color={colors.pediatric} style={{ marginRight: 4 }} />
+                  <Text style={[styles.doseLabel, { color: colors.pediatric }]}>Pediátrico</Text>
+                </View>
                 <CopyButton text={`${drug.nombre} — Pediátrico: ${drug.dosis.pediatrico}`} colors={colors} />
               </View>
               <Text style={styles.doseValue}>{drug.dosis.pediatrico}</Text>
@@ -349,18 +373,58 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           )}
         </View>
 
+        {(drug.preparacionDilucion || drug.reconstitucion || (Array.isArray(drug.solucionesCompatibles) && drug.solucionesCompatibles.length > 0)) && !drug.preparacionParenteral && (
+          <View style={styles.parenteralCard}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+              <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+              <Text style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}>Preparación y Dilución</Text>
+            </View>
+            {drug.reconstitucion && (
+              <CollapsibleSection title="Reconstitución" icon="flask-round-bottom-outline" accentColor={colors.primary} initiallyOpen>
+                <Text style={styles.parenteralValue}>{drug.reconstitucion}</Text>
+              </CollapsibleSection>
+            )}
+            {drug.preparacionDilucion && (
+              <CollapsibleSection title="Dilución" icon="water-outline" accentColor={colors.info} initiallyOpen>
+                <Text style={styles.parenteralValue}>{drug.preparacionDilucion}</Text>
+              </CollapsibleSection>
+            )}
+            {Array.isArray(drug.solucionesCompatibles) && drug.solucionesCompatibles.length > 0 && (
+              <CollapsibleSection title="Soluciones Compatibles" icon="test-tube" accentColor="#0891B2">
+                {drug.solucionesCompatibles.map((sol: string, i: number) => (
+                  <View key={i} style={styles.proteccionRow}>
+                    <MaterialCommunityIcons name={sol.startsWith('INCOMPATIBLE') ? 'close-circle' : 'check-circle'} size={16} color={sol.startsWith('INCOMPATIBLE') ? '#DC2626' : '#059669'} style={{ marginRight: 8, marginTop: 1 }} />
+                    <Text style={styles.proteccionText}>{sol}</Text>
+                  </View>
+                ))}
+              </CollapsibleSection>
+            )}
+            {drug.observaciones && (
+              <CollapsibleSection title="Observaciones" icon="clipboard-text-outline" accentColor={colors.textSecondary}>
+                <Text style={styles.parenteralValue}>{drug.observaciones}</Text>
+              </CollapsibleSection>
+            )}
+          </View>
+        )}
+
         {drug.preparacionParenteral && (
           <View style={styles.parenteralCard}>
-            <Text style={styles.parenteralSectionTitle}>💉 Guía de Administración Parenteral</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+              <MaterialCommunityIcons name="iv-bag" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+              <Text style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}>Guía de Administración Parenteral</Text>
+            </View>
 
             {drug.preparacionParenteral.medicamentoPeligroso && (
               <View style={styles.hazardBadge}>
-                <Text style={styles.hazardText}>⚠️ MEDICAMENTO PELIGROSO</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <MaterialCommunityIcons name="alert-outline" size={18} color="#DC2626" style={{ marginRight: 6 }} />
+                  <Text style={styles.hazardText}>MEDICAMENTO PELIGROSO</Text>
+                </View>
               </View>
             )}
 
             {(drug.preparacionParenteral.reconstitucion || drug.preparacionParenteral.dilucion || drug.preparacionParenteral.volumenAdministracion) && (
-              <CollapsibleSection title="Reconstitución y Dilución" icon="🧪" accentColor={colors.primary} initiallyOpen>
+              <CollapsibleSection title="Reconstitución y Dilución" icon="flask-round-bottom-outline" accentColor={colors.primary} initiallyOpen>
                 {drug.preparacionParenteral.reconstitucion && (
                   <View style={styles.parenteralRow}>
                     <Text style={styles.parenteralLabel}>Reconstitución</Text>
@@ -383,7 +447,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.velocidadAdministracion && (
-              <CollapsibleSection title="Administración" icon="⏱️" accentColor={colors.info} initiallyOpen>
+              <CollapsibleSection title="Administración" icon="timer-outline" accentColor={colors.info} initiallyOpen>
                 <View style={styles.parenteralRow}>
                   <Text style={styles.parenteralLabel}>Velocidad</Text>
                   <Text style={styles.parenteralValue}>{drug.preparacionParenteral.velocidadAdministracion}</Text>
@@ -392,12 +456,15 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.solucionesCompatibles && (
-              <CollapsibleSection title="Soluciones Compatibles" icon="💧" accentColor="#0891B2">
+              <CollapsibleSection title="Soluciones Compatibles" icon="water-outline" accentColor="#0891B2">
                 {drug.preparacionParenteral.solucionesCompatibles.ssf != null && (
                   <View style={styles.compatRow}>
-                    <Text style={[styles.compatIcon, { color: drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '#DC2626' : '#D97706' }]}>
-                      {drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '✅' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '❌' : '⚠️'}
-                    </Text>
+                    <MaterialCommunityIcons
+                      name={drug.preparacionParenteral.solucionesCompatibles.ssf === true ? 'check-circle' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? 'close-circle' : 'alert-circle'}
+                      size={18}
+                      color={drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '#DC2626' : '#D97706'}
+                      style={{ marginRight: 10, marginTop: 1 }}
+                    />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>SSF (NaCl 0.9%)</Text>
                       {typeof drug.preparacionParenteral.solucionesCompatibles.ssf === 'string' && (
@@ -408,9 +475,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 )}
                 {drug.preparacionParenteral.solucionesCompatibles.sg5 != null && (
                   <View style={styles.compatRow}>
-                    <Text style={[styles.compatIcon, { color: drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '#DC2626' : '#D97706' }]}>
-                      {drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '✅' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '❌' : '⚠️'}
-                    </Text>
+                    <MaterialCommunityIcons
+                      name={drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? 'check-circle' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? 'close-circle' : 'alert-circle'}
+                      size={18}
+                      color={drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '#DC2626' : '#D97706'}
+                      style={{ marginRight: 10, marginTop: 1 }}
+                    />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>SG 5%</Text>
                       {typeof drug.preparacionParenteral.solucionesCompatibles.sg5 === 'string' && (
@@ -421,7 +491,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 )}
                 {drug.preparacionParenteral.solucionesCompatibles.otras && (
                   <View style={styles.compatRow}>
-                    <Text style={styles.compatIcon}>ℹ️</Text>
+                    <MaterialCommunityIcons name="information-outline" size={18} color={colors.info} style={{ marginRight: 10, marginTop: 1 }} />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>Otras</Text>
                       <Text style={styles.compatNote}>{drug.preparacionParenteral.solucionesCompatibles.otras}</Text>
@@ -432,7 +502,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.compatibilidadNPT && (
-              <CollapsibleSection title="Compatibilidad con NPT" icon="🍶" accentColor="#7C3AED">
+              <CollapsibleSection title="Compatibilidad con NPT" icon="flask" accentColor="#7C3AED">
                 {drug.preparacionParenteral.compatibilidadNPT.tresEnUno && (
                   <View style={styles.parenteralRow}>
                     <Text style={styles.parenteralLabel}>3-en-1 (amino + glucosa + lípidos)</Text>
@@ -455,7 +525,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.estabilidad && (
-              <CollapsibleSection title="Conservación y Estabilidad" icon="🧊" accentColor="#059669">
+              <CollapsibleSection title="Conservación y Estabilidad" icon="snowflake" accentColor="#059669">
                 <View style={styles.parenteralRow}>
                   <Text style={styles.parenteralLabel}>Estabilidad</Text>
                   <Text style={styles.parenteralValue}>{drug.preparacionParenteral.estabilidad}</Text>
@@ -464,7 +534,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.proteccionPersonal && drug.preparacionParenteral.proteccionPersonal.length > 0 && (
-              <CollapsibleSection title="Protección del Personal" icon="🛡️" accentColor="#DC2626" initiallyOpen={drug.preparacionParenteral.medicamentoPeligroso}>
+              <CollapsibleSection title="Protección del Personal" icon="shield-outline" accentColor="#DC2626" initiallyOpen={drug.preparacionParenteral.medicamentoPeligroso}>
                 {drug.preparacionParenteral.proteccionPersonal.map((item, i) => (
                   <View key={i} style={styles.proteccionRow}>
                     <Text style={styles.proteccionBullet}>•</Text>
@@ -475,7 +545,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
 
             {drug.preparacionParenteral.observaciones && (
-              <CollapsibleSection title="Observaciones" icon="📋" accentColor={colors.textSecondary}>
+              <CollapsibleSection title="Observaciones" icon="clipboard-text-outline" accentColor={colors.textSecondary}>
                 <Text style={styles.parenteralValue}>{drug.preparacionParenteral.observaciones}</Text>
               </CollapsibleSection>
             )}
@@ -483,13 +553,19 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         )}
 
         <View style={styles.nursingCard}>
-          <Text style={styles.nursingSectionTitle}>👩‍⚕️ Cuidados de Enfermería</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <MaterialCommunityIcons name="account-heart-outline" size={20} color={colors.nursing} style={{ marginRight: 6 }} />
+            <Text style={[styles.nursingSectionTitle, { marginBottom: 0 }]}>Cuidados de Enfermería</Text>
+          </View>
           <BulletList items={drug.cuidadosEnfermeria} color={colors.nursing} />
         </View>
 
         {drug.riesgosSobremedicacion && (
           <View style={styles.riskCard}>
-            <Text style={styles.riskSectionTitle}>⚠️ Riesgos por Sobremedicación</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+              <MaterialCommunityIcons name="alert-outline" size={20} color={colors.error} style={{ marginRight: 6 }} />
+              <Text style={[styles.riskSectionTitle, { marginBottom: 0 }]}>Riesgos por Sobremedicación</Text>
+            </View>
             <Text style={styles.riskDescription}>{drug.riesgosSobremedicacion.descripcion}</Text>
             {drug.riesgosSobremedicacion.efectos && (
               <View style={styles.riskEffects}>
@@ -505,7 +581,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
             {drug.riesgosSobremedicacion.alerta && (
               <View style={styles.riskAlerta}>
-                <Text style={styles.riskAlertaText}>🚨 {drug.riesgosSobremedicacion.alerta}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                  <MaterialCommunityIcons name="alert-octagon" size={16} color={colors.error} style={{ marginRight: 6, marginTop: 1 }} />
+                  <Text style={[styles.riskAlertaText, { flex: 1 }]}>{drug.riesgosSobremedicacion.alerta}</Text>
+                </View>
               </View>
             )}
           </View>
@@ -517,39 +596,39 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </View>
         )}
 
-        <CollapsibleSection title="Mecanismo de Acción" icon="⚙️" accentColor={unitColor}>
+        <CollapsibleSection title="Mecanismo de Acción" icon="cog-outline" accentColor={unitColor}>
           <Text style={styles.bodyText}>{mainMechanism || 'Sin datos disponibles'}</Text>
           {notaMatch && !isReplacement && (
             <Text style={[styles.bodyText, { marginTop: 8, fontStyle: 'italic', color: colors.textSecondary }]}>Nota: {notaMatch[1]}</Text>
           )}
         </CollapsibleSection>
 
-        <CollapsibleSection title="Indicaciones" icon="✅" accentColor={colors.success} badge={`${drug.indicaciones.length}`}>
+        <CollapsibleSection title="Indicaciones" icon="check-decagram-outline" accentColor={colors.success} badge={`${drug.indicaciones.length}`}>
           <BulletList items={drug.indicaciones} color={colors.success} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Contraindicaciones" icon="🚫" accentColor={colors.error} badge={`${drug.contraindicaciones.length}`}>
+        <CollapsibleSection title="Contraindicaciones" icon="close-octagon-outline" accentColor={colors.error} badge={`${drug.contraindicaciones.length}`}>
           <BulletList items={drug.contraindicaciones} color={colors.error} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Efectos Adversos" icon="⚠️" accentColor={colors.warning} badge={`${drug.efectosAdversos.length}`}>
+        <CollapsibleSection title="Efectos Adversos" icon="alert-outline" accentColor={colors.warning} badge={`${drug.efectosAdversos.length}`}>
           <BulletList items={drug.efectosAdversos} color={colors.warning} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Interacciones" icon="🔄" accentColor={colors.info} badge={`${drug.interacciones.length}`}>
+        <CollapsibleSection title="Interacciones" icon="swap-horizontal" accentColor={colors.info} badge={`${drug.interacciones.length}`}>
           <BulletList items={drug.interacciones} color={colors.info} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Presentaciones" icon="📦" accentColor={colors.textSecondary}>
+        <CollapsibleSection title="Presentaciones" icon="pill" accentColor={colors.textSecondary}>
           <BulletList items={drug.presentaciones} />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Nombres Comerciales" icon="🏷️" accentColor={colors.textSecondary}>
+        <CollapsibleSection title="Nombres Comerciales" icon="tag-outline" accentColor={colors.textSecondary}>
           <Text style={styles.bodyText}>{drug.nombresComerciales.join(', ')}</Text>
         </CollapsibleSection>
 
         {drug.farmacocinetica && (
-          <CollapsibleSection title="Farmacocinética" icon="📊" accentColor={unitColor}>
+          <CollapsibleSection title="Farmacocinética" icon="chart-bell-curve-cumulative" accentColor={unitColor}>
             <InfoRow label="Absorción" value={drug.farmacocinetica.absorcion || ''} />
             <InfoRow label="Distribución" value={drug.farmacocinetica.distribucion || ''} />
             <InfoRow label="Metabolismo" value={drug.farmacocinetica.metabolismo || ''} />
@@ -561,19 +640,19 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </CollapsibleSection>
         )}
 
-        <CollapsibleSection title="Lactancia" icon="🤱" accentColor={colors.pediatric}>
+        <CollapsibleSection title="Lactancia" icon="baby-bottle-outline" accentColor={colors.pediatric}>
           <Text style={styles.bodyText}>{drug.lactancia || 'Sin datos disponibles'}</Text>
         </CollapsibleSection>
 
         {drug.almacenamiento && (
-          <CollapsibleSection title="Almacenamiento" icon="🏪" accentColor={colors.textSecondary}>
+          <CollapsibleSection title="Almacenamiento" icon="fridge-outline" accentColor={colors.textSecondary}>
             <Text style={styles.bodyText}>{drug.almacenamiento}</Text>
           </CollapsibleSection>
         )}
 
         {/* Related Pathologies */}
         {relatedPathologies.length > 0 && (
-          <CollapsibleSection title="Patologías Relacionadas" icon="🏥" accentColor={colors.emergency} badge={`${relatedPathologies.length}`}>
+          <CollapsibleSection title="Patologías Relacionadas" icon="hospital-box-outline" accentColor={colors.emergency} badge={`${relatedPathologies.length}`}>
             {relatedPathologies.map(p => (
               <TouchableOpacity
                 key={p.id}
@@ -581,7 +660,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 onPress={() => navigation.navigate('PathologyDetail', { pathologyId: p.id })}
               >
                 <Text style={{ fontSize: 14, color: colors.primary, fontWeight: '600', flex: 1 }}>{p.nombre}</Text>
-                <Text style={{ fontSize: 12, color: colors.textLight }}>→</Text>
+                <MaterialCommunityIcons name="chevron-right" size={16} color={colors.textLight} />
               </TouchableOpacity>
             ))}
           </CollapsibleSection>
@@ -590,13 +669,19 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         {/* Embarazo Nota */}
         {drug.embarazoNota && (
           <View style={{ marginHorizontal: 16, marginTop: 6, backgroundColor: colors.warning + '10', borderRadius: 8, padding: 10, borderWidth: 1, borderColor: colors.warning + '25' }}>
-            <Text style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 17 }}>📋 {drug.embarazoNota}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+              <MaterialCommunityIcons name="clipboard-text-outline" size={14} color={colors.textSecondary} style={{ marginRight: 4, marginTop: 1 }} />
+              <Text style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 17, flex: 1 }}>{drug.embarazoNota}</Text>
+            </View>
           </View>
         )}
 
         {/* Personal Notes */}
         <View style={styles.notesSection}>
-          <Text style={styles.notesSectionTitle}>📝 Mis Notas</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+            <MaterialCommunityIcons name="note-text-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+            <Text style={[styles.notesSectionTitle, { marginBottom: 0 }]}>Mis Notas</Text>
+          </View>
           <TextInput
             style={styles.notesInput}
             value={noteText}
@@ -619,7 +704,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
@@ -641,9 +726,8 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   grupoText: { color: '#FFFFFF', fontSize: 11, fontWeight: '500' },
   scroll: { flex: 1, marginTop: -12 },
   doseCard: {
-    backgroundColor: colors.surface, marginHorizontal: 16, marginTop: 16, padding: 16, borderRadius: 16,
-    elevation: 3, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 4,
-    borderWidth: 2, borderColor: colors.primaryLight + '30',
+    ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 16,
+    borderColor: colors.primaryLight + '30',
   },
   doseSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.primary, marginBottom: 10 },
   routesContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 12 },

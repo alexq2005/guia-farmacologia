@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { View, Text, SectionList, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { GlossaryEntry } from '../types';
 import { SearchBar } from '../components/SearchBar';
 import type { ThemeColors } from '../utils/colors';
@@ -8,6 +9,7 @@ import { useFadeIn } from '../utils/animations';
 import glossaryData from '../data/glossary.json';
 import { normalizeText as normalize } from '../utils/search';
 import { GLOSSARY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
+import { neuCardSubtle, neuPill } from '../utils/neumorphism';
 
 const CATEGORY_COLORS: Record<string, string> = {
   farmacologia: '#3B82F6',
@@ -65,7 +67,10 @@ export function GlossaryScreen() {
       <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
 
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>📖 Glosario</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons name="book-open-variant" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
+          <Text style={styles.headerTitle}>Glosario</Text>
+        </View>
         <Text style={styles.headerSubtitle}>{totalEntries} términos y abreviaturas</Text>
       </View>
 
@@ -151,7 +156,7 @@ export function GlossaryScreen() {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#7C3AED',
     paddingTop: 16,
@@ -168,14 +173,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     paddingVertical: 8,
     gap: 6,
   },
-  categoryChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
+  categoryChip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
   categoryChipActive: {
     backgroundColor: colors.primary + '15',
     borderColor: colors.primary,
@@ -188,14 +186,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     paddingVertical: 6,
   },
   sectionLetter: { fontSize: 18, fontWeight: '800', color: colors.primary },
-  glossaryCard: {
-    backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginVertical: 4,
-    padding: 14,
-    borderRadius: 12,
-    elevation: 1,
-  },
+  glossaryCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginVertical: 4, padding: 14 },
   glossaryHeader: {
     flexDirection: 'row',
     alignItems: 'center',

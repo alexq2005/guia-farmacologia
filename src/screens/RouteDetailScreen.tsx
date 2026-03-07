@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, RouteInfo } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
@@ -9,6 +10,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import routes from '../data/routes.json';
+import { neuCard } from '../utils/neumorphism';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RouteDetail'>;
 
@@ -37,7 +39,10 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
         <Text style={styles.headerDesc}>{routeInfo.descripcion}</Text>
         {routeInfo.velocidad && (
           <View style={styles.speedBadge}>
-            <Text style={styles.speedText}>⏱ {routeInfo.velocidad}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialCommunityIcons name="timer-outline" size={14} color="#FFFFFF" style={{ marginRight: 4 }} />
+              <Text style={styles.speedText}>{routeInfo.velocidad}</Text>
+            </View>
           </View>
         )}
       </View>
@@ -46,7 +51,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
         <RouteIllustrationSVG routeId={routeInfo.id} accentColor={color} colors={colors} />
 
         {routeInfo.zonas && routeInfo.zonas.length > 0 && (
-          <CollapsibleSection title="Zonas de aplicación" icon="📍" accentColor={color} initiallyOpen>
+          <CollapsibleSection title="Zonas de aplicación" icon="map-marker-outline" accentColor={color} initiallyOpen>
             {routeInfo.zonas.map((zona, i) => (
               <View key={i} style={styles.zoneRow}>
                 <View style={[styles.zoneDot, { backgroundColor: color }]} />
@@ -56,7 +61,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
           </CollapsibleSection>
         )}
 
-        <CollapsibleSection title="Técnica de administración" icon="📋" accentColor={color} initiallyOpen>
+        <CollapsibleSection title="Técnica de administración" icon="clipboard-list-outline" accentColor={color} initiallyOpen>
           {routeInfo.tecnica.map((paso, i) => (
             <View key={i} style={styles.stepRow}>
               <View style={[styles.stepNumber, { backgroundColor: color }]}>
@@ -67,10 +72,10 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
           ))}
         </CollapsibleSection>
 
-        <CollapsibleSection title="Precauciones" icon="⚠️" accentColor={colors.warning} initiallyOpen>
+        <CollapsibleSection title="Precauciones" icon="alert-outline" accentColor={colors.warning} initiallyOpen>
           {routeInfo.precauciones.map((prec, i) => (
             <View key={i} style={styles.precautionRow}>
-              <Text style={styles.precautionBullet}>⚠️</Text>
+              <MaterialCommunityIcons name="alert-outline" size={14} color={colors.warning} style={{ marginRight: 8 }} />
               <Text style={styles.precautionText}>{prec}</Text>
             </View>
           ))}
@@ -83,7 +88,7 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
 }
 
 const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     paddingTop: 16,
     paddingBottom: 20,
