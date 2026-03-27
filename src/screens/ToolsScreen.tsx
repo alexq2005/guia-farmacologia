@@ -25,6 +25,8 @@ import { exportUserData, importUserData } from '../utils/backup';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { useTabBar } from '../context/TabBarContext';
 import { getToolImage } from '../utils/toolImages';
+import { getRouteImage } from '../utils/routeImages';
+import { ROUTE_COLORS } from '../utils/colors';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Herramientas'>,
@@ -316,32 +318,73 @@ export function ToolsScreen({ navigation }: Props) {
         </View>
         <View style={styles.routesGrid}>
           {([
-            { id: 'oral', icon: 'pill', name: 'Oral' },
-            { id: 'IV', icon: 'iv-bag', name: 'Intravenosa' },
-            { id: 'IM', icon: 'needle', name: 'Intramuscular' },
-            { id: 'SC', icon: 'needle', name: 'Subcutánea' },
-            { id: 'sublingual', icon: 'alpha-s-circle-outline', name: 'Sublingual' },
-            { id: 'inhalatoria', icon: 'weather-windy', name: 'Inhalatoria' },
-            { id: 'topica', icon: 'bottle-tonic-outline', name: 'Tópica' },
-            { id: 'transdermica', icon: 'bandage', name: 'Transdérmica' },
-            { id: 'rectal', icon: 'medical-bag', name: 'Rectal' },
-            { id: 'oftalmica', icon: 'eye-outline', name: 'Oftálmica' },
-            { id: 'otica', icon: 'ear-hearing', name: 'Ótica' },
-            { id: 'nasal', icon: 'head-outline', name: 'Nasal' },
-            { id: 'vaginal', icon: 'circle-outline', name: 'Vaginal' },
-            { id: 'intradermica', icon: 'water-outline', name: 'Intradérmica' },
-            { id: 'epidural', icon: 'spine', name: 'Epidural' },
-          ] as const).map(r => (
-            <TouchableOpacity
-              key={r.id}
-              style={styles.routeCard}
-              onPress={() => navigation.navigate('RouteDetail', { routeId: r.id })}
-              activeOpacity={0.7}
-            >
-              <MaterialCommunityIcons name={r.icon} size={26} color={colors.primary} />
-              <Text style={styles.routeName}>{r.name}</Text>
-            </TouchableOpacity>
-          ))}
+            { id: 'oral', name: 'Oral' },
+            { id: 'IV', name: 'Intravenosa' },
+            { id: 'IM', name: 'Intramuscular' },
+            { id: 'SC', name: 'Subcutánea' },
+            { id: 'sublingual', name: 'Sublingual' },
+            { id: 'inhalatoria', name: 'Inhalatoria' },
+            { id: 'topica', name: 'Tópica' },
+            { id: 'transdermica', name: 'Transdérmica' },
+            { id: 'rectal', name: 'Rectal' },
+            { id: 'oftalmica', name: 'Oftálmica' },
+            { id: 'otica', name: 'Ótica' },
+            { id: 'nasal', name: 'Nasal' },
+            { id: 'vaginal', name: 'Vaginal' },
+            { id: 'intradermica', name: 'Intradérmica' },
+            { id: 'epidural', name: 'Epidural' },
+          ] as const).map(r => {
+            const routeColor = ROUTE_COLORS[r.id] || colors.primary;
+            return (
+              <TouchableOpacity
+                key={r.id}
+                onPress={() => navigation.navigate('RouteDetail', { routeId: r.id })}
+                activeOpacity={0.85}
+                style={{
+                  width: '30%',
+                  marginHorizontal: '1.5%',
+                  marginBottom: rs.space(10),
+                  borderRadius: 16,
+                  overflow: 'hidden',
+                  elevation: 3,
+                  shadowColor: routeColor,
+                  shadowOffset: { width: 0, height: 3 },
+                  shadowOpacity: 0.2,
+                  shadowRadius: 6,
+                }}
+              >
+                <ImageBackground
+                  source={getRouteImage(r.id)}
+                  style={{ width: '100%', height: rs.space(90) }}
+                  imageStyle={{ borderRadius: 16 }}
+                  resizeMode="cover"
+                >
+                  <LinearGradient
+                    colors={['transparent', routeColor + '90', routeColor + 'E0']}
+                    locations={[0, 0.5, 1]}
+                    style={{
+                      flex: 1,
+                      borderRadius: 16,
+                      justifyContent: 'flex-end',
+                      padding: rs.space(8),
+                    }}
+                  >
+                    <Text style={{
+                      fontSize: rs.font(10.5),
+                      fontWeight: '800',
+                      color: '#fff',
+                      textAlign: 'center',
+                      textShadowColor: 'rgba(0,0,0,0.4)',
+                      textShadowOffset: { width: 0, height: 1 },
+                      textShadowRadius: 3,
+                    }}>
+                      {r.name}
+                    </Text>
+                  </LinearGradient>
+                </ImageBackground>
+              </TouchableOpacity>
+            );
+          })}
         </View>
 
         <View style={{ height: 40 }} />
