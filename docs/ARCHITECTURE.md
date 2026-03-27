@@ -1,8 +1,8 @@
-# Arquitectura de la Aplicacion
+# Arquitectura de la Aplicación
 
-## Vision General
+## Visión General
 
-La app sigue una arquitectura basada en **React Context + Custom Hooks** sin librerias de estado externas. Toda la informacion clinica esta embebida como JSON estatico, sin depender de APIs externas ni bases de datos remotas.
+La app sigue una arquitectura basada en **React Context + Custom Hooks** sin librerías de estado externas. Toda la información clínica está embebida como JSON estático, sin depender de APIs externas ni bases de datos remotas.
 
 ```
                     ErrorBoundary
@@ -11,18 +11,18 @@ La app sigue una arquitectura basada en **React Context + Custom Hooks** sin lib
                          |
                     ThemeProvider          ← Modo claro/oscuro/sistema
                          |
-                    PremiumProvider        ← Trial + suscripcion + flag free
+                    PremiumProvider        ← Trial + suscripción + flag free
                          |
-                    FavoritesProvider      ← Farmacos favoritos
+                    FavoritesProvider      ← Fármacos favoritos
                          |
-                    NotesProvider          ← Notas personales por farmaco
+                    NotesProvider          ← Notas personales por fármaco
                          |
                     AppNavigator           ← React Navigation (tabs + stacks)
                     /    |    \
               TabBar  Screens  Modals
 ```
 
-## Navegacion
+## Navegación
 
 ### Estructura: Bottom Tabs + Stack Navigator
 
@@ -30,7 +30,7 @@ La app sigue una arquitectura basada en **React Context + Custom Hooks** sin lib
 AppNavigator
   ├── BottomTabs (5 tabs principales)
   │   ├── Inicio (HomeScreen)
-  │   ├── Categorias (CategoriesScreen)
+  │   ├── Categorías (CategoriesScreen)
   │   ├── Buscar (SearchScreen)
   │   ├── Especial (SpecialScreen)
   │   └── Herramientas (ToolsScreen)
@@ -59,7 +59,7 @@ AppNavigator
 
 ### Animaciones del Tab Bar
 
-- Iconos con animacion spring al recibir foco (escala 0.85 -> 1.0)
+- Íconos con animación spring al recibir foco (escala 0.85 -> 1.0)
 - Indicador activo (barra azul) bajo el tab seleccionado
 - Cambio de color: inactivo (gris) -> activo (azul primario)
 
@@ -80,19 +80,19 @@ Proporciona:
   - toggleTheme(): void
 ```
 
-**Patron de estilos**: Todas las pantallas usan `createStyles(colors: ThemeColors)` con `useMemo` para recalcular estilos solo cuando cambian los colores.
+**Patrón de estilos**: Todas las pantallas usan `createStyles(colors: ThemeColors)` con `useMemo` para recalcular estilos solo cuando cambian los colores.
 
 ### PremiumContext
 
 ```
 Archivo:     src/context/PremiumContext.tsx
 Storage:     @guia_farmaco_trial_start, @guia_farmaco_premium
-Trial:       14 dias desde primera instalacion
+Trial:       14 días desde primera instalación
 
 Proporciona:
   - isPremium: boolean    (IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive)
-  - isFreeBuild: boolean  (true en flavor free, oculta UI de suscripcion)
-  - isCodeActivated: boolean (true si se ingreso codigo correcto)
+  - isFreeBuild: boolean  (true en flavor free, oculta UI de suscripción)
+  - isCodeActivated: boolean (true si se ingresó código correcto)
   - isTrialActive: boolean
   - trialDaysLeft: number
   - isSubscribed: boolean
@@ -109,7 +109,7 @@ Proporciona:
 Archivo:     src/context/FavoritesContext.tsx
 Hook:        useFavorites(isPremium)
 Storage key: @guia_farmaco_favorites
-Limite free: 5 favoritos (sin limite en premium/free build)
+Límite free: 5 favoritos (sin límite en premium/free build)
 
 Proporciona:
   - favorites: string[]
@@ -123,7 +123,7 @@ Proporciona:
 Archivo:     src/context/NotesContext.tsx
 Hook:        useNotes(isPremium)
 Storage key: @guia_farmaco_notes
-Limite free: 5 notas (sin limite en premium/free build)
+Límite free: 5 notas (sin límite en premium/free build)
 
 Proporciona:
   - notes: DrugNote[]
@@ -134,27 +134,27 @@ Proporciona:
 
 ## Custom Hooks
 
-| Hook | Archivo | Funcion |
+| Hook | Archivo | Función |
 |------|---------|---------|
 | `useDrugData` | hooks/useDrugData.ts | Carga drugs.json, construye `Map<id, Drug>` para lookup O(1) |
-| `useDrugSearch` | hooks/useDrugSearch.ts | Busqueda full-text con `buildSearchText()` + normalizacion de acentos |
-| `useFavorites` | hooks/useFavorites.ts | CRUD favoritos con AsyncStorage, limite en version free |
-| `useNotes` | hooks/useNotes.ts | Notas por farmaco con auto-guardado (debounce), limite free |
-| `useQuiz` | hooks/useQuiz.ts | Estado del quiz, 8 tipos de preguntas, filtros, puntuacion, historial |
-| `useRecentDrugs` | hooks/useRecentDrugs.ts | Ultimos 15 farmacos visitados, AsyncStorage |
-| `useSearchHistory` | hooks/useSearchHistory.ts | Historial de busquedas (max 20), borrado individual/total |
+| `useDrugSearch` | hooks/useDrugSearch.ts | Búsqueda full-text con `buildSearchText()` + normalización de acentos |
+| `useFavorites` | hooks/useFavorites.ts | CRUD favoritos con AsyncStorage, límite en versión free |
+| `useNotes` | hooks/useNotes.ts | Notas por fármaco con auto-guardado (debounce), límite free |
+| `useQuiz` | hooks/useQuiz.ts | Estado del quiz, 8 tipos de preguntas, filtros, puntuación, historial |
+| `useRecentDrugs` | hooks/useRecentDrugs.ts | Últimos 15 fármacos visitados, AsyncStorage |
+| `useSearchHistory` | hooks/useSearchHistory.ts | Historial de búsquedas (max 20), borrado individual/total |
 
 ## Componentes Reutilizables
 
 | Componente | Archivo | Uso |
 |------------|---------|-----|
-| `DrugCard` | components/DrugCard.tsx | Tarjeta de farmaco con nombre, familia, categoria. `React.memo`, accesibilidad, animacion press |
-| `CollapsibleSection` | components/CollapsibleSection.tsx | Seccion expandible con rotacion de chevron animada |
-| `SearchBar` | components/SearchBar.tsx | Barra de busqueda con icono, clear button, accesibilidad |
+| `DrugCard` | components/DrugCard.tsx | Tarjeta de fármaco con nombre, familia, categoría. `React.memo`, accesibilidad, animación press |
+| `CollapsibleSection` | components/CollapsibleSection.tsx | Sección expandible con rotación de chevron animada |
+| `SearchBar` | components/SearchBar.tsx | Barra de búsqueda con ícono, clear button, accesibilidad |
 | `PremiumGate` | components/PremiumGate.tsx | Bloquea contenido si `isPremium` es false. Muestra UI de upgrade |
 | `ErrorBoundary` | components/ErrorBoundary.tsx | Captura errores React, muestra UI de retry, detalles en dev |
 | `Skeleton` | components/Skeleton.tsx | Componentes de carga (pulse animation): SkeletonCard, SkeletonList, SkeletonDrugDetail |
-| `RouteIllustrationSVG` | components/RouteIllustrationSVG.tsx | Ilustraciones SVG de vias de administracion |
+| `RouteIllustrationSVG` | components/RouteIllustrationSVG.tsx | Ilustraciones SVG de vías de administración |
 
 ## Flujo de Datos
 
@@ -176,13 +176,13 @@ Screens (consumen hooks + contexts)
      └── NotesContext → notas personales
 ```
 
-### Busqueda
+### Búsqueda
 
 ```
 Input del usuario
      |
      ▼
-normalizeText() → minusculas + sin acentos
+normalizeText() → minúsculas + sin acentos
      |
      ▼
 buildSearchText(drug) → concatena todos los campos buscables
@@ -197,9 +197,9 @@ Filtrado por includes() sobre searchText normalizado
 Resultados renderizados en FlatList
 ```
 
-## Modulo Nativo: BuildConfigModule
+## Módulo Nativo: BuildConfigModule
 
-Para comunicar el flavor de compilacion (free/premium) al lado JavaScript:
+Para comunicar el flavor de compilación (free/premium) al lado JavaScript:
 
 ```
 Android (Kotlin)                    React Native (TypeScript)
@@ -212,9 +212,9 @@ BuildConfigModule.kt    ──────►    NativeModules.BuildConfigModule
 BuildConfigPackage.kt   ──────►    Registrado en MainApplication.kt
 ```
 
-## Patron de Pantallas
+## Patrón de Pantallas
 
-Cada pantalla sigue este patron:
+Cada pantalla sigue este patrón:
 
 ```typescript
 import { useTheme } from '../context/ThemeContext';
@@ -245,9 +245,9 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
 colors.ts exporta:
   - LIGHT_COLORS: ThemeColors (tema claro)
   - DARK_COLORS: ThemeColors (tema oscuro)
-  - UNIT_COLORS: Record<string, string> (14 colores por unidad terapeutica)
-  - PREGNANCY_COLORS: Record<string, string> (categorias A-X)
-  - ROUTE_COLORS: Record<string, string> (colores por via de administracion)
+  - UNIT_COLORS: Record<string, string> (14 colores por unidad terapéutica)
+  - PREGNANCY_COLORS: Record<string, string> (categorías A-X)
+  - ROUTE_COLORS: Record<string, string> (colores por vía de administración)
 
 ThemeColors incluye:
   primary, secondary, accent, background, surface, card,
@@ -274,7 +274,7 @@ ThemeColors incluye:
 ## Rendimiento
 
 - `Map<string, Drug>` para lookup O(1) en lugar de `Array.find()`
-- `buildSearchText()` precomputa texto de busqueda en `useMemo`
+- `buildSearchText()` precomputa texto de búsqueda en `useMemo`
 - `normalizeText()` centralizado (1 copia en lugar de 7)
 - `React.memo` en componentes de lista (DrugCard, EmergencyCard)
 - `FlatList` en lugar de `ScrollView` para listas largas

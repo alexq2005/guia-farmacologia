@@ -948,5 +948,163 @@
       "La pulsioximetría puede ser inexacta con esmalte de uñas, hipotermia o mala perfusión",
       "Correlacionar pulsioximetría con gasometría arterial en casos dudosos"
     ]
+  },
+  {
+    "id": "lab_lactato",
+    "nombre": "Lactato",
+    "abreviatura": "Lac",
+    "categoria": "gasometria",
+    "rangos": {
+      "adulto": { "min": 0.5, "max": 2.0, "unidad": "mmol/L" },
+      "pediatrico": { "min": 0.5, "max": 2.2, "unidad": "mmol/L" }
+    },
+    "significadoAlto": "Hiperlactatemia: puede indicar hipoperfusión tisular, sepsis, shock, isquemia mesentérica, insuficiencia hepática grave o efecto de metformina. Lactato >4 mmol/L se asocia a mortalidad elevada en sepsis.",
+    "significadoBajo": "Sin relevancia clínica significativa en valores bajos.",
+    "farmacosAlteran": ["Metformina", "Epinefrina", "Linezolid", "Nucleósidos antirretrovirales", "Propofol (infusión prolongada)"],
+    "implicacionesEnfermeria": [
+      "Monitorizar lactato seriado cada 2-4h en sepsis/shock para evaluar respuesta al tratamiento",
+      "Objetivo de resucitación: aclaramiento de lactato >10% en primeras 6 horas",
+      "Lactato >4 mmol/L: alertar al equipo médico inmediatamente",
+      "Asegurar extracción venosa sin torniquete prolongado (falso aumento)",
+      "Correlacionar con signos de perfusión: relleno capilar, diuresis, nivel de conciencia"
+    ]
+  },
+  {
+    "id": "lab_procalcitonina",
+    "nombre": "Procalcitonina",
+    "abreviatura": "PCT",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adulto": { "min": 0, "max": 0.05, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "PCT >0.5 ng/mL sugiere infección bacteriana sistémica. PCT >2 ng/mL alta probabilidad de sepsis bacteriana. PCT >10 ng/mL asociada a shock séptico o fallo multiorgánico. Útil para diferenciar infección bacteriana de viral.",
+    "significadoBajo": "Valores <0.1 ng/mL hacen improbable una infección bacteriana sistémica. Útil para guiar la suspensión de antibióticos.",
+    "farmacosAlteran": ["Antibióticos (disminuyen si efectivos)", "OKT3", "Alemtuzumab", "Granulocyte-CSF"],
+    "implicacionesEnfermeria": [
+      "Monitorizar PCT seriada para guiar duración de antibioterapia (descenso >80% apoya suspensión)",
+      "PCT <0.25 ng/mL: considerar suspensión de antibióticos (consenso con equipo médico)",
+      "No se eleva significativamente en infecciones virales ni autoinmunes (valor diferencial)",
+      "Extraer muestra antes de iniciar antibióticos cuando sea posible"
+    ]
+  },
+  {
+    "id": "lab_magnesio",
+    "nombre": "Magnesio",
+    "abreviatura": "Mg",
+    "categoria": "bioquimica",
+    "rangos": {
+      "adultoHombre": { "min": 1.7, "max": 2.2, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 1.7, "max": 2.2, "unidad": "mg/dL" },
+      "pediatrico": { "min": 1.7, "max": 2.1, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hipermagnesemia: puede causar hipotensión, bradicardia, depresión respiratoria, arreflexia y paro cardíaco. Frecuente en insuficiencia renal con suplementos de Mg o antiácidos.",
+    "significadoBajo": "Hipomagnesemia: causa arritmias (torsades de pointes), convulsiones, tetania, debilidad muscular. Frecuente en alcoholismo, diuréticos, malabsorción. Dificulta la corrección de hipopotasemia e hipocalcemia.",
+    "farmacosAlteran": ["Diuréticos de asa", "Inhibidores de bomba de protones", "Aminoglucósidos", "Cisplatino", "Ciclosporina", "Sulfato de magnesio IV"],
+    "implicacionesEnfermeria": [
+      "Monitorizar ECG en hipo/hipermagnesemia: buscar prolongación QT, arritmias",
+      "Administrar sulfato de magnesio IV lento (riesgo de hipotensión y paro si rápido)",
+      "Controlar reflejo rotuliano durante infusión de MgSO4 (eclampsia): ausencia indica toxicidad",
+      "Vigilar en pacientes con diuréticos crónicos: solicitar Mg junto con K+",
+      "Hipomagnesemia refractaria: corregir Mg antes de intentar corregir K+ o Ca2+"
+    ]
+  },
+  {
+    "id": "lab_bnp",
+    "nombre": "NT-proBNP",
+    "abreviatura": "NT-proBNP",
+    "categoria": "cardiaco",
+    "rangos": {
+      "adulto": { "min": 0, "max": 125, "unidad": "pg/mL" }
+    },
+    "significadoAlto": "Elevación proporcional a la severidad de la insuficiencia cardíaca. >300 pg/mL en <50 años, >900 en 50-75 años, >1800 en >75 años sugiere IC aguda. También se eleva en TEP, sepsis, insuficiencia renal y fibrilación auricular.",
+    "significadoBajo": "Valores dentro de rango descartan IC con alto valor predictivo negativo. Útil en urgencias para diferenciar disnea cardíaca de pulmonar.",
+    "farmacosAlteran": ["IECA/ARA-II (disminuyen)", "Sacubitrilo-valsartán (aumenta BNP, no NT-proBNP)", "Betabloqueantes", "Diuréticos", "Nesiritida"],
+    "implicacionesEnfermeria": [
+      "Monitorizar NT-proBNP seriado para evaluar respuesta al tratamiento de IC",
+      "Considerar edad al interpretar: umbrales diagnósticos aumentan con la edad",
+      "Correlacionar con peso diario, balance hídrico y signos de congestión",
+      "Valores muy elevados: alertar sobre posible descompensación aguda",
+      "En pacientes obesos los valores pueden estar falsamente bajos"
+    ]
+  },
+  {
+    "id": "lab_dimero_d",
+    "nombre": "D-dímero",
+    "abreviatura": "DD",
+    "categoria": "coagulacion",
+    "rangos": {
+      "adulto": { "min": 0, "max": 500, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Indica activación de coagulación y fibrinólisis. Elevado en TVP, TEP, CID, sepsis, cirugía reciente, neoplasias, embarazo. Alto valor predictivo negativo: DD normal descarta TVP/TEP en pacientes con baja probabilidad clínica (Wells).",
+    "significadoBajo": "Sin relevancia clínica. Valor normal con alta probabilidad clínica no descarta trombosis.",
+    "farmacosAlteran": ["Anticoagulantes (disminuyen)", "Fibrinolíticos (aumentan transitoriamente)", "Anticonceptivos orales (elevan)"],
+    "implicacionesEnfermeria": [
+      "Interpretar siempre junto con escalas clínicas (Wells para TVP/TEP)",
+      "En >50 años aplicar corte ajustado: edad × 10 ng/mL (ej. 65 años → 650 ng/mL)",
+      "DD negativo con baja probabilidad clínica: seguro excluir TEP sin imagen",
+      "Vigilar signos de TVP: edema unilateral, dolor gemelar, signo de Homans",
+      "En sospecha de CID: solicitar DD junto con fibrinógeno, plaquetas y TP"
+    ]
+  },
+  {
+    "id": "lab_ferritina",
+    "nombre": "Ferritina",
+    "abreviatura": "Fer",
+    "categoria": "hematologia",
+    "rangos": {
+      "adultoHombre": { "min": 20, "max": 250, "unidad": "ng/mL" },
+      "adultoMujer": { "min": 10, "max": 120, "unidad": "ng/mL" },
+      "pediatrico": { "min": 7, "max": 140, "unidad": "ng/mL" }
+    },
+    "significadoAlto": "Sobrecarga de hierro (hemocromatosis, transfusiones repetidas), inflamación crónica, hepatopatía, neoplasias, síndrome hemofagocítico. Ferritina >500 ng/mL en inflamación; >1000 ng/mL buscar hemocromatosis o hemofagocitosis.",
+    "significadoBajo": "Ferritina <10-15 ng/mL confirma ferropenia (marcador más específico de déficit de hierro). Causa de anemia ferropénica: pérdidas GI, menorragia, malabsorción, dieta insuficiente.",
+    "farmacosAlteran": ["Hierro oral/IV", "Deferoxamina (quelante)", "Eritropoyetina", "Transfusiones sanguíneas"],
+    "implicacionesEnfermeria": [
+      "Ferritina <15 ng/mL: déficit de hierro confirmado, educar sobre suplementación",
+      "Tomar hierro oral en ayunas con vitamina C (mejora absorción)",
+      "Ferritina elevada + anemia: sospechar anemia de enfermedad crónica (no dar hierro)",
+      "Monitorizar en pacientes politransfundidos: riesgo de sobrecarga férrica"
+    ]
+  },
+  {
+    "id": "lab_fosforo",
+    "nombre": "Fósforo",
+    "abreviatura": "P",
+    "categoria": "renal",
+    "rangos": {
+      "adulto": { "min": 2.5, "max": 4.5, "unidad": "mg/dL" },
+      "pediatrico": { "min": 4.0, "max": 7.0, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperfosfatemia: común en enfermedad renal crónica (ERC), rabdomiólisis, lisis tumoral, hipoparatiroidismo. Causa calcificaciones metastásicas (producto Ca×P >55). Principal causa de hiperparatiroidismo secundario en ERC.",
+    "significadoBajo": "Hipofosfatemia: causa debilidad muscular, insuficiencia respiratoria (debilidad diafragmática), rabdomiólisis, hemólisis. Frecuente en síndrome de realimentación, alcalosis respiratoria, hiperparatiroidismo.",
+    "farmacosAlteran": ["Quelantes de fósforo (sevelamer, carbonato cálcico)", "Vitamina D", "Insulina", "Fosfato sódico/potásico IV", "Antiácidos con aluminio"],
+    "implicacionesEnfermeria": [
+      "En ERC: monitorizar fósforo junto con calcio, PTH y vitamina D",
+      "Educar sobre dieta baja en fósforo: evitar procesados, refrescos de cola, lácteos excesivos",
+      "Administrar quelantes de fósforo CON las comidas (no entre comidas)",
+      "En síndrome de realimentación: monitorizar P cada 6-12h las primeras 72h",
+      "Hipofosfatemia severa (<1 mg/dL): reposición IV lenta, vigilar hipocalcemia"
+    ]
+  },
+  {
+    "id": "lab_acido_urico",
+    "nombre": "Ácido Úrico",
+    "abreviatura": "AU",
+    "categoria": "renal",
+    "rangos": {
+      "adultoHombre": { "min": 3.4, "max": 7.0, "unidad": "mg/dL" },
+      "adultoMujer": { "min": 2.4, "max": 6.0, "unidad": "mg/dL" },
+      "pediatrico": { "min": 2.0, "max": 5.5, "unidad": "mg/dL" }
+    },
+    "significadoAlto": "Hiperuricemia: riesgo de gota (artritis aguda por cristales de urato), nefrolitiasis úrica, nefropatía por uratos (lisis tumoral). Se asocia a síndrome metabólico, HTA y enfermedad cardiovascular.",
+    "significadoBajo": "Hipouricemia: generalmente sin relevancia clínica. Puede verse en síndrome de Fanconi, SIADH, xantinuria hereditaria o tratamiento excesivo con uricosúricos.",
+    "farmacosAlteran": ["Alopurinol", "Febuxostat", "Diuréticos tiazídicos (aumentan)", "Losartán (disminuye)", "Rasburicasa", "Ácido acetilsalicílico (dosis-dependiente)"],
+    "implicacionesEnfermeria": [
+      "En crisis gotosa: aplicar frío local, elevar articulación, no manipular",
+      "Fomentar ingesta hídrica >2L/día para prevenir litiasis renal",
+      "Educar sobre dieta baja en purinas: limitar carnes rojas, mariscos, alcohol (cerveza)",
+      "En lisis tumoral: hidratación vigorosa + rasburicasa o alopurinol profiláctico",
+      "Monitorizar función renal en pacientes con hiperuricemia crónica"
+    ]
   }
 ]

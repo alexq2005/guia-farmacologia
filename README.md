@@ -1,32 +1,32 @@
-# Guia Farmacologica de Enfermeria
+# Guía Farmacológica de Enfermería
 
-Aplicacion movil Android de referencia farmacologica para profesionales de enfermeria. Contiene informacion detallada de **1781 farmacos**, escalas clinicas, protocolos de emergencia, valores de laboratorio, calculadoras medicas y herramientas de estudio.
+Aplicación móvil Android de referencia farmacológica para profesionales de enfermería. Contiene información detallada de **1781 fármacos**, escalas clínicas, protocolos de emergencia, valores de laboratorio, calculadoras médicas y herramientas de estudio.
 
-## Descripcion General
+## Descripción General
 
-Herramienta de consulta rapida para el ambito hospitalario y ambulatorio:
+Herramienta de consulta rápida para el ámbito hospitalario y ambulatorio:
 
-- **1781 farmacos** con mecanismo de accion, indicaciones, contraindicaciones, dosis, interacciones y cuidados de enfermeria
+- **1781 fármacos** con mecanismo de acción, indicaciones, contraindicaciones, dosis, interacciones y cuidados de enfermería
 - **14 protocolos de emergencia** con pasos cronometrados (ACLS, anafilaxia, IAM, ACV, sepsis...)
-- **13 escalas clinicas** interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells...)
-- **53 valores de laboratorio** con rangos por sexo y pediatricos
-- **15 calculadoras medicas** (dosis, goteo, IMC, aclaramiento creatinina, APACHE II...)
-- **Guia parenteral** con compatibilidades IV (460 farmacos enriquecidos)
-- **60 patologias** con farmacos vinculados y cuidados de enfermeria
-- Quiz de estudio, favoritos, notas personales, modo oscuro, exportacion de datos
+- **13 escalas clínicas** interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells...)
+- **53 valores de laboratorio** con rangos por sexo y pediátricos
+- **15 calculadoras médicas** (dosis, goteo, IMC, aclaramiento creatinina, APACHE II...)
+- **Guía parenteral** con compatibilidades IV (460 fármacos enriquecidos)
+- **60 patologías** con fármacos vinculados y cuidados de enfermería
+- Quiz de estudio, favoritos, notas personales, modo oscuro, exportación de datos
 
 ## Requisitos del Sistema
 
-| Requisito | Version |
+| Requisito | Versión |
 |-----------|---------|
 | Node.js | >= 22.11.0 |
 | Java JDK | 25 |
 | Android SDK | API 24-36 |
 | Gradle | 9.0.0 |
 | React Native | 0.84.1 |
-| Android minimo | 7.0 Nougat (API 24) |
+| Android mínimo | 7.0 Nougat (API 24) |
 
-## Inicio Rapido
+## Inicio Rápido
 
 ### 1. Instalar dependencias
 
@@ -59,12 +59,12 @@ APKs generadas en:
 - **Premium**: `android/app/build/outputs/apk/release/`
 - **Free**: `android/app/build/outputs/apk/release/Nueva carpeta/`
 
-## Variantes de Compilacion (Flavors)
+## Variantes de Compilación (Flavors)
 
-| Flavor | Application ID | Descripcion |
+| Flavor | Application ID | Descripción |
 |--------|---------------|-------------|
-| `free` | `com.guiafarmacologica.free` | Todas las funcionalidades desbloqueadas, sin sistema de suscripcion |
-| `premium` | `com.guiafarmacologica` | Trial de 14 dias + suscripcion premium |
+| `free` | `com.guiafarmacologica.free` | Todas las funcionalidades desbloqueadas, sin sistema de suscripción |
+| `premium` | `com.guiafarmacologica` | Trial de 14 días + suscripción premium |
 
 ```bash
 ./gradlew assembleFreeDebug       # Debug libre
@@ -85,43 +85,43 @@ GuiaFarmacologica/
     navigation/       AppNavigator (tabs + stack)
     types/            Interfaces TypeScript
     utils/            Utilidades compartidas
-    data/             14 archivos JSON con datos clinicos
+    data/             14 archivos JSON con datos clínicos
   android/            Proyecto nativo Android
-  scripts/            Scripts de generacion de datos
-  docs/               Documentacion tecnica
+  scripts/            Scripts de generación de datos
+  docs/               Documentación técnica
 ```
 
-## Documentacion
+## Documentación
 
 | Documento | Contenido |
 |-----------|-----------|
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura, navegacion, providers, flujo de datos |
-| [DEVELOPMENT.md](docs/DEVELOPMENT.md) | Guia de desarrollo, patrones, como agregar contenido |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura, navegación, providers, flujo de datos |
+| [DEVELOPMENT.md](docs/DEVELOPMENT.md) | Guía de desarrollo, patrones, cómo agregar contenido |
 | [DATA.md](docs/DATA.md) | Modelo de datos, interfaces, archivos JSON |
-| [FEATURES.md](docs/FEATURES.md) | Catalogo completo de funcionalidades |
+| [FEATURES.md](docs/FEATURES.md) | Catálogo completo de funcionalidades |
 
-## Stack Tecnologico
+## Stack Tecnológico
 
 - **Framework**: React Native CLI 0.84.1 (sin Expo)
 - **Lenguaje**: TypeScript 5.8
-- **Navegacion**: React Navigation 7 (bottom tabs + native stack)
+- **Navegación**: React Navigation 7 (bottom tabs + native stack)
 - **Motor JS**: Hermes
 - **Almacenamiento**: AsyncStorage
-- **Graficos**: react-native-svg
+- **Gráficos**: react-native-svg
 - **Datos**: JSON embebido (sin backend ni API externa)
-- **Dependencias externas**: 5 librerias (AsyncStorage, Clipboard, Navigation, SafeArea, SVG)
+- **Dependencias externas**: 5 librerías (AsyncStorage, Clipboard, Navigation, SafeArea, SVG)
 
-## Contenido Clinico
+## Contenido Clínico
 
 | Tipo | Cantidad |
 |------|----------|
-| Farmacos | 1,781 |
-| Patologias | 60 |
-| Escalas clinicas | 13 |
+| Fármacos | 1,781 |
+| Patologías | 60 |
+| Escalas clínicas | 13 |
 | Protocolos emergencia | 14 |
 | Valores laboratorio | 53 |
 | Calculadoras | 15 |
-| Formulas | 15 |
-| Vias administracion | 16 |
-| Glosario | 65+ terminos |
-| Categorias terapeuticas | 14 unidades, 60+ capitulos |
+| Fórmulas | 15 |
+| Vías administración | 16 |
+| Glosario | 65+ términos |
+| Categorías terapéuticas | 14 unidades, 60+ capítulos |

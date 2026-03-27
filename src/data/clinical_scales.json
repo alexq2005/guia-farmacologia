@@ -982,5 +982,342 @@
     "rangoTotal": [0, 3],
     "contextoClinico": "Herramienta de cribado a pie de cama para identificar rápidamente pacientes con sospecha de infección y riesgo de sepsis fuera de la UCI. No es diagnóstica, sino una señal de alarma para iniciar evaluación y tratamiento urgente.",
     "referencia": "Singer M, Deutschman CS, Seymour CW, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810."
+  },
+  {
+    "id": "scale_morse",
+    "nombre": "Escala de Caídas de Morse",
+    "abreviatura": "MFS",
+    "descripcion": "Escala de valoración del riesgo de caídas en pacientes hospitalizados. Evalúa seis factores de riesgo para identificar pacientes que requieren medidas preventivas.",
+    "tipo": "components",
+    "categoria": "caidas",
+    "componentes": [
+      {
+        "nombre": "Antecedente de caídas (últimos 3 meses)",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 25 }
+        ]
+      },
+      {
+        "nombre": "Diagnóstico secundario",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Ayuda para deambulación",
+        "opciones": [
+          { "label": "Ninguna / reposo en cama / ayuda de enfermería", "value": 0 },
+          { "label": "Muletas / bastón / andador", "value": 15 },
+          { "label": "Se apoya en muebles", "value": 30 }
+        ]
+      },
+      {
+        "nombre": "Terapia intravenosa / dispositivo IV",
+        "opciones": [
+          { "label": "No", "value": 0 },
+          { "label": "Sí", "value": 20 }
+        ]
+      },
+      {
+        "nombre": "Marcha",
+        "opciones": [
+          { "label": "Normal / reposo en cama / silla de ruedas", "value": 0 },
+          { "label": "Débil", "value": 10 },
+          { "label": "Alterada / tambaleante", "value": 20 }
+        ]
+      },
+      {
+        "nombre": "Estado mental",
+        "opciones": [
+          { "label": "Consciente de sus limitaciones", "value": 0 },
+          { "label": "Sobrevalora sus capacidades / olvida limitaciones", "value": 15 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 24],
+        "label": "Riesgo bajo",
+        "color": "#16A34A",
+        "descripcion": "Medidas estándar de seguridad: cama en posición baja, frenos activados, luz nocturna, timbre al alcance."
+      },
+      {
+        "rango": [25, 44],
+        "label": "Riesgo moderado",
+        "color": "#F59E0B",
+        "descripcion": "Implementar protocolo de prevención: identificación visual (pulsera/cartel), acompañamiento en deambulación, revisión de medicación, calzado antideslizante."
+      },
+      {
+        "rango": [45, 125],
+        "label": "Riesgo alto",
+        "color": "#DC2626",
+        "descripcion": "Todas las medidas anteriores más: valoración frecuente, posible sensor de movimiento, fisioterapia, revisión de fármacos de riesgo (sedantes, hipotensores, diuréticos). Considerar contención si agitación."
+      }
+    ],
+    "rangoTotal": [0, 125],
+    "contextoClinico": "Escala más utilizada internacionalmente para valorar el riesgo de caídas en pacientes hospitalizados. Debe reevaluarse al ingreso, en cada turno y ante cambios en el estado del paciente. Las caídas son un indicador de calidad asistencial.",
+    "referencia": "Morse JM, Morse RM, Tylko SJ. Development of a scale to identify the fall-prone patient. Canadian Journal on Aging. 1989;8(4):366-377."
+  },
+  {
+    "id": "scale_barthel",
+    "nombre": "Índice de Barthel",
+    "abreviatura": "IB",
+    "descripcion": "Escala de valoración funcional que mide la capacidad para realizar actividades básicas de la vida diaria (ABVD). Evalúa el grado de independencia del paciente.",
+    "tipo": "components",
+    "categoria": "funcional",
+    "componentes": [
+      {
+        "nombre": "Alimentación",
+        "opciones": [
+          { "label": "Incapaz", "value": 0 },
+          { "label": "Necesita ayuda (cortar, extender mantequilla)", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Baño",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Independiente", "value": 5 }
+        ]
+      },
+      {
+        "nombre": "Aseo personal",
+        "opciones": [
+          { "label": "Necesita ayuda", "value": 0 },
+          { "label": "Independiente (cara, pelo, dientes, afeitado)", "value": 5 }
+        ]
+      },
+      {
+        "nombre": "Vestirse",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Necesita ayuda (al menos la mitad)", "value": 5 },
+          { "label": "Independiente (incluye botones, cremalleras)", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Control de heces",
+        "opciones": [
+          { "label": "Incontinente", "value": 0 },
+          { "label": "Accidente ocasional", "value": 5 },
+          { "label": "Continente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Control de orina",
+        "opciones": [
+          { "label": "Incontinente o sondado", "value": 0 },
+          { "label": "Accidente ocasional", "value": 5 },
+          { "label": "Continente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Uso del retrete",
+        "opciones": [
+          { "label": "Dependiente", "value": 0 },
+          { "label": "Necesita alguna ayuda", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      },
+      {
+        "nombre": "Traslado cama-sillón",
+        "opciones": [
+          { "label": "Incapaz / no se mantiene sentado", "value": 0 },
+          { "label": "Gran ayuda (persona fuerte o dos)", "value": 5 },
+          { "label": "Mínima ayuda (supervisión o pequeña ayuda)", "value": 10 },
+          { "label": "Independiente", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Deambulación",
+        "opciones": [
+          { "label": "Inmóvil o <50 metros", "value": 0 },
+          { "label": "Independiente en silla de ruedas >50 m", "value": 5 },
+          { "label": "Camina con ayuda (persona) >50 m", "value": 10 },
+          { "label": "Independiente >50 m (puede usar bastón)", "value": 15 }
+        ]
+      },
+      {
+        "nombre": "Subir escaleras",
+        "opciones": [
+          { "label": "Incapaz", "value": 0 },
+          { "label": "Necesita ayuda (física o verbal)", "value": 5 },
+          { "label": "Independiente", "value": 10 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 20],
+        "label": "Dependencia total",
+        "color": "#DC2626",
+        "descripcion": "Paciente totalmente dependiente para ABVD. Requiere cuidados integrales de enfermería, valorar institucionalización o recursos sociosanitarios. Plan de cuidados individualizado."
+      },
+      {
+        "rango": [21, 60],
+        "label": "Dependencia severa",
+        "color": "#EA580C",
+        "descripcion": "Necesita ayuda importante en la mayoría de actividades. Rehabilitación activa, prevención de úlceras por presión, movilización precoz. Valorar cuidador principal."
+      },
+      {
+        "rango": [61, 90],
+        "label": "Dependencia moderada",
+        "color": "#F59E0B",
+        "descripcion": "Requiere asistencia en algunas actividades. Programa de rehabilitación para mejorar independencia. Fomentar autonomía progresiva."
+      },
+      {
+        "rango": [91, 99],
+        "label": "Dependencia escasa",
+        "color": "#3B82F6",
+        "descripcion": "Prácticamente independiente. Supervisión mínima, refuerzo de actividades con pequeña dificultad."
+      },
+      {
+        "rango": [100, 100],
+        "label": "Independiente",
+        "color": "#16A34A",
+        "descripcion": "Independiente para todas las ABVD. No implica vivir solo; significa autonomía funcional."
+      }
+    ],
+    "rangoTotal": [0, 100],
+    "contextoClinico": "Escala de referencia para valoración funcional en geriatría, rehabilitación y atención domiciliaria. Se evalúa al ingreso, periódicamente y al alta. Un descenso >20 puntos indica deterioro funcional significativo. Ampliamente usada como criterio de resultado en rehabilitación.",
+    "referencia": "Mahoney FI, Barthel DW. Functional evaluation: the Barthel Index. Maryland State Medical Journal. 1965;14:61-65."
+  },
+  {
+    "id": "scale_flacc",
+    "nombre": "Escala FLACC",
+    "abreviatura": "FLACC",
+    "descripcion": "Escala de valoración del dolor en pacientes pediátricos (2 meses-7 años) o no comunicativos, basada en la observación de cinco parámetros conductuales.",
+    "tipo": "components",
+    "categoria": "dolor_pediatrico",
+    "componentes": [
+      {
+        "nombre": "Face (Cara)",
+        "opciones": [
+          { "label": "Sin expresión particular, sonrisa", "value": 0 },
+          { "label": "Mueca o ceño fruncido ocasional, retraído", "value": 1 },
+          { "label": "Temblor frecuente del mentón, mandíbula apretada", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Legs (Piernas)",
+        "opciones": [
+          { "label": "Posición normal o relajada", "value": 0 },
+          { "label": "Inquietas, agitadas, tensas", "value": 1 },
+          { "label": "Pataleo o piernas encogidas", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Activity (Actividad)",
+        "opciones": [
+          { "label": "Acostado tranquilo, posición normal, se mueve con facilidad", "value": 0 },
+          { "label": "Se retuerce, se balancea, tenso", "value": 1 },
+          { "label": "Arqueado, rígido o con sacudidas", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Cry (Llanto)",
+        "opciones": [
+          { "label": "No llora (despierto o dormido)", "value": 0 },
+          { "label": "Gemidos o lloriqueos, queja ocasional", "value": 1 },
+          { "label": "Llanto constante, gritos o sollozos frecuentes", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Consolability (Consolabilidad)",
+        "opciones": [
+          { "label": "Contento, relajado", "value": 0 },
+          { "label": "Se tranquiliza con contacto, abrazo, voz; distraíble", "value": 1 },
+          { "label": "Difícil de consolar", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 0],
+        "label": "Sin dolor",
+        "color": "#16A34A",
+        "descripcion": "No se observan signos de dolor. Continuar vigilancia y reevaluar si hay cambios en procedimientos o estado clínico."
+      },
+      {
+        "rango": [1, 3],
+        "label": "Dolor leve – disconfort",
+        "color": "#3B82F6",
+        "descripcion": "Considerar medidas no farmacológicas: contención, succión no nutritiva, contacto piel con piel, distracción."
+      },
+      {
+        "rango": [4, 6],
+        "label": "Dolor moderado",
+        "color": "#F59E0B",
+        "descripcion": "Iniciar analgesia según prescripción (paracetamol, ibuprofeno). Reevaluar en 30-60 minutos tras intervención. Combinar con medidas no farmacológicas."
+      },
+      {
+        "rango": [7, 10],
+        "label": "Dolor severo",
+        "color": "#DC2626",
+        "descripcion": "Analgesia urgente requerida. Considerar opioides si dolor no controlado. Alertar al equipo médico. Reevaluar frecuentemente cada 15-30 minutos."
+      }
+    ],
+    "rangoTotal": [0, 10],
+    "contextoClinico": "Escala estándar de dolor para niños de 2 meses a 7 años y pacientes no comunicativos (intubados, con alteración cognitiva). Se valora observando al paciente durante 1-5 minutos. Reevaluar antes y después de intervenciones analgésicas. FLACC = Face, Legs, Activity, Cry, Consolability.",
+    "referencia": "Merkel SI, Voepel-Lewis T, Shayevitz JR, Malviya S. The FLACC: a behavioral scale for scoring postoperative pain in young children. Pediatric Nursing. 1997;23(3):293-297."
+  },
+  {
+    "id": "scale_must",
+    "nombre": "MUST – Screening Nutricional",
+    "abreviatura": "MUST",
+    "descripcion": "Herramienta de cribado nutricional universal (Malnutrition Universal Screening Tool) para identificar pacientes adultos con riesgo de desnutrición o desnutrición establecida.",
+    "tipo": "components",
+    "categoria": "nutricion",
+    "componentes": [
+      {
+        "nombre": "IMC (Índice de Masa Corporal)",
+        "opciones": [
+          { "label": ">20 kg/m² (>30 si obeso)", "value": 0 },
+          { "label": "18.5–20 kg/m²", "value": 1 },
+          { "label": "<18.5 kg/m²", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Pérdida de peso involuntaria (últimos 3-6 meses)",
+        "opciones": [
+          { "label": "<5%", "value": 0 },
+          { "label": "5–10%", "value": 1 },
+          { "label": ">10%", "value": 2 }
+        ]
+      },
+      {
+        "nombre": "Efecto de enfermedad aguda",
+        "opciones": [
+          { "label": "No hay enfermedad aguda que afecte ingesta >5 días", "value": 0 },
+          { "label": "Ingesta nula o casi nula >5 días (o riesgo de no ingesta)", "value": 2 }
+        ]
+      }
+    ],
+    "interpretaciones": [
+      {
+        "rango": [0, 0],
+        "label": "Riesgo bajo",
+        "color": "#16A34A",
+        "descripcion": "Cuidados rutinarios. Reevaluar semanalmente en hospitalizados, mensualmente en residencias, anualmente en comunidad. Continuar con dieta normal."
+      },
+      {
+        "rango": [1, 1],
+        "label": "Riesgo medio",
+        "color": "#F59E0B",
+        "descripcion": "Observar: documentar ingesta alimentaria durante 3 días. Si la ingesta es adecuada, continuar observando. Si es inadecuada, iniciar plan nutricional. Reevaluar semanalmente."
+      },
+      {
+        "rango": [2, 6],
+        "label": "Riesgo alto",
+        "color": "#DC2626",
+        "descripcion": "Tratar: derivar a nutricionista/dietista. Iniciar suplementos nutricionales orales. Considerar alimentación enteral si no tolera vía oral. Monitorizar ingesta y peso. Reevaluar plan semanalmente."
+      }
+    ],
+    "rangoTotal": [0, 6],
+    "contextoClinico": "Herramienta de cribado recomendada por ESPEN y NICE para todos los pacientes al ingreso hospitalario. Rápida de aplicar (3-5 min). Se debe complementar con valoración nutricional completa en pacientes con riesgo medio-alto. La desnutrición hospitalaria afecta al 20-40% de los pacientes ingresados.",
+    "referencia": "Stratton RJ, Hackston A, Longmore D, et al. Malnutrition in hospital outpatients and inpatients: prevalence, concurrent validity and ease of use of the 'malnutrition universal screening tool' (MUST) for adults. British Journal of Nutrition. 2004;92(5):799-808."
   }
 ]

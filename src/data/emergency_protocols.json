@@ -2003,5 +2003,503 @@
       "Administrar insulina SC basal 1-2h ANTES de suspender la infusión IV para evitar el efecto rebote.",
       "Investigar y tratar el factor precipitante: infección (más común), incumplimiento terapéutico, debut diabético, IAM, pancreatitis."
     ]
+  },
+  {
+    "id": "proto_eclampsia",
+    "nombre": "Eclampsia / Preeclampsia Severa",
+    "abreviatura": "PE/E",
+    "descripcion": "Protocolo de manejo de la emergencia hipertensiva en el embarazo. La preeclampsia severa (PA ≥160/110 con proteinuria y/o daño orgánico) puede progresar a eclampsia (convulsiones) y síndrome HELLP. Emergencia obstétrica que amenaza la vida materna y fetal.",
+    "categoria": "obstetrico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "PA sistólica ≥160 mmHg o diastólica ≥110 mmHg persistente",
+      "Convulsiones tónico-clónicas (eclampsia)",
+      "Cefalea intensa refractaria a analgesia",
+      "Alteraciones visuales: escotomas, visión borrosa, amaurosis",
+      "Dolor epigástrico o en hipocondrio derecho (distensión hepática)",
+      "Oliguria <500 mL/24h",
+      "Edema pulmonar agudo",
+      "Plaquetas <100.000/µL o LDH elevada (HELLP)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-5 min",
+        "accion": "Estabilización inmediata y protección de la vía aérea",
+        "detalles": "Posición en decúbito lateral izquierdo (mejorar retorno venoso y prevenir aspiración). Si convulsiona: proteger de lesiones, no introducir objetos en boca, aspirar secreciones. Oxígeno a alto flujo. Monitorización continua: PA, FC, SatO2, FCF.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-5 min",
+        "accion": "Administrar Sulfato de Magnesio (MgSO4) — PRIMERA LÍNEA",
+        "detalles": "Dosis de carga: 4-6 g IV en 15-20 min diluidos en 100 mL SF. Mantenimiento: 1-2 g/h en perfusión continua. El MgSO4 es anticonvulsivante de elección en eclampsia (superior a diazepam y fenitoína). Mantener 24-48h postparto.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Sulfato de Magnesio",
+            "dosis": "Carga: 4-6 g IV en 15-20 min; Mantenimiento: 1-2 g/h",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Control de la presión arterial",
+        "detalles": "Objetivo: PA <160/110 pero no descender >25% en primeras horas (riesgo de hipoperfusión placentaria). Labetalol IV es primera línea. Alternativas: hidralazina IV, nifedipino oral.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "20 mg IV en bolo; repetir 40-80 mg cada 10-15 min (máx 300 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Hidralazina",
+            "dosis": "5-10 mg IV cada 15-20 min (máx 30 mg)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nifedipino",
+            "dosis": "10-20 mg VO cada 30 min (máx 60 mg)",
+            "via": "Oral"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Evaluación materna y fetal completa",
+        "detalles": "Analítica urgente: hemograma, plaquetas, LDH, GOT/GPT, bilirrubina, creatinina, ácido úrico, proteinuria. Descartar síndrome HELLP (hemólisis + enzimas hepáticas elevadas + trombocitopenia). Monitorización fetal continua: RCTG.",
+        "critico": false
+      },
+      {
+        "orden": 5,
+        "tiempo": "30 min - 2h",
+        "accion": "Decisión sobre finalización del embarazo",
+        "detalles": "La eclampsia y preeclampsia severa refractaria son indicación de parto urgente independientemente de la edad gestacional. En <34 semanas: considerar maduración pulmonar con corticoides si el estado materno lo permite (betametasona 12 mg IM × 2 dosis/24h). La vía de parto depende de las condiciones obstétricas.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Eclampsia refractaria al MgSO4 o deterioro materno/fetal?",
+          "si": "Cesárea urgente",
+          "no": "Estabilizar y planificar parto según condiciones obstétricas"
+        }
+      },
+      {
+        "orden": 6,
+        "tiempo": "Postparto",
+        "accion": "Vigilancia postparto intensiva",
+        "detalles": "Mantener MgSO4 24-48h postparto. Continuar antihipertensivos. Vigilar diuresis, PA cada 15 min las primeras 4h. El riesgo de eclampsia persiste hasta 48-72h postparto. Control de hemorragia postparto (mayor riesgo en HELLP).",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Sulfato de Magnesio",
+        "dosis": "Carga: 4-6 g IV en 15-20 min; Mantenimiento: 1-2 g/h",
+        "via": "IV",
+        "indicacion": "Anticonvulsivante de primera línea en eclampsia y prevención en preeclampsia severa"
+      },
+      {
+        "nombre": "Labetalol",
+        "dosis": "20 mg IV en bolo, escalar cada 10-15 min (máx 300 mg)",
+        "via": "IV",
+        "indicacion": "Antihipertensivo de primera línea en emergencia hipertensiva del embarazo"
+      },
+      {
+        "nombre": "Hidralazina",
+        "dosis": "5-10 mg IV cada 15-20 min",
+        "via": "IV",
+        "indicacion": "Alternativa antihipertensiva"
+      },
+      {
+        "nombre": "Nifedipino",
+        "dosis": "10-20 mg VO cada 30 min",
+        "via": "Oral",
+        "indicacion": "Alternativa si no hay acceso IV"
+      },
+      {
+        "nombre": "Betametasona",
+        "dosis": "12 mg IM cada 24h × 2 dosis",
+        "via": "IM",
+        "indicacion": "Maduración pulmonar fetal si <34 semanas"
+      }
+    ],
+    "notasEnfermeria": [
+      "Monitorizar reflejo rotuliano cada hora durante infusión de MgSO4: la AUSENCIA de reflejo indica toxicidad por magnesio.",
+      "Mantener antídoto preparado: Gluconato de Calcio 1 g IV lento para toxicidad por MgSO4 (depresión respiratoria, bradicardia).",
+      "Controlar diuresis horaria: debe ser >25-30 mL/h. El MgSO4 se excreta por vía renal; la oliguria aumenta el riesgo de toxicidad.",
+      "NUNCA administrar nifedipino y MgSO4 simultáneamente sin supervisión estrecha: hipotensión severa.",
+      "El síndrome HELLP puede presentarse sin hipertensión significativa: sospechar ante dolor epigástrico + malestar + náuseas."
+    ]
+  },
+  {
+    "id": "proto_sobredosis_opioides",
+    "nombre": "Intoxicación por Opioides",
+    "abreviatura": "IOp",
+    "descripcion": "Protocolo de manejo de la sobredosis/intoxicación aguda por opioides (heroína, fentanilo, morfina, metadona, tramadol). La depresión respiratoria es la principal causa de muerte. La naloxona es el antídoto específico.",
+    "categoria": "otro",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Depresión respiratoria: FR <12 rpm o apnea",
+      "Miosis puntiforme bilateral (pupilas en alfiler)",
+      "Disminución del nivel de conciencia / coma",
+      "Cianosis",
+      "Hipotensión",
+      "Bradicardia",
+      "Edema pulmonar no cardiogénico (heroína/fentanilo)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "Evaluación rápida y apertura de vía aérea",
+        "detalles": "Evaluar consciencia (estímulo verbal/dolor), respiración y pulso. Abrir vía aérea (maniobra frente-mentón), aspirar secreciones. Si apnea: iniciar ventilación con bolsa-mascarilla. Si paro cardíaco: iniciar RCP.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-3 min",
+        "accion": "Administrar Naloxona",
+        "detalles": "Naloxona 0.4-2 mg IV/IM/SC/IN. Si no hay respuesta en 2-3 minutos, repetir dosis. En sospecha de fentanilo o derivados potentes: pueden requerirse dosis mayores (hasta 10 mg totales). Vía intranasal: 4 mg (2 mg por fosa nasal) si no hay acceso IV.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Naloxona",
+            "dosis": "0.4-2 mg IV/IM/SC; repetir cada 2-3 min hasta respuesta (máx 10 mg)",
+            "via": "IV/IM/SC/IN"
+          }
+        ]
+      },
+      {
+        "orden": 3,
+        "tiempo": "3-10 min",
+        "accion": "Monitorización continua y soporte respiratorio",
+        "detalles": "Monitorizar SatO2, FR, FC, PA, ECG. Oxígeno suplementario. La naloxona tiene vida media más corta (30-90 min) que muchos opioides: riesgo de re-sedación. Si paciente intubado, mantener ventilación mecánica hasta respuesta.",
+        "critico": true
+      },
+      {
+        "orden": 4,
+        "tiempo": "10-60 min",
+        "accion": "Infusión continua de Naloxona (si renarcotización)",
+        "detalles": "Si se requieren dosis repetidas o el opioide es de larga duración (metadona, fentanilo transdérmico): perfusión continua de naloxona 0.4-0.8 mg/h IV. Ajustar según respuesta clínica. Mantener mínimo 4-6h (24h si metadona).",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Naloxona (perfusión)",
+            "dosis": "0.4-0.8 mg/h IV en perfusión continua (2/3 de la dosis de respuesta por hora)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Evaluación de complicaciones y observación",
+        "detalles": "Vigilar: edema pulmonar no cardiogénico, rabdomiólisis (CK, mioglobina), hipotermia, síndrome compartimental (por inmovilización prolongada). Observación mínima: 4-6h si opioides de corta duración, 24h si metadona u opioides de liberación prolongada.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Naloxona",
+        "dosis": "0.4-2 mg IV/IM/SC/IN; repetir cada 2-3 min (máx 10 mg)",
+        "via": "IV/IM/SC/IN",
+        "indicacion": "Antagonista opioide específico — revierte depresión respiratoria, sedación y miosis"
+      },
+      {
+        "nombre": "Naloxona (perfusión)",
+        "dosis": "0.4-0.8 mg/h IV ajustable",
+        "via": "IV",
+        "indicacion": "Prevenir renarcotización con opioides de larga duración"
+      }
+    ],
+    "notasEnfermeria": [
+      "Al administrar naloxona, dosificar PROGRESIVAMENTE: despertar brusco puede causar agitación severa, vómito con aspiración, edema pulmonar o síndrome de abstinencia agudo.",
+      "La naloxona tiene vida media MENOR que la mayoría de opioides: vigilar renarcotización. Nunca dar de alta tras una sola dosis sin observación.",
+      "En pacientes con dependencia crónica a opioides: usar dosis menores de naloxona (0.04-0.1 mg) y titular para restaurar respiración sin precipitar abstinencia completa.",
+      "Buscar parches de fentanilo transdérmico en todo el cuerpo (pueden estar ocultos); retirarlos si se encuentran.",
+      "Documentar: sustancia sospechada, vía de consumo, hora estimada de exposición, dosis de naloxona y respuesta."
+    ]
+  },
+  {
+    "id": "proto_reaccion_transfusional",
+    "nombre": "Reacción Transfusional Aguda",
+    "abreviatura": "RTA",
+    "descripcion": "Protocolo de manejo de reacciones adversas agudas a la transfusión de hemoderivados. Incluye reacciones hemolíticas (incompatibilidad ABO), febriles no hemolíticas, alérgicas/anafilácticas, TRALI y sobrecarga circulatoria (TACO).",
+    "categoria": "otro",
+    "prioridad": "urgente",
+    "banderasRojas": [
+      "Fiebre >1°C sobre la basal durante o tras transfusión",
+      "Escalofríos intensos / rigidez",
+      "Hipotensión o hipertensión súbita",
+      "Taquicardia",
+      "Disnea / desaturación / edema pulmonar",
+      "Urticaria, prurito, angioedema",
+      "Dolor lumbar o torácico",
+      "Hemoglobinuria (orina oscura)",
+      "Sensación de muerte inminente"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-1 min",
+        "accion": "DETENER LA TRANSFUSIÓN INMEDIATAMENTE",
+        "detalles": "Clamplar la vía de transfusión pero NO retirar el acceso venoso. Mantener permeable con SF 0.9%. Verificar la identidad del paciente y la etiqueta de la bolsa de hemoderivado. Monitorizar signos vitales.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "1-5 min",
+        "accion": "Evaluación clínica y clasificación de la reacción",
+        "detalles": "Valorar: fiebre, urticaria, disnea, hipotensión, dolor. Si shock anafiláctico: epinefrina 0.3-0.5 mg IM. Si disnea con infiltrados bilaterales: sospechar TRALI. Si fiebre + hemoglobinuria: sospechar reacción hemolítica.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Hay signos de anafilaxia o reacción hemolítica?",
+          "si": "Tratamiento de emergencia: epinefrina (anafilaxia) o fluidoterapia agresiva + consulta hematología (hemolítica)",
+          "no": "Tratamiento sintomático: antihistamínicos (alergia leve), paracetamol (febril)"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "5-15 min",
+        "accion": "Tratamiento según tipo de reacción",
+        "detalles": "Febril no hemolítica: paracetamol 1g IV. Alérgica leve (urticaria): dexclorfeniramina 5 mg IV. Anafilaxia: epinefrina 0.3-0.5 mg IM + corticoides + fluidos. Hemolítica: SF 0.9% a 200 mL/h, mantener diuresis >100 mL/h, alertar UCI.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Epinefrina (anafilaxia)",
+            "dosis": "0.3-0.5 mg IM; repetir cada 5-15 min si necesario",
+            "via": "IM"
+          },
+          {
+            "nombre": "Dexclorfeniramina",
+            "dosis": "5 mg IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Hidrocortisona",
+            "dosis": "100-200 mg IV",
+            "via": "IV"
+          },
+          {
+            "nombre": "Paracetamol",
+            "dosis": "1 g IV",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "15-30 min",
+        "accion": "Estudios de laboratorio y notificación",
+        "detalles": "Enviar: muestra de sangre del paciente (nueva extracción), bolsa de hemoderivado con sistema de infusión, muestra de orina. Solicitar: Coombs directo, haptoglobina, LDH, bilirrubina, hemograma. Notificar al banco de sangre y cumplimentar formulario de reacción transfusional.",
+        "critico": false
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Monitorización y prevención de complicaciones",
+        "detalles": "Vigilar función renal: creatinina, diuresis. En reacción hemolítica: mantener diuresis >100 mL/h (furosemida si necesario). Vigilar CID: fibrinógeno, DD, plaquetas. Monitorización continua mínimo 4-6h.",
+        "critico": false
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Epinefrina",
+        "dosis": "0.3-0.5 mg IM (anafilaxia)",
+        "via": "IM",
+        "indicacion": "Reacción anafiláctica a la transfusión"
+      },
+      {
+        "nombre": "Dexclorfeniramina",
+        "dosis": "5 mg IV",
+        "via": "IV",
+        "indicacion": "Reacción alérgica leve-moderada (urticaria, prurito)"
+      },
+      {
+        "nombre": "Hidrocortisona",
+        "dosis": "100-200 mg IV",
+        "via": "IV",
+        "indicacion": "Complemento en reacciones alérgicas severas"
+      },
+      {
+        "nombre": "Paracetamol",
+        "dosis": "1 g IV",
+        "via": "IV",
+        "indicacion": "Reacción febril no hemolítica"
+      },
+      {
+        "nombre": "Furosemida",
+        "dosis": "20-40 mg IV",
+        "via": "IV",
+        "indicacion": "Mantener diuresis en reacción hemolítica o TACO"
+      }
+    ],
+    "notasEnfermeria": [
+      "Los primeros 15 minutos de transfusión son CRÍTICOS: permanecer junto al paciente y tomar signos vitales a los 0, 5 y 15 min.",
+      "NUNCA reanudar una transfusión detenida por sospecha de reacción hemolítica o anafiláctica.",
+      "Verificar SIEMPRE la identidad del paciente con doble comprobación (nombre + fecha nacimiento + pulsera) antes de iniciar.",
+      "La reacción hemolítica aguda por incompatibilidad ABO es la causa más frecuente de muerte por transfusión y es SIEMPRE un error humano prevenible.",
+      "Distinguir TRALI (edema pulmonar no cardiogénico, 6h post-transfusión) de TACO (sobrecarga circulatoria): TRALI cursa con hipotensión, TACO con hipertensión y PVC elevada."
+    ]
+  },
+  {
+    "id": "proto_acv_hemorragico",
+    "nombre": "ACV Hemorrágico",
+    "abreviatura": "HIC",
+    "descripcion": "Protocolo de manejo de la hemorragia intracerebral espontánea (no traumática). Segunda causa de ictus (15-20%). Mortalidad a 30 días del 40%. El control precoz de la presión arterial y la reversión de anticoagulación son pilares del tratamiento.",
+    "categoria": "neurologico",
+    "prioridad": "critico",
+    "banderasRojas": [
+      "Déficit neurológico focal de inicio brusco",
+      "Cefalea intensa súbita ('la peor de mi vida')",
+      "Disminución rápida del nivel de conciencia (GCS descendente)",
+      "Vómitos en escopetazo",
+      "Rigidez de nuca (si hemorragia subaracnoidea asociada)",
+      "Crisis convulsiva",
+      "Anisocoria (herniación cerebral inminente)",
+      "HTA severa (PA >220/120 mmHg)"
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "tiempo": "0-10 min",
+        "accion": "Estabilización inicial y ABC",
+        "detalles": "Asegurar vía aérea (GCS ≤8: intubar). Oxígeno para SatO2 >94%. Monitorización continua: PA, FC, SatO2, GCS. Posición: cabecera elevada 30°. Acceso venoso con SF (NO suero glucosado). Glucemia capilar urgente.",
+        "critico": true
+      },
+      {
+        "orden": 2,
+        "tiempo": "0-15 min",
+        "accion": "Neuroimagen urgente — TAC craneal SIN contraste",
+        "detalles": "TAC urgente para confirmar hemorragia y diferenciar de ictus isquémico. Determinar localización, volumen (ABC/2) y presencia de hidrocefalia o efecto masa. Angiotac si sospecha de malformación vascular o aneurisma.",
+        "critico": true,
+        "decision": {
+          "pregunta": "¿Hemorragia confirmada en TAC?",
+          "si": "Continuar protocolo de HIC: control PA + reversión anticoagulación si aplica",
+          "no": "Reevaluar: considerar protocolo de ictus isquémico o HSA"
+        }
+      },
+      {
+        "orden": 3,
+        "tiempo": "15-60 min",
+        "accion": "Control intensivo de la presión arterial",
+        "detalles": "Objetivo: PAS <140 mmHg en las primeras horas (estudio INTERACT2). Labetalol IV es primera línea. Si refractario: nicardipino en perfusión. Evitar descensos bruscos de PA >60 mmHg en la primera hora.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Labetalol",
+            "dosis": "10-20 mg IV en 1-2 min; repetir cada 10-15 min (máx 300 mg/día)",
+            "via": "IV"
+          },
+          {
+            "nombre": "Nicardipino",
+            "dosis": "5 mg/h IV, titular cada 5 min (máx 15 mg/h)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 4,
+        "tiempo": "Inmediato si aplica",
+        "accion": "Reversión de anticoagulación",
+        "detalles": "Si anticoagulación con warfarina: vitamina K 10 mg IV + CCP (concentrado de complejo protrombínico) 25-50 UI/kg. Si ACODs (dabigatrán): idarucizumab 5 g IV. Si ACODs anti-Xa (rivaroxabán, apixabán): andexanet alfa o CCP. Objetivo: INR <1.3 en <60 min.",
+        "critico": true,
+        "farmacos": [
+          {
+            "nombre": "Vitamina K (fitomenadiona)",
+            "dosis": "10 mg IV lento (en 10-20 min)",
+            "via": "IV"
+          },
+          {
+            "nombre": "CCP (Concentrado Complejo Protrombínico)",
+            "dosis": "25-50 UI/kg IV según INR",
+            "via": "IV"
+          },
+          {
+            "nombre": "Idarucizumab (si dabigatrán)",
+            "dosis": "5 g IV en 2 bolos de 2.5 g",
+            "via": "IV"
+          },
+          {
+            "nombre": "Ácido tranexámico",
+            "dosis": "1 g IV en 10 min (primeras 4.5h)",
+            "via": "IV"
+          }
+        ]
+      },
+      {
+        "orden": 5,
+        "tiempo": "Continuo",
+        "accion": "Prevención y tratamiento de complicaciones",
+        "detalles": "Profilaxis anticonvulsiva si crisis (levetiracetam 1 g IV). Profilaxis de TVP: compresión neumática intermitente (NO heparina en primeras 24-48h). Normoglucemia (140-180 mg/dL). Normotermia (tratar fiebre agresivamente). Monitorización neurológica: GCS cada hora.",
+        "critico": false
+      },
+      {
+        "orden": 6,
+        "tiempo": "Variable",
+        "accion": "Valoración neuroquirúrgica",
+        "detalles": "Indicaciones quirúrgicas: hematoma cerebeloso >3 cm con deterioro, hidrocefalia obstructiva (drenaje ventricular), hematoma lobar superficial >30 mL con deterioro. Los hematomas profundos (ganglios basales) rara vez se benefician de cirugía.",
+        "critico": false,
+        "decision": {
+          "pregunta": "¿Hematoma cerebeloso >3 cm, hidrocefalia o deterioro rápido?",
+          "si": "Neurocirugía urgente: evacuación o DVE",
+          "no": "Manejo conservador en UCI neurológica"
+        }
+      }
+    ],
+    "resumenFarmacos": [
+      {
+        "nombre": "Labetalol",
+        "dosis": "10-20 mg IV en bolo, escalar cada 10-15 min",
+        "via": "IV",
+        "indicacion": "Control de HTA — primera línea"
+      },
+      {
+        "nombre": "Nicardipino",
+        "dosis": "5-15 mg/h IV en perfusión",
+        "via": "IV",
+        "indicacion": "Control de HTA refractaria a labetalol"
+      },
+      {
+        "nombre": "Vitamina K",
+        "dosis": "10 mg IV",
+        "via": "IV",
+        "indicacion": "Reversión de warfarina (efecto en 6-24h)"
+      },
+      {
+        "nombre": "CCP",
+        "dosis": "25-50 UI/kg IV",
+        "via": "IV",
+        "indicacion": "Reversión rápida de warfarina/ACODs anti-Xa"
+      },
+      {
+        "nombre": "Idarucizumab",
+        "dosis": "5 g IV",
+        "via": "IV",
+        "indicacion": "Reversión específica de dabigatrán"
+      },
+      {
+        "nombre": "Levetiracetam",
+        "dosis": "1 g IV",
+        "via": "IV",
+        "indicacion": "Anticonvulsivante si crisis epiléptica"
+      },
+      {
+        "nombre": "Ácido tranexámico",
+        "dosis": "1 g IV en 10 min",
+        "via": "IV",
+        "indicacion": "Reducir expansión del hematoma (primeras 4.5h)"
+      }
+    ],
+    "notasEnfermeria": [
+      "Monitorización neurológica estricta: GCS, pupilas y focalidad cada hora las primeras 24h. Cualquier descenso de GCS ≥2 puntos: alertar inmediatamente.",
+      "Control de PA cada 15 min durante fase aguda. Evitar PA extremas: tanto la HTA (expansión hematoma) como la hipotensión (isquemia perilesional) son deletéreas.",
+      "Cabecera elevada 30° para favorecer retorno venoso cerebral. Evitar flexión del cuello (impide drenaje yugular).",
+      "En pacientes anticoagulados: la reversión tiene PRIORIDAD incluso antes del TAC si hay alta sospecha clínica.",
+      "Tratar la fiebre agresivamente: cada grado >37°C empeora el pronóstico neurológico. Paracetamol 1g/6h + medidas físicas."
+    ]
   }
 ]

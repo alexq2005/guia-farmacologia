@@ -35,6 +35,7 @@ export const PROTOCOL_CATEGORY_LABELS: Record<ProtocolCategory, string> = {
   sepsis: 'Sepsis',
   trauma: 'Trauma',
   otro: 'Otros',
+  obstetrico: 'Obstétrico',
 };
 
 export const GLOSSARY_CATEGORY_LABELS: Record<string, string> = {
@@ -56,4 +57,8 @@ export const SCALE_CATEGORY_LABELS: Record<string, string> = {
   trombosis: 'Trombosis',
   postanestesia: 'Post-anestesia',
   asa: 'Estado Físico',
+  caidas: 'Riesgo de Caídas',
+  funcional: 'Capacidad Funcional',
+  dolor_pediatrico: 'Dolor Pediátrico',
+  nutricion: 'Nutrición',
 };

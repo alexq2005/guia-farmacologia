@@ -39,6 +39,7 @@ function calculateResult(formulaId: string, values: Record<string, string>): str
       }
       case 'f11': return `${(nums.unidades / nums.concentracion).toFixed(2)} mL`;
       case 'f13': return `${((nums.C1 * nums.V1) / nums.C2).toFixed(1)} mL total`;
+      case 'f14': return `${(nums.CpDeseada * nums.Vd * nums.peso / nums.F).toFixed(1)} mg`;
       case 'f15': return `${(nums.peso / (nums.talla * nums.talla)).toFixed(1)} kg/m²`;
       case 'f16': {
         const isMale = nums.sexo !== 0;

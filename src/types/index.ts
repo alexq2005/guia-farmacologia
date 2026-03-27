@@ -252,7 +252,7 @@ export interface ClinicalScale {
   abreviatura: string;
   descripcion: string;
   tipo: ScaleType;
-  categoria: 'neurologia' | 'neonatologia' | 'riesgo_ulceras' | 'sepsis' | 'via_aerea' | 'sedacion' | 'dolor' | 'trombosis' | 'postanestesia' | 'asa';
+  categoria: 'neurologia' | 'neonatologia' | 'riesgo_ulceras' | 'sepsis' | 'via_aerea' | 'sedacion' | 'dolor' | 'trombosis' | 'postanestesia' | 'asa' | 'caidas' | 'funcional' | 'dolor_pediatrico' | 'nutricion';
   componentes: ScaleComponent[];
   interpretaciones: ScaleInterpretation[];
   rangoTotal: [number, number];
@@ -287,7 +287,7 @@ export interface LabValue {
 }
 
 /** Protocolo de emergencia */
-export type ProtocolCategory = 'cardiaco' | 'respiratorio' | 'neurologico' | 'metabolico' | 'sepsis' | 'trauma' | 'otro';
+export type ProtocolCategory = 'cardiaco' | 'respiratorio' | 'neurologico' | 'metabolico' | 'sepsis' | 'trauma' | 'otro' | 'obstetrico';
 export type ProtocolPriority = 'critico' | 'urgente' | 'emergente';
 
 export interface ProtocolStep {

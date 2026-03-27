@@ -13,7 +13,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import { useFadeIn } from '../utils/animations';
-import { neuCard, neuCardSubtle, neuInset } from '../utils/neumorphism';
+import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 import formulas from '../data/formulas.json';
 import pathologies from '../data/pathologies.json';
 import scalesData from '../data/clinical_scales.json';
@@ -74,106 +74,79 @@ export function ToolsScreen({ navigation }: Props) {
     if (text) setImportText(text);
   };
 
-  const toolSections = [
+  type ToolTarget = 'favorites' | 'notes' | 'dashboard' | 'quiz' | 'comparison' | 'pathologies' | 'interactions' | 'scales' | 'labValues' | 'emergencyProtocols' | 'nursing' | 'calculators' | 'parenteralGuide' | 'glossary';
+
+  const toolGroups: { sectionIcon: string; sectionTitle: string; sectionColor: string; tools: { icon: string; title: string; subtitle: string; color: string; target: ToolTarget }[] }[] = [
     {
-      icon: 'heart-outline',
-      title: 'Mis Favoritos',
-      subtitle: 'Todos tus fármacos marcados como favoritos',
-      color: '#E91E63',
-      target: 'favorites' as const,
+      sectionIcon: 'clipboard-text-outline',
+      sectionTitle: 'Referencia Clínica',
+      sectionColor: '#2563EB',
+      tools: [
+        { icon: 'calculator-variant-outline', title: 'Calculadoras Clínicas', subtitle: '15 calculadoras interactivas con interpretación', color: '#0891B2', target: 'calculators' },
+        { icon: 'chart-timeline-variant-shimmer', title: 'Escalas Clínicas', subtitle: `${scalesData.length} escalas interactivas de valoración`, color: '#7C3AED', target: 'scales' },
+        { icon: 'flask-outline', title: 'Valores de Laboratorio', subtitle: `${labValuesData.length} valores de referencia clínica`, color: '#2563EB', target: 'labValues' },
+        { icon: 'hospital-box-outline', title: 'Protocolos de Emergencia', subtitle: `${protocolsData.length} protocolos con fármacos y dosis`, color: '#DC2626', target: 'emergencyProtocols' },
+      ],
     },
     {
-      icon: 'note-text-outline',
-      title: 'Mis Notas',
-      subtitle: 'Notas personales en fármacos',
-      color: '#F59E0B',
-      target: 'notes' as const,
+      sectionIcon: 'pill',
+      sectionTitle: 'Farmacología',
+      sectionColor: '#7C3AED',
+      tools: [
+        { icon: 'scale-balance', title: 'Comparador de Fármacos', subtitle: 'Compara hasta 3 fármacos lado a lado', color: '#0891B2', target: 'comparison' },
+        { icon: 'swap-horizontal-bold', title: 'Verificar Interacciones', subtitle: 'Comprueba interacciones entre fármacos', color: '#7C3AED', target: 'interactions' },
+        { icon: 'iv-bag', title: 'Guía Parenteral', subtitle: 'Administración de medicamentos por vía parenteral', color: '#0891B2', target: 'parenteralGuide' },
+        { icon: 'book-alphabet', title: 'Glosario Farmacológico', subtitle: 'Términos, abreviaturas y definiciones', color: '#7C3AED', target: 'glossary' },
+      ],
     },
     {
-      icon: 'chart-arc',
-      title: 'Dashboard de Estudio',
-      subtitle: 'Progreso, estadísticas y racha de estudio',
-      color: colors.quiz,
-      target: 'dashboard' as const,
+      sectionIcon: 'stethoscope',
+      sectionTitle: 'Enfermería',
+      sectionColor: '#059669',
+      tools: [
+        { icon: 'account-heart-outline', title: 'Cuidados de Enfermería', subtitle: '10 correctos, valoración, alto riesgo, procedimientos', color: colors.nursing || '#E91E63', target: 'nursing' },
+        { icon: 'stethoscope', title: 'Patologías Clínicas', subtitle: `${pathologies.length} patologías con fármacos vinculados`, color: '#0F766E', target: 'pathologies' },
+      ],
     },
     {
-      icon: 'head-question-outline',
-      title: 'Modo Estudio',
-      subtitle: 'Test interactivo de farmacología',
-      color: colors.quiz,
-      target: 'quiz' as const,
+      sectionIcon: 'school-outline',
+      sectionTitle: 'Estudio',
+      sectionColor: colors.quiz,
+      tools: [
+        { icon: 'head-question-outline', title: 'Modo Estudio (Quiz)', subtitle: 'Test interactivo de farmacología', color: colors.quiz, target: 'quiz' },
+        { icon: 'chart-arc', title: 'Dashboard de Estudio', subtitle: 'Progreso, estadísticas y racha de estudio', color: colors.quiz, target: 'dashboard' },
+      ],
     },
     {
-      icon: 'scale-balance',
-      title: 'Comparador de Fármacos',
-      subtitle: 'Compara hasta 3 fármacos lado a lado',
-      color: '#0891B2',
-      target: 'comparison' as const,
-    },
-    {
-      icon: 'stethoscope',
-      title: 'Patologías Clínicas',
-      subtitle: `${pathologies.length} patologías con fármacos vinculados`,
-      color: '#0F766E',
-      target: 'pathologies' as const,
-    },
-    {
-      icon: 'swap-horizontal-bold',
-      title: 'Verificar Interacciones',
-      subtitle: 'Comprueba interacciones entre fármacos',
-      color: '#7C3AED',
-      target: 'interactions' as const,
-    },
-    {
-      icon: 'chart-timeline-variant-shimmer',
-      title: 'Escalas Clínicas',
-      subtitle: `${scalesData.length} escalas interactivas de valoración`,
-      color: '#7C3AED',
-      target: 'scales' as const,
-    },
-    {
-      icon: 'flask-outline',
-      title: 'Valores de Laboratorio',
-      subtitle: `${labValuesData.length} valores de referencia clínica`,
-      color: '#2563EB',
-      target: 'labValues' as const,
-    },
-    {
-      icon: 'hospital-box-outline',
-      title: 'Protocolos de Emergencia',
-      subtitle: `${protocolsData.length} protocolos con fármacos y dosis`,
-      color: '#DC2626',
-      target: 'emergencyProtocols' as const,
-    },
-    {
-      icon: 'account-heart-outline',
-      title: 'Cuidados de Enfermería',
-      subtitle: '10 correctos, valoración, alto riesgo, procedimientos',
-      color: colors.nursing || '#E91E63',
-      target: 'nursing' as const,
-    },
-    {
-      icon: 'calculator-variant-outline',
-      title: 'Calculadoras Clínicas',
-      subtitle: '15 calculadoras interactivas con interpretación',
-      color: '#0891B2',
-      target: 'calculators' as const,
-    },
-    {
-      icon: 'iv-bag',
-      title: 'Guía Parenteral',
-      subtitle: 'Administración de medicamentos por vía parenteral',
-      color: '#0891B2',
-      target: 'parenteralGuide' as const,
-    },
-    {
-      icon: 'book-alphabet',
-      title: 'Glosario Farmacológico',
-      subtitle: 'Términos, abreviaturas y definiciones',
-      color: '#7C3AED',
-      target: 'glossary' as const,
+      sectionIcon: 'account-outline',
+      sectionTitle: 'Personal',
+      sectionColor: '#E91E63',
+      tools: [
+        { icon: 'heart-outline', title: 'Mis Favoritos', subtitle: 'Todos tus fármacos marcados como favoritos', color: '#E91E63', target: 'favorites' },
+        { icon: 'note-text-outline', title: 'Mis Notas', subtitle: 'Notas personales en fármacos', color: '#F59E0B', target: 'notes' },
+      ],
     },
   ];
+
+  const navigateTo = (target: ToolTarget) => {
+    const routes: Record<ToolTarget, () => void> = {
+      favorites: () => navigation.navigate('AllFavorites'),
+      notes: () => navigation.navigate('AllNotes'),
+      dashboard: () => navigation.navigate('Dashboard'),
+      quiz: () => navigation.navigate('QuizScreen'),
+      comparison: () => navigation.navigate('DrugComparison'),
+      glossary: () => navigation.navigate('GlossaryScreen'),
+      nursing: () => navigation.navigate('NursingCare'),
+      pathologies: () => navigation.navigate('PathologiesScreen'),
+      interactions: () => navigation.navigate('InteractionChecker'),
+      calculators: () => navigation.navigate('Calculators'),
+      scales: () => navigation.navigate('ClinicalScales'),
+      labValues: () => navigation.navigate('LabValues'),
+      emergencyProtocols: () => navigation.navigate('EmergencyProtocols'),
+      parenteralGuide: () => navigation.navigate('ParenteralGuide'),
+    };
+    routes[target]();
+  };
 
   // Group formulas by category
   const groupedFormulas: Record<string, Formula[]> = {};
@@ -199,51 +172,50 @@ export function ToolsScreen({ navigation }: Props) {
       </LinearGradient>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* Tool Cards */}
-        <View style={styles.toolsGrid}>
-          {toolSections.map((tool, i) => (
-            <TouchableOpacity
-              key={i}
-              style={[styles.toolCard, { borderLeftColor: tool.color }]}
-              onPress={() => {
-                if (tool.target === 'favorites') navigation.navigate('AllFavorites');
-                else if (tool.target === 'notes') navigation.navigate('AllNotes');
-                else if (tool.target === 'dashboard') navigation.navigate('Dashboard');
-                else if (tool.target === 'quiz') navigation.navigate('QuizScreen');
-                else if (tool.target === 'comparison') navigation.navigate('DrugComparison');
-                else if (tool.target === 'glossary') navigation.navigate('GlossaryScreen');
-                else if (tool.target === 'nursing') navigation.navigate('NursingCare');
-                else if (tool.target === 'pathologies') navigation.navigate('PathologiesScreen');
-                else if (tool.target === 'interactions') navigation.navigate('InteractionChecker');
-                else if (tool.target === 'calculators') navigation.navigate('Calculators');
-                else if (tool.target === 'scales') navigation.navigate('ClinicalScales');
-                else if (tool.target === 'labValues') navigation.navigate('LabValues');
-                else if (tool.target === 'emergencyProtocols') navigation.navigate('EmergencyProtocols');
-                else if (tool.target === 'parenteralGuide') navigation.navigate('ParenteralGuide');
-              }}
-              activeOpacity={0.7}
-            >
-              <View style={[styles.toolIconBg, { backgroundColor: tool.color + '15' }]}>
-                <MaterialCommunityIcons name={tool.icon} size={26} color={tool.color} />
+        {/* Grouped Tool Sections */}
+        {toolGroups.map((group, gi) => (
+          <View key={gi} style={styles.sectionGroup}>
+            <View style={styles.sectionHeader}>
+              <View style={[styles.sectionIconBg, { backgroundColor: group.sectionColor + '15' }]}>
+                <MaterialCommunityIcons name={group.sectionIcon} size={18} color={group.sectionColor} />
               </View>
-              <View style={styles.toolText}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text style={styles.toolTitle}>{tool.title}</Text>
-                  {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) && (
-                    <MaterialCommunityIcons name="lock-outline" size={14} color={colors.textLight} style={{ marginLeft: 4 }} />
-                  )}
-                </View>
-                <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
-              </View>
-              <MaterialCommunityIcons name="chevron-right" size={22} color={colors.textLight} />
-            </TouchableOpacity>
-          ))}
-        </View>
+              <Text style={styles.sectionHeaderTitle}>{group.sectionTitle}</Text>
+            </View>
+            <View style={styles.sectionCards}>
+              {group.tools.map((tool, ti) => (
+                <TouchableOpacity
+                  key={ti}
+                  style={[styles.toolCard, { borderLeftColor: tool.color }]}
+                  onPress={() => navigateTo(tool.target)}
+                  activeOpacity={0.7}
+                >
+                  <View style={[styles.toolIconBg, { backgroundColor: tool.color + '15' }]}>
+                    <MaterialCommunityIcons name={tool.icon} size={26} color={tool.color} />
+                  </View>
+                  <View style={styles.toolText}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                      <Text style={styles.toolTitle}>{tool.title}</Text>
+                      {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) && (
+                        <MaterialCommunityIcons name="lock-outline" size={14} color={colors.textLight} style={{ marginLeft: 4 }} />
+                      )}
+                    </View>
+                    <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
+                  </View>
+                  <MaterialCommunityIcons name="chevron-right" size={22} color={colors.textLight} />
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        ))}
 
         {/* Backup Section */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
-          <MaterialCommunityIcons name="cloud-sync-outline" size={20} color={colors.text} style={{ marginRight: 6 }} />
-          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Mis Datos</Text>
+        <View style={styles.sectionGroup}>
+          <View style={styles.sectionHeader}>
+            <View style={[styles.sectionIconBg, { backgroundColor: colors.success + '15' }]}>
+              <MaterialCommunityIcons name="cloud-sync-outline" size={18} color={colors.success} />
+            </View>
+            <Text style={styles.sectionHeaderTitle}>Mis Datos</Text>
+          </View>
         </View>
         <View style={styles.backupSection}>
           <TouchableOpacity style={[styles.backupButton, { backgroundColor: colors.success + '15', borderColor: colors.success + '30' }]} onPress={handleExport} activeOpacity={0.7}>
@@ -284,9 +256,13 @@ export function ToolsScreen({ navigation }: Props) {
         </View>
 
         {/* Formula Quick Access */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
-          <MaterialCommunityIcons name="function-variant" size={20} color={colors.text} style={{ marginRight: 6 }} />
-          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Fórmulas de Cálculo</Text>
+        <View style={styles.sectionGroup}>
+          <View style={styles.sectionHeader}>
+            <View style={[styles.sectionIconBg, { backgroundColor: '#0891B2' + '15' }]}>
+              <MaterialCommunityIcons name="function-variant" size={18} color="#0891B2" />
+            </View>
+            <Text style={styles.sectionHeaderTitle}>Fórmulas de Cálculo</Text>
+          </View>
         </View>
         {Object.entries(groupedFormulas).map(([cat, fms]) => (
           <View key={cat} style={styles.formulaGroup}>
@@ -315,9 +291,13 @@ export function ToolsScreen({ navigation }: Props) {
         ))}
 
         {/* Routes Quick Access */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20, marginBottom: 10 }}>
-          <MaterialCommunityIcons name="directions-fork" size={20} color={colors.text} style={{ marginRight: 6 }} />
-          <Text style={[styles.sectionTitle, { marginHorizontal: 0, marginTop: 0, marginBottom: 0 }]}>Vías de Administración</Text>
+        <View style={styles.sectionGroup}>
+          <View style={styles.sectionHeader}>
+            <View style={[styles.sectionIconBg, { backgroundColor: colors.primary + '15' }]}>
+              <MaterialCommunityIcons name="directions-fork" size={18} color={colors.primary} />
+            </View>
+            <Text style={styles.sectionHeaderTitle}>Vías de Administración</Text>
+          </View>
         </View>
         <View style={styles.routesGrid}>
           {([
@@ -367,6 +347,22 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
   headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   scroll: { flex: 1 },
+  sectionGroup: { marginTop: 16 },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 10,
+  },
+  sectionIconBg: {
+    width: 30, height: 30, borderRadius: 8,
+    alignItems: 'center' as const, justifyContent: 'center' as const,
+    marginRight: 8,
+  },
+  sectionHeaderTitle: {
+    fontSize: 16, fontWeight: '700', color: colors.text,
+  },
+  sectionCards: { paddingHorizontal: 16, gap: 8 },
   toolsGrid: { padding: 16, gap: 10 },
   toolCard: {
     flexDirection: 'row',

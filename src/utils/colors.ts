@@ -178,6 +178,10 @@ export const SCALE_COLORS: Record<string, string> = {
   'trombosis': '#991B1B',
   'postanestesia': '#059669',
   'asa': '#2563EB',
+  'caidas': '#B45309',
+  'funcional': '#0D9488',
+  'dolor_pediatrico': '#EC4899',
+  'nutricion': '#16A34A',
 };
 
 export const SCALE_ICONS: Record<string, string> = {
@@ -191,6 +195,10 @@ export const SCALE_ICONS: Record<string, string> = {
   'trombosis': 'water-outline',
   'postanestesia': 'hospital-building',
   'asa': 'medical-bag',
+  'caidas': 'slip-hazard',
+  'funcional': 'human-walker',
+  'dolor_pediatrico': 'baby-face-outline',
+  'nutricion': 'food-apple-outline',
 };
 
 export const LAB_COLORS: Record<string, string> = {
@@ -225,6 +233,7 @@ export const PROTOCOL_COLORS: Record<string, string> = {
   'sepsis': '#059669',
   'trauma': '#EA580C',
   'otro': '#6B7280',
+  'obstetrico': '#DB2777',
 };
 
 export const PROTOCOL_ICONS: Record<string, string> = {
@@ -235,6 +244,7 @@ export const PROTOCOL_ICONS: Record<string, string> = {
   'sepsis': 'virus-outline',
   'trauma': 'water-outline',
   'otro': 'hospital-building',
+  'obstetrico': 'human-pregnant',
 };
 
 export const PATHOLOGY_ICONS: Record<string, string> = {

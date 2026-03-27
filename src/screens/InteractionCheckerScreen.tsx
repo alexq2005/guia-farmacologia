@@ -69,6 +69,14 @@ function findInteractions(drug1: Drug, drug2: Drug): InteractionResult | null {
     { families: ['aminoglucósido', 'diurético de asa'], severity: 'alta' as const, msg: 'Aminoglucósidos + Diuréticos de asa: aumento de nefrotoxicidad y ototoxicidad' },
     { families: ['benzodiacepina', 'opioide'], severity: 'alta' as const, msg: 'Benzodiacepinas + Opioides: riesgo de depresión respiratoria severa y muerte' },
     { families: ['warfarina', 'aine'], severity: 'alta' as const, msg: 'Warfarina + AINEs: riesgo muy alto de hemorragia' },
+    { families: ['digoxina', 'amiodarona'], severity: 'alta' as const, msg: 'Digoxina + Amiodarona: aumento de niveles de digoxina con riesgo de toxicidad (bradicardia, arritmias, náuseas). Reducir dosis de digoxina un 50%' },
+    { families: ['metotrexato', 'aine'], severity: 'alta' as const, msg: 'Metotrexato + AINEs: reducción de la excreción renal de metotrexato con riesgo de toxicidad severa (pancitopenia, mucositis)' },
+    { families: ['litio', 'aine'], severity: 'alta' as const, msg: 'Litio + AINEs: aumento de niveles plasmáticos de litio por reducción de la excreción renal. Riesgo de toxicidad por litio' },
+    { families: ['litio', 'ieca'], severity: 'media' as const, msg: 'Litio + IECA: reducción de la excreción renal de litio. Monitorizar niveles de litio y función renal' },
+    { families: ['fluconazol', 'warfarina'], severity: 'alta' as const, msg: 'Fluconazol + Warfarina: inhibición del metabolismo de warfarina (CYP2C9). Riesgo elevado de hemorragia. Monitorizar INR estrechamente' },
+    { families: ['antipsicótico', 'qtc'], severity: 'alta' as const, msg: 'Antipsicóticos + fármacos que prolongan QTc: riesgo de prolongación QT aditiva y torsades de pointes. Monitorizar ECG' },
+    { families: ['digoxina', 'tiazida'], severity: 'media' as const, msg: 'Digoxina + Tiazidas: la hipopotasemia inducida por tiazidas aumenta la sensibilidad a la toxicidad digitálica. Monitorizar K+' },
+    { families: ['teofilina', 'fluoroquinolona'], severity: 'media' as const, msg: 'Teofilina + Fluoroquinolonas (ciprofloxacino): inhibición del metabolismo de teofilina. Riesgo de toxicidad (convulsiones, arritmias)' },
   ];
 
   for (const combo of dangerousCombos) {

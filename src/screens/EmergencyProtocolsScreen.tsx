@@ -22,7 +22,7 @@ interface Props {
 }
 
 const ALL_CATEGORIES: ProtocolCategory[] = [
-  'cardiaco', 'respiratorio', 'neurologico', 'metabolico', 'sepsis', 'trauma', 'otro',
+  'cardiaco', 'respiratorio', 'neurologico', 'metabolico', 'sepsis', 'trauma', 'obstetrico', 'otro',
 ];
 
 const PRIORITY_CONFIG = {

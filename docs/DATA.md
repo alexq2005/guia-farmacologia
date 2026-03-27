@@ -2,52 +2,52 @@
 
 ## Archivos JSON
 
-Todos los datos clinicos estan en `src/data/` como archivos JSON embebidos. No se usa backend ni API externa.
+Todos los datos clínicos están en `src/data/` como archivos JSON embebidos. No se usa backend ni API externa.
 
-| Archivo | Registros | Descripcion |
+| Archivo | Registros | Descripción |
 |---------|-----------|-------------|
-| `drugs.json` | 1,781 farmacos | Base de datos principal farmacologica |
-| `categories.json` | 14 unidades, 60+ capitulos | Clasificacion terapeutica |
-| `pathologies.json` | 60 patologias | Enfermedades con farmacos vinculados |
+| `drugs.json` | 1,781 fármacos | Base de datos principal farmacológica |
+| `categories.json` | 14 unidades, 60+ capítulos | Clasificación terapéutica |
+| `pathologies.json` | 60 patologías | Enfermedades con fármacos vinculados |
 | `emergency_protocols.json` | 14 protocolos | ACLS, anafilaxia, IAM, ACV, sepsis... |
 | `clinical_scales.json` | 13 escalas | Glasgow, APGAR, Norton, Braden, NEWS2... |
-| `lab_values.json` | 53 valores | Rangos por sexo y pediatricos |
-| `parenteral_guide.json` | Guia general | Introduccion a via parenteral |
-| `glossary.json` | 65+ terminos | Terminologia medica |
-| `formulas.json` | 15 formulas | Calculos farmaceuticos |
-| `routes.json` | 16 vias | Vias de administracion |
-| `emergency_drugs.json` | Farmacos criticos | Dosificacion rapida de emergencia |
-| `antidotes.json` | Antidotos | Relacion toxico-antidoto |
-| `nursing_care.json` | 10+ protocolos | Cuidados de enfermeria por tipo |
-| `iv_compatibilities.json` | Matriz | Compatibilidad farmaco-farmaco IV |
+| `lab_values.json` | 53 valores | Rangos por sexo y pediátricos |
+| `parenteral_guide.json` | Guía general | Introducción a vía parenteral |
+| `glossary.json` | 65+ términos | Terminología médica |
+| `formulas.json` | 15 fórmulas | Cálculos farmacéuticos |
+| `routes.json` | 16 vías | Vías de administración |
+| `emergency_drugs.json` | Fármacos críticos | Dosificación rápida de emergencia |
+| `antidotes.json` | Antídotos | Relación tóxico-antídoto |
+| `nursing_care.json` | 10+ protocolos | Cuidados de enfermería por tipo |
+| `iv_compatibilities.json` | Matriz | Compatibilidad fármaco-fármaco IV |
 
 ## Interfaz Drug (Principal)
 
 ```typescript
 interface Drug {
-  // === Identificacion ===
-  id: string;                          // "d_0001" - ID unico
-  nombre: string;                      // Nombre generico principal
-  nombreGenerico: string;              // Nombre generico (normalizado)
+  // === Identificación ===
+  id: string;                          // "d_0001" - ID único
+  nombre: string;                      // Nombre genérico principal
+  nombreGenerico: string;              // Nombre genérico (normalizado)
   nombresComerciales: string[];        // Marcas comerciales
-  familia: string;                     // Familia farmacologica
+  familia: string;                     // Familia farmacológica
 
-  // === Clasificacion ===
-  clasificacion: string;               // Clasificacion general
-  unidadId: string;                    // Unidad terapeutica (c01-c14)
-  capituloId: string;                  // Capitulo dentro de la unidad
+  // === Clasificación ===
+  clasificacion: string;               // Clasificación general
+  unidadId: string;                    // Unidad terapéutica (c01-c14)
+  capituloId: string;                  // Capítulo dentro de la unidad
   grupoTerapeutico?: string;           // ATC Level 1 (ej: "Sistema Cardiovascular")
   grupoFarmacologico?: string;         // Grupo por mecanismo (ej: "IECA", "HBPM")
 
-  // === Informacion Clinica ===
-  mecanismoAccion: string;             // Como actua el farmaco
-  indicaciones: string[];              // Para que se usa
-  contraindicaciones: string[];        // Cuando NO usar
+  // === Información Clínica ===
+  mecanismoAccion: string;             // Cómo actúa el fármaco
+  indicaciones: string[];              // Para qué se usa
+  contraindicaciones: string[];        // Cuándo NO usar
   efectosAdversos: string[];           // Efectos secundarios
-  interacciones: string[];             // Interacciones con otros farmacos
+  interacciones: string[];             // Interacciones con otros fármacos
 
-  // === Dosificacion ===
-  viaAdministracion: RouteOfAdministration[];  // Vias (oral, IV, IM...)
+  // === Dosificación ===
+  viaAdministracion: RouteOfAdministration[];  // Vías (oral, IV, IM...)
   dosis: {
     adulto: string;
     pediatrico?: string;
@@ -58,13 +58,13 @@ interface Drug {
   presentaciones: string[];            // Formas disponibles
 
   // === Seguridad ===
-  embarazo: PregnancyCategory;         // Categoria FDA (A, B, C, D, X)
+  embarazo: PregnancyCategory;         // Categoría FDA (A, B, C, D, X)
   lactancia: string;                   // Seguridad en lactancia
 
-  // === Enfermeria ===
-  cuidadosEnfermeria: string[];        // Cuidados especificos
+  // === Enfermería ===
+  cuidadosEnfermeria: string[];        // Cuidados específicos
 
-  // === Farmacocinetica (opcional) ===
+  // === Farmacocinética (opcional) ===
   farmacocinetica?: {
     absorcion?: string;
     distribucion?: string;
@@ -79,7 +79,7 @@ interface Drug {
   // === Almacenamiento ===
   almacenamiento?: string;
 
-  // === Administracion Parenteral (opcional) ===
+  // === Administración Parenteral (opcional) ===
   preparacionParenteral?: {
     reconstitucion?: string;
     dilucion?: string;
@@ -87,11 +87,11 @@ interface Drug {
     velocidadAdministracion?: string;
     estabilidad?: string;
     solucionesCompatibles?: {
-      ssf?: boolean | string;          // Suero salino fisiologico (NaCl 0.9%)
+      ssf?: boolean | string;          // Suero salino fisiológico (NaCl 0.9%)
       sg5?: boolean | string;          // Suero glucosado 5%
       otras?: string;
     };
-    compatibilidadNPT?: {              // Nutricion parenteral total
+    compatibilidadNPT?: {              // Nutrición parenteral total
       tresEnUno?: string;
       dosEnUno?: string;
       observaciones?: string;
@@ -101,7 +101,7 @@ interface Drug {
     observaciones?: string;
   };
 
-  // === Sobredosificacion (opcional) ===
+  // === Sobredosificación (opcional) ===
   riesgosSobremedicacion?: {
     descripcion: string;
     efectos: string[];
@@ -109,8 +109,8 @@ interface Drug {
     alerta?: string;
   };
 
-  // === Busqueda (generado en runtime) ===
-  searchText?: string;                 // Deprecated: se genera via buildSearchText()
+  // === Búsqueda (generado en runtime) ===
+  searchText?: string;                 // Deprecated: se genera vía buildSearchText()
 }
 ```
 
@@ -126,7 +126,7 @@ type RouteOfAdministration =
   | 'intratecal' | 'epidural' | 'vaginal' | 'intradermica';
 ```
 
-## Categorias (categories.json)
+## Categorías (categories.json)
 
 ```typescript
 interface Unit {
@@ -137,43 +137,43 @@ interface Unit {
 
 interface Chapter {
   id: string;        // "c01_01", "c01_02"...
-  nombre: string;    // "Antihipertensivos", "Antiarritmicos"...
+  nombre: string;    // "Antihipertensivos", "Antiarrítmicos"...
   drugCount: number;
 }
 ```
 
-### Unidades Terapeuticas (14)
+### Unidades Terapéuticas (14)
 
-| ID | Nombre | Ejemplo de capitulos |
+| ID | Nombre | Ejemplo de capítulos |
 |----|--------|---------------------|
-| c01 | Sistema Cardiovascular | Antihipertensivos, Antiarritmicos, Anticoagulantes |
-| c02 | Sistema Respiratorio | Broncodilatadores, Antitusigenos |
-| c03 | Sistema Nervioso | Analgesicos, Anestesicos, Antipsicoticos |
-| c04 | Sistema Digestivo | Antiacidos, Antiemeticos, Laxantes |
-| c05 | Antiinfecciosos | Antibioticos, Antivirales, Antifungicos |
-| c06 | Sistema Endocrino | Antidiabeticos, Tiroides, Corticoides |
-| c07 | Sistema Musculoesqueletico | AINEs, Relajantes musculares |
-| c08 | Sistema Genitourinario | Diureticos, Uteroinhibidores |
-| c09 | Dermatologia | Antifungicos topicos, Corticoides topicos |
-| c10 | Oftalmologia/ORL | Colirios, Oticos |
-| c11 | Oncologia | Antineoplasicos, Inmunosupresores |
-| c12 | Sangre | Antianemicos, Factores de coagulacion |
-| c13 | Vacunas/Inmunologia | Vacunas, Inmunoglobulinas |
-| c14 | Otros | Vitaminas, Minerales, Antidotos |
+| c01 | Sistema Cardiovascular | Antihipertensivos, Antiarrítmicos, Anticoagulantes |
+| c02 | Sistema Respiratorio | Broncodilatadores, Antitusígenos |
+| c03 | Sistema Nervioso | Analgésicos, Anestésicos, Antipsicóticos |
+| c04 | Sistema Digestivo | Antiácidos, Antieméticos, Laxantes |
+| c05 | Antiinfecciosos | Antibióticos, Antivirales, Antifúngicos |
+| c06 | Sistema Endocrino | Antidiabéticos, Tiroides, Corticoides |
+| c07 | Sistema Musculoesquelético | AINEs, Relajantes musculares |
+| c08 | Sistema Genitourinario | Diuréticos, Uteroinhibidores |
+| c09 | Dermatología | Antifúngicos tópicos, Corticoides tópicos |
+| c10 | Oftalmología/ORL | Colirios, Óticos |
+| c11 | Oncología | Antineoplásicos, Inmunosupresores |
+| c12 | Sangre | Antianémicos, Factores de coagulación |
+| c13 | Vacunas/Inmunología | Vacunas, Inmunoglobulinas |
+| c14 | Otros | Vitaminas, Minerales, Antídotos |
 
-## Patologias (pathologies.json)
+## Patologías (pathologies.json)
 
 ```typescript
 interface Pathology {
   id: string;
-  nombre: string;           // "Hipertension Arterial"
+  nombre: string;           // "Hipertensión Arterial"
   descripcion: string;
-  signos: string[];          // Signos clinicos
+  signos: string[];          // Signos clínicos
   sintomas: string[];
   diagnostico: string[];
   tratamiento: string;
   cuidadosEnfermeria: string[];
-  linkedDrugs: string[];     // IDs de farmacos relacionados
+  linkedDrugs: string[];     // IDs de fármacos relacionados
   categoria: string;         // "cardiovascular", "respiratorio"...
 }
 ```
@@ -183,7 +183,7 @@ interface Pathology {
 ```typescript
 interface EmergencyProtocol {
   id: string;
-  nombre: string;            // "ACLS - Paro Cardiaco"
+  nombre: string;            // "ACLS - Paro Cardíaco"
   descripcion: string;
   categoria: string;
   steps: {
@@ -203,12 +203,12 @@ interface EmergencyProtocol {
     pregunta: string;
     opciones: { texto: string; siguiente: string }[];
   }[];
-  redFlags: string[];         // Senales de alarma
+  redFlags: string[];         // Señales de alarma
   notas?: string;
 }
 ```
 
-## Escalas Clinicas (clinical_scales.json)
+## Escalas Clínicas (clinical_scales.json)
 
 ```typescript
 interface ClinicalScale {
@@ -242,7 +242,7 @@ interface ClinicalScale {
 interface LabValue {
   id: string;
   nombre: string;            // "Hemoglobina"
-  categoria: string;         // "hematologia", "bioquimica"...
+  categoria: string;         // "hematología", "bioquímica"...
   unidad: string;            // "g/dL", "mg/dL"...
   rangos: {
     male?: { min: number; max: number };
@@ -254,7 +254,7 @@ interface LabValue {
     alto: string;
     bajo: string;
   };
-  farmacosAlteran?: string[];  // Farmacos que modifican el valor
+  farmacosAlteran?: string[];  // Fármacos que modifican el valor
   implicacionesEnfermeria: string[];
 }
 ```
@@ -293,21 +293,21 @@ pathologies.json
   └── Pathology.linkedDrugs ── Drug.id (array de IDs)
 
 emergency_protocols.json
-  └── drugDoses.farmaco ────── Referencia textual a farmacos
+  └── drugDoses.farmaco ────── Referencia textual a fármacos
 
 lab_values.json
-  └── farmacosAlteran ──────── Nombres de farmacos (texto)
+  └── farmacosAlteran ──────── Nombres de fármacos (texto)
 
 iv_compatibilities.json
-  └── Par de farmacos ──────── Compatibilidad (compatible/incompatible/variable)
+  └── Par de fármacos ──────── Compatibilidad (compatible/incompatible/variable)
 ```
 
-## Tamano de Datos
+## Tamaño de Datos
 
-| Archivo | Tamano aprox. |
+| Archivo | Tamaño aprox. |
 |---------|--------------|
 | drugs.json | ~4.1 MB |
 | Resto de JSONs | ~0.6 MB |
 | **Total datos** | **~4.7 MB** |
 
-Los datos se cargan una sola vez al inicio y se mantienen en memoria. El campo `searchText` se genera en runtime via `buildSearchText()` para ahorrar ~1.2MB en el bundle.
+Los datos se cargan una sola vez al inicio y se mantienen en memoria. El campo `searchText` se genera en runtime vía `buildSearchText()` para ahorrar ~1.2MB en el bundle.

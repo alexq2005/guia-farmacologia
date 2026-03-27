@@ -15,13 +15,14 @@ import { PremiumGate } from '../components/PremiumGate';
 const guideData = require('../data/parenteral_guide.json');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ParenteralGuide'>;
-type TabKey = 'introduccion' | 'soluciones' | 'npt' | 'proteccion' | 'farmacos';
+type TabKey = 'introduccion' | 'soluciones' | 'npt' | 'proteccion' | 'reconstitucion' | 'farmacos';
 
 const TABS: { key: TabKey; label: string; icon: string }[] = [
   { key: 'introduccion', label: 'Introducción', icon: 'book-open-variant' },
   { key: 'soluciones', label: 'Soluciones', icon: 'water-outline' },
   { key: 'npt', label: 'NPT', icon: 'flask' },
   { key: 'proteccion', label: 'Protección', icon: 'shield-outline' },
+  { key: 'reconstitucion', label: 'Reconstitución', icon: 'test-tube' },
   { key: 'farmacos', label: 'Fármacos', icon: 'pill' },
 ];
 
@@ -241,6 +242,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
     soluciones: 'soluciones',
     npt: 'npt',
     proteccion: 'proteccion',
+    reconstitucion: 'reconstitución',
   };
 
   const renderContent = () => {
@@ -249,6 +251,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
       case 'soluciones':
       case 'npt':
       case 'proteccion':
+      case 'reconstitucion':
         return <GenericSectionTab sectionId={sectionMap[activeTab]} />;
       case 'farmacos': return <FarmacosTab navigation={navigation} />;
     }

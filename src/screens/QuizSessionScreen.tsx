@@ -38,6 +38,8 @@ export function QuizSessionScreen({ route, navigation }: Props) {
   const [correctCount, setCorrectCount] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [showReview, setShowReview] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState<{ question: QuizQuestion; selectedAnswer: number; isCorrect: boolean }[]>([]);
 
   const questionFade = useFadeIn(250);
 
@@ -56,8 +58,12 @@ export function QuizSessionScreen({ route, navigation }: Props) {
     if (showResult) return;
     setSelectedAnswer(index);
     setShowResult(true);
-    if (index === currentQuestion?.correctIndex) {
+    const isCorrect = index === currentQuestion?.correctIndex;
+    if (isCorrect) {
       setCorrectCount(prev => prev + 1);
+    }
+    if (currentQuestion) {
+      setAnsweredQuestions(prev => [...prev, { question: currentQuestion, selectedAnswer: index, isCorrect }]);
     }
   }, [showResult, currentQuestion]);
 
@@ -67,21 +73,18 @@ export function QuizSessionScreen({ route, navigation }: Props) {
       setSelectedAnswer(null);
       setShowResult(false);
     } else {
-      const finalCorrect = selectedAnswer === currentQuestion?.correctIndex
-        ? correctCount + 1
-        : correctCount;
       const result: QuizResult = {
         id: Date.now().toString(),
         totalQuestions: questions.length,
-        correctAnswers: finalCorrect,
-        percentage: Math.round((finalCorrect / questions.length) * 100),
+        correctAnswers: correctCount,
+        percentage: Math.round((correctCount / questions.length) * 100),
         category: category || 'todas',
         completedAt: Date.now(),
       };
       saveResult(result);
       setFinished(true);
     }
-  }, [currentIndex, questions, correctCount, selectedAnswer, currentQuestion, category, saveResult]);
+  }, [currentIndex, questions, correctCount, category, saveResult]);
 
   if (questions.length === 0) {
     return (
@@ -93,6 +96,63 @@ export function QuizSessionScreen({ route, navigation }: Props) {
 
   if (finished) {
     const pct = Math.round((correctCount / questions.length) * 100);
+
+    if (showReview) {
+      return (
+        <View style={styles.container}>
+          <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+          <View style={styles.reviewHeader}>
+            <TouchableOpacity onPress={() => setShowReview(false)} style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <MaterialCommunityIcons name="chevron-left" size={22} color={colors.quiz} />
+              <Text style={[styles.reviewHeaderTitle, { color: colors.quiz }]}>Volver a resultados</Text>
+            </TouchableOpacity>
+            <Text style={styles.reviewHeaderSubtitle}>{correctCount}/{questions.length} correctas · {pct}%</Text>
+          </View>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16, paddingBottom: 40 }} showsVerticalScrollIndicator={false}>
+            {answeredQuestions.map((aq, idx) => (
+              <View key={idx} style={[styles.reviewCard, { borderLeftColor: aq.isCorrect ? colors.quizCorrect : colors.quizWrong }]}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+                  <MaterialCommunityIcons
+                    name={aq.isCorrect ? 'check-circle' : 'close-circle'}
+                    size={18}
+                    color={aq.isCorrect ? colors.quizCorrect : colors.quizWrong}
+                    style={{ marginRight: 6 }}
+                  />
+                  <Text style={styles.reviewQuestionNum}>Pregunta {idx + 1}</Text>
+                  <View style={[styles.reviewTypeBadge, { backgroundColor: colors.quiz + '15' }]}>
+                    <Text style={[styles.reviewTypeText, { color: colors.quiz }]}>{TYPE_LABELS[aq.question.type] || aq.question.type}</Text>
+                  </View>
+                </View>
+                <Text style={styles.reviewDrugName}>{aq.question.drugName}</Text>
+                <Text style={styles.reviewQuestion}>{aq.question.questionText}</Text>
+                <View style={{ marginTop: 8, gap: 4 }}>
+                  {aq.question.options.map((opt, oi) => {
+                    const isSelected = oi === aq.selectedAnswer;
+                    const isCorrectOpt = oi === aq.question.correctIndex;
+                    let bgColor = 'transparent';
+                    let textColor = colors.textSecondary;
+                    if (isCorrectOpt) { bgColor = colors.quizCorrect + '12'; textColor = colors.quizCorrect; }
+                    else if (isSelected && !aq.isCorrect) { bgColor = colors.quizWrong + '12'; textColor = colors.quizWrong; }
+                    return (
+                      <View key={oi} style={[styles.reviewOption, { backgroundColor: bgColor }]}>
+                        <Text style={[styles.reviewOptionLetter, { color: textColor }]}>{String.fromCharCode(65 + oi)}</Text>
+                        <Text style={[styles.reviewOptionText, isCorrectOpt && { color: colors.quizCorrect, fontWeight: '600' }, isSelected && !aq.isCorrect && { color: colors.quizWrong }]}>{opt}</Text>
+                        {isCorrectOpt && <MaterialCommunityIcons name="check" size={16} color={colors.quizCorrect} style={{ marginLeft: 4 }} />}
+                        {isSelected && !aq.isCorrect && <MaterialCommunityIcons name="close" size={16} color={colors.quizWrong} style={{ marginLeft: 4 }} />}
+                      </View>
+                    );
+                  })}
+                </View>
+                <View style={[styles.reviewExplanation, { backgroundColor: (aq.isCorrect ? colors.quizCorrect : colors.warning) + '08' }]}>
+                  <Text style={styles.reviewExplanationText}>{aq.question.explanation}</Text>
+                </View>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
@@ -125,11 +185,22 @@ export function QuizSessionScreen({ route, navigation }: Props) {
                 setShowResult(false);
                 setCorrectCount(0);
                 setFinished(false);
+                setShowReview(false);
+                setAnsweredQuestions([]);
               }}
             >
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <MaterialCommunityIcons name="refresh" size={18} color="#FFFFFF" style={{ marginRight: 6 }} />
                 <Text style={styles.actionButtonText}>Intentar de nuevo</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.actionButton, { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.quiz }]}
+              onPress={() => setShowReview(true)}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MaterialCommunityIcons name="clipboard-text-search-outline" size={18} color={colors.quiz} style={{ marginRight: 6 }} />
+                <Text style={[styles.actionButtonText, { color: colors.quiz }]}>Revisar respuestas</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -212,12 +283,26 @@ export function QuizSessionScreen({ route, navigation }: Props) {
           })}
         </View>
 
-        {/* Explanation on wrong answer */}
-        {showResult && selectedAnswer !== currentQuestion.correctIndex && (
-          <View style={styles.explanationBox}>
+        {/* Explanation on all answers */}
+        {showResult && (
+          <View style={[
+            styles.explanationBox,
+            selectedAnswer === currentQuestion.correctIndex
+              ? { backgroundColor: colors.quizCorrect + '12', borderLeftColor: colors.quizCorrect }
+              : {},
+          ]}>
             <View style={styles.explanationHeader}>
-              <MaterialCommunityIcons name="lightbulb-on-outline" size={18} color={colors.warning} />
-              <Text style={styles.explanationTitle}>Explicación</Text>
+              <MaterialCommunityIcons
+                name={selectedAnswer === currentQuestion.correctIndex ? 'check-circle-outline' : 'lightbulb-on-outline'}
+                size={18}
+                color={selectedAnswer === currentQuestion.correctIndex ? colors.quizCorrect : colors.warning}
+              />
+              <Text style={[
+                styles.explanationTitle,
+                selectedAnswer === currentQuestion.correctIndex ? { color: colors.quizCorrect } : {},
+              ]}>
+                {selectedAnswer === currentQuestion.correctIndex ? '¡Correcto!' : 'Explicación'}
+              </Text>
             </View>
             <Text style={styles.explanationText}>{currentQuestion.explanation}</Text>
           </View>
@@ -324,4 +409,19 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   finishedActions: { width: '100%', gap: 12 },
   actionButton: { paddingVertical: 16, borderRadius: 14, alignItems: 'center' },
   actionButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
+  // Review screen
+  reviewHeader: { paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: colors.border },
+  reviewHeaderTitle: { fontSize: 15, fontWeight: '700' },
+  reviewHeaderSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  reviewCard: { ...neuCard(colors), padding: 14, marginBottom: 12, borderLeftWidth: 4 },
+  reviewQuestionNum: { fontSize: 13, fontWeight: '700', color: colors.text, flex: 1 },
+  reviewTypeBadge: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: 8 },
+  reviewTypeText: { fontSize: 10, fontWeight: '700' },
+  reviewDrugName: { fontSize: 12, color: colors.textSecondary, fontStyle: 'italic', marginBottom: 2 },
+  reviewQuestion: { fontSize: 15, fontWeight: '600', color: colors.text, lineHeight: 21 },
+  reviewOption: { flexDirection: 'row', alignItems: 'center', paddingVertical: 4, paddingHorizontal: 8, borderRadius: 8 },
+  reviewOptionLetter: { fontSize: 12, fontWeight: '700', width: 20 },
+  reviewOptionText: { flex: 1, fontSize: 13, color: colors.text },
+  reviewExplanation: { marginTop: 8, padding: 10, borderRadius: 8 },
+  reviewExplanationText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
 });
