@@ -121,7 +121,7 @@ export function ToolsScreen({ navigation }: Props) {
       sectionTitle: 'Estudio',
       sectionColor: colors.quiz,
       tools: [
-        { icon: 'head-question-outline', title: 'Modo Estudio (Quiz)', subtitle: 'Test interactivo de farmacología', color: colors.quiz, target: 'quiz' },
+        { icon: 'head-question-outline', title: 'Modo Estudio (Test)', subtitle: 'Test interactivo de farmacología', color: colors.quiz, target: 'quiz' },
         { icon: 'chart-arc', title: 'Dashboard de Estudio', subtitle: 'Progreso, estadísticas y racha de estudio', color: colors.quiz, target: 'dashboard' },
       ],
     },
