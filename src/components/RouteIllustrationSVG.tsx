@@ -502,11 +502,7 @@ export function RouteIllustrationSVG({ routeId, accentColor, colors }: { routeId
   }
 
   return (
-    <View style={[localStyles.container, { borderColor: accentColor + '40', backgroundColor: colors.surfaceElevated }]}>
-      <View style={localStyles.titleRow}>
-        <MaterialCommunityIcons name="ruler-square" size={16} color={colors.textSecondary} style={{ marginRight: 4 }} />
-        <Text style={[localStyles.title, { color: colors.textSecondary }]}>Diagrama anatómico</Text>
-      </View>
+    <View style={localStyles.container}>
       <View style={localStyles.svgWrapper}>
         <Illustration />
       </View>
@@ -517,21 +513,8 @@ export function RouteIllustrationSVG({ routeId, accentColor, colors }: { routeId
 const localStyles = StyleSheet.create({
   container: {
     marginHorizontal: 16,
-    marginTop: 16,
-    padding: 16,
-    borderRadius: 16,
-    borderWidth: 2,
+    marginTop: 8,
     alignItems: 'center',
-  },
-  titleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    marginBottom: 12,
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: '700',
   },
   svgWrapper: {
     alignItems: 'center',
