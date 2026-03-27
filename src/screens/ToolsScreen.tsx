@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated, TextInput, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { ImageBackground } from 'react-native';
 import ClipboardService from '@react-native-clipboard/clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -21,6 +22,9 @@ import protocolsData from '../data/emergency_protocols.json';
 import labValuesData from '../data/lab_values.json';
 import type { Formula } from '../types';
 import { exportUserData, importUserData } from '../utils/backup';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { useTabBar } from '../context/TabBarContext';
+import { getToolImage } from '../utils/toolImages';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Herramientas'>,
@@ -46,9 +50,11 @@ const PREMIUM_TARGETS = new Set([
 
 export function ToolsScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const rs = useResponsiveScale();
   const { isPremium, isFreeBuild } = usePremium();
   const insets = useSafeAreaInsets();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { handleScroll: handleTabBarScroll } = useTabBar();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const [showImport, setShowImport] = useState(false);
   const [importText, setImportText] = useState('');
@@ -157,21 +163,13 @@ export function ToolsScreen({ navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <LinearGradient
-        colors={[colors.accent, '#A78BFA']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + 12 }]}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <MaterialCommunityIcons name="wrench-outline" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
-          <Text style={styles.headerTitle}>Herramientas</Text>
-        </View>
+      <StatusBar translucent backgroundColor="transparent" barStyle={colors.text === '#F1F5F9' ? 'light-content' : 'dark-content'} />
+      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
+        <Text style={styles.headerTitle}>Herramientas</Text>
         <Text style={styles.headerSubtitle}>Calculadoras, escalas, protocolos y más</Text>
-      </LinearGradient>
+      </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} onScroll={handleTabBarScroll} scrollEventThrottle={16}>
         {/* Grouped Tool Sections */}
         {toolGroups.map((group, gi) => (
           <View key={gi} style={styles.sectionGroup}>
@@ -182,28 +180,45 @@ export function ToolsScreen({ navigation }: Props) {
               <Text style={styles.sectionHeaderTitle}>{group.sectionTitle}</Text>
             </View>
             <View style={styles.sectionCards}>
-              {group.tools.map((tool, ti) => (
-                <TouchableOpacity
-                  key={ti}
-                  style={[styles.toolCard, { borderLeftColor: tool.color }]}
-                  onPress={() => navigateTo(tool.target)}
-                  activeOpacity={0.7}
-                >
-                  <View style={[styles.toolIconBg, { backgroundColor: tool.color + '15' }]}>
-                    <MaterialCommunityIcons name={tool.icon} size={26} color={tool.color} />
-                  </View>
-                  <View style={styles.toolText}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <Text style={styles.toolTitle}>{tool.title}</Text>
-                      {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) && (
-                        <MaterialCommunityIcons name="lock-outline" size={14} color={colors.textLight} style={{ marginLeft: 4 }} />
-                      )}
-                    </View>
-                    <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
-                  </View>
-                  <MaterialCommunityIcons name="chevron-right" size={22} color={colors.textLight} />
-                </TouchableOpacity>
-              ))}
+              {group.tools.map((tool, ti) => {
+                const toolImage = getToolImage(tool.target);
+                return (
+                  <TouchableOpacity
+                    key={ti}
+                    style={styles.toolCard}
+                    onPress={() => navigateTo(tool.target)}
+                    activeOpacity={0.8}
+                  >
+                    <ImageBackground
+                      source={toolImage || require('../assets/images/units/hero_pharmacy.jpg')}
+                      style={styles.toolImageBg}
+                      imageStyle={{ borderRadius: 16 }}
+                      resizeMode="cover"
+                    >
+                      <LinearGradient
+                        colors={[tool.color + '60', tool.color + 'E6']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 1 }}
+                        style={styles.toolGradient}
+                      >
+                        <View style={styles.toolContent}>
+                          <MaterialCommunityIcons name={tool.icon} size={24} color="#FFFFFF" />
+                          <View style={{ flex: 1, marginLeft: 12 }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                              <Text style={styles.toolTitle}>{tool.title}</Text>
+                              {!isFreeBuild && !isPremium && PREMIUM_TARGETS.has(tool.target) && (
+                                <MaterialCommunityIcons name="lock-outline" size={13} color="rgba(255,255,255,0.6)" style={{ marginLeft: 4 }} />
+                              )}
+                            </View>
+                            <Text style={styles.toolSubtitle}>{tool.subtitle}</Text>
+                          </View>
+                          <MaterialCommunityIcons name="chevron-right" size={20} color="rgba(255,255,255,0.7)" />
+                        </View>
+                      </LinearGradient>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         ))}
@@ -335,101 +350,109 @@ export function ToolsScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
+    paddingBottom: rs.space(16),
+    paddingHorizontal: rs.space(20),
+    backgroundColor: colors.background,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(28), fontWeight: '800', color: colors.text, letterSpacing: -0.5 },
+  headerSubtitle: { fontSize: rs.font(14), color: colors.textSecondary, marginTop: 2 },
   scroll: { flex: 1 },
-  sectionGroup: { marginTop: 16 },
+  sectionGroup: { marginTop: rs.space(16) },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 20,
-    marginBottom: 10,
+    marginHorizontal: rs.space(20),
+    marginBottom: rs.space(10),
   },
   sectionIconBg: {
-    width: 30, height: 30, borderRadius: 8,
+    width: rs.space(30), height: rs.space(30), borderRadius: 8,
     alignItems: 'center' as const, justifyContent: 'center' as const,
-    marginRight: 8,
+    marginRight: rs.space(8),
   },
   sectionHeaderTitle: {
-    fontSize: 16, fontWeight: '700', color: colors.text,
+    fontSize: rs.font(16), fontWeight: '700', color: colors.text,
   },
-  sectionCards: { paddingHorizontal: 16, gap: 8 },
-  toolsGrid: { padding: 16, gap: 10 },
+  sectionCards: { paddingHorizontal: rs.space(16), gap: rs.space(8) },
+  toolsGrid: { padding: rs.space(16), gap: rs.space(10) },
   toolCard: {
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginBottom: 2,
+  },
+  toolImageBg: {
+    minHeight: rs.space(72),
+  },
+  toolGradient: {
+    flex: 1,
+    borderRadius: 16,
+    justifyContent: 'center',
+    paddingHorizontal: rs.space(16),
+    paddingVertical: rs.space(14),
+  },
+  toolContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    ...neuCard(colors),
-    padding: 16,
-    borderLeftWidth: 4,
   },
-  toolIconBg: { width: 48, height: 48, borderRadius: 14, alignItems: 'center' as const, justifyContent: 'center' as const, marginRight: 14 },
-  toolText: { flex: 1 },
-  toolTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
-  toolSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  toolTitle: { fontSize: rs.font(15), fontWeight: '700', color: '#FFFFFF' },
+  toolSubtitle: { fontSize: rs.font(11), color: 'rgba(255,255,255,0.8)', marginTop: 2 },
   toolArrow: { color: colors.textLight },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: rs.font(18),
     fontWeight: '700',
     color: colors.text,
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 10,
+    marginHorizontal: rs.space(20),
+    marginTop: rs.space(20),
+    marginBottom: rs.space(10),
   },
-  formulaGroup: { marginBottom: 8 },
+  formulaGroup: { marginBottom: rs.space(8) },
   formulaCategoryTitle: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     fontWeight: '700',
-    marginHorizontal: 20,
-    marginBottom: 6,
+    marginHorizontal: rs.space(20),
+    marginBottom: rs.space(6),
   },
   formulaCard: {
     flexDirection: 'row',
     alignItems: 'center',
     ...neuCardSubtle(colors),
-    marginHorizontal: 16,
-    marginBottom: 6,
+    marginHorizontal: rs.space(16),
+    marginBottom: rs.space(6),
   },
   formulaColor: { width: 4, alignSelf: 'stretch' },
-  formulaContent: { flex: 1, padding: 12 },
-  formulaName: { fontSize: 14, fontWeight: '600', color: colors.text },
-  formulaFormula: { fontSize: 11, color: colors.textLight, marginTop: 2, fontFamily: 'monospace' },
-  formulaArrow: { fontSize: 20, color: colors.textLight, marginRight: 12 },
+  formulaContent: { flex: 1, padding: rs.space(12) },
+  formulaName: { fontSize: rs.font(14), fontWeight: '600', color: colors.text },
+  formulaFormula: { fontSize: rs.font(11), color: colors.textLight, marginTop: 2, fontFamily: 'monospace' },
+  formulaArrow: { fontSize: rs.font(20), color: colors.textLight, marginRight: rs.space(12) },
   routesGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: 12,
-    gap: 8,
+    paddingHorizontal: rs.space(12),
+    gap: rs.space(8),
   },
   routeCard: {
     width: '22%',
     ...neuCardSubtle(colors),
-    padding: 12,
+    padding: rs.space(12),
     alignItems: 'center',
     marginHorizontal: '1.5%',
   },
   routeIcon: { marginBottom: 4 },
-  routeName: { fontSize: 11, color: colors.text, fontWeight: '600', marginTop: 4, textAlign: 'center' },
-  backupSection: { paddingHorizontal: 16, gap: 8 },
+  routeName: { fontSize: rs.font(11), color: colors.text, fontWeight: '600', marginTop: 4, textAlign: 'center' },
+  backupSection: { paddingHorizontal: rs.space(16), gap: rs.space(8) },
   backupButton: {
-    flexDirection: 'row', alignItems: 'center', padding: 14, borderRadius: 14, borderWidth: 1,
+    flexDirection: 'row', alignItems: 'center', padding: rs.space(14), borderRadius: 14, borderWidth: 1,
   },
-  backupIcon: { marginRight: 12 },
-  backupTitle: { fontSize: 15, fontWeight: '700' },
-  backupSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
-  importArea: { marginTop: 8 },
+  backupIcon: { marginRight: rs.space(12) },
+  backupTitle: { fontSize: rs.font(15), fontWeight: '700' },
+  backupSubtitle: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 },
+  importArea: { marginTop: rs.space(8) },
   importInput: {
-    minHeight: 80, borderRadius: 10, padding: 12, fontSize: 13, borderWidth: 1,
+    minHeight: rs.space(80), borderRadius: 10, padding: rs.space(12), fontSize: rs.font(13), borderWidth: 1,
   },
-  importButtons: { flexDirection: 'row', gap: 8, marginTop: 8, justifyContent: 'flex-end' },
-  importBtn: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 10, borderWidth: 1 },
-  importBtnText: { fontSize: 13, fontWeight: '600' },
+  importButtons: { flexDirection: 'row', gap: rs.space(8), marginTop: rs.space(8), justifyContent: 'flex-end' },
+  importBtn: { paddingHorizontal: rs.space(16), paddingVertical: rs.space(8), borderRadius: 10, borderWidth: 1 },
+  importBtnText: { fontSize: rs.font(13), fontWeight: '600' },
 });

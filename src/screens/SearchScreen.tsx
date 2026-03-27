@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
+// LinearGradient removed — clean modern headers
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -16,6 +16,8 @@ import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { neuPill, neuInset, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { useTabBar } from '../context/TabBarContext';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Busqueda'>,
@@ -39,8 +41,10 @@ const PREG_OPTIONS: PregnancyCategory[] = ['A', 'B', 'C', 'D', 'X'];
 
 export function SearchScreen({ navigation }: Props) {
   const { colors } = useTheme();
+  const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { handleScroll: handleTabBarScroll } = useTabBar();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { drugs } = useDrugData();
   const { query, results, search, clear, resultCount } = useDrugSearch(drugs);
   const { history, addEntry, removeEntry, clearHistory } = useSearchHistory();
@@ -57,21 +61,13 @@ export function SearchScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <LinearGradient
-        colors={[colors.gradientStart, colors.gradientEnd]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + 12 }]}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <MaterialCommunityIcons name="magnify" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
-          <Text style={styles.headerTitle}>Búsqueda</Text>
-        </View>
+      <StatusBar translucent backgroundColor="transparent" barStyle={colors.text === '#F1F5F9' ? 'light-content' : 'dark-content'} />
+      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
+        <Text style={styles.headerTitle}>Búsqueda</Text>
         <Text style={styles.headerSubtitle}>
           Busca entre {drugs.length} fármacos
         </Text>
-      </LinearGradient>
+      </View>
 
       <SearchBar
         value={query}
@@ -127,6 +123,8 @@ export function SearchScreen({ navigation }: Props) {
             keyExtractor={item => item.drug.id}
             contentContainerStyle={styles.list}
             showsVerticalScrollIndicator={false}
+            onScroll={handleTabBarScroll}
+            scrollEventThrottle={16}
             ListEmptyComponent={
               <View style={styles.emptyContainer}>
                 <MaterialCommunityIcons name="magnify-close" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
@@ -193,137 +191,136 @@ export function SearchScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.neuBackground,
   },
   header: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
+    paddingBottom: rs.space(12),
+    paddingHorizontal: rs.space(20),
+    backgroundColor: colors.background,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: rs.font(28),
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: colors.text,
+    letterSpacing: -0.5,
   },
   headerSubtitle: {
-    fontSize: 14,
-    color: 'rgba(255,255,255,0.7)',
-    marginTop: 4,
+    fontSize: rs.font(14),
+    color: colors.textSecondary,
+    marginTop: 2,
   },
   resultCount: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
-    marginHorizontal: 20,
+    marginHorizontal: rs.space(20),
     marginTop: 4,
     marginBottom: 4,
   },
   list: {
-    paddingBottom: 32,
+    paddingBottom: rs.space(32),
   },
   emptyContainer: {
     alignItems: 'center',
-    paddingVertical: 60,
+    paddingVertical: rs.space(60),
   },
   emptyIcon: {
-    fontSize: 48,
-    marginBottom: 12,
+    fontSize: rs.font(48),
+    marginBottom: rs.space(12),
   },
   emptyText: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     fontWeight: '600',
     color: colors.text,
   },
   emptySubtext: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textLight,
     marginTop: 4,
   },
   suggestionsContainer: {
-    padding: 20,
+    padding: rs.space(20),
   },
   historyHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: rs.space(10),
   },
   clearHistoryText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.error,
     fontWeight: '600',
   },
   suggestionsTitle: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 10,
+    marginBottom: rs.space(10),
   },
   suggestionsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: rs.space(8),
   },
   suggestionChip: {
     backgroundColor: colors.primaryLight + '15',
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    paddingHorizontal: rs.space(14),
+    paddingVertical: rs.space(8),
     borderRadius: 20,
     borderWidth: 1,
     borderColor: colors.primaryLight + '30',
   },
   suggestionText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.primary,
     fontWeight: '500',
   },
   tipsContainer: {
-    marginTop: 24,
+    marginTop: rs.space(24),
     ...neuCardSubtle(colors),
-    padding: 16,
+    padding: rs.space(16),
   },
   tipsTitle: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 8,
+    marginBottom: rs.space(8),
   },
   tipText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
     marginBottom: 4,
-    lineHeight: 20,
+    lineHeight: rs.font(20),
   },
   filtersRow: {
     marginTop: 4,
     marginBottom: 2,
   },
   filtersScroll: {
-    paddingHorizontal: 16,
-    gap: 6,
+    paddingHorizontal: rs.space(16),
+    gap: rs.space(6),
     alignItems: 'center',
   },
   filterLabel: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     fontWeight: '700',
     color: colors.textSecondary,
     marginRight: 4,
   },
   filterChip: {
     ...neuPill(colors),
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: rs.space(10),
+    paddingVertical: rs.space(5),
   },
   filterChipActive: {
     backgroundColor: colors.primary,
     borderColor: colors.primary,
   },
   filterChipText: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     fontWeight: '600',
     color: colors.textSecondary,
   },

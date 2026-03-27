@@ -1,6 +1,6 @@
 // ============================================================
 // Neumorphism utilities — reusable ViewStyle generators
-// Android: elevation + dual borders (no iOS shadowColor support)
+// Android: elevation + dual borders for depth illusion
 // ============================================================
 
 import { ViewStyle } from 'react-native';

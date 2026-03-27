@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
+// LinearGradient removed — clean modern headers
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { CompositeNavigationProp } from '@react-navigation/native';
@@ -12,6 +12,8 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { useTabBar } from '../context/TabBarContext';
 
 type NavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, 'Especial'>,
@@ -80,7 +82,8 @@ const EmergencyCard = React.memo(({ drug, isExpanded, onToggle, styles, colors }
 
 function EmergencyTable({ drugs }: { drugs: EmergencyDrug[] }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [expanded, setExpanded] = useState<string | null>(null);
   const handleToggle = useCallback((id: string) => {
     setExpanded(prev => prev === id ? null : id);
@@ -97,7 +100,8 @@ function EmergencyTable({ drugs }: { drugs: EmergencyDrug[] }) {
 
 function AntidoteTable({ antidotes }: { antidotes: Antidote[] }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 
   return (
     <View>
@@ -140,7 +144,8 @@ function AntidoteTable({ antidotes }: { antidotes: Antidote[] }) {
 
 function CompatibilityTable({ data }: { data: { farmacos: string[]; compatibilidades: IVCompatibilityEntry[] } }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
 
   const compatColors: Record<string, string> = {
     compatible: '#16A34A',
@@ -191,7 +196,9 @@ function CompatibilityTable({ data }: { data: { farmacos: string[]; compatibilid
 export function SpecialScreen({ navigation }: Props) {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const { handleScroll: handleTabBarScroll } = useTabBar();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { emergencyDrugs, antidotes, ivCompatibilities } = useDrugData();
   const [activeTab, setActiveTab] = useState<Tab>('emergencias');
   const fadeIn = useFadeIn();
@@ -204,19 +211,11 @@ export function SpecialScreen({ navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <LinearGradient
-        colors={[colors.emergency, '#F87171']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + 12 }]}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <MaterialCommunityIcons name="alert-decagram" size={26} color="#FFFFFF" style={{ marginRight: 8 }} />
-          <Text style={styles.headerTitle}>Tablas Especiales</Text>
-        </View>
+      <StatusBar translucent backgroundColor="transparent" barStyle={colors.text === '#F1F5F9' ? 'light-content' : 'dark-content'} />
+      <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
+        <Text style={styles.headerTitle}>Tablas Especiales</Text>
         <Text style={styles.headerSubtitle}>Referencia rápida de emergencia</Text>
-      </LinearGradient>
+      </View>
 
       {/* Tab selector */}
       <View style={styles.tabContainer}>
@@ -240,7 +239,7 @@ export function SpecialScreen({ navigation }: Props) {
         ))}
       </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} onScroll={handleTabBarScroll} scrollEventThrottle={16}>
         {activeTab === 'emergencias' && (
           <View>
             <View style={styles.warningBox}>
@@ -283,70 +282,71 @@ export function SpecialScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
+    paddingBottom: rs.space(16),
+    paddingHorizontal: rs.space(20),
+    backgroundColor: colors.background,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(28), fontWeight: '800', color: colors.text, letterSpacing: -0.5 },
+  headerSubtitle: { fontSize: rs.font(14), color: colors.textSecondary, marginTop: 2 },
   tabContainer: {
     flexDirection: 'row',
-    marginHorizontal: 16,
-    marginTop: 12,
-    ...neuCardSubtle(colors),
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(12),
+    backgroundColor: colors.background,
+    borderRadius: 14,
     padding: 4,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   tab: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: rs.space(10),
     borderRadius: 10,
   },
-  tabActive: { backgroundColor: colors.emergency + '15' },
-  tabIcon: { fontSize: 20 },
-  tabLabel: { fontSize: 11, color: colors.textLight, fontWeight: '600', marginTop: 2 },
+  tabActive: { backgroundColor: colors.surface, elevation: 1, shadowColor: colors.shadow, shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.08, shadowRadius: 4 },
+  tabIcon: { fontSize: rs.font(20) },
+  tabLabel: { fontSize: rs.font(11), color: colors.textLight, fontWeight: '600', marginTop: 2 },
   tabLabelActive: { color: colors.emergency },
   tabBadge: {
     backgroundColor: colors.borderLight,
-    paddingHorizontal: 6,
+    paddingHorizontal: rs.space(6),
     paddingVertical: 1,
     borderRadius: 8,
     marginTop: 2,
   },
   tabBadgeActive: { backgroundColor: colors.emergency + '20' },
-  tabBadgeText: { fontSize: 10, color: colors.textLight, fontWeight: '700' },
+  tabBadgeText: { fontSize: rs.font(10), color: colors.textLight, fontWeight: '700' },
   tabBadgeTextActive: { color: colors.emergency },
   scroll: { flex: 1 },
   warningBox: {
     backgroundColor: colors.warning + '15',
-    marginHorizontal: 16,
-    marginTop: 12,
-    padding: 12,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(12),
+    padding: rs.space(12),
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.warning + '40',
   },
-  warningText: { fontSize: 12, color: colors.warning, lineHeight: 18 },
+  warningText: { fontSize: rs.font(12), color: colors.warning, lineHeight: rs.font(18) },
   infoBox: {
     backgroundColor: colors.info + '15',
-    marginHorizontal: 16,
-    marginTop: 12,
-    padding: 12,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(12),
+    padding: rs.space(12),
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.info + '40',
   },
-  infoText: { fontSize: 12, color: colors.info, lineHeight: 18 },
+  infoText: { fontSize: rs.font(12), color: colors.info, lineHeight: rs.font(18) },
   emergencyCard: {
     ...neuCard(colors),
-    marginHorizontal: 16,
-    marginTop: 8,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(8),
     borderLeftWidth: 4,
     borderLeftColor: colors.emergency,
   },
@@ -355,43 +355,44 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   emergencyHeader: {
     flexDirection: 'row',
-    padding: 12,
+    padding: rs.space(12),
     alignItems: 'center',
   },
-  emergencyIcon: { fontSize: 24, marginRight: 10 },
+  emergencyIcon: { fontSize: rs.font(24), marginRight: rs.space(10) },
   emergencyInfo: { flex: 1 },
-  emergencyName: { fontSize: 15, fontWeight: '700', color: colors.text },
-  emergencyIndication: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  emergencyName: { fontSize: rs.font(15), fontWeight: '700', color: colors.text },
+  emergencyIndication: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 },
   emergencyDetails: {
-    paddingHorizontal: 12,
-    paddingBottom: 12,
+    paddingHorizontal: rs.space(12),
+    paddingBottom: rs.space(12),
     borderTopWidth: 1,
     borderTopColor: colors.borderLight,
   },
   detailRow: {
     flexDirection: 'row',
-    paddingVertical: 6,
+    paddingVertical: rs.space(6),
     borderBottomWidth: 1,
     borderBottomColor: colors.borderLight,
   },
   detailLabel: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     fontWeight: '700',
     color: colors.textSecondary,
-    width: 100,
+    flex: 0.35,
+    maxWidth: rs.space(120),
   },
-  detailValue: { fontSize: 13, color: colors.text, flex: 1, lineHeight: 18 },
+  detailValue: { fontSize: rs.font(13), color: colors.text, flex: 1, lineHeight: rs.font(18) },
   notesBox: {
     backgroundColor: colors.warning + '10',
-    padding: 8,
+    padding: rs.space(8),
     borderRadius: 8,
-    marginTop: 6,
+    marginTop: rs.space(6),
   },
-  notesText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  notesText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
   antidoteCard: {
     backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginTop: 8,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(8),
     borderRadius: 12,
     elevation: 1,
     overflow: 'hidden',
@@ -399,37 +400,37 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   antidoteHeader: {
     flexDirection: 'row',
     backgroundColor: colors.error + '12',
-    padding: 12,
+    padding: rs.space(12),
     alignItems: 'center',
   },
-  antidoteIcon: { fontSize: 24, marginRight: 10 },
+  antidoteIcon: { fontSize: rs.font(24), marginRight: rs.space(10) },
   antidoteHeaderText: { flex: 1 },
-  toxicName: { fontSize: 13, color: colors.error, fontWeight: '600' },
-  antidoteName: { fontSize: 15, fontWeight: '700', color: colors.text, marginTop: 2 },
-  antidoteBody: { padding: 12 },
+  toxicName: { fontSize: rs.font(13), color: colors.error, fontWeight: '600' },
+  antidoteName: { fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginTop: 2 },
+  antidoteBody: { padding: rs.space(12) },
   compatCard: {
     backgroundColor: colors.surface,
-    marginHorizontal: 16,
-    marginTop: 8,
-    padding: 12,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(8),
+    padding: rs.space(12),
     borderRadius: 12,
     elevation: 1,
   },
   compatDrugs: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: rs.space(8),
   },
-  compatDrug1: { fontSize: 14, fontWeight: '600', color: colors.text, flex: 1 },
-  compatPlus: { fontSize: 16, color: colors.textLight, marginHorizontal: 8 },
-  compatDrug2: { fontSize: 14, fontWeight: '600', color: colors.text, flex: 1 },
+  compatDrug1: { fontSize: rs.font(14), fontWeight: '600', color: colors.text, flex: 1 },
+  compatPlus: { fontSize: rs.font(16), color: colors.textLight, marginHorizontal: rs.space(8) },
+  compatDrug2: { fontSize: rs.font(14), fontWeight: '600', color: colors.text, flex: 1 },
   compatBadge: {
     alignSelf: 'flex-start',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingHorizontal: rs.space(10),
+    paddingVertical: rs.space(4),
     borderRadius: 8,
     borderWidth: 1,
   },
-  compatText: { fontSize: 12, fontWeight: '700' },
-  compatNotes: { fontSize: 12, color: colors.textSecondary, marginTop: 6, lineHeight: 18 },
+  compatText: { fontSize: rs.font(12), fontWeight: '700' },
+  compatNotes: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: rs.space(6), lineHeight: rs.font(18) },
 });

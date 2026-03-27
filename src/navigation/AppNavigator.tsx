@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, View, StyleSheet, Animated } from 'react-native';
+import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { Text, View, StyleSheet, Animated, TouchableOpacity } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import type { RootStackParamList, TabParamList } from '../types';
-import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
-import { neuElevated } from '../utils/neumorphism';
-// Icon names inlined to avoid circular/module issues
+import { useTabBar } from '../context/TabBarContext';
+import { useResponsiveScale } from '../utils/responsive';
+
+// ─── Tab Icons ─────────────────────────────────────────────────────────────
 const TAB_ICONS = {
   home: { active: 'home', inactive: 'home-outline' },
   categories: { active: 'bookshelf', inactive: 'book-open-page-variant-outline' },
@@ -57,131 +57,91 @@ import { PremiumScreen } from '../screens/PremiumScreen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
-function TabIcon({ iconActive, iconInactive, label, focused, colors }: {
-  iconActive: string; iconInactive: string; label: string; focused: boolean; colors: ThemeColors;
-}) {
-  const scaleAnim = useRef(new Animated.Value(focused ? 1 : 0.9)).current;
-  const bgAnim = useRef(new Animated.Value(focused ? 1 : 0)).current;
+// ─── Animated Tab Bar ──────────────────────────────────────────────────────
+const TAB_CONFIG: { name: keyof TabParamList; label: string; iconKey: keyof typeof TAB_ICONS }[] = [
+  { name: 'Inicio', label: 'Inicio', iconKey: 'home' },
+  { name: 'Categorias', label: 'Categorías', iconKey: 'categories' },
+  { name: 'Busqueda', label: 'Buscar', iconKey: 'search' },
+  { name: 'Especial', label: 'Especial', iconKey: 'special' },
+  { name: 'Herramientas', label: 'Herramientas', iconKey: 'tools' },
+];
 
-  useEffect(() => {
-    Animated.parallel([
-      Animated.spring(scaleAnim, {
-        toValue: focused ? 1 : 0.9,
-        useNativeDriver: true,
-        speed: 18,
-        bounciness: focused ? 8 : 0,
-      }),
-      Animated.timing(bgAnim, {
-        toValue: focused ? 1 : 0,
-        duration: 200,
-        useNativeDriver: false,
-      }),
-    ]).start();
-  }, [focused, scaleAnim, bgAnim]);
-
-  const bgColor = bgAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['transparent', colors.primary + '15'],
-  });
+function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
+  const { colors } = useTheme();
+  const insets = useSafeAreaInsets();
+  const rs = useResponsiveScale();
+  const { translateY, show } = useTabBar();
 
   return (
-    <Animated.View style={[tabStyles.tabIconContainer, { transform: [{ scale: scaleAnim }] }]}>
-      <Animated.View style={[tabStyles.tabIconBg, { backgroundColor: bgColor }]}>
-        <MaterialCommunityIcons
-          name={focused ? iconActive : iconInactive}
-          size={focused ? 26 : 23}
-          color={focused ? colors.primary : colors.tabBarInactive}
-        />
-      </Animated.View>
-      <Text style={[
-        tabStyles.tabLabel,
-        { color: focused ? colors.primary : colors.tabBarInactive },
-        focused && tabStyles.tabLabelFocused,
-      ]} numberOfLines={1}>{label}</Text>
+    <Animated.View style={[
+      styles.tabBar,
+      {
+        backgroundColor: colors.surface,
+        borderTopColor: colors.border,
+        paddingBottom: Math.max(insets.bottom, rs.space(4)),
+        transform: [{ translateY }],
+      },
+    ]}>
+      {TAB_CONFIG.map((tab, index) => {
+        const focused = state.index === index;
+        const icons = TAB_ICONS[tab.iconKey];
+        return (
+          <TouchableOpacity
+            key={tab.name}
+            style={styles.tabItem}
+            onPress={() => {
+              const event = navigation.emit({ type: 'tabPress', target: state.routes[index].key, canPreventDefault: true });
+              if (!event.defaultPrevented) {
+                navigation.navigate(tab.name);
+              }
+              show();
+            }}
+            activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityState={{ selected: focused }}
+            accessibilityLabel={tab.label}
+          >
+            <View style={[
+              styles.tabIconBg,
+              focused && { backgroundColor: colors.primary + '12' },
+            ]}>
+              <MaterialCommunityIcons
+                name={focused ? icons.active : icons.inactive}
+                size={rs.font(22)}
+                color={focused ? colors.primary : colors.tabBarInactive}
+              />
+            </View>
+            <Text style={[
+              styles.tabLabel,
+              { color: focused ? colors.primary : colors.tabBarInactive },
+              focused && styles.tabLabelFocused,
+            ]} numberOfLines={1}>{tab.label}</Text>
+          </TouchableOpacity>
+        );
+      })}
     </Animated.View>
   );
 }
 
+// ─── Main Tabs ─────────────────────────────────────────────────────────────
 function MainTabs() {
   const { colors } = useTheme();
-  const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          position: 'absolute',
-          ...neuElevated(colors),
-          borderTopWidth: 0,
-          marginHorizontal: 12,
-          marginBottom: Math.max(insets.bottom, 8),
-          height: 68,
-          paddingBottom: 0,
-          paddingTop: 0,
-        },
-        tabBarShowLabel: false,
-      }}
+      tabBar={(props) => <AnimatedTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
     >
-      <Tab.Screen
-        name="Inicio"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon iconActive={TAB_ICONS.home.active} iconInactive={TAB_ICONS.home.inactive}
-              label="Inicio" focused={focused} colors={colors} />
-          ),
-          tabBarAccessibilityLabel: 'Inicio',
-        }}
-      />
-      <Tab.Screen
-        name="Categorias"
-        component={CategoriesScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon iconActive={TAB_ICONS.categories.active} iconInactive={TAB_ICONS.categories.inactive}
-              label="Categorías" focused={focused} colors={colors} />
-          ),
-          tabBarAccessibilityLabel: 'Categorías',
-        }}
-      />
-      <Tab.Screen
-        name="Busqueda"
-        component={SearchScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon iconActive={TAB_ICONS.search.active} iconInactive={TAB_ICONS.search.inactive}
-              label="Buscar" focused={focused} colors={colors} />
-          ),
-          tabBarAccessibilityLabel: 'Buscar fármacos',
-        }}
-      />
-      <Tab.Screen
-        name="Especial"
-        component={SpecialScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon iconActive={TAB_ICONS.special.active} iconInactive={TAB_ICONS.special.inactive}
-              label="Especial" focused={focused} colors={colors} />
-          ),
-          tabBarAccessibilityLabel: 'Medicamentos especiales',
-        }}
-      />
-      <Tab.Screen
-        name="Herramientas"
-        component={ToolsScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon iconActive={TAB_ICONS.tools.active} iconInactive={TAB_ICONS.tools.inactive}
-              label="Herramientas" focused={focused} colors={colors} />
-          ),
-          tabBarAccessibilityLabel: 'Herramientas clínicas',
-        }}
-      />
+      <Tab.Screen name="Inicio" component={HomeScreen} />
+      <Tab.Screen name="Categorias" component={CategoriesScreen} />
+      <Tab.Screen name="Busqueda" component={SearchScreen} />
+      <Tab.Screen name="Especial" component={SpecialScreen} />
+      <Tab.Screen name="Herramientas" component={ToolsScreen} />
     </Tab.Navigator>
   );
 }
 
+// ─── App Navigator ─────────────────────────────────────────────────────────
 export function AppNavigator() {
   const { colors } = useTheme();
   const [hasOnboarded, setHasOnboarded] = useState<boolean | null>(null);
@@ -192,194 +152,82 @@ export function AppNavigator() {
       .catch(() => setHasOnboarded(true));
   }, []);
 
-  // While loading, return null so the native splash screen stays visible
-  if (hasOnboarded === null) {
-    return null;
-  }
+  if (hasOnboarded === null) return null;
 
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: colors.primary },
-          headerTintColor: '#FFFFFF',
-          headerTitleStyle: { fontWeight: '700' },
+          headerStyle: { backgroundColor: colors.surface },
+          headerTintColor: colors.text,
+          headerTitleStyle: { fontWeight: '600', fontSize: 17, color: colors.text },
+          headerShadowVisible: false,
           animation: 'slide_from_right',
-          animationDuration: 250,
-          headerBackground: () => (
-            <LinearGradient
-              colors={[colors.gradientStart, colors.gradientEnd]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={{ flex: 1 }}
-            />
-          ),
+          animationDuration: 200,
         }}
         initialRouteName={hasOnboarded ? 'MainTabs' : 'Onboarding'}
       >
         {!hasOnboarded && (
-          <Stack.Screen
-            name="Onboarding"
-            component={OnboardingScreen}
-            options={{ headerShown: false, animation: 'fade' }}
-          />
+          <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false, animation: 'fade' }} />
         )}
-        <Stack.Screen
-          name="MainTabs"
-          component={MainTabs}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="DrugDetail"
-          component={DrugDetailScreen}
-          options={({ route }) => ({ title: (route.params as { drugId: string; drugName?: string }).drugName || 'Fármaco' })}
-        />
-        <Stack.Screen
-          name="ChapterDrugs"
-          component={ChapterDrugsScreen}
-          options={{ title: 'Fármacos' }}
-        />
-        <Stack.Screen
-          name="FormulaDetail"
-          component={FormulaDetailScreen}
-          options={{ title: 'Fórmula' }}
-        />
-        <Stack.Screen
-          name="RouteDetail"
-          component={RouteDetailScreen}
-          options={{ title: 'Vía de Administración' }}
-        />
-        <Stack.Screen
-          name="GlossaryScreen"
-          component={GlossaryScreen}
-          options={{ title: 'Glosario' }}
-        />
-        <Stack.Screen
-          name="NursingCare"
-          component={NursingCareScreen}
-          options={{ title: 'Cuidados de Enfermería' }}
-        />
-        <Stack.Screen
-          name="PathologiesScreen"
-          component={PathologiesScreen}
-          options={{ title: 'Patologías' }}
-        />
-        <Stack.Screen
-          name="PathologyDetail"
-          component={PathologyDetailScreen}
-          options={{ title: 'Detalle de Patología' }}
-        />
-        <Stack.Screen
-          name="InteractionChecker"
-          component={InteractionCheckerScreen}
-          options={{ title: 'Interacciones' }}
-        />
-        <Stack.Screen
-          name="Calculators"
-          component={CalculatorsScreen}
-          options={{ title: 'Calculadoras' }}
-        />
-        <Stack.Screen
-          name="ClinicalScales"
-          component={ClinicalScalesScreen}
-          options={{ title: 'Escalas Clínicas' }}
-        />
-        <Stack.Screen
-          name="ScaleDetail"
-          component={ScaleDetailScreen}
-          options={{ title: 'Escala' }}
-        />
-        <Stack.Screen
-          name="LabValues"
-          component={LabValuesScreen}
-          options={{ title: 'Valores de Laboratorio' }}
-        />
-        <Stack.Screen
-          name="EmergencyProtocols"
-          component={EmergencyProtocolsScreen}
-          options={{ title: 'Protocolos de Emergencia' }}
-        />
-        <Stack.Screen
-          name="ProtocolDetail"
-          component={ProtocolDetailScreen}
-          options={{ title: 'Protocolo' }}
-        />
-        <Stack.Screen
-          name="ParenteralGuide"
-          component={ParenteralGuideScreen}
-          options={{ title: 'Guía Parenteral' }}
-        />
-        <Stack.Screen
-          name="QuizScreen"
-          component={QuizScreen}
-          options={{ title: 'Test Farmacológico' }}
-        />
-        <Stack.Screen
-          name="QuizSession"
-          component={QuizSessionScreen}
-          options={{ title: 'Test' }}
-        />
-        <Stack.Screen
-          name="Dashboard"
-          component={DashboardScreen}
-          options={{ title: 'Mi Progreso' }}
-        />
-        <Stack.Screen
-          name="DrugComparison"
-          component={DrugComparisonScreen}
-          options={{ title: 'Comparador de Fármacos' }}
-        />
-        <Stack.Screen
-          name="AboutScreen"
-          component={AboutScreen}
-          options={{ title: 'Acerca de' }}
-        />
-        <Stack.Screen
-          name="AllNotes"
-          component={AllNotesScreen}
-          options={{ title: 'Mis Notas' }}
-        />
-        <Stack.Screen
-          name="AllFavorites"
-          component={AllFavoritesScreen}
-          options={{ title: 'Mis Favoritos' }}
-        />
-        <Stack.Screen
-          name="PrivacyPolicy"
-          component={PrivacyPolicyScreen}
-          options={{ title: 'Política de Privacidad' }}
-        />
-        <Stack.Screen
-          name="Terms"
-          component={TermsScreen}
-          options={{ title: 'Términos y Condiciones' }}
-        />
-        <Stack.Screen
-          name="PremiumScreen"
-          component={PremiumScreen}
-          options={{ title: 'Premium' }}
-        />
+        <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+        <Stack.Screen name="DrugDetail" component={DrugDetailScreen} options={({ route }) => ({ title: (route.params as any).drugName || 'Fármaco' })} />
+        <Stack.Screen name="ChapterDrugs" component={ChapterDrugsScreen} options={{ title: 'Fármacos' }} />
+        <Stack.Screen name="FormulaDetail" component={FormulaDetailScreen} options={{ title: 'Fórmula' }} />
+        <Stack.Screen name="RouteDetail" component={RouteDetailScreen} options={{ title: 'Vía de Administración' }} />
+        <Stack.Screen name="GlossaryScreen" component={GlossaryScreen} options={{ title: 'Glosario' }} />
+        <Stack.Screen name="NursingCare" component={NursingCareScreen} options={{ title: 'Cuidados de Enfermería' }} />
+        <Stack.Screen name="PathologiesScreen" component={PathologiesScreen} options={{ title: 'Patologías' }} />
+        <Stack.Screen name="PathologyDetail" component={PathologyDetailScreen} options={{ title: 'Detalle de Patología' }} />
+        <Stack.Screen name="InteractionChecker" component={InteractionCheckerScreen} options={{ title: 'Interacciones' }} />
+        <Stack.Screen name="Calculators" component={CalculatorsScreen} options={{ title: 'Calculadoras' }} />
+        <Stack.Screen name="ClinicalScales" component={ClinicalScalesScreen} options={{ title: 'Escalas Clínicas' }} />
+        <Stack.Screen name="ScaleDetail" component={ScaleDetailScreen} options={{ title: 'Escala' }} />
+        <Stack.Screen name="LabValues" component={LabValuesScreen} options={{ title: 'Valores de Laboratorio' }} />
+        <Stack.Screen name="EmergencyProtocols" component={EmergencyProtocolsScreen} options={{ title: 'Protocolos de Emergencia' }} />
+        <Stack.Screen name="ProtocolDetail" component={ProtocolDetailScreen} options={{ title: 'Protocolo' }} />
+        <Stack.Screen name="ParenteralGuide" component={ParenteralGuideScreen} options={{ title: 'Guía Parenteral' }} />
+        <Stack.Screen name="QuizScreen" component={QuizScreen} options={{ title: 'Test Farmacológico' }} />
+        <Stack.Screen name="QuizSession" component={QuizSessionScreen} options={{ title: 'Test' }} />
+        <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Mi Progreso' }} />
+        <Stack.Screen name="DrugComparison" component={DrugComparisonScreen} options={{ title: 'Comparador de Fármacos' }} />
+        <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ title: 'Acerca de' }} />
+        <Stack.Screen name="AllNotes" component={AllNotesScreen} options={{ title: 'Mis Notas' }} />
+        <Stack.Screen name="AllFavorites" component={AllFavoritesScreen} options={{ title: 'Mis Favoritos' }} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} options={{ title: 'Política de Privacidad' }} />
+        <Stack.Screen name="Terms" component={TermsScreen} options={{ title: 'Términos y Condiciones' }} />
+        <Stack.Screen name="PremiumScreen" component={PremiumScreen} options={{ title: 'Premium' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const tabStyles = StyleSheet.create({
-  tabIconContainer: {
+// ─── Styles ────────────────────────────────────────────────────────────────
+const styles = StyleSheet.create({
+  tabBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 4,
+  },
+  tabItem: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 64,
-    height: 56,
+    paddingVertical: 4,
   },
   tabIconBg: {
     width: 44,
-    height: 34,
-    borderRadius: 17,
+    height: 32,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabLabel: {
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: '600',
     marginTop: 2,
     textAlign: 'center',

@@ -11,6 +11,7 @@ import { NotesProvider } from './src/context/NotesContext';
 import { ThemeProvider } from './src/context/ThemeContext';
 import { PremiumProvider } from './src/context/PremiumContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
+import { TabBarProvider } from './src/context/TabBarContext';
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <PremiumProvider>
             <FavoritesProvider>
               <NotesProvider>
-                <AppNavigator />
+                <TabBarProvider>
+                  <AppNavigator />
+                </TabBarProvider>
               </NotesProvider>
             </FavoritesProvider>
           </PremiumProvider>
