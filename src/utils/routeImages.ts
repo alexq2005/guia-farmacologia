@@ -12,7 +12,7 @@ const ROUTE_IMAGES: Record<string, ImageSourcePropType> = {
   sublingual: require('../assets/images/routes/sublingual.jpg'),
   inhalatoria: require('../assets/images/routes/inhaler.jpg'),
   topica: require('../assets/images/routes/topical.jpg'),
-  transdermica: require('../assets/images/routes/transdermal.jpg'),
+  transdermica: require('../assets/images/routes/transdermal.webp'),
   rectal: require('../assets/images/routes/rectal.jpg'),
   oftalmica: require('../assets/images/routes/ophthalmic.jpg'),
   otica: require('../assets/images/routes/otic.jpg'),
