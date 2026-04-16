@@ -1,0 +1,4348 @@
+[
+  {
+    "id": "drug2785",
+    "nombre": "Sertindol",
+    "nombreGenerico": "Sertindol",
+    "nombresComerciales": [
+      "Serdolect",
+      "Serlect"
+    ],
+    "familia": "Antipsicóticos atípicos",
+    "clasificacion": "Antipsicótico de segunda generación",
+    "mecanismoAccion": "Antagonista selectivo de receptores dopaminérgicos D2, serotoninérgicos 5-HT2A y adrenérgicos alfa-1. Su perfil receptor confiere baja incidencia de efectos extrapiramidales.",
+    "indicaciones": [
+      "Esquizofrenia en pacientes intolerantes a otros antipsicóticos",
+      "Trastornos psicóticos crónicos",
+      "Esquizofrenia resistente como segunda línea"
+    ],
+    "contraindicaciones": [
+      "QT prolongado o antecedentes de arritmias",
+      "Hipopotasemia o hipomagnesemia no corregida",
+      "Insuficiencia hepática grave",
+      "Uso concomitante de fármacos que prolongan QT",
+      "Hipersensibilidad al sertindol"
+    ],
+    "efectosAdversos": [
+      "Prolongación del intervalo QT",
+      "Congestión nasal",
+      "Aumento de peso",
+      "Hipotensión ortostática",
+      "Eyaculación retrógrada",
+      "Mareo"
+    ],
+    "interacciones": [
+      "Inhibidores CYP2D6 (fluoxetina, paroxetina): aumentan niveles de sertindol",
+      "Fármacos que prolongan QT: riesgo aditivo de arritmias",
+      "Ketoconazol e inhibidores CYP3A4: aumentan concentración plasmática",
+      "Carbamazepina: reduce niveles de sertindol"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 4 mg/día. Titular cada 4-5 días. Mantenimiento: 12-20 mg/día. Máx: 24 mg/día",
+      "geriatrico": "Iniciar con dosis más bajas y titular lentamente",
+      "ajusteRenal": "No requiere ajuste en insuficiencia renal leve-moderada",
+      "ajusteHepatico": "Contraindicado en insuficiencia hepática grave"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 4 mg",
+      "Comprimidos recubiertos 12 mg",
+      "Comprimidos recubiertos 16 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "No recomendado. Se desconoce excreción en leche materna.",
+    "cuidadosEnfermeria": [
+      "Realizar ECG basal y periódico para monitorizar QTc",
+      "Control de electrolitos séricos (potasio, magnesio) antes y durante tratamiento",
+      "Monitorizar presión arterial por riesgo de hipotensión ortostática",
+      "Titular dosis lentamente según protocolo",
+      "Vigilar signos de arritmia: palpitaciones, síncope, mareo"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  },
+  {
+    "id": "drug2786",
+    "nombre": "Zotepina",
+    "nombreGenerico": "Zotepina",
+    "nombresComerciales": [
+      "Zoleptil",
+      "Nipolept"
+    ],
+    "familia": "Antipsicóticos atípicos",
+    "clasificacion": "Antipsicótico de segunda generación",
+    "mecanismoAccion": "Antagonista de receptores D1, D2, 5-HT2A, 5-HT2C, H1 y alfa-1 adrenérgicos. También inhibe la recaptación de noradrenalina, lo que puede contribuir a su efecto antidepresivo.",
+    "indicaciones": [
+      "Esquizofrenia aguda y crónica",
+      "Síntomas negativos de la esquizofrenia",
+      "Trastornos psicóticos con componente depresivo"
+    ],
+    "contraindicaciones": [
+      "Intoxicación aguda por depresores del SNC",
+      "Epilepsia no controlada",
+      "Insuficiencia hepática grave",
+      "Feocromocitoma",
+      "Hipersensibilidad a zotepina"
+    ],
+    "efectosAdversos": [
+      "Somnolencia",
+      "Aumento de peso",
+      "Convulsiones (dosis-dependiente)",
+      "Hipotensión ortostática",
+      "Taquicardia",
+      "Elevación de transaminasas"
+    ],
+    "interacciones": [
+      "Depresores del SNC: efecto aditivo sedante",
+      "Anticonvulsivantes: pueden reducir umbral convulsivo",
+      "Fluoxetina: aumenta niveles de zotepina",
+      "Antihipertensivos: potencia hipotensión"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 25 mg tres veces al día. Mantenimiento: 75-300 mg/día en 3 tomas. Máx: 300 mg/día",
+      "geriatrico": "Iniciar con 25 mg/día y titular gradualmente",
+      "ajusteRenal": "Reducir dosis en insuficiencia renal moderada-grave",
+      "ajusteHepatico": "Contraindicado en insuficiencia hepática grave"
+    },
+    "presentaciones": [
+      "Comprimidos 25 mg",
+      "Comprimidos 50 mg",
+      "Comprimidos 100 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "No recomendado. Datos insuficientes sobre excreción en leche.",
+    "cuidadosEnfermeria": [
+      "Monitorizar función hepática periódicamente",
+      "Vigilar signos de convulsiones especialmente con dosis altas",
+      "Control de peso y perfil metabólico",
+      "Advertir sobre hipotensión ortostática al levantarse",
+      "Evaluar sedación y ajustar horario de dosis si necesario"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  },
+  {
+    "id": "drug2787",
+    "nombre": "Clorprotixeno",
+    "nombreGenerico": "Clorprotixeno",
+    "nombresComerciales": [
+      "Truxal",
+      "Taractan"
+    ],
+    "familia": "Antipsicóticos típicos",
+    "clasificacion": "Antipsicótico de primera generación (tioxanteno)",
+    "mecanismoAccion": "Antagonista de receptores dopaminérgicos D1 y D2, serotoninérgicos 5-HT2, histaminérgicos H1 y muscarínicos. Su estructura tioxanténica le confiere propiedades sedantes prominentes.",
+    "indicaciones": [
+      "Esquizofrenia con agitación",
+      "Psicosis agudas",
+      "Ansiedad severa refractaria",
+      "Insomnio asociado a trastornos psicóticos"
+    ],
+    "contraindicaciones": [
+      "Depresión grave del SNC",
+      "Colapso circulatorio",
+      "Feocromocitoma",
+      "Discrasias sanguíneas",
+      "Hipersensibilidad a tioxantenos"
+    ],
+    "efectosAdversos": [
+      "Sedación marcada",
+      "Hipotensión ortostática",
+      "Efectos anticolinérgicos (boca seca, estreñimiento, retención urinaria)",
+      "Aumento de peso",
+      "Efectos extrapiramidales",
+      "Fotosensibilidad"
+    ],
+    "interacciones": [
+      "Alcohol y depresores del SNC: potencia sedación",
+      "Anticolinérgicos: efectos aditivos",
+      "Levodopa: reduce eficacia antiparkinsoniana",
+      "Antihipertensivos: potencia hipotensión"
+    ],
+    "viaAdministracion": [
+      "oral",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "Oral: 15-50 mg 3-4 veces/día. IM: 25-50 mg. Máx oral: 600 mg/día",
+      "geriatrico": "Iniciar con dosis bajas: 15 mg/día, titular lentamente",
+      "ajusteRenal": "Precaución en insuficiencia renal grave",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepática"
+    },
+    "presentaciones": [
+      "Comprimidos 15 mg",
+      "Comprimidos 50 mg",
+      "Solución inyectable 50 mg/mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche materna. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Monitorizar presión arterial por riesgo de hipotensión severa",
+      "Vigilar nivel de sedación con escala apropiada",
+      "Educar al paciente sobre fotosensibilidad: usar protección solar",
+      "Controlar función hepática y hemograma periódicamente",
+      "Administrar IM profunda para evitar irritación tisular"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  },
+  {
+    "id": "drug2788",
+    "nombre": "Tioridazina",
+    "nombreGenerico": "Clorhidrato de tioridazina",
+    "nombresComerciales": [
+      "Melleril",
+      "Meleril"
+    ],
+    "familia": "Antipsicóticos típicos",
+    "clasificacion": "Antipsicótico de primera generación (fenotiazina piperidínica)",
+    "mecanismoAccion": "Antagonista de receptores dopaminérgicos D2 con potente bloqueo muscarínico, histaminérgico H1 y adrenérgico alfa-1. Su alta afinidad por receptores muscarínicos reduce los efectos extrapiramidales.",
+    "indicaciones": [
+      "Esquizofrenia refractaria a otros antipsicóticos",
+      "Psicosis en ancianos (última línea)",
+      "Agitación psicomotriz severa"
+    ],
+    "contraindicaciones": [
+      "QT prolongado congénito o adquirido",
+      "Uso concomitante de fármacos que prolongan QT",
+      "Insuficiencia cardíaca descompensada",
+      "Retinopatía pigmentaria",
+      "Metabolizadores lentos CYP2D6 conocidos"
+    ],
+    "efectosAdversos": [
+      "Prolongación del QT y arritmias ventriculares (torsade de pointes)",
+      "Retinopatía pigmentaria (dosis >800 mg/día)",
+      "Sedación intensa",
+      "Hipotensión ortostática",
+      "Efectos anticolinérgicos marcados",
+      "Eyaculación retrógrada"
+    ],
+    "interacciones": [
+      "Fármacos que prolongan QT (quinidina, sotalol): contraindicado",
+      "Inhibidores CYP2D6: aumentan niveles peligrosamente",
+      "Depresores del SNC: sedación aditiva",
+      "Anticolinérgicos: efectos anticolinérgicos aditivos"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 50-100 mg 3 veces/día. Mantenimiento: 200-800 mg/día. Máx absoluto: 800 mg/día",
+      "geriatrico": "Inicio: 10-25 mg 2-3 veces/día",
+      "ajusteRenal": "Precaución; reducir dosis",
+      "ajusteHepatico": "Reducir dosis significativamente"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg",
+      "Comprimidos 50 mg",
+      "Comprimidos 100 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "ECG obligatorio antes de iniciar y periódicamente durante tratamiento",
+      "No superar 800 mg/día por riesgo de retinopatía irreversible",
+      "Monitorizar QTc: suspender si QTc >500 ms",
+      "Control oftalmológico periódico en tratamientos prolongados",
+      "Vigilar signos de arritmia: mareo, palpitaciones, síncope"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  },
+  {
+    "id": "drug2789",
+    "nombre": "Molindona",
+    "nombreGenerico": "Clorhidrato de molindona",
+    "nombresComerciales": [
+      "Moban",
+      "Lidone"
+    ],
+    "familia": "Antipsicóticos típicos",
+    "clasificacion": "Antipsicótico de primera generación (dihidroindolona)",
+    "mecanismoAccion": "Antagonista de receptores dopaminérgicos D2 en vías mesolímbicas y mesocorticales. A diferencia de otras fenotiazinas, tiene menor efecto sobre receptores histaminérgicos, lo que reduce el riesgo de aumento de peso.",
+    "indicaciones": [
+      "Esquizofrenia aguda y crónica",
+      "Trastornos psicóticos cuando se desea minimizar aumento de peso",
+      "Psicosis en pacientes con riesgo metabólico"
+    ],
+    "contraindicaciones": [
+      "Depresión severa del SNC",
+      "Estado comatoso",
+      "Hipersensibilidad a molindona",
+      "Síndrome neuroléptico maligno previo"
+    ],
+    "efectosAdversos": [
+      "Efectos extrapiramidales (distonía, acatisia)",
+      "Somnolencia",
+      "Sequedad bucal",
+      "Náuseas",
+      "Discinesia tardía con uso prolongado",
+      "Amenorrea e hiperprolactinemia"
+    ],
+    "interacciones": [
+      "Depresores del SNC: sedación aditiva",
+      "Levodopa: antagoniza efecto antiparkinsoniano",
+      "Litio: puede potenciar neurotoxicidad",
+      "Anticonvulsivantes: puede reducir umbral convulsivo"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 50-75 mg/día en 3-4 tomas. Mantenimiento: 15-225 mg/día. Máx: 225 mg/día",
+      "geriatrico": "Iniciar con dosis más bajas: 5-10 mg 3 veces/día",
+      "ajusteRenal": "Precaución en insuficiencia renal",
+      "ajusteHepatico": "Reducir dosis en hepatopatía"
+    },
+    "presentaciones": [
+      "Comprimidos 5 mg",
+      "Comprimidos 10 mg",
+      "Comprimidos 25 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Datos insuficientes. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Evaluar signos extrapiramidales en cada visita",
+      "Ventaja: menor aumento de peso que otras fenotiazinas",
+      "Monitorizar prolactina si aparecen síntomas relacionados",
+      "Vigilar aparición de discinesia tardía en uso prolongado",
+      "Educar al paciente sobre importancia de adherencia al tratamiento"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_06"
+  },
+  {
+    "id": "drug2790",
+    "nombre": "Moclobemida",
+    "nombreGenerico": "Moclobemida",
+    "nombresComerciales": [
+      "Aurorix",
+      "Manerix"
+    ],
+    "familia": "Antidepresivos IMAO",
+    "clasificacion": "Inhibidor selectivo reversible de la MAO-A (RIMA)",
+    "mecanismoAccion": "Inhibe de forma reversible y selectiva la monoaminooxidasa tipo A, aumentando los niveles de serotonina, noradrenalina y dopamina en la hendidura sinaptica. Su reversibilidad reduce el riesgo de crisis hipertensivas por tiramina.",
+    "indicaciones": [
+      "Trastorno depresivo mayor",
+      "Fobia social (trastorno de ansiedad social)",
+      "Distimia",
+      "Depresion atipica"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de ISRS o antidepresivos serotoninergicos",
+      "Feocromocitoma",
+      "Estados confusionales agudos",
+      "Hipersensibilidad a moclobemida"
+    ],
+    "efectosAdversos": [
+      "Insomnio",
+      "Nauseas",
+      "Mareo",
+      "Cefalea",
+      "Sequedad bucal",
+      "Agitacion"
+    ],
+    "interacciones": [
+      "ISRS y otros serotoninergicos: riesgo de sindrome serotoninergico",
+      "Opioides (petidina, tramadol): contraindicado por riesgo serotoninergico",
+      "Cimetidina: aumenta niveles de moclobemida",
+      "Alimentos con tiramina: riesgo bajo pero precaucion con grandes cantidades"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 150 mg 2 veces/dia despues de comidas. Mantenimiento: 300-600 mg/dia. Max: 600 mg/dia",
+      "geriatrico": "No requiere ajuste, pero iniciar con dosis bajas",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Reducir dosis a la mitad en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 150 mg",
+      "Comprimidos recubiertos 300 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche en pequenas cantidades. Precaucion.",
+    "cuidadosEnfermeria": [
+      "Administrar despues de las comidas para mejor tolerancia",
+      "No requiere restriccion dietetica estricta de tiramina (a diferencia de IMAO irreversibles)",
+      "Esperar 24h tras suspender moclobemida antes de iniciar ISRS",
+      "Monitorizar presion arterial en las primeras semanas",
+      "Vigilar signos de sindrome serotoninergico si se asocia a otros farmacos"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_07"
+  },
+  {
+    "id": "drug2791",
+    "nombre": "Tranilcipromina",
+    "nombreGenerico": "Sulfato de tranilcipromina",
+    "nombresComerciales": [
+      "Parnate",
+      "Jatrosom"
+    ],
+    "familia": "Antidepresivos IMAO",
+    "clasificacion": "Inhibidor irreversible no selectivo de la MAO",
+    "mecanismoAccion": "Inhibe de forma irreversible las enzimas monoaminooxidasa A y B, aumentando significativamente los niveles de serotonina, noradrenalina y dopamina. El efecto persiste hasta que se sintetizan nuevas enzimas MAO (2-3 semanas).",
+    "indicaciones": [
+      "Depresion mayor resistente a otros antidepresivos",
+      "Depresion atipica",
+      "Trastorno de panico refractario"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de ISRS, IRSN, antidepresivos triciclicos",
+      "Feocromocitoma",
+      "Insuficiencia hepatica",
+      "Insuficiencia cardiaca congestiva",
+      "Alimentos ricos en tiramina (quesos curados, embutidos, vino tinto)"
+    ],
+    "efectosAdversos": [
+      "Crisis hipertensiva por tiramina (potencialmente mortal)",
+      "Hipotension ortostatica",
+      "Insomnio",
+      "Agitacion",
+      "Aumento de peso",
+      "Edema periferico"
+    ],
+    "interacciones": [
+      "Tiramina dietetica: crisis hipertensiva severa",
+      "Serotoninergicos (ISRS, triptanes, tramadol): sindrome serotoninergico fatal",
+      "Simpaticomimeticos (pseudoefedrina, anfetaminas): crisis hipertensiva",
+      "Petidina/meperidina: contraindicado absolutamente"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 10 mg 2 veces/dia (manana y mediodia). Mantenimiento: 20-60 mg/dia. Max: 60 mg/dia",
+      "geriatrico": "Inicio: 5 mg/dia. Titular con precaucion extrema",
+      "ajusteRenal": "Precaucion en insuficiencia renal",
+      "ajusteHepatico": "Contraindicado en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg",
+      "Comprimidos 20 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Contraindicado. Se excreta en leche materna.",
+    "cuidadosEnfermeria": [
+      "Educar extensamente sobre dieta baja en tiramina (OBLIGATORIO)",
+      "Proporcionar lista escrita de alimentos prohibidos al paciente",
+      "Monitorizar presion arterial frecuentemente",
+      "Esperar minimo 14 dias tras suspender antes de iniciar otro antidepresivo",
+      "Tener fentolamina o nifedipino disponible para crisis hipertensiva"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_07"
+  },
+  {
+    "id": "drug2792",
+    "nombre": "Levomilnacipran",
+    "nombreGenerico": "Clorhidrato de levomilnacipran",
+    "nombresComerciales": [
+      "Fetzima",
+      "Trevilor"
+    ],
+    "familia": "Antidepresivos IRSN",
+    "clasificacion": "Inhibidor de la recaptacion de serotonina y noradrenalina (IRSN)",
+    "mecanismoAccion": "Enantiomero activo del milnacipran. Inhibe la recaptacion de noradrenalina con mayor potencia que la de serotonina (proporcion 2:1 NA:5-HT), lo que le confiere un perfil mas activador y pro-noradrenergico.",
+    "indicaciones": [
+      "Trastorno depresivo mayor",
+      "Depresion con sintomas de fatiga y anergia predominantes",
+      "Fibromialgia (uso off-label)"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de IMAO (esperar 14 dias)",
+      "Glaucoma de angulo cerrado no controlado",
+      "Hipersensibilidad a levomilnacipran o milnacipran",
+      "Insuficiencia renal terminal (ClCr <15 mL/min)"
+    ],
+    "efectosAdversos": [
+      "Nauseas",
+      "Taquicardia",
+      "Hipertension arterial",
+      "Estrenimiento",
+      "Hiperhidrosis",
+      "Disfuncion erectil y eyaculatoria"
+    ],
+    "interacciones": [
+      "IMAO: sindrome serotoninergico (contraindicado)",
+      "Otros serotoninergicos: riesgo serotoninergico aditivo",
+      "AINEs y anticoagulantes: mayor riesgo de sangrado",
+      "Desipramina: aumenta niveles de CYP2D6 substrato"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 20 mg/dia durante 2 dias, luego 40 mg/dia. Mantenimiento: 40-120 mg/dia. Max: 120 mg/dia",
+      "ajusteRenal": "ClCr 30-59: max 80 mg/dia. ClCr 15-29: max 40 mg/dia",
+      "ajusteHepatico": "No requiere ajuste en hepatopatia leve-moderada"
+    },
+    "presentaciones": [
+      "Capsulas de liberacion prolongada 20 mg",
+      "Capsulas LP 40 mg",
+      "Capsulas LP 80 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Monitorizar presion arterial y frecuencia cardiaca regularmente",
+      "Las capsulas deben tragarse enteras, no abrir ni triturar",
+      "Vigilar aparicion de retencion urinaria (efecto noradrenergico)",
+      "Reducir dosis gradualmente al suspender (no suspender bruscamente)",
+      "Evaluar mejoria de sintomas de anergia/fatiga como marcador de respuesta"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_07"
+  },
+  {
+    "id": "drug2793",
+    "nombre": "Escitalopram depot",
+    "nombreGenerico": "Escitalopram de liberacion prolongada",
+    "nombresComerciales": [
+      "Lexapro LP",
+      "Cipralex Retard"
+    ],
+    "familia": "Antidepresivos ISRS",
+    "clasificacion": "Inhibidor selectivo de la recaptacion de serotonina (formulacion depot)",
+    "mecanismoAccion": "S-enantiomero del citalopram. Inhibe selectivamente la recaptacion de serotonina en la membrana presinaptica. La formulacion depot permite liberacion sostenida con menor fluctuacion plasmatica y mejor adherencia.",
+    "indicaciones": [
+      "Trastorno depresivo mayor",
+      "Trastorno de ansiedad generalizada",
+      "Trastorno de panico con o sin agorafobia",
+      "Trastorno obsesivo-compulsivo",
+      "Fobia social"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de IMAO (esperar 14 dias)",
+      "QT prolongado o uso de farmacos que prolongan QT",
+      "Hipersensibilidad a escitalopram o citalopram",
+      "Uso concomitante de pimozida"
+    ],
+    "efectosAdversos": [
+      "Nauseas (transitorio)",
+      "Cefalea",
+      "Insomnio o somnolencia",
+      "Disfuncion sexual",
+      "Hiponatremia (especialmente en ancianos)",
+      "Sindrome de discontinuacion si se suspende bruscamente"
+    ],
+    "interacciones": [
+      "IMAO: sindrome serotoninergico (contraindicado)",
+      "Triptanes: riesgo de sindrome serotoninergico",
+      "Anticoagulantes orales y AINEs: mayor riesgo de sangrado",
+      "Omeprazol y cimetidina: aumentan niveles plasmaticos"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "10-20 mg/dia en dosis unica. Max: 20 mg/dia",
+      "geriatrico": "Maximo 10 mg/dia",
+      "ajusteRenal": "No requiere ajuste en insuficiencia leve-moderada. Precaucion si ClCr <20",
+      "ajusteHepatico": "Inicio 5 mg/dia. Max: 10 mg/dia"
+    },
+    "presentaciones": [
+      "Comprimidos de liberacion prolongada 10 mg",
+      "Comprimidos LP 20 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Valorar riesgo/beneficio.",
+    "cuidadosEnfermeria": [
+      "Informar que el efecto terapeutico tarda 2-4 semanas",
+      "Monitorizar ideacion suicida especialmente en jovenes (<25 anos) las primeras semanas",
+      "Vigilar signos de hiponatremia en ancianos: confusion, debilidad, cefalea",
+      "No suspender bruscamente: reducir gradualmente en 1-2 semanas",
+      "Administrar preferentemente por la manana si causa insomnio"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_07"
+  },
+  {
+    "id": "drug2794",
+    "nombre": "Ketamina oral",
+    "nombreGenerico": "Clorhidrato de ketamina (formulacion oral)",
+    "nombresComerciales": [
+      "Ketalar oral",
+      "Ketamina compuesta"
+    ],
+    "familia": "Antidepresivos de accion rapida",
+    "clasificacion": "Antagonista del receptor NMDA (glutamato)",
+    "mecanismoAccion": "Bloquea los receptores NMDA de glutamato, produciendo un aumento rapido de BDNF y sinaptogenesis. Activa la via mTOR, promoviendo la formacion de nuevas conexiones sinapticas. Efecto antidepresivo rapido (horas) a diferencia de antidepresivos clasicos (semanas).",
+    "indicaciones": [
+      "Depresion resistente al tratamiento",
+      "Depresion con ideacion suicida activa (efecto rapido)",
+      "Trastorno depresivo mayor refractario a 2 o mas antidepresivos"
+    ],
+    "contraindicaciones": [
+      "Hipertension arterial no controlada",
+      "Aneurisma cerebral o aortico",
+      "Presion intracraneal elevada",
+      "Psicosis activa o antecedentes de trastorno psicotico",
+      "Embarazo"
+    ],
+    "efectosAdversos": [
+      "Sintomas disociativos (despersonalizacion, desrealizacion)",
+      "Nauseas y vomitos",
+      "Elevacion transitoria de presion arterial",
+      "Mareo y sedacion",
+      "Cistitis intersticial (uso cronico)",
+      "Potencial de abuso y dependencia"
+    ],
+    "interacciones": [
+      "Depresores del SNC: potencia sedacion y depresion respiratoria",
+      "IMAO: puede potenciar efectos cardiovasculares",
+      "Benzodiacepinas: pueden atenuar el efecto antidepresivo de ketamina",
+      "Lamotrigina: puede reducir sintomas disociativos sin afectar eficacia"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "0.5 mg/kg por dosis. Frecuencia: 2-3 veces/semana inicialmente, luego espaciar. Administrar bajo supervision medica",
+      "geriatrico": "Reducir dosis inicial. Mayor sensibilidad a efectos disociativos",
+      "ajusteRenal": "Precaucion en insuficiencia renal",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Solucion oral 50 mg/mL (preparacion magistral)",
+      "Comprimidos sublinguales 25 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado durante la lactancia.",
+    "cuidadosEnfermeria": [
+      "Administrar SIEMPRE bajo supervision medica en entorno controlado",
+      "Monitorizar presion arterial antes, durante y 2h despues de administracion",
+      "Mantener al paciente en observacion minimo 2 horas post-dosis",
+      "Evaluar sintomas disociativos con escala CADSS",
+      "El paciente no debe conducir ni operar maquinaria el dia de administracion"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_07"
+  },
+  {
+    "id": "drug2795",
+    "nombre": "Clobazam",
+    "nombreGenerico": "Clobazam",
+    "nombresComerciales": [
+      "Frisium",
+      "Onfi",
+      "Urbadan"
+    ],
+    "familia": "Benzodiacepinas",
+    "clasificacion": "Benzodiacepina 1,5 (ansiolitico y anticonvulsivante)",
+    "mecanismoAccion": "Modula alostericamente el receptor GABA-A potenciando la accion del GABA. A diferencia de las 1,4-benzodiacepinas clasicas, tiene menor efecto sedante y mejor perfil de tolerancia, manteniendo eficacia anticonvulsivante.",
+    "indicaciones": [
+      "Epilepsia refractaria (coadyuvante, especialmente sindrome de Lennox-Gastaut)",
+      "Ansiedad severa a corto plazo",
+      "Crisis de ansiedad aguda",
+      "Espasticidad asociada a trastornos neurologicos"
+    ],
+    "contraindicaciones": [
+      "Miastenia gravis",
+      "Insuficiencia respiratoria severa",
+      "Apnea del sueno",
+      "Hipersensibilidad a benzodiacepinas",
+      "Insuficiencia hepatica grave"
+    ],
+    "efectosAdversos": [
+      "Somnolencia",
+      "Mareo",
+      "Ataxia",
+      "Irritabilidad (paradojica en ninos)",
+      "Sindrome de Stevens-Johnson (raro, mas frecuente en metabolizadores lentos CYP2C19)",
+      "Dependencia con uso prolongado"
+    ],
+    "interacciones": [
+      "Depresores del SNC y alcohol: sedacion aditiva",
+      "Inhibidores CYP2C19 (fluconazol, omeprazol): aumentan niveles",
+      "Valproato: puede aumentar concentraciones de clobazam",
+      "Inductores enzimaticos (carbamazepina, fenitoina): reducen niveles"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Ansiedad: 20-30 mg/dia en 2-3 tomas. Epilepsia: 10-40 mg/dia. Max: 80 mg/dia",
+      "pediatrico": "Epilepsia (>2 anos): 0.5-1 mg/kg/dia. Sindrome Lennox-Gastaut: inicio 5 mg/dia, titular",
+      "geriatrico": "Iniciar con 5-10 mg/dia",
+      "ajusteRenal": "No requiere ajuste significativo",
+      "ajusteHepatico": "Reducir dosis a la mitad. Contraindicado en hepatopatia grave"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg",
+      "Comprimidos 20 mg",
+      "Suspension oral 2.5 mg/mL"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Administrar la dosis mayor por la noche si causa sedacion diurna",
+      "Vigilar reacciones cutaneas graves (sindrome de Stevens-Johnson)",
+      "No suspender bruscamente en epilepsia: riesgo de status epilepticus",
+      "Monitorizar funcion hepatica periodicamente",
+      "Menor riesgo de sedacion que diazepam; util en pacientes ambulatorios"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2796",
+    "nombre": "Clorazepato",
+    "nombreGenerico": "Dipotasico de clorazepato",
+    "nombresComerciales": [
+      "Tranxilium",
+      "Novazam",
+      "Gen-XENE"
+    ],
+    "familia": "Benzodiacepinas",
+    "clasificacion": "Benzodiacepina de accion prolongada (ansiolitico)",
+    "mecanismoAccion": "Profarmaco que se convierte rapidamente en nordiazepam (desmetildiazepam) por descarboxilacion acida en estomago. Nordiazepam potencia la accion del GABA en receptores GABA-A, produciendo efecto ansiolitico sostenido.",
+    "indicaciones": [
+      "Trastorno de ansiedad generalizada",
+      "Abstinencia alcoholica aguda",
+      "Epilepsia parcial (coadyuvante)",
+      "Ansiedad preoperatoria"
+    ],
+    "contraindicaciones": [
+      "Glaucoma de angulo cerrado",
+      "Miastenia gravis",
+      "Insuficiencia respiratoria severa",
+      "Hipersensibilidad a benzodiacepinas"
+    ],
+    "efectosAdversos": [
+      "Somnolencia",
+      "Confusion (especialmente en ancianos)",
+      "Ataxia",
+      "Dependencia y tolerancia con uso prolongado",
+      "Amnesia anterograda",
+      "Depresion respiratoria en dosis altas"
+    ],
+    "interacciones": [
+      "Alcohol y depresores del SNC: potenciacion de sedacion",
+      "Cimetidina: inhibe metabolismo, aumenta niveles",
+      "Rifampicina: acelera metabolismo, reduce eficacia",
+      "Opioides: riesgo de depresion respiratoria combinada"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Ansiedad: 7.5-15 mg 2-3 veces/dia. Abstinencia alcoholica: Dia 1: 30 mg, luego reducir gradualmente. Max: 90 mg/dia",
+      "geriatrico": "Iniciar con 3.75-7.5 mg 1-2 veces/dia",
+      "ajusteRenal": "Precaucion; reducir dosis",
+      "ajusteHepatico": "Reducir dosis significativamente. Vida media muy prolongada"
+    },
+    "presentaciones": [
+      "Capsulas 3.75 mg",
+      "Capsulas 7.5 mg",
+      "Capsulas 15 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Vida media muy larga (40-200h del metabolito activo): riesgo de acumulacion",
+      "En ancianos, vigilar acumulacion y sobresedacion",
+      "Monitorizar signos vitales en abstinencia alcoholica (escala CIWA)",
+      "No suspender bruscamente tras uso prolongado: reducir 10% semanal",
+      "Educar sobre riesgo de dependencia y evitar alcohol"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2797",
+    "nombre": "Oxazepam",
+    "nombreGenerico": "Oxazepam",
+    "nombresComerciales": [
+      "Serax",
+      "Adumbran",
+      "Murelax"
+    ],
+    "familia": "Benzodiacepinas",
+    "clasificacion": "Benzodiacepina de accion corta-intermedia",
+    "mecanismoAccion": "Potencia la accion del GABA en receptores GABA-A. Metabolito activo del diazepam. Se conjuga directamente por glucuronidacion sin pasar por CYP450, lo que lo hace ideal en ancianos y hepatopatas al no acumularse.",
+    "indicaciones": [
+      "Ansiedad leve a moderada",
+      "Ansiedad en pacientes hepatopatas",
+      "Ansiedad en ancianos",
+      "Sindrome de abstinencia alcoholica (casos leves-moderados)"
+    ],
+    "contraindicaciones": [
+      "Glaucoma de angulo cerrado",
+      "Miastenia gravis",
+      "Insuficiencia respiratoria severa",
+      "Hipersensibilidad a benzodiacepinas"
+    ],
+    "efectosAdversos": [
+      "Somnolencia",
+      "Mareo",
+      "Cefalea",
+      "Ataxia (menos que otras BZD)",
+      "Dependencia con uso prolongado"
+    ],
+    "interacciones": [
+      "Depresores del SNC: sedacion aditiva",
+      "Probenecid: puede aumentar y prolongar efecto del oxazepam",
+      "Alcohol: potenciacion de efectos depresores",
+      "Teofilina: puede reducir efecto del oxazepam"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Ansiedad: 10-30 mg 3-4 veces/dia. Abstinencia alcoholica: 15-30 mg 3-4 veces/dia. Max: 120 mg/dia",
+      "geriatrico": "10 mg 3 veces/dia. BZD de eleccion en ancianos por ausencia de metabolitos activos",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste (glucuronidacion directa, no CYP450). BZD de eleccion en hepatopatia"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg",
+      "Comprimidos 15 mg",
+      "Comprimidos 30 mg"
+    ],
+    "embarazo": "D",
+    "lactancia": "Se excreta en leche en cantidades minimas. Precaucion.",
+    "cuidadosEnfermeria": [
+      "BZD de eleccion en ancianos y hepatopatas (no usa CYP450)",
+      "Inicio de accion mas lento que otras BZD: no esperar efecto inmediato",
+      "Menor riesgo de acumulacion que diazepam o clorazepato",
+      "Igualmente produce dependencia: limitar tratamiento a 2-4 semanas",
+      "Vigilar sedacion y riesgo de caidas en ancianos"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2798",
+    "nombre": "Pregabalina (ansiolitico)",
+    "nombreGenerico": "Pregabalina",
+    "nombresComerciales": [
+      "Lyrica",
+      "Pregabalina Kern"
+    ],
+    "familia": "Analogos del GABA",
+    "clasificacion": "Ligando alfa-2-delta (ansiolitico no benzodiazepinico)",
+    "mecanismoAccion": "Se une a la subunidad alfa-2-delta de los canales de calcio voltaje-dependientes, reduciendo la liberacion de neurotransmisores excitatorios (glutamato, noradrenalina, sustancia P). En ansiedad, modula la hiperexcitabilidad neuronal en amigdala y corteza prefrontal.",
+    "indicaciones": [
+      "Trastorno de ansiedad generalizada",
+      "Dolor neuropatico",
+      "Fibromialgia",
+      "Epilepsia parcial (coadyuvante)",
+      "Ansiedad comorbida con dolor cronico"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a pregabalina",
+      "Intolerancia hereditaria a galactosa",
+      "Insuficiencia cardiaca congestiva grave (clase IV)"
+    ],
+    "efectosAdversos": [
+      "Somnolencia y mareo (frecuentes)",
+      "Aumento de peso",
+      "Edema periferico",
+      "Vision borrosa",
+      "Euforia (potencial de abuso)",
+      "Dificultad de concentracion"
+    ],
+    "interacciones": [
+      "Opioides: riesgo aumentado de depresion respiratoria y sedacion",
+      "Alcohol y depresores del SNC: potenciacion de efectos sedantes",
+      "Inhibidores de la ECA: puede potenciar angioedema",
+      "Tiazolidinedionas: riesgo aditivo de edema y aumento de peso"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Ansiedad: Inicio 75 mg 2 veces/dia. Mantenimiento: 150-600 mg/dia en 2-3 tomas. Max: 600 mg/dia",
+      "geriatrico": "Inicio 25-75 mg/dia. Titular lentamente",
+      "ajusteRenal": "ClCr 30-60: max 300 mg/dia. ClCr 15-30: max 150 mg/dia. ClCr <15: max 75 mg/dia",
+      "ajusteHepatico": "No requiere ajuste (excrecion renal sin metabolismo hepatico)"
+    },
+    "presentaciones": [
+      "Capsulas 25 mg",
+      "Capsulas 75 mg",
+      "Capsulas 150 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Efecto ansiolitico rapido (1 semana) vs antidepresivos (4 semanas)",
+      "Controlar peso periodicamente: aumento de peso dosis-dependiente",
+      "No suspender bruscamente: reducir gradualmente en minimo 1 semana",
+      "Vigilar edema periferico especialmente si se asocia a glitazonas",
+      "Advertir sobre potencial de abuso: euforia es efecto adverso reconocido"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2799",
+    "nombre": "Zolpidem",
+    "nombreGenerico": "Tartrato de zolpidem",
+    "nombresComerciales": [
+      "Stilnox",
+      "Ambien",
+      "Dalparan"
+    ],
+    "familia": "Hipnoticos no benzodiazepinico",
+    "clasificacion": "Agonista selectivo del receptor GABA-A subtipo omega-1 (imidazopiridina)",
+    "mecanismoAccion": "Se une selectivamente a la subunidad alfa-1 del receptor GABA-A (subtipo BZ1/omega-1), localizada preferentemente en corteza cerebral y globo palido. Esta selectividad produce efecto hipnotico con minimo efecto ansiolitico, miorelajante o anticonvulsivante.",
+    "indicaciones": [
+      "Insomnio de conciliacion",
+      "Insomnio transitorio (jet lag, hospitalizacion)",
+      "Insomnio a corto plazo"
+    ],
+    "contraindicaciones": [
+      "Apnea obstructiva del sueno grave",
+      "Insuficiencia respiratoria severa",
+      "Miastenia gravis",
+      "Insuficiencia hepatica grave",
+      "Menores de 18 anos"
+    ],
+    "efectosAdversos": [
+      "Somnolencia residual matutina",
+      "Amnesia anterograda",
+      "Comportamientos complejos durante el sueno (sonambulismo, conduccion dormido)",
+      "Cefalea",
+      "Nauseas",
+      "Alucinaciones (raro)"
+    ],
+    "interacciones": [
+      "Depresores del SNC y alcohol: sedacion potenciada",
+      "Rifampicina: reduce drasticamente niveles de zolpidem",
+      "Ketoconazol e inhibidores CYP3A4: aumentan niveles",
+      "Flumazenil: antagoniza efecto (antidoto)"
+    ],
+    "viaAdministracion": [
+      "oral",
+      "sublingual"
+    ],
+    "dosis": {
+      "adulto": "5-10 mg al acostarse. Mujeres: iniciar con 5 mg. Hombres: 5-10 mg. Max: 10 mg/dia",
+      "geriatrico": "5 mg al acostarse. No exceder",
+      "ajusteRenal": "No requiere ajuste en insuficiencia leve-moderada",
+      "ajusteHepatico": "5 mg. Contraindicado en hepatopatia grave"
+    },
+    "presentaciones": [
+      "Comprimidos 5 mg",
+      "Comprimidos 10 mg",
+      "Comprimidos sublinguales 1.75 mg y 3.5 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. No recomendado durante la lactancia.",
+    "cuidadosEnfermeria": [
+      "Administrar inmediatamente antes de acostarse con 7-8h de sueno disponibles",
+      "Alertar sobre conductas complejas durante el sueno (sonambulismo, comer dormido)",
+      "Limitar tratamiento a 2-4 semanas por riesgo de dependencia",
+      "Mujeres metabolizan mas lento: dosis menores recomendadas",
+      "No administrar si el paciente ha ingerido alcohol"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2800",
+    "nombre": "Zaleplon",
+    "nombreGenerico": "Zaleplon",
+    "nombresComerciales": [
+      "Sonata",
+      "Starnoc"
+    ],
+    "familia": "Hipnoticos no benzodiazepinico",
+    "clasificacion": "Agonista selectivo del receptor GABA-A subtipo omega-1 (pirazolopirimidina)",
+    "mecanismoAccion": "Agonista selectivo de la subunidad alfa-1 del receptor GABA-A. Vida media ultracorta (1 hora) que lo hace ideal para insomnio de conciliacion sin sedacion residual matutina. Minima alteracion de la arquitectura del sueno.",
+    "indicaciones": [
+      "Insomnio de conciliacion",
+      "Despertares nocturnos (si quedan >4h de sueno)",
+      "Insomnio transitorio"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia hepatica grave",
+      "Insuficiencia respiratoria severa",
+      "Apnea obstructiva del sueno",
+      "Hipersensibilidad a zaleplon"
+    ],
+    "efectosAdversos": [
+      "Cefalea",
+      "Mareo",
+      "Somnolencia (minima por vida media corta)",
+      "Parestesias",
+      "Amnesia anterograda",
+      "Reacciones alergicas graves (angioedema, anafilaxia - raro)"
+    ],
+    "interacciones": [
+      "Cimetidina: aumenta niveles de zaleplon significativamente",
+      "Rifampicina: reduce niveles drasticamente",
+      "Alcohol: potencia sedacion",
+      "Depresores del SNC: efecto aditivo"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "5-10 mg al acostarse o tras despertar nocturno. Max: 20 mg/dia (no recomendado)",
+      "geriatrico": "5 mg al acostarse. No exceder",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "5 mg. Contraindicado en hepatopatia grave"
+    },
+    "presentaciones": [
+      "Capsulas 5 mg",
+      "Capsulas 10 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Esperar 5h tras la dosis antes de amamantar.",
+    "cuidadosEnfermeria": [
+      "Vida media ultracorta (1h): ideal si se necesita despertar temprano",
+      "Puede administrarse tras despertar nocturno si quedan >4h de sueno",
+      "Administrar con estomago vacio (comida grasa retrasa absorcion)",
+      "Menor riesgo de sedacion residual que zolpidem",
+      "Limitar uso a 2 semanas"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2801",
+    "nombre": "Zopiclona",
+    "nombreGenerico": "Zopiclona",
+    "nombresComerciales": [
+      "Imovane",
+      "Limovan",
+      "Datolan"
+    ],
+    "familia": "Hipnoticos no benzodiazepinico",
+    "clasificacion": "Agonista del receptor GABA-A (ciclopirrolona)",
+    "mecanismoAccion": "Se une al sitio benzodiazepinico del receptor GABA-A pero con selectividad parcial por subunidades alfa-1. Reduce la latencia de inicio del sueno, aumenta la duracion total y reduce despertares nocturnos. Menor alteracion de fases de sueno que benzodiacepinas.",
+    "indicaciones": [
+      "Insomnio de conciliacion y mantenimiento",
+      "Insomnio transitorio y a corto plazo",
+      "Insomnio cronico cuando otros tratamientos fallan"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia respiratoria grave",
+      "Apnea del sueno severa",
+      "Miastenia gravis",
+      "Insuficiencia hepatica grave",
+      "Hipersensibilidad a zopiclona"
+    ],
+    "efectosAdversos": [
+      "Sabor metalico/amargo (muy frecuente, caracteristico)",
+      "Somnolencia residual",
+      "Sequedad bucal",
+      "Comportamientos complejos durante el sueno",
+      "Amnesia anterograda",
+      "Dependencia con uso prolongado"
+    ],
+    "interacciones": [
+      "Depresores del SNC y alcohol: sedacion potenciada",
+      "Eritromicina y claritromicina: aumentan niveles de zopiclona",
+      "Rifampicina y carbamazepina: reducen niveles",
+      "Flumazenil: puede antagonizar parcialmente"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "7.5 mg al acostarse. Max: 7.5 mg/dia",
+      "geriatrico": "3.75 mg al acostarse",
+      "ajusteRenal": "No requiere ajuste en insuficiencia leve-moderada",
+      "ajusteHepatico": "3.75 mg. Contraindicado en hepatopatia grave"
+    },
+    "presentaciones": [
+      "Comprimidos 3.75 mg",
+      "Comprimidos 7.5 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Advertir sobre sabor metalico/amargo: efecto esperado, no peligroso",
+      "Administrar inmediatamente antes de acostarse",
+      "Limitar tratamiento a 4 semanas maximo incluyendo periodo de retirada",
+      "Reducir gradualmente al suspender tras uso >2 semanas",
+      "Vigilar conductas complejas durante el sueno"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2802",
+    "nombre": "Lemborexant",
+    "nombreGenerico": "Lemborexant",
+    "nombresComerciales": [
+      "Dayvigo",
+      "Lemborexant Eisai"
+    ],
+    "familia": "Antagonistas duales de orexina",
+    "clasificacion": "Antagonista dual de receptores de orexina (DORA)",
+    "mecanismoAccion": "Bloquea los receptores de orexina OX1R y OX2R, inhibiendo la senalizacion de los neuropeptidos orexina A y B que promueven la vigilia. Reduce el impulso de vigilia sin afectar la arquitectura normal del sueno ni producir dependencia significativa.",
+    "indicaciones": [
+      "Insomnio de conciliacion y/o mantenimiento",
+      "Insomnio cronico en adultos",
+      "Insomnio en ancianos (perfil seguro)"
+    ],
+    "contraindicaciones": [
+      "Narcolepsia",
+      "Hipersensibilidad a lemborexant",
+      "Uso concomitante de inhibidores potentes de CYP3A"
+    ],
+    "efectosAdversos": [
+      "Somnolencia diurna",
+      "Cefalea",
+      "Paralisis del sueno (poco frecuente)",
+      "Alucinaciones hipnagogicas (poco frecuente)",
+      "Cataplejia leve (raro)",
+      "Comportamientos complejos durante el sueno (raro)"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A (itraconazol, claritromicina): contraindicado",
+      "Inhibidores moderados CYP3A: reducir dosis a 5 mg",
+      "Inductores CYP3A (rifampicina): reducen eficacia",
+      "Alcohol y depresores del SNC: sedacion aditiva"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "5 mg al acostarse. Puede aumentarse a 10 mg. Max: 10 mg/dia",
+      "geriatrico": "5 mg al acostarse. Misma dosis que adultos",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Hepatopatia leve: no ajuste. Moderada: max 5 mg. Grave: no recomendado"
+    },
+    "presentaciones": [
+      "Comprimidos 5 mg",
+      "Comprimidos 10 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "No produce dependencia significativa: ventaja sobre BZD e hipnoticos Z",
+      "Administrar dentro de los 30 min previos a acostarse",
+      "Asegurar minimo 7h de sueno disponibles",
+      "Informar sobre posibilidad de paralisis del sueno (benigna, transitoria)",
+      "Seguro en ancianos: no altera equilibrio ni cognicion significativamente"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2803",
+    "nombre": "Suvorexant",
+    "nombreGenerico": "Suvorexant",
+    "nombresComerciales": [
+      "Belsomra",
+      "Suvorexant MSD"
+    ],
+    "familia": "Antagonistas duales de orexina",
+    "clasificacion": "Antagonista dual de receptores de orexina (DORA)",
+    "mecanismoAccion": "Primer antagonista dual de orexina aprobado. Bloquea receptores OX1R y OX2R, suprimiendo la senalizacion de vigilia mediada por orexinas. Respeta la arquitectura fisiologica del sueno e induce un sueno mas natural que los hipnoticos GABAergicos.",
+    "indicaciones": [
+      "Insomnio caracterizado por dificultad de conciliacion y/o mantenimiento",
+      "Insomnio cronico en adultos",
+      "Insomnio en pacientes con riesgo de dependencia a BZD"
+    ],
+    "contraindicaciones": [
+      "Narcolepsia",
+      "Hipersensibilidad a suvorexant",
+      "Uso concomitante de inhibidores potentes de CYP3A"
+    ],
+    "efectosAdversos": [
+      "Somnolencia diurna residual",
+      "Cefalea",
+      "Mareo",
+      "Suenos anormales/vividos",
+      "Paralisis del sueno",
+      "Ideacion suicida (raro, monitorizar)"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A (ketoconazol): contraindicado",
+      "Inhibidores moderados CYP3A: usar dosis de 10 mg",
+      "Digoxina: suvorexant aumenta niveles de digoxina",
+      "Alcohol y depresores del SNC: potenciacion de sedacion"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 10 mg al acostarse. Puede aumentarse a 20 mg. Max: 20 mg/dia",
+      "geriatrico": "10 mg al acostarse. Misma dosis que adultos",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No recomendado en insuficiencia hepatica grave"
+    },
+    "presentaciones": [
+      "Comprimidos 10 mg",
+      "Comprimidos 15 mg",
+      "Comprimidos 20 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Administrar 30 min antes de acostarse; no con comida grasa (retrasa efecto)",
+      "Menor potencial de abuso y dependencia que BZD y drogas Z",
+      "Monitorizar ideacion suicida en pacientes con depresion comorbida",
+      "Informar sobre suenos vividos: efecto esperado, generalmente transitorio",
+      "Asegurar minimo 7h de sueno antes de actividades que requieran alerta"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_11"
+  },
+  {
+    "id": "drug2804",
+    "nombre": "Acamprosato",
+    "nombreGenerico": "Acamprosato calcico",
+    "nombresComerciales": [
+      "Campral",
+      "Aotal"
+    ],
+    "familia": "Farmacos para deshabituacion alcoholica",
+    "clasificacion": "Modulador glutamatergico (anti-craving)",
+    "mecanismoAccion": "Analogo estructural de la taurina que modula la neurotransmision glutamatergica. Antagoniza receptores NMDA y modula receptores mGluR5, restaurando el equilibrio entre excitacion glutamatergica e inhibicion GABAergica alterado por el consumo cronico de alcohol.",
+    "indicaciones": [
+      "Mantenimiento de la abstinencia alcoholica tras desintoxicacion",
+      "Prevencion de recaidas en alcoholismo",
+      "Reduccion del craving por alcohol"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia renal (ClCr <30 mL/min)",
+      "Hipersensibilidad a acamprosato",
+      "Insuficiencia hepatica grave (Child-Pugh C)",
+      "Embarazo y lactancia"
+    ],
+    "efectosAdversos": [
+      "Diarrea (mas frecuente)",
+      "Nauseas",
+      "Dolor abdominal",
+      "Prurito",
+      "Cefalea",
+      "Ideacion suicida (raro, monitorizar)"
+    ],
+    "interacciones": [
+      "Naltrexona: uso combinado posible y potencialmente sinergico",
+      "Disulfiram: puede usarse concomitantemente sin interaccion significativa",
+      "Tetraciclinas: acamprosato puede reducir absorcion",
+      "No interacciona con alcohol (seguro si hay recaida)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "666 mg (2 comprimidos) 3 veces/dia. Peso <60 kg: 333 mg 3 veces/dia. Tratamiento: 12 meses recomendado",
+      "ajusteRenal": "ClCr 30-50: 333 mg 3 veces/dia. ClCr <30: contraindicado",
+      "ajusteHepatico": "No requiere ajuste (no se metaboliza en higado)"
+    },
+    "presentaciones": [
+      "Comprimidos con cubierta enterica 333 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Contraindicado. Se excreta en leche en animales.",
+    "cuidadosEnfermeria": [
+      "Iniciar tan pronto como se complete la desintoxicacion",
+      "Los comprimidos deben tragarse enteros (cubierta enterica)",
+      "Eficaz incluso si el paciente recae: no suspender por recaida",
+      "Monitorizar ideacion suicida especialmente las primeras semanas",
+      "Combinar siempre con apoyo psicosocial para maxima eficacia"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2805",
+    "nombre": "Disulfiram",
+    "nombreGenerico": "Disulfiram",
+    "nombresComerciales": [
+      "Antabuse",
+      "Esperal"
+    ],
+    "familia": "Farmacos aversivos para alcoholismo",
+    "clasificacion": "Inhibidor de la aldehido deshidrogenasa",
+    "mecanismoAccion": "Inhibe irreversiblemente la enzima aldehido deshidrogenasa hepatica, bloqueando el metabolismo del alcohol en la etapa de acetaldehido. La acumulacion de acetaldehido produce una reaccion aversiva intensa (sindrome acetaldehidico) al ingerir alcohol.",
+    "indicaciones": [
+      "Alcoholismo cronico: terapia aversiva de apoyo",
+      "Mantenimiento de abstinencia en pacientes motivados",
+      "Prevencion de recaidas (efecto disuasorio)"
+    ],
+    "contraindicaciones": [
+      "Cardiopatia grave o insuficiencia coronaria",
+      "Psicosis activa",
+      "Embarazo",
+      "Insuficiencia hepatica severa o cirrosis descompensada",
+      "Consumo actual de alcohol (esperar minimo 12-24h abstinencia)"
+    ],
+    "efectosAdversos": [
+      "Reaccion disulfiram-alcohol: enrojecimiento facial, nauseas, vomitos, hipotension, taquicardia, disnea",
+      "Hepatotoxicidad",
+      "Neuropatia periferica",
+      "Psicosis (raro)",
+      "Sabor metalico",
+      "Somnolencia"
+    ],
+    "interacciones": [
+      "Alcohol (incluso en cosmeticos, enjuagues bucales): reaccion aversiva severa",
+      "Metronidazol: reaccion psicotica aguda (contraindicado)",
+      "Fenitoina: aumenta niveles de fenitoina (toxicidad)",
+      "Warfarina: aumenta efecto anticoagulante"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 500 mg/dia durante 1-2 semanas. Mantenimiento: 250 mg/dia (rango 125-500 mg/dia). Maximo: 500 mg/dia",
+      "geriatrico": "Iniciar con 125 mg/dia",
+      "ajusteRenal": "Precaucion en insuficiencia renal",
+      "ajusteHepatico": "Contraindicado en hepatopatia grave. Monitorizar hepatotoxicidad"
+    },
+    "presentaciones": [
+      "Comprimidos 250 mg",
+      "Comprimidos 500 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Confirmar minimo 12-24h de abstinencia ANTES de primera dosis",
+      "Educar sobre reaccion disulfiram-alcohol: puede ser mortal en casos graves",
+      "Alertar: el alcohol en cosmeticos, vinagre, salsas puede causar reaccion",
+      "Control de funcion hepatica cada 2 semanas los primeros 3 meses",
+      "El efecto persiste hasta 14 dias tras la ultima dosis"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2806",
+    "nombre": "Nalmefeno",
+    "nombreGenerico": "Clorhidrato de nalmefeno",
+    "nombresComerciales": [
+      "Selincro",
+      "Revex"
+    ],
+    "familia": "Antagonistas opioides",
+    "clasificacion": "Modulador del sistema opioide (antagonista mu/delta, agonista parcial kappa)",
+    "mecanismoAccion": "Antagonista de receptores opioides mu y delta con agonismo parcial en receptores kappa. Modula el sistema opioide endogeno implicado en el refuerzo del consumo de alcohol, reduciendo el efecto gratificante del alcohol y el craving.",
+    "indicaciones": [
+      "Reduccion del consumo de alcohol en pacientes con dependencia",
+      "Estrategia de reduccion de danos en alcoholismo",
+      "Pacientes que no buscan abstinencia completa inmediata"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de opioides o agonistas opioides",
+      "Dependencia activa de opioides",
+      "Sindrome de abstinencia de opioides",
+      "Insuficiencia hepatica grave (Child-Pugh C)",
+      "Insuficiencia renal grave"
+    ],
+    "efectosAdversos": [
+      "Nauseas (muy frecuente al inicio)",
+      "Mareo",
+      "Insomnio",
+      "Cefalea",
+      "Confusion",
+      "Disminucion del apetito"
+    ],
+    "interacciones": [
+      "Opioides: bloquea su efecto analgesico (peligro en emergencia)",
+      "Naltrexona: no combinar (misma clase farmacologica)",
+      "Inhibidores CYP: no interacciones clinicamente significativas",
+      "ISRS/IRSN: uso combinado generalmente seguro"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "18 mg a demanda: tomar 1-2h antes de consumo previsto de alcohol. Maximo: 1 comprimido/dia. Si ya empezo a beber, tomar lo antes posible",
+      "geriatrico": "Misma dosis. Datos limitados en >65 anos",
+      "ajusteRenal": "Contraindicado en insuficiencia renal grave",
+      "ajusteHepatico": "Hepatopatia leve-moderada: no requiere ajuste. Grave: contraindicado"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 18 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Uso a demanda (PRN): diferente de naltrexona que es dosis fija diaria",
+      "Informar al paciente: tomar 1-2h ANTES de beber, no despues",
+      "El paciente debe llevar tarjeta identificativa: bloquea efecto de opioides",
+      "Advertir a medicos de urgencia si necesita analgesia opioide",
+      "Combinar siempre con intervencion psicosocial motivacional"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2807",
+    "nombre": "Vareniclina",
+    "nombreGenerico": "Tartrato de vareniclina",
+    "nombresComerciales": [
+      "Champix",
+      "Chantix"
+    ],
+    "familia": "Farmacos para deshabituacion tabaquica",
+    "clasificacion": "Agonista parcial del receptor nicotinico alfa-4-beta-2",
+    "mecanismoAccion": "Agonista parcial del receptor nicotinico alfa-4-beta-2 en el area tegmental ventral. Estimula parcialmente la liberacion de dopamina (reduce craving y abstinencia) mientras bloquea la union de nicotina exogena (reduce satisfaccion al fumar).",
+    "indicaciones": [
+      "Deshabituacion tabaquica en adultos",
+      "Prevencion de recaida en exfumadores recientes",
+      "Cesacion tabaquica en pacientes con EPOC"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a vareniclina",
+      "Insuficiencia renal terminal sin hemodialisis"
+    ],
+    "efectosAdversos": [
+      "Nauseas (muy frecuente, dosis-dependiente)",
+      "Insomnio y suenos vividos",
+      "Cefalea",
+      "Flatulencia y estrenimiento",
+      "Cambios de humor e irritabilidad",
+      "Ideacion suicida (raro, pero monitorizar)"
+    ],
+    "interacciones": [
+      "Cimetidina: aumenta niveles de vareniclina en insuficiencia renal",
+      "Terapia de reemplazo nicotinico: puede usarse combinada (aumenta efectos adversos)",
+      "Warfarina: monitorizar INR (cambios en metabolismo del tabaco)",
+      "Insulina: puede requerirse ajuste al dejar de fumar"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Dias 1-3: 0.5 mg/dia. Dias 4-7: 0.5 mg 2 veces/dia. Desde dia 8: 1 mg 2 veces/dia. Duracion: 12 semanas (puede extenderse a 24)",
+      "ajusteRenal": "ClCr <30: 0.5 mg/dia, puede aumentarse a 0.5 mg 2 veces/dia. Hemodialisis: max 0.5 mg/dia",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Comprimidos 0.5 mg",
+      "Comprimidos 1 mg",
+      "Kit de inicio (11 comp 0.5 mg + 14 comp 1 mg)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. Valorar riesgo/beneficio.",
+    "cuidadosEnfermeria": [
+      "Establecer fecha de abandono del tabaco: iniciar vareniclina 1-2 semanas antes",
+      "Administrar despues de las comidas con un vaso lleno de agua (reduce nauseas)",
+      "Monitorizar cambios de humor, agitacion, ideacion suicida",
+      "Informar sobre suenos vividos: frecuentes pero generalmente tolerables",
+      "Esquema escalonado de dosis OBLIGATORIO: no iniciar con dosis completa"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2808",
+    "nombre": "Lofexidina",
+    "nombreGenerico": "Clorhidrato de lofexidina",
+    "nombresComerciales": [
+      "Lucemyra",
+      "BritLofex"
+    ],
+    "familia": "Agonistas alfa-2 adrenergicos",
+    "clasificacion": "Agonista selectivo alfa-2 adrenergico central",
+    "mecanismoAccion": "Agonista alfa-2 adrenergico central que reduce la hiperactividad noradrenergica del locus coeruleus durante la abstinencia de opioides. Disminuye la liberacion de noradrenalina, atenuando los sintomas autonomicos de la abstinencia (taquicardia, hipertension, sudoracion, ansiedad).",
+    "indicaciones": [
+      "Manejo de sintomas de abstinencia de opioides",
+      "Desintoxicacion de opioides supervisada",
+      "Puente hacia tratamiento de mantenimiento con buprenorfina/naltrexona"
+    ],
+    "contraindicaciones": [
+      "Hipotension severa o bradicardia sintomatica",
+      "Sindrome del seno enfermo",
+      "Uso concomitante de otros antihipertensivos centrales",
+      "Hipersensibilidad a lofexidina"
+    ],
+    "efectosAdversos": [
+      "Hipotension ortostatica (mas frecuente)",
+      "Bradicardia",
+      "Sequedad bucal",
+      "Somnolencia",
+      "Prolongacion del QT",
+      "Hipotension sincope"
+    ],
+    "interacciones": [
+      "Antihipertensivos: potenciacion de hipotension",
+      "Depresores del SNC: sedacion aditiva",
+      "Farmacos que prolongan QT: efecto aditivo",
+      "Metadona: monitorizar QT si uso concomitante"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "0.54 mg (3 comprimidos) 4 veces/dia durante la abstinencia. Max: 2.16 mg/dia. Duracion: hasta 14 dias. Reducir gradualmente en 2-4 dias al final",
+      "ajusteRenal": "Reducir frecuencia en insuficiencia renal",
+      "ajusteHepatico": "Reducir dosis en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Comprimidos 0.18 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Monitorizar presion arterial y frecuencia cardiaca antes de cada dosis",
+      "No administrar si PAS <90 mmHg o FC <60 lpm",
+      "Realizar ECG basal y periodico por riesgo de prolongacion QT",
+      "Tratamiento maximo 14 dias: reducir gradualmente al finalizar",
+      "Hidratar adecuadamente al paciente para prevenir hipotension"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2809",
+    "nombre": "Citicolina",
+    "nombreGenerico": "Citicolina (CDP-colina)",
+    "nombresComerciales": [
+      "Somazina",
+      "Ceraxon",
+      "Citicoline Ferrer"
+    ],
+    "familia": "Neuroprotectores",
+    "clasificacion": "Precursor de fosfolipidos de membrana (neuroprotector/nootropico)",
+    "mecanismoAccion": "Precursor endogeno de fosfatidilcolina que estabiliza membranas neuronales danadas. Aumenta la sintesis de acetilcolina, dopamina y noradrenalina. En adicciones, restaura la funcion dopaminergica deteriorada por el uso cronico de sustancias y mejora la funcion cognitiva.",
+    "indicaciones": [
+      "Deterioro cognitivo asociado a adicciones",
+      "Neuroproteccion en dependencia de sustancias",
+      "Accidente cerebrovascular isquemico agudo",
+      "Traumatismo craneoencefalico",
+      "Deterioro cognitivo leve"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a citicolina",
+      "Hipertonia del parasimpatico"
+    ],
+    "efectosAdversos": [
+      "Nauseas (poco frecuente)",
+      "Cefalea",
+      "Diarrea",
+      "Insomnio",
+      "Hipotension transitoria (raro)"
+    ],
+    "interacciones": [
+      "Levodopa: puede potenciar efecto antiparkinsoniano",
+      "Meclofenoxato: efecto aditivo neuroprotector",
+      "Anticolinergicos: puede antagonizar parcialmente",
+      "Sin interacciones significativas documentadas con la mayoria de farmacos"
+    ],
+    "viaAdministracion": [
+      "oral",
+      "IV",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "Oral: 500-2000 mg/dia en 1-2 tomas. IV/IM: 500-1000 mg/dia. Neuroproteccion: 1000-2000 mg/dia",
+      "geriatrico": "Misma dosis que adultos",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Comprimidos 500 mg",
+      "Solucion oral 100 mg/mL",
+      "Ampollas 500 mg/4 mL y 1000 mg/4 mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Datos insuficientes. Probablemente seguro.",
+    "cuidadosEnfermeria": [
+      "Perfil de seguridad excelente: pocas contraindicaciones e interacciones",
+      "Puede administrarse por via oral o parenteral con igual eficacia",
+      "En ACV: iniciar dentro de las primeras 24h para maxima neuroproteccion",
+      "En adicciones: combinar con programa de rehabilitacion integral",
+      "Solucion oral puede mezclarse con agua o zumo"
+    ],
+    "unidadId": "u01",
+    "capituloId": "c01_13"
+  },
+  {
+    "id": "drug2810",
+    "nombre": "Milrinona",
+    "nombreGenerico": "Lactato de milrinona",
+    "nombresComerciales": [
+      "Primacor",
+      "Corotrope"
+    ],
+    "familia": "Inotropicos positivos",
+    "clasificacion": "Inhibidor de la fosfodiesterasa III (inodilatador)",
+    "mecanismoAccion": "Inhibe la fosfodiesterasa III cardiaca y vascular, aumentando el AMPc intracelular. Produce efecto inotropico positivo (aumenta contractilidad) y vasodilatacion periferica y pulmonar, reduciendo pre y postcarga sin aumentar consumo de oxigeno miocardico significativamente.",
+    "indicaciones": [
+      "Insuficiencia cardiaca aguda descompensada",
+      "Bajo gasto cardiaco postoperatorio (cirugia cardiaca)",
+      "Shock cardiogenico refractario a catecolaminas",
+      "Puente a trasplante cardiaco"
+    ],
+    "contraindicaciones": [
+      "Estenosis aortica o subaortica severa",
+      "Miocardiopatia hipertrofica obstructiva",
+      "Hipotension severa",
+      "Hipovolemia no corregida"
+    ],
+    "efectosAdversos": [
+      "Hipotension (frecuente)",
+      "Arritmias ventriculares (taquicardia ventricular, fibrilacion ventricular)",
+      "Cefalea",
+      "Trombocitopenia",
+      "Hipopotasemia",
+      "Temblor"
+    ],
+    "interacciones": [
+      "Dobutamina: efecto inotropico aditivo beneficioso",
+      "Digoxina: puede usarse concomitantemente (efecto aditivo)",
+      "Diureticos: vigilar hipopotasemia (aumenta riesgo arritmias)",
+      "Furosemida: precipita si se mezcla en misma via (incompatible)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Bolo: 50 mcg/kg en 10 min (opcional, omitir si hipotension). Infusion: 0.375-0.75 mcg/kg/min. Rango habitual: 0.5 mcg/kg/min",
+      "pediatrico": "Bolo: 50-75 mcg/kg en 10-60 min. Infusion: 0.25-0.75 mcg/kg/min",
+      "ajusteRenal": "ClCr 50: 0.43 mcg/kg/min. ClCr 30: 0.38 mcg/kg/min. ClCr 10: 0.23 mcg/kg/min",
+      "ajusteHepatico": "Precaucion en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Ampollas 1 mg/mL (10 mL, 20 mL)",
+      "Solucion prediluida 200 mcg/mL en dextrosa 5%"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion en leche. Uso solo si beneficio supera riesgo.",
+    "cuidadosEnfermeria": [
+      "Monitorizacion hemodinamica continua: PA, FC, PVC, gasto cardiaco",
+      "INCOMPATIBLE con furosemida en misma via: precipita",
+      "Corregir hipopotasemia ANTES de iniciar (reduce riesgo arritmias)",
+      "No administrar bolo si PAS <90 mmHg",
+      "Controlar recuento plaquetario diariamente"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_07"
+  },
+  {
+    "id": "drug2811",
+    "nombre": "Levosimendan",
+    "nombreGenerico": "Levosimendan",
+    "nombresComerciales": [
+      "Simdax",
+      "Levosimendan Orion"
+    ],
+    "familia": "Inotropicos positivos",
+    "clasificacion": "Sensibilizador del calcio (inodilatador)",
+    "mecanismoAccion": "Sensibiliza la troponina C al calcio intracelular, aumentando la contractilidad sin incrementar el calcio citoplasmatico ni el consumo de oxigeno. Ademas abre canales de potasio ATP-dependientes produciendo vasodilatacion. Metabolito activo (OR-1896) tiene vida media de 80h.",
+    "indicaciones": [
+      "Insuficiencia cardiaca aguda descompensada",
+      "Shock cardiogenico",
+      "Bajo gasto cardiaco postoperatorio",
+      "Insuficiencia cardiaca refractaria a dobutamina",
+      "Sindrome de bajo gasto en cirugia cardiaca"
+    ],
+    "contraindicaciones": [
+      "Hipotension severa (PAS <85 mmHg)",
+      "Taquicardia severa (>120 lpm)",
+      "Obstruccion mecanica al llenado o vaciado ventricular",
+      "Insuficiencia renal grave (ClCr <30) con precaucion",
+      "Insuficiencia hepatica grave"
+    ],
+    "efectosAdversos": [
+      "Hipotension (frecuente, dosis-dependiente)",
+      "Cefalea",
+      "Taquicardia",
+      "Fibrilacion auricular",
+      "Hipopotasemia",
+      "Nauseas"
+    ],
+    "interacciones": [
+      "Vasodilatadores (nitratos, nitroprusiato): hipotension potenciada",
+      "Betabloqueantes: puede usarse (no antagoniza efecto de levosimendan)",
+      "Digoxina: no interaccion significativa",
+      "Diureticos: vigilar hipopotasemia"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Bolo opcional: 6-12 mcg/kg en 10 min. Infusion: 0.05-0.2 mcg/kg/min durante 24h. No repetir antes de 48-72h por metabolito activo prolongado",
+      "ajusteRenal": "Precaucion si ClCr <30 (metabolito activo se acumula)",
+      "ajusteHepatico": "Reducir velocidad de infusion en hepatopatia"
+    },
+    "presentaciones": [
+      "Concentrado para solucion IV 2.5 mg/mL (5 mL = 12.5 mg)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Contraindicado. Se desconoce excrecion en leche.",
+    "cuidadosEnfermeria": [
+      "Efecto persiste 7-9 dias tras infusion de 24h (metabolito activo OR-1896)",
+      "Monitorizacion hemodinamica continua durante infusion",
+      "Diluir SOLO en dextrosa 5% (incompatible con SF 0.9%)",
+      "No administrar bolo si PAS <90 mmHg: iniciar directamente infusion",
+      "Proteger de la luz durante preparacion y administracion"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_07"
+  },
+  {
+    "id": "drug2812",
+    "nombre": "Fenilefrina",
+    "nombreGenerico": "Clorhidrato de fenilefrina",
+    "nombresComerciales": [
+      "Neo-Synephrine",
+      "Fenilefrina Braun"
+    ],
+    "familia": "Vasopresores",
+    "clasificacion": "Agonista alfa-1 adrenergico puro",
+    "mecanismoAccion": "Agonista selectivo de receptores alfa-1 adrenergicos que produce vasoconstriccion arteriolar y venosa potente. No tiene efecto beta significativo, por lo que aumenta la presion arterial sin aumentar la frecuencia cardiaca (puede producir bradicardia refleja).",
+    "indicaciones": [
+      "Hipotension inducida por anestesia espinal o epidural",
+      "Hipotension intraoperatoria",
+      "Shock distributivo como vasopresor de segunda linea",
+      "Taquicardia supraventricular paroxistica (uso historico)"
+    ],
+    "contraindicaciones": [
+      "Hipertension severa",
+      "Taquicardia ventricular",
+      "Uso de IMAO (riesgo de crisis hipertensiva)",
+      "Hipertiroidismo no controlado"
+    ],
+    "efectosAdversos": [
+      "Bradicardia refleja",
+      "Hipertension",
+      "Necrosis tisular por extravasacion",
+      "Arritmias",
+      "Cefalea",
+      "Vasoconstriccion periferica excesiva"
+    ],
+    "interacciones": [
+      "IMAO: crisis hipertensiva severa (contraindicado)",
+      "Betabloqueantes: puede potenciar hipertension y bradicardia",
+      "Oxitocina: potencia hipertension",
+      "Anestesicos halogenados: aumenta riesgo de arritmias"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM",
+      "SC"
+    ],
+    "dosis": {
+      "adulto": "Bolo IV: 50-200 mcg cada 1-2 min. Infusion: 0.1-0.5 mcg/kg/min. Hipotension anestesica: 40-100 mcg IV bolo",
+      "pediatrico": "Bolo: 1-5 mcg/kg IV. Infusion: 0.1-0.5 mcg/kg/min",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Precaucion en hepatopatia grave"
+    },
+    "presentaciones": [
+      "Ampollas 10 mg/mL (1 mL)",
+      "Solucion diluida 100 mcg/mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Uso puntual probablemente seguro. Precaucion.",
+    "cuidadosEnfermeria": [
+      "Administrar por via central preferiblemente: riesgo de necrosis por extravasacion",
+      "Si extravasacion: infiltrar zona con fentolamina 5-10 mg en 10-15 mL SF",
+      "Monitorizar PA y FC continuamente: bradicardia refleja esperada",
+      "No confundir con efedrina (esta tiene efecto beta adicional)",
+      "Via periferica: usar vena grande y vigilar continuamente el sitio"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_07"
+  },
+  {
+    "id": "drug2813",
+    "nombre": "Isoproterenol",
+    "nombreGenerico": "Clorhidrato de isoproterenol (isoprenalina)",
+    "nombresComerciales": [
+      "Isuprel",
+      "Aleudrina"
+    ],
+    "familia": "Agonistas beta adrenergicos",
+    "clasificacion": "Agonista beta-1 y beta-2 no selectivo",
+    "mecanismoAccion": "Agonista puro de receptores beta-1 y beta-2 adrenergicos sin efecto alfa. Aumenta frecuencia cardiaca, contractilidad y velocidad de conduccion (beta-1), y produce broncodilatacion y vasodilatacion periferica (beta-2). Unico inotropico que reduce la resistencia vascular periferica.",
+    "indicaciones": [
+      "Bradicardia severa refractaria a atropina (puente a marcapasos)",
+      "Bloqueo AV completo (temporal)",
+      "Torsade de pointes (aumenta FC para acortar QT)",
+      "Broncoespasmo severo refractario (uso historico)"
+    ],
+    "contraindicaciones": [
+      "Taquiarritmias",
+      "Intoxicacion digitalica",
+      "Angina de pecho inestable",
+      "Estenosis aortica severa"
+    ],
+    "efectosAdversos": [
+      "Taquicardia (frecuente y esperada)",
+      "Palpitaciones",
+      "Hipotension (vasodilatacion beta-2)",
+      "Arritmias ventriculares",
+      "Temblor",
+      "Aumento del consumo miocardico de O2"
+    ],
+    "interacciones": [
+      "Digoxina: aumenta riesgo de arritmias",
+      "Anestesicos halogenados: potencia arritmias",
+      "Betabloqueantes: antagonizan completamente su efecto",
+      "IMAO: pueden potenciar efectos cardiovasculares"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Infusion: 2-10 mcg/min. Titular segun FC objetivo. Bradicardia: iniciar 2 mcg/min",
+      "pediatrico": "Infusion: 0.05-2 mcg/kg/min",
+      "ajusteRenal": "No se requiere ajuste especifico",
+      "ajusteHepatico": "Precaucion; metabolismo hepatico"
+    },
+    "presentaciones": [
+      "Ampollas 0.2 mg/mL (1 mL y 5 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion. Uso solo en emergencia.",
+    "cuidadosEnfermeria": [
+      "Monitorizacion ECG continua OBLIGATORIA",
+      "Usar bomba de infusion: titulacion precisa indispensable",
+      "Medida temporal: planificar marcapasos definitivo en bradicardia",
+      "Vigilar hipotension: la vasodilatacion beta-2 puede empeorar el shock",
+      "No mezclar con soluciones alcalinas (bicarbonato): inactiva el farmaco"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_07"
+  },
+  {
+    "id": "drug2814",
+    "nombre": "Efedrina",
+    "nombreGenerico": "Sulfato de efedrina",
+    "nombresComerciales": [
+      "Efedrina Braun",
+      "Efedrina Aguettant"
+    ],
+    "familia": "Simpaticomimeticos mixtos",
+    "clasificacion": "Agonista adrenergico mixto (directo alfa/beta + indirecto)",
+    "mecanismoAccion": "Accion dual: estimula directamente receptores alfa y beta adrenergicos y promueve la liberacion de noradrenalina endogena de terminales nerviosas. Aumenta presion arterial, frecuencia cardiaca y gasto cardiaco. Efecto mas moderado y sostenido que adrenalina.",
+    "indicaciones": [
+      "Hipotension inducida por anestesia espinal/epidural",
+      "Hipotension intraoperatoria",
+      "Broncoespasmo (uso historico)",
+      "Hipotension en cesarea bajo anestesia regional"
+    ],
+    "contraindicaciones": [
+      "Hipertension severa",
+      "Tirotoxicosis",
+      "Arritmias cardiacas",
+      "Uso de IMAO en ultimos 14 dias",
+      "Glaucoma de angulo cerrado"
+    ],
+    "efectosAdversos": [
+      "Taquicardia",
+      "Hipertension",
+      "Palpitaciones",
+      "Ansiedad y temblor",
+      "Retencion urinaria",
+      "Taquifilaxia (perdida de efecto con dosis repetidas)"
+    ],
+    "interacciones": [
+      "IMAO: crisis hipertensiva (contraindicado)",
+      "Anestesicos halogenados: aumenta riesgo de arritmias",
+      "Oxitocina: potencia hipertension",
+      "Betabloqueantes: predomina efecto alfa (hipertension con bradicardia)"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM",
+      "SC"
+    ],
+    "dosis": {
+      "adulto": "IV bolo: 5-10 mg, repetir cada 5-10 min segun necesidad. Max: 50 mg. IM/SC: 25-50 mg",
+      "pediatrico": "IV: 0.1 mg/kg/dosis (max 10 mg)",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Ampollas 30 mg/mL (1 mL)",
+      "Ampollas 50 mg/mL (1 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche. Usar con precaucion.",
+    "cuidadosEnfermeria": [
+      "Taquifilaxia: las dosis repetidas pierden eficacia (depositos de NA se agotan)",
+      "Administrar IV lento; vigilar PA y FC con cada bolo",
+      "Alternativa a fenilefrina cuando se necesita mantener frecuencia cardiaca",
+      "No mezclar con tiopental (precipita)",
+      "Preferida en cesarea: mantiene FC fetal mejor que fenilefrina"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_07"
+  },
+  {
+    "id": "drug2815",
+    "nombre": "Vasopresina",
+    "nombreGenerico": "Arginina vasopresina (ADH)",
+    "nombresComerciales": [
+      "Vasostrict",
+      "Pitressin"
+    ],
+    "familia": "Vasopresores",
+    "clasificacion": "Hormona antidiuretica / vasopresor no catecolaminergico",
+    "mecanismoAccion": "Actua sobre receptores V1a en musculo liso vascular produciendo vasoconstriccion potente. En shock septico, compensa la deficiencia relativa de vasopresina y actua sinergicamente con noradrenalina. No actua via receptores adrenergicos, evitando taquifilaxia catecolaminergica.",
+    "indicaciones": [
+      "Shock septico refractario a noradrenalina (coadyuvante)",
+      "Shock vasodilatador",
+      "Paro cardiaco (alternativa a adrenalina)",
+      "Diabetes insipida central",
+      "Hemorragia variceal (uso historico)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a vasopresina",
+      "Enfermedad coronaria significativa (vasoconstriccion coronaria)",
+      "Nefritis cronica con retencion de nitrogeno"
+    ],
+    "efectosAdversos": [
+      "Isquemia periferica y digital",
+      "Isquemia intestinal (mesentrica)",
+      "Bradicardia",
+      "Hiponatremia dilucional",
+      "Isquemia miocardica",
+      "Necrosis cutanea por extravasacion"
+    ],
+    "interacciones": [
+      "Noradrenalina: efecto vasopresor sinergico (uso recomendado en shock septico)",
+      "Carbamazepina, clorpropamida: potencian efecto antidiuretico",
+      "Litio, demeclociclina: antagonizan efecto antidiuretico",
+      "Ganglioplgejicos: sensibilidad aumentada a vasopresina"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Shock septico: 0.03 UI/min (dosis fija, no titular). Paro cardiaco: 40 UI bolo unico. Diabetes insipida: 2.5-10 UI IM/SC cada 6-12h",
+      "pediatrico": "Shock: 0.0002-0.002 UI/kg/min",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Ampollas 20 UI/mL (1 mL)",
+      "Viales multidosis 200 UI/10 mL"
+    ],
+    "embarazo": "C",
+    "lactancia": "Compatible con lactancia en dosis terapeuticas.",
+    "cuidadosEnfermeria": [
+      "En shock septico: dosis FIJA de 0.03 UI/min, NO titular",
+      "Administrar por via central obligatoriamente",
+      "Vigilar signos de isquemia: dedos, piel moteada, dolor abdominal",
+      "Si extravasacion: infiltrar fentolamina y nitroglicerina topica",
+      "Monitorizar sodio serico: riesgo de hiponatremia"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_10"
+  },
+  {
+    "id": "drug2816",
+    "nombre": "Terlipresina",
+    "nombreGenerico": "Acetato de terlipresina",
+    "nombresComerciales": [
+      "Glypressin",
+      "Terlipresina Sun"
+    ],
+    "familia": "Analogos de vasopresina",
+    "clasificacion": "Analogo sintetico de vasopresina (selectividad V1)",
+    "mecanismoAccion": "Profarmaco que se convierte lentamente en lisina-vasopresina. Tiene mayor selectividad por receptores V1a (vasoconstriccion esplacnica) que por V2 (antidiuretico). Reduce la presion portal y el flujo sanguineo esplacnico, siendo especialmente util en hemorragia variceal.",
+    "indicaciones": [
+      "Hemorragia por varices esofagicas",
+      "Sindrome hepatorrenal tipo 1",
+      "Shock septico refractario (alternativa a vasopresina)",
+      "Hemorragia digestiva alta variceal"
+    ],
+    "contraindicaciones": [
+      "Embarazo (efecto oxitocico)",
+      "Shock septico con bajo gasto cardiaco",
+      "Cardiopatia isquemica severa",
+      "Arritmias no controladas",
+      "Enfermedad vascular periferica avanzada"
+    ],
+    "efectosAdversos": [
+      "Bradicardia",
+      "Dolor abdominal tipo colico",
+      "Isquemia periferica",
+      "Hipertension arterial transitoria",
+      "Hiponatremia",
+      "Isquemia intestinal (raro)"
+    ],
+    "interacciones": [
+      "Betabloqueantes no selectivos (propranolol): efecto sinergico en reduccion de presion portal",
+      "Nitroglicerina: puede usarse para contrarrestar isquemia",
+      "Farmacos que prolongan QT: precaucion",
+      "Somatostatina/octreotida: pueden usarse secuencialmente"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Hemorragia variceal: 2 mg IV bolo, luego 1-2 mg cada 4-6h durante 2-5 dias. Sindrome hepatorrenal: 0.5-1 mg cada 4-6h + albumina",
+      "ajusteRenal": "No requiere ajuste especifico",
+      "ajusteHepatico": "Seguro en cirrosis (indicacion principal)"
+    },
+    "presentaciones": [
+      "Ampollas 0.1 mg/mL (viales 8.5 mL)",
+      "Polvo para reconstitucion 1 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Administrar IV lento (en 1 minuto): no en bolo rapido",
+      "Monitorizar ECG: riesgo de bradicardia e isquemia miocardica",
+      "Vigilar extremidades: isquemia digital y periferica",
+      "En sindrome hepatorrenal: administrar conjuntamente con albumina IV",
+      "Controlar balance hidrico y sodio serico"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_10"
+  },
+  {
+    "id": "drug2817",
+    "nombre": "Azul de metileno",
+    "nombreGenerico": "Cloruro de metiltioninio (azul de metileno)",
+    "nombresComerciales": [
+      "Proveblue",
+      "ProvayBlue",
+      "Azul de metileno Braun"
+    ],
+    "familia": "Antidotos y vasopresores",
+    "clasificacion": "Inhibidor de la guanilato ciclasa / agente oxidante",
+    "mecanismoAccion": "Inhibe la via oxido nitrico-guanilato ciclasa-GMPc en musculo liso vascular, restaurando el tono vascular en shock vasodilatador refractario. Tambien actua como aceptor de electrones, convirtiendo metahemoglobina a hemoglobina funcional.",
+    "indicaciones": [
+      "Shock vasodilatador refractario a catecolaminas",
+      "Shock anafilactico refractario",
+      "Vasoplegia post-cirugia cardiaca con circulacion extracorporea",
+      "Metahemoglobinemia (>30% o sintomatica)",
+      "Identificacion de paratiroides en cirugia (uso quirurgico)"
+    ],
+    "contraindicaciones": [
+      "Deficiencia de G6PD (riesgo de hemolisis severa)",
+      "Insuficiencia renal grave (ClCr <15)",
+      "Uso de ISRS (riesgo de sindrome serotoninergico)",
+      "Metahemoglobinemia inducida por nitritos en intoxicacion por cianuro"
+    ],
+    "efectosAdversos": [
+      "Coloracion azul de piel y orina (esperado)",
+      "Nauseas y vomitos",
+      "Hipertension (transitoria)",
+      "Hemolisis en deficit de G6PD",
+      "Sindrome serotoninergico (con ISRS)",
+      "Interferencia con pulsioximetria (lecturas falsamente bajas)"
+    ],
+    "interacciones": [
+      "ISRS, IRSN, IMAO: sindrome serotoninergico (azul de metileno es inhibidor MAO-A)",
+      "Dapsona: puede empeorar metahemoglobinemia en deficit G6PD",
+      "Pulsioximetria: produce lecturas SpO2 falsamente bajas",
+      "Nitroprusiato: puede antagonizar efecto vasodilatador"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Metahemoglobinemia: 1-2 mg/kg IV en 5 min. Puede repetir a los 30-60 min. Shock vasodilatador: 1.5-2 mg/kg en bolo, luego 0.5 mg/kg/h infusion",
+      "pediatrico": "Metahemoglobinemia: 1-2 mg/kg IV lento",
+      "ajusteRenal": "Reducir dosis o evitar en insuficiencia renal grave",
+      "ajusteHepatico": "Precaucion en insuficiencia hepatica"
+    },
+    "presentaciones": [
+      "Ampollas 10 mg/mL (5 mL = 50 mg)",
+      "Ampollas 10 mg/mL (10 mL = 100 mg)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. Uso solo si indispensable.",
+    "cuidadosEnfermeria": [
+      "Verificar ausencia de deficit de G6PD antes de administrar si es posible",
+      "Administrar IV lento en 5 min para evitar toxicidad",
+      "Advertir al paciente: orina y piel se tornaran azules (transitorio, 24-48h)",
+      "La pulsioximetria NO es fiable durante y tras administracion: usar gasometria",
+      "NUNCA administrar por via SC o intratecal: necrosis tisular"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_10"
+  },
+  {
+    "id": "drug2818",
+    "nombre": "Angiotensina II",
+    "nombreGenerico": "Angiotensina II sintetica",
+    "nombresComerciales": [
+      "Giapreza"
+    ],
+    "familia": "Vasopresores",
+    "clasificacion": "Agonista del receptor AT1 de angiotensina",
+    "mecanismoAccion": "Peptido sintetico identico a la angiotensina II endogena. Actua sobre receptores AT1 en musculo liso vascular produciendo vasoconstriccion directa. Tambien estimula la liberacion de aldosterona y vasopresina. Via vasopresor independiente de catecolaminas.",
+    "indicaciones": [
+      "Shock vasodilatador refractario a catecolaminas y vasopresina",
+      "Shock septico con hipotension severa a pesar de vasopresores convencionales",
+      "Shock vasodilatador post-cirugia cardiaca"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a angiotensina II",
+      "Trombosis venosa profunda activa o embolia pulmonar activa"
+    ],
+    "efectosAdversos": [
+      "Trombosis venosa profunda y arterial",
+      "Trombocitopenia",
+      "Taquicardia",
+      "Delirium",
+      "Acidosis",
+      "Hiperglucemia"
+    ],
+    "interacciones": [
+      "IECA y ARA-II: antagonizan su efecto (suspender si se usa angiotensina II)",
+      "Vasopresores catecolaminergicos: efecto sinergico",
+      "Anticoagulantes: considerar profilaxis antitrombotica concomitante",
+      "Insulina: puede requerirse ajuste por hiperglucemia"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 20 ng/kg/min. Titular cada 5 min en incrementos de 15 ng/kg/min hasta PAM objetivo (>65 mmHg). Rango: 1.25-80 ng/kg/min. Max: 80 ng/kg/min",
+      "ajusteRenal": "No requiere ajuste especifico",
+      "ajusteHepatico": "No requiere ajuste especifico"
+    },
+    "presentaciones": [
+      "Viales 2.5 mg/mL (1 mL) para diluir"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. Uso solo en emergencia.",
+    "cuidadosEnfermeria": [
+      "Vasopresor de RESCATE: usar solo cuando otros vasopresores fallan",
+      "Profilaxis antitrombotica concomitante recomendada (alto riesgo trombotico)",
+      "Administrar exclusivamente por via central",
+      "Titular en incrementos de 15 ng/kg/min cada 5 min",
+      "Monitorizar recuento plaquetario y signos de trombosis"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_10"
+  },
+  {
+    "id": "drug2819",
+    "nombre": "Hidrocortisona (shock)",
+    "nombreGenerico": "Succinato sodico de hidrocortisona",
+    "nombresComerciales": [
+      "Actocortina",
+      "Solu-Cortef",
+      "Hidrocortisona Pfizer"
+    ],
+    "familia": "Corticosteroides",
+    "clasificacion": "Glucocorticoide con actividad mineralocorticoide (dosis de estres)",
+    "mecanismoAccion": "En shock septico, suple la insuficiencia suprarrenal relativa. Restaura la sensibilidad vascular a catecolaminas, reduce la produccion de citoquinas proinflamatorias y oxido nitrico, y estabiliza membranas endoteliales. La actividad mineralocorticoide contribuye a la retencion de sodio y agua.",
+    "indicaciones": [
+      "Shock septico refractario a fluidos y vasopresores (>4h)",
+      "Insuficiencia suprarrenal aguda (crisis addisoniana)",
+      "Shock anafilactico como coadyuvante",
+      "Insuficiencia suprarrenal relativa del paciente critico"
+    ],
+    "contraindicaciones": [
+      "Infeccion fungica sistemica no tratada (contraindicacion relativa en shock)",
+      "Hipersensibilidad al producto",
+      "No hay contraindicaciones absolutas en shock septico con riesgo vital"
+    ],
+    "efectosAdversos": [
+      "Hiperglucemia (muy frecuente)",
+      "Retencion hidrosalina",
+      "Hipernatremia",
+      "Debilidad muscular (miopatia del critico)",
+      "Sangrado gastrointestinal",
+      "Superinfecciones"
+    ],
+    "interacciones": [
+      "Insulina: requerimientos aumentados por hiperglucemia",
+      "AINEs: riesgo aditivo de sangrado GI",
+      "Diureticos: pueden potenciar hipopotasemia",
+      "Vasopresores: hidrocortisona mejora respuesta a catecolaminas"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Shock septico: 50 mg IV cada 6h o 200 mg/dia en infusion continua (Surviving Sepsis Campaign). Crisis addisoniana: 100 mg IV bolo, luego 50 mg cada 6-8h. Duracion: hasta retirada de vasopresores, luego reducir gradualmente",
+      "pediatrico": "Insuficiencia suprarrenal: 1-2 mg/kg IV bolo, luego 25-150 mg/dia dividido en 3-4 dosis",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales 100 mg polvo + disolvente",
+      "Viales 500 mg polvo + disolvente"
+    ],
+    "embarazo": "C",
+    "lactancia": "Compatible en dosis de estres. Monitorizar lactante.",
+    "cuidadosEnfermeria": [
+      "En shock septico: iniciar si hipotension persiste >4h pese a vasopresores adecuados",
+      "Monitorizar glucemia cada 4-6h: ajustar insulina segun necesidad",
+      "No suspender bruscamente: reducir gradualmente al retirar vasopresores",
+      "La infusion continua tiene menor variabilidad glucemica que los bolos",
+      "Proteccion gastrica con IBP concomitante recomendada"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_10"
+  },
+  {
+    "id": "drug2820",
+    "nombre": "Prostaglandina E1 (Alprostadil)",
+    "nombreGenerico": "Alprostadil (PGE1)",
+    "nombresComerciales": [
+      "Prostin VR",
+      "Alprostadil Pfizer"
+    ],
+    "familia": "Prostaglandinas",
+    "clasificacion": "Prostaglandina E1 vasodilatadora",
+    "mecanismoAccion": "Relaja el musculo liso del ductus arterioso, manteniendolo permeable. En cardiopatias congenitas ductus-dependientes, permite la mezcla de sangre oxigenada y desoxigenada o mantiene flujo pulmonar/sistemico mientras se planifica cirugia correctiva.",
+    "indicaciones": [
+      "Cardiopatias congenitas ductus-dependientes (mantenimiento del ductus arterioso permeable)",
+      "Atresia pulmonar",
+      "Transposicion de grandes arterias",
+      "Coartacion de aorta severa",
+      "Sindrome de corazon izquierdo hipoplasico"
+    ],
+    "contraindicaciones": [
+      "Sindrome de dificultad respiratoria (enfermedad de membrana hialina)",
+      "Hipersensibilidad a alprostadil"
+    ],
+    "efectosAdversos": [
+      "Apnea (hasta 12% en neonatos, dosis-dependiente)",
+      "Fiebre",
+      "Hipotension",
+      "Bradicardia",
+      "Convulsiones",
+      "Proliferacion osea cortical (uso prolongado >120h)"
+    ],
+    "interacciones": [
+      "Anticoagulantes: puede aumentar riesgo de sangrado",
+      "Vasopresores: pueden antagonizar parcialmente efecto vasodilatador",
+      "Indometacina: antagoniza efecto sobre ductus (contrario terapeutico)",
+      "Digoxina: puede usarse concomitantemente"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "No aplica (uso neonatal/pediatrico)",
+      "pediatrico": "Inicio: 0.05-0.1 mcg/kg/min. Mantenimiento: reducir a 0.01-0.05 mcg/kg/min una vez logrado efecto. Max: 0.4 mcg/kg/min",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Ampollas 500 mcg/mL (1 mL)",
+      "Ampollas 20 mcg/mL (solucion diluida)"
+    ],
+    "embarazo": "X",
+    "lactancia": "No aplica (uso neonatal).",
+    "cuidadosEnfermeria": [
+      "APNEA es el efecto adverso mas grave: tener equipo de intubacion preparado",
+      "Monitorizar respiracion continuamente: ventilacion mecanica disponible",
+      "Administrar SIEMPRE por bomba de infusion con precision",
+      "Titular a la dosis minima efectiva para reducir efectos adversos",
+      "Controlar temperatura: fiebre es frecuente, no siempre indica infeccion"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "drug2821",
+    "nombre": "Indometacina (DAP)",
+    "nombreGenerico": "Indometacina sodica trihidratada",
+    "nombresComerciales": [
+      "Indocid IV",
+      "Indocin IV"
+    ],
+    "familia": "AINEs",
+    "clasificacion": "Inhibidor no selectivo de la ciclooxigenasa (cierre de ductus)",
+    "mecanismoAccion": "Inhibe la ciclooxigenasa (COX-1 y COX-2), reduciendo la sintesis de prostaglandinas E2 e I2 que mantienen el ductus arterioso permeable. Al disminuir PGE2, promueve la constriccion y cierre del ductus arterioso persistente en prematuros.",
+    "indicaciones": [
+      "Cierre farmacologico del ductus arterioso persistente en prematuros",
+      "DAP hemodinamicamente significativo en neonatos <32 semanas"
+    ],
+    "contraindicaciones": [
+      "Sangrado activo (especialmente intracraneal)",
+      "Enterocolitis necrotizante activa o sospechada",
+      "Trombocitopenia severa (<50,000/mm3)",
+      "Insuficiencia renal significativa (creatinina >1.8 mg/dL)",
+      "Cardiopatia ductus-dependiente"
+    ],
+    "efectosAdversos": [
+      "Oliguria y elevacion de creatinina (transitoria)",
+      "Disminucion del flujo mesenterico (riesgo de ECN)",
+      "Hemorragia gastrointestinal",
+      "Trombocitopenia",
+      "Hiperbilirrubinemia (desplaza bilirrubina de albumina)"
+    ],
+    "interacciones": [
+      "Aminoglucosidos: indometacina reduce excrecion renal (aumenta toxicidad)",
+      "Digoxina: reduce excrecion renal",
+      "Furosemida: indometacina reduce eficacia diuretica",
+      "Corticosteroides: aumenta riesgo de perforacion GI"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "No aplica (uso neonatal)",
+      "pediatrico": "3 dosis IV a intervalos de 12-24h. Dosis segun edad: <48h vida: 0.2 + 0.1 + 0.1 mg/kg. 2-7 dias: 0.2 + 0.2 + 0.2 mg/kg. >7 dias: 0.2 + 0.25 + 0.25 mg/kg",
+      "ajusteRenal": "Retrasar siguiente dosis si diuresis <0.6 mL/kg/h"
+    },
+    "presentaciones": [
+      "Viales 1 mg polvo para reconstitucion IV"
+    ],
+    "embarazo": "X",
+    "lactancia": "No aplica (uso neonatal).",
+    "cuidadosEnfermeria": [
+      "Monitorizar diuresis estrictamente: suspender si oliguria (<0.6 mL/kg/h)",
+      "Control de creatinina y electrolitos antes de cada dosis",
+      "No alimentar por via enteral durante tratamiento (riesgo ECN)",
+      "Administrar IV en 20-30 min (no en bolo rapido)",
+      "Verificar recuento plaquetario y ausencia de sangrado antes de cada dosis"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "drug2822",
+    "nombre": "Ibuprofeno (DAP)",
+    "nombreGenerico": "Ibuprofeno lisina IV",
+    "nombresComerciales": [
+      "NeoProfen",
+      "Pedea",
+      "Ibuprofeno IV Orphan"
+    ],
+    "familia": "AINEs",
+    "clasificacion": "Inhibidor no selectivo de la ciclooxigenasa (cierre de ductus)",
+    "mecanismoAccion": "Inhibe COX-1 y COX-2, reduciendo la produccion de prostaglandinas que mantienen el ductus arterioso permeable. Similar mecanismo a indometacina pero con menor impacto sobre flujo renal y mesenterico, siendo alternativa preferida en algunos centros.",
+    "indicaciones": [
+      "Cierre farmacologico del ductus arterioso persistente en prematuros",
+      "DAP hemodinamicamente significativo en neonatos prematuros"
+    ],
+    "contraindicaciones": [
+      "Sangrado activo (intracraneal, GI, renal)",
+      "Enterocolitis necrotizante",
+      "Insuficiencia renal significativa",
+      "Cardiopatia ductus-dependiente",
+      "Trombocitopenia severa o defectos de coagulacion"
+    ],
+    "efectosAdversos": [
+      "Oliguria transitoria (menor que con indometacina)",
+      "Hiperbilirrubinemia",
+      "Hemorragia gastrointestinal",
+      "Perforacion intestinal aislada",
+      "Hiponatremia"
+    ],
+    "interacciones": [
+      "Aminoglucosidos: puede reducir excrecion renal",
+      "Corticosteroides: aumenta riesgo de perforacion intestinal aislada",
+      "Furosemida: reduce eficacia diuretica",
+      "Anticoagulantes: aumenta riesgo de sangrado"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "No aplica (uso neonatal)",
+      "pediatrico": "3 dosis IV: Primera dosis 10 mg/kg, segunda 5 mg/kg a las 24h, tercera 5 mg/kg a las 48h. Administrar en 15 min",
+      "ajusteRenal": "Retrasar si diuresis <0.6 mL/kg/h"
+    },
+    "presentaciones": [
+      "Ampollas 10 mg/2 mL solucion IV",
+      "Viales 5 mg/mL"
+    ],
+    "embarazo": "X",
+    "lactancia": "No aplica (uso neonatal).",
+    "cuidadosEnfermeria": [
+      "Menor efecto sobre funcion renal que indometacina: alternativa preferida en prematuros fragiles",
+      "Monitorizar diuresis, creatinina y bilirrubina",
+      "Infundir en 15 minutos; no administrar en bolo",
+      "NO usar concomitantemente con corticosteroides (riesgo perforacion intestinal)",
+      "Ecocardiografia de control tras completar ciclo para verificar cierre"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "drug2823",
+    "nombre": "Sildenafilo (neonatal)",
+    "nombreGenerico": "Citrato de sildenafilo",
+    "nombresComerciales": [
+      "Revatio",
+      "Sildenafilo EFG"
+    ],
+    "familia": "Inhibidores de la fosfodiesterasa-5",
+    "clasificacion": "Inhibidor selectivo de la PDE-5 (vasodilatador pulmonar)",
+    "mecanismoAccion": "Inhibe la fosfodiesterasa tipo 5 en el musculo liso vascular pulmonar, aumentando los niveles de GMPc y produciendo vasodilatacion pulmonar selectiva. En neonatos, reduce la hipertension pulmonar persistente y mejora la oxigenacion.",
+    "indicaciones": [
+      "Hipertension pulmonar persistente del recien nacido (HPPRN)",
+      "Hipertension pulmonar asociada a cardiopatia congenita",
+      "Destete de oxido nitrico inhalado",
+      "Displasia broncopulmonar con hipertension pulmonar"
+    ],
+    "contraindicaciones": [
+      "Uso concomitante de nitratos o donadores de NO",
+      "Hipotension severa (PAS <90 mmHg)",
+      "Retinopatia de la prematuridad activa",
+      "Hipersensibilidad a sildenafilo"
+    ],
+    "efectosAdversos": [
+      "Hipotension sistemica",
+      "Taquicardia",
+      "Enrojecimiento facial",
+      "Alteracion de la relacion V/Q pulmonar (empeoramiento transitorio de oxigenacion)",
+      "Priapismo (raro en neonatos)"
+    ],
+    "interacciones": [
+      "Nitratos y donadores de NO: hipotension severa (contraindicado)",
+      "Oxido nitrico inhalado: efecto sinergico (util en destete)",
+      "Inhibidores CYP3A4 (ketoconazol, eritromicina): aumentan niveles",
+      "Bosentan: puede reducir niveles de sildenafilo"
+    ],
+    "viaAdministracion": [
+      "oral",
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "No aplica (uso neonatal/pediatrico)",
+      "pediatrico": "Neonatal oral: 0.5-2 mg/kg cada 6-8h. IV: 0.4 mg/kg bolo seguido de 1.6 mg/kg/dia en infusion continua. Pediatrico oral: 1-2 mg/kg cada 6-8h (max 20 mg 3 veces/dia)"
+    },
+    "presentaciones": [
+      "Comprimidos 20 mg (para fraccionamiento)",
+      "Suspension oral 10 mg/mL",
+      "Solucion IV 0.8 mg/mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "No aplica (uso neonatal/pediatrico).",
+    "cuidadosEnfermeria": [
+      "Monitorizar presion arterial sistemica: riesgo de hipotension",
+      "En HPPRN: evaluar respuesta con ecocardiografia y SatO2 pre/postductal",
+      "Util para facilitar destete de oxido nitrico inhalado: iniciar antes de retirar iNO",
+      "La suspension oral puede prepararse en farmacia hospitalaria",
+      "Administrar IV solo si la via oral no es posible"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "drug2824",
+    "nombre": "Bosentan (pediatrico)",
+    "nombreGenerico": "Bosentan",
+    "nombresComerciales": [
+      "Tracleer",
+      "Bosentan dispersible"
+    ],
+    "familia": "Antagonistas de receptores de endotelina",
+    "clasificacion": "Antagonista dual de receptores de endotelina (ERA) ET-A y ET-B",
+    "mecanismoAccion": "Bloquea los receptores de endotelina ET-A y ET-B en el endotelio y musculo liso vascular pulmonar. La endotelina-1 es un potente vasoconstrictor y mitogeno; su bloqueo produce vasodilatacion pulmonar y reduce el remodelado vascular.",
+    "indicaciones": [
+      "Hipertension arterial pulmonar en pediatria (clase funcional II-III)",
+      "HAP asociada a cardiopatia congenita (sindrome de Eisenmenger)",
+      "HAP idiopatica en ninos >1 ano"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia hepatica moderada a grave (Child-Pugh B o C)",
+      "Transaminasas basales >3x LSN",
+      "Embarazo (teratogeno)",
+      "Uso concomitante de ciclosporina A",
+      "Hipersensibilidad a bosentan"
+    ],
+    "efectosAdversos": [
+      "Hepatotoxicidad (elevacion de transaminasas, dosis-dependiente)",
+      "Edema periferico",
+      "Cefalea",
+      "Anemia (reduccion de hemoglobina)",
+      "Nasofaringitis",
+      "Teratogenicidad"
+    ],
+    "interacciones": [
+      "Ciclosporina A: contraindicado (aumenta niveles de bosentan 30x)",
+      "Sildenafilo: bosentan reduce niveles de sildenafilo; sildenafilo aumenta bosentan",
+      "Anticonceptivos hormonales: bosentan reduce eficacia (inductor CYP3A4)",
+      "Warfarina: bosentan puede reducir INR (inductor CYP)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "No aplica (ficha pediatrica)",
+      "pediatrico": "Peso 10-20 kg: 31.25 mg 2 veces/dia (mantenimiento 31.25 mg 2 veces/dia). Peso 20-40 kg: 31.25 mg 2 veces/dia 4 semanas, luego 62.5 mg 2 veces/dia. Peso >40 kg: dosis adulto 62.5-125 mg 2 veces/dia",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Contraindicado en Child-Pugh B o C. Suspender si transaminasas >5x LSN"
+    },
+    "presentaciones": [
+      "Comprimidos dispersables 32 mg",
+      "Comprimidos recubiertos 62.5 mg",
+      "Comprimidos recubiertos 125 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Control de transaminasas OBLIGATORIO: mensual durante todo el tratamiento",
+      "Si ALT/AST >3x LSN: reducir dosis o suspender segun protocolo",
+      "Hemoglobina: control mensual los primeros 4 meses, luego trimestral",
+      "Anticoncepcion doble obligatoria en adolescentes fertiles (teratogeno potente)",
+      "Los comprimidos dispersables pueden disolverse en agua para ninos pequenos"
+    ],
+    "unidadId": "u02",
+    "capituloId": "c02_11"
+  },
+  {
+    "id": "drug2825",
+    "nombre": "Pirfenidona",
+    "nombreGenerico": "Pirfenidona",
+    "nombresComerciales": [
+      "Esbriet",
+      "Pirespa"
+    ],
+    "familia": "Antifibroticos pulmonares",
+    "clasificacion": "Agente antifibrotico e antiinflamatorio",
+    "mecanismoAccion": "Mecanismo no completamente elucidado. Inhibe la sintesis de TGF-beta y TNF-alfa, reduce la proliferacion de fibroblastos y la produccion de colageno. Tiene propiedades antiinflamatorias y antioxidantes que retardan la progresion de la fibrosis pulmonar.",
+    "indicaciones": [
+      "Fibrosis pulmonar idiopatica (FPI) leve a moderada",
+      "Neumopatia intersticial fibrosante progresiva",
+      "Fibrosis pulmonar post-COVID (en investigacion)"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia hepatica grave (Child-Pugh C)",
+      "Insuficiencia renal grave (ClCr <30 mL/min)",
+      "Hipersensibilidad a pirfenidona",
+      "Uso concomitante de fluvoxamina"
+    ],
+    "efectosAdversos": [
+      "Nauseas (muy frecuente)",
+      "Erupcion cutanea y fotosensibilidad",
+      "Diarrea",
+      "Fatiga",
+      "Mareo",
+      "Hepatotoxicidad (elevacion de transaminasas)"
+    ],
+    "interacciones": [
+      "Fluvoxamina (inhibidor CYP1A2): contraindicado (aumenta niveles 4-7x)",
+      "Ciprofloxacino: inhibidor moderado CYP1A2, precaucion",
+      "Tabaco: inductor CYP1A2, reduce niveles (fumar contraindicado en FPI)",
+      "Omeprazol: inhibidor leve CYP1A2, interaccion menor"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Titulacion en 2 semanas: Semana 1: 267 mg 3 veces/dia. Semana 2: 534 mg 3 veces/dia. Desde semana 3: 801 mg 3 veces/dia (dosis plena: 2403 mg/dia)",
+      "geriatrico": "Misma dosis. Vigilar funcion hepatica y renal",
+      "ajusteRenal": "ClCr 30-80: precaucion. ClCr <30: contraindicado",
+      "ajusteHepatico": "ALT/AST <3x: continuar con monitorizacion. >3-5x: reducir o suspender. >5x: suspender"
+    },
+    "presentaciones": [
+      "Capsulas 267 mg",
+      "Comprimidos recubiertos 267 mg y 801 mg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Administrar CON alimentos (reduce nauseas y mejora absorcion)",
+      "Proteccion solar OBLIGATORIA: factor 50+, evitar exposicion directa",
+      "Control de transaminasas mensual los primeros 6 meses, luego trimestral",
+      "Si nauseas severas: reducir temporalmente a 534 mg 3 veces/dia y re-titular",
+      "Esquema de titulacion obligatorio: no iniciar con dosis plena"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_08"
+  },
+  {
+    "id": "drug2826",
+    "nombre": "Nintedanib",
+    "nombreGenerico": "Esilato de nintedanib",
+    "nombresComerciales": [
+      "Ofev",
+      "Nintedanib Boehringer"
+    ],
+    "familia": "Antifibroticos pulmonares",
+    "clasificacion": "Inhibidor de tirosina quinasa triple (antifibrotico)",
+    "mecanismoAccion": "Inhibe multiples receptores de tirosina quinasa: FGFR (receptor del factor de crecimiento fibroblastico), PDGFR (receptor del factor de crecimiento derivado de plaquetas) y VEGFR (receptor del factor de crecimiento endotelial vascular). Reduce la proliferacion, migracion y diferenciacion de fibroblastos.",
+    "indicaciones": [
+      "Fibrosis pulmonar idiopatica",
+      "Enfermedad pulmonar intersticial asociada a esclerosis sistemica",
+      "Neumopatias intersticiales fibrosantes progresivas",
+      "Fibrosis pulmonar con patron UIP"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogeno)",
+      "Insuficiencia hepatica grave (Child-Pugh C)",
+      "Hipersensibilidad a nintedanib, cacahuete o soja (excipiente lecitina)",
+      "Alergia a cacahuete o soja"
+    ],
+    "efectosAdversos": [
+      "Diarrea (muy frecuente, hasta 60%)",
+      "Nauseas y vomitos",
+      "Hepatotoxicidad (elevacion de transaminasas)",
+      "Dolor abdominal",
+      "Disminucion del apetito",
+      "Riesgo aumentado de sangrado"
+    ],
+    "interacciones": [
+      "Anticoagulantes: riesgo aumentado de sangrado",
+      "Ketoconazol (inhibidor P-gp/CYP3A4): aumenta niveles de nintedanib",
+      "Rifampicina (inductor P-gp/CYP3A4): reduce niveles",
+      "Pirfenidona: pueden usarse concomitantemente (sin interaccion significativa)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "150 mg 2 veces/dia con intervalo de 12h. Si intolerancia: reducir a 100 mg 2 veces/dia",
+      "ajusteRenal": "No requiere ajuste. Datos limitados si ClCr <30",
+      "ajusteHepatico": "Child-Pugh A: 100 mg 2 veces/dia. Child-Pugh B/C: no recomendado"
+    },
+    "presentaciones": [
+      "Capsulas blandas 100 mg",
+      "Capsulas blandas 150 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Administrar CON alimentos para mejorar tolerancia GI",
+      "Capsulas deben tragarse enteras con agua: NO abrir, masticar ni triturar",
+      "Diarrea: tratar activamente con loperamida y rehidratacion",
+      "Control de transaminasas y bilirrubina mensual los primeros 3 meses",
+      "Anticoncepcion eficaz obligatoria durante y 3 meses despues del tratamiento"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_08"
+  },
+  {
+    "id": "drug2827",
+    "nombre": "Pamrevlumab",
+    "nombreGenerico": "Pamrevlumab",
+    "nombresComerciales": [
+      "Pamrevlumab FibroGen"
+    ],
+    "familia": "Anticuerpos monoclonales antifibroticos",
+    "clasificacion": "Anticuerpo monoclonal anti-CTGF (factor de crecimiento del tejido conectivo)",
+    "mecanismoAccion": "Anticuerpo monoclonal completamente humano que se une e inhibe el factor de crecimiento del tejido conectivo (CTGF/CCN2). CTGF es un mediador clave en la fibrosis que actua downstream de TGF-beta, promoviendo deposicion de matriz extracelular y fibrosis tisular.",
+    "indicaciones": [
+      "Fibrosis pulmonar idiopatica (en investigacion/uso compasivo)",
+      "Distrofia muscular de Duchenne (en investigacion)",
+      "Cancer de pancreas localmente avanzado (en investigacion)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a pamrevlumab",
+      "Infeccion activa grave",
+      "Embarazo"
+    ],
+    "efectosAdversos": [
+      "Reacciones en el sitio de infusion",
+      "Fatiga",
+      "Infecciones del tracto respiratorio superior",
+      "Nauseas",
+      "Cefalea"
+    ],
+    "interacciones": [
+      "Inmunosupresores: precaucion teorica por riesgo infeccioso",
+      "Pirfenidona/Nintedanib: puede combinarse (mecanismos complementarios)",
+      "No se metaboliza por CYP450: baja probabilidad de interacciones farmacocineticas"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "35 mg/kg IV cada 3 semanas. Infusion en 60-90 minutos",
+      "ajusteRenal": "No requiere ajuste (anticuerpo monoclonal)",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales para infusion IV (concentracion variable segun estudio)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Farmaco en investigacion: administrar solo en contexto de ensayo clinico o uso compasivo",
+      "Premedicar con antihistaminico y paracetamol antes de infusion",
+      "Monitorizar durante y 1h post-infusion por reacciones",
+      "No agitar el vial: puede desnaturalizar el anticuerpo",
+      "Registrar cualquier efecto adverso segun protocolo del estudio"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_08"
+  },
+  {
+    "id": "drug2828",
+    "nombre": "Pentraxina-2 (PRM-151)",
+    "nombreGenerico": "Pentraxina-2 humana recombinante",
+    "nombresComerciales": [
+      "PRM-151"
+    ],
+    "familia": "Proteinas antifibroticas recombinantes",
+    "clasificacion": "Pentraxina-2 recombinante (proteina amiloide serica P)",
+    "mecanismoAccion": "Forma recombinante de la pentraxina-2 humana (proteina amiloide serica P/SAP). Promueve la diferenciacion de monocitos hacia fenotipo regulador anti-fibrotico, inhibe la diferenciacion de fibrocitos y reduce la activacion de macrofagos pro-fibroticos, atenuando la fibrosis pulmonar.",
+    "indicaciones": [
+      "Fibrosis pulmonar idiopatica (en investigacion)",
+      "Mielofibrosis (en investigacion)",
+      "Enfermedades fibroticas cronicas"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a componentes de la formulacion",
+      "Infeccion activa no controlada"
+    ],
+    "efectosAdversos": [
+      "Fatiga",
+      "Tos",
+      "Nasofaringitis",
+      "Cefalea",
+      "Reacciones relacionadas con la infusion"
+    ],
+    "interacciones": [
+      "No se han descrito interacciones significativas en estudios clinicos",
+      "Antifibroticos convencionales: puede combinarse (mecanismo diferente)",
+      "No se metaboliza por CYP450"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "10 mg/kg IV cada 4 semanas. Infusion lenta",
+      "ajusteRenal": "Datos insuficientes",
+      "ajusteHepatico": "Datos insuficientes"
+    },
+    "presentaciones": [
+      "Viales para infusion (formulacion de investigacion)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Farmaco experimental: administrar solo en ensayo clinico",
+      "Monitorizar constantes vitales durante infusion",
+      "Vigilar reacciones de infusion: fiebre, escalofrios, disnea",
+      "Pruebas de funcion pulmonar periodicas para evaluar respuesta",
+      "Documentar todos los eventos adversos segun protocolo"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_08"
+  },
+  {
+    "id": "drug2829",
+    "nombre": "Epoprostenol",
+    "nombreGenerico": "Epoprostenol sodico",
+    "nombresComerciales": [
+      "Flolan",
+      "Veletri",
+      "Epoprostenol Sandoz"
+    ],
+    "familia": "Prostanoides",
+    "clasificacion": "Prostaciclina sintetica (PGI2) / vasodilatador pulmonar",
+    "mecanismoAccion": "Prostaciclina sintetica que actua sobre receptores IP en musculo liso vascular pulmonar, activando adenilato ciclasa y aumentando AMPc. Produce vasodilatacion pulmonar potente, inhibicion de agregacion plaquetaria y efectos antiproliferativos sobre celulas musculares lisas vasculares.",
+    "indicaciones": [
+      "Hipertension arterial pulmonar idiopatica (clase III-IV)",
+      "HAP asociada a enfermedad del tejido conectivo",
+      "HAP como puente a trasplante pulmonar",
+      "Test de vasorreactividad pulmonar aguda"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia cardiaca izquierda con congestion pulmonar",
+      "Edema pulmonar durante test de vasorreactividad",
+      "Hipersensibilidad a epoprostenol"
+    ],
+    "efectosAdversos": [
+      "Cefalea (muy frecuente)",
+      "Dolor mandibular",
+      "Rubefaccion facial",
+      "Nauseas y diarrea",
+      "Hipotension",
+      "Sepsis relacionada con cateter (complicacion del sistema de infusion)"
+    ],
+    "interacciones": [
+      "Anticoagulantes: epoprostenol antiagrega plaquetas (vigilar sangrado)",
+      "Antihipertensivos: potencia hipotension",
+      "Digoxina: epoprostenol puede aumentar niveles de digoxina",
+      "Diureticos: puede potenciar hipotension"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 2 ng/kg/min. Titular incrementando 1-2 ng/kg/min cada 15 min hasta eficacia/tolerancia. Mantenimiento habitual: 20-40 ng/kg/min. No hay dosis maxima absoluta",
+      "pediatrico": "Inicio: 1-2 ng/kg/min. Titular similar a adultos",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales 0.5 mg polvo para reconstitucion",
+      "Viales 1.5 mg polvo para reconstitucion"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se desconoce excrecion. Valorar riesgo/beneficio.",
+    "cuidadosEnfermeria": [
+      "Infusion continua 24/7: la interrupcion brusca puede ser MORTAL (rebote HP)",
+      "Via central exclusiva con cateter tunelizado (tipo Hickman)",
+      "Reconstituir solo con diluyente especifico (pH alcalino estabiliza)",
+      "Preparar nueva solucion cada 8-24h (Flolan) o 72h (Veletri, termoestable)",
+      "Educar exhaustivamente al paciente/familia en manejo del sistema de infusion"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2830",
+    "nombre": "Treprostinil",
+    "nombreGenerico": "Treprostinil sodico",
+    "nombresComerciales": [
+      "Remodulin",
+      "Tyvaso",
+      "Orenitram"
+    ],
+    "familia": "Prostanoides",
+    "clasificacion": "Analogo de prostaciclina (multiples vias de administracion)",
+    "mecanismoAccion": "Analogo triciclico de epoprostenol que actua sobre receptores IP y EP2, produciendo vasodilatacion pulmonar y sistemica, inhibicion de agregacion plaquetaria y actividad antiproliferativa. Mayor estabilidad quimica que epoprostenol, permitiendo multiples vias de administracion.",
+    "indicaciones": [
+      "HAP clase II-IV (todas las vias)",
+      "HAP como alternativa a epoprostenol (SC o IV)",
+      "Transicion desde epoprostenol IV",
+      "HAP con necesidad de via no parenteral (inhalado u oral)"
+    ],
+    "contraindicaciones": [
+      "Insuficiencia hepatica grave (Child-Pugh C)",
+      "Hipersensibilidad a treprostinil",
+      "Edema pulmonar por enfermedad venooclusiva"
+    ],
+    "efectosAdversos": [
+      "Dolor en sitio de infusion SC (hasta 85%, limitante)",
+      "Cefalea",
+      "Diarrea",
+      "Nauseas",
+      "Dolor mandibular",
+      "Tos y irritacion faringea (via inhalada)"
+    ],
+    "interacciones": [
+      "Anticoagulantes: aumenta riesgo de sangrado",
+      "Antihipertensivos: potencia hipotension",
+      "Inhibidores CYP2C8 (gemfibrozilo): aumentan niveles de treprostinil oral",
+      "Diureticos: vigilar hipotension"
+    ],
+    "viaAdministracion": [
+      "SC",
+      "IV",
+      "inhalatoria",
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "SC/IV: Inicio 1.25 ng/kg/min, titular incrementando 1.25 ng/kg/min/semana. Mantenimiento: 20-80 ng/kg/min. Inhalado: 3 respiraciones (18 mcg) 4 veces/dia, titular hasta 9 respiraciones (54 mcg) 4 veces/dia. Oral: inicio 0.125 mg cada 12h, titular",
+      "ajusteRenal": "No requiere ajuste en insuficiencia leve-moderada",
+      "ajusteHepatico": "Reducir dosis inicial en insuficiencia hepatica leve-moderada"
+    },
+    "presentaciones": [
+      "Viales SC/IV 1, 2.5, 5, 10 mg/mL",
+      "Solucion para nebulizacion 1.74 mg/mL",
+      "Comprimidos LP 0.125, 0.25, 1, 2.5 mg"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se desconoce excrecion. Precaucion.",
+    "cuidadosEnfermeria": [
+      "Via SC: dolor en sitio de infusion es el efecto adverso limitante",
+      "Rotar sitios de infusion SC para minimizar dolor e induracion",
+      "Via inhalada: usar solo con nebulizador Tyvaso Inhalation System",
+      "No interrumpir bruscamente: riesgo de rebote de HP",
+      "Estable a temperatura ambiente 48h (ventaja sobre epoprostenol)"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2831",
+    "nombre": "Iloprost",
+    "nombreGenerico": "Iloprost trometamol",
+    "nombresComerciales": [
+      "Ventavis",
+      "Ilomedin"
+    ],
+    "familia": "Prostanoides",
+    "clasificacion": "Analogo de prostaciclina inhalado",
+    "mecanismoAccion": "Analogo sintetico estable de prostaciclina PGI2. Actua sobre receptores IP en vasculatura pulmonar produciendo vasodilatacion selectiva del lecho pulmonar. La via inhalada permite accion directa sobre areas ventiladas, mejorando la relacion V/Q.",
+    "indicaciones": [
+      "Hipertension arterial pulmonar clase III (inhalado)",
+      "HAP como terapia combinada",
+      "Isquemia critica de miembros (IV)",
+      "Test de vasorreactividad pulmonar"
+    ],
+    "contraindicaciones": [
+      "Condiciones que aumenten riesgo de sangrado",
+      "Cardiopatia coronaria inestable",
+      "IAM en ultimos 6 meses",
+      "Insuficiencia cardiaca descompensada",
+      "Hipersensibilidad a iloprost"
+    ],
+    "efectosAdversos": [
+      "Tos durante inhalacion (frecuente)",
+      "Cefalea",
+      "Rubefaccion facial",
+      "Hipotension",
+      "Dolor mandibular",
+      "Sincope"
+    ],
+    "interacciones": [
+      "Anticoagulantes y antiplaquetarios: mayor riesgo de sangrado",
+      "Antihipertensivos: potencia hipotension",
+      "Vasodilatadores: efecto hipotensor aditivo",
+      "Otros prostanoides: no combinar por via inhalada"
+    ],
+    "viaAdministracion": [
+      "inhalatoria",
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Inhalado: 2.5-5 mcg/inhalacion, 6-9 veces/dia (minimo espaciado 2h). Dosis diaria: 15-45 mcg. IV (isquemia critica): 0.5-2 ng/kg/min durante 6h/dia",
+      "ajusteRenal": "ClCr <30: datos insuficientes, precaucion",
+      "ajusteHepatico": "Child-Pugh B/C: considerar reducir a 2.5 mcg/inhalacion"
+    },
+    "presentaciones": [
+      "Ampollas 10 mcg/mL para nebulizacion (2 mL)",
+      "Ampollas 20 mcg/mL para nebulizacion (1 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Contraindicado. Se desconoce excrecion.",
+    "cuidadosEnfermeria": [
+      "Requiere 6-9 inhalaciones diarias: impacto significativo en calidad de vida",
+      "Usar nebulizador especifico (I-Neb AAD): no usar nebulizadores convencionales",
+      "Cada inhalacion dura 4-10 min; paciente debe estar sentado",
+      "Monitorizar PA antes y despues de inhalacion las primeras veces",
+      "No mezclar con otros farmacos en la camara de nebulizacion"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2832",
+    "nombre": "Selexipag",
+    "nombreGenerico": "Selexipag",
+    "nombresComerciales": [
+      "Uptravi"
+    ],
+    "familia": "Agonistas de receptores de prostaciclina",
+    "clasificacion": "Agonista selectivo del receptor IP de prostaciclina (oral)",
+    "mecanismoAccion": "Agonista selectivo no prostanoide del receptor IP de prostaciclina. Tras administracion oral, se convierte en metabolito activo (ACT-333679) que activa receptores IP produciendo vasodilatacion y efectos antiproliferativos en vasculatura pulmonar.",
+    "indicaciones": [
+      "HAP clase II-III como terapia combinada",
+      "HAP como alternativa oral a prostanoides parenterales",
+      "HAP en combinacion con ERA y/o PDE5i"
+    ],
+    "contraindicaciones": [
+      "Cardiopatia coronaria severa o angina inestable",
+      "IAM en ultimos 6 meses",
+      "Insuficiencia cardiaca descompensada",
+      "Arritmias graves",
+      "Hipersensibilidad a selexipag"
+    ],
+    "efectosAdversos": [
+      "Cefalea (muy frecuente)",
+      "Diarrea",
+      "Nauseas y vomitos",
+      "Dolor mandibular",
+      "Mialgia",
+      "Dolor de extremidades"
+    ],
+    "interacciones": [
+      "Gemfibrozilo (inhibidor CYP2C8): duplica exposicion al metabolito activo; si se usa, max 200 mcg 2 veces/dia",
+      "Clopidogrel (inhibidor CYP2C8): aumenta niveles moderadamente",
+      "Anticoagulantes: puede aumentar riesgo de sangrado",
+      "Rifampicina: puede reducir niveles del metabolito activo"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Titulacion individual: Inicio 200 mcg 2 veces/dia. Aumentar 200 mcg cada semana hasta dosis maxima tolerada. Max: 1600 mcg 2 veces/dia. Dosis de mantenimiento habitual: 800-1600 mcg 2 veces/dia",
+      "ajusteRenal": "No requiere ajuste. Datos limitados en dialisis",
+      "ajusteHepatico": "Child-Pugh A: no ajuste. Child-Pugh B: inicio 200 mcg/dia (una vez), titular. Child-Pugh C: evitar"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 200, 400, 600, 800, 1000, 1200, 1400, 1600 mcg"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce excrecion. No recomendado.",
+    "cuidadosEnfermeria": [
+      "Titulacion semanal OBLIGATORIA: ajustar hasta dosis maxima tolerada",
+      "Administrar con alimentos para reducir efectos GI",
+      "Los efectos adversos (cefalea, diarrea) son marcadores de dosis efectiva",
+      "Si se omite >3 dias, re-titular desde dosis menor",
+      "Ventaja: via oral sin necesidad de infusion continua ni nebulizacion"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2833",
+    "nombre": "Macitentan",
+    "nombreGenerico": "Macitentan",
+    "nombresComerciales": [
+      "Opsumit"
+    ],
+    "familia": "Antagonistas de receptores de endotelina",
+    "clasificacion": "Antagonista dual de receptores de endotelina (ERA) de segunda generacion",
+    "mecanismoAccion": "Antagonista dual de receptores ETA y ETB con mayor afinidad y penetracion tisular que bosentan. Bloquea la accion vasoconstrictora y proliferativa de endotelina-1 en vasculatura pulmonar. Su metabolito activo (ACT-132577) contribuye significativamente al efecto terapeutico.",
+    "indicaciones": [
+      "Hipertension arterial pulmonar clase II-III",
+      "HAP como monoterapia o en combinacion",
+      "HAP para reducir morbilidad (hospitalizaciones y mortalidad)"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogeno potente)",
+      "Insuficiencia hepatica grave o transaminasas >3x LSN",
+      "Hipersensibilidad a macitentan",
+      "Uso en combinacion con ciclosporina"
+    ],
+    "efectosAdversos": [
+      "Anemia (reduccion de hemoglobina, frecuente)",
+      "Nasofaringitis e infecciones respiratorias",
+      "Cefalea",
+      "Edema/retencion de liquidos",
+      "Hepatotoxicidad (menos que bosentan)",
+      "Infecciones del tracto urinario"
+    ],
+    "interacciones": [
+      "Inhibidores potentes CYP3A4 (ketoconazol): aumentan niveles 2x",
+      "Inductores potentes CYP3A4 (rifampicina): reducen niveles significativamente",
+      "Sildenafilo/tadalafilo: uso combinado recomendado (sin interaccion significativa)",
+      "Warfarina: no interaccion clinicamente significativa"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "10 mg una vez al dia. No se requiere titulacion. Dosis unica",
+      "ajusteRenal": "No requiere ajuste (incluyendo dialisis, aunque datos limitados)",
+      "ajusteHepatico": "Contraindicado en insuficiencia hepatica grave. No requiere ajuste en leve"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 10 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Ventaja: dosis unica diaria sin necesidad de titulacion",
+      "Menor hepatotoxicidad que bosentan: monitorizacion hepatica mensual igualmente recomendada",
+      "Hemoglobina: control mensual los primeros 4 meses",
+      "Anticoncepcion doble OBLIGATORIA en mujeres fertiles (test embarazo mensual)",
+      "Puede administrarse con o sin alimentos"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2834",
+    "nombre": "Ambrisentan",
+    "nombreGenerico": "Ambrisentan",
+    "nombresComerciales": [
+      "Letairis",
+      "Volibris"
+    ],
+    "familia": "Antagonistas de receptores de endotelina",
+    "clasificacion": "Antagonista selectivo del receptor ETA de endotelina",
+    "mecanismoAccion": "Antagonista selectivo del receptor ETA de endotelina-1. La selectividad ETA preserva la actividad del receptor ETB en endotelio, manteniendo la produccion de oxido nitrico y prostaciclina. Produce vasodilatacion pulmonar y reduce el remodelado vascular.",
+    "indicaciones": [
+      "Hipertension arterial pulmonar clase II-III",
+      "HAP idiopatica o asociada a enfermedad del tejido conectivo",
+      "HAP en combinacion con tadalafilo (estudio AMBITION)"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogeno)",
+      "Fibrosis pulmonar idiopatica (empeora outcomes)",
+      "Insuficiencia hepatica severa",
+      "Hipersensibilidad a ambrisentan"
+    ],
+    "efectosAdversos": [
+      "Edema periferico (frecuente)",
+      "Nasofaringitis",
+      "Cefalea",
+      "Anemia",
+      "Congestion nasal",
+      "Palpitaciones"
+    ],
+    "interacciones": [
+      "Ciclosporina: aumenta niveles de ambrisentan 2x (reducir dosis a 5 mg)",
+      "Tadalafilo: combinacion recomendada (estudio AMBITION); sin interaccion relevante",
+      "Rifampicina: puede reducir niveles (inductor)",
+      "Anticoagulantes: monitorizar (ambrisentan no afecta INR significativamente)"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "5 mg una vez al dia. Puede aumentarse a 10 mg/dia si se tolera. Max: 10 mg/dia",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No recomendado en insuficiencia hepatica severa"
+    },
+    "presentaciones": [
+      "Comprimidos recubiertos 5 mg",
+      "Comprimidos recubiertos 10 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "Menor hepatotoxicidad que bosentan: no requiere monitorizacion hepatica mensual obligatoria",
+      "Vigilar edema periferico: puede requerir diureticos",
+      "Anticoncepcion obligatoria: test de embarazo mensual",
+      "No partir ni triturar comprimidos (exposicion teratogena)",
+      "Puede tomarse con o sin alimentos"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2835",
+    "nombre": "Riociguat",
+    "nombreGenerico": "Riociguat",
+    "nombresComerciales": [
+      "Adempas"
+    ],
+    "familia": "Estimuladores de la guanilato ciclasa soluble",
+    "clasificacion": "Estimulador de la guanilato ciclasa soluble (sGC)",
+    "mecanismoAccion": "Estimula directamente la guanilato ciclasa soluble (sGC) de forma independiente del oxido nitrico y tambien sensibiliza la sGC al NO endogeno. Aumenta la produccion de GMPc, produciendo vasodilatacion, efectos antifibroticos y antiproliferativos en vasculatura pulmonar.",
+    "indicaciones": [
+      "Hipertension pulmonar tromboembolica cronica (HPTEC) inoperable o persistente",
+      "Hipertension arterial pulmonar clase II-III",
+      "HPTEC post-endarterectomia con HP residual"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogeno)",
+      "Uso concomitante de nitratos o donadores de NO",
+      "Uso concomitante de PDE5i (sildenafilo, tadalafilo)",
+      "PAS <95 mmHg al inicio",
+      "Hipersensibilidad a riociguat"
+    ],
+    "efectosAdversos": [
+      "Cefalea (muy frecuente)",
+      "Mareo",
+      "Dispepsia y gastritis",
+      "Nauseas",
+      "Diarrea",
+      "Hipotension",
+      "Anemia"
+    ],
+    "interacciones": [
+      "PDE5i (sildenafilo, tadalafilo): CONTRAINDICADO (hipotension severa)",
+      "Nitratos: CONTRAINDICADO",
+      "Anticoagulantes: uso frecuente concomitante en HPTEC (monitorizar)",
+      "Inhibidores potentes multipathway (ketoconazol): aumentan niveles"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Inicio: 1 mg 3 veces/dia. Titular cada 2 semanas: 1.5, 2, 2.5 mg 3 veces/dia. Max: 2.5 mg 3 veces/dia. Si PAS <95: no aumentar. Si PAS <90: reducir",
+      "ajusteRenal": "ClCr 15-80: no ajuste. ClCr <15 o dialisis: no recomendado",
+      "ajusteHepatico": "Child-Pugh A/B: no ajuste necesario. Child-Pugh C: no estudiado, evitar"
+    },
+    "presentaciones": [
+      "Comprimidos 0.5 mg",
+      "Comprimidos 1 mg",
+      "Comprimidos 1.5 mg",
+      "Comprimidos 2 mg",
+      "Comprimidos 2.5 mg"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado.",
+    "cuidadosEnfermeria": [
+      "NUNCA combinar con PDE5i (sildenafilo/tadalafilo) ni nitratos",
+      "Unico farmaco aprobado para HPTEC inoperable",
+      "Monitorizar PA en cada titulacion: no aumentar si PAS <95",
+      "Administrar 3 veces al dia a intervalos regulares",
+      "Anticoncepcion obligatoria: test embarazo mensual"
+    ],
+    "unidadId": "u04",
+    "capituloId": "c04_10"
+  },
+  {
+    "id": "drug2836",
+    "nombre": "Penciclovir",
+    "nombreGenerico": "Penciclovir",
+    "nombresComerciales": [
+      "Denavir",
+      "Vectavir"
+    ],
+    "familia": "Antivirales topicos",
+    "clasificacion": "Analogo nucleosidico de guanina (uso topico)",
+    "mecanismoAccion": "Profarmaco que es fosforilado por la timidin quinasa viral a penciclovir trifosfato, que inhibe la ADN polimerasa del VHS. Mayor permanencia intracelular que aciclovir trifosfato (vida media intracelular 10-20h vs 1h), lo que permite aplicacion menos frecuente.",
+    "indicaciones": [
+      "Herpes labial recurrente (herpes simple tipo 1)",
+      "Herpes facial recurrente",
+      "Herpes genital recurrente leve (tratamiento topico)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a penciclovir o famciclovir",
+      "Aplicacion en mucosas, ojos o herpes genital severo"
+    ],
+    "efectosAdversos": [
+      "Ardor o escozor en sitio de aplicacion",
+      "Eritema local",
+      "Cefalea (raro)",
+      "Alteracion del gusto transitoria"
+    ],
+    "interacciones": [
+      "No se han descrito interacciones topicas significativas",
+      "Aciclovir topico: no combinar en la misma lesion",
+      "No interfiere con antivirales sistemicos"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Aplicar cada 2h durante el dia (aprox 6 veces/dia) durante 4 dias. Iniciar al primer sintoma (prodromo)",
+      "pediatrico": "No aprobado en menores de 12 anos"
+    },
+    "presentaciones": [
+      "Crema 1% (2 g y 5 g)"
+    ],
+    "embarazo": "B",
+    "lactancia": "Absorcion sistemica minima. Probablemente compatible.",
+    "cuidadosEnfermeria": [
+      "Iniciar aplicacion ante el primer prodromo (hormigueo, picor)",
+      "Aplicar solo en labios y cara; NO en mucosa oral ni ojos",
+      "Lavarse las manos antes y despues de aplicar",
+      "Cada 2h durante horas de vigilia (no despertar para aplicar)",
+      "Eficacia demostrada: reduce duracion de lesion en ~1 dia vs placebo"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2837",
+    "nombre": "Docosanol",
+    "nombreGenerico": "Docosanol",
+    "nombresComerciales": [
+      "Abreva",
+      "Erazaban"
+    ],
+    "familia": "Antivirales topicos",
+    "clasificacion": "Alcohol alifatico saturado (antiviral no nucleosidico)",
+    "mecanismoAccion": "Se incorpora a las membranas celulares del huesped, bloqueando la fusion del virus herpes simple con la membrana celular e impidiendo la entrada viral a la celula. Mecanismo diferente a antivirales nucleosidicos: no requiere activacion por enzimas virales.",
+    "indicaciones": [
+      "Herpes labial recurrente (tratamiento OTC)",
+      "Herpes facial leve"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a docosanol",
+      "Ninos menores de 12 anos"
+    ],
+    "efectosAdversos": [
+      "Reaccion local leve (enrojecimiento, sequedad)",
+      "Prurito en sitio de aplicacion",
+      "Cefalea (raro)"
+    ],
+    "interacciones": [
+      "No se han descrito interacciones clinicamente significativas",
+      "Compatible con antivirales orales concomitantes",
+      "No combinar con otros topicos en la misma zona"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Aplicar 5 veces al dia (cada 3-4h) hasta curacion, maximo 10 dias",
+      "pediatrico": "No recomendado en menores de 12 anos"
+    },
+    "presentaciones": [
+      "Crema 10% (2 g)"
+    ],
+    "embarazo": "B",
+    "lactancia": "Absorcion sistemica insignificante. Compatible.",
+    "cuidadosEnfermeria": [
+      "Disponible sin receta (OTC): educar al paciente en autoaplicacion",
+      "Iniciar al primer sintoma prodromico para maxima eficacia",
+      "No aplicar en ojos ni mucosas genitales",
+      "Reduce duracion del brote en aproximadamente 18h vs placebo",
+      "Mecanismo diferente: util en cepas resistentes a aciclovir teoricamente"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2838",
+    "nombre": "Cidofovir topico",
+    "nombreGenerico": "Cidofovir (formulacion topica)",
+    "nombresComerciales": [
+      "Cidofovir topico (preparacion magistral)",
+      "Vistide (sistemico)"
+    ],
+    "familia": "Antivirales topicos",
+    "clasificacion": "Analogo nucleotidico de citosina (uso topico off-label)",
+    "mecanismoAccion": "Analogo nucleotidico que no requiere activacion por enzimas virales (quinasas). Se fosforila por quinasas celulares a cidofovir difosfato, que inhibe competitivamente la ADN polimerasa viral. Activo contra VHS resistente a aciclovir y otros virus ADN.",
+    "indicaciones": [
+      "Herpes mucocutaneo resistente a aciclovir (inmunocomprometidos)",
+      "Verrugas recalcitrantes por VPH",
+      "Molusco contagioso extenso en VIH",
+      "Condilomas acuminados refractarios"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a cidofovir",
+      "Embarazo",
+      "Aplicacion periocular",
+      "Insuficiencia renal si se usa en areas extensas"
+    ],
+    "efectosAdversos": [
+      "Irritacion local y dolor",
+      "Erosion y ulceracion en sitio de aplicacion",
+      "Eritema",
+      "Nefrotoxicidad teorica si absorcion significativa (areas extensas)"
+    ],
+    "interacciones": [
+      "Farmacos nefrotoxicos: precaucion si aplicacion extensa",
+      "Otros antivirales topicos: no combinar en misma lesion",
+      "Probenecid: reduce excrecion renal (relevante solo si absorcion sistemica)"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Gel/crema 1-3%: aplicar 1 vez/dia durante 5 dias/semana. Ciclos de 2-4 semanas segun respuesta",
+      "pediatrico": "Uso limitado. Verrugas: aplicacion similar a adultos"
+    },
+    "presentaciones": [
+      "Gel 1% preparacion magistral",
+      "Crema 3% preparacion magistral"
+    ],
+    "embarazo": "X",
+    "lactancia": "Contraindicado por potencial mutagenico.",
+    "cuidadosEnfermeria": [
+      "Preparacion magistral: no existe formulacion topica comercial",
+      "Usar guantes al aplicar: potencial mutagenico",
+      "Reservado para herpes resistente a aciclovir en inmunocomprometidos",
+      "Vigilar signos de irritacion excesiva: erosion, ulceracion",
+      "Aplicar solo en lesiones; proteger piel sana circundante"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2839",
+    "nombre": "Foscarnet topico",
+    "nombreGenerico": "Foscarnet sodico (formulacion topica)",
+    "nombresComerciales": [
+      "Foscavir (sistemico)",
+      "Foscarnet topico (preparacion magistral)"
+    ],
+    "familia": "Antivirales topicos",
+    "clasificacion": "Analogo del pirofosfato (antiviral de amplio espectro)",
+    "mecanismoAccion": "Inhibe directamente la ADN polimerasa viral uniendose al sitio de union del pirofosfato, sin necesidad de activacion por enzimas virales. Activo contra VHS-1, VHS-2, VVZ y CMV, incluyendo cepas resistentes a aciclovir.",
+    "indicaciones": [
+      "Herpes mucocutaneo resistente a aciclovir en inmunocomprometidos",
+      "Herpes genital refractario en pacientes con VIH",
+      "Lesiones herpéticas perianales resistentes"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a foscarnet",
+      "Aplicacion en ojos"
+    ],
+    "efectosAdversos": [
+      "Irritacion y ardor local",
+      "Ulceracion local (concentraciones altas)",
+      "Prurito"
+    ],
+    "interacciones": [
+      "Absorcion sistemica minima en formulacion topica",
+      "Otros antivirales topicos: no combinar",
+      "Sin interacciones significativas por via topica"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Crema 1-3%: aplicar 4-6 veces al dia durante 7-21 dias o hasta curacion",
+      "pediatrico": "Datos limitados. Uso solo si beneficio supera riesgo"
+    },
+    "presentaciones": [
+      "Crema 1% preparacion magistral",
+      "Crema 3% preparacion magistral"
+    ],
+    "embarazo": "C",
+    "lactancia": "Absorcion topica minima. Probablemente seguro.",
+    "cuidadosEnfermeria": [
+      "Preparacion magistral: solicitar a farmacia hospitalaria",
+      "Segunda linea para herpes resistente a aciclovir (primera linea topica: cidofovir)",
+      "No requiere activacion viral: efectivo contra cepas TK-negativas",
+      "Vigilar irritacion local: reducir frecuencia si muy irritante",
+      "Usar guantes para aplicacion"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2840",
+    "nombre": "Imiquimod",
+    "nombreGenerico": "Imiquimod",
+    "nombresComerciales": [
+      "Aldara",
+      "Zyclara",
+      "Imiquimod Teva"
+    ],
+    "familia": "Inmunomoduladores topicos",
+    "clasificacion": "Agonista del receptor toll-like 7 (TLR7)",
+    "mecanismoAccion": "Agonista del receptor TLR7 en celulas dendriticas y macrofagos. Induce la produccion local de citoquinas (interferon alfa, TNF-alfa, IL-6, IL-12) que activan la respuesta inmune innata y adaptativa contra celulas infectadas por virus y celulas tumorales.",
+    "indicaciones": [
+      "Condilomas acuminados genitales y perianales",
+      "Queratosis actinica (campo de canceriazcion)",
+      "Carcinoma basocelular superficial (cuando cirugia no es apropiada)",
+      "Verrugas vulgares recalcitrantes (off-label)",
+      "Molusco contagioso (off-label)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a imiquimod",
+      "Aplicacion en heridas abiertas o piel lesionada",
+      "Uso en mucosa vaginal o cervical",
+      "No usar como tratamiento interno"
+    ],
+    "efectosAdversos": [
+      "Reaccion local: eritema, erosion, ulceracion, costras (esperado y deseado)",
+      "Prurito y ardor local",
+      "Fatiga y sintomas gripales (absorcion sistemica)",
+      "Cefalea",
+      "Hipopigmentacion residual",
+      "Exacerbacion de enfermedades autoinmunes (raro)"
+    ],
+    "interacciones": [
+      "Inmunosupresores: pueden reducir eficacia de imiquimod",
+      "Otros topicos en misma zona: evitar aplicacion simultanea",
+      "No afecta farmacos sistemicos significativamente"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Condilomas: crema 5%, 3 veces/semana al acostarse, hasta 16 semanas. Queratosis actinica: crema 5%, 2 veces/semana durante 16 semanas O crema 3.75%, diaria 2 semanas, descanso 2 semanas, repetir. Carcinoma basocelular: 5 veces/semana durante 6 semanas",
+      "pediatrico": "Molusco contagioso (off-label, >2 anos): 3 veces/semana"
+    },
+    "presentaciones": [
+      "Crema 5% sobres unidosis 250 mg",
+      "Crema 3.75% sobres",
+      "Crema 5% tubo 12 sobres"
+    ],
+    "embarazo": "C",
+    "lactancia": "Absorcion sistemica minima. Probablemente compatible.",
+    "cuidadosEnfermeria": [
+      "La reaccion local (eritema, erosion) es ESPERADA: indica respuesta inmune",
+      "Aplicar capa fina al acostarse; lavar con agua y jabon a las 6-10h",
+      "No cubrir con vendaje oclusivo",
+      "Si reaccion local severa: descansar 1-2 semanas y reanudar",
+      "Educar: el tratamiento completo dura semanas (no esperar resultados inmediatos)"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2841",
+    "nombre": "Podofilotoxina",
+    "nombreGenerico": "Podofilotoxina",
+    "nombresComerciales": [
+      "Condyline",
+      "Wartec",
+      "Podofilox"
+    ],
+    "familia": "Antimitoticos topicos",
+    "clasificacion": "Agente citostatico topico (lignanolide)",
+    "mecanismoAccion": "Se une a la tubulina e inhibe la polimerizacion de microtubulos, arrestando la mitosis celular en metafase. Produce necrosis del tejido verrugoso al impedir la division de las celulas infectadas por VPH. Mas purificado y seguro que la podofilina bruta.",
+    "indicaciones": [
+      "Condilomas acuminados genitales externos",
+      "Verrugas genitales y perianales",
+      "Condilomas del prepucio y vulva"
+    ],
+    "contraindicaciones": [
+      "Embarazo (teratogeno)",
+      "Condilomas internos (cervicales, vaginales, uretrales, rectales)",
+      "Aplicacion en areas extensas (>10 cm2)",
+      "Ninos",
+      "Hipersensibilidad a podofilotoxina"
+    ],
+    "efectosAdversos": [
+      "Irritacion local: ardor, dolor, eritema (muy frecuente)",
+      "Erosion y ulceracion",
+      "Prurito",
+      "Sangrado local",
+      "Balanospostitis (en hombres)"
+    ],
+    "interacciones": [
+      "No se han descrito interacciones topicas significativas",
+      "No combinar con imiquimod simultaneamente en misma lesion",
+      "Sin absorcion sistemica significativa a dosis recomendadas"
+    ],
+    "viaAdministracion": [
+      "topica"
+    ],
+    "dosis": {
+      "adulto": "Solucion 0.5% o crema 0.15%: aplicar 2 veces/dia durante 3 dias consecutivos, seguido de 4 dias de descanso. Repetir ciclo hasta 4-5 semanas. Max area por ciclo: 10 cm2",
+      "pediatrico": "No recomendado en menores de 18 anos"
+    },
+    "presentaciones": [
+      "Solucion 0.5% (3.5 mL con aplicador)",
+      "Crema 0.15% (5 g)"
+    ],
+    "embarazo": "X",
+    "lactancia": "No recomendado. Absorcion minima pero potencial teratogeno.",
+    "cuidadosEnfermeria": [
+      "El paciente puede autoaplicar: educar en tecnica correcta",
+      "Aplicar SOLO sobre las verrugas con aplicador; proteger piel sana circundante",
+      "Ciclo 3 dias ON / 4 dias OFF: verificar que el paciente entiende el esquema",
+      "No aplicar en mucosas internas ni en areas mayores de 10 cm2",
+      "Si irritacion severa: suspender ciclo actual y reiniciar tras curacion"
+    ],
+    "unidadId": "u09",
+    "capituloId": "c09_05"
+  },
+  {
+    "id": "drug2842",
+    "nombre": "Atropina (SVA)",
+    "nombreGenerico": "Sulfato de atropina",
+    "nombresComerciales": [
+      "Atropina Braun",
+      "Atropina Sala"
+    ],
+    "familia": "Anticolinergicos",
+    "clasificacion": "Antagonista muscarinico (parasimpaticolitico)",
+    "mecanismoAccion": "Bloquea competitivamente los receptores muscarinicos M2 en el nodo sinusal y nodo AV, eliminando el tono vagal e incrementando la frecuencia cardiaca y la velocidad de conduccion AV. En SVA, trata bradicardias sintomaticas mediadas por tono vagal excesivo.",
+    "indicaciones": [
+      "Bradicardia sintomatica (algoritmo SVA)",
+      "Asistolia y actividad electrica sin pulso (AESP) - uso limitado en guias actuales",
+      "Bradicardia por intoxicacion por organofosforados",
+      "Premedicacion antes de intubacion (reduce secreciones)"
+    ],
+    "contraindicaciones": [
+      "Glaucoma de angulo cerrado (relativa en emergencia vital)",
+      "Taquicardia (no usar en bradicardia con BAV de alto grado tipo Mobitz II o BAV completo - ineficaz)",
+      "Hiperplasia prostatica severa (relativa en emergencia)"
+    ],
+    "efectosAdversos": [
+      "Taquicardia (efecto buscado pero puede ser excesivo)",
+      "Midriasis y vision borrosa",
+      "Retencion urinaria",
+      "Sequedad bucal",
+      "Confusion y agitacion (especialmente en ancianos)",
+      "Bradicardia paradojica con dosis muy bajas (<0.5 mg)"
+    ],
+    "interacciones": [
+      "Anticolinergicos: efecto aditivo",
+      "Opioides: puede contrarrestar bradicardia opioide",
+      "Neostigmina y otros anticolinesterasicos: atropina antagoniza su efecto",
+      "Digoxina: atropina puede desenmascarar bloqueos sino-auriculares"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM",
+      "endotraqueal"
+    ],
+    "dosis": {
+      "adulto": "Bradicardia SVA: 0.5 mg IV cada 3-5 min. Max total: 3 mg. Dosis <0.5 mg pueden causar bradicardia paradojica. Intoxicacion organofosforados: 2-4 mg IV, repetir cada 5-10 min hasta atropinizacion",
+      "pediatrico": "0.02 mg/kg IV (min 0.1 mg, max 0.5 mg/dosis). Puede repetir una vez",
+      "ajusteRenal": "No requiere ajuste en emergencia",
+      "ajusteHepatico": "No requiere ajuste en emergencia"
+    },
+    "presentaciones": [
+      "Ampollas 1 mg/mL (1 mL)",
+      "Ampollas 0.5 mg/mL (1 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Uso en emergencia justificado.",
+    "cuidadosEnfermeria": [
+      "Dosis minima 0.5 mg en adultos: dosis menores causan bradicardia PARADOJICA",
+      "Administrar IV rapido (bolo directo, no diluir)",
+      "Ineficaz en BAV de segundo grado tipo II y BAV completo: preparar marcapasos",
+      "Si via endotraqueal: dosis 2-3x la IV, diluida en 10 mL de SF",
+      "Monitorizar ECG continuo durante y despues de administracion"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2843",
+    "nombre": "Amiodarona (SVA)",
+    "nombreGenerico": "Clorhidrato de amiodarona",
+    "nombresComerciales": [
+      "Cordarone",
+      "Trangorex",
+      "Amiodarona Accord"
+    ],
+    "familia": "Antiarritmicos",
+    "clasificacion": "Antiarritmico clase III (bloqueador multicanal)",
+    "mecanismoAccion": "Bloquea multiples canales ionicos: potasio (clase III), sodio (clase I), calcio (clase IV) y receptores beta-adrenergicos (clase II). Prolonga el potencial de accion y el periodo refractario. En SVA, es el antiarritmico de primera linea para FV/TV sin pulso refractaria a desfibrilacion.",
+    "indicaciones": [
+      "FV/TV sin pulso refractaria a desfibrilacion (SVA)",
+      "Taquicardia ventricular estable con pulso",
+      "Taquicardias supraventriculares refractarias",
+      "Control de frecuencia en FA rapida"
+    ],
+    "contraindicaciones": [
+      "No hay contraindicaciones absolutas en paro cardiaco",
+      "Fuera de PCR: bradicardia sinusal severa, BAV sin marcapasos",
+      "QT prolongado previo (fuera de PCR)",
+      "Tirotoxicosis (relativa)",
+      "Hipersensibilidad al yodo"
+    ],
+    "efectosAdversos": [
+      "Hipotension (con administracion IV rapida)",
+      "Bradicardia",
+      "Flebitis (via periferica)",
+      "Toxicidad pulmonar (uso cronico)",
+      "Disfuncion tiroidea (contiene yodo)",
+      "Hepatotoxicidad"
+    ],
+    "interacciones": [
+      "Digoxina: amiodarona aumenta niveles 100% (reducir digoxina 50%)",
+      "Warfarina: amiodarona aumenta INR (reducir warfarina 30-50%)",
+      "Farmacos que prolongan QT: riesgo aditivo de torsade de pointes",
+      "Betabloqueantes y BCC: potencia bradicardia e hipotension"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "PCR (FV/TV sin pulso): 300 mg IV bolo diluidos en 20 mL de SG5%. Si recurrencia: 150 mg adicionales. Con pulso: 150 mg en 10 min, luego infusion 1 mg/min x 6h, luego 0.5 mg/min x 18h. Max: 2.2 g/24h",
+      "pediatrico": "PCR: 5 mg/kg IV bolo (max 300 mg). Puede repetir hasta max 15 mg/kg/dia",
+      "ajusteRenal": "No requiere ajuste (excrecion biliar)",
+      "ajusteHepatico": "Precaucion; metabolismo hepatico"
+    },
+    "presentaciones": [
+      "Ampollas 150 mg/3 mL (50 mg/mL)"
+    ],
+    "embarazo": "D",
+    "lactancia": "Contraindicado. Alta concentracion en leche y contenido de yodo.",
+    "cuidadosEnfermeria": [
+      "En PCR: administrar 300 mg IV en bolo rapido tras 3er desfibrilacion fallida",
+      "Diluir SIEMPRE en SG5% (no SF: precipita en concentraciones altas)",
+      "Via central preferible para infusion continua (flebitis con via periferica)",
+      "Si via periferica: usar vena grande y dilucion mayor",
+      "Compatibilidad limitada: administrar por via exclusiva idealmente"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2844",
+    "nombre": "Lidocaina (SVA)",
+    "nombreGenerico": "Clorhidrato de lidocaina",
+    "nombresComerciales": [
+      "Lidocaina Braun",
+      "Xylocaina IV"
+    ],
+    "familia": "Antiarritmicos",
+    "clasificacion": "Antiarritmico clase Ib (bloqueador de canales de sodio)",
+    "mecanismoAccion": "Bloquea los canales de sodio dependientes de voltaje en estado inactivado, suprimiendo la automaticidad anormal en tejido ventricular isquemico. Acorta la duracion del potencial de accion y el periodo refractario efectivo. Alternativa a amiodarona cuando esta no esta disponible.",
+    "indicaciones": [
+      "FV/TV sin pulso como alternativa a amiodarona en SVA",
+      "Taquicardia ventricular estable (segunda linea)",
+      "Arritmias ventriculares por intoxicacion digitalica"
+    ],
+    "contraindicaciones": [
+      "No hay contraindicaciones absolutas en PCR",
+      "Fuera de PCR: BAV de alto grado sin marcapasos",
+      "Sindrome de Adams-Stokes",
+      "Alergia a anestesicos locales tipo amida"
+    ],
+    "efectosAdversos": [
+      "Toxicidad SNC: confusion, convulsiones, vision borrosa (niveles altos)",
+      "Bradicardia y hipotension",
+      "Parestesias periorales (signo precoz de toxicidad)",
+      "Depresion miocardica en dosis altas",
+      "Nauseas"
+    ],
+    "interacciones": [
+      "Betabloqueantes: pueden aumentar niveles de lidocaina (reducen flujo hepatico)",
+      "Cimetidina: inhibe metabolismo de lidocaina",
+      "Fenitoina: puede potenciar depresion cardiaca",
+      "Amiodarona: si se cambio de amiodarona a lidocaina, vigilar depresion cardiaca"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "endotraqueal"
+    ],
+    "dosis": {
+      "adulto": "PCR: 1-1.5 mg/kg IV bolo. Puede repetir 0.5-0.75 mg/kg cada 5-10 min. Max total: 3 mg/kg. Con pulso: 1 mg/kg bolo, luego infusion 1-4 mg/min",
+      "pediatrico": "1 mg/kg IV bolo. Infusion: 20-50 mcg/kg/min",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "Reducir dosis 50% en insuficiencia hepatica (metabolismo hepatico)"
+    },
+    "presentaciones": [
+      "Ampollas 1% (10 mg/mL) 5 mL",
+      "Ampollas 2% (20 mg/mL) 5 mL",
+      "Viales para infusion 4 mg/mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Compatible con lactancia.",
+    "cuidadosEnfermeria": [
+      "Alternativa a amiodarona: usar cuando amiodarona no esta disponible",
+      "Signo precoz de toxicidad: entumecimiento peribucal y lengua",
+      "No usar lidocaina con adrenalina para SVA (solo la preparacion SIN vasoconstrictor)",
+      "Monitorizar ECG continuo y nivel de conciencia",
+      "Usar SOLO ampollas etiquetadas para uso IV (no las de anestesia local con conservantes)"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2845",
+    "nombre": "Magnesio (SVA)",
+    "nombreGenerico": "Sulfato de magnesio",
+    "nombresComerciales": [
+      "Sulfato de magnesio Braun",
+      "MgSO4"
+    ],
+    "familia": "Electrolitos",
+    "clasificacion": "Electrolito esencial / antiarritmico",
+    "mecanismoAccion": "Estabiliza la membrana celular cardiaca y regula la funcion de canales ionicos de potasio y calcio. En torsade de pointes, suprime las postdespolarizaciones tempranas responsables de la arritmia. Tambien actua como broncodilatador y tocolítico.",
+    "indicaciones": [
+      "Torsade de pointes (primera linea)",
+      "Hipomagnesemia con arritmias",
+      "FV/TV sin pulso asociada a hipomagnesemia",
+      "Eclampsia/preeclampsia severa",
+      "Asma severa refractaria (coadyuvante)"
+    ],
+    "contraindicaciones": [
+      "Hipermagnesemia",
+      "Bloqueo cardiaco (relativo en PCR)",
+      "Insuficiencia renal severa con hipermagnesemia",
+      "Miastenia gravis (relativo en emergencia vital)"
+    ],
+    "efectosAdversos": [
+      "Hipotension (administracion rapida)",
+      "Bradicardia",
+      "Rubefaccion y calor",
+      "Debilidad muscular y arreflexia (hipermagnesemia)",
+      "Depresion respiratoria (niveles toxicos)",
+      "Paro cardiaco (hipermagnesemia severa >10 mEq/L)"
+    ],
+    "interacciones": [
+      "Bloqueantes neuromusculares: potencia su efecto (riesgo paralitico)",
+      "Digoxina: magnesio puede potenciar bloqueo cardiaco",
+      "Calcio IV: antagonista directo (antidoto en hipermagnesemia)",
+      "Aminoglucosidos: efecto neuromuscular aditivo"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "Torsade de pointes: 1-2 g (2-4 mL al 50%) IV en 5-20 min. PCR con torsade: 1-2 g IV bolo rapido. Eclampsia: 4-6 g IV en 15-20 min, luego 1-2 g/h infusion. Max infusion: 2 g/h",
+      "pediatrico": "25-50 mg/kg IV (max 2 g) en 10-20 min",
+      "ajusteRenal": "Reducir dosis y monitorizar niveles. Contraindicado si anuria",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Ampollas 50% (500 mg/mL) 10 mL = 5 g",
+      "Ampollas 10% (100 mg/mL)",
+      "Ampollas 20% (200 mg/mL)"
+    ],
+    "embarazo": "A",
+    "lactancia": "Compatible. Se excreta en leche.",
+    "cuidadosEnfermeria": [
+      "Primera linea en torsade de pointes: administrar sin esperar niveles",
+      "Administracion IV rapida causa hipotension: infundir en minimo 5 min (excepto PCR)",
+      "Monitorizar reflejo patelar: su ausencia indica hipermagnesemia",
+      "Antidoto en hipermagnesemia: gluconato de calcio 1 g IV",
+      "En eclampsia: monitorizar diuresis (>25 mL/h), reflejos y FR"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2846",
+    "nombre": "Calcio (SVA)",
+    "nombreGenerico": "Cloruro de calcio / Gluconato de calcio",
+    "nombresComerciales": [
+      "Cloruro calcico Braun",
+      "Gluconato calcico Braun"
+    ],
+    "familia": "Electrolitos",
+    "clasificacion": "Electrolito esencial / estabilizador de membrana cardiaca",
+    "mecanismoAccion": "El calcio es esencial para la contraccion miocardica y el tono vascular. Estabiliza el potencial de membrana cardiaca antagonizando los efectos de la hiperpotasemia (eleva umbral de excitabilidad). Tambien revierte los efectos cardiotoxicos de los bloqueadores de canales de calcio.",
+    "indicaciones": [
+      "Hiperpotasemia con cambios ECG (primera linea protectora cardiaca)",
+      "Intoxicacion por bloqueadores de canales de calcio",
+      "Intoxicacion por sulfato de magnesio",
+      "Hipocalcemia sintomatica severa",
+      "PCR asociada a hiperpotasemia, hipocalcemia o sobredosis BCC"
+    ],
+    "contraindicaciones": [
+      "Hipercalcemia",
+      "Intoxicacion digitalica (calcio potencia toxicidad - CONTRAINDICADO)",
+      "Fibrilacion ventricular (excepto si es por hiperpotasemia/hipocalcemia)"
+    ],
+    "efectosAdversos": [
+      "Bradicardia (administracion rapida)",
+      "Hipotension o hipertension",
+      "Necrosis tisular severa por extravasacion (cloruro de calcio)",
+      "Nauseas",
+      "Arritmias",
+      "Paro cardiaco si administracion IV demasiado rapida"
+    ],
+    "interacciones": [
+      "Digoxina: calcio POTENCIA toxicidad digitalica (contraindicado en intox digitalica)",
+      "Sulfato de magnesio: calcio es antidoto de hipermagnesemia",
+      "Bicarbonato sodico: INCOMPATIBLE en misma via (precipita)",
+      "Ceftriaxona: INCOMPATIBLE (precipitacion, potencialmente fatal en neonatos)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Cloruro calcico 10%: 500-1000 mg (5-10 mL) IV en 2-5 min. Gluconato calcico 10%: 1000-3000 mg (10-30 mL) IV en 2-5 min. Nota: CaCl aporta 3x mas calcio elemental que gluconato por mL",
+      "pediatrico": "Cloruro calcico: 20 mg/kg IV lento. Gluconato calcico: 60-100 mg/kg IV lento",
+      "ajusteRenal": "Precaucion en insuficiencia renal (riesgo de hipercalcemia)",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Cloruro calcico 10% ampollas 10 mL (100 mg/mL = 1 g/ampolla)",
+      "Gluconato calcico 10% ampollas 10 mL (100 mg/mL = 1 g/ampolla)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Compatible.",
+    "cuidadosEnfermeria": [
+      "Cloruro de calcio: SOLO por via central (necrosis severa si extravasacion)",
+      "Gluconato de calcio: puede usarse por via periferica (mas seguro, menos calcio elemental)",
+      "NUNCA mezclar con bicarbonato en misma via: precipitacion inmediata",
+      "Administrar lento (2-5 min): rapido causa bradicardia y paro cardiaco",
+      "En hiperpotasemia: protege corazon en 1-3 min pero NO baja el potasio"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2847",
+    "nombre": "Bicarbonato sodico",
+    "nombreGenerico": "Bicarbonato de sodio",
+    "nombresComerciales": [
+      "Bicarbonato sodico Braun",
+      "Bicarbonato sodico Grifols"
+    ],
+    "familia": "Alcalinizantes",
+    "clasificacion": "Agente tampon alcalinizante",
+    "mecanismoAccion": "Se disocia en sodio y bicarbonato, que se combina con iones hidrogeno para formar acido carbonico, que a su vez se convierte en CO2 y agua. Aumenta el pH sanguineo corrigiendo la acidosis metabolica. En PCR, se usa en situaciones especificas donde la acidosis empeora el pronostico.",
+    "indicaciones": [
+      "Acidosis metabolica severa en PCR prolongado (pH <7.1)",
+      "Hiperpotasemia severa con cambios ECG (desplaza K al intracelular)",
+      "Intoxicacion por triciclicos (alcalinizacion urinaria/plasmatica)",
+      "Intoxicacion por salicilatos (alcalinizacion urinaria)",
+      "Sobredosis de barbitúricos"
+    ],
+    "contraindicaciones": [
+      "Alcalosis metabolica o respiratoria",
+      "Hipocalcemia severa (alcalosis reduce calcio ionizado)",
+      "Hipernatremia",
+      "Uso rutinario en PCR (NO recomendado sin indicacion especifica)"
+    ],
+    "efectosAdversos": [
+      "Alcalosis metabolica (sobredosificacion)",
+      "Hipernatremia e hiperosmolaridad",
+      "Hipopotasemia (desplazamiento intracelular)",
+      "Reduccion de calcio ionizado",
+      "Acidosis paradojica intracelular y del SNC"
+    ],
+    "interacciones": [
+      "Calcio IV: INCOMPATIBLE en misma linea (precipita como carbonato de calcio)",
+      "Catecolaminas: puede inactivar adrenalina/dopamina si se mezclan",
+      "Alcaliniza orina: altera excrecion de multiples farmacos",
+      "Insulina: la alcalosis reduce potasio (efecto aditivo)"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "PCR: 1 mEq/kg IV (50-100 mL de solucion 8.4%). Puede repetir 0.5 mEq/kg cada 10 min guiado por gasometria. Hiperpotasemia: 50 mEq (50 mL al 8.4%) IV en 5 min. Intoxicacion triciclicos: 1-2 mEq/kg hasta QRS <120 ms",
+      "pediatrico": "1 mEq/kg IV lento. Neonatos: usar solucion diluida al 4.2%",
+      "ajusteRenal": "Precaucion: riesgo de hipernatremia y sobrecarga de volumen",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Solucion 8.4% (1 mEq/mL) frascos 250 mL",
+      "Ampollas 8.4% (1 mEq/mL) 20 mL",
+      "Solucion 4.2% (0.5 mEq/mL) para neonatos"
+    ],
+    "embarazo": "C",
+    "lactancia": "Compatible.",
+    "cuidadosEnfermeria": [
+      "NO usar rutinariamente en PCR: solo si acidosis documentada, hiperpotasemia o intoxicacion especifica",
+      "VIA EXCLUSIVA: NUNCA mezclar con catecolaminas, calcio ni otros farmacos",
+      "En neonatos usar solucion al 4.2% (la 8.4% es hiperosmolar)",
+      "Gasometria arterial ANTES y DESPUES para guiar dosis adicionales",
+      "La buena RCP y ventilacion son mas efectivos para corregir acidosis que el bicarbonato"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2848",
+    "nombre": "Dextrosa (SVA)",
+    "nombreGenerico": "Dextrosa (glucosa)",
+    "nombresComerciales": [
+      "Dextrosa Braun",
+      "Glucosa Grifols",
+      "Dextrosa Baxter"
+    ],
+    "familia": "Soluciones glucosadas",
+    "clasificacion": "Solucion de carbohidrato para emergencia metabolica",
+    "mecanismoAccion": "Proporciona glucosa exogena directamente al torrente sanguineo, revirtiendo la hipoglucemia. La glucosa es el sustrato energetico principal del cerebro y miocardio. En PCR, la hipoglucemia es una causa reversible (las 4H) que debe corregirse inmediatamente.",
+    "indicaciones": [
+      "Hipoglucemia severa (<54 mg/dL) en SVA/PCR",
+      "Coma hipoglucemico",
+      "Hipoglucemia sintomatica en cualquier contexto",
+      "Proteccion cerebral en hipoglucemia durante PCR",
+      "Correccion de hiperpotasemia (con insulina)"
+    ],
+    "contraindicaciones": [
+      "Hiperglucemia (>300 mg/dL sin hipoglucemia documentada)",
+      "Hemorragia intracraneal activa (hiperglucemia empeora pronostico)"
+    ],
+    "efectosAdversos": [
+      "Hiperglucemia iatrogenica",
+      "Flebitis (soluciones concentradas por via periferica)",
+      "Necrosis tisular por extravasacion (dextrosa >10% por via periferica)",
+      "Hiperosmolaridad",
+      "Edema cerebral (por cambio osmotico rapido)"
+    ],
+    "interacciones": [
+      "Insulina: efecto sinergico para tratar hiperpotasemia (glucosa + insulina)",
+      "Tiamina: administrar ANTES de dextrosa en alcoholicos (prevenir encefalopatia de Wernicke)",
+      "Corticosteroides: pueden empeorar hiperglucemia post-dextrosa",
+      "Bicarbonato: compatible en misma solucion"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Hipoglucemia severa: 25-50 mL de dextrosa 50% (12.5-25 g de glucosa) IV en 1-3 min. Puede repetir si glucemia <60 mg/dL. Hiperpotasemia (con insulina): 50 mL D50% + 10 UI insulina regular IV",
+      "pediatrico": "0.5-1 g/kg IV. Neonatos: D10% 2-5 mL/kg. Lactantes/ninos: D25% 2-4 mL/kg. Adolescentes: D50% como adultos",
+      "ajusteRenal": "Monitorizar glucemia estrechamente en IRC",
+      "ajusteHepatico": "Respuesta puede ser alterada en hepatopatia"
+    },
+    "presentaciones": [
+      "Dextrosa 50% ampollas 50 mL (25 g)",
+      "Dextrosa 25% frascos 250 mL",
+      "Dextrosa 10% frascos 500 mL",
+      "Dextrosa 5% frascos 250/500/1000 mL"
+    ],
+    "embarazo": "A",
+    "lactancia": "Compatible.",
+    "cuidadosEnfermeria": [
+      "En alcoholicos: administrar tiamina 100 mg IV ANTES de dextrosa (previene Wernicke)",
+      "D50% es muy hiperosmolar: preferir via central. Si periferica, verificar permeabilidad",
+      "En neonatos: NUNCA usar D50% (hiperosmolar). Usar D10% exclusivamente",
+      "Glucemia capilar ANTES y 15 min DESPUES de administracion",
+      "En PCR: si no se puede medir glucemia y hay sospecha, administrar empiricamente"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_04"
+  },
+  {
+    "id": "drug2849",
+    "nombre": "Dantroleno",
+    "nombreGenerico": "Dantroleno sodico",
+    "nombresComerciales": [
+      "Dantrium",
+      "Ryanodex",
+      "Revonto"
+    ],
+    "familia": "Relajantes musculares de accion directa",
+    "clasificacion": "Antagonista del receptor de rianodina (antidoto HM y SNM)",
+    "mecanismoAccion": "Se une al receptor de rianodina (RyR1) en el reticulo sarcoplasmatico del musculo esqueletico, inhibiendo la liberacion de calcio. Reduce la contraccion muscular excesiva, la termogenesis y la rabdomiolisis. Unico tratamiento especifico para hipertermia maligna.",
+    "indicaciones": [
+      "Hipertermia maligna (antidoto especifico)",
+      "Sindrome neuroleptico maligno (SNM)",
+      "Sindrome serotoninergico con hipertermia severa",
+      "Espasticidad cronica (uso oral en otras indicaciones)"
+    ],
+    "contraindicaciones": [
+      "Enfermedad hepatica activa (uso cronico oral)",
+      "No hay contraindicaciones absolutas en hipertermia maligna (emergencia vital)"
+    ],
+    "efectosAdversos": [
+      "Debilidad muscular generalizada",
+      "Somnolencia",
+      "Mareo",
+      "Nauseas y vomitos",
+      "Hepatotoxicidad (uso cronico oral)",
+      "Flebitis en sitio de infusion (pH alcalino)"
+    ],
+    "interacciones": [
+      "Bloqueantes de canales de calcio (verapamilo): riesgo de colapso cardiovascular (evitar combinacion)",
+      "Anestesicos inhalatorios: dantroleno los antagoniza (indicacion principal)",
+      "Relajantes musculares: potencia debilidad muscular",
+      "Sedantes: efecto aditivo sobre SNC"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Hipertermia maligna: 2.5 mg/kg IV rapido, repetir cada 5-10 min hasta control (max total no definido, generalmente hasta 10 mg/kg). SNM: 1-2.5 mg/kg IV, repetir segun necesidad. Ryanodex: 2.5 mg/kg dosis unica (reconstitucion rapida)",
+      "pediatrico": "Misma dosis que adultos (mg/kg)",
+      "ajusteRenal": "No requiere ajuste en emergencia",
+      "ajusteHepatico": "Contraindicado en hepatopatia activa para uso cronico. Sin contraindicacion en emergencia"
+    },
+    "presentaciones": [
+      "Viales 20 mg polvo + 60 mL agua esteril (Dantrium)",
+      "Viales 250 mg polvo (Ryanodex, reconstitucion rapida en 5 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "No recomendado.",
+    "cuidadosEnfermeria": [
+      "Reconstitucion URGENTE: cada vial de 20 mg requiere 60 mL de agua esteril (tarda minutos, necesita multiples viales)",
+      "Ryanodex: reconstitucion rapida en 5 mL = 250 mg (ventaja en emergencia)",
+      "Proteger de la luz: solucion es fotosensible",
+      "En hipertermia maligna: administrar simultaneamente con medidas de enfriamiento activo",
+      "OBLIGATORIO tener en quirofanos donde se usen anestesicos halogenados/succinilcolina"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2850",
+    "nombre": "Ciproheptadina",
+    "nombreGenerico": "Clorhidrato de ciproheptadina",
+    "nombresComerciales": [
+      "Periactin",
+      "Ciproheptadina Kern"
+    ],
+    "familia": "Antihistaminicos/Antiserotoninergicos",
+    "clasificacion": "Antagonista de receptores H1 y 5-HT2A (antidoto sindrome serotoninergico)",
+    "mecanismoAccion": "Antihistaminico de primera generacion con potente actividad antagonista en receptores serotoninergicos 5-HT2A. En sindrome serotoninergico, bloquea el exceso de estimulacion serotoninergica central responsable de la hipertermia, la rigidez muscular y la agitacion.",
+    "indicaciones": [
+      "Sindrome serotoninergico (antidoto de primera linea)",
+      "Estimulacion del apetito en anorexia",
+      "Profilaxis de migrana en ninos",
+      "Urticaria refractaria a antihistaminicos de segunda generacion"
+    ],
+    "contraindicaciones": [
+      "Glaucoma de angulo cerrado",
+      "Retencion urinaria",
+      "Uso concomitante de IMAO",
+      "Neonatos y prematuros",
+      "Hipersensibilidad a ciproheptadina"
+    ],
+    "efectosAdversos": [
+      "Somnolencia (muy frecuente)",
+      "Aumento de apetito y peso",
+      "Sequedad bucal",
+      "Mareo",
+      "Efectos anticolinergicos",
+      "Retencion urinaria"
+    ],
+    "interacciones": [
+      "ISRS: ciproheptadina antagoniza su efecto (indicacion terapeutica en sindrome serotoninergico)",
+      "Depresores del SNC: sedacion aditiva",
+      "IMAO: efectos anticolinergicos potenciados",
+      "Alcohol: potencia sedacion"
+    ],
+    "viaAdministracion": [
+      "oral"
+    ],
+    "dosis": {
+      "adulto": "Sindrome serotoninergico: 12 mg VO dosis de carga, luego 2 mg cada 2h hasta mejoria. Max: 32 mg/dia. Puede triturar y dar por SNG si el paciente no puede deglutir",
+      "pediatrico": "Sindrome serotoninergico: 0.25 mg/kg/dia dividido cada 6h",
+      "ajusteRenal": "Precaucion en insuficiencia renal",
+      "ajusteHepatico": "Reducir dosis en hepatopatia"
+    },
+    "presentaciones": [
+      "Comprimidos 4 mg",
+      "Jarabe 2 mg/5 mL"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se excreta en leche. No recomendado.",
+    "cuidadosEnfermeria": [
+      "UNICO antidoto especifico del sindrome serotoninergico",
+      "Solo via oral: puede triturarse y administrarse por SNG",
+      "Dosis de carga: 12 mg (3 comprimidos) inmediatamente",
+      "Monitorizar temperatura, rigidez muscular, agitacion y reflejos para evaluar respuesta",
+      "Si no hay mejoria en 24h, reevaluar diagnostico de sindrome serotoninergico"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2851",
+    "nombre": "Fisostigmina",
+    "nombreGenerico": "Salicilato de fisostigmina",
+    "nombresComerciales": [
+      "Antilirium",
+      "Fisostigmina Merck"
+    ],
+    "familia": "Inhibidores de la colinesterasa",
+    "clasificacion": "Anticolinesterasico reversible (antidoto sindrome anticolinergico)",
+    "mecanismoAccion": "Inhibe reversiblemente la acetilcolinesterasa, aumentando la concentracion de acetilcolina en sinapsis colinergicas centrales y perifericas. A diferencia de neostigmina, cruza la barrera hematoencefalica, revirtiendo los efectos anticolinergicos centrales (delirio, agitacion, coma).",
+    "indicaciones": [
+      "Sindrome anticolinergico central con agitacion o delirio severo",
+      "Intoxicacion por anticolinergicos puros (atropina, escopolamina)",
+      "Toxicidad por antihistaminicos con delirio severo",
+      "Diagnostico diferencial de sindrome anticolinergico vs otras causas de delirio"
+    ],
+    "contraindicaciones": [
+      "Intoxicacion por antidepresivos triciclicos (riesgo de asistolia y convulsiones)",
+      "Bloqueo AV o QRS ancho",
+      "Asma o EPOC severo",
+      "Obstruccion intestinal o vesical mecanica",
+      "Diabetes mellitus (uso ganglioplégico)"
+    ],
+    "efectosAdversos": [
+      "Bradicardia (colinergico)",
+      "Nauseas, vomitos, diarrea",
+      "Sialorrea y broncorrea",
+      "Convulsiones (sobredosis o uso en triciclicos)",
+      "Broncoespasmo",
+      "Colapso cardiovascular (si se usa en intox por triciclicos)"
+    ],
+    "interacciones": [
+      "Succinilcolina: fisostigmina prolonga su efecto",
+      "Betabloqueantes: bradicardia aditiva",
+      "Antidepresivos triciclicos: CONTRAINDICADO ABSOLUTAMENTE",
+      "Anticolinergicos: fisostigmina antagoniza su efecto (indicacion terapeutica)"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "0.5-2 mg IV lento (no mas de 1 mg/min). Puede repetir cada 10-30 min si recurren sintomas. Efecto dura 30-60 min. Max acumulativo: no definido (guiado por clinica)",
+      "pediatrico": "0.02 mg/kg IV lento (max 0.5 mg/dosis). Puede repetir cada 5-10 min. Max total: 2 mg",
+      "ajusteRenal": "No requiere ajuste en emergencia",
+      "ajusteHepatico": "No requiere ajuste en emergencia"
+    },
+    "presentaciones": [
+      "Ampollas 1 mg/mL (2 mL)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. Uso solo en emergencia.",
+    "cuidadosEnfermeria": [
+      "NUNCA usar en intoxicacion por triciclicos: riesgo de asistolia y convulsiones",
+      "Administrar MUY lento: no mas de 1 mg/minuto",
+      "Tener atropina disponible como antidoto de sobredosis colinergica",
+      "Efecto dura solo 30-60 min: los sintomas pueden recurrir (redosificar)",
+      "Monitorizar ECG continuo: verificar QRS estrecho antes de administrar"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2852",
+    "nombre": "Pralidoxima (mejorado)",
+    "nombreGenerico": "Cloruro de pralidoxima (2-PAM)",
+    "nombresComerciales": [
+      "Protopam",
+      "Contrathion"
+    ],
+    "familia": "Reactivadores de colinesterasa",
+    "clasificacion": "Oxima reactivadora de la acetilcolinesterasa",
+    "mecanismoAccion": "Reactiva la acetilcolinesterasa inhibida por organofosforados al desplazar el grupo fosforilo del sitio activo de la enzima. Debe administrarse ANTES del 'envejecimiento' (aging) del complejo enzima-inhibidor, que se vuelve irreversible. Mas efectiva para efectos nicotinicos (fasciculaciones, debilidad) que muscarinicos.",
+    "indicaciones": [
+      "Intoxicacion por organofosforados (pesticidas, gases nerviosos)",
+      "Intoxicacion por agentes nerviosos (sarin, soman, VX)",
+      "Complemento de atropina en intoxicacion por anticolinesterasicos"
+    ],
+    "contraindicaciones": [
+      "Intoxicacion por carbamatos (la reactivacion es espontanea; pralidoxima puede empeorar)",
+      "Hipersensibilidad a pralidoxima"
+    ],
+    "efectosAdversos": [
+      "Vision borrosa y diplopia",
+      "Taquicardia e hipertension (administracion rapida)",
+      "Cefalea",
+      "Mareo",
+      "Nauseas",
+      "Debilidad muscular transitoria"
+    ],
+    "interacciones": [
+      "Atropina: uso sinergico obligatorio (atropina para muscarinicos, pralidoxima para nicotinicos)",
+      "Succinilcolina: efecto prolongado en intoxicacion por organofosforados",
+      "Aminofilina, teofilina, morfina: evitar en intoxicacion por organofosforados",
+      "Barbituricos: metabolismo aumentado en presencia de organofosforados"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM"
+    ],
+    "dosis": {
+      "adulto": "Carga: 1-2 g IV en 15-30 min. Infusion de mantenimiento: 500 mg/h (8-10 mg/kg/h). Alternativa IM: 600 mg IM autoinyector, repetir cada 15 min (max 3 dosis). Mantener hasta 24-48h post-exposicion",
+      "pediatrico": "20-50 mg/kg IV en 15-30 min (max 1 g/dosis). Infusion: 10-20 mg/kg/h",
+      "ajusteRenal": "Reducir dosis en insuficiencia renal (excrecion renal)",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales 1 g polvo para reconstitucion IV",
+      "Autoinyectores IM 600 mg (uso militar/prehospitalario)"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. Uso solo en emergencia.",
+    "cuidadosEnfermeria": [
+      "SIEMPRE administrar JUNTO CON atropina (nunca pralidoxima sola)",
+      "Administrar lo antes posible: eficacia disminuye tras 24-48h (envejecimiento)",
+      "Infundir IV en 15-30 min: administracion rapida causa hipertension y rigidez laringea",
+      "Mantener infusion continua: la inhibicion puede recurrir",
+      "Descontaminar al paciente ANTES de tratar (proteccion del personal)"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2853",
+    "nombre": "Glucagon (toxicologia)",
+    "nombreGenerico": "Glucagon recombinante",
+    "nombresComerciales": [
+      "GlucaGen",
+      "Baqsimi",
+      "Glucagon Lilly"
+    ],
+    "familia": "Hormonas contrarreguladores",
+    "clasificacion": "Hormona peptidica contrarreguladora / antidoto en intoxicacion cardiovascular",
+    "mecanismoAccion": "En toxicologia cardiovascular, el glucagon activa la adenilato ciclasa cardiaca por via NO adrenergica (via receptores de glucagon), aumentando el AMPc intracelular independientemente de los receptores beta bloqueados. Restaura la cronotropia, inotropia y dromotropia en intoxicacion por betabloqueantes.",
+    "indicaciones": [
+      "Intoxicacion por betabloqueantes con bradicardia e hipotension",
+      "Intoxicacion por bloqueadores de canales de calcio (coadyuvante)",
+      "Hipoglucemia severa cuando no hay acceso IV",
+      "Reaccion anafilactica en paciente betabloqueado (adrenalina puede ser ineficaz)"
+    ],
+    "contraindicaciones": [
+      "Feocromocitoma (riesgo de crisis hipertensiva)",
+      "Insulinoma (hipoglucemia de rebote)",
+      "Hipersensibilidad a glucagon o proteinas de E. coli (recombinante)"
+    ],
+    "efectosAdversos": [
+      "Nauseas y vomitos (muy frecuentes)",
+      "Hiperglucemia transitoria",
+      "Hipopotasemia",
+      "Hipoglucemia de rebote (efecto transitorio, reservas de glucogeno limitadas)",
+      "Taquicardia"
+    ],
+    "interacciones": [
+      "Insulina: antagoniza efecto del glucagon (pero glucagon causa hiperglucemia)",
+      "Warfarina: glucagon puede aumentar efecto anticoagulante",
+      "Betabloqueantes: glucagon bypasses su bloqueo (indicacion terapeutica)",
+      "Indometacina: puede reducir efecto hiperglucemiante"
+    ],
+    "viaAdministracion": [
+      "IV",
+      "IM",
+      "SC",
+      "nasal"
+    ],
+    "dosis": {
+      "adulto": "Intoxicacion por betabloqueantes: 3-10 mg IV bolo en 1-2 min, seguido de infusion 3-5 mg/h (hasta 10 mg/h). Hipoglucemia: 1 mg IM o SC. Nasal: 3 mg intranasal (Baqsimi)",
+      "pediatrico": "Intox BB: 0.05-0.15 mg/kg IV bolo, luego infusion 0.05-0.1 mg/kg/h. Hipoglucemia: <25 kg: 0.5 mg IM. >25 kg: 1 mg IM",
+      "ajusteRenal": "No requiere ajuste",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales 1 mg polvo + disolvente para inyeccion",
+      "Dispositivo nasal 3 mg (Baqsimi)",
+      "Jeringa precargada 1 mg"
+    ],
+    "embarazo": "B",
+    "lactancia": "Compatible (degradacion GI en el lactante).",
+    "cuidadosEnfermeria": [
+      "En intox por BB: dosis MUCHO mayores que para hipoglucemia (3-10 mg vs 1 mg)",
+      "Nauseas/vomitos frecuentes: posicionar paciente de lado para prevenir aspiracion",
+      "El efecto es TRANSITORIO: mantener infusion continua tras bolo",
+      "Reconstituir con diluyente provisto; no usar si solucion turbia",
+      "Tras tratar hipoglucemia: el paciente DEBE comer al despertar (prevenir rebote)"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2854",
+    "nombre": "Hidroxocobalamina",
+    "nombreGenerico": "Hidroxocobalamina",
+    "nombresComerciales": [
+      "Cyanokit",
+      "Hidroxocobalamina Merck"
+    ],
+    "familia": "Antidotos",
+    "clasificacion": "Quelante de cianuro (antidoto especifico)",
+    "mecanismoAccion": "Precursor de vitamina B12 con alta afinidad por el ion cianuro. Cada molecula de hidroxocobalamina se une a un ion cianuro formando cianocobalamina (vitamina B12), un compuesto atóxico que se excreta por via renal. Actua como quelante directo sin causar metahemoglobinemia.",
+    "indicaciones": [
+      "Intoxicacion por cianuro confirmada o sospechada",
+      "Inhalacion de humo en incendios (posible intoxicacion por cianuro + CO)",
+      "Ingestion de cianuro (industrial, suicida)",
+      "Intoxicacion por nitroprusiato (acumulacion de cianuro)"
+    ],
+    "contraindicaciones": [
+      "No hay contraindicaciones absolutas en intoxicacion por cianuro (emergencia vital)"
+    ],
+    "efectosAdversos": [
+      "Coloracion roja de piel, orina, mucosas y lagrimas (hasta 2 semanas)",
+      "Hipertension arterial transitoria",
+      "Nauseas",
+      "Cefalea",
+      "Reacciones alergicas (raro)",
+      "Interferencia con analizadores de laboratorio (coloracion roja interfiere multiples ensayos)"
+    ],
+    "interacciones": [
+      "Tiosulfato sodico: sinergico como antidoto de cianuro (puede combinarse)",
+      "Hidroxocobalamina interfiere con multiples determinaciones de laboratorio",
+      "No mezclar con otros farmacos en la misma via (incompatibilidades multiples)",
+      "Diazepam, dobutamina, dopamina: incompatibles en misma via"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "5 g IV en 15 min (Cyanokit: 2 viales de 2.5 g). Puede repetirse segunda dosis de 5 g si persiste inestabilidad. Max: 10 g total (15 g en casos excepcionales)",
+      "pediatrico": "70 mg/kg IV en 15 min (max 5 g). Puede repetir 70 mg/kg si necesario",
+      "ajusteRenal": "No requiere ajuste en emergencia",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Kit Cyanokit: 2 viales de 2.5 g polvo + 200 mL SF 0.9% para reconstitucion"
+    ],
+    "embarazo": "C",
+    "lactancia": "Uso en emergencia justificado.",
+    "cuidadosEnfermeria": [
+      "Antidoto de eleccion en intoxicacion por cianuro: mas seguro que el kit clasico de nitritos",
+      "Reconstituir 2.5 g en 100 mL SF 0.9%: agitar/rotar (no agitar vigorosamente) 60 seg",
+      "Advertir al equipo: coloracion roja de piel y orina es ESPERADA (no es hematuria)",
+      "Interferencia con laboratorio: extraer muestras ANTES de administrar si posible",
+      "Administrar por via EXCLUSIVA: incompatible con la mayoria de farmacos IV"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  },
+  {
+    "id": "drug2855",
+    "nombre": "Fomepizol",
+    "nombreGenerico": "Fomepizol (4-metilpirazol)",
+    "nombresComerciales": [
+      "Antizol",
+      "Fomepizole Mylan"
+    ],
+    "familia": "Antidotos",
+    "clasificacion": "Inhibidor competitivo de la alcohol deshidrogenasa",
+    "mecanismoAccion": "Inhibe competitivamente la alcohol deshidrogenasa (ADH) con afinidad 8000 veces mayor que el etanol. Bloquea la conversion de metanol a formaldehido/acido formico y de etilenglicol a acido glicolico/oxalico, previniendo la formacion de metabolitos toxicos responsables de la acidosis y dano organico.",
+    "indicaciones": [
+      "Intoxicacion por metanol",
+      "Intoxicacion por etilenglicol (anticongelante)",
+      "Sospecha de intoxicacion por alcoholes toxicos con gap osmotico elevado",
+      "Como alternativa superior al etanol IV (antidoto historico)"
+    ],
+    "contraindicaciones": [
+      "Hipersensibilidad a fomepizol o pirazoles"
+    ],
+    "efectosAdversos": [
+      "Cefalea",
+      "Nauseas",
+      "Mareo",
+      "Reaccion en sitio de infusion",
+      "Sensacion metalica",
+      "Eosinofilia transitoria"
+    ],
+    "interacciones": [
+      "Etanol: ambos compiten por ADH; fomepizol es preferido (mas predecible, menos efectos adversos)",
+      "Hemodialisis: fomepizol se dializa; aumentar frecuencia de dosis durante HD",
+      "No interacciones significativas con farmacos habituales de emergencia"
+    ],
+    "viaAdministracion": [
+      "IV"
+    ],
+    "dosis": {
+      "adulto": "Carga: 15 mg/kg IV en 30 min. Luego 10 mg/kg cada 12h x 4 dosis. Despues: 15 mg/kg cada 12h hasta niveles de metanol/etilenglicol <20 mg/dL. Durante hemodialisis: cada 4h (se dializa)",
+      "pediatrico": "Misma dosificacion que adultos (mg/kg)",
+      "ajusteRenal": "Se dializa: aumentar frecuencia durante hemodialisis (cada 4h)",
+      "ajusteHepatico": "No requiere ajuste"
+    },
+    "presentaciones": [
+      "Viales 1 g/mL (1.5 mL = 1.5 g)",
+      "Viales 1 g/mL concentrate para diluir"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se desconoce seguridad. Uso solo en emergencia.",
+    "cuidadosEnfermeria": [
+      "Superior a etanol IV: dosificacion predecible, no causa sedacion ni hipoglucemia",
+      "Diluir en 100 mL de SF 0.9% o SG 5%: infundir en 30 min",
+      "Durante hemodialisis: administrar cada 4h (no cada 12h, se dializa)",
+      "Continuar tratamiento hasta niveles de metanol/etilenglicol <20 mg/dL y pH normalizado",
+      "Monitorizar gasometria, gap osmotico, niveles de metanol/etilenglicol y funcion renal"
+    ],
+    "unidadId": "u11",
+    "capituloId": "c11_03"
+  }
+]
