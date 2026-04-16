@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, StatusBar, Alert, ActivityIndicator } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../context/ThemeContext';
 import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard, neuElevated } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import { PRODUCT_IDS, formatPeriod, type SubscriptionProduct } from '../utils/billing';
 
 const PREMIUM_FEATURES = [
   { iconName: 'brain', text: 'Test farmacológico interactivo' },
@@ -28,34 +30,82 @@ const FREE_FEATURES = [
   { iconName: 'export-variant', text: 'Compartir información de fármacos' },
 ];
 
-type PlanType = 'monthly' | 'annual';
+// Fallback prices when Google Play products haven't loaded yet
+const FALLBACK_PRICES: Record<string, { price: string; period: string; monthlyEquiv: string }> = {
+  [PRODUCT_IDS.MONTHLY]: { price: '$2.99', period: 'mes', monthlyEquiv: '$2.99/mes' },
+  [PRODUCT_IDS.ANNUAL]: { price: '$19.99', period: 'año', monthlyEquiv: '$1.67/mes' },
+};
 
 export function PremiumScreen() {
-  const { colors } = useTheme();
-  const { isPremium, isTrialActive, trialDaysLeft, isSubscribed, isCodeActivated, restoreSubscription } = usePremium();
-  const styles = useMemo(() => createStyles(colors), [colors]);
-  const [selectedPlan, setSelectedPlan] = React.useState<PlanType>('annual');
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const {
+    isPremium, isTrialActive, trialDaysLeft, isSubscribed, isCodeActivated,
+    products, isBillingLoading, purchase, restore,
+  } = usePremium();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
+  const [selectedPlan, setSelectedPlan] = React.useState<string>(PRODUCT_IDS.ANNUAL);
 
-  const handleSubscribe = () => {
-    Alert.alert(
-      'Próximamente',
-      `La suscripción ${selectedPlan === 'annual' ? 'anual ($19.99/año)' : 'mensual ($2.99/mes)'} mediante Google Play estará disponible muy pronto. ¡Gracias por tu interés!`,
-      [{ text: 'Entendido' }],
-    );
+  // Find products by ID
+  const monthlyProduct = products.find(p => p.productId === PRODUCT_IDS.MONTHLY);
+  const annualProduct = products.find(p => p.productId === PRODUCT_IDS.ANNUAL);
+
+  const handleSubscribe = async () => {
+    const product = selectedPlan === PRODUCT_IDS.ANNUAL ? annualProduct : monthlyProduct;
+
+    if (!product?.offerToken) {
+      Alert.alert(
+        'No disponible',
+        'La suscripción no está disponible en este momento. Verifica tu conexión e intenta de nuevo.',
+      );
+      return;
+    }
+
+    await purchase(product.productId, product.offerToken);
   };
 
-  const handleRestore = () => {
-    restoreSubscription();
-    Alert.alert(
-      'Restaurar compra',
-      'Si realizaste una compra previamente, se restaurará automáticamente al vincular con Google Play.',
-      [{ text: 'OK' }],
-    );
+  const handleRestore = async () => {
+    const restored = await restore();
+    if (restored) {
+      Alert.alert('Restaurado', 'Tu suscripción Premium ha sido restaurada correctamente.');
+    } else {
+      Alert.alert(
+        'Sin compras',
+        'No se encontraron suscripciones activas asociadas a tu cuenta de Google Play.',
+      );
+    }
+  };
+
+  const getPrice = (productId: string): string => {
+    const product = products.find(p => p.productId === productId);
+    return product?.price || FALLBACK_PRICES[productId]?.price || '';
+  };
+
+  const getPeriod = (productId: string): string => {
+    const product = products.find(p => p.productId === productId);
+    return product ? formatPeriod(product.period) : FALLBACK_PRICES[productId]?.period || '';
+  };
+
+  const getMonthlyEquiv = (product: SubscriptionProduct | undefined, fallbackId: string): string => {
+    if (product && product.priceMicros > 0 && product.period === 'P1Y') {
+      const monthly = product.priceMicros / 12 / 1_000_000;
+      return `${product.currency === 'USD' ? '$' : ''}${monthly.toFixed(2)}/${formatPeriod('P1M')}`;
+    }
+    return FALLBACK_PRICES[fallbackId]?.monthlyEquiv || '';
+  };
+
+  const getSavingsPercent = (): string => {
+    if (annualProduct && monthlyProduct && monthlyProduct.priceMicros > 0) {
+      const yearlyViaMonthly = monthlyProduct.priceMicros * 12;
+      const savings = Math.round((1 - annualProduct.priceMicros / yearlyViaMonthly) * 100);
+      return savings > 0 ? `Ahorra ${savings}%` : '';
+    }
+    return 'Ahorra 44%';
   };
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar translucent backgroundColor="transparent" barStyle={isDark ? 'light-content' : 'dark-content'} />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
@@ -134,55 +184,76 @@ export function PremiumScreen() {
           <View style={styles.actionSection}>
             {/* Plan Cards */}
             <View style={styles.plansRow}>
+              {/* Annual Plan */}
               <TouchableOpacity
                 style={[
                   styles.planCard,
-                  selectedPlan === 'annual' && { borderColor: colors.primary, borderWidth: 2 },
+                  selectedPlan === PRODUCT_IDS.ANNUAL && { borderColor: colors.primary, borderWidth: 2 },
                 ]}
-                onPress={() => setSelectedPlan('annual')}
+                onPress={() => setSelectedPlan(PRODUCT_IDS.ANNUAL)}
                 activeOpacity={0.7}
               >
                 <View style={[styles.planBestBadge, { backgroundColor: colors.primary }]}>
                   <Text style={styles.planBestText}>Mejor valor</Text>
                 </View>
-                <Text style={styles.planPrice}>$19.99</Text>
-                <Text style={styles.planPeriod}>/año</Text>
-                <View style={[styles.planSaveBadge, { backgroundColor: colors.success + '15' }]}>
-                  <Text style={[styles.planSaveText, { color: colors.success }]}>Ahorra 44%</Text>
-                </View>
-                <Text style={styles.planMonthly}>$1.67/mes</Text>
+                <Text style={styles.planPrice}>{getPrice(PRODUCT_IDS.ANNUAL)}</Text>
+                <Text style={styles.planPeriod}>/{getPeriod(PRODUCT_IDS.ANNUAL)}</Text>
+                {getSavingsPercent() ? (
+                  <View style={[styles.planSaveBadge, { backgroundColor: colors.success + '15' }]}>
+                    <Text style={[styles.planSaveText, { color: colors.success }]}>{getSavingsPercent()}</Text>
+                  </View>
+                ) : null}
+                <Text style={styles.planMonthly}>
+                  {getMonthlyEquiv(annualProduct, PRODUCT_IDS.ANNUAL)}
+                </Text>
               </TouchableOpacity>
 
+              {/* Monthly Plan */}
               <TouchableOpacity
                 style={[
                   styles.planCard,
-                  selectedPlan === 'monthly' && { borderColor: colors.primary, borderWidth: 2 },
+                  selectedPlan === PRODUCT_IDS.MONTHLY && { borderColor: colors.primary, borderWidth: 2 },
                 ]}
-                onPress={() => setSelectedPlan('monthly')}
+                onPress={() => setSelectedPlan(PRODUCT_IDS.MONTHLY)}
                 activeOpacity={0.7}
               >
-                <Text style={[styles.planPrice, { marginTop: 24 }]}>$2.99</Text>
-                <Text style={styles.planPeriod}>/mes</Text>
+                <Text style={[styles.planPrice, { marginTop: 24 }]}>{getPrice(PRODUCT_IDS.MONTHLY)}</Text>
+                <Text style={styles.planPeriod}>/{getPeriod(PRODUCT_IDS.MONTHLY)}</Text>
                 <Text style={[styles.planMonthly, { marginTop: 28 }]}>Sin compromiso</Text>
               </TouchableOpacity>
             </View>
 
+            {/* Subscribe Button */}
             <TouchableOpacity
-              style={styles.subscribeButton}
+              style={[styles.subscribeButton, isBillingLoading && { opacity: 0.7 }]}
               onPress={handleSubscribe}
               activeOpacity={0.7}
+              disabled={isBillingLoading}
             >
-              <Text style={styles.subscribeButtonText}>
-                {selectedPlan === 'annual' ? 'Suscribirse — $19.99/año' : 'Suscribirse — $2.99/mes'}
-              </Text>
+              {isBillingLoading ? (
+                <ActivityIndicator color="#FFFFFF" size="small" />
+              ) : (
+                <Text style={styles.subscribeButtonText}>
+                  Suscribirse — {getPrice(selectedPlan)}/{getPeriod(selectedPlan)}
+                </Text>
+              )}
             </TouchableOpacity>
+
+            {/* Restore */}
             <TouchableOpacity
               style={styles.restoreButton}
               onPress={handleRestore}
               activeOpacity={0.7}
+              disabled={isBillingLoading}
             >
               <Text style={styles.restoreButtonText}>Restaurar compra</Text>
             </TouchableOpacity>
+
+            {/* Legal */}
+            <Text style={styles.legalText}>
+              La suscripción se renueva automáticamente. Puedes cancelarla en cualquier momento
+              desde Google Play {'>'} Suscripciones. El pago se carga a tu cuenta de Google Play.
+            </Text>
           </View>
         )}
 
@@ -192,66 +263,62 @@ export function PremiumScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.neuBackground,
   },
   header: {
     backgroundColor: colors.primary,
-    paddingTop: 24,
-    paddingBottom: 32,
-    paddingHorizontal: 24,
+    paddingTop: rs.space(24),
+    paddingBottom: rs.space(32),
+    paddingHorizontal: rs.space(24),
     borderBottomLeftRadius: 28,
     borderBottomRightRadius: 28,
     alignItems: 'center',
   },
-  headerIcon: {
-    fontSize: 48,
-    marginBottom: 12,
-  },
   headerTitle: {
-    fontSize: 28,
+    fontSize: rs.font(28),
     fontWeight: '800',
     color: '#FFFFFF',
   },
   headerSubtitle: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: 'rgba(255,255,255,0.8)',
     textAlign: 'center',
-    marginTop: 8,
-    lineHeight: 20,
+    marginTop: rs.space(8),
+    lineHeight: rs.font(20),
   },
   statusCard: {
-    ...neuElevated(colors), marginHorizontal: 16, marginTop: -16, padding: 20, alignItems: 'center',
+    ...neuElevated(colors), marginHorizontal: rs.space(16), marginTop: -16, padding: rs.space(20), alignItems: 'center',
   },
   statusBadge: {
-    paddingHorizontal: 16,
-    paddingVertical: 6,
+    paddingHorizontal: rs.space(16),
+    paddingVertical: rs.space(6),
     borderRadius: 20,
     borderWidth: 1,
-    marginBottom: 12,
+    marginBottom: rs.space(12),
   },
   statusBadgeText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     fontWeight: '700',
   },
   trialDays: {
-    fontSize: 48,
+    fontSize: rs.font(48),
     fontWeight: '800',
     color: colors.primary,
   },
   trialDaysLabel: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.textSecondary,
-    marginBottom: 12,
+    marginBottom: rs.space(12),
   },
   trialBar: {
     width: '100%',
-    height: 6,
+    height: rs.space(6),
     backgroundColor: colors.border,
     borderRadius: 3,
-    marginBottom: 12,
+    marginBottom: rs.space(12),
     overflow: 'hidden',
   },
   trialBarFill: {
@@ -259,55 +326,44 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     borderRadius: 3,
   },
   statusDescription: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
     textAlign: 'center',
-    lineHeight: 19,
+    lineHeight: rs.font(19),
   },
   section: {
-    ...neuCard(colors), marginHorizontal: 16, marginTop: 12, padding: 18,
+    ...neuCard(colors), marginHorizontal: rs.space(16), marginTop: rs.space(12), padding: rs.space(18),
   },
   sectionTitle: {
-    fontSize: 17,
+    fontSize: rs.font(17),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 14,
+    marginBottom: rs.space(14),
   },
   featureRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
-  },
-  featureIcon: {
-    fontSize: 18,
-    marginRight: 12,
-    width: 24,
-    textAlign: 'center',
+    marginBottom: rs.space(12),
   },
   featureText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.text,
     flex: 1,
   },
-  featureCheck: {
-    fontSize: 16,
-    color: colors.success,
-    fontWeight: '700',
-  },
   actionSection: {
-    paddingHorizontal: 16,
-    marginTop: 20,
+    paddingHorizontal: rs.space(16),
+    marginTop: rs.space(20),
   },
   plansRow: {
     flexDirection: 'row',
-    gap: 12,
-    marginBottom: 16,
+    gap: rs.space(12),
+    marginBottom: rs.space(16),
   },
   planCard: {
     flex: 1,
     backgroundColor: colors.surface,
     borderRadius: 16,
-    padding: 16,
+    padding: rs.space(16),
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,
@@ -327,39 +383,39 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     alignItems: 'center',
   },
   planBestText: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     fontWeight: '700',
     color: '#FFFFFF',
   },
   planPrice: {
-    fontSize: 28,
+    fontSize: rs.font(28),
     fontWeight: '800',
     color: colors.text,
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
   planPeriod: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.textSecondary,
     fontWeight: '600',
   },
   planSaveBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingHorizontal: rs.space(10),
+    paddingVertical: rs.space(4),
     borderRadius: 10,
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
   planSaveText: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     fontWeight: '700',
   },
   planMonthly: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     color: colors.textLight,
-    marginTop: 6,
+    marginTop: rs.space(6),
   },
   subscribeButton: {
     backgroundColor: colors.primary,
-    paddingVertical: 18,
+    paddingVertical: rs.space(18),
     borderRadius: 14,
     alignItems: 'center',
     elevation: 3,
@@ -369,18 +425,26 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     shadowRadius: 4,
   },
   subscribeButtonText: {
-    fontSize: 17,
+    fontSize: rs.font(17),
     fontWeight: '700',
     color: '#FFFFFF',
   },
   restoreButton: {
-    paddingVertical: 14,
+    paddingVertical: rs.space(14),
     alignItems: 'center',
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
   restoreButtonText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.textSecondary,
     fontWeight: '600',
+  },
+  legalText: {
+    fontSize: rs.font(11),
+    color: colors.textLight,
+    textAlign: 'center',
+    lineHeight: rs.font(16),
+    marginTop: rs.space(12),
+    paddingHorizontal: rs.space(8),
   },
 });

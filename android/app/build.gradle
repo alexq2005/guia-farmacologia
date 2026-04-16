@@ -94,8 +94,10 @@ android {
         applicationId "com.guiafarmacologica"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "0.1"
+        versionCode 3
+        versionName "1.0.0"
+        // react-native-iap has 'store' dimension (play/amazon) — use Google Play
+        missingDimensionStrategy 'store', 'play'
     }
     signingConfigs {
         debug {

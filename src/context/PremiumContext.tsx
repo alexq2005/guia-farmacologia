@@ -1,7 +1,20 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { NativeModules } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { NativeModules, Alert } from 'react-native';
+import EncryptedStorage from 'react-native-encrypted-storage';
 import { isActivated as checkActivation, validateActivationCode, saveActivation } from '../utils/activation';
+import {
+  initBilling,
+  closeBilling,
+  fetchSubscriptionProducts,
+  purchaseSubscription,
+  restorePurchases,
+  acknowledgePurchase,
+  onPurchaseUpdate,
+  onPurchaseError,
+  isPurchaseActive,
+  type SubscriptionProduct,
+  type EmitterSubscription,
+} from '../utils/billing';
 
 /** Free build has all features unlocked — no trial/subscription needed */
 const IS_FREE_BUILD: boolean = NativeModules.BuildConfigModule?.IS_FREE ?? false;
@@ -11,25 +24,29 @@ const PREMIUM_KEY = '@guia_farmaco_premium';
 const TRIAL_DAYS = 14;
 
 interface PremiumContextType {
-  /** true if trial active OR subscription active */
+  /** true if trial active OR subscription active OR code activated */
   isPremium: boolean;
   /** true if this is the free build (no subscription system) */
   isFreeBuild: boolean;
   /** true if unlocked via activation code */
   isCodeActivated: boolean;
-  /** true if within 30-day trial */
+  /** true if within trial period */
   isTrialActive: boolean;
   /** days remaining in trial (0 if expired) */
   trialDaysLeft: number;
   /** trial start timestamp */
   trialStartDate: number | null;
-  /** whether user has active subscription */
+  /** whether user has active Google Play subscription */
   isSubscribed: boolean;
-  /** manually activate subscription (for future IAP integration) */
-  activateSubscription: () => void;
-  /** restore purchase */
-  restoreSubscription: () => void;
-  /** try to activate with a secret code, returns true if valid */
+  /** available subscription products from Google Play */
+  products: SubscriptionProduct[];
+  /** whether billing is initializing or purchasing */
+  isBillingLoading: boolean;
+  /** purchase a subscription */
+  purchase: (productId: string, offerToken: string) => Promise<void>;
+  /** restore purchases from Google Play */
+  restore: () => Promise<boolean>;
+  /** try to activate with a secret code */
   activateWithCode: (code: string) => Promise<boolean>;
   /** context loaded from storage */
   loaded: boolean;
@@ -42,30 +59,102 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isCodeActivated, setIsCodeActivated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [products, setProducts] = useState<SubscriptionProduct[]>([]);
+  const [isBillingLoading, setIsBillingLoading] = useState(false);
+  const purchaseListenerRef = useRef<EmitterSubscription | null>(null);
+  const errorListenerRef = useRef<EmitterSubscription | null>(null);
+
+  // ─── Initialize trial + activation + billing ─────────────────────────────
 
   useEffect(() => {
-    Promise.all([
-      AsyncStorage.getItem(TRIAL_START_KEY),
-      AsyncStorage.getItem(PREMIUM_KEY),
-      checkActivation(),
-    ]).then(([trialRaw, premiumRaw, activated]) => {
+    let mounted = true;
+
+    async function init() {
+      // Load local state
+      const [trialRaw, premiumRaw, activated] = await Promise.all([
+        EncryptedStorage.getItem(TRIAL_START_KEY).catch(() => null),
+        EncryptedStorage.getItem(PREMIUM_KEY).catch(() => null),
+        checkActivation(),
+      ]);
+
+      if (!mounted) return;
+
       if (trialRaw) {
         setTrialStartDate(parseInt(trialRaw, 10));
-      } else {
-        // First launch — start trial now
+      } else if (!IS_FREE_BUILD) {
         const now = Date.now();
         setTrialStartDate(now);
-        AsyncStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
+        EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
       }
+
       if (premiumRaw === 'true') {
         setIsSubscribed(true);
       }
+
       if (activated) {
         setIsCodeActivated(true);
       }
+
       setLoaded(true);
-    }).catch(() => setLoaded(true));
+
+      // Initialize Google Play Billing (premium build only)
+      if (!IS_FREE_BUILD) {
+        const connected = await initBilling();
+        if (connected && mounted) {
+          // Fetch available products
+          const subs = await fetchSubscriptionProducts();
+          if (mounted) setProducts(subs);
+
+          // Check for existing active subscriptions
+          const purchases = await restorePurchases();
+          const activePurchase = purchases.find(isPurchaseActive);
+          if (activePurchase && mounted) {
+            setIsSubscribed(true);
+            EncryptedStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+          }
+        }
+      }
+    }
+
+    init();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
+
+  // ─── Purchase listeners ──────────────────────────────────────────────────
+
+  useEffect(() => {
+    if (IS_FREE_BUILD) return;
+
+    purchaseListenerRef.current = onPurchaseUpdate(async (purchase) => {
+      // Acknowledge/finish the transaction (required within 3 days)
+      await acknowledgePurchase(purchase);
+
+      if (isPurchaseActive(purchase)) {
+        setIsSubscribed(true);
+        setIsBillingLoading(false);
+        EncryptedStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+      }
+    });
+
+    errorListenerRef.current = onPurchaseError((error) => {
+      setIsBillingLoading(false);
+      // Don't show alert for user cancellation
+      if (error.code !== 'E_USER_CANCELLED') {
+        Alert.alert('Error', 'No se pudo completar la compra. Intenta nuevamente.');
+      }
+    });
+
+    return () => {
+      purchaseListenerRef.current?.remove();
+      errorListenerRef.current?.remove();
+      closeBilling();
+    };
+  }, []);
+
+  // ─── Derived state ───────────────────────────────────────────────────────
 
   const trialDaysLeft = (() => {
     if (!trialStartDate) return TRIAL_DAYS;
@@ -77,17 +166,39 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const isTrialActive = trialDaysLeft > 0;
   const isPremium = IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive;
 
-  const activateSubscription = useCallback(() => {
-    setIsSubscribed(true);
-    AsyncStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+  // ─── Actions ─────────────────────────────────────────────────────────────
+
+  const purchase = useCallback(async (productId: string, offerToken: string) => {
+    setIsBillingLoading(true);
+    try {
+      await purchaseSubscription(productId, offerToken);
+      // Result handled by purchaseUpdatedListener
+    } catch {
+      setIsBillingLoading(false);
+      Alert.alert('Error', 'No se pudo iniciar la compra. Verifica tu conexión.');
+    }
   }, []);
 
-  const restoreSubscription = useCallback(() => {
-    // Placeholder — will check Google Play Billing in the future
-    // For now, just check AsyncStorage
-    AsyncStorage.getItem(PREMIUM_KEY).then(val => {
-      if (val === 'true') setIsSubscribed(true);
-    }).catch(() => {});
+  const restore = useCallback(async (): Promise<boolean> => {
+    setIsBillingLoading(true);
+    try {
+      const purchases = await restorePurchases();
+      const activePurchase = purchases.find(isPurchaseActive);
+
+      if (activePurchase) {
+        await acknowledgePurchase(activePurchase);
+        setIsSubscribed(true);
+        EncryptedStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+        setIsBillingLoading(false);
+        return true;
+      }
+
+      setIsBillingLoading(false);
+      return false;
+    } catch {
+      setIsBillingLoading(false);
+      return false;
+    }
   }, []);
 
   const activateWithCode = useCallback(async (code: string): Promise<boolean> => {
@@ -98,6 +209,8 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
     }
     return false;
   }, []);
+
+  // ─── Render ──────────────────────────────────────────────────────────────
 
   if (!loaded) return null;
 
@@ -110,8 +223,10 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       trialDaysLeft,
       trialStartDate,
       isSubscribed,
-      activateSubscription,
-      restoreSubscription,
+      products,
+      isBillingLoading,
+      purchase,
+      restore,
       activateWithCode,
       loaded,
     }}>
