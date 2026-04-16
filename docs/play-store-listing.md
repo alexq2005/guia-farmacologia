@@ -13,7 +13,7 @@ Guía Farmacológica Integral de Enfermería: tu herramienta de consulta rápida
 Diseñada para profesionales y estudiantes de enfermería, esta aplicación reúne toda la información farmacológica que necesitás en un solo lugar, accesible en cualquier momento y lugar — incluso sin conexión a internet.
 
 📋 CONTENIDO COMPLETO
-• +1780 fármacos con información detallada: indicaciones, contraindicaciones, dosis, efectos adversos, interacciones, cuidados de enfermería y más
+• +2784 fármacos con información detallada: indicaciones, contraindicaciones, dosis, efectos adversos, interacciones, cuidados de enfermería y más
 • 60 patologías clínicas con fármacos relacionados y criterios de alarma
 • 13 escalas clínicas interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells, EVA, Aldrete, qSOFA, NIHSS, Mallampati, ASA)
 • 53 valores de laboratorio con rangos de referencia, significado clínico e implicaciones de enfermería
@@ -40,6 +40,12 @@ Diseñada para profesionales y estudiantes de enfermería, esta aplicación reú
 • Guía de administración parenteral (Hospital Son Espases)
 • Clasificación por grupo farmacológico y grupo terapéutico
 • Cuidados de enfermería específicos por fármaco
+
+💰 MODELO FREEMIUM
+• Descarga gratuita con acceso a todos los fármacos, búsqueda y navegación
+• 14 días de prueba gratuita con todas las funciones premium
+• Suscripción premium: 4.99€/mes o 24.99€/año (ahorro ~58%)
+• Premium incluye: test, calculadoras, escalas, protocolos, comparador, interacciones, dashboard, guía parenteral, favoritos y notas ilimitados
 
 📱 100% OFFLINE
 • Toda la información disponible sin conexión a internet

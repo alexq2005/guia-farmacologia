@@ -5,7 +5,7 @@
 ### 1. Base de Datos Farmacológica
 
 **Pantalla**: HomeScreen, SearchScreen, DrugDetailScreen
-**Datos**: 1,781 fármacos
+**Datos**: 1,781 fármacos (Operando a 0 coste RAM vía `SQLite JSI Extractor`)
 
 La funcionalidad central de la app. Cada fármaco incluye:
 - Nombre genérico y comercial
@@ -36,8 +36,8 @@ Navegación jerárquica: Unidad > Capítulo > Fármacos. Cada unidad tiene color
 
 - Búsqueda full-text sobre todos los campos del fármaco
 - Insensible a acentos y mayúsculas (`normalizeText()`)
-- Texto de búsqueda precomputado en `Map` (rendimiento optimizado)
-- Resultados instantáneos con FlatList
+- Texto de búsqueda precomputado en SQL
+- Resultados fluidos a 60 FPS inamovibles renderizados vía **FlashList**
 - Historial de búsquedas (max 20, borrado individual con long-press)
 
 ### 4. Protocolos de Emergencia

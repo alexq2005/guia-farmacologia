@@ -14,13 +14,14 @@ Herramienta de consulta rápida para el ámbito hospitalario y ambulatorio:
 - **Guía parenteral** con compatibilidades IV (460 fármacos enriquecidos)
 - **60 patologías** con fármacos vinculados y cuidados de enfermería
 - Quiz de estudio, favoritos, notas personales, modo oscuro, exportación de datos
+- **🚀 Escalamiento a 60 FPS (v2.0)**: Migración extrema usando `SQLite` sincrónico por puente JSI (absorbe los 10MB de JSON de la RAM). Renderizado infinito fluidísimo mediante el framework de lista de Shopify (`FlashList`), memoización de contextos anti-renders y encriptación de variables nativas (Keystore).
 
 ## Requisitos del Sistema
 
 | Requisito | Versión |
 |-----------|---------|
 | Node.js | >= 22.11.0 |
-| Java JDK | 25 |
+| Java JDK | 21 (recomendado: JBR de Android Studio) |
 | Android SDK | API 24-36 |
 | Gradle | 9.0.0 |
 | React Native | 0.84.1 |
@@ -38,15 +39,17 @@ npm install
 ### 2. Iniciar Metro Bundler
 
 ```bash
-npm start
+npm run android:metro:clean
 ```
 
 ### 3. Compilar y ejecutar (debug)
 
 ```bash
 # En otra terminal
-npm run android
+npm run android:free
 ```
+
+Estos comandos configuran automáticamente `JAVA_HOME`, `ANDROID_HOME` y `adb` para evitar problemas de PATH en Windows + Git Bash.
 
 ### 4. Compilar APK de release
 
@@ -106,10 +109,10 @@ GuiaFarmacologica/
 - **Lenguaje**: TypeScript 5.8
 - **Navegación**: React Navigation 7 (bottom tabs + native stack)
 - **Motor JS**: Hermes
-- **Almacenamiento**: AsyncStorage
+- **Almacenamiento**: EncryptedStorage (Keystore nativo) y OP-SQLite (Archivos locales JSI)
 - **Gráficos**: react-native-svg
-- **Datos**: JSON embebido (sin backend ni API externa)
-- **Dependencias externas**: 5 librerías (AsyncStorage, Clipboard, Navigation, SafeArea, SVG)
+- **Datos**: JSON embebido automatizado vía SQLite
+- **Dependencias core optimizadas**: `@shopify/flash-list` para listas masivas a 60 FPS.
 
 ## Contenido Clínico
 

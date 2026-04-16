@@ -5,7 +5,7 @@
 ### Requisitos previos
 
 1. **Node.js** >= 22.11.0
-2. **Java JDK 25** (con JAVA_HOME configurado)
+2. **Java JDK 21** (recomendado: JBR de Android Studio)
 3. **Android Studio** con SDK 36, Build Tools 36.0.0, NDK 27.1.12297006
 4. **Variables de entorno**:
    ```bash
@@ -25,20 +25,66 @@ npm install
 
 ```bash
 # Terminal 1: Metro bundler
-npm start
+npm run android:metro:clean
 
 # Terminal 2: Build e instalar en dispositivo/emulador
-npm run android
+npm run android:free
 ```
+
+Estos scripts cargan automáticamente `JAVA_HOME` (JBR de Android Studio), `ANDROID_HOME` y `adb` en `PATH` para evitar errores de entorno en Git Bash.
 
 ## Compilación
 
-### Nota sobre Java 25
+### Troubleshooting SQLite
 
-Java 25 requiere flags especiales para que CMake funcione correctamente. Siempre incluir:
+Si aparece `Hydration Error: no such table: drugs_u0` en el emulador:
+
+1. Limpiar build y cachés de Metro.
+2. Reinstalar la app para reinicializar la base local.
 
 ```bash
-export JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED"
+# desde la raíz del proyecto
+npx react-native start --reset-cache
+cd android && ./gradlew clean && cd ..
+npx react-native run-android
+```
+
+Nota: `src/data/db.ts` crea vistas de compatibilidad legacy (`drugs_u0..drugs_u13`) para builds viejos que aún consultan tablas por unidad.
+
+Si aparece `Hydration Error: UNIQUE constraint failed: drugs.id`:
+
+1. Es un choque por IDs duplicados en el dataset JSON durante la carga inicial.
+2. La hidratación ahora usa `INSERT OR IGNORE` para no romper la transacción.
+3. Reinstalar la app para recrear la base local en limpio.
+
+```bash
+cd android && ./gradlew uninstallFreeDebug && cd ..
+npx react-native run-android --mode freeDebug --active-arch-only
+```
+
+### Nota sobre Java y memoria
+
+Para este proyecto en Windows, usar Java 21 (JBR de Android Studio) mejora estabilidad frente a crashes de Gradle/NDK por memoria nativa.
+
+Si ves `Gradle build daemon disappeared unexpectedly` o `Out of Memory Error (arena.cpp)`:
+
+1. Forzar JAVA_HOME al JBR de Android Studio.
+2. Usar la configuración low-memory de `android/gradle.properties`.
+3. Compilar primero el flavor `free` en debug.
+
+Comando recomendado:
+
+```bash
+export JAVA_HOME="/c/Program Files/Android/Android Studio/jbr"
+export PATH="$JAVA_HOME/bin:$PATH"
+cd android && ./gradlew --stop && ./gradlew app:assembleFreeDebug --no-daemon
+```
+
+Alternativa rápida para desarrollo diario:
+
+```bash
+npm run android:metro:clean
+npm run android:free
 ```
 
 ### Product Flavors
@@ -60,6 +106,10 @@ La app tiene dos variantes de compilación:
 # Release (requiere keystore configurado)
 ./gradlew assembleFreeRelease
 ./gradlew assemblePremiumRelease
+
+# Dispositivo físico (recomendado: ARM64, evita error "no compatible")
+./gradlew assembleFreeRelease -PreactNativeArchitectures=arm64-v8a
+./gradlew assemblePremiumRelease -PreactNativeArchitectures=arm64-v8a
 
 # Ambas variantes release
 ./gradlew assembleFreeRelease assemblePremiumRelease
@@ -148,14 +198,16 @@ Componentes interactivos deben incluir:
 
 ### Listas largas
 
-Siempre usar `FlatList` en lugar de `ScrollView` + `.map()`:
+A causa de los enormes conjuntos de datos, está estrictamente prohibido usar genéricos. **Siempre usar `FlashList`** de `@shopify/flash-list`:
 
 ```typescript
-<FlatList
+import { FlashList } from '@shopify/flash-list';
+
+<FlashList
   data={items}
   keyExtractor={item => item.id}
   renderItem={({ item }) => <ItemCard item={item} />}
-  initialNumToRender={15}
+  estimatedItemSize={100} // C R I T I C O para la optimización
 />
 ```
 

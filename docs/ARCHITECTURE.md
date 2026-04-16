@@ -2,7 +2,7 @@
 
 ## Visión General
 
-La app sigue una arquitectura basada en **React Context + Custom Hooks** sin librerías de estado externas. Toda la información clínica está embebida como JSON estático, sin depender de APIs externas ni bases de datos remotas.
+La app original seguía una arquitectura JSON simple, pero fue optimizada a **SQLite Nativo C++ (JSI)**. La información clínica reside en tablas locales para eludir picos de RAM, operando con **React Context memoizados** bajo el framework *FlashList* de altas prestaciones mecánicas.
 
 ```
                     ErrorBoundary
@@ -86,7 +86,7 @@ Proporciona:
 
 ```
 Archivo:     src/context/PremiumContext.tsx
-Storage:     @guia_farmaco_trial_start, @guia_farmaco_premium
+Storage:     EncryptedStorage nativo (reemplazo de AsyncStorage inseguro)
 Trial:       14 días desde primera instalación
 
 Proporciona:
@@ -136,8 +136,8 @@ Proporciona:
 
 | Hook | Archivo | Función |
 |------|---------|---------|
-| `useDrugData` | hooks/useDrugData.ts | Carga drugs.json, construye `Map<id, Drug>` para lookup O(1) |
-| `useDrugSearch` | hooks/useDrugSearch.ts | Búsqueda full-text con `buildSearchText()` + normalización de acentos |
+| `useDrugData` | hooks/useDrugData.ts | Ahora consulta localmente tablas SQLite a través del hook `db.executeSync` |
+| `useDrugSearch` | hooks/useDrugSearch.ts | Consultas SQL super optimizadas |
 | `useFavorites` | hooks/useFavorites.ts | CRUD favoritos con AsyncStorage, límite en versión free |
 | `useNotes` | hooks/useNotes.ts | Notas por fármaco con auto-guardado (debounce), límite free |
 | `useQuiz` | hooks/useQuiz.ts | Estado del quiz, 8 tipos de preguntas, filtros, puntuación, historial |
@@ -159,13 +159,13 @@ Proporciona:
 ## Flujo de Datos
 
 ```
-JSON files (src/data/)
+db.ts (JSI SQLite Engine)
      |
      ▼
-Custom Hooks (useDrugData, useDrugSearch)
+Custom Hooks via executeSync()
      |
      ▼
-Map<string, Drug>  ←  Lookup O(1) por ID
+Lectura Zero-RAM directa a la UI mediante FlashList
      |
      ▼
 Screens (consumen hooks + contexts)
@@ -191,10 +191,10 @@ buildSearchText(drug) → concatena todos los campos buscables
 Precomputed Map en useMemo (evita recalcular cada keystroke)
      |
      ▼
-Filtrado por includes() sobre searchText normalizado
+Extracción ultra rápida mediante base de datos SQL
      |
      ▼
-Resultados renderizados en FlatList
+Resultados renderizados en FlashList
 ```
 
 ## Módulo Nativo: BuildConfigModule

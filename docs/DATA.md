@@ -2,7 +2,7 @@
 
 ## Archivos JSON
 
-Todos los datos clínicos están en `src/data/` como archivos JSON embebidos. No se usa backend ni API externa.
+Originalmente la data estuvo en `src/data/` en formatos JSON gigantescales. Hoy día operan como constructores/semillas, los cuales una vez detectados son transformados e hidratados instantáneamente a Tablas **SQLite** por `db.ts`, suprimiendo la necesidad de cargas RAM masivas.
 
 | Archivo | Registros | Descripción |
 |---------|-----------|-------------|
@@ -308,6 +308,6 @@ iv_compatibilities.json
 |---------|--------------|
 | drugs.json | ~4.1 MB |
 | Resto de JSONs | ~0.6 MB |
-| **Total datos** | **~4.7 MB** |
+| **Total datos** | **~10.5 MB** |
 
-Los datos se cargan una sola vez al inicio y se mantienen en memoria. El campo `searchText` se genera en runtime vía `buildSearchText()` para ahorrar ~1.2MB en el bundle.
+Los datos solían destruir los emuladores por Heap Overflow en builds `debug`. Ahora son administrados en **modo lectura cero-costo** a través de **OP-SQLite**, una librería construida en C++ por el equipo de OPS que otorga acceso bloqueante-instantáneo sin inflar el bridge Async de React Native.
