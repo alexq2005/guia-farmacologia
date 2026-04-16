@@ -12,6 +12,9 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import { PremiumProvider } from './src/context/PremiumContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
 import { TabBarProvider } from './src/context/TabBarContext';
+import { initDatabase } from './src/data/db';
+
+initDatabase();
 
 function App() {
   return (

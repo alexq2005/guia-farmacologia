@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import type { Drug, SearchResult } from '../types';
 import { normalizeText as normalize } from '../utils/search';
+import { db, rowToDrug } from '../data/db';
 
 /** Build search text from drug fields (replaces precalculated searchText) */
 function buildSearchText(drug: Drug): string {
@@ -110,7 +111,10 @@ export function useDrugSearch(drugs: Drug[]) {
   const results = useMemo((): SearchResult[] => {
     if (debouncedQuery.trim().length < 2) return [];
 
-    const scored = drugs
+    const result = db.executeSync('SELECT * FROM drugs');
+    const rawData = result.rows?.map(rowToDrug) || [];
+
+    const scored = rawData
       .map(drug => scoreDrug(drug, searchTextMap, debouncedQuery))
       .filter((r): r is SearchResult => r !== null);
 

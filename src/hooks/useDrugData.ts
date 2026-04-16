@@ -9,10 +9,10 @@ let _antidotes: Antidote[] | null = null;
 let _ivCompat: IVCompatibilitiesData | null = null;
 let _pathologies: Pathology[] | null = null;
 
-function getDrugs(): Drug[] {
-  if (!_drugs) _drugs = require('../data/drugs.json');
-  return _drugs!;
-}
+import { db, rowToDrug } from '../data/db';
+
+// Lazy-loaded data imports
+// Let drugs be fetched from SQLite, other files are small enough for RAM.
 
 function getCategories(): CategoriesData {
   if (!_categories) _categories = require('../data/categories.json');
@@ -40,7 +40,11 @@ function getPathologies(): Pathology[] {
 }
 
 export function useDrugData() {
-  const drugs = useMemo(() => getDrugs(), []);
+  const drugs = useMemo(() => {
+    const result = db.executeSync('SELECT * FROM drugs');
+    return result.rows?.map(rowToDrug) || [];
+  }, []);
+
   const drugMap = useMemo(() => {
     const map = new Map<string, Drug>();
     for (const d of drugs) map.set(d.id, d);
@@ -61,16 +65,20 @@ export function useDrugData() {
   }, [pathologies]);
 
   const getDrugById = useCallback((id: string): Drug | undefined => {
-    return drugMap.get(id);
-  }, [drugMap]);
+    const result = db.executeSync('SELECT * FROM drugs WHERE id = ? LIMIT 1', [id]);
+    const row = result.rows?.[0];
+    return row ? rowToDrug(row) : undefined;
+  }, []);
 
   const getDrugsByChapter = useCallback((chapterId: string): Drug[] => {
-    return drugs.filter(d => d.capituloId === chapterId);
-  }, [drugs]);
+    const result = db.executeSync('SELECT * FROM drugs WHERE capituloId = ?', [chapterId]);
+    return result.rows?.map(rowToDrug) || [];
+  }, []);
 
   const getDrugsByUnit = useCallback((unitId: string): Drug[] => {
-    return drugs.filter(d => d.unidadId === unitId);
-  }, [drugs]);
+    const result = db.executeSync('SELECT * FROM drugs WHERE unidadId = ?', [unitId]);
+    return result.rows?.map(rowToDrug) || [];
+  }, []);
 
   const getUnitById = useCallback((unitId: string): Unit | undefined => {
     return categories.unidades.find(u => u.id === unitId);
@@ -85,14 +93,19 @@ export function useDrugData() {
   }, [categories]);
 
   const getRandomDrug = useCallback((): Drug => {
-    return drugs[Math.floor(Math.random() * drugs.length)];
-  }, [drugs]);
+    const result = db.executeSync('SELECT * FROM drugs ORDER BY RANDOM() LIMIT 1');
+    return rowToDrug(result.rows![0]);
+  }, []);
 
-  const getDrugCount = useCallback((): number => drugs.length, [drugs]);
+  const getDrugCount = useCallback((): number => {
+    const result = db.executeSync('SELECT COUNT(*) as count FROM drugs');
+    return (result.rows?.[0].count as number) || 0;
+  }, []);
 
   const getUnitDrugCount = useCallback((unitId: string): number => {
-    return drugs.filter(d => d.unidadId === unitId).length;
-  }, [drugs]);
+    const result = db.executeSync('SELECT COUNT(*) as count FROM drugs WHERE unidadId = ?', [unitId]);
+    return (result.rows?.[0].count as number) || 0;
+  }, []);
 
   return {
     drugs,
