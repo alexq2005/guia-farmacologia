@@ -10,6 +10,7 @@ import glossaryData from '../data/glossary.json';
 import { normalizeText as normalize } from '../utils/search';
 import { GLOSSARY_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import { neuCardSubtle, neuPill } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 const CATEGORY_COLORS: Record<string, string> = {
   farmacologia: '#3B82F6',
@@ -20,8 +21,9 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function GlossaryScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -64,7 +66,7 @@ export function GlossaryScreen() {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor="#7C3AED" barStyle="light-content" />
+      <StatusBar backgroundColor="#7C3AED" barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       <View style={styles.header}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -155,62 +157,62 @@ export function GlossaryScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
     backgroundColor: '#7C3AED',
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
+    paddingTop: rs.space(16),
+    paddingBottom: rs.space(20),
+    paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   categoryRow: {
     flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    gap: 6,
+    paddingHorizontal: rs.space(16),
+    paddingVertical: rs.space(8),
+    gap: rs.space(6),
   },
-  categoryChip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
+  categoryChip: { ...neuPill(colors), paddingHorizontal: rs.space(12), paddingVertical: rs.space(6) },
   categoryChipActive: {
     backgroundColor: colors.primary + '15',
     borderColor: colors.primary,
   },
-  categoryChipText: { fontSize: 12, color: colors.textSecondary, fontWeight: '600' },
+  categoryChipText: { fontSize: rs.font(12), color: colors.textSecondary, fontWeight: '600' },
   categoryChipTextActive: { color: colors.primary },
   sectionHeader: {
     backgroundColor: colors.background,
-    paddingHorizontal: 20,
-    paddingVertical: 6,
+    paddingHorizontal: rs.space(20),
+    paddingVertical: rs.space(6),
   },
-  sectionLetter: { fontSize: 18, fontWeight: '800', color: colors.primary },
-  glossaryCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginVertical: 4, padding: 14 },
+  sectionLetter: { fontSize: rs.font(18), fontWeight: '800', color: colors.primary },
+  glossaryCard: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), marginVertical: 4, padding: rs.space(14) },
   glossaryHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 6,
+    marginBottom: rs.space(6),
   },
-  glossaryTerm: { fontSize: 16, fontWeight: '700', color: colors.text, flex: 1 },
+  glossaryTerm: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, flex: 1 },
   abbrBadge: {
-    paddingHorizontal: 8,
+    paddingHorizontal: rs.space(8),
     paddingVertical: 2,
     borderRadius: 8,
-    marginLeft: 8,
+    marginLeft: rs.space(8),
   },
-  abbrText: { fontSize: 11, fontWeight: '700' },
-  glossaryDefinition: { fontSize: 13, color: colors.textSecondary, lineHeight: 20 },
+  abbrText: { fontSize: rs.font(11), fontWeight: '700' },
+  glossaryDefinition: { fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(20) },
   categoryTag: {
     alignSelf: 'flex-start',
-    paddingHorizontal: 8,
+    paddingHorizontal: rs.space(8),
     paddingVertical: 2,
     borderRadius: 6,
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
-  categoryTagText: { fontSize: 10, fontWeight: '700' },
-  list: { paddingBottom: 32 },
-  emptyContainer: { padding: 40, alignItems: 'center' },
-  emptyText: { fontSize: 16, color: colors.textLight },
+  categoryTagText: { fontSize: rs.font(10), fontWeight: '700' },
+  list: { paddingBottom: rs.space(32) },
+  emptyContainer: { padding: rs.space(40), alignItems: 'center' },
+  emptyText: { fontSize: rs.font(16), color: colors.textLight },
 });

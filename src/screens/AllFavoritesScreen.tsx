@@ -10,12 +10,14 @@ import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard } from '../utils/neumorphism';
 import { useFadeIn } from '../utils/animations';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AllFavorites'>;
 
 export function AllFavoritesScreen({ navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { favorites } = useFavoritesContext();
   const { getDrugById } = useDrugData();
   const fadeIn = useFadeIn();
@@ -27,7 +29,7 @@ export function AllFavoritesScreen({ navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <FlatList
         data={favDrugs}
         keyExtractor={item => item!.id}
@@ -53,11 +55,11 @@ export function AllFavoritesScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  list: { paddingBottom: 32 },
-  count: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginVertical: 8 },
-  emptyContainer: { alignItems: 'center', paddingVertical: 60 },
-  emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  emptySubtext: { fontSize: 13, color: colors.textLight, marginTop: 4 },
+  list: { paddingBottom: rs.space(32) },
+  count: { fontSize: rs.font(13), color: colors.textSecondary, marginHorizontal: rs.space(20), marginVertical: rs.space(8) },
+  emptyContainer: { alignItems: 'center', paddingVertical: rs.space(60) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+  emptySubtext: { fontSize: rs.font(13), color: colors.textLight, marginTop: 4 },
 });

@@ -8,17 +8,20 @@ import { useFavoritesContext } from '../context/FavoritesContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNeuPressAnimation } from '../utils/animations';
 import { neuCard } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 interface Props {
   drug: Drug;
   onPress: () => void;
+  onLongPress?: () => void;
   showUnit?: boolean;
   highlight?: string;
 }
 
-export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) {
+export function DrugCard({ drug, onPress, onLongPress, showUnit = false, highlight }: Props) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const unitColor = UNIT_COLORS[drug.unidadId] || colors.primary;
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
   const { isFavorite, toggleFavorite } = useFavoritesContext();
@@ -26,7 +29,7 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
   const { scale, onPressIn, onPressOut } = useNeuPressAnimation();
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut} accessibilityRole="button" accessibilityLabel={`${drug.nombre}, ${drug.familia}`}>
+    <TouchableOpacity onPress={onPress} onLongPress={onLongPress} delayLongPress={400} activeOpacity={0.7} onPressIn={onPressIn} onPressOut={onPressOut} accessibilityRole="button" accessibilityLabel={`${drug.nombre}, ${drug.familia}`}>
     <Animated.View style={[styles.card, { transform: [{ scale }] }]}>
       <View style={[styles.colorBar, { backgroundColor: unitColor }]} />
       <View style={styles.content}>
@@ -78,12 +81,12 @@ export function DrugCard({ drug, onPress, showUnit = false, highlight }: Props) 
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   card: {
     flexDirection: 'row',
     ...neuCard(colors),
-    marginHorizontal: 16,
-    marginVertical: 6,
+    marginHorizontal: rs.space(16),
+    marginVertical: rs.space(6),
   },
   colorBar: {
     width: 5,
@@ -92,7 +95,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 14,
+    padding: rs.space(14),
   },
   header: {
     flexDirection: 'row',
@@ -100,64 +103,64 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     fontWeight: '700',
     color: colors.text,
     flex: 1,
   },
   pregnancyBadge: {
-    paddingHorizontal: 8,
+    paddingHorizontal: rs.space(8),
     paddingVertical: 2,
     borderRadius: 10,
-    marginLeft: 8,
+    marginLeft: rs.space(8),
   },
   pregnancyText: {
     color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: rs.font(11),
     fontWeight: '700',
   },
   generic: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
     marginTop: 2,
   },
   family: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     color: colors.textLight,
     marginTop: 1,
   },
   routesRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 6,
+    marginTop: rs.space(6),
     gap: 4,
   },
   routeBadge: {
-    paddingHorizontal: 8,
+    paddingHorizontal: rs.space(8),
     paddingVertical: 3,
     borderRadius: 20,
   },
   routeText: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     fontWeight: '600',
   },
   moreRoutes: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     color: colors.textLight,
     alignSelf: 'center',
     marginLeft: 4,
   },
   dose: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     color: colors.text,
     fontStyle: 'italic',
     flex: 1,
   },
   favBtn: {
-    marginLeft: 6,
+    marginLeft: rs.space(6),
     marginRight: 4,
   },
   favIcon: {
-    fontSize: 16,
+    fontSize: rs.font(16),
   },
 });

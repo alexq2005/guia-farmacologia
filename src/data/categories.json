@@ -143,96 +143,6 @@
           ]
         },
         {
-          "id": "c01_06",
-          "nombre": "Antipsicóticos",
-          "unidadId": "u01",
-          "drugIds": [
-            "aripiprazol",
-            "asenapina",
-            "brexpiprazol",
-            "cariprazina",
-            "clorpromazina",
-            "clozapina",
-            "esketamina",
-            "flufenazina",
-            "haloperidol",
-            "iloperidona",
-            "levomepromazina",
-            "loxapina_inhalada",
-            "lurasidona",
-            "olanzapina",
-            "paliperidona",
-            "perfenazina",
-            "pimozida",
-            "quetiapina",
-            "quetiapina_im",
-            "risperidona",
-            "sulpirida",
-            "tiaprida",
-            "trifluoperazina",
-            "ziprasidona",
-            "tiapride"
-          ]
-        },
-        {
-          "id": "c01_07",
-          "nombre": "Antidepresivos",
-          "unidadId": "u01",
-          "drugIds": [
-            "agomelatina",
-            "amitriptilina",
-            "brexanolona",
-            "bupropion",
-            "citalopram",
-            "clomipramina",
-            "desvenlafaxina",
-            "doxepina",
-            "duloxetina",
-            "escitalopram",
-            "esketamina_nasal",
-            "fenelzina",
-            "fluoxetina",
-            "fluvoxamina",
-            "imipramina",
-            "litio",
-            "maprotilina",
-            "milnacipran",
-            "mirtazapina",
-            "moclobemida",
-            "nortriptilina",
-            "ofatumumab_em",
-            "paroxetina",
-            "ponesimod",
-            "reboxetina",
-            "sertralina",
-            "tianeptina",
-            "trazodona",
-            "venlafaxina",
-            "vilazodona",
-            "vortioxetina"
-          ]
-        },
-        {
-          "id": "c01_08",
-          "nombre": "Psicoestimulantes y Antialzheimer",
-          "unidadId": "u01",
-          "drugIds": [
-            "armodafinilo",
-            "atomoxetina",
-            "dextroanfetamina",
-            "donepezilo",
-            "galantamina",
-            "guanfacina",
-            "lisdexanfetamina",
-            "memantina",
-            "metilfenidato",
-            "modafinilo",
-            "pitolisant",
-            "rivastigmina",
-            "solriamfetol"
-          ]
-        },
-        {
           "id": "c01_09",
           "nombre": "Fármacos para Migraña",
           "unidadId": "u01",
@@ -266,21 +176,6 @@
           ]
         },
         {
-          "id": "c01_11",
-          "nombre": "Ansiolíticos y Sedantes",
-          "unidadId": "u01",
-          "drugIds": [
-            "bromazepam",
-            "clorazepato",
-            "eszopiclona",
-            "lemborexant",
-            "lormetazepam",
-            "ramelteon",
-            "suvorexant",
-            "zaleplon"
-          ]
-        },
-        {
           "id": "c01_12",
           "nombre": "Neurofármacos Especiales",
           "unidadId": "u01",
@@ -294,19 +189,6 @@
             "toxina_botulinica_a",
             "valbenazina",
             "onasemnogene"
-          ]
-        },
-        {
-          "id": "c01_13",
-          "nombre": "Fármacos para Adicciones",
-          "unidadId": "u01",
-          "drugIds": [
-            "acamprosato",
-            "buprenorfina_naloxona",
-            "disulfiram",
-            "lofexidina",
-            "naloxona_nasal",
-            "vareniclina"
           ]
         },
         {
@@ -611,7 +493,9 @@
             "metildigoxina",
             "midodrina",
             "milrinona",
-            "nitroprusiatosodico_nuevo"
+            "nitroprusiatosodico_nuevo",
+            "drug2813",
+            "drug2814"
           ]
         },
         {
@@ -658,7 +542,11 @@
             "metaraminol",
             "milrinona_shock",
             "noradrenalina_titulable",
-            "terlipresina_shock"
+            "terlipresina_shock",
+            "drug2815",
+            "drug2816",
+            "drug2818",
+            "drug2819"
           ]
         },
         {
@@ -672,7 +560,9 @@
             "iloprost_congenita",
             "indometacina_ductus",
             "mavacamten",
-            "sildenafilo_neonatal"
+            "sildenafilo_neonatal",
+            "drug2821",
+            "drug2824"
           ]
         },
         {
@@ -1387,7 +1277,9 @@
             "nintedanib_det",
             "pamrevlumab",
             "pentraxina",
-            "pirfenidona_det"
+            "pirfenidona_det",
+            "drug2826",
+            "drug2828"
           ]
         },
         {
@@ -1396,7 +1288,12 @@
           "drugIds": [
             "bosentan_pulmonar",
             "sildenafilo_pulmonar",
-            "tadalafilo_pulmonar"
+            "tadalafilo_pulmonar",
+            "drug2829",
+            "drug2830",
+            "drug2831",
+            "drug2833",
+            "drug2834"
           ]
         },
         {
@@ -2595,7 +2492,9 @@
             "aciclovir_topico",
             "docosanol",
             "imiquimod",
-            "penciclovir"
+            "penciclovir",
+            "drug2838",
+            "drug2839"
           ]
         },
         {
@@ -3177,7 +3076,9 @@
             "diazepam_emergencia",
             "fenobarbital_emergencia",
             "lorazepam_emergencia",
-            "naltrexona_emergencia"
+            "naltrexona_emergencia",
+            "drug2849",
+            "drug2850"
           ]
         },
         {
@@ -3190,7 +3091,10 @@
             "calcio_cloruro_rcp",
             "efedrina_anestesia",
             "etilefrina",
-            "vasopresina_rcp"
+            "vasopresina_rcp",
+            "drug2844",
+            "drug2846",
+            "drug2848"
           ]
         }
       ]
@@ -3686,6 +3590,217 @@
             "cima_acido_gadoterico",
             "cima_acido_micofenolico",
             "cima_acido_tauroselcolico_75se"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u13",
+      "nombre": "Psicofármacos",
+      "numero": 13,
+      "color": "#7E22CE",
+      "icon": "head-cog-outline",
+      "capitulos": [
+        {
+          "id": "c13_01",
+          "nombre": "Antipsicóticos",
+          "unidadId": "u13",
+          "drugIds": [
+            "aripiprazol",
+            "asenapina",
+            "brexpiprazol",
+            "cariprazina",
+            "clorpromazina",
+            "clozapina",
+            "esketamina",
+            "flufenazina",
+            "haloperidol",
+            "iloperidona",
+            "levomepromazina",
+            "loxapina_inhalada",
+            "lurasidona",
+            "olanzapina",
+            "paliperidona",
+            "perfenazina",
+            "pimozida",
+            "quetiapina",
+            "quetiapina_im",
+            "risperidona",
+            "sulpirida",
+            "tiaprida",
+            "trifluoperazina",
+            "ziprasidona",
+            "tiapride",
+            "drug2786",
+            "drug2787",
+            "drug2788",
+            "drug2789",
+            "drug2840",
+            "drug2841",
+            "drug2842",
+            "drug2843",
+            "drug2844",
+            "drug2845",
+            "drug2846",
+            "drug2847",
+            "drug2848",
+            "drug2849",
+            "drug2850",
+            "drug2851",
+            "drug2852",
+            "drug2853",
+            "drug2854"
+          ]
+        },
+        {
+          "id": "c13_02",
+          "nombre": "Antidepresivos",
+          "unidadId": "u13",
+          "drugIds": [
+            "agomelatina",
+            "amitriptilina",
+            "brexanolona",
+            "bupropion",
+            "citalopram",
+            "clomipramina",
+            "desvenlafaxina",
+            "doxepina",
+            "duloxetina",
+            "escitalopram",
+            "esketamina_nasal",
+            "fenelzina",
+            "fluoxetina",
+            "fluvoxamina",
+            "imipramina",
+            "litio",
+            "maprotilina",
+            "milnacipran",
+            "mirtazapina",
+            "moclobemida",
+            "nortriptilina",
+            "ofatumumab_em",
+            "paroxetina",
+            "ponesimod",
+            "reboxetina",
+            "sertralina",
+            "tianeptina",
+            "trazodona",
+            "venlafaxina",
+            "vilazodona",
+            "vortioxetina",
+            "drug2791",
+            "drug2792",
+            "drug2793",
+            "drug2794",
+            "drug2823",
+            "drug2824",
+            "drug2825",
+            "drug2826",
+            "drug2827",
+            "drug2828",
+            "drug2829",
+            "drug2830",
+            "drug2831",
+            "drug2832",
+            "drug2833",
+            "drug2834",
+            "drug2835",
+            "drug2836",
+            "drug2837",
+            "drug2838",
+            "drug2839"
+          ]
+        },
+        {
+          "id": "c13_03",
+          "nombre": "Psicoestimulantes y TDAH",
+          "unidadId": "u13",
+          "drugIds": [
+            "armodafinilo",
+            "atomoxetina",
+            "dextroanfetamina",
+            "donepezilo",
+            "galantamina",
+            "guanfacina",
+            "lisdexanfetamina",
+            "memantina",
+            "metilfenidato",
+            "modafinilo",
+            "pitolisant",
+            "rivastigmina",
+            "solriamfetol",
+            "drug2868",
+            "drug2869",
+            "drug2870",
+            "drug2871",
+            "drug2872"
+          ]
+        },
+        {
+          "id": "c13_04",
+          "nombre": "Ansiolíticos e Hipnóticos",
+          "unidadId": "u13",
+          "drugIds": [
+            "bromazepam",
+            "clorazepato",
+            "eszopiclona",
+            "lemborexant",
+            "lormetazepam",
+            "ramelteon",
+            "suvorexant",
+            "zaleplon",
+            "drug2796",
+            "drug2797",
+            "drug2799",
+            "drug2855",
+            "drug2856",
+            "drug2857",
+            "drug2858",
+            "drug2859",
+            "drug2860",
+            "drug2861",
+            "drug2862",
+            "drug2863",
+            "drug2864",
+            "drug2865",
+            "drug2866",
+            "drug2867"
+          ]
+        },
+        {
+          "id": "c13_05",
+          "nombre": "Fármacos para Adicciones",
+          "unidadId": "u13",
+          "drugIds": [
+            "acamprosato",
+            "buprenorfina_naloxona",
+            "disulfiram",
+            "lofexidina",
+            "naloxona_nasal",
+            "vareniclina",
+            "drug2804",
+            "drug2806",
+            "drug2807",
+            "drug2808",
+            "drug2809",
+            "drug2874",
+            "drug2875",
+            "drug2876",
+            "drug2877"
+          ]
+        },
+        {
+          "id": "c13_06",
+          "nombre": "Estabilizadores del Ánimo",
+          "unidadId": "u13",
+          "drugIds": []
+        },
+        {
+          "id": "c13_07",
+          "nombre": "Trastornos de la Conducta Alimentaria",
+          "unidadId": "u13",
+          "drugIds": [
+            "drug2873"
           ]
         }
       ]

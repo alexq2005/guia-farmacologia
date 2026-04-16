@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
+// LinearGradient removed — clean modern headers
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDrugData } from '../hooks/useDrugData';
 import { useQuiz } from '../hooks/useQuiz';
@@ -13,6 +13,7 @@ import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
 import { PremiumGate } from '../components/PremiumGate';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 function ProgressBar({ label, value, max, color, colors }: { label: string; value: number; max: number; color: string; colors: ThemeColors }) {
   const pct = max > 0 ? Math.min((value / max) * 100, 100) : 0;
@@ -40,9 +41,10 @@ function StatCard({ icon, value, label, color, colors }: { icon: string; value: 
 }
 
 export function DashboardScreen() {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const { drugs } = useDrugData();
   const { results: quizResults, averageScore } = useQuiz(drugs);
@@ -53,7 +55,6 @@ export function DashboardScreen() {
   const totalQuestions = quizResults.reduce((s, r) => s + r.totalQuestions, 0);
   const totalCorrect = quizResults.reduce((s, r) => s + r.correctAnswers, 0);
 
-  // Study streak: count consecutive days with quiz activity
   const streak = useMemo(() => {
     if (quizResults.length === 0) return 0;
     const days = new Set(quizResults.map(r =>
@@ -70,7 +71,6 @@ export function DashboardScreen() {
     return count;
   }, [quizResults]);
 
-  // Progress by category
   const categoryProgress = useMemo(() => {
     const catMap: Record<string, { total: number; correct: number }> = {};
     quizResults.forEach(r => {
@@ -84,7 +84,6 @@ export function DashboardScreen() {
       .slice(0, 8);
   }, [quizResults]);
 
-  // Recent quiz sessions
   const recentQuizzes = useMemo(() =>
     [...quizResults].sort((a, b) => b.completedAt - a.completedAt).slice(0, 10),
   [quizResults]);
@@ -94,16 +93,7 @@ export function DashboardScreen() {
   return (
     <PremiumGate feature="Dashboard de Progreso">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
-      <LinearGradient
-        colors={[colors.quiz, '#A78BFA']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={[styles.header, { paddingTop: insets.top + 12 }]}
-      >
-        <Text style={styles.headerTitle}>Dashboard de Estudio</Text>
-        <Text style={styles.headerSubtitle}>Tu progreso de aprendizaje</Text>
-      </LinearGradient>
+      <StatusBar translucent backgroundColor="transparent" barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {/* Quick Stats */}
@@ -210,30 +200,30 @@ export function DashboardScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingBottom: 20, paddingHorizontal: 20,
+    paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   scroll: { flex: 1 },
-  statsGrid: { flexDirection: 'row', paddingHorizontal: 16, paddingTop: 16, gap: 8 },
-  section: { marginTop: 20 },
-  sectionTitle: { fontSize: 18, fontWeight: '700', color: colors.text, marginHorizontal: 20, marginBottom: 10 },
-  card: { ...neuCard(colors), marginHorizontal: 16, padding: 16 },
-  usageGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: 12, gap: 8 },
-  usageItem: { width: '47%' as any, ...neuCardSubtle(colors), padding: 14, alignItems: 'center', marginHorizontal: '1.5%' as any },
-  usageIcon: { fontSize: 24 },
-  usageValue: { fontSize: 22, fontWeight: '800', marginTop: 4 },
-  usageLabel: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
-  quizRow: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, marginBottom: 6, padding: 12, borderRadius: 12, elevation: 1 },
+  statsGrid: { flexDirection: 'row', paddingHorizontal: rs.space(16), paddingTop: rs.space(16), gap: rs.space(8) },
+  section: { marginTop: rs.space(20) },
+  sectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.text, marginHorizontal: rs.space(20), marginBottom: rs.space(10) },
+  card: { ...neuCard(colors), marginHorizontal: rs.space(16), padding: rs.space(16) },
+  usageGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: rs.space(12), gap: rs.space(8) },
+  usageItem: { width: '47%' as any, ...neuCardSubtle(colors), padding: rs.space(14), alignItems: 'center', marginHorizontal: '1.5%' as any },
+  usageIcon: { fontSize: rs.font(24) },
+  usageValue: { fontSize: rs.font(22), fontWeight: '800', marginTop: 4 },
+  usageLabel: { fontSize: rs.font(11), color: colors.textSecondary, marginTop: 2 },
+  quizRow: { flexDirection: 'row', alignItems: 'center', marginHorizontal: rs.space(16), marginBottom: rs.space(6), padding: rs.space(12), borderRadius: 12, elevation: 1 },
   scoreBadge: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  scoreText: { fontSize: 14, fontWeight: '800' },
-  quizRowTitle: { fontSize: 14, fontWeight: '600' },
-  emptyState: { alignItems: 'center', paddingVertical: 60 },
-  emptyIcon: { fontSize: 48, marginBottom: 12 },
-  emptyText: { fontSize: 16, fontWeight: '600' },
-  emptyHint: { fontSize: 13, marginTop: 4, textAlign: 'center', paddingHorizontal: 40 },
+  scoreText: { fontSize: rs.font(14), fontWeight: '800' },
+  quizRowTitle: { fontSize: rs.font(14), fontWeight: '600' },
+  emptyState: { alignItems: 'center', paddingVertical: rs.space(60) },
+  emptyIcon: { fontSize: rs.font(48), marginBottom: rs.space(12) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600' },
+  emptyHint: { fontSize: rs.font(13), marginTop: 4, textAlign: 'center', paddingHorizontal: rs.space(40) },
 });

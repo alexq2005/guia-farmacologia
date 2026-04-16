@@ -3,15 +3,17 @@ import { View, Text, ScrollView, StyleSheet, StatusBar, Animated } from 'react-n
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 export function PrivacyPolicyScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn(350);
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <Animated.ScrollView style={{ opacity: fadeIn }} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.lastUpdated}>Última actualización: Marzo 2026</Text>
 
@@ -124,23 +126,23 @@ export function PrivacyPolicyScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  content: { padding: 20, paddingBottom: 40 },
-  lastUpdated: { fontSize: 12, color: colors.textLight, marginBottom: 20, fontStyle: 'italic' },
-  sectionTitle: { fontSize: 17, fontWeight: '700', color: colors.text, marginTop: 20, marginBottom: 8 },
-  subtitle: { fontSize: 15, fontWeight: '600', color: colors.text, marginTop: 12, marginBottom: 6 },
-  text: { fontSize: 14, color: colors.textSecondary, lineHeight: 22, marginBottom: 8 },
+  content: { padding: rs.space(20), paddingBottom: rs.space(40) },
+  lastUpdated: { fontSize: rs.font(12), color: colors.textLight, marginBottom: rs.space(20), fontStyle: 'italic' },
+  sectionTitle: { fontSize: rs.font(17), fontWeight: '700', color: colors.text, marginTop: rs.space(20), marginBottom: rs.space(8) },
+  subtitle: { fontSize: rs.font(15), fontWeight: '600', color: colors.text, marginTop: rs.space(12), marginBottom: rs.space(6) },
+  text: { fontSize: rs.font(14), color: colors.textSecondary, lineHeight: rs.font(22), marginBottom: rs.space(8) },
   highlight: {
-    fontSize: 14, color: colors.text, lineHeight: 22, marginBottom: 8,
-    backgroundColor: colors.success + '10', padding: 12, borderRadius: 10,
+    fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(22), marginBottom: rs.space(8),
+    backgroundColor: colors.success + '10', padding: rs.space(12), borderRadius: 10,
     borderLeftWidth: 3, borderLeftColor: colors.success, fontWeight: '500',
   },
-  bulletList: { marginBottom: 8 },
-  bulletRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 4, paddingLeft: 8 },
-  bullet: { fontSize: 14, color: colors.primary, marginRight: 8, lineHeight: 22 },
-  bulletText: { fontSize: 14, color: colors.textSecondary, lineHeight: 22, flex: 1 },
-  contactEmail: { fontSize: 15, color: colors.primary, fontWeight: '600', marginTop: 4 },
-  footer: { alignItems: 'center', marginTop: 32, paddingTop: 16, borderTopWidth: 1, borderTopColor: colors.border },
-  footerText: { fontSize: 12, color: colors.textLight },
+  bulletList: { marginBottom: rs.space(8) },
+  bulletRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 4, paddingLeft: rs.space(8) },
+  bullet: { fontSize: rs.font(14), color: colors.primary, marginRight: rs.space(8), lineHeight: rs.font(22) },
+  bulletText: { fontSize: rs.font(14), color: colors.textSecondary, lineHeight: rs.font(22), flex: 1 },
+  contactEmail: { fontSize: rs.font(15), color: colors.primary, fontWeight: '600', marginTop: 4 },
+  footer: { alignItems: 'center', marginTop: rs.space(32), paddingTop: rs.space(16), borderTopWidth: 1, borderTopColor: colors.border },
+  footerText: { fontSize: rs.font(12), color: colors.textLight },
 });

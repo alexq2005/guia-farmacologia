@@ -4,7 +4,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList, RouteInfo } from '../types';
 import { CollapsibleSection } from '../components/CollapsibleSection';
-import { RouteIllustrationSVG } from '../components/RouteIllustrationSVG';
 import { ROUTE_COLORS } from '../utils/colors';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
@@ -13,6 +12,7 @@ import routes from '../data/routes.json';
 import { neuCard } from '../utils/neumorphism';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import { getRouteImage } from '../utils/routeImages';
+import { getAnatomyImage } from '../utils/anatomyImages';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'RouteDetail'>;
 
@@ -60,8 +60,16 @@ export function RouteDetailScreen({ route: navRoute }: Props) {
           />
         </View>
 
-        {/* Anatomical diagram */}
-        <RouteIllustrationSVG routeId={routeInfo.id} accentColor={color} colors={colors} />
+        {/* 3D Anatomical illustration (Servier Medical Art, CC BY 4.0) */}
+        {getAnatomyImage(routeInfo.id) && (
+          <View style={{ marginHorizontal: rs.space(16), marginTop: rs.space(8), alignItems: 'center' }}>
+            <Image
+              source={getAnatomyImage(routeInfo.id)!}
+              style={{ width: rs.space(250), height: rs.space(250), borderRadius: 16 }}
+              resizeMode="contain"
+            />
+          </View>
+        )}
 
         {routeInfo.zonas && routeInfo.zonas.length > 0 && (
           <CollapsibleSection title="Zonas de aplicación" icon="map-marker-outline" accentColor={color} initiallyOpen>

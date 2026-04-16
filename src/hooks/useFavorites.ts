@@ -3,28 +3,54 @@ import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FAVORITES_KEY = '@guia_farmaco_favorites';
+const COLLECTIONS_KEY = '@guia_farmaco_collections';
 const FREE_FAVORITES_LIMIT = 5;
+
+export interface FavoriteCollection {
+  id: string;
+  name: string;
+  icon: string;
+  color: string;
+  drugIds: string[];
+}
+
+const DEFAULT_COLLECTIONS: FavoriteCollection[] = [
+  { id: 'guardia', name: 'Guardia', icon: 'hospital-box-outline', color: '#DC2626', drugIds: [] },
+  { id: 'estudio', name: 'Estudio', icon: 'school-outline', color: '#8B5CF6', drugIds: [] },
+  { id: 'uci', name: 'UCI', icon: 'heart-pulse', color: '#0891B2', drugIds: [] },
+];
 
 export function useFavorites(isPremium: boolean = true) {
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [collections, setCollections] = useState<FavoriteCollection[]>([]);
   const [loaded, setLoaded] = useState(false);
 
-  // Load favorites from storage on mount
   useEffect(() => {
-    AsyncStorage.getItem(FAVORITES_KEY)
-      .then(data => {
-        if (data) setFavorites(JSON.parse(data));
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
+    Promise.all([
+      AsyncStorage.getItem(FAVORITES_KEY),
+      AsyncStorage.getItem(COLLECTIONS_KEY),
+    ]).then(([favData, colData]) => {
+      if (favData) setFavorites(JSON.parse(favData));
+      if (colData) {
+        setCollections(JSON.parse(colData));
+      } else {
+        setCollections(DEFAULT_COLLECTIONS);
+      }
+      setLoaded(true);
+    }).catch(() => setLoaded(true));
   }, []);
 
-  // Save to storage whenever favorites change (after initial load)
   useEffect(() => {
     if (loaded) {
       AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites)).catch(() => {});
     }
   }, [favorites, loaded]);
+
+  useEffect(() => {
+    if (loaded && collections.length > 0) {
+      AsyncStorage.setItem(COLLECTIONS_KEY, JSON.stringify(collections)).catch(() => {});
+    }
+  }, [collections, loaded]);
 
   const toggleFavorite = useCallback((drugId: string) => {
     setFavorites(prev => {
@@ -51,12 +77,54 @@ export function useFavorites(isPremium: boolean = true) {
     setFavorites([]);
   }, []);
 
+  // ─── Collections ───────────────────────────────────────────
+
+  const createCollection = useCallback((name: string, icon: string = 'folder-outline', color: string = '#3B82F6') => {
+    const id = `col_${Date.now()}`;
+    setCollections(prev => [...prev, { id, name, icon, color, drugIds: [] }]);
+    return id;
+  }, []);
+
+  const deleteCollection = useCallback((collectionId: string) => {
+    setCollections(prev => prev.filter(c => c.id !== collectionId));
+  }, []);
+
+  const renameCollection = useCallback((collectionId: string, name: string) => {
+    setCollections(prev => prev.map(c => c.id === collectionId ? { ...c, name } : c));
+  }, []);
+
+  const addToCollection = useCallback((collectionId: string, drugId: string) => {
+    setCollections(prev => prev.map(c => {
+      if (c.id !== collectionId) return c;
+      if (c.drugIds.includes(drugId)) return c;
+      return { ...c, drugIds: [...c.drugIds, drugId] };
+    }));
+  }, []);
+
+  const removeFromCollection = useCallback((collectionId: string, drugId: string) => {
+    setCollections(prev => prev.map(c => {
+      if (c.id !== collectionId) return c;
+      return { ...c, drugIds: c.drugIds.filter(id => id !== drugId) };
+    }));
+  }, []);
+
+  const getCollectionsForDrug = useCallback((drugId: string): FavoriteCollection[] => {
+    return collections.filter(c => c.drugIds.includes(drugId));
+  }, [collections]);
+
   return {
     favorites,
     favoriteCount: favorites.length,
     toggleFavorite,
     isFavorite,
     clearFavorites,
+    collections,
+    createCollection,
+    deleteCollection,
+    renameCollection,
+    addToCollection,
+    removeFromCollection,
+    getCollectionsForDrug,
     loaded,
   };
 }

@@ -4,21 +4,23 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useTheme } from '../context/ThemeContext';
 import type { ThemeColors } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 export function TermsScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn(350);
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <Animated.ScrollView style={{ opacity: fadeIn }} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.lastUpdated}>Última actualización: Marzo 2026</Text>
 
         {/* DISCLAIMER MÉDICO — el más importante */}
         <View style={styles.medicalDisclaimer}>
-          <MaterialCommunityIcons name="medical-bag" size={28} color={colors.danger} style={{ textAlign: 'center', marginBottom: 8, alignSelf: 'center' }} />
+          <MaterialCommunityIcons name="medical-bag" size={28} color={colors.error} style={{ textAlign: 'center', marginBottom: 8, alignSelf: 'center' }} />
           <Text style={styles.disclaimerTitle}>AVISO MÉDICO IMPORTANTE</Text>
           <Text style={styles.disclaimerText}>
             Esta aplicación es una herramienta de CONSULTA EDUCATIVA y REFERENCIA RÁPIDA.
@@ -35,7 +37,7 @@ export function TermsScreen() {
               'La supervisión de un médico o farmacéutico',
             ].map((item, i) => (
               <View key={i} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 2 }}>
-                <MaterialCommunityIcons name="close" size={14} color={colors.danger} style={{ marginRight: 6, marginTop: 4 }} />
+                <MaterialCommunityIcons name="close" size={14} color={colors.error} style={{ marginRight: 6, marginTop: 4 }} />
                 <Text style={styles.disclaimerListItem}>{item}</Text>
               </View>
             ))}
@@ -139,26 +141,26 @@ export function TermsScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  content: { padding: 20, paddingBottom: 40 },
-  lastUpdated: { fontSize: 12, color: colors.textLight, marginBottom: 16, fontStyle: 'italic' },
+  content: { padding: rs.space(20), paddingBottom: rs.space(40) },
+  lastUpdated: { fontSize: rs.font(12), color: colors.textLight, marginBottom: rs.space(16), fontStyle: 'italic' },
   medicalDisclaimer: {
-    backgroundColor: colors.danger + '08', padding: 18, borderRadius: 14,
-    borderWidth: 2, borderColor: colors.danger + '40', marginBottom: 24,
+    backgroundColor: colors.neuSurface, padding: rs.space(18), borderRadius: 14,
+    borderWidth: 2, borderColor: colors.error + '60', marginBottom: rs.space(24),
   },
-  disclaimerIcon: { fontSize: 28, textAlign: 'center', marginBottom: 8 },
-  disclaimerTitle: { fontSize: 16, fontWeight: '800', color: colors.danger, textAlign: 'center', marginBottom: 12 },
-  disclaimerText: { fontSize: 14, color: colors.text, lineHeight: 22, marginBottom: 4 },
-  disclaimerList: { marginVertical: 8 },
-  disclaimerListItem: { fontSize: 13, color: colors.danger, lineHeight: 22, fontWeight: '500' },
-  sectionTitle: { fontSize: 17, fontWeight: '700', color: colors.text, marginTop: 20, marginBottom: 8 },
-  text: { fontSize: 14, color: colors.textSecondary, lineHeight: 22, marginBottom: 8 },
-  bulletList: { marginBottom: 8 },
-  bulletRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 4, paddingLeft: 8 },
-  bullet: { fontSize: 14, color: colors.primary, marginRight: 8, lineHeight: 22 },
-  bulletText: { fontSize: 14, color: colors.textSecondary, lineHeight: 22, flex: 1 },
-  contactEmail: { fontSize: 15, color: colors.primary, fontWeight: '600', marginTop: 4 },
-  footer: { alignItems: 'center', marginTop: 32, paddingTop: 16, borderTopWidth: 1, borderTopColor: colors.border },
-  footerText: { fontSize: 12, color: colors.textLight },
+  disclaimerIcon: { fontSize: rs.font(28), textAlign: 'center', marginBottom: rs.space(8) },
+  disclaimerTitle: { fontSize: rs.font(16), fontWeight: '800', color: colors.error, textAlign: 'center', marginBottom: rs.space(12) },
+  disclaimerText: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(22), marginBottom: 4 },
+  disclaimerList: { marginVertical: rs.space(8) },
+  disclaimerListItem: { fontSize: rs.font(13), color: colors.error, lineHeight: rs.font(22), fontWeight: '500' },
+  sectionTitle: { fontSize: rs.font(17), fontWeight: '700', color: colors.text, marginTop: rs.space(20), marginBottom: rs.space(8) },
+  text: { fontSize: rs.font(14), color: colors.textSecondary, lineHeight: rs.font(22), marginBottom: rs.space(8) },
+  bulletList: { marginBottom: rs.space(8) },
+  bulletRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 4, paddingLeft: rs.space(8) },
+  bullet: { fontSize: rs.font(14), color: colors.primary, marginRight: rs.space(8), lineHeight: rs.font(22) },
+  bulletText: { fontSize: rs.font(14), color: colors.textSecondary, lineHeight: rs.font(22), flex: 1 },
+  contactEmail: { fontSize: rs.font(15), color: colors.primary, fontWeight: '600', marginTop: 4 },
+  footer: { alignItems: 'center', marginTop: rs.space(32), paddingTop: rs.space(16), borderTopWidth: 1, borderTopColor: colors.border },
+  footerText: { fontSize: rs.font(12), color: colors.textLight },
 });

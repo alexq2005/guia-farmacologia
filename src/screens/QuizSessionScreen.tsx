@@ -9,6 +9,7 @@ import { useQuiz } from '../hooks/useQuiz';
 import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizSession'>;
 
@@ -24,8 +25,9 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 export function QuizSessionScreen({ route, navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { drugs } = useDrugData();
   const { generateQuestions, saveResult } = useQuiz(drugs);
   const fadeIn = useFadeIn(300);
@@ -100,7 +102,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
     if (showReview) {
       return (
         <View style={styles.container}>
-          <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+          <StatusBar backgroundColor={colors.quiz} barStyle={isDark ? 'light-content' : 'dark-content'} />
           <View style={styles.reviewHeader}>
             <TouchableOpacity onPress={() => setShowReview(false)} style={{ flexDirection: 'row', alignItems: 'center' }}>
               <MaterialCommunityIcons name="chevron-left" size={22} color={colors.quiz} />
@@ -155,7 +157,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
 
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+        <StatusBar backgroundColor={colors.quiz} barStyle={isDark ? 'light-content' : 'dark-content'} />
         <Animated.View style={[styles.finishedContainer, { opacity: fadeIn }]}>
           <MaterialCommunityIcons
             name={pct >= 70 ? 'party-popper' : pct >= 50 ? 'arm-flex-outline' : 'bookshelf'}
@@ -220,7 +222,7 @@ export function QuizSessionScreen({ route, navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.quiz} barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       {/* Progress Bar */}
       <View style={styles.progressContainer}>
@@ -339,89 +341,89 @@ export function QuizSessionScreen({ route, navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   centered: { justifyContent: 'center', alignItems: 'center' },
-  loadingText: { fontSize: 16, color: colors.textSecondary },
+  loadingText: { fontSize: rs.font(16), color: colors.textSecondary },
   progressContainer: {
-    flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 12,
+    flexDirection: 'row', alignItems: 'center', paddingHorizontal: rs.space(16), paddingVertical: rs.space(12),
   },
   progressBar: {
-    flex: 1, height: 8, backgroundColor: colors.border, borderRadius: 4, overflow: 'hidden', marginRight: 12,
+    flex: 1, height: rs.space(8), backgroundColor: colors.border, borderRadius: 4, overflow: 'hidden', marginRight: rs.space(12),
   },
   progressFill: { height: '100%', borderRadius: 4 },
-  progressText: { fontSize: 14, fontWeight: '700', color: colors.textSecondary },
+  progressText: { fontSize: rs.font(14), fontWeight: '700', color: colors.textSecondary },
   questionContainer: { flex: 1 },
-  questionContent: { paddingHorizontal: 16, paddingBottom: 24 },
+  questionContent: { paddingHorizontal: rs.space(16), paddingBottom: rs.space(24) },
   typeBadge: {
-    alignSelf: 'flex-start', backgroundColor: colors.quiz + '15', paddingHorizontal: 12,
-    paddingVertical: 4, borderRadius: 12, marginBottom: 8,
+    alignSelf: 'flex-start', backgroundColor: colors.quiz + '15', paddingHorizontal: rs.space(12),
+    paddingVertical: rs.space(4), borderRadius: 12, marginBottom: rs.space(8),
   },
-  typeText: { fontSize: 12, fontWeight: '700', color: colors.quiz },
-  drugName: { fontSize: 14, fontWeight: '600', color: colors.textSecondary, marginBottom: 4 },
-  questionText: { fontSize: 20, fontWeight: '700', color: colors.text, lineHeight: 28, marginBottom: 20 },
-  optionsList: { gap: 10 },
+  typeText: { fontSize: rs.font(12), fontWeight: '700', color: colors.quiz },
+  drugName: { fontSize: rs.font(14), fontWeight: '600', color: colors.textSecondary, marginBottom: rs.space(4) },
+  questionText: { fontSize: rs.font(20), fontWeight: '700', color: colors.text, lineHeight: rs.font(28), marginBottom: rs.space(20) },
+  optionsList: { gap: rs.space(10) },
   option: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, borderRadius: 14,
-    padding: 16, elevation: 1, borderWidth: 2, borderColor: colors.border,
+    padding: rs.space(16), elevation: 1, borderWidth: 2, borderColor: colors.border,
   },
   optionSelected: { borderColor: colors.quiz, backgroundColor: colors.quiz + '08' },
   optionCorrect: { borderColor: colors.quizCorrect, backgroundColor: colors.quizCorrect + '10' },
   optionWrong: { borderColor: colors.quizWrong, backgroundColor: colors.quizWrong + '10' },
   optionLetter: {
-    width: 28, height: 28, borderRadius: 14, backgroundColor: colors.background,
-    textAlign: 'center', lineHeight: 28, fontSize: 14, fontWeight: '700', color: colors.textSecondary, marginRight: 12,
+    width: rs.space(28), height: rs.space(28), borderRadius: rs.space(14), backgroundColor: colors.background,
+    textAlign: 'center', lineHeight: rs.space(28), fontSize: rs.font(14), fontWeight: '700', color: colors.textSecondary, marginRight: rs.space(12),
   },
-  optionText: { flex: 1, fontSize: 15, color: colors.text, lineHeight: 21 },
+  optionText: { flex: 1, fontSize: rs.font(15), color: colors.text, lineHeight: rs.font(21) },
   optionTextCorrect: { color: colors.quizCorrect, fontWeight: '600' },
   optionTextWrong: { color: colors.quizWrong },
-  checkMark: { fontSize: 20, color: colors.quizCorrect, fontWeight: '800', marginLeft: 8 },
-  crossMark: { fontSize: 20, color: colors.quizWrong, fontWeight: '800', marginLeft: 8 },
+  checkMark: { fontSize: rs.font(20), color: colors.quizCorrect, fontWeight: '800', marginLeft: rs.space(8) },
+  crossMark: { fontSize: rs.font(20), color: colors.quizWrong, fontWeight: '800', marginLeft: rs.space(8) },
   explanationBox: {
-    marginTop: 16, backgroundColor: colors.warning + '12', borderRadius: 14,
-    padding: 14, borderLeftWidth: 4, borderLeftColor: colors.warning,
+    marginTop: rs.space(16), backgroundColor: colors.warning + '12', borderRadius: 14,
+    padding: rs.space(14), borderLeftWidth: 4, borderLeftColor: colors.warning,
   },
   explanationHeader: {
-    flexDirection: 'row', alignItems: 'center', marginBottom: 6,
+    flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6),
   },
   explanationTitle: {
-    fontSize: 14, fontWeight: '700', color: colors.warning, marginLeft: 6,
+    fontSize: rs.font(14), fontWeight: '700', color: colors.warning, marginLeft: rs.space(6),
   },
   explanationText: {
-    fontSize: 14, color: colors.text, lineHeight: 20,
+    fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20),
   },
-  scoreCounter: { marginTop: 16, alignItems: 'center' },
-  scoreCounterText: { fontSize: 14, color: colors.quizCorrect, fontWeight: '600' },
+  scoreCounter: { marginTop: rs.space(16), alignItems: 'center' },
+  scoreCounterText: { fontSize: rs.font(14), color: colors.quizCorrect, fontWeight: '600' },
   nextButton: {
-    marginTop: 16, paddingVertical: 16, borderRadius: 14, alignItems: 'center',
+    marginTop: rs.space(16), paddingVertical: rs.space(16), borderRadius: 14, alignItems: 'center',
   },
-  nextButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
+  nextButtonText: { fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' },
   // Finished screen
-  finishedContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 32 },
-  finishedEmoji: { fontSize: 64, marginBottom: 8 },
-  finishedTitle: { fontSize: 28, fontWeight: '800', color: colors.text, marginBottom: 20 },
+  finishedContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: rs.space(32) },
+  finishedEmoji: { fontSize: rs.font(64), marginBottom: rs.space(8) },
+  finishedTitle: { fontSize: rs.font(28), fontWeight: '800', color: colors.text, marginBottom: rs.space(20) },
   scoreCircle: {
-    width: 120, height: 120, borderRadius: 60, borderWidth: 6, alignItems: 'center',
-    justifyContent: 'center', marginBottom: 8,
+    width: rs.space(120), height: rs.space(120), borderRadius: rs.space(60), borderWidth: rs.space(6), alignItems: 'center',
+    justifyContent: 'center', marginBottom: rs.space(8),
   },
-  scorePercent: { fontSize: 36, fontWeight: '800' },
-  scoreDetail: { fontSize: 16, color: colors.textSecondary, marginBottom: 32 },
-  finishedActions: { width: '100%', gap: 12 },
-  actionButton: { paddingVertical: 16, borderRadius: 14, alignItems: 'center' },
-  actionButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
+  scorePercent: { fontSize: rs.font(36), fontWeight: '800' },
+  scoreDetail: { fontSize: rs.font(16), color: colors.textSecondary, marginBottom: rs.space(32) },
+  finishedActions: { width: '100%', gap: rs.space(12) },
+  actionButton: { paddingVertical: rs.space(16), borderRadius: 14, alignItems: 'center' },
+  actionButtonText: { fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' },
   // Review screen
-  reviewHeader: { paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: colors.border },
-  reviewHeaderTitle: { fontSize: 15, fontWeight: '700' },
-  reviewHeaderSubtitle: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
-  reviewCard: { ...neuCard(colors), padding: 14, marginBottom: 12, borderLeftWidth: 4 },
-  reviewQuestionNum: { fontSize: 13, fontWeight: '700', color: colors.text, flex: 1 },
-  reviewTypeBadge: { paddingHorizontal: 8, paddingVertical: 2, borderRadius: 8 },
-  reviewTypeText: { fontSize: 10, fontWeight: '700' },
-  reviewDrugName: { fontSize: 12, color: colors.textSecondary, fontStyle: 'italic', marginBottom: 2 },
-  reviewQuestion: { fontSize: 15, fontWeight: '600', color: colors.text, lineHeight: 21 },
-  reviewOption: { flexDirection: 'row', alignItems: 'center', paddingVertical: 4, paddingHorizontal: 8, borderRadius: 8 },
-  reviewOptionLetter: { fontSize: 12, fontWeight: '700', width: 20 },
-  reviewOptionText: { flex: 1, fontSize: 13, color: colors.text },
-  reviewExplanation: { marginTop: 8, padding: 10, borderRadius: 8 },
-  reviewExplanationText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  reviewHeader: { paddingHorizontal: rs.space(16), paddingVertical: rs.space(12), borderBottomWidth: 1, borderBottomColor: colors.border },
+  reviewHeaderTitle: { fontSize: rs.font(15), fontWeight: '700' },
+  reviewHeaderSubtitle: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 },
+  reviewCard: { ...neuCard(colors), padding: rs.space(14), marginBottom: rs.space(12), borderLeftWidth: 4 },
+  reviewQuestionNum: { fontSize: rs.font(13), fontWeight: '700', color: colors.text, flex: 1 },
+  reviewTypeBadge: { paddingHorizontal: rs.space(8), paddingVertical: 2, borderRadius: 8 },
+  reviewTypeText: { fontSize: rs.font(10), fontWeight: '700' },
+  reviewDrugName: { fontSize: rs.font(12), color: colors.textSecondary, fontStyle: 'italic', marginBottom: 2 },
+  reviewQuestion: { fontSize: rs.font(15), fontWeight: '600', color: colors.text, lineHeight: rs.font(21) },
+  reviewOption: { flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(4), paddingHorizontal: rs.space(8), borderRadius: 8 },
+  reviewOptionLetter: { fontSize: rs.font(12), fontWeight: '700', width: rs.space(20) },
+  reviewOptionText: { flex: 1, fontSize: rs.font(13), color: colors.text },
+  reviewExplanation: { marginTop: rs.space(8), padding: rs.space(10), borderRadius: 8 },
+  reviewExplanationText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
 });

@@ -10,14 +10,16 @@ import { useFadeIn } from '../utils/animations';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
 import { PremiumGate } from '../components/PremiumGate';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'QuizScreen'>;
 
 const QUESTION_COUNTS = [5, 10, 15, 20];
 
 export function QuizScreen({ navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { drugs, categories } = useDrugData();
   const { results, averageScore } = useQuiz(drugs);
   const fadeIn = useFadeIn();
@@ -31,7 +33,7 @@ export function QuizScreen({ navigation }: Props) {
   return (
     <PremiumGate feature="Test Farmacológico">
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.quiz} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.quiz} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { backgroundColor: colors.quiz }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <MaterialCommunityIcons name="brain" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
@@ -85,7 +87,7 @@ export function QuizScreen({ navigation }: Props) {
               activeOpacity={0.7}
             >
               <Text style={[styles.quickNumber, selectedCount === count && { color: '#FFFFFF' }]}>{count}</Text>
-              <Text style={[styles.quickLabel, selectedCount === count && { color: 'rgba(255,255,255,0.8)' }]}>preguntas</Text>
+              <Text style={[styles.quickLabel, selectedCount === count && { color: 'rgba(255,255,255,0.8)' }]} numberOfLines={1} adjustsFontSizeToFit>preguntas</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -156,48 +158,48 @@ export function QuizScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   scroll: { flex: 1 },
   statsCard: {
-    ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 16,
+    ...neuCard(colors), marginHorizontal: rs.space(16), marginTop: rs.space(16), padding: rs.space(16),
   },
-  statsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
+  statsTitle: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(12) },
   statsRow: { flexDirection: 'row', alignItems: 'center' },
   statItem: { flex: 1, alignItems: 'center' },
-  statNumber: { fontSize: 24, fontWeight: '800', color: colors.quiz },
-  statLabel: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
+  statNumber: { fontSize: rs.font(24), fontWeight: '800', color: colors.quiz },
+  statLabel: { fontSize: rs.font(11), color: colors.textSecondary, marginTop: 2 },
   statDivider: { width: 1, height: 30, backgroundColor: colors.border },
-  sectionTitle: { fontSize: 18, fontWeight: '700', color: colors.text, marginHorizontal: 20, marginTop: 20, marginBottom: 10 },
-  quickGrid: { flexDirection: 'row', paddingHorizontal: 16, gap: 10 },
+  sectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.text, marginHorizontal: rs.space(20), marginTop: rs.space(20), marginBottom: rs.space(10) },
+  quickGrid: { flexDirection: 'row', paddingHorizontal: rs.space(16), gap: rs.space(10) },
   quickCard: {
-    flex: 1, backgroundColor: colors.quiz + '15', borderRadius: 14, padding: 16,
+    flex: 1, backgroundColor: colors.quiz + '15', borderRadius: 14, paddingVertical: rs.space(14), paddingHorizontal: rs.space(8),
     alignItems: 'center', borderWidth: 1, borderColor: colors.quiz + '30',
   },
-  quickNumber: { fontSize: 28, fontWeight: '800', color: colors.quiz },
-  quickLabel: { fontSize: 12, color: colors.quiz, fontWeight: '600', marginTop: 2 },
-  categoryList: { paddingHorizontal: 16, gap: 6 },
+  quickNumber: { fontSize: rs.font(28), fontWeight: '800', color: colors.quiz },
+  quickLabel: { fontSize: rs.font(12), color: colors.quiz, fontWeight: '600', marginTop: 2 },
+  categoryList: { paddingHorizontal: rs.space(16), gap: rs.space(6) },
   categoryCard: {
-    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 14,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: rs.space(14),
   },
-  categoryIcon: { fontSize: 24, marginRight: 12 },
-  categoryLabel: { flex: 1, fontSize: 15, fontWeight: '600', color: colors.text },
-  categoryCount: { fontSize: 12, fontWeight: '700', color: colors.quiz, marginRight: 4, backgroundColor: colors.quiz + '15', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 8 },
-  categoryArrow: { fontSize: 20, color: colors.textLight },
-  startButton: { marginHorizontal: 16, marginTop: 12, paddingVertical: 16, borderRadius: 14, alignItems: 'center' },
-  startButtonText: { fontSize: 16, fontWeight: '700', color: '#FFFFFF' },
+  categoryIcon: { fontSize: rs.font(24), marginRight: rs.space(12) },
+  categoryLabel: { flex: 1, fontSize: rs.font(15), fontWeight: '600', color: colors.text },
+  categoryCount: { fontSize: rs.font(12), fontWeight: '700', color: colors.quiz, marginRight: 4, backgroundColor: colors.quiz + '15', paddingHorizontal: rs.space(8), paddingVertical: 2, borderRadius: 8 },
+  categoryArrow: { fontSize: rs.font(20), color: colors.textLight },
+  startButton: { marginHorizontal: rs.space(16), marginTop: rs.space(12), paddingVertical: rs.space(16), borderRadius: 14, alignItems: 'center' },
+  startButtonText: { fontSize: rs.font(16), fontWeight: '700', color: '#FFFFFF' },
   resultCard: {
-    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, marginBottom: 6, padding: 12,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', marginHorizontal: rs.space(16), marginBottom: rs.space(6), padding: rs.space(12),
   },
   resultBadge: { width: 50, height: 50, borderRadius: 25, alignItems: 'center', justifyContent: 'center' },
-  resultPercent: { fontSize: 16, fontWeight: '800' },
-  resultInfo: { flex: 1, marginLeft: 12 },
-  resultScore: { fontSize: 15, fontWeight: '600', color: colors.text },
-  resultDate: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
+  resultPercent: { fontSize: rs.font(16), fontWeight: '800' },
+  resultInfo: { flex: 1, marginLeft: rs.space(12) },
+  resultScore: { fontSize: rs.font(15), fontWeight: '600', color: colors.text },
+  resultDate: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 },
 });

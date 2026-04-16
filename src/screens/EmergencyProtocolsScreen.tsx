@@ -14,6 +14,7 @@ import { PROTOCOL_CATEGORY_LABELS as CATEGORY_LABELS } from '../utils/labels';
 import { PremiumGate } from '../components/PremiumGate';
 import protocolsData from '../data/emergency_protocols.json';
 import { neuCard, neuPill } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -32,8 +33,9 @@ const PRIORITY_CONFIG = {
 };
 
 export function EmergencyProtocolsScreen({ navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const protocols = protocolsData as EmergencyProtocol[];
 
@@ -148,7 +150,7 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
   return (
     <PremiumGate feature="Protocolos de Emergencia">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor="#DC2626" barStyle="light-content" />
+      <StatusBar backgroundColor="#DC2626" barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Protocolos de Emergencia</Text>
         <Text style={styles.headerSubtitle}>{protocols.length} protocolos con fármacos y dosis</Text>
@@ -183,45 +185,45 @@ export function EmergencyProtocolsScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    backgroundColor: '#DC2626', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    backgroundColor: '#DC2626', paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: rs.space(4) },
   searchContainer: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 12, paddingHorizontal: 12, marginTop: 12,
+    borderRadius: 12, paddingHorizontal: rs.space(12), marginTop: rs.space(12),
   },
-  searchIcon: { fontSize: 16, marginRight: 8 },
-  searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
-  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
+  searchIcon: { fontSize: rs.font(16), marginRight: rs.space(8) },
+  searchInput: { flex: 1, color: '#FFFFFF', fontSize: rs.font(15), paddingVertical: rs.space(10) },
+  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: rs.font(16), padding: rs.space(4) },
   chipsScroll: {},
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
+  chipsContainer: { paddingHorizontal: rs.space(16), paddingVertical: rs.space(12), gap: rs.space(8), flexDirection: 'row', paddingRight: rs.space(24) },
+  chip: { ...neuPill(colors), paddingHorizontal: rs.space(12), paddingVertical: rs.space(6) },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
-  chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
+  chipText: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
-  resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  protocolCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
-  cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  cardIcon: { fontSize: 28, marginRight: 12 },
+  resultCount: { fontSize: rs.font(13), color: colors.textSecondary, marginHorizontal: rs.space(20), marginBottom: rs.space(8) },
+  protocolCard: { ...neuCard(colors), marginHorizontal: rs.space(16), marginBottom: rs.space(10), padding: rs.space(16), borderLeftWidth: 4 },
+  cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(8) },
+  cardIcon: { fontSize: rs.font(28), marginRight: rs.space(12) },
   cardTitleArea: { flex: 1 },
-  cardTitle: { fontSize: 16, fontWeight: '700', color: colors.text },
-  cardCategory: { fontSize: 11, fontWeight: '600', marginTop: 2 },
+  cardTitle: { fontSize: rs.font(16), fontWeight: '700', color: colors.text },
+  cardCategory: { fontSize: rs.font(11), fontWeight: '600', marginTop: 2 },
   priorityBadge: {
-    paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
+    paddingHorizontal: rs.space(8), paddingVertical: rs.space(3), borderRadius: 8,
   },
-  priorityText: { fontSize: 9, fontWeight: '800', letterSpacing: 0.5 },
-  cardDescription: { fontSize: 13, color: colors.textSecondary, lineHeight: 18 },
-  cardFooter: { flexDirection: 'row', alignItems: 'center', marginTop: 10, gap: 12 },
-  cardStepCount: { fontSize: 11, color: colors.textLight },
-  cardDrugCount: { fontSize: 11, color: colors.textLight },
-  cardArrow: { fontSize: 16, color: colors.textLight, marginLeft: 'auto' },
-  emptyState: { alignItems: 'center', paddingVertical: 60 },
-  emptyIcon: { fontSize: 48, marginBottom: 12 },
-  emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  emptyHint: { fontSize: 13, color: colors.textSecondary, marginTop: 4 },
+  priorityText: { fontSize: rs.font(11), fontWeight: '800', letterSpacing: 0.5 },
+  cardDescription: { fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(18) },
+  cardFooter: { flexDirection: 'row', alignItems: 'center', marginTop: rs.space(10), gap: rs.space(12) },
+  cardStepCount: { fontSize: rs.font(11), color: colors.textLight },
+  cardDrugCount: { fontSize: rs.font(11), color: colors.textLight },
+  cardArrow: { fontSize: rs.font(16), color: colors.textLight, marginLeft: 'auto' as const },
+  emptyState: { alignItems: 'center', paddingVertical: rs.space(60) },
+  emptyIcon: { fontSize: rs.font(48), marginBottom: rs.space(12) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+  emptyHint: { fontSize: rs.font(13), color: colors.textSecondary, marginTop: rs.space(4) },
 });

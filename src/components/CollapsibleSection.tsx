@@ -4,6 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -28,7 +29,8 @@ export function CollapsibleSection({
   badge,
 }: Props) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [isOpen, setIsOpen] = useState(initiallyOpen);
   const accent = accentColor || colors.primary;
   const rotateAnim = useRef(new Animated.Value(initiallyOpen ? 1 : 0)).current;
@@ -76,9 +78,9 @@ export function CollapsibleSection({
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
-    marginHorizontal: 16,
+    marginHorizontal: rs.space(16),
     marginVertical: 4,
     ...neuCardSubtle(colors),
   },
@@ -86,7 +88,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 14,
+    padding: rs.space(14),
     borderLeftWidth: 4,
     borderTopLeftRadius: 16,
   },
@@ -96,32 +98,32 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     flex: 1,
   },
   icon: {
-    fontSize: 18,
-    marginRight: 8,
+    fontSize: rs.font(18),
+    marginRight: rs.space(8),
   },
   title: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '600',
     color: colors.text,
     flex: 1,
   },
   badge: {
-    paddingHorizontal: 8,
+    paddingHorizontal: rs.space(8),
     paddingVertical: 2,
     borderRadius: 10,
-    marginLeft: 8,
+    marginLeft: rs.space(8),
   },
   badgeText: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     fontWeight: '700',
   },
   chevron: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     color: colors.textLight,
-    marginLeft: 8,
+    marginLeft: rs.space(8),
   },
   content: {
-    paddingHorizontal: 14,
-    paddingBottom: 14,
+    paddingHorizontal: rs.space(14),
+    paddingBottom: rs.space(14),
   },
 });

@@ -10,6 +10,7 @@ import { usePremium } from '../context/PremiumContext';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard } from '../utils/neumorphism';
 import { useFadeIn } from '../utils/animations';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import scalesData from '../data/clinical_scales.json';
 import labValuesData from '../data/lab_values.json';
 import protocolsData from '../data/emergency_protocols.json';
@@ -17,8 +18,9 @@ import protocolsData from '../data/emergency_protocols.json';
 const CONTACT_EMAIL = 'alexq2005@gmail.com';
 
 export function AboutScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { getDrugCount, pathologies } = useDrugData();
   const { isFreeBuild, isCodeActivated, activateWithCode } = usePremium();
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -67,7 +69,7 @@ export function AboutScreen() {
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <Animated.ScrollView style={{ opacity: fadeIn }} showsVerticalScrollIndicator={false}>
         {/* App Logo */}
         <View style={styles.logoSection}>
@@ -294,18 +296,18 @@ export function AboutScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.neuBackground,
   },
   logoSection: {
     alignItems: 'center',
-    paddingVertical: 32,
+    paddingVertical: rs.space(32),
     backgroundColor: colors.primary,
     borderBottomLeftRadius: 28,
     borderBottomRightRadius: 28,
-    marginBottom: 16,
+    marginBottom: rs.space(16),
   },
   logoContainer: {
     width: 100,
@@ -314,7 +316,7 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
+    marginBottom: rs.space(16),
   },
   crossContainer: {
     position: 'absolute',
@@ -363,62 +365,62 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     transform: [{ skewY: '4deg' }],
   },
   appName: {
-    fontSize: 20,
+    fontSize: rs.font(20),
     fontWeight: '800',
     color: '#FFFFFF',
     textAlign: 'center',
-    lineHeight: 26,
+    lineHeight: rs.font(26),
   },
   versionBadge: {
     backgroundColor: 'rgba(255,255,255,0.2)',
-    paddingHorizontal: 14,
+    paddingHorizontal: rs.space(14),
     paddingVertical: 4,
     borderRadius: 12,
-    marginTop: 10,
+    marginTop: rs.space(10),
   },
   versionText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     fontWeight: '700',
     color: '#FFFFFF',
   },
   card: {
-    ...neuCard(colors), margin: 16, marginBottom: 0, padding: 16,
-    marginTop: 12,
+    ...neuCard(colors), margin: rs.space(16), marginBottom: 0, padding: rs.space(16),
+    marginTop: rs.space(12),
   },
   cardTitle: {
-    fontSize: 17,
+    fontSize: rs.font(17),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 10,
+    marginBottom: rs.space(10),
   },
   cardText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.textSecondary,
-    lineHeight: 21,
-    marginBottom: 6,
+    lineHeight: rs.font(21),
+    marginBottom: rs.space(6),
   },
   statsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     marginTop: 4,
-    rowGap: 14,
+    rowGap: rs.space(14),
   },
   statItem: {
     alignItems: 'center',
     width: '30%',
   },
   statIcon: {
-    fontSize: 24,
+    fontSize: rs.font(24),
     marginBottom: 4,
   },
   statValue: {
-    fontSize: 20,
+    fontSize: rs.font(20),
     fontWeight: '800',
     color: colors.text,
   },
   statLabel: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     color: colors.textSecondary,
     marginTop: 2,
   },
@@ -426,45 +428,45 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.primaryLight + '12',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    paddingVertical: rs.space(14),
+    paddingHorizontal: rs.space(16),
     borderRadius: 12,
-    marginTop: 8,
+    marginTop: rs.space(8),
     borderWidth: 1,
     borderColor: colors.primaryLight + '25',
   },
   emailIcon: {
-    fontSize: 20,
-    marginRight: 10,
+    fontSize: rs.font(20),
+    marginRight: rs.space(10),
   },
   emailText: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '600',
     color: colors.primaryLight,
   },
   badgesRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 10,
-    marginHorizontal: 16,
-    marginBottom: 12,
+    gap: rs.space(10),
+    marginHorizontal: rs.space(16),
+    marginBottom: rs.space(12),
   },
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingHorizontal: rs.space(14),
+    paddingVertical: rs.space(10),
     borderRadius: 12,
     borderWidth: 1,
     flex: 1,
     justifyContent: 'center',
   },
   badgeIcon: {
-    fontSize: 18,
-    marginRight: 6,
+    fontSize: rs.font(18),
+    marginRight: rs.space(6),
   },
   badgeText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     fontWeight: '700',
   },
   featureList: {
@@ -473,90 +475,90 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
   featureRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 8,
+    marginBottom: rs.space(8),
   },
   featureIcon: {
-    fontSize: 15,
-    marginRight: 10,
+    fontSize: rs.font(15),
+    marginRight: rs.space(10),
     marginTop: 2,
   },
   featureText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
-    lineHeight: 19,
+    lineHeight: rs.font(19),
     flex: 1,
   },
   sourceList: {
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
   sourceRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 6,
+    marginBottom: rs.space(6),
   },
   sourceBullet: {
-    fontSize: 12,
-    marginRight: 8,
+    fontSize: rs.font(12),
+    marginRight: rs.space(8),
     marginTop: 1,
   },
   sourceText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
-    lineHeight: 18,
+    lineHeight: rs.font(18),
     flex: 1,
   },
   disclaimerCard: {
-    backgroundColor: colors.danger + '08',
+    backgroundColor: colors.neuSurface,
     borderWidth: 2,
-    borderColor: colors.danger + '30',
+    borderColor: colors.error + '60',
   },
   disclaimerTitle: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 8,
+    marginBottom: rs.space(8),
   },
   disclaimerText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
-    lineHeight: 19,
+    lineHeight: rs.font(19),
   },
   footer: {
     alignItems: 'center',
-    paddingVertical: 24,
-    paddingBottom: 40,
-    paddingHorizontal: 32,
+    paddingVertical: rs.space(24),
+    paddingBottom: rs.space(40),
+    paddingHorizontal: rs.space(32),
   },
   footerText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textLight,
     textAlign: 'center',
-    lineHeight: 18,
+    lineHeight: rs.font(18),
   },
   footerCopy: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     color: colors.textLight,
-    marginTop: 8,
+    marginTop: rs.space(8),
   },
   legalRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 14,
+    paddingVertical: rs.space(14),
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
   },
   legalIcon: {
-    fontSize: 18,
-    marginRight: 12,
+    fontSize: rs.font(18),
+    marginRight: rs.space(12),
   },
   legalText: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     color: colors.text,
     fontWeight: '500',
     flex: 1,
   },
   legalArrow: {
-    fontSize: 22,
+    fontSize: rs.font(22),
     color: colors.textLight,
     fontWeight: '300',
   },
@@ -565,39 +567,39 @@ const createStyles = (colors: ThemeColors) => StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 32,
+    padding: rs.space(32),
   },
   modalContent: {
     width: '100%',
     borderRadius: 16,
-    padding: 24,
+    padding: rs.space(24),
     elevation: 10,
   },
   modalTitle: {
-    fontSize: 18,
+    fontSize: rs.font(18),
     fontWeight: '700',
-    marginBottom: 16,
+    marginBottom: rs.space(16),
     textAlign: 'center',
   },
   modalInput: {
     borderWidth: 1,
     borderRadius: 10,
-    padding: 12,
-    fontSize: 15,
-    marginBottom: 16,
+    padding: rs.space(12),
+    fontSize: rs.font(15),
+    marginBottom: rs.space(16),
   },
   modalButtons: {
     flexDirection: 'row',
-    gap: 10,
+    gap: rs.space(10),
   },
   modalBtn: {
     flex: 1,
-    paddingVertical: 12,
+    paddingVertical: rs.space(12),
     borderRadius: 10,
     alignItems: 'center',
   },
   modalBtnText: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '600',
   },
 });

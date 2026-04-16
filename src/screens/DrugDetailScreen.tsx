@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react'
 import { View, Text, ScrollView, StyleSheet, StatusBar, TextInput, Animated, Modal, Pressable } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
+import { ImageBackground } from 'react-native';
 import ClipboardService from '@react-native-clipboard/clipboard';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
@@ -19,12 +20,15 @@ import { useFadeIn } from '../utils/animations';
 import { useRecentDrugs } from '../hooks/useRecentDrugs';
 import { SkeletonDrugDetail } from '../components/Skeleton';
 import { neuCard } from '../utils/neumorphism';
+import { getUnitImage, HERO_IMAGE } from '../utils/unitImages';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugDetail'>;
 
 function BulletList({ items, color }: { items: string[]; color?: string }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View>
       {items.map((item, i) => (
@@ -39,7 +43,8 @@ function BulletList({ items, color }: { items: string[]; color?: string }) {
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   if (!value) return null;
   return (
     <View style={styles.infoRow}>
@@ -60,7 +65,8 @@ const PREGNANCY_INFO: Record<string, { label: string; desc: string; risk: string
 
 function PregnancyModal({ visible, onClose, current }: { visible: boolean; onClose: () => void; current: string }) {
   const { colors } = useTheme();
-  const s = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const s = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <Pressable style={s.modalOverlay} onPress={onClose}>
@@ -95,6 +101,7 @@ function PregnancyModal({ visible, onClose, current }: { visible: boolean; onClo
 
 function CopyButton({ text, colors: c }: { text: string; colors: ThemeColors }) {
   const [copied, setCopied] = useState(false);
+  const rs = useResponsiveScale();
   const handleCopy = useCallback(() => {
     ClipboardService.setString(text);
     setCopied(true);
@@ -104,7 +111,7 @@ function CopyButton({ text, colors: c }: { text: string; colors: ThemeColors }) 
     <TouchableOpacity
       onPress={handleCopy}
       hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-      style={{ paddingHorizontal: 6, paddingVertical: 2 }}
+      style={{ paddingHorizontal: rs.space(6), paddingVertical: rs.space(2) }}
     >
       <MaterialCommunityIcons name={copied ? 'check' : 'content-copy'} size={14} color={copied ? c.success : c.textLight} />
     </TouchableOpacity>
@@ -112,8 +119,9 @@ function CopyButton({ text, colors: c }: { text: string; colors: ThemeColors }) 
 }
 
 export function DrugDetailScreen({ route, navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { getDrugById, getUnitById, pathologies } = useDrugData();
   const { isFavorite, toggleFavorite } = useFavoritesContext();
   const { getNote, saveNote } = useNotesContext();
@@ -161,15 +169,15 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   if (!drug) {
     return (
       <View style={styles.errorContainer}>
-        <MaterialCommunityIcons name="pill-off" size={48} color={colors.textLight} style={{ marginBottom: 12 }} />
+        <MaterialCommunityIcons name="pill-off" size={48} color={colors.textLight} style={{ marginBottom: rs.space(12) }} />
         <Text style={styles.errorText}>Fármaco no encontrado</Text>
         <TouchableOpacity
-          style={{ marginTop: 16, backgroundColor: colors.primary, paddingHorizontal: 24, paddingVertical: 12, borderRadius: 12 }}
+          style={{ marginTop: rs.space(16), backgroundColor: colors.primary, paddingHorizontal: rs.space(24), paddingVertical: rs.space(12), borderRadius: 12 }}
           onPress={() => navigation.goBack()}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <MaterialCommunityIcons name="chevron-left" size={18} color="#FFFFFF" style={{ marginRight: 4 }} />
-            <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15 }}>Volver</Text>
+            <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: rs.font(15) }}>Volver</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -192,12 +200,17 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={unitColor} barStyle="light-content" />
+      <StatusBar backgroundColor={unitColor} barStyle={isDark ? 'light-content' : 'dark-content'} />
 
+      <ImageBackground
+        source={getUnitImage(drug.unidadId) || HERO_IMAGE}
+        style={styles.headerImageBg}
+        resizeMode="cover"
+      >
       <LinearGradient
-        colors={[unitColor, unitColor + 'CC']}
+        colors={[unitColor + '80', unitColor + 'E6']}
         start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
+        end={{ x: 0, y: 1 }}
         style={styles.header}
       >
         <View style={styles.headerTopRow}>
@@ -211,7 +224,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => toggleFavorite(drug.id)}
-            style={[styles.favButton, { marginLeft: 8 }]}
+            style={[styles.favButton, { marginLeft: rs.space(8) }]}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
             <MaterialCommunityIcons name={isFavorite(drug.id) ? 'heart' : 'heart-outline'} size={18} color={isFavorite(drug.id) ? '#E91E63' : '#FFFFFF'} />
@@ -266,6 +279,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </View>
         )}
       </LinearGradient>
+      </ImageBackground>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {(() => {
@@ -294,7 +308,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             accessibilityRole="button"
             accessibilityLabel="Comprobar interacciones"
           >
-            <MaterialCommunityIcons name="swap-horizontal" size={16} color={colors.info} style={{ marginRight: 6 }} />
+            <MaterialCommunityIcons name="swap-horizontal" size={16} color={colors.info} style={{ marginRight: rs.space(6) }} />
             <Text style={[styles.quickActionLabel, { color: colors.info }]}>Interacciones</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -303,13 +317,13 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             accessibilityRole="button"
             accessibilityLabel="Comparar fármaco"
           >
-            <MaterialCommunityIcons name="scale-balance" size={16} color={colors.primary} style={{ marginRight: 6 }} />
+            <MaterialCommunityIcons name="scale-balance" size={16} color={colors.primary} style={{ marginRight: rs.space(6) }} />
             <Text style={[styles.quickActionLabel, { color: colors.primary }]}>Comparar</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.doseCard}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-            <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(10) }}>
+            <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: rs.space(6) }} />
             <Text style={[styles.doseSectionTitle, { marginBottom: 0 }]}>Vía y Dosis</Text>
           </View>
 
@@ -376,7 +390,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         {(drug.preparacionDilucion || drug.reconstitucion || (Array.isArray(drug.solucionesCompatibles) && drug.solucionesCompatibles.length > 0)) && !drug.preparacionParenteral && (
           <View style={styles.parenteralCard}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-              <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+              <MaterialCommunityIcons name="needle" size={20} color={colors.primary} style={{ marginRight: rs.space(6) }} />
               <Text style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}>Preparación y Dilución</Text>
             </View>
             {drug.reconstitucion && (
@@ -393,7 +407,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               <CollapsibleSection title="Soluciones Compatibles" icon="test-tube" accentColor="#0891B2">
                 {drug.solucionesCompatibles.map((sol: string, i: number) => (
                   <View key={i} style={styles.proteccionRow}>
-                    <MaterialCommunityIcons name={sol.startsWith('INCOMPATIBLE') ? 'close-circle' : 'check-circle'} size={16} color={sol.startsWith('INCOMPATIBLE') ? '#DC2626' : '#059669'} style={{ marginRight: 8, marginTop: 1 }} />
+                    <MaterialCommunityIcons name={sol.startsWith('INCOMPATIBLE') ? 'close-circle' : 'check-circle'} size={16} color={sol.startsWith('INCOMPATIBLE') ? '#DC2626' : '#059669'} style={{ marginRight: rs.space(8), marginTop: 1 }} />
                     <Text style={styles.proteccionText}>{sol}</Text>
                   </View>
                 ))}
@@ -410,14 +424,14 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         {drug.preparacionParenteral && (
           <View style={styles.parenteralCard}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-              <MaterialCommunityIcons name="iv-bag" size={20} color={colors.primary} style={{ marginRight: 6 }} />
+              <MaterialCommunityIcons name="iv-bag" size={20} color={colors.primary} style={{ marginRight: rs.space(6) }} />
               <Text style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}>Guía de Administración Parenteral</Text>
             </View>
 
             {drug.preparacionParenteral.medicamentoPeligroso && (
               <View style={styles.hazardBadge}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <MaterialCommunityIcons name="alert-outline" size={18} color="#DC2626" style={{ marginRight: 6 }} />
+                  <MaterialCommunityIcons name="alert-outline" size={18} color="#DC2626" style={{ marginRight: rs.space(6) }} />
                   <Text style={styles.hazardText}>MEDICAMENTO PELIGROSO</Text>
                 </View>
               </View>
@@ -463,7 +477,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                       name={drug.preparacionParenteral.solucionesCompatibles.ssf === true ? 'check-circle' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? 'close-circle' : 'alert-circle'}
                       size={18}
                       color={drug.preparacionParenteral.solucionesCompatibles.ssf === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.ssf === false ? '#DC2626' : '#D97706'}
-                      style={{ marginRight: 10, marginTop: 1 }}
+                      style={{ marginRight: rs.space(10), marginTop: 1 }}
                     />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>SSF (NaCl 0.9%)</Text>
@@ -479,7 +493,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                       name={drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? 'check-circle' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? 'close-circle' : 'alert-circle'}
                       size={18}
                       color={drug.preparacionParenteral.solucionesCompatibles.sg5 === true ? '#059669' : drug.preparacionParenteral.solucionesCompatibles.sg5 === false ? '#DC2626' : '#D97706'}
-                      style={{ marginRight: 10, marginTop: 1 }}
+                      style={{ marginRight: rs.space(10), marginTop: 1 }}
                     />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>SG 5%</Text>
@@ -491,7 +505,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 )}
                 {drug.preparacionParenteral.solucionesCompatibles.otras && (
                   <View style={styles.compatRow}>
-                    <MaterialCommunityIcons name="information-outline" size={18} color={colors.info} style={{ marginRight: 10, marginTop: 1 }} />
+                    <MaterialCommunityIcons name="information-outline" size={18} color={colors.info} style={{ marginRight: rs.space(10), marginTop: 1 }} />
                     <View style={styles.compatInfo}>
                       <Text style={styles.compatName}>Otras</Text>
                       <Text style={styles.compatNote}>{drug.preparacionParenteral.solucionesCompatibles.otras}</Text>
@@ -553,8 +567,8 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         )}
 
         <View style={styles.nursingCard}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-            <MaterialCommunityIcons name="account-heart-outline" size={20} color={colors.nursing} style={{ marginRight: 6 }} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(10) }}>
+            <MaterialCommunityIcons name="account-heart-outline" size={20} color={colors.nursing} style={{ marginRight: rs.space(6) }} />
             <Text style={[styles.nursingSectionTitle, { marginBottom: 0 }]}>Cuidados de Enfermería</Text>
           </View>
           <BulletList items={drug.cuidadosEnfermeria} color={colors.nursing} />
@@ -562,8 +576,8 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
         {drug.riesgosSobremedicacion && (
           <View style={styles.riskCard}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-              <MaterialCommunityIcons name="alert-outline" size={20} color={colors.error} style={{ marginRight: 6 }} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(8) }}>
+              <MaterialCommunityIcons name="alert-outline" size={20} color={colors.error} style={{ marginRight: rs.space(6) }} />
               <Text style={[styles.riskSectionTitle, { marginBottom: 0 }]}>Riesgos por Sobremedicación</Text>
             </View>
             <Text style={styles.riskDescription}>{drug.riesgosSobremedicacion.descripcion}</Text>
@@ -582,7 +596,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             {drug.riesgosSobremedicacion.alerta && (
               <View style={styles.riskAlerta}>
                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                  <MaterialCommunityIcons name="alert-octagon" size={16} color={colors.error} style={{ marginRight: 6, marginTop: 1 }} />
+                  <MaterialCommunityIcons name="alert-octagon" size={16} color={colors.error} style={{ marginRight: rs.space(6), marginTop: 1 }} />
                   <Text style={[styles.riskAlertaText, { flex: 1 }]}>{drug.riesgosSobremedicacion.alerta}</Text>
                 </View>
               </View>
@@ -599,7 +613,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         <CollapsibleSection title="Mecanismo de Acción" icon="cog-outline" accentColor={unitColor}>
           <Text style={styles.bodyText}>{mainMechanism || 'Sin datos disponibles'}</Text>
           {notaMatch && !isReplacement && (
-            <Text style={[styles.bodyText, { marginTop: 8, fontStyle: 'italic', color: colors.textSecondary }]}>Nota: {notaMatch[1]}</Text>
+            <Text style={[styles.bodyText, { marginTop: rs.space(8), fontStyle: 'italic', color: colors.textSecondary }]}>Nota: {notaMatch[1]}</Text>
           )}
         </CollapsibleSection>
 
@@ -656,10 +670,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             {relatedPathologies.map(p => (
               <TouchableOpacity
                 key={p.id}
-                style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 6 }}
+                style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(6) }}
                 onPress={() => navigation.navigate('PathologyDetail', { pathologyId: p.id })}
               >
-                <Text style={{ fontSize: 14, color: colors.primary, fontWeight: '600', flex: 1 }}>{p.nombre}</Text>
+                <Text style={{ fontSize: rs.font(14), color: colors.primary, fontWeight: '600', flex: 1 }}>{p.nombre}</Text>
                 <MaterialCommunityIcons name="chevron-right" size={16} color={colors.textLight} />
               </TouchableOpacity>
             ))}
@@ -668,18 +682,18 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
         {/* Embarazo Nota */}
         {drug.embarazoNota && (
-          <View style={{ marginHorizontal: 16, marginTop: 6, backgroundColor: colors.warning + '10', borderRadius: 8, padding: 10, borderWidth: 1, borderColor: colors.warning + '25' }}>
+          <View style={{ marginHorizontal: rs.space(16), marginTop: rs.space(6), backgroundColor: colors.warning + '10', borderRadius: 8, padding: rs.space(10), borderWidth: 1, borderColor: colors.warning + '25' }}>
             <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
               <MaterialCommunityIcons name="clipboard-text-outline" size={14} color={colors.textSecondary} style={{ marginRight: 4, marginTop: 1 }} />
-              <Text style={{ fontSize: 12, color: colors.textSecondary, lineHeight: 17, flex: 1 }}>{drug.embarazoNota}</Text>
+              <Text style={{ fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17), flex: 1 }}>{drug.embarazoNota}</Text>
             </View>
           </View>
         )}
 
         {/* Personal Notes */}
         <View style={styles.notesSection}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-            <MaterialCommunityIcons name="note-text-outline" size={18} color={colors.text} style={{ marginRight: 6 }} />
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(8) }}>
+            <MaterialCommunityIcons name="note-text-outline" size={18} color={colors.text} style={{ marginRight: rs.space(6) }} />
             <Text style={[styles.notesSectionTitle, { marginBottom: 0 }]}>Mis Notas</Text>
           </View>
           <TextInput
@@ -703,142 +717,145 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
+  headerImageBg: {
+    borderBottomLeftRadius: 24, borderBottomRightRadius: 24, overflow: 'hidden',
+  },
   header: {
-    paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
   headerTopRow: { flexDirection: 'row', alignItems: 'center' },
-  unitName: { fontSize: 12, color: 'rgba(255,255,255,0.7)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1 },
-  favButton: { backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 20, width: 36, height: 36, alignItems: 'center', justifyContent: 'center' },
-  favButtonIcon: { fontSize: 18 },
-  drugName: { fontSize: 26, fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
-  genericName: { fontSize: 15, color: 'rgba(255,255,255,0.8)', fontStyle: 'italic', marginTop: 2 },
-  headerBadges: { flexDirection: 'row', marginTop: 10, gap: 8 },
-  pregBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
-  pregText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
-  familyBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.2)' },
-  familyText: { color: '#FFFFFF', fontSize: 12, fontWeight: '600' },
-  grupoRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
-  grupoBadge: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3 },
-  grupoLabel: { color: 'rgba(255,255,255,0.7)', fontSize: 10, fontWeight: '800', marginRight: 5 },
-  grupoText: { color: '#FFFFFF', fontSize: 11, fontWeight: '500' },
+  unitName: { fontSize: rs.font(12), color: 'rgba(255,255,255,0.7)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1 },
+  favButton: { backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 20, width: rs.space(36), height: rs.space(36), alignItems: 'center', justifyContent: 'center' },
+  favButtonIcon: { fontSize: rs.font(18) },
+  drugName: { fontSize: rs.font(26), fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
+  genericName: { fontSize: rs.font(15), color: 'rgba(255,255,255,0.8)', fontStyle: 'italic', marginTop: 2 },
+  headerBadges: { flexDirection: 'row', marginTop: rs.space(10), gap: rs.space(8) },
+  pregBadge: { paddingHorizontal: rs.space(10), paddingVertical: rs.space(4), borderRadius: 12 },
+  pregText: { color: '#FFFFFF', fontSize: rs.font(12), fontWeight: '700' },
+  familyBadge: { paddingHorizontal: rs.space(10), paddingVertical: rs.space(4), borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.2)' },
+  familyText: { color: '#FFFFFF', fontSize: rs.font(12), fontWeight: '600' },
+  grupoRow: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(6), marginTop: rs.space(8) },
+  grupoBadge: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 8, paddingHorizontal: rs.space(8), paddingVertical: rs.space(3) },
+  grupoLabel: { color: 'rgba(255,255,255,0.7)', fontSize: rs.font(10), fontWeight: '800', marginRight: rs.space(5) },
+  grupoText: { color: '#FFFFFF', fontSize: rs.font(11), fontWeight: '500' },
   scroll: { flex: 1, marginTop: -12 },
   doseCard: {
-    ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 16,
+    ...neuCard(colors), marginHorizontal: rs.space(16), marginTop: rs.space(16), padding: rs.space(16),
     borderColor: colors.primaryLight + '30',
   },
-  doseSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.primary, marginBottom: 10 },
-  routesContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 12 },
-  routeChip: { paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12, borderWidth: 1 },
-  routeChipText: { fontSize: 13, fontWeight: '600' },
-  doseBox: { backgroundColor: colors.background, padding: 10, borderRadius: 8, marginBottom: 6 },
+  doseSectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.primary, marginBottom: rs.space(10) },
+  routesContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(6), marginBottom: rs.space(12) },
+  routeChip: { paddingHorizontal: rs.space(12), paddingVertical: rs.space(4), borderRadius: 12, borderWidth: 1 },
+  routeChipText: { fontSize: rs.font(13), fontWeight: '600' },
+  doseBox: { backgroundColor: colors.background, padding: rs.space(10), borderRadius: 8, marginBottom: rs.space(6) },
   pediatricBox: { backgroundColor: colors.pediatric + '10', borderWidth: 1, borderColor: colors.pediatric + '30' },
   doseLabelRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  doseLabel: { fontSize: 12, fontWeight: '700', color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
-  doseValue: { fontSize: 14, color: colors.text, lineHeight: 20 },
+  doseLabel: { fontSize: rs.font(12), fontWeight: '700', color: colors.textSecondary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
+  doseValue: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20) },
   parenteralCard: {
-    backgroundColor: colors.primary + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16,
+    backgroundColor: colors.primary + '08', marginHorizontal: rs.space(16), marginTop: rs.space(12), padding: rs.space(16), borderRadius: 16,
     borderWidth: 2, borderColor: colors.primary + '25',
   },
-  parenteralSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.primary, marginBottom: 4 },
+  parenteralSectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.primary, marginBottom: 4 },
   hazardBadge: {
-    backgroundColor: '#DC262615', borderRadius: 10, padding: 10, marginBottom: 10,
+    backgroundColor: '#DC262615', borderRadius: 10, padding: rs.space(10), marginBottom: rs.space(10),
     borderWidth: 1, borderColor: '#DC262640', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
   },
-  hazardText: { fontSize: 14, fontWeight: '800', color: '#DC2626', letterSpacing: 0.5 },
-  parenteralRow: { backgroundColor: colors.background, padding: 10, borderRadius: 8, marginBottom: 6 },
-  parenteralLabel: { fontSize: 12, fontWeight: '700', color: colors.primary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
-  parenteralValue: { fontSize: 14, color: colors.text, lineHeight: 20 },
-  compatRow: { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 6, paddingHorizontal: 4 },
-  compatIcon: { fontSize: 18, marginRight: 10, marginTop: 1 },
+  hazardText: { fontSize: rs.font(14), fontWeight: '800', color: '#DC2626', letterSpacing: 0.5 },
+  parenteralRow: { backgroundColor: colors.background, padding: rs.space(10), borderRadius: 8, marginBottom: rs.space(6) },
+  parenteralLabel: { fontSize: rs.font(12), fontWeight: '700', color: colors.primary, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 2 },
+  parenteralValue: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20) },
+  compatRow: { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: rs.space(6), paddingHorizontal: rs.space(4) },
+  compatIcon: { fontSize: rs.font(18), marginRight: rs.space(10), marginTop: 1 },
   compatInfo: { flex: 1 },
-  compatName: { fontSize: 14, fontWeight: '600', color: colors.text },
-  compatNote: { fontSize: 13, color: colors.textSecondary, marginTop: 2, lineHeight: 18 },
-  proteccionRow: { flexDirection: 'row', marginBottom: 4, paddingRight: 8 },
-  proteccionBullet: { fontSize: 14, color: '#DC2626', marginRight: 8, marginTop: 1 },
-  proteccionText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
-  nursingCard: { backgroundColor: colors.nursing + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16, borderWidth: 2, borderColor: colors.nursing + '25' },
-  nursingSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.nursing, marginBottom: 10 },
-  riskCard: { backgroundColor: colors.error + '08', marginHorizontal: 16, marginTop: 12, padding: 16, borderRadius: 16, borderWidth: 2, borderColor: colors.error + '30' },
-  riskSectionTitle: { fontSize: 18, fontWeight: '700', color: colors.error, marginBottom: 8 },
-  riskDescription: { fontSize: 14, color: colors.text, lineHeight: 20, marginBottom: 10 },
-  riskEffects: { marginBottom: 10 },
-  riskSubtitle: { fontSize: 12, fontWeight: '700', color: colors.error, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 6 },
-  riskManejo: { backgroundColor: colors.warning + '12', borderRadius: 8, padding: 10, borderLeftWidth: 3, borderLeftColor: colors.warning, marginBottom: 8 },
-  riskManejoLabel: { fontSize: 12, fontWeight: '700', color: colors.warning, marginBottom: 4 },
-  riskManejoText: { fontSize: 13, color: colors.text, lineHeight: 19 },
-  riskAlerta: { backgroundColor: colors.error + '15', borderRadius: 8, padding: 10 },
-  riskAlertaText: { fontSize: 13, fontWeight: '700', color: colors.error, lineHeight: 19 },
+  compatName: { fontSize: rs.font(14), fontWeight: '600', color: colors.text },
+  compatNote: { fontSize: rs.font(13), color: colors.textSecondary, marginTop: 2, lineHeight: rs.font(18) },
+  proteccionRow: { flexDirection: 'row', marginBottom: 4, paddingRight: rs.space(8) },
+  proteccionBullet: { fontSize: rs.font(14), color: '#DC2626', marginRight: rs.space(8), marginTop: 1 },
+  proteccionText: { fontSize: rs.font(14), color: colors.text, flex: 1, lineHeight: rs.font(20) },
+  nursingCard: { backgroundColor: colors.nursing + '08', marginHorizontal: rs.space(16), marginTop: rs.space(12), padding: rs.space(16), borderRadius: 16, borderWidth: 2, borderColor: colors.nursing + '25' },
+  nursingSectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.nursing, marginBottom: rs.space(10) },
+  riskCard: { backgroundColor: colors.error + '08', marginHorizontal: rs.space(16), marginTop: rs.space(12), padding: rs.space(16), borderRadius: 16, borderWidth: 2, borderColor: colors.error + '30' },
+  riskSectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.error, marginBottom: rs.space(8) },
+  riskDescription: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20), marginBottom: rs.space(10) },
+  riskEffects: { marginBottom: rs.space(10) },
+  riskSubtitle: { fontSize: rs.font(12), fontWeight: '700', color: colors.error, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: rs.space(6) },
+  riskManejo: { backgroundColor: colors.warning + '12', borderRadius: 8, padding: rs.space(10), borderLeftWidth: 3, borderLeftColor: colors.warning, marginBottom: rs.space(8) },
+  riskManejoLabel: { fontSize: rs.font(12), fontWeight: '700', color: colors.warning, marginBottom: 4 },
+  riskManejoText: { fontSize: rs.font(13), color: colors.text, lineHeight: rs.font(19) },
+  riskAlerta: { backgroundColor: colors.error + '15', borderRadius: 8, padding: rs.space(10) },
+  riskAlertaText: { fontSize: rs.font(13), fontWeight: '700', color: colors.error, lineHeight: rs.font(19) },
   replacementHeaderBadge: {
     backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 10,
-    paddingHorizontal: 12, paddingVertical: 6, marginTop: 10, alignSelf: 'flex-start',
+    paddingHorizontal: rs.space(12), paddingVertical: rs.space(6), marginTop: rs.space(10), alignSelf: 'flex-start',
   },
-  replacementHeaderText: { color: '#FFFFFF', fontSize: 12, fontWeight: '700' },
+  replacementHeaderText: { color: '#FFFFFF', fontSize: rs.font(12), fontWeight: '700' },
   replacementBanner: {
-    marginHorizontal: 16, marginTop: 12, backgroundColor: '#0891B2' + '10',
-    borderRadius: 12, padding: 12, borderLeftWidth: 3, borderLeftColor: '#0891B2',
+    marginHorizontal: rs.space(16), marginTop: rs.space(12), backgroundColor: '#0891B2' + '10',
+    borderRadius: 12, padding: rs.space(12), borderLeftWidth: 3, borderLeftColor: '#0891B2',
   },
-  replacementBannerText: { fontSize: 13, color: colors.textSecondary, lineHeight: 20 },
-  bodyText: { fontSize: 14, color: colors.text, lineHeight: 21 },
-  bulletRow: { flexDirection: 'row', marginBottom: 4, paddingRight: 8 },
-  bullet: { fontSize: 14, color: colors.text, marginRight: 8, marginTop: 1 },
-  bulletText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
-  infoRow: { flexDirection: 'row', paddingVertical: 4, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  infoLabel: { fontSize: 13, fontWeight: '600', color: colors.textSecondary, width: 110 },
-  infoValue: { fontSize: 13, color: colors.text, flex: 1 },
+  replacementBannerText: { fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(20) },
+  bodyText: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(21) },
+  bulletRow: { flexDirection: 'row', marginBottom: 4, paddingRight: rs.space(8) },
+  bullet: { fontSize: rs.font(14), color: colors.text, marginRight: rs.space(8), marginTop: 1 },
+  bulletText: { fontSize: rs.font(14), color: colors.text, flex: 1, lineHeight: rs.font(20) },
+  infoRow: { flexDirection: 'row', paddingVertical: rs.space(4), borderBottomWidth: 1, borderBottomColor: colors.borderLight },
+  infoLabel: { fontSize: rs.font(13), fontWeight: '600', color: colors.textSecondary, flex: 0.35, maxWidth: rs.space(120) },
+  infoValue: { fontSize: rs.font(13), color: colors.text, flex: 1 },
   classificationBadge: {
-    alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.2)', paddingHorizontal: 10,
-    paddingVertical: 3, borderRadius: 10, marginTop: 6,
+    alignSelf: 'flex-start', backgroundColor: 'rgba(255,255,255,0.2)', paddingHorizontal: rs.space(10),
+    paddingVertical: rs.space(3), borderRadius: 10, marginTop: rs.space(6),
   },
-  classificationText: { color: '#FFFFFF', fontSize: 11, fontWeight: '600' },
+  classificationText: { color: '#FFFFFF', fontSize: rs.font(11), fontWeight: '600' },
   notesSection: {
-    marginHorizontal: 16, marginTop: 12, backgroundColor: colors.noteBackground,
-    borderRadius: 14, padding: 14, borderWidth: 1, borderColor: colors.noteBorder,
+    marginHorizontal: rs.space(16), marginTop: rs.space(12), backgroundColor: colors.noteBackground,
+    borderRadius: 14, padding: rs.space(14), borderWidth: 1, borderColor: colors.noteBorder,
   },
-  notesSectionTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
+  notesSectionTitle: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(8) },
   notesInput: {
-    backgroundColor: colors.surface, borderRadius: 10, padding: 12, fontSize: 14,
-    color: colors.text, minHeight: 80, borderWidth: 1, borderColor: colors.border,
+    backgroundColor: colors.surface, borderRadius: 10, padding: rs.space(12), fontSize: rs.font(14),
+    color: colors.text, minHeight: rs.space(80), borderWidth: 1, borderColor: colors.border,
   },
-  notesSaved: { fontSize: 11, color: colors.textLight, marginTop: 4, textAlign: 'right', fontStyle: 'italic' },
+  notesSaved: { fontSize: rs.font(11), color: colors.textLight, marginTop: 4, textAlign: 'right', fontStyle: 'italic' },
   quickActionRow: {
-    flexDirection: 'row', gap: 8, marginHorizontal: 16, marginTop: 12,
+    flexDirection: 'row', gap: rs.space(8), marginHorizontal: rs.space(16), marginTop: rs.space(12),
   },
   quickActionBtn: {
     flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
-    paddingVertical: 10, borderRadius: 12, borderWidth: 1,
+    paddingVertical: rs.space(10), borderRadius: 12, borderWidth: 1,
   },
-  quickActionIcon: { fontSize: 16, marginRight: 6 },
-  quickActionLabel: { fontSize: 13, fontWeight: '600' },
+  quickActionIcon: { fontSize: rs.font(16), marginRight: rs.space(6) },
+  quickActionLabel: { fontSize: rs.font(13), fontWeight: '600' },
   incompleteBadge: {
-    marginHorizontal: 16, marginTop: 12, backgroundColor: colors.info + '10',
-    borderRadius: 10, padding: 10, borderWidth: 1, borderColor: colors.info + '25',
+    marginHorizontal: rs.space(16), marginTop: rs.space(12), backgroundColor: colors.info + '10',
+    borderRadius: 10, padding: rs.space(10), borderWidth: 1, borderColor: colors.info + '25',
   },
-  incompleteBadgeText: { fontSize: 12, color: colors.info, lineHeight: 17 },
-  bottomSpacer: { height: 40 },
+  incompleteBadgeText: { fontSize: rs.font(12), color: colors.info, lineHeight: rs.font(17) },
+  bottomSpacer: { height: rs.space(40) },
   errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  errorText: { fontSize: 16, color: colors.error },
+  errorText: { fontSize: rs.font(16), color: colors.error },
   modalOverlay: {
-    flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center', padding: 20,
+    flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center', padding: rs.space(20),
   },
   modalContent: {
-    backgroundColor: colors.surface, borderRadius: 20, padding: 20, width: '100%', maxHeight: '85%',
+    backgroundColor: colors.surface, borderRadius: 20, padding: rs.space(20), width: '100%', maxHeight: '85%',
     elevation: 10, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8,
   },
-  modalTitle: { fontSize: 18, fontWeight: '800', color: colors.text, textAlign: 'center' },
-  modalSubtitle: { fontSize: 13, color: colors.textSecondary, textAlign: 'center', marginBottom: 16, marginTop: 2 },
+  modalTitle: { fontSize: rs.font(18), fontWeight: '800', color: colors.text, textAlign: 'center' },
+  modalSubtitle: { fontSize: rs.font(13), color: colors.textSecondary, textAlign: 'center', marginBottom: rs.space(16), marginTop: 2 },
   pregModalRow: {
-    flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 10, paddingHorizontal: 10,
-    borderRadius: 12, borderWidth: 1, borderColor: 'transparent', marginBottom: 6,
+    flexDirection: 'row', alignItems: 'flex-start', paddingVertical: rs.space(10), paddingHorizontal: rs.space(10),
+    borderRadius: 12, borderWidth: 1, borderColor: 'transparent', marginBottom: rs.space(6),
   },
   pregModalBadge: {
-    width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginRight: 12, marginTop: 2,
+    width: rs.space(32), height: rs.space(32), borderRadius: 16, alignItems: 'center', justifyContent: 'center', marginRight: rs.space(12), marginTop: 2,
   },
-  pregModalBadgeText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
-  pregModalRisk: { fontSize: 13, fontWeight: '700', marginBottom: 2 },
-  pregModalDesc: { fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
-  modalCloseBtn: { marginTop: 16, paddingVertical: 12, borderRadius: 12, alignItems: 'center' },
-  modalCloseBtnText: { color: '#FFFFFF', fontSize: 15, fontWeight: '700' },
+  pregModalBadgeText: { color: '#FFFFFF', fontSize: rs.font(16), fontWeight: '800' },
+  pregModalRisk: { fontSize: rs.font(13), fontWeight: '700', marginBottom: 2 },
+  pregModalDesc: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17) },
+  modalCloseBtn: { marginTop: rs.space(16), paddingVertical: rs.space(12), borderRadius: 12, alignItems: 'center' },
+  modalCloseBtnText: { color: '#FFFFFF', fontSize: rs.font(15), fontWeight: '700' },
 });

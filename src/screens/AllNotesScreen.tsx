@@ -10,12 +10,14 @@ import type { ThemeColors } from '../utils/colors';
 import { neuCard } from '../utils/neumorphism';
 import { UNIT_COLORS } from '../utils/colors';
 import { useFadeIn } from '../utils/animations';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AllNotes'>;
 
 export function AllNotesScreen({ navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { notes, deleteNote } = useNotesContext();
   const { getDrugById } = useDrugData();
   const fadeIn = useFadeIn();
@@ -34,7 +36,7 @@ export function AllNotesScreen({ navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <FlatList
         data={sortedNotes}
         keyExtractor={item => item.drugId}
@@ -76,18 +78,18 @@ export function AllNotesScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  list: { padding: 16, paddingBottom: 32 },
-  emptyContainer: { alignItems: 'center', paddingVertical: 60 },
-  emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  emptySubtext: { fontSize: 13, color: colors.textLight, marginTop: 4 },
+  list: { padding: rs.space(16), paddingBottom: rs.space(32) },
+  emptyContainer: { alignItems: 'center', paddingVertical: rs.space(60) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+  emptySubtext: { fontSize: rs.font(13), color: colors.textLight, marginTop: 4 },
   noteCard: {
-    ...neuCard(colors), padding: 14, marginBottom: 10, borderLeftWidth: 4,
+    ...neuCard(colors), padding: rs.space(14), marginBottom: rs.space(10), borderLeftWidth: 4,
   },
-  noteHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
-  noteDrug: { fontSize: 16, fontWeight: '700', color: colors.text, flex: 1, marginRight: 8 },
-  deleteBtn: { fontSize: 16 },
-  noteText: { fontSize: 14, color: colors.textSecondary, lineHeight: 20 },
-  noteDate: { fontSize: 11, color: colors.textLight, marginTop: 6 },
+  noteHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: rs.space(6) },
+  noteDrug: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, flex: 1, marginRight: rs.space(8) },
+  deleteBtn: { fontSize: rs.font(16) },
+  noteText: { fontSize: rs.font(14), color: colors.textSecondary, lineHeight: rs.font(20) },
+  noteDate: { fontSize: rs.font(11), color: colors.textLight, marginTop: rs.space(6) },
 });

@@ -11,6 +11,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { PremiumGate } from '../components/PremiumGate';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'InteractionChecker'>;
 
@@ -114,14 +115,14 @@ function findInteractions(drug1: Drug, drug2: Drug): InteractionResult | null {
 }
 
 export function InteractionCheckerScreen({ navigation, route }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { drugs } = useDrugData();
   const [selectedDrugs, setSelectedDrugs] = useState<Drug[]>([]);
   const fadeIn = useFadeIn();
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Preload drug if navigated with preloadDrugId
   useEffect(() => {
     const preloadId = route.params?.preloadDrugId;
     if (preloadId && drugs.length > 0) {
@@ -174,7 +175,7 @@ export function InteractionCheckerScreen({ navigation, route }: Props) {
   return (
     <PremiumGate feature="Verificador de Interacciones">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.accent} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.accent} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Verificador de Interacciones</Text>
         <Text style={styles.headerSubtitle}>Selecciona 2-6 fármacos para verificar interacciones</Text>
@@ -284,43 +285,43 @@ Esta herramienta es de apoyo educativo. Las interacciones se basan en la informa
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  header: { backgroundColor: '#7C3AED', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  header: { backgroundColor: '#7C3AED', paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20), borderBottomLeftRadius: 24, borderBottomRightRadius: 24 },
+  headerTitle: { fontSize: rs.font(22), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(13), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   scroll: { flex: 1 },
-  selectedSection: { padding: 16, paddingBottom: 8 },
-  selectedTitle: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 8 },
-  selectedChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  selectedChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, gap: 6 },
-  selectedChipText: { fontSize: 13, fontWeight: '600' },
-  removeChip: { fontSize: 14, color: colors.textLight },
-  emptyHint: { fontSize: 13, color: colors.textLight, fontStyle: 'italic' },
-  searchSection: { marginHorizontal: 16, marginBottom: 8 },
-  searchBar: { ...neuInset(colors), flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12 },
-  searchIcon: { fontSize: 16, marginRight: 8 },
-  searchInput: { flex: 1, fontSize: 15, color: colors.text, paddingVertical: 10 },
-  clearSearch: { color: colors.textLight, fontSize: 16, padding: 4 },
+  selectedSection: { padding: rs.space(16), paddingBottom: rs.space(8) },
+  selectedTitle: { fontSize: rs.font(14), fontWeight: '700', color: colors.text, marginBottom: rs.space(8) },
+  selectedChips: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(8) },
+  selectedChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: rs.space(12), paddingVertical: rs.space(6), borderRadius: 20, gap: rs.space(6) },
+  selectedChipText: { fontSize: rs.font(13), fontWeight: '600' },
+  removeChip: { fontSize: rs.font(14), color: colors.textLight },
+  emptyHint: { fontSize: rs.font(13), color: colors.textLight, fontStyle: 'italic' },
+  searchSection: { marginHorizontal: rs.space(16), marginBottom: rs.space(8) },
+  searchBar: { ...neuInset(colors), flexDirection: 'row', alignItems: 'center', paddingHorizontal: rs.space(12) },
+  searchIcon: { fontSize: rs.font(16), marginRight: rs.space(8) },
+  searchInput: { flex: 1, fontSize: rs.font(15), color: colors.text, paddingVertical: rs.space(10) },
+  clearSearch: { color: colors.textLight, fontSize: rs.font(16), padding: 4 },
   searchResults: { marginTop: 4, backgroundColor: colors.neuSurface, borderRadius: 14, elevation: 2, overflow: 'visible' as const },
-  searchResult: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  searchDot: { width: 8, height: 8, borderRadius: 4, marginRight: 10 },
+  searchResult: { flexDirection: 'row', alignItems: 'center', padding: rs.space(12), borderBottomWidth: 1, borderBottomColor: colors.borderLight },
+  searchDot: { width: 8, height: 8, borderRadius: 4, marginRight: rs.space(10) },
   searchResultText: { flex: 1 },
-  searchResultName: { fontSize: 14, fontWeight: '600', color: colors.text },
-  searchResultGeneric: { fontSize: 12, color: colors.textSecondary, fontStyle: 'italic' },
-  addIcon: { fontSize: 22, color: colors.accent, fontWeight: '700' },
-  resultsSection: { marginHorizontal: 16, marginTop: 8 },
-  resultsTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 12 },
-  safeBox: { backgroundColor: colors.success + '12', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: colors.success + '30' },
-  safeText: { fontSize: 13, color: colors.success, lineHeight: 20 },
-  interactionCard: { ...neuCard(colors), padding: 14, marginBottom: 10, borderLeftWidth: 4 },
-  interactionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 },
-  interactionDrugs: { fontSize: 14, fontWeight: '700', color: colors.text, flex: 1 },
-  severityBadge: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: 10, marginLeft: 8 },
-  severityText: { fontSize: 11, fontWeight: '700', color: '#FFFFFF' },
-  interactionItem: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
-  interactionBullet: { fontSize: 14, marginRight: 8, color: colors.textSecondary },
-  interactionText: { flex: 1, fontSize: 13, color: colors.text, lineHeight: 20 },
-  disclaimer: { marginHorizontal: 16, marginTop: 20, backgroundColor: colors.info + '12', padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.info + '30' },
-  disclaimerText: { fontSize: 12, color: colors.info, lineHeight: 18 },
+  searchResultName: { fontSize: rs.font(14), fontWeight: '600', color: colors.text },
+  searchResultGeneric: { fontSize: rs.font(12), color: colors.textSecondary, fontStyle: 'italic' },
+  addIcon: { fontSize: rs.font(22), color: colors.accent, fontWeight: '700' },
+  resultsSection: { marginHorizontal: rs.space(16), marginTop: rs.space(8) },
+  resultsTitle: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(12) },
+  safeBox: { backgroundColor: colors.success + '12', padding: rs.space(16), borderRadius: 12, borderWidth: 1, borderColor: colors.success + '30' },
+  safeText: { fontSize: rs.font(13), color: colors.success, lineHeight: rs.font(20) },
+  interactionCard: { ...neuCard(colors), padding: rs.space(14), marginBottom: rs.space(10), borderLeftWidth: 4 },
+  interactionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: rs.space(10) },
+  interactionDrugs: { fontSize: rs.font(14), fontWeight: '700', color: colors.text, flex: 1 },
+  severityBadge: { paddingHorizontal: rs.space(10), paddingVertical: 3, borderRadius: 10, marginLeft: rs.space(8) },
+  severityText: { fontSize: rs.font(11), fontWeight: '700', color: '#FFFFFF' },
+  interactionItem: { flexDirection: 'row', marginBottom: rs.space(6), paddingRight: rs.space(8) },
+  interactionBullet: { fontSize: rs.font(14), marginRight: rs.space(8), color: colors.textSecondary },
+  interactionText: { flex: 1, fontSize: rs.font(13), color: colors.text, lineHeight: rs.font(20) },
+  disclaimer: { marginHorizontal: rs.space(16), marginTop: rs.space(20), backgroundColor: colors.info + '12', padding: rs.space(14), borderRadius: 12, borderWidth: 1, borderColor: colors.info + '30' },
+  disclaimerText: { fontSize: rs.font(12), color: colors.info, lineHeight: rs.font(18) },
 });

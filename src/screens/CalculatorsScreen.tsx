@@ -8,6 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { PremiumGate } from '../components/PremiumGate';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 // ─── Calculator Tabs ────────────────────────────────────────
 type CalcKey = 'dosis' | 'goteo' | 'imc' | 'bsa' | 'creatinina' | 'dilucion' | 'sodio'
@@ -46,7 +47,8 @@ function CalcInput({
   placeholder?: string;
 }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View style={styles.inputRow}>
       <View style={styles.inputLabelArea}>
@@ -68,7 +70,8 @@ function CalcInput({
 // ─── Sex Toggle ─────────────────────────────────────────────
 function SexToggle({ value, onChange }: { value: 'M' | 'F'; onChange: (v: 'M' | 'F') => void }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View style={styles.inputRow}>
       <Text style={styles.inputLabel}>Sexo</Text>
@@ -113,7 +116,8 @@ function ResultDisplay({
   warning?: string;
 }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   if (!value) return null;
   return (
     <View style={styles.resultContainer}>
@@ -144,7 +148,8 @@ function ResultDisplay({
 // ─── 1. Dosis por Peso ─────────────────────────────────────
 function DosisCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
   const [dosisPorKg, setDosisPorKg] = useState('');
   const [frecuencia, setFrecuencia] = useState('');
@@ -181,7 +186,8 @@ function DosisCalc() {
 // ─── 2. Goteo IV ────────────────────────────────────────────
 function GoteoCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [volumen, setVolumen] = useState('');
   const [tiempo, setTiempo] = useState('');
   const [tiempoUnit, setTiempoUnit] = useState<'horas' | 'min'>('horas');
@@ -270,7 +276,8 @@ function getIMCCategory(imc: number): { label: string; color: string } {
 
 function IMCCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
   const [talla, setTalla] = useState('');
 
@@ -325,7 +332,8 @@ function IMCCalc() {
 // ─── 4. BSA (Mosteller) ────────────────────────────────────
 function BSACalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
   const [talla, setTalla] = useState('');
   const [dosisAdulto, setDosisAdulto] = useState('');
@@ -376,7 +384,8 @@ function getRenalStage(clcr: number): { label: string; color: string } {
 
 function CreatininaCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [edad, setEdad] = useState('');
   const [peso, setPeso] = useState('');
   const [creatinina, setCreatinina] = useState('');
@@ -437,7 +446,8 @@ function CreatininaCalc() {
 // ─── 6. Dilución ────────────────────────────────────────────
 function DilucionCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [c1, setC1] = useState('');
   const [v1, setV1] = useState('');
   const [c2, setC2] = useState('');
@@ -484,7 +494,8 @@ function DilucionCalc() {
 // ─── 7. Déficit de Sodio ────────────────────────────────────
 function SodioCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
   const [naActual, setNaActual] = useState('');
   const [naDeseado, setNaDeseado] = useState('');
@@ -533,7 +544,8 @@ function SodioCalc() {
 // ─── 8. Calcio Corregido ────────────────────────────────────
 function CalcioCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [calcio, setCalcio] = useState('');
   const [albumina, setAlbumina] = useState('');
 
@@ -568,7 +580,8 @@ function CalcioCalc() {
 // ─── 9. Anion Gap ───────────────────────────────────────────
 function AnionGapCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [na, setNa] = useState('');
   const [cl, setCl] = useState('');
   const [hco3, setHco3] = useState('');
@@ -607,7 +620,8 @@ function AnionGapCalc() {
 // ─── 10. Osmolalidad Calculada ──────────────────────────────
 function OsmCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [na, setNa] = useState('');
   const [glu, setGlu] = useState('');
   const [bun, setBun] = useState('');
@@ -646,7 +660,8 @@ function OsmCalc() {
 // ─── 11. QTc (Bazett) ───────────────────────────────────────
 function QTcCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [qt, setQt] = useState('');
   const [fc, setFc] = useState('');
   const [sexo, setSexo] = useState<'M' | 'F'>('M');
@@ -686,7 +701,8 @@ function QTcCalc() {
 // ─── 12. Parkland (Quemados) ────────────────────────────────
 function ParklandCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
   const [scq, setScq] = useState('');
 
@@ -734,7 +750,8 @@ function ParklandCalc() {
 // ─── 13. Holliday-Segar (Líquidos Mantenimiento) ───────────
 function HollidayCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [peso, setPeso] = useState('');
 
   const p = parseFloat(peso.replace(',', '.'));
@@ -772,7 +789,8 @@ function HollidayCalc() {
 // ─── 14. Glasgow a Texto ────────────────────────────────────
 function GlasgowCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [ocular, setOcular] = useState<number | null>(null);
   const [verbal, setVerbal] = useState<number | null>(null);
   const [motor, setMotor] = useState<number | null>(null);
@@ -875,7 +893,8 @@ function GlasgowCalc() {
 // ─── 15. APACHE II Simplificado ─────────────────────────────
 function ApacheCalc() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [temp, setTemp] = useState('');
   const [pam, setPam] = useState('');
   const [fc, setFc] = useState('');
@@ -983,7 +1002,8 @@ function ApacheCalc() {
 // ─── Clear Button ───────────────────────────────────────────
 function ClearButton({ onPress }: { onPress: () => void }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <TouchableOpacity onPress={onPress} style={styles.clearBtn} activeOpacity={0.7}>
       <Text style={styles.clearBtnText}>Limpiar valores</Text>
@@ -993,8 +1013,9 @@ function ClearButton({ onPress }: { onPress: () => void }) {
 
 // ─── Main Screen ────────────────────────────────────────────
 export function CalculatorsScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const [activeCalc, setActiveCalc] = useState<CalcKey>('dosis');
   const activeData = CALC_TABS.find(t => t.key === activeCalc)!;
   const fadeIn = useFadeIn();
@@ -1022,7 +1043,7 @@ export function CalculatorsScreen() {
   return (
     <PremiumGate feature="Calculadoras Clínicas">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={activeData.color} barStyle="light-content" />
+      <StatusBar backgroundColor={activeData.color} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { backgroundColor: activeData.color }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <MaterialCommunityIcons name="calculator-variant-outline" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
@@ -1077,111 +1098,101 @@ export function CalculatorsScreen() {
 }
 
 // ─── Styles ─────────────────────────────────────────────────
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16, paddingBottom: 16, paddingHorizontal: 20,
+    paddingTop: rs.space(16), paddingBottom: rs.space(16), paddingHorizontal: rs.space(20),
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 2 },
-  // Tabs
-  tabScroll: { backgroundColor: colors.surface, maxHeight: 52, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  tabContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 6 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.8)', marginTop: 2 },
+  tabScroll: { backgroundColor: colors.surface, maxHeight: rs.space(52), borderBottomWidth: 1, borderBottomColor: colors.borderLight },
+  tabContent: { paddingHorizontal: rs.space(12), paddingVertical: rs.space(8), gap: rs.space(6) },
   tabChip: {
     flexDirection: 'row', alignItems: 'center',
-    paddingHorizontal: 12, paddingVertical: 6,
+    paddingHorizontal: rs.space(12), paddingVertical: rs.space(6),
     borderRadius: 20, backgroundColor: colors.background, gap: 4,
   },
-  tabChipLabel: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
-  // Calculator card
+  tabChipLabel: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
   scroll: { flex: 1 },
   calcCard: {
-    ...neuCard(colors), margin: 16, marginBottom: 0, padding: 18,
+    ...neuCard(colors), margin: rs.space(16), marginBottom: 0, padding: rs.space(18),
   },
-  calcTitle: { fontSize: 18, fontWeight: '800', color: colors.text, marginBottom: 4 },
+  calcTitle: { fontSize: rs.font(18), fontWeight: '800', color: colors.text, marginBottom: 4 },
   calcFormula: {
-    fontSize: 12, color: colors.textSecondary, fontFamily: 'monospace',
-    marginBottom: 14, lineHeight: 18,
+    fontSize: rs.font(12), color: colors.textSecondary, fontFamily: 'monospace',
+    marginBottom: rs.space(14), lineHeight: rs.font(18),
   },
-  calcSubtitle: { fontSize: 15, fontWeight: '700', color: colors.text, marginBottom: 2 },
-  calcSubFormula: { fontSize: 11, color: colors.textSecondary, fontFamily: 'monospace', marginBottom: 10 },
-  divider: { height: 1, backgroundColor: colors.borderLight, marginVertical: 16 },
-  // Inputs
+  calcSubtitle: { fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: 2 },
+  calcSubFormula: { fontSize: rs.font(11), color: colors.textSecondary, fontFamily: 'monospace', marginBottom: rs.space(10) },
+  divider: { height: 1, backgroundColor: colors.borderLight, marginVertical: rs.space(16) },
   inputRow: {
-    flexDirection: 'row', alignItems: 'center', marginBottom: 12, gap: 10,
+    flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(10),
   },
   inputLabelArea: { flex: 1 },
-  inputLabel: { fontSize: 14, color: colors.text, fontWeight: '500' },
-  inputUnit: { fontSize: 11, color: colors.textLight, marginTop: 1 },
+  inputLabel: { fontSize: rs.font(14), color: colors.text, fontWeight: '500' },
+  inputUnit: { fontSize: rs.font(11), color: colors.textLight, marginTop: 1 },
   inputField: {
-    width: 110, borderWidth: 1.5, borderColor: colors.border,
-    borderRadius: 12, paddingHorizontal: 14, paddingVertical: 10,
-    fontSize: 17, fontWeight: '700', color: colors.text,
+    flex: 1, maxWidth: rs.space(140), borderWidth: 1.5, borderColor: colors.border,
+    borderRadius: 12, paddingHorizontal: rs.space(14), paddingVertical: rs.space(10),
+    fontSize: rs.font(17), fontWeight: '700', color: colors.text,
     backgroundColor: colors.background, textAlign: 'center',
   },
-  // Toggle
-  toggleRow: { flexDirection: 'row', gap: 6 },
+  toggleRow: { flexDirection: 'row', gap: rs.space(6) },
   toggleBtn: {
-    paddingHorizontal: 14, paddingVertical: 8, borderRadius: 10,
+    paddingHorizontal: rs.space(14), paddingVertical: rs.space(8), borderRadius: 10,
     borderWidth: 1.5, borderColor: colors.border,
     backgroundColor: colors.background,
   },
   toggleBtnActiveM: { backgroundColor: '#2563EB', borderColor: '#2563EB' },
   toggleBtnActiveF: { backgroundColor: '#DB2777', borderColor: '#DB2777' },
-  toggleBtnText: { fontSize: 13, fontWeight: '600', color: colors.textSecondary },
+  toggleBtnText: { fontSize: rs.font(13), fontWeight: '600', color: colors.textSecondary },
   toggleBtnTextActive: { color: '#FFFFFF' },
-  // Result
-  resultContainer: { marginTop: 16 },
+  resultContainer: { marginTop: rs.space(16) },
   resultBox: {
-    padding: 16, borderRadius: 14, borderWidth: 1.5, alignItems: 'center',
+    padding: rs.space(16), borderRadius: 14, borderWidth: 1.5, alignItems: 'center',
   },
   resultLabel: {
-    fontSize: 10, fontWeight: '700', letterSpacing: 1.5,
+    fontSize: rs.font(10), fontWeight: '700', letterSpacing: 1.5,
     color: colors.textSecondary, marginBottom: 4,
   },
-  resultValueRow: { flexDirection: 'row', alignItems: 'baseline', gap: 6 },
-  resultValue: { fontSize: 32, fontWeight: '800' },
-  resultUnit: { fontSize: 14, fontWeight: '600' },
+  resultValueRow: { flexDirection: 'row', alignItems: 'baseline', gap: rs.space(6) },
+  resultValue: { fontSize: rs.font(32), fontWeight: '800' },
+  resultUnit: { fontSize: rs.font(14), fontWeight: '600' },
   interpBadge: {
-    marginTop: 8, paddingHorizontal: 14, paddingVertical: 5, borderRadius: 12,
+    marginTop: rs.space(8), paddingHorizontal: rs.space(14), paddingVertical: rs.space(5), borderRadius: 12,
   },
-  interpText: { fontSize: 13, fontWeight: '700' },
-  // Extra result
+  interpText: { fontSize: rs.font(13), fontWeight: '700' },
   extraResult: {
-    marginTop: 10, padding: 12, borderRadius: 10, borderWidth: 1,
+    marginTop: rs.space(10), padding: rs.space(12), borderRadius: 10, borderWidth: 1,
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
   },
-  extraResultLabel: { fontSize: 13, color: colors.textSecondary },
-  extraResultValue: { fontSize: 18, fontWeight: '800' },
-  // Warning
+  extraResultLabel: { fontSize: rs.font(13), color: colors.textSecondary },
+  extraResultValue: { fontSize: rs.font(18), fontWeight: '800' },
   warningBox: {
-    marginTop: 10, backgroundColor: colors.warning + '15', borderRadius: 10,
-    padding: 12, borderWidth: 1, borderColor: colors.warning + '40',
+    marginTop: rs.space(10), backgroundColor: colors.warning + '15', borderRadius: 10,
+    padding: rs.space(12), borderWidth: 1, borderColor: colors.warning + '40',
   },
-  warningText: { fontSize: 12, color: colors.warning, lineHeight: 18 },
-  // Scale
+  warningText: { fontSize: rs.font(12), color: colors.warning, lineHeight: rs.font(18) },
   scaleContainer: {
-    marginTop: 14, backgroundColor: colors.background,
-    borderRadius: 12, padding: 12,
+    marginTop: rs.space(14), backgroundColor: colors.background,
+    borderRadius: 12, padding: rs.space(12),
   },
   scaleTitle: {
-    fontSize: 12, fontWeight: '700', color: colors.textSecondary,
-    textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 8,
+    fontSize: rs.font(12), fontWeight: '700', color: colors.textSecondary,
+    textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: rs.space(8),
   },
   scaleRow: {
     flexDirection: 'row', alignItems: 'center',
-    paddingVertical: 5, paddingHorizontal: 8, borderRadius: 6, marginBottom: 2,
+    paddingVertical: rs.space(5), paddingHorizontal: rs.space(8), borderRadius: 6, marginBottom: 2,
   },
-  scaleDot: { width: 8, height: 8, borderRadius: 4, marginRight: 10 },
-  scaleLabel: { fontSize: 13, color: colors.textSecondary, flex: 1 },
-  // Clear
-  clearBtn: { marginTop: 14, alignItems: 'center', paddingVertical: 8 },
-  clearBtnText: { fontSize: 13, color: colors.textSecondary, textDecorationLine: 'underline' },
-  // Disclaimer
+  scaleDot: { width: rs.space(8), height: rs.space(8), borderRadius: 4, marginRight: rs.space(10) },
+  scaleLabel: { fontSize: rs.font(13), color: colors.textSecondary, flex: 1 },
+  clearBtn: { marginTop: rs.space(14), alignItems: 'center', paddingVertical: rs.space(8) },
+  clearBtnText: { fontSize: rs.font(13), color: colors.textSecondary, textDecorationLine: 'underline' },
   disclaimer: {
-    marginHorizontal: 16, marginTop: 16,
-    backgroundColor: colors.surface, padding: 14, borderRadius: 12,
+    marginHorizontal: rs.space(16), marginTop: rs.space(16),
+    backgroundColor: colors.surface, padding: rs.space(14), borderRadius: 12,
     borderWidth: 1, borderColor: colors.borderLight,
   },
-  disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
 });

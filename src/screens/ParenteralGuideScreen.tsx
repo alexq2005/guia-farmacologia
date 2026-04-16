@@ -11,6 +11,7 @@ import { useDrugData } from '../hooks/useDrugData';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { PremiumGate } from '../components/PremiumGate';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 const guideData = require('../data/parenteral_guide.json');
 
@@ -43,7 +44,8 @@ interface GuideSection {
 
 function BulletList({ items, color }: { items: string[]; color?: string }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View>
       {items.map((item, i) => (
@@ -58,7 +60,8 @@ function BulletList({ items, color }: { items: string[]; color?: string }) {
 
 function IntroduccionTab() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const intro = guideData.introduccion;
   return (
     <View>
@@ -136,7 +139,8 @@ function GenericSectionTab({ sectionId }: { sectionId: string }) {
 
 function FarmacosTab({ navigation }: { navigation: Props['navigation'] }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const { drugs } = useDrugData();
   const [search, setSearch] = useState('');
 
@@ -233,8 +237,9 @@ function FarmacosTab({ navigation }: { navigation: Props['navigation'] }) {
 }
 
 export function ParenteralGuideScreen({ navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const [activeTab, setActiveTab] = useState<TabKey>('introduccion');
 
@@ -260,7 +265,7 @@ export function ParenteralGuideScreen({ navigation }: Props) {
   return (
     <PremiumGate feature="Guía Parenteral">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={ACCENT} barStyle="light-content" />
+      <StatusBar backgroundColor={ACCENT} barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       <View style={[styles.header, { backgroundColor: ACCENT }]}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -299,65 +304,62 @@ export function ParenteralGuideScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  header: { paddingTop: 16, paddingBottom: 16, paddingHorizontal: 20 },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 2 },
-  tabScroll: { backgroundColor: colors.surface, maxHeight: 52, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  tabContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 6 },
-  tabChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: colors.background, gap: 4 },
+  header: { paddingTop: rs.space(16), paddingBottom: rs.space(16), paddingHorizontal: rs.space(20) },
+  headerTitle: { fontSize: rs.font(22), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', marginTop: 2 },
+  tabScroll: { backgroundColor: colors.surface, maxHeight: rs.space(52), borderBottomWidth: 1, borderBottomColor: colors.borderLight },
+  tabContent: { paddingHorizontal: rs.space(12), paddingVertical: rs.space(8), gap: rs.space(6) },
+  tabChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: rs.space(12), paddingVertical: rs.space(6), borderRadius: 20, backgroundColor: colors.background, gap: 4 },
   tabChipActive: { backgroundColor: '#0891B218', borderWidth: 1, borderColor: '#0891B2' },
-  tabChipIcon: { fontSize: 14 },
-  tabChipLabel: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
+  tabChipIcon: { fontSize: rs.font(14) },
+  tabChipLabel: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
   tabChipLabelActive: { color: '#0891B2', fontWeight: '700' },
   scroll: { flex: 1 },
   bottomSpacer: { height: 40 },
 
-  // Intro
-  disclaimerBox: { backgroundColor: colors.warning + '15', marginHorizontal: 16, marginTop: 16, padding: 12, borderRadius: 10, borderLeftWidth: 3, borderLeftColor: colors.warning },
-  disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18, fontStyle: 'italic' },
-  infoCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginTop: 10, padding: 14 },
-  infoCardTitle: { fontSize: 14, fontWeight: '700', color: '#0891B2', marginBottom: 6 },
-  infoCardText: { fontSize: 14, color: colors.text, lineHeight: 20 },
-  fuentesSection: { marginHorizontal: 16, marginTop: 16, padding: 14, backgroundColor: colors.surface, borderRadius: 12 },
-  fuentesTitle: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 10 },
-  fuenteRow: { flexDirection: 'row', marginBottom: 8 },
-  fuenteNumber: { fontSize: 11, fontWeight: '700', color: '#0891B2', width: 20, marginTop: 2 },
-  fuenteText: { fontSize: 12, color: colors.textSecondary, flex: 1, lineHeight: 17 },
+  disclaimerBox: { backgroundColor: colors.warning + '15', marginHorizontal: rs.space(16), marginTop: rs.space(16), padding: rs.space(12), borderRadius: 10, borderLeftWidth: 3, borderLeftColor: colors.warning },
+  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18), fontStyle: 'italic' },
+  infoCard: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), marginTop: rs.space(10), padding: rs.space(14) },
+  infoCardTitle: { fontSize: rs.font(14), fontWeight: '700', color: '#0891B2', marginBottom: rs.space(6) },
+  infoCardText: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20) },
+  fuentesSection: { marginHorizontal: rs.space(16), marginTop: rs.space(16), padding: rs.space(14), backgroundColor: colors.surface, borderRadius: 12 },
+  fuentesTitle: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(10) },
+  fuenteRow: { flexDirection: 'row', marginBottom: rs.space(8) },
+  fuenteNumber: { fontSize: rs.font(11), fontWeight: '700', color: '#0891B2', width: rs.space(20), marginTop: 2 },
+  fuenteText: { fontSize: rs.font(12), color: colors.textSecondary, flex: 1, lineHeight: rs.font(17) },
 
-  // Bullets
-  bulletRow: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
-  bullet: { fontSize: 14, color: colors.text, marginRight: 8, marginTop: 1 },
-  bulletText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
+  bulletRow: { flexDirection: 'row', marginBottom: rs.space(6), paddingRight: rs.space(8) },
+  bullet: { fontSize: rs.font(14), color: colors.text, marginRight: rs.space(8), marginTop: 1 },
+  bulletText: { fontSize: rs.font(14), color: colors.text, flex: 1, lineHeight: rs.font(20) },
 
-  // Farmacos tab
   farmacosContainer: { flex: 1 },
-  searchContainer: { flexDirection: 'row', alignItems: 'center', marginHorizontal: 16, marginTop: 12 },
+  searchContainer: { flexDirection: 'row', alignItems: 'center', marginHorizontal: rs.space(16), marginTop: rs.space(12) },
   searchInput: {
-    flex: 1, backgroundColor: colors.surface, borderRadius: 12, paddingHorizontal: 14, paddingVertical: 10,
-    fontSize: 14, color: colors.text, borderWidth: 1, borderColor: colors.border,
+    flex: 1, backgroundColor: colors.surface, borderRadius: 12, paddingHorizontal: rs.space(14), paddingVertical: rs.space(10),
+    fontSize: rs.font(14), color: colors.text, borderWidth: 1, borderColor: colors.border,
   },
-  clearButton: { position: 'absolute', right: 12, padding: 4 },
-  clearText: { fontSize: 16, color: colors.textLight },
-  statsRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 16, marginTop: 8, marginBottom: 4 },
-  statsText: { fontSize: 12, color: colors.textSecondary, fontWeight: '600' },
-  legendRow: { flexDirection: 'row', gap: 10 },
-  legendItem: { fontSize: 11, color: colors.textLight },
+  clearButton: { position: 'absolute', right: rs.space(12), padding: 4 },
+  clearText: { fontSize: rs.font(16), color: colors.textLight },
+  statsRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: rs.space(16), marginTop: rs.space(8), marginBottom: 4 },
+  statsText: { fontSize: rs.font(12), color: colors.textSecondary, fontWeight: '600' },
+  legendRow: { flexDirection: 'row', gap: rs.space(10) },
+  legendItem: { fontSize: rs.font(11), color: colors.textLight },
   drugList: { flex: 1 },
-  drugListContent: { paddingHorizontal: 16, paddingBottom: 40 },
+  drugListContent: { paddingHorizontal: rs.space(16), paddingBottom: 40 },
   drugItem: {
-    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 12, marginBottom: 6,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: rs.space(12), marginBottom: rs.space(6),
   },
   drugItemDangerous: { borderLeftWidth: 3, borderLeftColor: '#DC2626' },
   drugItemLeft: { flex: 1 },
-  drugItemName: { fontSize: 14, fontWeight: '600', color: colors.text },
-  drugItemGeneric: { fontSize: 12, color: colors.textSecondary, marginTop: 1 },
+  drugItemName: { fontSize: rs.font(14), fontWeight: '600', color: colors.text },
+  drugItemGeneric: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 1 },
   drugItemRoutes: { flexDirection: 'row', gap: 4, marginTop: 4 },
-  routeMini: { backgroundColor: '#0891B215', paddingHorizontal: 6, paddingVertical: 1, borderRadius: 6 },
-  routeMiniText: { fontSize: 10, fontWeight: '600', color: '#0891B2' },
+  routeMini: { backgroundColor: '#0891B215', paddingHorizontal: rs.space(6), paddingVertical: 1, borderRadius: 6 },
+  routeMiniText: { fontSize: rs.font(10), fontWeight: '600', color: '#0891B2' },
   drugItemRight: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  dangerIcon: { fontSize: 16 },
-  dataIcon: { fontSize: 16 },
-  noDataIcon: { fontSize: 14, color: colors.textLight },
+  dangerIcon: { fontSize: rs.font(16) },
+  dataIcon: { fontSize: rs.font(16) },
+  noDataIcon: { fontSize: rs.font(14), color: colors.textLight },
 });

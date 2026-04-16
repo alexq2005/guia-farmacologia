@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, StatusBar, Animated } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // LinearGradient removed — clean modern headers
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -108,7 +109,7 @@ export function SearchScreen({ navigation }: Props) {
             {filteredResults.length} resultado{filteredResults.length !== 1 ? 's' : ''}
             {(filterVia || filterPreg) ? ' (filtrado)' : ''}
           </Text>
-          <FlatList
+          <FlashList
             data={filteredResults}
             renderItem={({ item }) => (
               <DrugCard
@@ -120,6 +121,7 @@ export function SearchScreen({ navigation }: Props) {
                 highlight={query}
               />
             )}
+            estimatedItemSize={120}
             keyExtractor={item => item.drug.id}
             contentContainerStyle={styles.list}
             showsVerticalScrollIndicator={false}

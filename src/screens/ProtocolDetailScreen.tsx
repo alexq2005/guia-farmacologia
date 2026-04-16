@@ -11,6 +11,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import protocolsData from '../data/emergency_protocols.json';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ProtocolDetail'>;
 
@@ -21,8 +22,9 @@ const PRIORITY_CONFIG = {
 };
 
 export function ProtocolDetailScreen({ route }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const protocols = protocolsData as EmergencyProtocol[];
   const protocol = protocols.find(p => p.id === route.params.protocolId);
@@ -41,7 +43,7 @@ export function ProtocolDetailScreen({ route }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={catColor} barStyle="light-content" />
+      <StatusBar backgroundColor={catColor} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { backgroundColor: catColor }]}>
         <View style={styles.headerTop}>
           <MaterialCommunityIcons name={PROTOCOL_ICONS[protocol.categoria] || 'hospital-building'} size={36} color="#FFFFFF" />
@@ -194,93 +196,85 @@ Este protocolo es una guía de referencia educativa. Siga siempre los protocolos
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 },
-  headerIcon: { fontSize: 36 },
-  priorityBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10 },
-  priorityText: { fontSize: 11, fontWeight: '800', color: '#FFFFFF', letterSpacing: 0.5 },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
-  headerAbbr: { fontSize: 14, color: 'rgba(255,255,255,0.8)', fontWeight: '600', marginTop: 2 },
-  headerDesc: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 6, lineHeight: 18 },
+  headerTop: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: rs.space(8) },
+  headerIcon: { fontSize: rs.font(36) },
+  priorityBadge: { paddingHorizontal: rs.space(10), paddingVertical: rs.space(4), borderRadius: 10 },
+  priorityText: { fontSize: rs.font(11), fontWeight: '800', color: '#FFFFFF', letterSpacing: 0.5 },
+  headerTitle: { fontSize: rs.font(22), fontWeight: '800', color: '#FFFFFF' },
+  headerAbbr: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.8)', fontWeight: '600', marginTop: 2 },
+  headerDesc: { fontSize: rs.font(13), color: 'rgba(255,255,255,0.7)', marginTop: rs.space(6), lineHeight: rs.font(18) },
   scroll: { flex: 1 },
-  // Red Flags
   redFlagsContainer: {
-    margin: 16, marginBottom: 0, backgroundColor: '#DC262610', borderRadius: 14,
-    padding: 16, borderWidth: 1, borderColor: '#DC262630',
+    margin: rs.space(16), marginBottom: 0, backgroundColor: '#DC262610', borderRadius: 14,
+    padding: rs.space(16), borderWidth: 1, borderColor: '#DC262630',
   },
-  redFlagsTitle: { fontSize: 15, fontWeight: '800', color: '#DC2626', marginBottom: 10 },
-  redFlagRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 6 },
-  redFlagDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#DC2626', marginRight: 8, marginTop: 5 },
-  redFlagText: { fontSize: 13, color: colors.text, flex: 1, lineHeight: 18 },
-  // Section
+  redFlagsTitle: { fontSize: rs.font(15), fontWeight: '800', color: '#DC2626', marginBottom: rs.space(10) },
+  redFlagRow: { flexDirection: 'row', alignItems: 'flex-start', marginBottom: rs.space(6) },
+  redFlagDot: { width: rs.space(6), height: rs.space(6), borderRadius: 3, backgroundColor: '#DC2626', marginRight: rs.space(8), marginTop: rs.space(5) },
+  redFlagText: { fontSize: rs.font(13), color: colors.text, flex: 1, lineHeight: rs.font(18) },
   sectionTitle: {
-    fontSize: 16, fontWeight: '800', color: colors.text,
-    marginHorizontal: 20, marginTop: 20, marginBottom: 10,
+    fontSize: rs.font(16), fontWeight: '800', color: colors.text,
+    marginHorizontal: rs.space(20), marginTop: rs.space(20), marginBottom: rs.space(10),
   },
-  // Steps
-  stepCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginBottom: 8, padding: 16, borderLeftWidth: 3, borderLeftColor: colors.border },
+  stepCard: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), marginBottom: rs.space(8), padding: rs.space(16), borderLeftWidth: 3, borderLeftColor: colors.border },
   stepCardCritical: {
     borderLeftColor: '#DC2626', borderLeftWidth: 4,
     backgroundColor: colors.surface,
   },
-  stepHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8, gap: 8 },
+  stepHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(8), gap: rs.space(8) },
   stepNumber: {
-    width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
+    width: rs.space(28), height: rs.space(28), borderRadius: 14, alignItems: 'center', justifyContent: 'center',
   },
-  stepNumberText: { color: '#FFFFFF', fontWeight: '800', fontSize: 13 },
+  stepNumberText: { color: '#FFFFFF', fontWeight: '800', fontSize: rs.font(13) },
   timeBadge: {
-    backgroundColor: colors.background, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
+    backgroundColor: colors.background, paddingHorizontal: rs.space(8), paddingVertical: 3, borderRadius: 8,
   },
-  timeText: { fontSize: 11, color: colors.textSecondary, fontWeight: '600' },
+  timeText: { fontSize: rs.font(11), color: colors.textSecondary, fontWeight: '600' },
   criticalBadge: {
-    backgroundColor: '#DC262615', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8,
+    backgroundColor: '#DC262615', paddingHorizontal: rs.space(8), paddingVertical: 3, borderRadius: 8,
   },
-  criticalText: { fontSize: 10, fontWeight: '800', color: '#DC2626' },
-  stepAction: { fontSize: 14, fontWeight: '700', color: colors.text, lineHeight: 20 },
-  stepDetails: { fontSize: 12, color: colors.textSecondary, marginTop: 4, lineHeight: 17 },
-  // Drugs in step
+  criticalText: { fontSize: rs.font(10), fontWeight: '800', color: '#DC2626' },
+  stepAction: { fontSize: rs.font(14), fontWeight: '700', color: colors.text, lineHeight: rs.font(20) },
+  stepDetails: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 4, lineHeight: rs.font(17) },
   stepDrugs: {
-    marginTop: 10, backgroundColor: colors.background, borderRadius: 10, padding: 10,
+    marginTop: rs.space(10), backgroundColor: colors.background, borderRadius: 10, padding: rs.space(10),
   },
-  stepDrugRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 6 },
-  stepDrugIcon: { fontSize: 14, marginRight: 8 },
+  stepDrugRow: { flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(6) },
+  stepDrugIcon: { fontSize: rs.font(14), marginRight: rs.space(8) },
   stepDrugInfo: { flex: 1 },
-  stepDrugName: { fontSize: 13, fontWeight: '700', color: colors.text },
-  stepDrugDosis: { fontSize: 11, color: colors.textSecondary, marginTop: 1 },
-  // Decision
+  stepDrugName: { fontSize: rs.font(13), fontWeight: '700', color: colors.text },
+  stepDrugDosis: { fontSize: rs.font(11), color: colors.textSecondary, marginTop: 1 },
   decisionContainer: {
-    marginTop: 12, backgroundColor: colors.background, borderRadius: 12, padding: 12,
+    marginTop: rs.space(12), backgroundColor: colors.background, borderRadius: 12, padding: rs.space(12),
   },
-  decisionQuestion: { fontSize: 13, fontWeight: '700', color: colors.text, marginBottom: 8 },
-  decisionOptions: { gap: 6 },
-  decisionBox: { padding: 10, borderRadius: 8, borderWidth: 1 },
-  decisionLabel: { fontSize: 11, fontWeight: '800', marginBottom: 2 },
-  decisionText: { fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
-  // Drug Summary
-  drugSummaryContainer: { ...neuCardSubtle(colors), marginHorizontal: 16, padding: 14 },
+  decisionQuestion: { fontSize: rs.font(13), fontWeight: '700', color: colors.text, marginBottom: rs.space(8) },
+  decisionOptions: { gap: rs.space(6) },
+  decisionBox: { padding: rs.space(10), borderRadius: 8, borderWidth: 1 },
+  decisionLabel: { fontSize: rs.font(11), fontWeight: '800', marginBottom: 2 },
+  decisionText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17) },
+  drugSummaryContainer: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), padding: rs.space(14) },
   drugSummaryRow: {
-    flexDirection: 'row', paddingVertical: 8,
+    flexDirection: 'row', paddingVertical: rs.space(8),
     borderBottomWidth: 1, borderBottomColor: colors.borderLight,
   },
-  drugSummaryDot: { width: 4, borderRadius: 2, marginRight: 10, alignSelf: 'stretch' },
+  drugSummaryDot: { width: 4, borderRadius: 2, marginRight: rs.space(10), alignSelf: 'stretch' },
   drugSummaryInfo: { flex: 1 },
-  drugSummaryName: { fontSize: 14, fontWeight: '700', color: colors.text },
-  drugSummaryDosis: { fontSize: 13, fontWeight: '600', color: colors.primary, marginTop: 2 },
-  drugSummaryDetails: { fontSize: 11, color: colors.textSecondary, marginTop: 2 },
-  // Nursing
-  nursingContainer: { ...neuCardSubtle(colors), marginHorizontal: 16, padding: 14 },
-  nursingRow: { flexDirection: 'row', marginBottom: 8, paddingRight: 4 },
-  nursingBullet: { fontSize: 14, color: colors.nursing, marginRight: 8, marginTop: 1 },
-  nursingText: { fontSize: 13, color: colors.textSecondary, flex: 1, lineHeight: 18 },
-  // Disclaimer
+  drugSummaryName: { fontSize: rs.font(14), fontWeight: '700', color: colors.text },
+  drugSummaryDosis: { fontSize: rs.font(13), fontWeight: '600', color: colors.primary, marginTop: 2 },
+  drugSummaryDetails: { fontSize: rs.font(11), color: colors.textSecondary, marginTop: 2 },
+  nursingContainer: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), padding: rs.space(14) },
+  nursingRow: { flexDirection: 'row', marginBottom: rs.space(8), paddingRight: 4 },
+  nursingBullet: { fontSize: rs.font(14), color: colors.nursing, marginRight: rs.space(8), marginTop: 1 },
+  nursingText: { fontSize: rs.font(13), color: colors.textSecondary, flex: 1, lineHeight: rs.font(18) },
   disclaimer: {
-    marginHorizontal: 16, marginTop: 16, backgroundColor: colors.surface,
-    padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
+    marginHorizontal: rs.space(16), marginTop: rs.space(16), backgroundColor: colors.surface,
+    padding: rs.space(14), borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
   },
-  disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
 });

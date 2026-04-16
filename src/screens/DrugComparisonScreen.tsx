@@ -12,6 +12,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { normalizeText } from '../utils/search';
 import { PremiumGate } from '../components/PremiumGate';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugComparison'>;
 
@@ -42,9 +43,10 @@ const ROWS: ComparisonRow[] = [
 ];
 
 export function DrugComparisonScreen({ route }: Props) {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const { drugs } = useDrugData();
 
@@ -89,7 +91,7 @@ export function DrugComparisonScreen({ route }: Props) {
   return (
     <PremiumGate feature="Comparador de Fármacos">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor="#0891B2" barStyle="light-content" />
+      <StatusBar backgroundColor="#0891B2" barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerTitle}>Comparador de Fármacos</Text>
         <Text style={styles.headerSubtitle}>Selecciona hasta {MAX_DRUGS} fármacos para comparar</Text>
@@ -210,51 +212,51 @@ export function DrugComparisonScreen({ route }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    backgroundColor: '#0891B2', paddingBottom: 16, paddingHorizontal: 20,
+    backgroundColor: '#0891B2', paddingBottom: rs.space(16), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   searchContainer: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 12, paddingHorizontal: 12, marginTop: 12,
+    borderRadius: 12, paddingHorizontal: rs.space(12), marginTop: rs.space(12),
   },
-  searchIcon: { fontSize: 16, marginRight: 8 },
-  searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
-  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
-  selectedChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 10 },
+  searchIcon: { fontSize: rs.font(16), marginRight: rs.space(8) },
+  searchInput: { flex: 1, color: '#FFFFFF', fontSize: rs.font(15), paddingVertical: rs.space(10) },
+  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: rs.font(16), padding: 4 },
+  selectedChips: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(8), marginTop: rs.space(10) },
   selectedChip: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.25)',
-    paddingHorizontal: 12, paddingVertical: 6, borderRadius: 16, maxWidth: 180,
+    paddingHorizontal: rs.space(12), paddingVertical: rs.space(6), borderRadius: 16, maxWidth: rs.space(180),
   },
-  selectedChipText: { color: '#FFFFFF', fontSize: 13, fontWeight: '600', flex: 1 },
-  selectedChipRemove: { color: 'rgba(255,255,255,0.7)', fontSize: 14, marginLeft: 6 },
+  selectedChipText: { color: '#FFFFFF', fontSize: rs.font(13), fontWeight: '600', flex: 1 },
+  selectedChipRemove: { color: 'rgba(255,255,255,0.7)', fontSize: rs.font(14), marginLeft: rs.space(6) },
   scroll: { flex: 1 },
-  searchResults: { paddingHorizontal: 16, paddingTop: 8 },
+  searchResults: { paddingHorizontal: rs.space(16), paddingTop: rs.space(8) },
   searchResultItem: {
-    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: 12, marginBottom: 6,
+    ...neuCardSubtle(colors), flexDirection: 'row', alignItems: 'center', padding: rs.space(12), marginBottom: rs.space(6),
   },
-  searchResultName: { fontSize: 14, fontWeight: '700', color: colors.text },
-  searchResultGeneric: { fontSize: 12, color: colors.textSecondary, marginTop: 2 },
-  searchResultAdd: { fontSize: 22, fontWeight: '700', color: colors.primary, paddingHorizontal: 8 },
-  tableSection: { marginTop: 16 },
-  sectionTitle: { fontSize: 18, fontWeight: '700', color: colors.text, marginHorizontal: 20, marginBottom: 10 },
+  searchResultName: { fontSize: rs.font(14), fontWeight: '700', color: colors.text },
+  searchResultGeneric: { fontSize: rs.font(12), color: colors.textSecondary, marginTop: 2 },
+  searchResultAdd: { fontSize: rs.font(22), fontWeight: '700', color: colors.primary, paddingHorizontal: rs.space(8) },
+  tableSection: { marginTop: rs.space(16) },
+  sectionTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.text, marginHorizontal: rs.space(20), marginBottom: rs.space(10) },
   tableRow: { flexDirection: 'row', borderBottomWidth: 1, borderBottomColor: colors.borderLight },
   tableHeaderRow: { borderBottomWidth: 2, borderBottomColor: colors.border },
   tableLabelCell: {
-    width: 130, paddingHorizontal: 12, paddingVertical: 10,
+    flex: 0.35, maxWidth: rs.space(120), paddingHorizontal: rs.space(12), paddingVertical: rs.space(10),
     flexDirection: 'row', alignItems: 'center',
   },
-  tableRowIcon: { fontSize: 14, marginRight: 6 },
-  tableLabelText: { fontSize: 12, fontWeight: '700', color: colors.textSecondary },
-  tableValueCell: { width: 160, paddingHorizontal: 10, paddingVertical: 10 },
-  tableHeaderText: { fontSize: 13, fontWeight: '800', textAlign: 'center' },
-  tableValueText: { fontSize: 12, color: colors.text, lineHeight: 17 },
-  emptyState: { alignItems: 'center', paddingVertical: 80 },
-  emptyIcon: { fontSize: 56, marginBottom: 16 },
-  emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  emptyHint: { fontSize: 13, color: colors.textSecondary, marginTop: 6, textAlign: 'center', paddingHorizontal: 40 },
+  tableRowIcon: { fontSize: rs.font(14), marginRight: rs.space(6) },
+  tableLabelText: { fontSize: rs.font(12), fontWeight: '700', color: colors.textSecondary },
+  tableValueCell: { width: rs.space(160), paddingHorizontal: rs.space(10), paddingVertical: rs.space(10) },
+  tableHeaderText: { fontSize: rs.font(13), fontWeight: '800', textAlign: 'center' },
+  tableValueText: { fontSize: rs.font(12), color: colors.text, lineHeight: rs.font(17) },
+  emptyState: { alignItems: 'center', paddingVertical: rs.space(80) },
+  emptyIcon: { fontSize: rs.font(56), marginBottom: rs.space(16) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+  emptyHint: { fontSize: rs.font(13), color: colors.textSecondary, marginTop: rs.space(6), textAlign: 'center', paddingHorizontal: rs.space(40) },
 });

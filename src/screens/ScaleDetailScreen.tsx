@@ -11,6 +11,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import scalesData from '../data/clinical_scales.json';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ScaleDetail'>;
 
@@ -19,8 +20,9 @@ function getInterpretation(score: number, interpretations: ScaleInterpretation[]
 }
 
 export function ScaleDetailScreen({ route }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const scales = scalesData as ClinicalScale[];
   const scale = scales.find(s => s.id === route.params.scaleId);
@@ -211,7 +213,7 @@ export function ScaleDetailScreen({ route }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={catColor} barStyle="light-content" />
+      <StatusBar backgroundColor={catColor} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { backgroundColor: catColor }]}>
         <View style={styles.headerTop}>
           <MaterialCommunityIcons name={SCALE_ICONS[scale.categoria] || 'chart-bar'} size={36} color="#FFFFFF" />
@@ -306,100 +308,91 @@ Esta herramienta es de apoyo educativo. La interpretación clínica debe realiza
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 },
-  headerIcon: { fontSize: 36 },
-  headerRange: { fontSize: 13, color: 'rgba(255,255,255,0.8)', fontWeight: '700' },
-  headerTitle: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
-  headerAbbr: { fontSize: 14, color: 'rgba(255,255,255,0.8)', fontWeight: '600', marginTop: 2 },
-  headerDesc: { fontSize: 13, color: 'rgba(255,255,255,0.7)', marginTop: 6, lineHeight: 18 },
+  headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: rs.space(6) },
+  headerIcon: { fontSize: rs.font(36) },
+  headerRange: { fontSize: rs.font(13), color: 'rgba(255,255,255,0.8)', fontWeight: '700' },
+  headerTitle: { fontSize: rs.font(22), fontWeight: '800', color: '#FFFFFF' },
+  headerAbbr: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.8)', fontWeight: '600', marginTop: 2 },
+  headerDesc: { fontSize: rs.font(13), color: 'rgba(255,255,255,0.7)', marginTop: rs.space(6), lineHeight: rs.font(18) },
   scroll: { flex: 1 },
-  // Score
-  scoreContainer: { ...neuCard(colors), margin: 16, marginBottom: 8, padding: 20, alignItems: 'center', borderWidth: 2 },
+  scoreContainer: { ...neuCard(colors), margin: rs.space(16), marginBottom: rs.space(8), padding: rs.space(20), alignItems: 'center', borderWidth: 2 },
   scoreLabel: {
-    fontSize: 10, fontWeight: '700', color: colors.textLight, letterSpacing: 1.5,
+    fontSize: rs.font(10), fontWeight: '700', color: colors.textLight, letterSpacing: 1.5,
   },
-  scoreValue: { fontSize: 48, fontWeight: '900', marginTop: 4 },
-  scoreMax: { fontSize: 16, fontWeight: '600', marginTop: -4 },
+  scoreValue: { fontSize: rs.font(48), fontWeight: '900', marginTop: 4 },
+  scoreMax: { fontSize: rs.font(16), fontWeight: '600', marginTop: -4 },
   interpBadge: {
-    marginTop: 10, paddingHorizontal: 16, paddingVertical: 6, borderRadius: 12,
+    marginTop: rs.space(10), paddingHorizontal: rs.space(16), paddingVertical: rs.space(6), borderRadius: 12,
   },
-  interpLabel: { fontSize: 14, fontWeight: '800' },
-  interpDesc: { fontSize: 12, color: colors.textSecondary, textAlign: 'center', marginTop: 8, lineHeight: 17 },
-  // Component card
-  componentCard: { ...neuCardSubtle(colors), margin: 16, marginBottom: 0, padding: 16 },
+  interpLabel: { fontSize: rs.font(14), fontWeight: '800' },
+  interpDesc: { fontSize: rs.font(12), color: colors.textSecondary, textAlign: 'center', marginTop: rs.space(8), lineHeight: rs.font(17) },
+  componentCard: { ...neuCardSubtle(colors), margin: rs.space(16), marginBottom: 0, padding: rs.space(16) },
   componentTitle: {
-    fontSize: 15, fontWeight: '800', color: colors.text, marginBottom: 10,
+    fontSize: rs.font(15), fontWeight: '800', color: colors.text, marginBottom: rs.space(10),
   },
-  componentScore: { fontSize: 13, fontWeight: '700', textAlign: 'right', marginTop: 6 },
-  // Option row (components type)
+  componentScore: { fontSize: rs.font(13), fontWeight: '700', textAlign: 'right', marginTop: rs.space(6) },
   optionRow: {
-    flexDirection: 'row', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 12,
-    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: 6,
+    flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(10), paddingHorizontal: rs.space(12),
+    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: rs.space(6),
   },
   radioOuter: {
-    width: 20, height: 20, borderRadius: 10, borderWidth: 2, borderColor: colors.border,
-    alignItems: 'center', justifyContent: 'center', marginRight: 10,
+    width: rs.space(20), height: rs.space(20), borderRadius: 10, borderWidth: 2, borderColor: colors.border,
+    alignItems: 'center', justifyContent: 'center', marginRight: rs.space(10),
   },
-  radioInner: { width: 10, height: 10, borderRadius: 5 },
-  optionLabel: { flex: 1, fontSize: 13, color: colors.textSecondary },
-  optionValue: { fontSize: 16, fontWeight: '800', color: colors.textLight, minWidth: 24, textAlign: 'right' },
-  // Selector row
+  radioInner: { width: rs.space(10), height: rs.space(10), borderRadius: 5 },
+  optionLabel: { flex: 1, fontSize: rs.font(13), color: colors.textSecondary },
+  optionValue: { fontSize: rs.font(16), fontWeight: '800', color: colors.textLight, minWidth: rs.space(24), textAlign: 'right' },
   selectorRow: {
-    flexDirection: 'row', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 10,
-    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: 6,
+    flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(10), paddingHorizontal: rs.space(10),
+    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: rs.space(6),
   },
   selectorValueBox: {
-    width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10,
+    width: rs.space(36), height: rs.space(36), borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: rs.space(10),
   },
-  selectorValue: { fontSize: 16, fontWeight: '900' },
+  selectorValue: { fontSize: rs.font(16), fontWeight: '900' },
   selectorTextArea: { flex: 1 },
-  selectorLabel: { fontSize: 13, color: colors.text },
-  selectorInterp: { fontSize: 11, fontWeight: '600', marginTop: 1 },
-  selectorCheck: { fontSize: 18, fontWeight: '800' },
-  // Checklist row
+  selectorLabel: { fontSize: rs.font(13), color: colors.text },
+  selectorInterp: { fontSize: rs.font(11), fontWeight: '600', marginTop: 1 },
+  selectorCheck: { fontSize: rs.font(18), fontWeight: '800' },
   checklistRow: {
-    flexDirection: 'row', alignItems: 'center', paddingVertical: 12, paddingHorizontal: 12,
-    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: 6,
+    flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(12), paddingHorizontal: rs.space(12),
+    borderRadius: 10, borderWidth: 1, borderColor: colors.borderLight, marginBottom: rs.space(6),
   },
   checkbox: {
-    width: 22, height: 22, borderRadius: 6, borderWidth: 2, borderColor: colors.border,
-    alignItems: 'center', justifyContent: 'center', marginRight: 10,
+    width: rs.space(22), height: rs.space(22), borderRadius: 6, borderWidth: 2, borderColor: colors.border,
+    alignItems: 'center', justifyContent: 'center', marginRight: rs.space(10),
   },
-  checkmark: { color: '#FFFFFF', fontSize: 14, fontWeight: '800' },
-  checklistLabel: { flex: 1, fontSize: 13, color: colors.textSecondary },
-  pointsBadge: { paddingHorizontal: 8, paddingVertical: 3, borderRadius: 8 },
-  pointsText: { fontSize: 12, fontWeight: '800' },
-  // Reset
-  resetBtn: { alignItems: 'center', paddingVertical: 12, marginTop: 8 },
-  resetBtnText: { fontSize: 13, color: colors.textSecondary, textDecorationLine: 'underline' },
-  // Interpretation scale
-  interpScaleContainer: { ...neuCardSubtle(colors), margin: 16, padding: 14 },
+  checkmark: { color: '#FFFFFF', fontSize: rs.font(14), fontWeight: '800' },
+  checklistLabel: { flex: 1, fontSize: rs.font(13), color: colors.textSecondary },
+  pointsBadge: { paddingHorizontal: rs.space(8), paddingVertical: 3, borderRadius: 8 },
+  pointsText: { fontSize: rs.font(12), fontWeight: '800' },
+  resetBtn: { alignItems: 'center', paddingVertical: rs.space(12), marginTop: rs.space(8) },
+  resetBtnText: { fontSize: rs.font(13), color: colors.textSecondary, textDecorationLine: 'underline' },
+  interpScaleContainer: { ...neuCardSubtle(colors), margin: rs.space(16), padding: rs.space(14) },
   interpScaleTitle: {
-    fontSize: 10, fontWeight: '700', color: colors.textLight, letterSpacing: 1, marginBottom: 8,
+    fontSize: rs.font(10), fontWeight: '700', color: colors.textLight, letterSpacing: 1, marginBottom: rs.space(8),
   },
   interpScaleRow: {
-    flexDirection: 'row', alignItems: 'center', paddingVertical: 6, paddingHorizontal: 8,
+    flexDirection: 'row', alignItems: 'center', paddingVertical: rs.space(6), paddingHorizontal: rs.space(8),
     borderRadius: 6, marginBottom: 2,
   },
-  interpScaleDot: { width: 8, height: 8, borderRadius: 4, marginRight: 8 },
-  interpScaleRange: { fontSize: 12, fontWeight: '700', width: 50 },
-  interpScaleLabel: { fontSize: 13, color: colors.textSecondary, flex: 1 },
-  interpScaleArrow: { fontSize: 12, fontWeight: '700' },
-  // Context
-  contextContainer: { ...neuCardSubtle(colors), margin: 16, marginTop: 0, padding: 14 },
-  contextTitle: { fontSize: 14, fontWeight: '700', color: colors.text, marginBottom: 6 },
-  contextText: { fontSize: 13, color: colors.textSecondary, lineHeight: 18 },
-  referenceText: { fontSize: 11, color: colors.textLight, marginTop: 8, fontStyle: 'italic' },
-  // Disclaimer
+  interpScaleDot: { width: rs.space(8), height: rs.space(8), borderRadius: 4, marginRight: rs.space(8) },
+  interpScaleRange: { fontSize: rs.font(12), fontWeight: '700', width: rs.space(50) },
+  interpScaleLabel: { fontSize: rs.font(13), color: colors.textSecondary, flex: 1 },
+  interpScaleArrow: { fontSize: rs.font(12), fontWeight: '700' },
+  contextContainer: { ...neuCardSubtle(colors), margin: rs.space(16), marginTop: 0, padding: rs.space(14) },
+  contextTitle: { fontSize: rs.font(14), fontWeight: '700', color: colors.text, marginBottom: rs.space(6) },
+  contextText: { fontSize: rs.font(13), color: colors.textSecondary, lineHeight: rs.font(18) },
+  referenceText: { fontSize: rs.font(11), color: colors.textLight, marginTop: rs.space(8), fontStyle: 'italic' },
   disclaimer: {
-    marginHorizontal: 16, marginTop: 8, backgroundColor: colors.surface,
-    padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
+    marginHorizontal: rs.space(16), marginTop: rs.space(8), backgroundColor: colors.surface,
+    padding: rs.space(14), borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
   },
-  disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
 });

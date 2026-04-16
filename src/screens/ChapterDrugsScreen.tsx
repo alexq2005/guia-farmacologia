@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import { View, Text, FlatList, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
+import { View, Text, TextInput, StyleSheet, StatusBar, Animated } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { DrugCard } from '../components/DrugCard';
@@ -9,12 +10,14 @@ import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import { neuInset } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChapterDrugs'>;
 
 export function ChapterDrugsScreen({ route, navigation }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const { chapterId, unitName, unitColor } = route.params;
   const { getDrugsByChapter, getChapterById } = useDrugData();
@@ -35,7 +38,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={unitColor} barStyle="light-content" />
+      <StatusBar backgroundColor={unitColor} barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={[styles.header, { backgroundColor: unitColor }]}>
         <Text style={styles.unitName}>{unitName}</Text>
         <Text style={styles.chapterName}>{chapter?.nombre || 'Capítulo'}</Text>
@@ -55,7 +58,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
         </View>
       )}
 
-      <FlatList
+      <FlashList
         data={drugs}
         renderItem={({ item }) => (
           <DrugCard
@@ -64,6 +67,7 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
             highlight={filter.length >= 2 ? filter : undefined}
           />
         )}
+        estimatedItemSize={120}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
@@ -79,52 +83,52 @@ export function ChapterDrugsScreen({ route, navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.neuBackground,
   },
   header: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
+    paddingTop: rs.space(16),
+    paddingBottom: rs.space(20),
+    paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
   },
   unitName: {
-    fontSize: 12,
+    fontSize: rs.font(12),
     color: 'rgba(255,255,255,0.7)',
     fontWeight: '600',
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
   chapterName: {
-    fontSize: 22,
+    fontSize: rs.font(22),
     fontWeight: '800',
     color: '#FFFFFF',
     marginTop: 4,
   },
   drugCount: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: 'rgba(255,255,255,0.7)',
     marginTop: 4,
   },
   list: {
-    paddingVertical: 12,
-    paddingBottom: 32,
+    paddingVertical: rs.space(12),
+    paddingBottom: rs.space(32),
   },
   emptyContainer: {
-    padding: 40,
+    padding: rs.space(40),
     alignItems: 'center',
   },
   emptyText: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     color: colors.textLight,
   },
   filterContainer: {
-    paddingHorizontal: 16,
-    paddingTop: 10,
+    paddingHorizontal: rs.space(16),
+    paddingTop: rs.space(10),
     paddingBottom: 4,
   },
-  filterInput: { ...neuInset(colors), paddingHorizontal: 14, paddingVertical: 10, fontSize: 14, color: colors.text },
+  filterInput: { ...neuInset(colors), paddingHorizontal: rs.space(14), paddingVertical: rs.space(10), fontSize: rs.font(14), color: colors.text },
 });

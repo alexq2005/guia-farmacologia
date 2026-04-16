@@ -9,6 +9,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useFadeIn } from '../utils/animations';
 import formulas from '../data/formulas.json';
 import { neuCard, neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'FormulaDetail'>;
 
@@ -63,8 +64,9 @@ function calculateResult(formulaId: string, values: Record<string, string>): str
 }
 
 export function FormulaDetailScreen({ route }: Props) {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const formula = (formulas as Formula[]).find(f => f.id === route.params.formulaId);
   const [inputValues, setInputValues] = useState<Record<string, string>>({});
@@ -95,7 +97,7 @@ export function FormulaDetailScreen({ route }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={color} barStyle="light-content" />
+      <StatusBar backgroundColor={color} barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       <View style={[styles.header, { backgroundColor: color }]}>
         <Text style={styles.categoryLabel}>{formula.categoria.toUpperCase()}</Text>
@@ -200,161 +202,162 @@ export function FormulaDetailScreen({ route }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    paddingTop: 16,
-    paddingBottom: 20,
-    paddingHorizontal: 20,
+    paddingTop: rs.space(16),
+    paddingBottom: rs.space(20),
+    paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
   },
   categoryLabel: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     color: 'rgba(255,255,255,0.7)',
     fontWeight: '700',
     letterSpacing: 1,
   },
-  title: { fontSize: 22, fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
+  title: { fontSize: rs.font(22), fontWeight: '800', color: '#FFFFFF', marginTop: 4 },
   scroll: { flex: 1 },
-  formulaBox: { ...neuCard(colors), marginHorizontal: 16, marginTop: 16, padding: 20 },
+  formulaBox: { ...neuCard(colors), marginHorizontal: rs.space(16), marginTop: rs.space(16), padding: rs.space(20) },
   formulaLabel: {
-    fontSize: 10,
+    fontSize: rs.font(10),
     color: colors.textLight,
     fontWeight: '700',
     letterSpacing: 1,
-    marginBottom: 8,
+    marginBottom: rs.space(8),
   },
   formulaText: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     color: colors.text,
     fontFamily: 'monospace',
-    lineHeight: 24,
+    lineHeight: rs.font(24),
   },
   section: {
-    marginHorizontal: 16,
-    marginTop: 20,
+    marginHorizontal: rs.space(16),
+    marginTop: rs.space(20),
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 10,
+    marginBottom: rs.space(10),
   },
   calcToggle: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: rs.space(12),
+    paddingHorizontal: rs.space(16),
     borderRadius: 12,
     borderWidth: 2,
     alignItems: 'center',
   },
   calcToggleText: {
-    fontSize: 15,
+    fontSize: rs.font(15),
     fontWeight: '700',
   },
-  calcContainer: { ...neuCardSubtle(colors), marginTop: 12, padding: 16, borderWidth: 1 },
+  calcContainer: { ...neuCardSubtle(colors), marginTop: rs.space(12), padding: rs.space(16), borderWidth: 1 },
   calcTitle: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     fontWeight: '600',
     color: colors.text,
-    marginBottom: 12,
+    marginBottom: rs.space(12),
   },
   calcInputRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: rs.space(10),
   },
   calcLabelArea: {
     flex: 1,
-    marginRight: 10,
+    marginRight: rs.space(10),
   },
   calcLabel: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.text,
   },
   calcUnit: {
-    fontSize: 11,
+    fontSize: rs.font(11),
     color: colors.textLight,
   },
   calcInput: {
-    width: 100,
+    flex: 1,
+    maxWidth: rs.space(140),
     borderWidth: 1.5,
     borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    fontSize: 16,
+    paddingHorizontal: rs.space(12),
+    paddingVertical: rs.space(8),
+    fontSize: rs.font(16),
     fontWeight: '700',
     color: colors.text,
     backgroundColor: colors.background,
     textAlign: 'center',
   },
   resultBox: {
-    marginTop: 12,
-    padding: 16,
+    marginTop: rs.space(12),
+    padding: rs.space(16),
     borderRadius: 12,
     borderWidth: 1,
     alignItems: 'center',
   },
   resultLabel: {
-    fontSize: 10,
+    fontSize: rs.font(10),
     fontWeight: '700',
     letterSpacing: 1,
     color: colors.textSecondary,
     marginBottom: 4,
   },
   resultValue: {
-    fontSize: 28,
+    fontSize: rs.font(28),
     fontWeight: '800',
   },
   clearBtn: {
-    marginTop: 10,
+    marginTop: rs.space(10),
     alignItems: 'center',
   },
   clearBtnText: {
-    fontSize: 13,
+    fontSize: rs.font(13),
     color: colors.textSecondary,
     textDecorationLine: 'underline',
   },
   variableRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: rs.space(8),
     backgroundColor: colors.surface,
-    padding: 10,
+    padding: rs.space(10),
     borderRadius: 10,
   },
   variableBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    paddingHorizontal: rs.space(10),
+    paddingVertical: rs.space(4),
     borderRadius: 8,
-    marginRight: 10,
+    marginRight: rs.space(10),
   },
-  variableName: { fontSize: 13, fontWeight: '700' },
+  variableName: { fontSize: rs.font(13), fontWeight: '700' },
   variableInfo: { flex: 1 },
-  variableDesc: { fontSize: 13, color: colors.text },
-  variableUnit: { fontSize: 11, color: colors.textLight, marginTop: 1 },
+  variableDesc: { fontSize: rs.font(13), color: colors.text },
+  variableUnit: { fontSize: rs.font(11), color: colors.textLight, marginTop: 1 },
   exampleBox: {
     backgroundColor: colors.success + '10',
-    padding: 16,
+    padding: rs.space(16),
     borderRadius: 12,
     borderWidth: 1,
     borderColor: colors.success + '30',
   },
   exampleText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.text,
-    lineHeight: 22,
+    lineHeight: rs.font(22),
     fontFamily: 'monospace',
   },
   explanationText: {
-    fontSize: 14,
+    fontSize: rs.font(14),
     color: colors.textSecondary,
-    lineHeight: 22,
+    lineHeight: rs.font(22),
   },
   errorText: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     color: colors.error,
     textAlign: 'center',
-    marginTop: 40,
+    marginTop: rs.space(40),
   },
 });

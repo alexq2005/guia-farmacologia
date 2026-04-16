@@ -60,8 +60,14 @@ export function TabBarProvider({ children }: { children: React.ReactNode }) {
     [show, hide],
   );
 
+  const value = React.useMemo(() => ({
+    translateY,
+    handleScroll,
+    show
+  }), [translateY, handleScroll, show]);
+
   return (
-    <TabBarCtx.Provider value={{ translateY, handleScroll, show }}>
+    <TabBarCtx.Provider value={value}>
       {children}
     </TabBarCtx.Provider>
   );

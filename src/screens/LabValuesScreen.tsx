@@ -13,6 +13,7 @@ import { LAB_CATEGORY_LABELS } from '../utils/labels';
 import { PremiumGate } from '../components/PremiumGate';
 import labValuesData from '../data/lab_values.json';
 import { neuCard, neuPill } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 const ALL_LAB_CATEGORIES: LabCategory[] = [
   'hematologia', 'bioquimica', 'coagulacion', 'hepatico',
@@ -36,8 +37,9 @@ function RangeBar({ label, range, colors, iconName }: { label: string; range: { 
 }
 
 export function LabValuesScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const labValues = labValuesData as LabValue[];
 
@@ -225,7 +227,7 @@ Los rangos de referencia pueden variar según el laboratorio y el método de an�
   return (
     <PremiumGate feature="Valores de Laboratorio">
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor="#2563EB" barStyle="light-content" />
+      <StatusBar backgroundColor="#2563EB" barStyle={isDark ? 'light-content' : 'dark-content'} />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Valores de Laboratorio</Text>
         <Text style={styles.headerSubtitle}>{labValues.length} valores de referencia clínica</Text>
@@ -262,66 +264,66 @@ Los rangos de referencia pueden variar según el laboratorio y el método de an�
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
   header: {
-    backgroundColor: '#2563EB', paddingTop: 16, paddingBottom: 20, paddingHorizontal: 20,
+    backgroundColor: '#2563EB', paddingTop: rs.space(16), paddingBottom: rs.space(20), paddingHorizontal: rs.space(20),
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   searchContainer: {
     flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 12, paddingHorizontal: 12, marginTop: 12,
+    borderRadius: 12, paddingHorizontal: rs.space(12), marginTop: rs.space(12),
   },
-  searchIcon: { fontSize: 16, marginRight: 8 },
-  searchInput: { flex: 1, color: '#FFFFFF', fontSize: 15, paddingVertical: 10 },
-  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: 16, padding: 4 },
+  searchIcon: { fontSize: rs.font(16), marginRight: rs.space(8) },
+  searchInput: { flex: 1, color: '#FFFFFF', fontSize: rs.font(15), paddingVertical: rs.space(10) },
+  clearSearch: { color: 'rgba(255,255,255,0.7)', fontSize: rs.font(16), padding: 4 },
   chipsScroll: {},
-  chipsContainer: { paddingHorizontal: 16, paddingVertical: 12, gap: 8, flexDirection: 'row', paddingRight: 24 },
-  chip: { ...neuPill(colors), paddingHorizontal: 12, paddingVertical: 6 },
+  chipsContainer: { paddingHorizontal: rs.space(16), paddingVertical: rs.space(12), gap: rs.space(8), flexDirection: 'row', paddingRight: rs.space(24) },
+  chip: { ...neuPill(colors), paddingHorizontal: rs.space(12), paddingVertical: rs.space(6) },
   chipActive: { backgroundColor: colors.primary, borderColor: colors.primary },
-  chipText: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
+  chipText: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
   chipTextActive: { color: '#FFFFFF' },
-  resultCount: { fontSize: 13, color: colors.textSecondary, marginHorizontal: 20, marginBottom: 8 },
-  labCard: { ...neuCard(colors), marginHorizontal: 16, marginBottom: 10, padding: 16, borderLeftWidth: 4 },
+  resultCount: { fontSize: rs.font(13), color: colors.textSecondary, marginHorizontal: rs.space(20), marginBottom: rs.space(8) },
+  labCard: { ...neuCard(colors), marginHorizontal: rs.space(16), marginBottom: rs.space(10), padding: rs.space(16), borderLeftWidth: 4 },
   cardHeader: { flexDirection: 'row', alignItems: 'center' },
-  cardIcon: { fontSize: 24, marginRight: 10 },
+  cardIcon: { fontSize: rs.font(24), marginRight: rs.space(10) },
   cardTitleArea: { flex: 1 },
-  cardTitle: { fontSize: 15, fontWeight: '700', color: colors.text },
-  cardAbbr: { fontSize: 12, fontWeight: '600', marginTop: 1 },
-  cardBadge: { alignItems: 'center', marginRight: 8 },
-  cardBadgeText: { fontSize: 13, fontWeight: '800' },
-  cardBadgeUnit: { fontSize: 9, color: colors.textLight },
-  chevron: { fontSize: 10, color: colors.textLight, transform: [{ rotate: '0deg' }] },
+  cardTitle: { fontSize: rs.font(15), fontWeight: '700', color: colors.text },
+  cardAbbr: { fontSize: rs.font(12), fontWeight: '600', marginTop: 1 },
+  cardBadge: { alignItems: 'center', marginRight: rs.space(8) },
+  cardBadgeText: { fontSize: rs.font(13), fontWeight: '800' },
+  cardBadgeUnit: { fontSize: rs.font(11), color: colors.textLight },
+  chevron: { fontSize: rs.font(10), color: colors.textLight, transform: [{ rotate: '0deg' }] },
   chevronExpanded: { transform: [{ rotate: '180deg' }] },
-  expandedContent: { marginTop: 14, paddingTop: 14, borderTopWidth: 1, borderTopColor: colors.borderLight },
+  expandedContent: { marginTop: rs.space(14), paddingTop: rs.space(14), borderTopWidth: 1, borderTopColor: colors.borderLight },
   sectionLabel: {
-    fontSize: 10, fontWeight: '700', color: colors.textLight, letterSpacing: 1,
-    marginTop: 12, marginBottom: 8,
+    fontSize: rs.font(10), fontWeight: '700', color: colors.textLight, letterSpacing: 1,
+    marginTop: rs.space(12), marginBottom: rs.space(8),
   },
-  significanceRow: { gap: 8, marginTop: 4 },
+  significanceRow: { gap: rs.space(8), marginTop: 4 },
   significanceBox: {
-    padding: 10, borderRadius: 10, borderWidth: 1, marginBottom: 4,
+    padding: rs.space(10), borderRadius: 10, borderWidth: 1, marginBottom: 4,
   },
-  sigLabel: { fontSize: 10, fontWeight: '800', letterSpacing: 0.5, marginBottom: 4 },
-  sigText: { fontSize: 12, color: colors.textSecondary, lineHeight: 17 },
-  tagsRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  sigLabel: { fontSize: rs.font(10), fontWeight: '800', letterSpacing: 0.5, marginBottom: 4 },
+  sigText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17) },
+  tagsRow: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(6) },
   drugTag: {
-    backgroundColor: colors.background, paddingHorizontal: 10, paddingVertical: 4,
+    backgroundColor: colors.background, paddingHorizontal: rs.space(10), paddingVertical: 4,
     borderRadius: 8, borderWidth: 1, borderColor: colors.borderLight,
   },
-  drugTagText: { fontSize: 11, color: colors.text, fontWeight: '500' },
-  nursingRow: { flexDirection: 'row', marginBottom: 4, paddingRight: 8 },
-  nursingBullet: { fontSize: 13, color: colors.primary, marginRight: 6, marginTop: 1 },
-  nursingText: { fontSize: 12, color: colors.textSecondary, lineHeight: 17, flex: 1 },
-  emptyState: { alignItems: 'center', paddingVertical: 60 },
-  emptyIcon: { fontSize: 48, marginBottom: 12 },
-  emptyText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  emptyHint: { fontSize: 13, color: colors.textSecondary, marginTop: 4 },
+  drugTagText: { fontSize: rs.font(11), color: colors.text, fontWeight: '500' },
+  nursingRow: { flexDirection: 'row', marginBottom: 4, paddingRight: rs.space(8) },
+  nursingBullet: { fontSize: rs.font(13), color: colors.primary, marginRight: rs.space(6), marginTop: 1 },
+  nursingText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(17), flex: 1 },
+  emptyState: { alignItems: 'center', paddingVertical: rs.space(60) },
+  emptyIcon: { fontSize: rs.font(48), marginBottom: rs.space(12) },
+  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+  emptyHint: { fontSize: rs.font(13), color: colors.textSecondary, marginTop: 4 },
   disclaimer: {
-    marginHorizontal: 16, marginTop: 16, backgroundColor: colors.surface,
-    padding: 14, borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
+    marginHorizontal: rs.space(16), marginTop: rs.space(16), backgroundColor: colors.surface,
+    padding: rs.space(14), borderRadius: 12, borderWidth: 1, borderColor: colors.borderLight,
   },
-  disclaimerText: { fontSize: 12, color: colors.textSecondary, lineHeight: 18 },
+  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
 });

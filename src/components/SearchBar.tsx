@@ -4,6 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
 import { neuInset } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 interface Props {
   value: string;
@@ -21,7 +22,8 @@ export function SearchBar({
   autoFocus = false,
 }: Props) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const inputRef = useRef<TextInput>(null);
 
   const handleClear = useCallback(() => {
@@ -55,30 +57,30 @@ export function SearchBar({
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     ...neuInset(colors),
-    marginHorizontal: 16,
-    marginVertical: 8,
-    paddingHorizontal: 14,
+    marginHorizontal: rs.space(16),
+    marginVertical: rs.space(8),
+    paddingHorizontal: rs.space(14),
   },
   icon: {
-    fontSize: 18,
-    marginRight: 8,
+    fontSize: rs.font(18),
+    marginRight: rs.space(8),
   },
   input: {
     flex: 1,
-    fontSize: 15,
+    fontSize: rs.font(15),
     color: colors.text,
-    paddingVertical: 12,
+    paddingVertical: rs.space(12),
   },
   clearButton: {
-    padding: 6,
+    padding: rs.space(6),
   },
   clearText: {
-    fontSize: 16,
+    fontSize: rs.font(16),
     color: colors.textLight,
     fontWeight: '600',
   },

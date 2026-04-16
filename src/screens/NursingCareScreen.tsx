@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useFadeIn } from '../utils/animations';
 import { neuCardSubtle } from '../utils/neumorphism';
+import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 import type { NursingCareData, NursingRight, NursingAssessmentCategory, NursingRouteCare, NursingHighRiskCategory, NursingProcedure, NursingDocSection, NursingCalcFormula } from '../types';
 
 const nursingData: NursingCareData = require('../data/nursing_care.json');
@@ -34,7 +35,8 @@ const TABS: { key: TabKey; label: string; iconName: string }[] = [
 
 function BulletList({ items, color }: { items: string[]; color?: string }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View>
       {items.map((item, i) => (
@@ -49,7 +51,8 @@ function BulletList({ items, color }: { items: string[]; color?: string }) {
 
 function NumberedList({ items, color }: { items: string[]; color?: string }) {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
     <View>
       {items.map((item, i) => (
@@ -66,7 +69,8 @@ function NumberedList({ items, color }: { items: string[]; color?: string }) {
 
 function DerechosTab() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const data = nursingData.derechosAdministracion;
   return (
     <View>
@@ -92,10 +96,11 @@ function DerechosTab() {
 
 function ValoracionTab() {
   const { colors } = useTheme();
+  const rs = useResponsiveScale();
   const data = nursingData.valoracionPreAdministracion;
   return (
     <View>
-      <Text style={useMemo(() => createStyles(colors), [colors]).tabDescription}>{data.descripcion}</Text>
+      <Text style={useMemo(() => createStyles(colors, rs), [colors, rs]).tabDescription}>{data.descripcion}</Text>
       {data.categorias.map((cat: NursingAssessmentCategory, i: number) => (
         <CollapsibleSection
           key={i}
@@ -134,7 +139,8 @@ function ViasTab() {
 
 function AltoRiesgoTab() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const data = nursingData.medicamentosAltoRiesgo;
   return (
     <View>
@@ -202,7 +208,8 @@ function DocumentacionTab() {
 
 function CalculosTab() {
   const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const data = nursingData.calculosFarmacologicos;
   return (
     <View>
@@ -223,8 +230,9 @@ function CalculosTab() {
 }
 
 export function NursingCareScreen() {
-  const { colors } = useTheme();
-  const styles = useMemo(() => createStyles(colors), [colors]);
+  const { colors, isDark } = useTheme();
+  const rs = useResponsiveScale();
+  const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   const fadeIn = useFadeIn();
   const [activeTab, setActiveTab] = useState<TabKey>('derechos');
 
@@ -244,7 +252,7 @@ export function NursingCareScreen() {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.nursing} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.nursing} barStyle={isDark ? 'light-content' : 'dark-content'} />
 
       <View style={styles.header}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -293,47 +301,47 @@ export function NursingCareScreen() {
   );
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.neuBackground },
-  header: { backgroundColor: colors.nursing, paddingTop: 16, paddingBottom: 16, paddingHorizontal: 20 },
-  headerTitle: { fontSize: 24, fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: 14, color: 'rgba(255,255,255,0.8)', marginTop: 2 },
+  header: { backgroundColor: colors.nursing, paddingTop: rs.space(16), paddingBottom: rs.space(16), paddingHorizontal: rs.space(20) },
+  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.8)', marginTop: 2 },
   tabScroll: { backgroundColor: colors.surface, maxHeight: 52, borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  tabContent: { paddingHorizontal: 12, paddingVertical: 8, gap: 6 },
-  tabChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, backgroundColor: colors.background, gap: 4 },
+  tabContent: { paddingHorizontal: rs.space(12), paddingVertical: rs.space(8), gap: rs.space(6) },
+  tabChip: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: rs.space(12), paddingVertical: rs.space(6), borderRadius: 20, backgroundColor: colors.background, gap: 4 },
   tabChipActive: { backgroundColor: colors.nursing + '18', borderWidth: 1, borderColor: colors.nursing },
-  tabChipIcon: { fontSize: 14 },
-  tabChipLabel: { fontSize: 12, fontWeight: '600', color: colors.textSecondary },
+  tabChipIcon: { fontSize: rs.font(14) },
+  tabChipLabel: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
   tabChipLabelActive: { color: colors.nursing, fontWeight: '700' },
   scroll: { flex: 1 },
-  contentHeader: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 8 },
-  contentTitle: { fontSize: 18, fontWeight: '700', color: colors.text },
-  tabDescription: { fontSize: 14, color: colors.textSecondary, marginHorizontal: 16, marginBottom: 12, lineHeight: 20 },
-  derechoCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginBottom: 10, padding: 14 },
-  derechoHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  derechoNumber: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.nursing, alignItems: 'center', justifyContent: 'center', marginRight: 10 },
-  derechoNumberText: { color: '#FFFFFF', fontSize: 16, fontWeight: '800' },
-  derechoName: { fontSize: 16, fontWeight: '700', color: colors.text, flex: 1 },
-  derechoDesc: { fontSize: 14, color: colors.text, lineHeight: 20, marginBottom: 8 },
-  ejemploBox: { backgroundColor: colors.nursing + '08', borderRadius: 8, padding: 10, borderLeftWidth: 3, borderLeftColor: colors.nursing },
-  ejemploLabel: { fontSize: 11, fontWeight: '700', color: colors.nursing, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 },
-  ejemploText: { fontSize: 13, color: colors.text, lineHeight: 19, fontStyle: 'italic' },
-  bulletRow: { flexDirection: 'row', marginBottom: 6, paddingRight: 8 },
-  bullet: { fontSize: 14, color: colors.text, marginRight: 8, marginTop: 1 },
-  bulletText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
-  numberedRow: { flexDirection: 'row', marginBottom: 10, alignItems: 'flex-start' },
-  numberBadge: { width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginRight: 10, marginTop: 1 },
-  numberText: { fontSize: 12, fontWeight: '700' },
-  numberedText: { fontSize: 14, color: colors.text, flex: 1, lineHeight: 20 },
-  apinchBadge: { alignSelf: 'center', backgroundColor: colors.error + '15', paddingHorizontal: 20, paddingVertical: 8, borderRadius: 20, borderWidth: 1, borderColor: colors.error + '40', marginBottom: 12 },
-  apinchText: { fontSize: 18, fontWeight: '800', color: colors.error, letterSpacing: 3 },
-  farmacosRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 10 },
-  farmacoChip: { backgroundColor: colors.error + '12', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 10, borderWidth: 1, borderColor: colors.error + '25' },
-  farmacoChipText: { fontSize: 12, fontWeight: '600', color: colors.error },
-  precaucionTitle: { fontSize: 13, fontWeight: '700', color: colors.textSecondary, marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 },
-  formulaCard: { ...neuCardSubtle(colors), marginHorizontal: 16, marginBottom: 10, padding: 14 },
-  formulaName: { fontSize: 16, fontWeight: '700', color: colors.text, marginBottom: 8 },
-  formulaBox: { backgroundColor: colors.surfaceElevated, borderRadius: 8, padding: 12, marginBottom: 8 },
-  formulaText: { fontSize: 14, color: colors.text, fontFamily: 'monospace', lineHeight: 20 },
+  contentHeader: { paddingHorizontal: rs.space(16), paddingTop: rs.space(16), paddingBottom: rs.space(8) },
+  contentTitle: { fontSize: rs.font(18), fontWeight: '700', color: colors.text },
+  tabDescription: { fontSize: rs.font(14), color: colors.textSecondary, marginHorizontal: rs.space(16), marginBottom: rs.space(12), lineHeight: rs.font(20) },
+  derechoCard: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), marginBottom: rs.space(10), padding: rs.space(14) },
+  derechoHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(8) },
+  derechoNumber: { width: 32, height: 32, borderRadius: 16, backgroundColor: colors.nursing, alignItems: 'center', justifyContent: 'center', marginRight: rs.space(10) },
+  derechoNumberText: { color: '#FFFFFF', fontSize: rs.font(16), fontWeight: '800' },
+  derechoName: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, flex: 1 },
+  derechoDesc: { fontSize: rs.font(14), color: colors.text, lineHeight: rs.font(20), marginBottom: rs.space(8) },
+  ejemploBox: { backgroundColor: colors.nursing + '08', borderRadius: 8, padding: rs.space(10), borderLeftWidth: 3, borderLeftColor: colors.nursing },
+  ejemploLabel: { fontSize: rs.font(11), fontWeight: '700', color: colors.nursing, textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 },
+  ejemploText: { fontSize: rs.font(13), color: colors.text, lineHeight: rs.font(19), fontStyle: 'italic' },
+  bulletRow: { flexDirection: 'row', marginBottom: rs.space(6), paddingRight: rs.space(8) },
+  bullet: { fontSize: rs.font(14), color: colors.text, marginRight: rs.space(8), marginTop: 1 },
+  bulletText: { fontSize: rs.font(14), color: colors.text, flex: 1, lineHeight: rs.font(20) },
+  numberedRow: { flexDirection: 'row', marginBottom: rs.space(10), alignItems: 'flex-start' },
+  numberBadge: { width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginRight: rs.space(10), marginTop: 1 },
+  numberText: { fontSize: rs.font(12), fontWeight: '700' },
+  numberedText: { fontSize: rs.font(14), color: colors.text, flex: 1, lineHeight: rs.font(20) },
+  apinchBadge: { alignSelf: 'center', backgroundColor: colors.error + '15', paddingHorizontal: rs.space(20), paddingVertical: rs.space(8), borderRadius: 20, borderWidth: 1, borderColor: colors.error + '40', marginBottom: rs.space(12) },
+  apinchText: { fontSize: rs.font(18), fontWeight: '800', color: colors.error, letterSpacing: 3 },
+  farmacosRow: { flexDirection: 'row', flexWrap: 'wrap', gap: rs.space(6), marginBottom: rs.space(10) },
+  farmacoChip: { backgroundColor: colors.error + '12', paddingHorizontal: rs.space(10), paddingVertical: 4, borderRadius: 10, borderWidth: 1, borderColor: colors.error + '25' },
+  farmacoChipText: { fontSize: rs.font(12), fontWeight: '600', color: colors.error },
+  precaucionTitle: { fontSize: rs.font(13), fontWeight: '700', color: colors.textSecondary, marginBottom: rs.space(6), textTransform: 'uppercase', letterSpacing: 0.5 },
+  formulaCard: { ...neuCardSubtle(colors), marginHorizontal: rs.space(16), marginBottom: rs.space(10), padding: rs.space(14) },
+  formulaName: { fontSize: rs.font(16), fontWeight: '700', color: colors.text, marginBottom: rs.space(8) },
+  formulaBox: { backgroundColor: colors.surfaceElevated, borderRadius: 8, padding: rs.space(12), marginBottom: rs.space(8) },
+  formulaText: { fontSize: rs.font(14), color: colors.text, fontFamily: 'monospace', lineHeight: rs.font(20) },
   bottomSpacer: { height: 40 },
 });

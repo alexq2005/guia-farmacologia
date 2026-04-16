@@ -3,6 +3,7 @@
 // ============================================================
 
 import { TextStyle } from 'react-native';
+import type { ResponsiveScale } from './responsive';
 
 export const TYPOGRAPHY = {
   display1: {
@@ -64,3 +65,13 @@ export const TYPOGRAPHY = {
     fontWeight: '600',
   } as TextStyle,
 } as const;
+
+/** Returns TYPOGRAPHY tokens with font sizes scaled by rs.font() */
+export function scaledTypography(rs: ResponsiveScale) {
+  const result = {} as Record<keyof typeof TYPOGRAPHY, TextStyle>;
+  for (const key of Object.keys(TYPOGRAPHY) as (keyof typeof TYPOGRAPHY)[]) {
+    const token = TYPOGRAPHY[key];
+    result[key] = { ...token, fontSize: rs.font(token.fontSize as number) };
+  }
+  return result;
+}
