@@ -66,9 +66,14 @@ yarn-error.log
 # testing
 /coverage
 
-# Screenshots de desarrollo
+# Screenshots de desarrollo (root histórico + nueva carpeta dedicada)
 screenshot*.png
 screen_*.png
+ss_*.png
+splash_*.png
+emulator_*.png
+app_*.png
+screenshots/
 
 # Python cache
 __pycache__/
@@ -85,6 +90,16 @@ replay_pid*.log
 
 # CIMA API cache (generated data)
 scripts/cima_cache/
+
+# One-shot historical scripts (kept for reference, not part of active workflow)
+scripts/_archive/
+
+# Local build logs (artifacts of dev sessions)
+build_*.log
+build_error.log
+
+# UI hierarchy dumps from uiautomator (QA artifacts)
+window_dump_*.xml
 
 # Generated LogBox drawables from bundle --assets-dest
 android/app/src/main/res/drawable-*/node_modules_*
