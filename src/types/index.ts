@@ -47,6 +47,7 @@ export interface Drug {
   };
   presentaciones: string[];
   embarazo: PregnancyCategory;
+  embarazoNota?: string;
   lactancia: string;
   cuidadosEnfermeria: string[];
   farmacocinetica?: {
@@ -69,18 +70,18 @@ export interface Drug {
     estabilidad?: string;
     // Guía Son Espases — campos extendidos
     solucionesCompatibles?: {
-      ssf?: boolean | string;    // NaCl 0.9%: true=compatible, false=incompatible, string=condicional
-      sg5?: boolean | string;    // SG 5%
-      otras?: string;            // Ringer Lactato, etc.
+      ssf?: boolean | string; // NaCl 0.9%: true=compatible, false=incompatible, string=condicional
+      sg5?: boolean | string; // SG 5%
+      otras?: string; // Ringer Lactato, etc.
     };
     compatibilidadNPT?: {
-      tresEnUno?: string;        // Amino + glucosa + lípidos
-      dosEnUno?: string;         // Amino + glucosa (sin lípidos)
+      tresEnUno?: string; // Amino + glucosa + lípidos
+      dosEnUno?: string; // Amino + glucosa (sin lípidos)
       observaciones?: string;
     };
-    proteccionPersonal?: string[];  // Instrucciones manipulación segura
+    proteccionPersonal?: string[]; // Instrucciones manipulación segura
     medicamentoPeligroso?: boolean; // Flag visual ⚠️
-    observaciones?: string;         // Observaciones adicionales
+    observaciones?: string; // Observaciones adicionales
   };
   riesgosSobremedicacion?: {
     descripcion: string;
@@ -88,12 +89,12 @@ export interface Drug {
     manejo: string;
     alerta?: string;
   };
-  preparacionDilucion?: string;       // Top-level dilution instructions
-  reconstitucion?: string;            // Top-level reconstitution instructions
-  solucionesCompatibles?: string[];   // Top-level compatible solutions list
-  observaciones?: string;             // Top-level clinical observations
-  grupoFarmacologico?: string;  // Pharmacological group (by mechanism)
-  grupoTerapeutico?: string;    // Therapeutic group (by clinical use/system)
+  preparacionDilucion?: string; // Top-level dilution instructions
+  reconstitucion?: string; // Top-level reconstitution instructions
+  solucionesCompatibles?: string[]; // Top-level compatible solutions list
+  observaciones?: string; // Top-level clinical observations
+  grupoFarmacologico?: string; // Pharmacological group (by mechanism)
+  grupoTerapeutico?: string; // Therapeutic group (by clinical use/system)
   unidadId: string;
   capituloId: string;
   searchText?: string; // Deprecated: generated at runtime
@@ -147,7 +148,11 @@ export interface Antidote {
 }
 
 /** Compatibilidad IV */
-export type IVCompatibility = 'compatible' | 'incompatible' | 'variable' | 'desconocido';
+export type IVCompatibility =
+  | 'compatible'
+  | 'incompatible'
+  | 'variable'
+  | 'desconocido';
 
 export interface IVCompatibilityEntry {
   farmaco1: string;
@@ -183,7 +188,12 @@ export interface GlossaryEntry {
   termino: string;
   definicion: string;
   abreviatura?: string;
-  categoria: 'farmacologia' | 'anatomia' | 'enfermeria' | 'abreviatura' | 'general';
+  categoria:
+    | 'farmacologia'
+    | 'anatomia'
+    | 'enfermeria'
+    | 'abreviatura'
+    | 'general';
 }
 
 /** Información de vía de administración */
@@ -252,7 +262,21 @@ export interface ClinicalScale {
   abreviatura: string;
   descripcion: string;
   tipo: ScaleType;
-  categoria: 'neurologia' | 'neonatologia' | 'riesgo_ulceras' | 'sepsis' | 'via_aerea' | 'sedacion' | 'dolor' | 'trombosis' | 'postanestesia' | 'asa' | 'caidas' | 'funcional' | 'dolor_pediatrico' | 'nutricion';
+  categoria:
+    | 'neurologia'
+    | 'neonatologia'
+    | 'riesgo_ulceras'
+    | 'sepsis'
+    | 'via_aerea'
+    | 'sedacion'
+    | 'dolor'
+    | 'trombosis'
+    | 'postanestesia'
+    | 'asa'
+    | 'caidas'
+    | 'funcional'
+    | 'dolor_pediatrico'
+    | 'nutricion';
   componentes: ScaleComponent[];
   interpretaciones: ScaleInterpretation[];
   rangoTotal: [number, number];
@@ -261,7 +285,16 @@ export interface ClinicalScale {
 }
 
 /** Valor de laboratorio */
-export type LabCategory = 'hematologia' | 'bioquimica' | 'coagulacion' | 'hepatico' | 'renal' | 'cardiaco' | 'endocrino' | 'orina' | 'gasometria';
+export type LabCategory =
+  | 'hematologia'
+  | 'bioquimica'
+  | 'coagulacion'
+  | 'hepatico'
+  | 'renal'
+  | 'cardiaco'
+  | 'endocrino'
+  | 'orina'
+  | 'gasometria';
 
 export interface LabRange {
   min: number;
@@ -287,7 +320,15 @@ export interface LabValue {
 }
 
 /** Protocolo de emergencia */
-export type ProtocolCategory = 'cardiaco' | 'respiratorio' | 'neurologico' | 'metabolico' | 'sepsis' | 'trauma' | 'otro' | 'obstetrico';
+export type ProtocolCategory =
+  | 'cardiaco'
+  | 'respiratorio'
+  | 'neurologico'
+  | 'metabolico'
+  | 'sepsis'
+  | 'trauma'
+  | 'otro'
+  | 'obstetrico';
 export type ProtocolPriority = 'critico' | 'urgente' | 'emergente';
 
 export interface ProtocolStep {
@@ -456,7 +497,15 @@ export interface SearchHistoryEntry {
 /** Pregunta del quiz */
 export interface QuizQuestion {
   id: string;
-  type: 'indication' | 'contraindication' | 'route' | 'pregnancy' | 'family' | 'mechanism' | 'adverse' | 'nursing';
+  type:
+    | 'indication'
+    | 'contraindication'
+    | 'route'
+    | 'pregnancy'
+    | 'family'
+    | 'mechanism'
+    | 'adverse'
+    | 'nursing';
   questionText: string;
   options: string[];
   correctIndex: number;
