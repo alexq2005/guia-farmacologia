@@ -13,7 +13,9 @@ import { PremiumProvider } from './src/context/PremiumContext';
 import { ErrorBoundary } from './src/components/ErrorBoundary';
 import { TabBarProvider } from './src/context/TabBarContext';
 import { initDatabase } from './src/data/db';
+import { initCrashReporting } from './src/utils/crashReporting';
 
+initCrashReporting();
 initDatabase();
 
 function App() {

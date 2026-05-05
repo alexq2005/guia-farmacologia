@@ -1,6 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { crashReporting } from '../utils/crashReporting';
 
 interface Props {
   children: React.ReactNode;
@@ -18,6 +25,12 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return { hasError: true, error };
   }
 
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    crashReporting.captureException(error, {
+      componentStack: errorInfo.componentStack,
+    });
+  }
+
   handleRetry = () => {
     this.setState({ hasError: false, error: null });
   };
@@ -26,7 +39,12 @@ export class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       return (
         <View style={styles.container}>
-          <MaterialCommunityIcons name="alert-circle-outline" size={48} color="#DC2626" style={styles.icon} />
+          <MaterialCommunityIcons
+            name="alert-circle-outline"
+            size={48}
+            color="#DC2626"
+            style={styles.icon}
+          />
           <Text style={styles.title}>Algo salió mal</Text>
           <Text style={styles.message}>
             La aplicación encontró un error inesperado.
