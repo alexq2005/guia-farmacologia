@@ -1,0 +1,31 @@
+# Archived one-shot scripts (kept for reference but not part of active codebase)
+scripts/_archive/
+
+# CIMA API cache (generated data, not code)
+scripts/cima_cache/
+
+# Bundled JS assets (generated)
+android/app/src/main/assets/
+
+# Build artifacts
+android/app/build/
+ios/build/
+
+# Test data and patches
+patches/
+
+# Generated Hermes bundles
+*.jsbundle
+
+# JSON data — too large to lint, validated by drugs-schema.test.ts instead
+src/data/drugs.json
+src/data/categories.json
+src/data/pathologies.json
+src/data/lab_values.json
+src/data/emergency_protocols.json
+src/data/clinical_scales.json
+src/data/parenteral_guide.json
+src/data/formulas.json
+src/data/glossary.json
+src/data/routes.json
+src/data/nursing_care.json

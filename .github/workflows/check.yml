@@ -34,12 +34,8 @@ jobs:
         run: npm run typecheck
 
   lint:
-    name: ESLint (informational)
+    name: ESLint
     runs-on: ubuntu-latest
-    # Lint baseline has ~85 errors / ~530 warnings as of v1.0.0. Surfaced for
-    # visibility but not blocking until the baseline is cleaned up. Once green,
-    # remove `continue-on-error` to make this required.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
