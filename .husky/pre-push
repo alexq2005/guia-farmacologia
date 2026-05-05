@@ -1,0 +1,2 @@
+echo "Running tsc --noEmit (skip with --no-verify if you must, but you'll regret it)..."
+npm run typecheck
