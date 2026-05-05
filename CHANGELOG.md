@@ -1,0 +1,94 @@
+# Changelog
+
+All notable changes to **Guía Farmacológica de Enfermería** are documented in
+this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+The Android `versionCode` (separate from the semver `versionName`) increments by
+**+1 on every release**, regardless of bump type, because Google Play rejects
+APKs with duplicate version codes.
+
+## [Unreleased]
+
+### Added
+
+- **Sistema de migraciones SQLite** con dual versioning (`SCHEMA_VERSION` via `PRAGMA user_version` + `DATASET_VERSION` via tabla `_meta`) en `src/data/db.ts`. Permite que actualizaciones de `drugs.json` lleguen a usuarios existentes — antes la BD solo se hidrataba en fresh install.
+- **Script `scripts/bump-version.js`** para sincronizar `versionName` y `versionCode` entre `android/app/build.gradle` y `package.json`, con flag `--dry-run`. Mueve la sección `[Unreleased]` del CHANGELOG a la versión recién creada.
+- **npm scripts**: `version:patch`, `version:minor`, `version:major`, `version:dry`, `typecheck`, `prepare`.
+- **CHANGELOG.md** formato Keep-a-Changelog 1.1.0 con backfill de v1.0.0.
+- **Pre-commit hooks** con husky 9.1.7 + lint-staged 16.4.0:
+  - `pre-commit`: lint-staged sobre archivos staged (eslint --fix + prettier --write)
+  - `pre-push`: `tsc --noEmit` bloqueante
+- **CI GitHub Actions** (`.github/workflows/check.yml`) con 3 jobs paralelos: typecheck (bloqueante), lint (informational), test (bloqueante).
+- **Tests** (21 tests / 3 archivos / ~7s):
+  - `__tests__/search.test.ts` — normalización accent-insensitive
+  - `__tests__/activation.test.ts` — SHA-256 puro JS + validación de código premium
+  - `__tests__/drugs-schema.test.ts` — guarda contra corrupción de `drugs.json` (IDs únicos, campos requeridos, tipos, conteo)
+- **Documento `docs/OTA_UPDATES_RESEARCH.md`** con análisis comparativo de OTA updates y recomendación de NO implementar para una app medical.
+
+### Changed
+
+- `src/data/db.ts`: la repopulación de la tabla `drugs` ahora es `DELETE FROM drugs` + `INSERT OR REPLACE` dentro de transacción, en lugar de `INSERT OR IGNORE` solo si la tabla estaba vacía. Idempotente y rollback-safe.
+- `docs/DEVELOPMENT.md`: sección "Cómo Agregar Contenido" documenta el flujo correcto post-SQLite — editar JSON + bumpear `DATASET_VERSION`. Aclara qué datasets están en SQLite vs RAM.
+- `README.md`: conteo actualizado de 1,781 → 2,977 fármacos (sincronizado con el dataset real).
+- `package.json`: versión sincronizada de "0.0.1" → "1.0.0" (corrige desync histórico con `build.gradle`).
+- `Drug` interface (`src/types/index.ts`): agregado `embarazoNota?: string` (presente en 43 fármacos).
+- `RouteIllustrationSVG.tsx`: tipo `anchor` cambiado a union literal `'start' | 'middle' | 'end'`. Línea 383: JSX expression dividida arreglada con string único.
+- `Chapter/Pathologies/SearchScreen.tsx`: removido `estimatedItemSize` (deprecated en `@shopify/flash-list` v2).
+- `.gitignore`: extendido con `screenshots/`, `scripts/_archive/`, `build_*.log`, `window_dump_*.xml`, `ss_*.png`, `splash_*.png`, `emulator_*.png`, `app_*.png`.
+- Repo limpio: 173 PNGs del root → `screenshots/`, 76 scripts históricos → `scripts/_archive/` (de 96 a 20 scripts activos).
+
+### Fixed
+
+- **Bug crítico de actualización**: usuarios con la app instalada no recibían cambios en `drugs.json` al actualizar el APK desde Play Store. La BD persistía entre updates y el código solo hidrataba si `count === 0`. Ahora detecta version mismatch y rehidrata.
+- **Bug runtime semántico** (`DrugDetailScreen.tsx:146`): `farmacosRelacionados.some(f => f.drugId === drug.id)` siempre devolvía `false` porque `farmacosRelacionados` es `string[]`, no objetos. La sección "patologías relacionadas" en la ficha del fármaco siempre estaba vacía. Cambiado a `f === drug.id`.
+  > Nota: queda un mismatch semántico restante porque `pathologies.json` usa nombres legibles (`"enalapril"`) y `drugs.json` usa IDs (`"drug123"`). Tracked como TODO de data-quality.
+- TypeScript baseline limpio: 8 errores pre-existentes resueltos (FlashList, SVG types, Drug interface, route params).
+
+### Removed
+
+- `__tests__/App.test.tsx`: placeholder roto que requería mocks completos de la cadena RN navigation y nunca se ejecutó realmente.
+
+## [1.0.0] - 2026-04-16
+
+Primera versión publicada en Google Play Store. `versionCode 3`.
+
+### Added
+
+- **Contenido clínico**: 2,977 fármacos, 60 patologías, 13 escalas clínicas, 14 protocolos de emergencia, 53 valores de laboratorio, 15 calculadoras médicas, guía parenteral con 460 fármacos enriquecidos.
+- **Navegación**: 5 bottom tabs (Inicio, Categorías, Buscar, Especial, Herramientas) + stack navigator con 27 pantallas.
+- **Dark mode**: tres modos (`light` / `dark` / `system`) con `useColorScheme()`, persistencia en AsyncStorage.
+- **Búsqueda**: indexación in-memory con `Map<string, Drug>`, normalización accent-insensitive, FlashList para 60 FPS sobre miles de items.
+- **Quiz mode**: 8 tipos de preguntas, filtros por categoría, historial de resultados.
+- **Notas personales**: por fármaco, auto-save con debounce, NotesContext.
+- **Favoritos** y **historial de búsqueda** con AsyncStorage.
+- **Drug Comparison**: multi-select hasta 3 fármacos, tabla horizontal scrollable con 10 campos.
+- **Dashboard**: analytics de estudio (quiz stats, progreso por categoría, racha).
+- **Sistema premium**: trial de 14 días, suscripción IAP (`react-native-iap` v13), código de activación (SHA-256, easter egg en AboutScreen tap×5).
+- **Build flavors**: `free` (todo desbloqueado, `applicationId com.guiafarmacologica.free`) y `premium` (`applicationId com.guiafarmacologica`).
+- **UX neumórfica**: dual borders, gradient headers, inset inputs, animaciones spring en tab bar y CollapsibleSection.
+- **Almacenamiento**: SQLite via OP-SQLite (JSI síncrono) para fármacos, EncryptedStorage (Keystore) para activación y suscripción.
+- **Accesibilidad**: `accessibilityRole`/`Label`/`State` en componentes interactivos (DrugCard, CollapsibleSection, SearchBar, tab bar).
+- **ErrorBoundary** envolviendo el árbol completo con UI de retry y detalles dev-only.
+- **Skeleton loading** con animación pulse (Skeleton, SkeletonCard, SkeletonList, SkeletonDrugDetail).
+- **Compartir**: `react-native-share` integrado con texto estructurado para fármacos, protocolos, lab values.
+- **Splash screen** custom: `splash_logo.xml` vectorial 512×512 con anillo, cruz, libro, ECG y cápsula.
+
+### Stack
+
+- React Native 0.84.1 (sin Expo) + TypeScript 5.8 + Hermes
+- React Navigation 7 (bottom tabs + native stack)
+- @op-engineering/op-sqlite + react-native-encrypted-storage
+- @shopify/flash-list para listas masivas
+- react-native-svg, react-native-linear-gradient, react-native-iap
+
+### Known issues
+
+- Bug de Metro chunked encoding en Windows en modo dev: workaround documentado en `troubleshooting.md` (offline bundle).
+- Warning `newArchEnabled=false` deprecated desde RN 0.82 (no bloqueante).
+- Errores de TypeScript pre-existentes que Babel ignora en runtime: `@shopify/flash-list` v2 removió `estimatedItemSize` (3 screens), tipos SVG en `RouteIllustrationSVG`, `embarazoNota` no declarado en `Drug` interface, `drugId` accedido sobre `string` en route params.
+
+[Unreleased]: https://example.com/compare/v1.0.0...HEAD
+[1.0.0]: https://example.com/releases/tag/v1.0.0
