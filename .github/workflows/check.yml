@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel in-progress runs of the same workflow on the same branch.
+# Saves CI minutes when pushing multiple commits in quick succession.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        # --ignore-scripts skips postinstall (patch-package needs the patches/
+        # dir which is checked in but harmless to skip in CI). It also avoids
+        # husky's prepare script, which is irrelevant for CI runners.
+
+      - name: Type-check (tsc --noEmit)
+        run: npm run typecheck
+
+  lint:
+    name: ESLint (informational)
+    runs-on: ubuntu-latest
+    # Lint baseline has ~85 errors / ~530 warnings as of v1.0.0. Surfaced for
+    # visibility but not blocking until the baseline is cleaned up. Once green,
+    # remove `continue-on-error` to make this required.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Lint
+        run: npm run lint
+
+  test:
+    name: Jest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Test
+        run: npm test -- --ci --passWithNoTests
