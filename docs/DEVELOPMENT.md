@@ -91,10 +91,10 @@ npm run android:free
 
 La app tiene dos variantes de compilación:
 
-| Flavor | `applicationId` | `IS_FREE` | Descripción |
-|--------|-----------------|-----------|-------------|
-| `free` | `com.guiafarmacologica.free` | `true` | Todo desbloqueado, sin suscripción, sin UI premium |
-| `premium` | `com.guiafarmacologica` | `false` | Trial 14 días + código de activación + futura suscripción |
+| Flavor    | `applicationId`              | `IS_FREE` | Descripción                                               |
+| --------- | ---------------------------- | --------- | --------------------------------------------------------- |
+| `free`    | `com.guiafarmacologica.free` | `true`    | Todo desbloqueado, sin suscripción, sin UI premium        |
+| `premium` | `com.guiafarmacologica`      | `false`   | Trial 14 días + código de activación + futura suscripción |
 
 ### Comandos de compilación
 
@@ -117,12 +117,12 @@ La app tiene dos variantes de compilación:
 
 ### Ubicación de APKs
 
-| Variante | Ruta |
-|----------|------|
-| Free debug | `android/app/build/outputs/apk/free/debug/` |
-| Premium debug | `android/app/build/outputs/apk/premium/debug/` |
-| Free release | `android/app/build/outputs/apk/free/release/` + copia en `release/Nueva carpeta/` |
-| Premium release | `android/app/build/outputs/apk/premium/release/` + copia en `release/` |
+| Variante        | Ruta                                                                              |
+| --------------- | --------------------------------------------------------------------------------- |
+| Free debug      | `android/app/build/outputs/apk/free/debug/`                                       |
+| Premium debug   | `android/app/build/outputs/apk/premium/debug/`                                    |
+| Free release    | `android/app/build/outputs/apk/free/release/` + copia en `release/Nueva carpeta/` |
+| Premium release | `android/app/build/outputs/apk/premium/release/` + copia en `release/`            |
 
 ### Firma de Release
 
@@ -151,19 +151,16 @@ export default function MiScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
 
-  return (
-    <View style={styles.container}>
-      {/* contenido */}
-    </View>
-  );
+  return <View style={styles.container}>{/* contenido */}</View>;
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+  });
 ```
 
 ### Funciones premium-gated
@@ -208,7 +205,7 @@ import { FlashList } from '@shopify/flash-list';
   keyExtractor={item => item.id}
   renderItem={({ item }) => <ItemCard item={item} />}
   estimatedItemSize={100} // C R I T I C O para la optimización
-/>
+/>;
 ```
 
 ### Normalización de texto
@@ -236,28 +233,49 @@ const label = CATEGORY_LABELS[drug.unidadId] || 'Sin categoría';
 La versión premium incluye un código secreto que desbloquea todas las funciones permanentemente.
 
 **Cómo funciona:**
+
 1. En AboutScreen, tocar el badge de versión (`v0.1`) 5 veces rápido
 2. Aparece un modal pidiendo el código
 3. Se valida contra un hash SHA-256 (el código no existe en texto plano en el APK)
 4. Si es correcto, se guarda en AsyncStorage y `isPremium` se activa permanentemente
 
 **Cambiar el código:**
+
 ```bash
 node -e 'console.log(require("crypto").createHash("sha256").update("NUEVO_CODIGO").digest("hex"))'
 ```
+
 Reemplazar `ACTIVATION_HASH` en `src/utils/activation.ts` con el hash resultante.
 
 **Archivos involucrados:**
+
 - `src/utils/activation.ts` — SHA-256 puro en JS + validación + persistencia
 - `src/context/PremiumContext.tsx` — `isCodeActivated` + `activateWithCode()`
 - `src/screens/AboutScreen.tsx` — Easter egg (5 taps) + modal de ingreso
 
 ## Cómo Agregar Contenido
 
+> ⚠️ **CRÍTICO — Leer antes de editar `drugs.json`**:
+> Los fármacos viven en una BD SQLite local que se hidrata desde `drugs.json`
+> en el primer arranque. **Si solo editás el JSON sin bumpear la versión, los
+> usuarios que ya tienen la app instalada NO van a recibir los cambios al
+> actualizar** — su BD persiste entre updates de APK.
+>
+> Para que cualquier cambio de `drugs.json` llegue a usuarios existentes:
+>
+> 1. Editar `src/data/drugs.json`
+> 2. **Bumpear `DATASET_VERSION` en `src/data/db.ts`** (incrementar en 1)
+> 3. Documentar el cambio en `CHANGELOG.md` bajo `[Unreleased]`
+> 4. Bumpear versión de la app (`scripts/bump-version.js` cuando exista)
+>
+> En el primer arranque post-update, la app detecta `dataset_version` distinto
+> en la tabla `_meta`, hace `DELETE FROM drugs` y repobla desde el JSON nuevo.
+> Los favoritos/notas/quiz progress del usuario se preservan (viven en
+> AsyncStorage/EncryptedStorage, no en la tabla `drugs`).
+
 ### Agregar un nuevo fármaco
 
-1. Editar `src/data/drugs.json`
-2. Añadir un objeto `Drug` al array con todos los campos requeridos:
+1. Editar `src/data/drugs.json` añadiendo un objeto `Drug`:
    ```json
    {
      "id": "d_XXXX",
@@ -274,12 +292,34 @@ Reemplazar `ACTIVATION_HASH` en `src/utils/activation.ts` con el hash resultante
      "cuidadosEnfermeria": ["..."]
    }
    ```
-3. El fármaco aparecerá automáticamente en búsqueda y en su categoría
+2. **Bumpear `DATASET_VERSION` en `src/data/db.ts`** (ver bloque crítico arriba)
+3. Verificar smoke test: instalar APK debug, comprobar que el fármaco aparece
+   en búsqueda; luego desinstalar e instalar de nuevo para verificar fresh-install
+4. El fármaco aparecerá automáticamente en búsqueda y en su categoría
+
+### Cambiar el schema de la tabla `drugs` (agregar columna)
+
+1. Agregar la columna en `CREATE TABLE` dentro de `ensureBaseSchema()` en `db.ts`
+2. **Bumpear `SCHEMA_VERSION`** en `db.ts`
+3. Agregar la migración correspondiente en `SCHEMA_MIGRATIONS`:
+   ```ts
+   // v1 → v2: agregar columna 'codigoNacional'
+   (db) => { db.executeSync('ALTER TABLE drugs ADD COLUMN codigoNacional TEXT'); },
+   ```
+4. **Nunca reordenar ni eliminar migraciones existentes** — están aplicándose
+   linealmente en BDs de usuarios reales
+5. Si la columna nueva debe poblarse desde `drugs.json`, **también bumpear `DATASET_VERSION`**
+   para forzar la repopulación
 
 ### Agregar una nueva patología
 
 1. Editar `src/data/pathologies.json`
 2. Incluir `linkedDrugs` con IDs de fármacos existentes
+3. ⚠️ **Las patologías NO están en SQLite** — se cargan en RAM desde el JSON,
+   por lo que los cambios llegan a usuarios sin necesidad de bumpear versiones
+   (siempre que el `versionCode` del APK suba). Lo mismo aplica a:
+   `lab_values.json`, `emergency_protocols.json`, `clinical_scales.json`,
+   `parenteral_guide.json`, `formulas.json`, `glossary.json`, `routes.json`
 
 ### Agregar un protocolo de emergencia
 
