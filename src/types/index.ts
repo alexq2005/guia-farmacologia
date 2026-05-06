@@ -471,6 +471,7 @@ export type RootStackParamList = {
   PrivacyPolicy: undefined;
   Terms: undefined;
   PremiumScreen: undefined;
+  MiSuite: undefined;
 };
 
 export type TabParamList = {

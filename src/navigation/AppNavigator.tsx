@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator, type BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Text, View, StyleSheet, Animated, TouchableOpacity } from 'react-native';
+import {
+  createBottomTabNavigator,
+  type BottomTabBarProps,
+} from '@react-navigation/bottom-tabs';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Animated,
+  TouchableOpacity,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,7 +23,10 @@ import { useResponsiveScale } from '../utils/responsive';
 // ─── Tab Icons ─────────────────────────────────────────────────────────────
 const TAB_ICONS = {
   home: { active: 'home', inactive: 'home-outline' },
-  categories: { active: 'bookshelf', inactive: 'book-open-page-variant-outline' },
+  categories: {
+    active: 'bookshelf',
+    inactive: 'book-open-page-variant-outline',
+  },
   search: { active: 'magnify', inactive: 'magnify' },
   special: { active: 'alert-decagram', inactive: 'alert-decagram-outline' },
   tools: { active: 'wrench', inactive: 'wrench-outline' },
@@ -53,12 +65,17 @@ import { AllFavoritesScreen } from '../screens/AllFavoritesScreen';
 import { PrivacyPolicyScreen } from '../screens/PrivacyPolicyScreen';
 import { TermsScreen } from '../screens/TermsScreen';
 import { PremiumScreen } from '../screens/PremiumScreen';
+import { MiSuiteScreen } from '../screens/MiSuiteScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<TabParamList>();
 
 // ─── Animated Tab Bar ──────────────────────────────────────────────────────
-const TAB_CONFIG: { name: keyof TabParamList; label: string; iconKey: keyof typeof TAB_ICONS }[] = [
+const TAB_CONFIG: {
+  name: keyof TabParamList;
+  label: string;
+  iconKey: keyof typeof TAB_ICONS;
+}[] = [
   { name: 'Inicio', label: 'Inicio', iconKey: 'home' },
   { name: 'Categorias', label: 'Categorías', iconKey: 'categories' },
   { name: 'Busqueda', label: 'Buscar', iconKey: 'search' },
@@ -73,15 +90,17 @@ function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
   const { translateY, show } = useTabBar();
 
   return (
-    <Animated.View style={[
-      styles.tabBar,
-      {
-        backgroundColor: colors.surface,
-        borderTopColor: colors.border,
-        paddingBottom: Math.max(insets.bottom, rs.space(4)),
-        transform: [{ translateY }],
-      },
-    ]}>
+    <Animated.View
+      style={[
+        styles.tabBar,
+        {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          paddingBottom: Math.max(insets.bottom, rs.space(4)),
+          transform: [{ translateY }],
+        },
+      ]}
+    >
       {TAB_CONFIG.map((tab, index) => {
         const focused = state.index === index;
         const icons = TAB_ICONS[tab.iconKey];
@@ -90,7 +109,11 @@ function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
             key={tab.name}
             style={styles.tabItem}
             onPress={() => {
-              const event = navigation.emit({ type: 'tabPress', target: state.routes[index].key, canPreventDefault: true });
+              const event = navigation.emit({
+                type: 'tabPress',
+                target: state.routes[index].key,
+                canPreventDefault: true,
+              });
               if (!event.defaultPrevented) {
                 navigation.navigate(tab.name);
               }
@@ -101,21 +124,28 @@ function AnimatedTabBar({ state, navigation }: BottomTabBarProps) {
             accessibilityState={{ selected: focused }}
             accessibilityLabel={tab.label}
           >
-            <View style={[
-              styles.tabIconBg,
-              focused && { backgroundColor: colors.primary + '12' },
-            ]}>
+            <View
+              style={[
+                styles.tabIconBg,
+                focused && { backgroundColor: colors.primary + '12' },
+              ]}
+            >
               <MaterialCommunityIcons
                 name={focused ? icons.active : icons.inactive}
                 size={rs.font(22)}
                 color={focused ? colors.primary : colors.tabBarInactive}
               />
             </View>
-            <Text style={[
-              styles.tabLabel,
-              { color: focused ? colors.primary : colors.tabBarInactive },
-              focused && styles.tabLabelFocused,
-            ]} numberOfLines={1}>{tab.label}</Text>
+            <Text
+              style={[
+                styles.tabLabel,
+                { color: focused ? colors.primary : colors.tabBarInactive },
+                focused && styles.tabLabelFocused,
+              ]}
+              numberOfLines={1}
+            >
+              {tab.label}
+            </Text>
           </TouchableOpacity>
         );
       })}
@@ -129,7 +159,7 @@ function MainTabs() {
 
   return (
     <Tab.Navigator
-      tabBar={(props) => <AnimatedTabBar {...props} />}
+      tabBar={props => <AnimatedTabBar {...props} />}
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen name="Inicio" component={HomeScreen} />
@@ -160,7 +190,11 @@ export function AppNavigator() {
         screenOptions={{
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.text,
-          headerTitleStyle: { fontWeight: '600', fontSize: 17, color: colors.text },
+          headerTitleStyle: {
+            fontWeight: '600',
+            fontSize: 17,
+            color: colors.text,
+          },
           headerShadowVisible: false,
           animation: 'slide_from_right',
           animationDuration: 200,
@@ -168,35 +202,154 @@ export function AppNavigator() {
         initialRouteName={hasOnboarded ? 'MainTabs' : 'Onboarding'}
       >
         {!hasOnboarded && (
-          <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false, animation: 'fade' }} />
+          <Stack.Screen
+            name="Onboarding"
+            component={OnboardingScreen}
+            options={{ headerShown: false, animation: 'fade' }}
+          />
         )}
-        <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-        <Stack.Screen name="DrugDetail" component={DrugDetailScreen} options={({ route }) => ({ title: (route.params as any).drugName || 'Fármaco' })} />
-        <Stack.Screen name="ChapterDrugs" component={ChapterDrugsScreen} options={{ title: 'Fármacos' }} />
-        <Stack.Screen name="FormulaDetail" component={FormulaDetailScreen} options={{ title: 'Fórmula' }} />
-        <Stack.Screen name="RouteDetail" component={RouteDetailScreen} options={{ title: 'Vía de Administración' }} />
-        <Stack.Screen name="GlossaryScreen" component={GlossaryScreen} options={{ title: 'Glosario' }} />
-        <Stack.Screen name="NursingCare" component={NursingCareScreen} options={{ title: 'Cuidados de Enfermería' }} />
-        <Stack.Screen name="PathologiesScreen" component={PathologiesScreen} options={{ title: 'Patologías' }} />
-        <Stack.Screen name="PathologyDetail" component={PathologyDetailScreen} options={{ title: 'Detalle de Patología' }} />
-        <Stack.Screen name="InteractionChecker" component={InteractionCheckerScreen} options={{ title: 'Interacciones' }} />
-        <Stack.Screen name="Calculators" component={CalculatorsScreen} options={{ title: 'Calculadoras' }} />
-        <Stack.Screen name="ClinicalScales" component={ClinicalScalesScreen} options={{ title: 'Escalas Clínicas' }} />
-        <Stack.Screen name="ScaleDetail" component={ScaleDetailScreen} options={{ title: 'Escala' }} />
-        <Stack.Screen name="LabValues" component={LabValuesScreen} options={{ title: 'Valores de Laboratorio' }} />
-        <Stack.Screen name="EmergencyProtocols" component={EmergencyProtocolsScreen} options={{ title: 'Protocolos de Emergencia' }} />
-        <Stack.Screen name="ProtocolDetail" component={ProtocolDetailScreen} options={{ title: 'Protocolo' }} />
-        <Stack.Screen name="ParenteralGuide" component={ParenteralGuideScreen} options={{ title: 'Guía Parenteral' }} />
-        <Stack.Screen name="QuizScreen" component={QuizScreen} options={{ title: 'Test Farmacológico' }} />
-        <Stack.Screen name="QuizSession" component={QuizSessionScreen} options={{ title: 'Test' }} />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} options={{ title: 'Mi Progreso' }} />
-        <Stack.Screen name="DrugComparison" component={DrugComparisonScreen} options={{ title: 'Comparador de Fármacos' }} />
-        <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ title: 'Acerca de' }} />
-        <Stack.Screen name="AllNotes" component={AllNotesScreen} options={{ title: 'Mis Notas' }} />
-        <Stack.Screen name="AllFavorites" component={AllFavoritesScreen} options={{ title: 'Mis Favoritos' }} />
-        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} options={{ title: 'Política de Privacidad' }} />
-        <Stack.Screen name="Terms" component={TermsScreen} options={{ title: 'Términos y Condiciones' }} />
-        <Stack.Screen name="PremiumScreen" component={PremiumScreen} options={{ title: 'Premium' }} />
+        <Stack.Screen
+          name="MainTabs"
+          component={MainTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="DrugDetail"
+          component={DrugDetailScreen}
+          options={({ route }) => ({
+            title: (route.params as any).drugName || 'Fármaco',
+          })}
+        />
+        <Stack.Screen
+          name="ChapterDrugs"
+          component={ChapterDrugsScreen}
+          options={{ title: 'Fármacos' }}
+        />
+        <Stack.Screen
+          name="FormulaDetail"
+          component={FormulaDetailScreen}
+          options={{ title: 'Fórmula' }}
+        />
+        <Stack.Screen
+          name="RouteDetail"
+          component={RouteDetailScreen}
+          options={{ title: 'Vía de Administración' }}
+        />
+        <Stack.Screen
+          name="GlossaryScreen"
+          component={GlossaryScreen}
+          options={{ title: 'Glosario' }}
+        />
+        <Stack.Screen
+          name="NursingCare"
+          component={NursingCareScreen}
+          options={{ title: 'Cuidados de Enfermería' }}
+        />
+        <Stack.Screen
+          name="PathologiesScreen"
+          component={PathologiesScreen}
+          options={{ title: 'Patologías' }}
+        />
+        <Stack.Screen
+          name="PathologyDetail"
+          component={PathologyDetailScreen}
+          options={{ title: 'Detalle de Patología' }}
+        />
+        <Stack.Screen
+          name="InteractionChecker"
+          component={InteractionCheckerScreen}
+          options={{ title: 'Interacciones' }}
+        />
+        <Stack.Screen
+          name="Calculators"
+          component={CalculatorsScreen}
+          options={{ title: 'Calculadoras' }}
+        />
+        <Stack.Screen
+          name="ClinicalScales"
+          component={ClinicalScalesScreen}
+          options={{ title: 'Escalas Clínicas' }}
+        />
+        <Stack.Screen
+          name="ScaleDetail"
+          component={ScaleDetailScreen}
+          options={{ title: 'Escala' }}
+        />
+        <Stack.Screen
+          name="LabValues"
+          component={LabValuesScreen}
+          options={{ title: 'Valores de Laboratorio' }}
+        />
+        <Stack.Screen
+          name="EmergencyProtocols"
+          component={EmergencyProtocolsScreen}
+          options={{ title: 'Protocolos de Emergencia' }}
+        />
+        <Stack.Screen
+          name="ProtocolDetail"
+          component={ProtocolDetailScreen}
+          options={{ title: 'Protocolo' }}
+        />
+        <Stack.Screen
+          name="ParenteralGuide"
+          component={ParenteralGuideScreen}
+          options={{ title: 'Guía Parenteral' }}
+        />
+        <Stack.Screen
+          name="QuizScreen"
+          component={QuizScreen}
+          options={{ title: 'Test Farmacológico' }}
+        />
+        <Stack.Screen
+          name="QuizSession"
+          component={QuizSessionScreen}
+          options={{ title: 'Test' }}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={DashboardScreen}
+          options={{ title: 'Mi Progreso' }}
+        />
+        <Stack.Screen
+          name="DrugComparison"
+          component={DrugComparisonScreen}
+          options={{ title: 'Comparador de Fármacos' }}
+        />
+        <Stack.Screen
+          name="AboutScreen"
+          component={AboutScreen}
+          options={{ title: 'Acerca de' }}
+        />
+        <Stack.Screen
+          name="AllNotes"
+          component={AllNotesScreen}
+          options={{ title: 'Mis Notas' }}
+        />
+        <Stack.Screen
+          name="AllFavorites"
+          component={AllFavoritesScreen}
+          options={{ title: 'Mis Favoritos' }}
+        />
+        <Stack.Screen
+          name="PrivacyPolicy"
+          component={PrivacyPolicyScreen}
+          options={{ title: 'Política de Privacidad' }}
+        />
+        <Stack.Screen
+          name="Terms"
+          component={TermsScreen}
+          options={{ title: 'Términos y Condiciones' }}
+        />
+        <Stack.Screen
+          name="PremiumScreen"
+          component={PremiumScreen}
+          options={{ title: 'Premium' }}
+        />
+        <Stack.Screen
+          name="MiSuite"
+          component={MiSuiteScreen}
+          options={{ title: 'Mi suite' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
