@@ -1,6 +1,6 @@
 /**
  * Guía Farmacológica de Enfermería
- * App de referencia rápida con 201+ fármacos
+ * App de referencia rápida con 2,977 fármacos.
  */
 
 import React from 'react';

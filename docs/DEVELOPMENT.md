@@ -234,7 +234,7 @@ La versión premium incluye un código secreto que desbloquea todas las funcione
 
 **Cómo funciona:**
 
-1. En AboutScreen, tocar el badge de versión (`v0.1`) 5 veces rápido
+1. En AboutScreen, tocar el badge de versión (mostrado como la versión actual del APK, ej. `v1.0.0`) 5 veces rápido
 2. Aparece un modal pidiendo el código
 3. Se valida contra un hash SHA-256 (el código no existe en texto plano en el APK)
 4. Si es correcto, se guarda en AsyncStorage y `isPremium` se activa permanentemente
