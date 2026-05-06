@@ -1,0 +1,116 @@
+{
+  "_schema": "1.0.0",
+  "_description": "Metadata de procedencia y revisión para cada dataset clínico. Se mantiene en archivo aparte para no alterar la estructura de los datasets existentes (que son arrays consumidos por hooks y db.ts). Ver docs/SOURCES.md y docs/CLINICAL_REVIEW.md.",
+  "responsible": {
+    "name": null,
+    "credential": null,
+    "contact": "alexq2005@gmail.com"
+  },
+  "datasets": {
+    "drugs": {
+      "displayName": "Fármacos",
+      "file": "src/data/drugs.json",
+      "entries": 2977,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "AEMPS-CIMA + literatura farmacológica",
+      "sourceUrl": "https://cima.aemps.es/",
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Fármacos con información clínica relevante para uso en enfermería; énfasis en vías parenterales, dosis pediátricas, embarazo y cuidados de administración. Fuente primaria AEMPS CIMA via scripts/fetch_cima.py."
+    },
+    "pathologies": {
+      "displayName": "Patologías",
+      "file": "src/data/pathologies.json",
+      "entries": 60,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Guías de Práctica Clínica del SNS (GuíaSalud) y literatura general",
+      "sourceUrl": "https://portal.guiasalud.es/gpc/",
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Patologías frecuentes en práctica de enfermería con fármacos vinculados; cubre cardiovascular, respiratorio, neurológico, gastrointestinal, endocrino, infeccioso, renal, hematológico, psiquiátrico, obstétrico, musculoesquelético y emergencias."
+    },
+    "emergency_protocols": {
+      "displayName": "Protocolos de emergencia",
+      "file": "src/data/emergency_protocols.json",
+      "entries": 18,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Guías AHA / ERC / SEMICYUC (consultar versión específica al revisar)",
+      "sourceUrl": "https://cpr.heart.org/ | https://www.erc.edu/",
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Protocolos cronometrados para situaciones críticas hospitalarias: ACLS, anafilaxia, IAM, ACV, sepsis y otros. Cada protocolo debe contrastarse con la última edición de las guías de la sociedad correspondiente antes de marcar como revisado."
+    },
+    "clinical_scales": {
+      "displayName": "Escalas clínicas",
+      "file": "src/data/clinical_scales.json",
+      "entries": 17,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Literatura primaria de cada escala (Glasgow 1974, APGAR 1953, Norton 1962, Braden 1988, NEWS2 2017, etc.)",
+      "sourceUrl": null,
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Escalas validadas y de uso clínico habitual en enfermería: neurología, neonatología, riesgo de UPP, sepsis, vía aérea, sedación, dolor, trombosis, postanestesia, ASA. Componentes y rangos verificados contra fuente primaria de cada escala."
+    },
+    "lab_values": {
+      "displayName": "Valores de laboratorio",
+      "file": "src/data/lab_values.json",
+      "entries": 61,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Manuales de laboratorio clínico (rangos referenciales generales)",
+      "sourceUrl": null,
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Valores referenciales de hematología, bioquímica, coagulación, hepático, renal, cardíaco, endocrino, orina y gasometría con rangos por sexo y pediátricos. NOTA: rangos pueden variar entre laboratorios; estos son orientativos y deben contrastarse con los rangos del laboratorio de referencia del centro de trabajo."
+    },
+    "parenteral_guide": {
+      "displayName": "Guía parenteral",
+      "file": "src/data/parenteral_guide.json",
+      "entries": 4,
+      "entriesNote": "Estructura: objeto con 4 secciones (Soluciones, NPT, Protección, Fármacos). Conteo se refiere a secciones, no items individuales. Información de fármacos parenterales reside en drugs.json (campo preparacionParenteral).",
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Guía de Administración Parenteral del Hospital Universitario Son Espases (Mallorca, España)",
+      "sourceUrl": null,
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Información parenteral derivada de la guía del Hospital Son Espases. 460 fármacos enriquecidos con compatibilidades EV (SSF, SG5%, NPT), 33 marcados como medicamentos peligrosos. Contrastar contra la versión vigente de la guía hospitalaria."
+    },
+    "formulas": {
+      "displayName": "Fórmulas de cálculo",
+      "file": "src/data/formulas.json",
+      "entries": 22,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Literatura primaria de cada fórmula (Mosteller 1987, Cockcroft-Gault 1976, Devine 1974, Young 1968, Clark 1929, etc.)",
+      "sourceUrl": null,
+      "lastSyncWithSource": null,
+      "selectionCriteria": "22 fórmulas de cálculo farmacológico y clínico validadas en literatura. Implementación testeada en __tests__/calculators.test.ts contra valores de referencia hand-calculated. Incluye dosificación por peso/BSA, ajuste renal (Cockcroft-Gault), peso ideal/ajustado (Devine), pediátricas (Young, Clark), Anion Gap, osmolaridad, calcio corregido."
+    },
+    "glossary": {
+      "displayName": "Glosario",
+      "file": "src/data/glossary.json",
+      "entries": 205,
+      "lastEdited": "2026-05-06",
+      "lastClinicalReview": null,
+      "reviewedBy": null,
+      "reviewerCredential": null,
+      "sourceCanonical": "Diccionarios médicos generales y terminología farmacológica estándar",
+      "sourceUrl": null,
+      "lastSyncWithSource": null,
+      "selectionCriteria": "Términos farmacológicos, anatómicos, de enfermería y abreviaturas frecuentes en práctica clínica."
+    }
+  }
+}

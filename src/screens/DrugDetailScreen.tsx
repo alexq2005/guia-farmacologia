@@ -38,6 +38,14 @@ import { SkeletonDrugDetail } from '../components/Skeleton';
 import { neuCard } from '../utils/neumorphism';
 import { getUnitImage, HERO_IMAGE } from '../utils/unitImages';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
+import {
+  getMeta,
+  getReviewStatus,
+  formatMonthYear,
+} from '../utils/datasetMeta';
+
+const drugsMeta = getMeta('drugs');
+const drugsReviewStatus = getReviewStatus('drugs');
 
 type Props = NativeStackScreenProps<RootStackParamList, 'DrugDetail'>;
 
@@ -1337,6 +1345,39 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           )}
         </View>
 
+        {/* Provenance footer — source + review status. Honest disclosure that the
+            content is reference material, not a substitute for clinical judgment. */}
+        <View style={styles.provenanceCard}>
+          <MaterialCommunityIcons
+            name="information-outline"
+            size={14}
+            color={colors.textSecondary}
+            style={{ marginRight: 6, marginTop: 2 }}
+          />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.provenanceText}>
+              Fuente: {drugsMeta.sourceCanonical} · Edición:{' '}
+              {formatMonthYear(drugsMeta.lastEdited)}
+            </Text>
+            <Text
+              style={[
+                styles.provenanceText,
+                {
+                  color:
+                    drugsReviewStatus === 'reviewed'
+                      ? colors.success
+                      : colors.warning,
+                  marginTop: 2,
+                },
+              ]}
+            >
+              {drugsReviewStatus === 'reviewed'
+                ? `✓ Revisado clínicamente: ${drugsMeta.lastClinicalReview} · ${drugsMeta.reviewedBy}`
+                : 'Revisión clínica pendiente — verificar siempre con fuentes primarias'}
+            </Text>
+          </View>
+        </View>
+
         <View style={styles.bottomSpacer} />
       </ScrollView>
       <PregnancyModal
@@ -1793,6 +1834,22 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       lineHeight: rs.font(17),
     },
     bottomSpacer: { height: rs.space(40) },
+    provenanceCard: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      marginHorizontal: rs.space(16),
+      marginTop: rs.space(20),
+      padding: rs.space(10),
+      borderRadius: 8,
+      backgroundColor: colors.surface,
+      borderWidth: 1,
+      borderColor: colors.borderLight,
+    },
+    provenanceText: {
+      fontSize: rs.font(11),
+      color: colors.textSecondary,
+      lineHeight: rs.font(15),
+    },
     errorContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
     errorText: { fontSize: rs.font(16), color: colors.error },
     modalOverlay: {
