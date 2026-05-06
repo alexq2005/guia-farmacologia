@@ -26,7 +26,7 @@ La funcionalidad central de la app. Cada fármaco incluye:
 ### 2. Clasificación por Categorías
 
 **Pantalla**: CategoriesScreen, ChapterDrugsScreen
-**Datos**: 14 unidades terapéuticas, 60+ capítulos
+**Datos**: 13 unidades terapéuticas, 117 capítulos
 
 Navegación jerárquica: Unidad > Capítulo > Fármacos. Cada unidad tiene color único. Incluye conteo de fármacos por capítulo.
 
