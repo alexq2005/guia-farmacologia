@@ -122,8 +122,9 @@ GuiaFarmacologica/
 | [NEW_ARCHITECTURE.md](docs/NEW_ARCHITECTURE.md)                     | Estado de Fabric/TurboModules y matriz de compat                            |
 | [OTA_UPDATES_RESEARCH.md](docs/OTA_UPDATES_RESEARCH.md)             | Análisis de OTA updates (recomendación: NO implementar)                     |
 
-### Changelog y release
+### Roadmap, changelog y release
 
+- [ROADMAP.md](docs/ROADMAP.md) — plan canónico de versiones (v1.0 → v2.0+)
 - [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog 1.1.0
 - `npm run version:patch|minor|major` — bump sincronizado de versiones
 

@@ -1,4 +1,12 @@
-# Plan de Actualizaciones — Guía Farmacológica de Enfermería
+# Plan de Actualizaciones — Marketing y Crecimiento
+
+> 🔀 **Para el roadmap técnico canónico ver [`docs/ROADMAP.md`](../docs/ROADMAP.md)**.
+> Este documento mantiene el plan **de marketing y adquisición** (Instagram,
+> TikTok, reels, reviews) que es complementario pero distinto del versionado
+> técnico de la app.
+>
+> Las features mencionadas abajo se mantienen como **referencia direccional**
+> — su orden y timing real está en ROADMAP.md.
 
 ## Estrategia General
 
@@ -8,29 +16,29 @@
 
 ---
 
-## ⚠️ Estado actual del cronograma (Mayo 2026)
+## ⚠️ Estado actual (Mayo 2026)
 
-Este plan refleja la intención original al lanzar la app en Abril 2026. El
-roadmap se reordenó en Mayo 2026: el trabajo del mes se invirtió en
-**infraestructura fundacional** en lugar de las features de UX previstas
-para el Mes 2:
+Mayo 2026 se invirtió en **infraestructura fundacional** que arregla bugs
+críticos de v1.0 publicada. Ese trabajo se va a re-shipear como **v1.0** (no
+v1.1) — la versión sube `versionCode` (3 → 4) pero `versionName` se queda
+en `1.0.0` ("v1.0" en UI). Las features de UX (búsqueda por voz,
++patologías, push, etc.) se difieren a v1.2+ según
+[`docs/ROADMAP.md`](../docs/ROADMAP.md).
 
-- Sistema de migraciones SQLite (resolvió bug crítico: `drugs.json` no
-  llegaba a usuarios existentes — ver `CHANGELOG.md` `[Unreleased]`)
-- Suite de tests (109 tests, fórmulas clínicas verificadas hand-calculated)
-- CI con GitHub Actions, husky pre-commit/pre-push hooks
-- Sistema de metadata por dataset (`_meta.json`) + UI de provenance
-- Crash reporting scaffold (no-op, listo para activar Sentry/Crashlytics)
-- Compliance Google Play 2026 (disclaimer, declaración Health apps)
-- MiSuite — hub cross-app del ecosistema
+Resumen de qué hay en la próxima v1.0 publicable:
 
-**Razón del reordenamiento**: este trabajo era prerequisito para que cualquier
-feature futura llegue a usuarios de forma confiable. Las features de UX
-(búsqueda por voz, +patologías, push notifications, etc.) descritas abajo
-se difieren a meses posteriores según prioridades.
+- Sistema de migraciones SQLite (drugs.json updates ahora llegan a usuarios)
+- Bugs runtime arreglados (patologías relacionadas, useMemo condicional,
+  codificación de sexo en calculadoras)
+- 109 tests automáticos (calculadoras hand-calculated + schema integrity)
+- CI + pre-commit hooks
+- Sistema de provenance por dataset (`_meta.json`)
+- Compliance Google Play 2026
+- MiSuite cross-app
+- Crash reporting scaffold
 
-El plan original se mantiene como referencia direccional — los meses no
-son fechas literales sino orden de prioridad.
+El plan de **marketing** abajo sigue siendo referencia. La cadencia real de
+releases técnicas la define [`docs/ROADMAP.md`](../docs/ROADMAP.md).
 
 ---
 
