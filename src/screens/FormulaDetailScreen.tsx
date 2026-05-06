@@ -114,14 +114,74 @@ export function FormulaDetailScreen({ route }: Props) {
                       <Text style={styles.calcUnit}>{v.unidad}</Text>
                     ) : null}
                   </View>
-                  <TextInput
-                    style={[styles.calcInput, { borderColor: color + '60' }]}
-                    value={inputValues[v.nombre] || ''}
-                    onChangeText={val => handleInputChange(v.nombre, val)}
-                    keyboardType="decimal-pad"
-                    placeholder="0"
-                    placeholderTextColor={colors.textLight}
-                  />
+                  {v.nombre === 'sexo' ? (
+                    // Sex selector: pass '0' for female, '1' for male.
+                    // Avoids the historical bug where users had to type
+                    // calculator-specific magic numbers (0.85 / 0 / 0.5).
+                    <View style={styles.sexToggle}>
+                      <TouchableOpacity
+                        style={[
+                          styles.sexBtn,
+                          inputValues[v.nombre] === '0' && {
+                            backgroundColor: color,
+                            borderColor: color,
+                          },
+                        ]}
+                        onPress={() => handleInputChange(v.nombre, '0')}
+                        accessibilityRole="button"
+                        accessibilityLabel="Mujer"
+                        accessibilityState={{
+                          selected: inputValues[v.nombre] === '0',
+                        }}
+                      >
+                        <Text
+                          style={[
+                            styles.sexBtnText,
+                            inputValues[v.nombre] === '0' && {
+                              color: '#FFF',
+                            },
+                          ]}
+                        >
+                          Mujer
+                        </Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={[
+                          styles.sexBtn,
+                          inputValues[v.nombre] === '1' && {
+                            backgroundColor: color,
+                            borderColor: color,
+                          },
+                        ]}
+                        onPress={() => handleInputChange(v.nombre, '1')}
+                        accessibilityRole="button"
+                        accessibilityLabel="Hombre"
+                        accessibilityState={{
+                          selected: inputValues[v.nombre] === '1',
+                        }}
+                      >
+                        <Text
+                          style={[
+                            styles.sexBtnText,
+                            inputValues[v.nombre] === '1' && {
+                              color: '#FFF',
+                            },
+                          ]}
+                        >
+                          Hombre
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  ) : (
+                    <TextInput
+                      style={[styles.calcInput, { borderColor: color + '60' }]}
+                      value={inputValues[v.nombre] || ''}
+                      onChangeText={val => handleInputChange(v.nombre, val)}
+                      keyboardType="decimal-pad"
+                      placeholder="0"
+                      placeholderTextColor={colors.textLight}
+                    />
+                  )}
                 </View>
               ))}
 
@@ -341,6 +401,28 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       color: colors.text,
       backgroundColor: colors.background,
       textAlign: 'center',
+    },
+    sexToggle: {
+      flexDirection: 'row',
+      flex: 1,
+      maxWidth: rs.space(180),
+      gap: rs.space(6),
+    },
+    sexBtn: {
+      flex: 1,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      borderRadius: 10,
+      paddingHorizontal: rs.space(8),
+      paddingVertical: rs.space(8),
+      backgroundColor: colors.background,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    sexBtnText: {
+      fontSize: rs.font(13),
+      fontWeight: '700',
+      color: colors.text,
     },
     resultBox: {
       marginTop: rs.space(12),

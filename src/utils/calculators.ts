@@ -20,6 +20,16 @@
  * `__tests__/calculators.test.ts`. Do not "simplify" the formulas — they
  * encode published medical references (Mosteller, Cockcroft-Gault, Devine,
  * Young, Clark, etc.) and must match the canonical math exactly.
+ *
+ * ## Sex encoding (uniform across f10, f16, f19)
+ *
+ *   sexo === 0  → female
+ *   sexo === 1  → male  (or any non-zero value, but the form should pass 1)
+ *
+ * Previously each formula used a different magic value (f10: 0.85, f19: 0.5)
+ * which created a clinical risk: a user entering the wrong number for the
+ * wrong calculator would get an opposite-sex result. The form UI must pass
+ * 0 or 1 consistently for ALL calculators that take a `sexo` variable.
  */
 
 export function calculateResult(
@@ -65,8 +75,10 @@ export function calculateResult(
       case 'f09':
         return `${((nums.peso / 70) * nums.dosisAdulto).toFixed(1)} mg`;
       case 'f10': {
+        // Cockcroft-Gault. Uniform convention: sexo === 0 means female (×0.85),
+        // any other value means male (factor 1). See SAFETY note at top of file.
         const base = ((140 - nums.edad) * nums.peso) / (72 * nums.creatinina);
-        const factor = nums.sexo === 0.85 ? 0.85 : 1;
+        const factor = nums.sexo === 0 ? 0.85 : 1;
         return `${(base * factor).toFixed(1)} mL/min`;
       }
       case 'f11':
@@ -91,7 +103,9 @@ export function calculateResult(
           1,
         )} mg/dL`;
       case 'f19': {
-        const act = nums.peso * (nums.sexo === 0.5 ? 0.5 : 0.6);
+        // Sodium deficit. Uniform convention: sexo === 0 means female (ACT=0.5×peso),
+        // any other value means male (ACT=0.6×peso). See SAFETY note at top of file.
+        const act = nums.peso * (nums.sexo === 0 ? 0.5 : 0.6);
         return `${(act * (nums.naDeseado - nums.naActual)).toFixed(0)} mEq`;
       }
       case 'f20':

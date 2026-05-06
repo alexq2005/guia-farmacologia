@@ -153,14 +153,14 @@ describe('f09 — Regla de Clark (pediátrica por peso)', () => {
 
 describe('f10 — Aclaramiento de Creatinina (Cockcroft-Gault)', () => {
   // ClCr = ((140 - Edad) × Peso) / (72 × Cr)  [×0.85 si mujer]
-  // Hombre 60 años, 70 kg, Cr 1: ((140-60)*70)/72 = 77.77...
+  // Convención uniforme: sexo===0 → mujer, otro → hombre
   it('hombre 60 años, 70 kg, Cr 1 mg/dL = 77.8 mL/min', () => {
     expect(
       calculateResult('f10', {
         edad: '60',
         peso: '70',
         creatinina: '1',
-        sexo: '1', // anything other than 0.85 gives factor=1
+        sexo: '1',
       }),
     ).toBe('77.8 mL/min');
   });
@@ -170,7 +170,7 @@ describe('f10 — Aclaramiento de Creatinina (Cockcroft-Gault)', () => {
         edad: '60',
         peso: '70',
         creatinina: '1',
-        sexo: '0.85',
+        sexo: '0',
       }),
     ).toBe('66.1 mL/min');
   });
@@ -257,7 +257,8 @@ describe('f18 — Calcio corregido por albúmina', () => {
 
 describe('f19 — Déficit de Sodio', () => {
   // Déficit Na = ACT × (Na deseado - Na actual)
-  // ACT = Peso × 0.6 (hombres, default) o 0.5 (mujeres, sexo === 0.5)
+  // ACT = Peso × 0.6 (hombres) o 0.5 (mujeres)
+  // Convención uniforme: sexo===0 → mujer, otro → hombre
   it('hombre 70 kg, Na deseado 140, Na actual 125 = 630 mEq', () => {
     expect(
       calculateResult('f19', {
@@ -272,7 +273,7 @@ describe('f19 — Déficit de Sodio', () => {
     expect(
       calculateResult('f19', {
         peso: '70',
-        sexo: '0.5',
+        sexo: '0',
         naDeseado: '140',
         naActual: '125',
       }),
@@ -309,40 +310,44 @@ describe('f22 — Concentración de infusión', () => {
   });
 });
 
-describe('Inconsistencias de codificación de "sexo" entre calculadoras', () => {
-  // f10 mujer: 0.85, f16 mujer: 0, f19 mujer: 0.5
-  // Esta divergencia es deliberada según el código actual y refleja el
-  // valor que el formulario UI debe pasar para cada calculadora. Si el
-  // formulario UI es modificado para usar una codificación uniforme,
-  // estos tests detectarán la regresión inmediatamente.
-  it('f10 ClCr: sexo=0.85 indica mujer (factor 0.85), cualquier otro valor = hombre', () => {
-    const womanResult = calculateResult('f10', {
+describe('Convención uniforme de "sexo" en f10/f16/f19', () => {
+  // Las tres fórmulas que toman `sexo` ahora usan la misma convención:
+  //   sexo === 0 → mujer
+  //   sexo !== 0 → hombre
+  // Estos tests bloquean cualquier regresión que reintroduzca codificaciones
+  // divergentes (el bug histórico que motivó la unificación).
+
+  it('f10: sexo=0 → factor 0.85 (mujer), cualquier otro → factor 1 (hombre)', () => {
+    const woman = calculateResult('f10', {
       edad: '60',
       peso: '70',
       creatinina: '1',
-      sexo: '0.85',
+      sexo: '0',
     });
-    const manResult = calculateResult('f10', {
+    const man = calculateResult('f10', {
       edad: '60',
       peso: '70',
       creatinina: '1',
       sexo: '1',
     });
-    expect(womanResult).not.toBe(manResult);
+    expect(woman).toBe('66.1 mL/min'); // 77.77 × 0.85
+    expect(man).toBe('77.8 mL/min');
   });
-  it('f16 Devine: sexo=0 indica mujer, cualquier otro valor = hombre', () => {
+
+  it('f16: sexo=0 → mujer (base 45.5), cualquier otro → hombre (base 50)', () => {
     expect(calculateResult('f16', { sexo: '0', talla: '170' })).toBe('61.5 kg');
     expect(calculateResult('f16', { sexo: '1', talla: '170' })).toBe('66.0 kg');
   });
-  it('f19 Déficit Na: sexo=0.5 indica mujer, cualquier otro valor = hombre', () => {
+
+  it('f19: sexo=0 → ACT 0.5×peso (mujer), cualquier otro → ACT 0.6×peso (hombre)', () => {
     expect(
       calculateResult('f19', {
         peso: '60',
-        sexo: '0.5',
+        sexo: '0',
         naDeseado: '140',
         naActual: '130',
       }),
-    ).toBe('300 mEq'); // 60 * 0.5 * 10
+    ).toBe('300 mEq'); // 60 × 0.5 × 10
     expect(
       calculateResult('f19', {
         peso: '60',
@@ -350,6 +355,19 @@ describe('Inconsistencias de codificación de "sexo" entre calculadoras', () => 
         naDeseado: '140',
         naActual: '130',
       }),
-    ).toBe('360 mEq'); // 60 * 0.6 * 10
+    ).toBe('360 mEq'); // 60 × 0.6 × 10
+  });
+
+  it('regresión: sexo=0.85 ya NO es mujer en f10 (ahora se trata como hombre)', () => {
+    // Antes este input devolvía resultado de mujer (66.1). Ahora devuelve hombre.
+    // Si alguien tenía la convención vieja en mente, esto detecta el bug.
+    expect(
+      calculateResult('f10', {
+        edad: '60',
+        peso: '70',
+        creatinina: '1',
+        sexo: '0.85',
+      }),
+    ).toBe('77.8 mL/min'); // hombre, NO 66.1
   });
 });
