@@ -4,50 +4,50 @@
 
 Originalmente la data estuvo en `src/data/` en formatos JSON gigantescales. Hoy día operan como constructores/semillas, los cuales una vez detectados son transformados e hidratados instantáneamente a Tablas **SQLite** por `db.ts`, suprimiendo la necesidad de cargas RAM masivas.
 
-| Archivo | Registros | Descripción |
-|---------|-----------|-------------|
-| `drugs.json` | 1,781 fármacos | Base de datos principal farmacológica |
-| `categories.json` | 14 unidades, 60+ capítulos | Clasificación terapéutica |
-| `pathologies.json` | 60 patologías | Enfermedades con fármacos vinculados |
-| `emergency_protocols.json` | 14 protocolos | ACLS, anafilaxia, IAM, ACV, sepsis... |
-| `clinical_scales.json` | 13 escalas | Glasgow, APGAR, Norton, Braden, NEWS2... |
-| `lab_values.json` | 53 valores | Rangos por sexo y pediátricos |
-| `parenteral_guide.json` | Guía general | Introducción a vía parenteral |
-| `glossary.json` | 65+ términos | Terminología médica |
-| `formulas.json` | 15 fórmulas | Cálculos farmacéuticos |
-| `routes.json` | 16 vías | Vías de administración |
-| `emergency_drugs.json` | Fármacos críticos | Dosificación rápida de emergencia |
-| `antidotes.json` | Antídotos | Relación tóxico-antídoto |
-| `nursing_care.json` | 10+ protocolos | Cuidados de enfermería por tipo |
-| `iv_compatibilities.json` | Matriz | Compatibilidad fármaco-fármaco IV |
+| Archivo                    | Registros                  | Descripción                                                           |
+| -------------------------- | -------------------------- | --------------------------------------------------------------------- |
+| `drugs.json`               | 2,977 fármacos             | Base de datos principal farmacológica                                 |
+| `categories.json`          | 14 unidades, 60+ capítulos | Clasificación terapéutica                                             |
+| `pathologies.json`         | 60 patologías              | Enfermedades con fármacos vinculados                                  |
+| `emergency_protocols.json` | 14 protocolos              | ACLS, anafilaxia, IAM, ACV, sepsis...                                 |
+| `clinical_scales.json`     | 13 escalas                 | Glasgow, APGAR, Norton, Braden, NEWS2...                              |
+| `lab_values.json`          | 53 valores                 | Rangos por sexo y pediátricos                                         |
+| `parenteral_guide.json`    | Guía general               | Introducción a vía parenteral                                         |
+| `glossary.json`            | 65+ términos               | Terminología médica                                                   |
+| `formulas.json`            | 22 fórmulas                | Cálculos farmacéuticos (testeadas en `__tests__/calculators.test.ts`) |
+| `routes.json`              | 16 vías                    | Vías de administración                                                |
+| `emergency_drugs.json`     | Fármacos críticos          | Dosificación rápida de emergencia                                     |
+| `antidotes.json`           | Antídotos                  | Relación tóxico-antídoto                                              |
+| `nursing_care.json`        | 10+ protocolos             | Cuidados de enfermería por tipo                                       |
+| `iv_compatibilities.json`  | Matriz                     | Compatibilidad fármaco-fármaco IV                                     |
 
 ## Interfaz Drug (Principal)
 
 ```typescript
 interface Drug {
   // === Identificación ===
-  id: string;                          // "d_0001" - ID único
-  nombre: string;                      // Nombre genérico principal
-  nombreGenerico: string;              // Nombre genérico (normalizado)
-  nombresComerciales: string[];        // Marcas comerciales
-  familia: string;                     // Familia farmacológica
+  id: string; // "d_0001" - ID único
+  nombre: string; // Nombre genérico principal
+  nombreGenerico: string; // Nombre genérico (normalizado)
+  nombresComerciales: string[]; // Marcas comerciales
+  familia: string; // Familia farmacológica
 
   // === Clasificación ===
-  clasificacion: string;               // Clasificación general
-  unidadId: string;                    // Unidad terapéutica (c01-c14)
-  capituloId: string;                  // Capítulo dentro de la unidad
-  grupoTerapeutico?: string;           // ATC Level 1 (ej: "Sistema Cardiovascular")
-  grupoFarmacologico?: string;         // Grupo por mecanismo (ej: "IECA", "HBPM")
+  clasificacion: string; // Clasificación general
+  unidadId: string; // Unidad terapéutica (c01-c14)
+  capituloId: string; // Capítulo dentro de la unidad
+  grupoTerapeutico?: string; // ATC Level 1 (ej: "Sistema Cardiovascular")
+  grupoFarmacologico?: string; // Grupo por mecanismo (ej: "IECA", "HBPM")
 
   // === Información Clínica ===
-  mecanismoAccion: string;             // Cómo actúa el fármaco
-  indicaciones: string[];              // Para qué se usa
-  contraindicaciones: string[];        // Cuándo NO usar
-  efectosAdversos: string[];           // Efectos secundarios
-  interacciones: string[];             // Interacciones con otros fármacos
+  mecanismoAccion: string; // Cómo actúa el fármaco
+  indicaciones: string[]; // Para qué se usa
+  contraindicaciones: string[]; // Cuándo NO usar
+  efectosAdversos: string[]; // Efectos secundarios
+  interacciones: string[]; // Interacciones con otros fármacos
 
   // === Dosificación ===
-  viaAdministracion: RouteOfAdministration[];  // Vías (oral, IV, IM...)
+  viaAdministracion: RouteOfAdministration[]; // Vías (oral, IV, IM...)
   dosis: {
     adulto: string;
     pediatrico?: string;
@@ -55,14 +55,14 @@ interface Drug {
     ajusteRenal?: string;
     ajusteHepatico?: string;
   };
-  presentaciones: string[];            // Formas disponibles
+  presentaciones: string[]; // Formas disponibles
 
   // === Seguridad ===
-  embarazo: PregnancyCategory;         // Categoría FDA (A, B, C, D, X)
-  lactancia: string;                   // Seguridad en lactancia
+  embarazo: PregnancyCategory; // Categoría FDA (A, B, C, D, X)
+  lactancia: string; // Seguridad en lactancia
 
   // === Enfermería ===
-  cuidadosEnfermeria: string[];        // Cuidados específicos
+  cuidadosEnfermeria: string[]; // Cuidados específicos
 
   // === Farmacocinética (opcional) ===
   farmacocinetica?: {
@@ -87,17 +87,18 @@ interface Drug {
     velocidadAdministracion?: string;
     estabilidad?: string;
     solucionesCompatibles?: {
-      ssf?: boolean | string;          // Suero salino fisiológico (NaCl 0.9%)
-      sg5?: boolean | string;          // Suero glucosado 5%
+      ssf?: boolean | string; // Suero salino fisiológico (NaCl 0.9%)
+      sg5?: boolean | string; // Suero glucosado 5%
       otras?: string;
     };
-    compatibilidadNPT?: {              // Nutrición parenteral total
+    compatibilidadNPT?: {
+      // Nutrición parenteral total
       tresEnUno?: string;
       dosEnUno?: string;
       observaciones?: string;
     };
-    proteccionPersonal?: string[];     // Precauciones para el personal
-    medicamentoPeligroso?: boolean;    // Flag de medicamento peligroso
+    proteccionPersonal?: string[]; // Precauciones para el personal
+    medicamentoPeligroso?: boolean; // Flag de medicamento peligroso
     observaciones?: string;
   };
 
@@ -110,7 +111,7 @@ interface Drug {
   };
 
   // === Búsqueda (generado en runtime) ===
-  searchText?: string;                 // Deprecated: se genera vía buildSearchText()
+  searchText?: string; // Deprecated: se genera vía buildSearchText()
 }
 ```
 
@@ -120,61 +121,73 @@ interface Drug {
 type PregnancyCategory = 'A' | 'B' | 'C' | 'D' | 'X';
 
 type RouteOfAdministration =
-  | 'oral' | 'intravenosa' | 'intramuscular' | 'subcutanea'
-  | 'sublingual' | 'topica' | 'rectal' | 'inhalatoria'
-  | 'oftalmica' | 'otica' | 'nasal' | 'transdermica'
-  | 'intratecal' | 'epidural' | 'vaginal' | 'intradermica';
+  | 'oral'
+  | 'intravenosa'
+  | 'intramuscular'
+  | 'subcutanea'
+  | 'sublingual'
+  | 'topica'
+  | 'rectal'
+  | 'inhalatoria'
+  | 'oftalmica'
+  | 'otica'
+  | 'nasal'
+  | 'transdermica'
+  | 'intratecal'
+  | 'epidural'
+  | 'vaginal'
+  | 'intradermica';
 ```
 
 ## Categorías (categories.json)
 
 ```typescript
 interface Unit {
-  id: string;        // "c01" a "c14"
-  nombre: string;    // "Sistema Cardiovascular", "Antiinfecciosos"...
+  id: string; // "c01" a "c14"
+  nombre: string; // "Sistema Cardiovascular", "Antiinfecciosos"...
   chapters: Chapter[];
 }
 
 interface Chapter {
-  id: string;        // "c01_01", "c01_02"...
-  nombre: string;    // "Antihipertensivos", "Antiarrítmicos"...
+  id: string; // "c01_01", "c01_02"...
+  nombre: string; // "Antihipertensivos", "Antiarrítmicos"...
   drugCount: number;
 }
 ```
 
 ### Unidades Terapéuticas (14)
 
-| ID | Nombre | Ejemplo de capítulos |
-|----|--------|---------------------|
-| c01 | Sistema Cardiovascular | Antihipertensivos, Antiarrítmicos, Anticoagulantes |
-| c02 | Sistema Respiratorio | Broncodilatadores, Antitusígenos |
-| c03 | Sistema Nervioso | Analgésicos, Anestésicos, Antipsicóticos |
-| c04 | Sistema Digestivo | Antiácidos, Antieméticos, Laxantes |
-| c05 | Antiinfecciosos | Antibióticos, Antivirales, Antifúngicos |
-| c06 | Sistema Endocrino | Antidiabéticos, Tiroides, Corticoides |
-| c07 | Sistema Musculoesquelético | AINEs, Relajantes musculares |
-| c08 | Sistema Genitourinario | Diuréticos, Uteroinhibidores |
-| c09 | Dermatología | Antifúngicos tópicos, Corticoides tópicos |
-| c10 | Oftalmología/ORL | Colirios, Óticos |
-| c11 | Oncología | Antineoplásicos, Inmunosupresores |
-| c12 | Sangre | Antianémicos, Factores de coagulación |
-| c13 | Vacunas/Inmunología | Vacunas, Inmunoglobulinas |
-| c14 | Otros | Vitaminas, Minerales, Antídotos |
+| ID  | Nombre                     | Ejemplo de capítulos                               |
+| --- | -------------------------- | -------------------------------------------------- |
+| c01 | Sistema Cardiovascular     | Antihipertensivos, Antiarrítmicos, Anticoagulantes |
+| c02 | Sistema Respiratorio       | Broncodilatadores, Antitusígenos                   |
+| c03 | Sistema Nervioso           | Analgésicos, Anestésicos, Antipsicóticos           |
+| c04 | Sistema Digestivo          | Antiácidos, Antieméticos, Laxantes                 |
+| c05 | Antiinfecciosos            | Antibióticos, Antivirales, Antifúngicos            |
+| c06 | Sistema Endocrino          | Antidiabéticos, Tiroides, Corticoides              |
+| c07 | Sistema Musculoesquelético | AINEs, Relajantes musculares                       |
+| c08 | Sistema Genitourinario     | Diuréticos, Uteroinhibidores                       |
+| c09 | Dermatología               | Antifúngicos tópicos, Corticoides tópicos          |
+| c10 | Oftalmología/ORL           | Colirios, Óticos                                   |
+| c11 | Oncología                  | Antineoplásicos, Inmunosupresores                  |
+| c12 | Sangre                     | Antianémicos, Factores de coagulación              |
+| c13 | Vacunas/Inmunología        | Vacunas, Inmunoglobulinas                          |
+| c14 | Otros                      | Vitaminas, Minerales, Antídotos                    |
 
 ## Patologías (pathologies.json)
 
 ```typescript
 interface Pathology {
   id: string;
-  nombre: string;           // "Hipertensión Arterial"
+  nombre: string; // "Hipertensión Arterial"
   descripcion: string;
-  signos: string[];          // Signos clínicos
+  signos: string[]; // Signos clínicos
   sintomas: string[];
   diagnostico: string[];
   tratamiento: string;
   cuidadosEnfermeria: string[];
-  linkedDrugs: string[];     // IDs de fármacos relacionados
-  categoria: string;         // "cardiovascular", "respiratorio"...
+  linkedDrugs: string[]; // IDs de fármacos relacionados
+  categoria: string; // "cardiovascular", "respiratorio"...
 }
 ```
 
@@ -183,13 +196,13 @@ interface Pathology {
 ```typescript
 interface EmergencyProtocol {
   id: string;
-  nombre: string;            // "ACLS - Paro Cardíaco"
+  nombre: string; // "ACLS - Paro Cardíaco"
   descripcion: string;
   categoria: string;
   steps: {
     orden: number;
     accion: string;
-    tiempo?: string;          // "0:00", "2:00"...
+    tiempo?: string; // "0:00", "2:00"...
     detalle?: string;
     critico?: boolean;
   }[];
@@ -203,7 +216,7 @@ interface EmergencyProtocol {
     pregunta: string;
     opciones: { texto: string; siguiente: string }[];
   }[];
-  redFlags: string[];         // Señales de alarma
+  redFlags: string[]; // Señales de alarma
   notas?: string;
 }
 ```
@@ -213,24 +226,27 @@ interface EmergencyProtocol {
 ```typescript
 interface ClinicalScale {
   id: string;
-  nombre: string;            // "Escala de Glasgow"
+  nombre: string; // "Escala de Glasgow"
   tipo: 'components' | 'selector' | 'checklist';
   descripcion: string;
-  componentes?: {             // tipo: components (sumable)
+  componentes?: {
+    // tipo: components (sumable)
     nombre: string;
     opciones: { texto: string; valor: number }[];
   }[];
-  opciones?: {                // tipo: selector
+  opciones?: {
+    // tipo: selector
     texto: string;
     valor: number;
     descripcion?: string;
   }[];
-  items?: {                   // tipo: checklist
+  items?: {
+    // tipo: checklist
     texto: string;
     valor: number;
   }[];
   interpretacion: {
-    rango: string;            // "3-8", "9-12"...
+    rango: string; // "3-8", "9-12"...
     significado: string;
   }[];
 }
@@ -241,9 +257,9 @@ interface ClinicalScale {
 ```typescript
 interface LabValue {
   id: string;
-  nombre: string;            // "Hemoglobina"
-  categoria: string;         // "hematología", "bioquímica"...
-  unidad: string;            // "g/dL", "mg/dL"...
+  nombre: string; // "Hemoglobina"
+  categoria: string; // "hematología", "bioquímica"...
+  unidad: string; // "g/dL", "mg/dL"...
   rangos: {
     male?: { min: number; max: number };
     female?: { min: number; max: number };
@@ -254,7 +270,7 @@ interface LabValue {
     alto: string;
     bajo: string;
   };
-  farmacosAlteran?: string[];  // Fármacos que modifican el valor
+  farmacosAlteran?: string[]; // Fármacos que modifican el valor
   implicacionesEnfermeria: string[];
 }
 ```
@@ -265,7 +281,7 @@ interface LabValue {
 interface DrugNote {
   drugId: string;
   text: string;
-  updatedAt: number;         // timestamp
+  updatedAt: number; // timestamp
 }
 
 interface SearchHistoryEntry {
@@ -304,10 +320,10 @@ iv_compatibilities.json
 
 ## Tamaño de Datos
 
-| Archivo | Tamaño aprox. |
-|---------|--------------|
-| drugs.json | ~4.1 MB |
-| Resto de JSONs | ~0.6 MB |
-| **Total datos** | **~10.5 MB** |
+| Archivo         | Tamaño aprox. |
+| --------------- | ------------- |
+| drugs.json      | ~4.1 MB       |
+| Resto de JSONs  | ~0.6 MB       |
+| **Total datos** | **~10.5 MB**  |
 
 Los datos solían destruir los emuladores por Heap Overflow en builds `debug`. Ahora son administrados en **modo lectura cero-costo** a través de **OP-SQLite**, una librería construida en C++ por el equipo de OPS que otorga acceso bloqueante-instantáneo sin inflar el bridge Async de React Native.

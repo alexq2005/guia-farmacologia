@@ -49,12 +49,15 @@ const SLIDES: SlideData[] = [
   {
     icon: 'database-outline',
     title: 'Base de datos\ncompleta',
-    subtitle: '1781+ fármacos detallados',
+    subtitle: '2,977 fármacos detallados',
     features: [
-      { icon: 'pill', text: '1781+ fármacos con información detallada' },
+      { icon: 'pill', text: '2,977 fármacos con información detallada' },
       { icon: 'magnify', text: 'Búsqueda inteligente por nombre o familia' },
       { icon: 'alert-outline', text: 'Interacciones y contraindicaciones' },
-      { icon: 'clipboard-text-outline', text: 'Cuidados de enfermería específicos' },
+      {
+        icon: 'clipboard-text-outline',
+        text: 'Cuidados de enfermería específicos',
+      },
     ],
     image: require('../assets/images/units/pills.jpg'),
     gradientColors: ['rgba(124,58,237,0.75)', 'rgba(91,33,182,0.95)'],
@@ -65,9 +68,18 @@ const SLIDES: SlideData[] = [
     subtitle: 'Todo lo que necesitás en guardia',
     features: [
       { icon: 'alert-octagon', text: '14 protocolos de emergencia con pasos' },
-      { icon: 'chart-timeline-variant-shimmer', text: '13 escalas clínicas interactivas' },
-      { icon: 'calculator-variant-outline', text: '15 calculadoras farmacológicas' },
-      { icon: 'flask-outline', text: '53 valores de laboratorio de referencia' },
+      {
+        icon: 'chart-timeline-variant-shimmer',
+        text: '13 escalas clínicas interactivas',
+      },
+      {
+        icon: 'calculator-variant-outline',
+        text: '15 calculadoras farmacológicas',
+      },
+      {
+        icon: 'flask-outline',
+        text: '53 valores de laboratorio de referencia',
+      },
     ],
     image: require('../assets/images/units/emergency.jpg'),
     gradientColors: ['rgba(220,38,38,0.7)', 'rgba(153,27,27,0.95)'],
@@ -77,7 +89,10 @@ const SLIDES: SlideData[] = [
     title: 'Aprende\ny estudia',
     subtitle: 'Preparate para los exámenes',
     features: [
-      { icon: 'check-circle-outline', text: 'Test interactivo con 8 tipos de preguntas' },
+      {
+        icon: 'check-circle-outline',
+        text: 'Test interactivo con 8 tipos de preguntas',
+      },
       { icon: 'note-text-outline', text: 'Notas personales por fármaco' },
       { icon: 'star-outline', text: 'Favoritos y seguimiento de progreso' },
       { icon: 'trending-up', text: 'Dashboard con estadísticas de estudio' },
@@ -91,7 +106,10 @@ const SLIDES: SlideData[] = [
     subtitle: 'Tu compañera de guardia',
     features: [
       { icon: 'cellphone-check', text: 'Disponible sin conexión a internet' },
-      { icon: 'moon-waning-crescent', text: 'Modo oscuro para guardias nocturnas' },
+      {
+        icon: 'moon-waning-crescent',
+        text: 'Modo oscuro para guardias nocturnas',
+      },
       { icon: 'sync', text: 'Actualizaciones periódicas de contenido' },
     ],
     image: require('../assets/images/units/hospital.jpg'),
@@ -99,7 +117,10 @@ const SLIDES: SlideData[] = [
   },
 ];
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Onboarding'
+>;
 
 interface Props {
   navigation: NavigationProp;
@@ -122,7 +143,10 @@ export function OnboardingScreen({ navigation }: Props) {
 
   const goToNext = useCallback(() => {
     if (currentIndex < SLIDES.length - 1) {
-      flatListRef.current?.scrollToIndex({ index: currentIndex + 1, animated: true });
+      flatListRef.current?.scrollToIndex({
+        index: currentIndex + 1,
+        animated: true,
+      });
     } else {
       completeOnboarding();
     }
@@ -138,11 +162,22 @@ export function OnboardingScreen({ navigation }: Props) {
 
   const renderSlide = useCallback(
     ({ item }: { item: SlideData }) => (
-      <ImageBackground source={item.image} style={[styles.slide, { width: screenWidth }]} resizeMode="cover">
-        <LinearGradient colors={item.gradientColors} style={StyleSheet.absoluteFill} />
+      <ImageBackground
+        source={item.image}
+        style={[styles.slide, { width: screenWidth }]}
+        resizeMode="cover"
+      >
+        <LinearGradient
+          colors={item.gradientColors}
+          style={StyleSheet.absoluteFill}
+        />
         <View style={styles.slideContent}>
           <View style={styles.slideIconCircle}>
-            <MaterialCommunityIcons name={item.icon} size={40} color="#FFFFFF" />
+            <MaterialCommunityIcons
+              name={item.icon}
+              size={40}
+              color="#FFFFFF"
+            />
           </View>
           <Text style={styles.slideTitle}>{item.title}</Text>
           <Text style={styles.slideSubtitle}>{item.subtitle}</Text>
@@ -150,7 +185,11 @@ export function OnboardingScreen({ navigation }: Props) {
             {item.features.map((f, i) => (
               <View key={i} style={styles.featureRow}>
                 <View style={styles.featureIconBg}>
-                  <MaterialCommunityIcons name={f.icon} size={18} color="#FFFFFF" />
+                  <MaterialCommunityIcons
+                    name={f.icon}
+                    size={18}
+                    color="#FFFFFF"
+                  />
                 </View>
                 <Text style={styles.featureText}>{f.text}</Text>
               </View>
@@ -166,7 +205,11 @@ export function OnboardingScreen({ navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
 
       {!isLastSlide && (
         <TouchableOpacity
@@ -189,18 +232,43 @@ export function OnboardingScreen({ navigation }: Props) {
         onMomentumScrollEnd={onMomentumScrollEnd}
         keyExtractor={(_, i) => String(i)}
         bounces={false}
-        getItemLayout={(_, index) => ({ length: screenWidth, offset: screenWidth * index, index })}
+        getItemLayout={(_, index) => ({
+          length: screenWidth,
+          offset: screenWidth * index,
+          index,
+        })}
       />
 
-      <View style={[styles.bottomSection, { paddingBottom: insets.bottom + 24 }]}>
+      <View
+        style={[styles.bottomSection, { paddingBottom: insets.bottom + 24 }]}
+      >
         <View style={styles.dotsContainer}>
           {SLIDES.map((_, i) => (
-            <View key={i} style={[styles.dot, i === currentIndex ? styles.dotActive : styles.dotInactive]} />
+            <View
+              key={i}
+              style={[
+                styles.dot,
+                i === currentIndex ? styles.dotActive : styles.dotInactive,
+              ]}
+            />
           ))}
         </View>
-        <TouchableOpacity style={styles.actionButton} onPress={goToNext} activeOpacity={0.8}>
-          <Text style={styles.actionButtonText}>{isLastSlide ? 'Comenzar' : 'Siguiente'}</Text>
-          {!isLastSlide && <MaterialCommunityIcons name="arrow-right" size={20} color="#FFFFFF" style={{ marginLeft: 8 }} />}
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={goToNext}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.actionButtonText}>
+            {isLastSlide ? 'Comenzar' : 'Siguiente'}
+          </Text>
+          {!isLastSlide && (
+            <MaterialCommunityIcons
+              name="arrow-right"
+              size={20}
+              color="#FFFFFF"
+              style={{ marginLeft: 8 }}
+            />
+          )}
         </TouchableOpacity>
       </View>
     </Animated.View>
@@ -265,7 +333,12 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       justifyContent: 'center',
       marginRight: rs.space(12),
     },
-    featureText: { fontSize: rs.font(14), color: '#FFFFFF', fontWeight: '500', flex: 1 },
+    featureText: {
+      fontSize: rs.font(14),
+      color: '#FFFFFF',
+      fontWeight: '500',
+      flex: 1,
+    },
     bottomSection: {
       position: 'absolute',
       bottom: 0,
@@ -274,10 +347,17 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       alignItems: 'center',
       paddingHorizontal: rs.space(28),
     },
-    dotsContainer: { flexDirection: 'row', marginBottom: rs.space(20), gap: rs.space(8) },
+    dotsContainer: {
+      flexDirection: 'row',
+      marginBottom: rs.space(20),
+      gap: rs.space(8),
+    },
     dot: { height: rs.space(6), borderRadius: rs.space(3) },
     dotActive: { backgroundColor: '#FFFFFF', width: rs.space(24) },
-    dotInactive: { backgroundColor: 'rgba(255,255,255,0.35)', width: rs.space(6) },
+    dotInactive: {
+      backgroundColor: 'rgba(255,255,255,0.35)',
+      width: rs.space(6),
+    },
     actionButton: {
       backgroundColor: 'rgba(255,255,255,0.2)',
       borderRadius: 16,
@@ -289,6 +369,10 @@ function createStyles(colors: ThemeColors, rs: ResponsiveScale) {
       flexDirection: 'row',
       justifyContent: 'center',
     },
-    actionButtonText: { color: '#FFFFFF', fontSize: rs.font(17), fontWeight: '700' },
+    actionButtonText: {
+      color: '#FFFFFF',
+      fontSize: rs.font(17),
+      fontWeight: '700',
+    },
   });
 }

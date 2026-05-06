@@ -5,9 +5,10 @@
 ### 1. Base de Datos Farmacológica
 
 **Pantalla**: HomeScreen, SearchScreen, DrugDetailScreen
-**Datos**: 1,781 fármacos (Operando a 0 coste RAM vía `SQLite JSI Extractor`)
+**Datos**: 2,977 fármacos (Operando a 0 coste RAM vía `SQLite JSI Extractor`)
 
 La funcionalidad central de la app. Cada fármaco incluye:
+
 - Nombre genérico y comercial
 - Mecanismo de acción
 - Indicaciones y contraindicaciones
@@ -47,6 +48,7 @@ Navegación jerárquica: Unidad > Capítulo > Fármacos. Cada unidad tiene color
 **Premium**: Sí (gated con PremiumGate)
 
 Protocolos con pasos cronometrados para situaciones críticas:
+
 - ACLS (Paro Cardíaco)
 - Anafilaxia
 - Infarto Agudo de Miocardio (IAM)
@@ -72,21 +74,21 @@ Cada protocolo incluye: pasos con tiempos, dosis de fármacos, puntos de decisi�
 
 Escalas con cálculo automático e interpretación:
 
-| Escala | Tipo | Uso |
-|--------|------|-----|
-| Glasgow (GCS) | components | Nivel de consciencia |
-| APGAR | components | Valoración neonatal |
-| Norton | components | Riesgo de UPP |
-| Braden | components | Riesgo de UPP |
-| NEWS2 | components | Alerta temprana |
-| RASS | selector | Sedación/agitación |
-| Wells | checklist | Riesgo TEP |
-| EVA | selector | Intensidad del dolor |
-| Aldrete | components | Recuperación postanestésica |
-| qSOFA | checklist | Sospecha sepsis |
-| NIHSS | components | Gravedad ACV |
-| Mallampati | selector | Vía aérea difícil |
-| ASA | selector | Riesgo anestésico |
+| Escala        | Tipo       | Uso                         |
+| ------------- | ---------- | --------------------------- |
+| Glasgow (GCS) | components | Nivel de consciencia        |
+| APGAR         | components | Valoración neonatal         |
+| Norton        | components | Riesgo de UPP               |
+| Braden        | components | Riesgo de UPP               |
+| NEWS2         | components | Alerta temprana             |
+| RASS          | selector   | Sedación/agitación          |
+| Wells         | checklist  | Riesgo TEP                  |
+| EVA           | selector   | Intensidad del dolor        |
+| Aldrete       | components | Recuperación postanestésica |
+| qSOFA         | checklist  | Sospecha sepsis             |
+| NIHSS         | components | Gravedad ACV                |
+| Mallampati    | selector   | Vía aérea difícil           |
+| ASA           | selector   | Riesgo anestésico           |
 
 Tres tipos de interacción: `components` (suman puntos), `selector` (selección única), `checklist` (sí/no).
 
@@ -99,6 +101,7 @@ Tres tipos de interacción: `components` (suman puntos), `selector` (selección 
 Categorías: Hematología, Bioquímica, Coagulación, Hepático, Renal, Cardíaco, Endocrino, Orina, Gasometría.
 
 Cada valor incluye:
+
 - Rangos normales por sexo (masculino/femenino) y pediátricos
 - Significado clínico de valores altos/bajos
 - Fármacos que pueden alterar el valor
@@ -112,23 +115,23 @@ Función de compartir valor de laboratorio (`shareLabValue`).
 **Datos**: 15 calculadoras
 **Premium**: Sí
 
-| Calculadora | Descripción |
-|-------------|-------------|
-| Dosis por peso | mg/kg |
-| Goteo IV | gotas/min, ml/h |
-| IMC | Índice de masa corporal |
-| Superficie corporal | Fórmula de Du Bois |
-| Aclaramiento de creatinina | Cockcroft-Gault |
-| Dosis pediátrica | Reglas de Young/Clark |
-| Conversión de unidades | mg, mcg, mEq... |
-| Calcio corregido | Por albúmina |
-| Anion Gap | Na - (Cl + HCO3) |
-| Osmolalidad | Plasmática calculada |
-| QTc Bazett | Intervalo QT corregido |
-| Parkland | Quemados (líquidos 24h) |
-| Holliday-Segar | Mantenimiento pediátrico |
-| Glasgow (texto) | GCS con interpretación |
-| APACHE II | Gravedad UCI |
+| Calculadora                | Descripción              |
+| -------------------------- | ------------------------ |
+| Dosis por peso             | mg/kg                    |
+| Goteo IV                   | gotas/min, ml/h          |
+| IMC                        | Índice de masa corporal  |
+| Superficie corporal        | Fórmula de Du Bois       |
+| Aclaramiento de creatinina | Cockcroft-Gault          |
+| Dosis pediátrica           | Reglas de Young/Clark    |
+| Conversión de unidades     | mg, mcg, mEq...          |
+| Calcio corregido           | Por albúmina             |
+| Anion Gap                  | Na - (Cl + HCO3)         |
+| Osmolalidad                | Plasmática calculada     |
+| QTc Bazett                 | Intervalo QT corregido   |
+| Parkland                   | Quemados (líquidos 24h)  |
+| Holliday-Segar             | Mantenimiento pediátrico |
+| Glasgow (texto)            | GCS con interpretación   |
+| APACHE II                  | Gravedad UCI             |
 
 ### 8. Guía de Administración Parenteral
 
@@ -144,6 +147,7 @@ Basada en la Guía del Hospital Son Espases. Cinco pestañas:
 5. **Fármacos**: Lista de fármacos con info parenteral
 
 Información por fármaco:
+
 - Compatibilidad con SSF (NaCl 0.9%) y SG5% (indicadores tipo semáforo)
 - Compatibilidad con NPT
 - Flag de medicamento peligroso (33 fármacos)
@@ -162,6 +166,7 @@ Seleccionar 2+ fármacos y verificar interacciones entre ellos. Niveles de sever
 **Datos**: 60 patologías
 
 Cada patología incluye:
+
 - Descripción, signos y síntomas
 - Diagnóstico
 - Tratamiento
@@ -174,6 +179,7 @@ Cada patología incluye:
 **Hook**: useQuiz
 
 8 tipos de preguntas generadas automáticamente desde los datos de fármacos:
+
 - Identificar indicación correcta
 - Identificar contraindicación
 - Identificar efecto adverso
@@ -184,6 +190,7 @@ Cada patología incluye:
 - Cuidados de enfermería
 
 Características:
+
 - Filtro por categoría terapéutica
 - Puntuación y porcentaje
 - Historial de resultados (AsyncStorage)
@@ -195,6 +202,7 @@ Características:
 **Premium**: Sí
 
 Estadísticas de estudio:
+
 - Puntuación promedio en quizzes
 - Barras de progreso por categoría
 - Racha de estudio (días consecutivos)
@@ -206,6 +214,7 @@ Estadísticas de estudio:
 **Premium**: Sí
 
 Seleccionar hasta 3 fármacos y compararlos en tabla horizontal con 10 campos:
+
 - Nombre, familia, mecanismo, indicaciones, contraindicaciones
 - Efectos adversos, dosis, vías, embarazo, cuidados
 
@@ -253,6 +262,7 @@ Exportar/importar datos del usuario (favoritos, notas, historial de quiz) como J
 **Archivo**: utils/share.ts
 
 Tres funciones de compartir:
+
 - `shareDrug()`: Información completa del fármaco como texto estructurado
 - `shareProtocol()`: Protocolo de emergencia con pasos
 - `shareLabValue()`: Valor de laboratorio con rangos
@@ -296,6 +306,7 @@ Variantes: SkeletonCard, SkeletonList, SkeletonDrugDetail. Animación de pulso d
 **Archivo**: drawable/splash_logo.xml
 
 Logo vectorial personalizado con:
+
 - Anillo circular decorativo (doble)
 - Cruz médica redondeada con sombra
 - Libro abierto con líneas de texto
@@ -314,12 +325,14 @@ Fondo azul #1E40AF, logo blanco con acentos #93C5FD.
 **Componente**: ErrorBoundary.tsx
 
 Envuelve toda la app. Si ocurre un error React no capturado:
+
 - Muestra UI amigable con botón de reintentar
 - En modo desarrollo, muestra detalles del error
 
 ### 26. Accesibilidad
 
 Roles y labels en componentes interactivos:
+
 - `DrugCard`: accessibilityRole, accessibilityLabel
 - `CollapsibleSection`: accessibilityState (expanded)
 - `SearchBar`: accessibilityRole="search"
@@ -331,11 +344,13 @@ Roles y labels en componentes interactivos:
 **Activación**: src/utils/activation.ts (SHA-256)
 
 Tres formas de desbloqueo:
+
 - **Free build**: `IS_FREE=true` desde BuildConfig. `isPremium` siempre `true`. Sin UI de suscripción.
 - **Trial**: 14 días desde primera instalación (solo en premium build).
 - **Código de activación**: Easter egg en AboutScreen (tocar versión 5 veces). Valida contra hash SHA-256, desbloquea permanentemente.
 
 Funciones premium-gated:
+
 - Protocolos de emergencia
 - Escalas clínicas
 - Calculadoras
@@ -346,6 +361,7 @@ Funciones premium-gated:
 - Notas ilimitadas (5 en free trial expirado)
 
 UI oculta en free build:
+
 - Banner de trial en HomeScreen
 - Fila "Premium" en AboutScreen
 - Candados en ToolsScreen
@@ -385,20 +401,20 @@ Fórmulas de dosificación, goteo, diluciones, etc.
 
 ## Resumen de Premium vs Free
 
-| Funcionalidad | Free (trial expirado) | Premium / Free Build |
-|---------------|----------------------|---------------------|
-| Búsqueda de fármacos | Sí | Sí |
-| Detalle de fármaco | Sí | Sí |
-| Categorías | Sí | Sí |
-| Favoritos | 5 max | Ilimitados |
-| Notas | 5 max | Ilimitadas |
-| Quiz | Sí | Sí |
-| Protocolos emergencia | Bloqueado | Sí |
-| Escalas clínicas | Bloqueado | Sí |
-| Calculadoras | Bloqueado | Sí |
-| Valores laboratorio | Bloqueado | Sí |
-| Dashboard | Bloqueado | Sí |
-| Comparador fármacos | Bloqueado | Sí |
-| Export/Import datos | Bloqueado | Sí |
-| Modo oscuro | Sí | Sí |
-| Compartir | Sí | Sí |
+| Funcionalidad         | Free (trial expirado) | Premium / Free Build |
+| --------------------- | --------------------- | -------------------- |
+| Búsqueda de fármacos  | Sí                    | Sí                   |
+| Detalle de fármaco    | Sí                    | Sí                   |
+| Categorías            | Sí                    | Sí                   |
+| Favoritos             | 5 max                 | Ilimitados           |
+| Notas                 | 5 max                 | Ilimitadas           |
+| Quiz                  | Sí                    | Sí                   |
+| Protocolos emergencia | Bloqueado             | Sí                   |
+| Escalas clínicas      | Bloqueado             | Sí                   |
+| Calculadoras          | Bloqueado             | Sí                   |
+| Valores laboratorio   | Bloqueado             | Sí                   |
+| Dashboard             | Bloqueado             | Sí                   |
+| Comparador fármacos   | Bloqueado             | Sí                   |
+| Export/Import datos   | Bloqueado             | Sí                   |
+| Modo oscuro           | Sí                    | Sí                   |
+| Compartir             | Sí                    | Sí                   |

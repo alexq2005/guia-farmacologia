@@ -10,16 +10,19 @@
 ## 1. Assets Gráficos
 
 ### Icono (obligatorio)
+
 - [ ] Abrir `playstore/generate_icon.html` en un navegador
 - [ ] Descargar el icono 512×512 PNG
 - [ ] Verificar que se ve bien sobre fondo claro y oscuro
 
 ### Feature Graphic (obligatorio)
+
 - [ ] Abrir `playstore/generate_feature_graphic.html` en un navegador
-- [ ] Verificar que dice "2784 Fármacos" (ya actualizado)
+- [ ] Verificar que dice "2977 Fármacos" (ya actualizado)
 - [ ] Descargar el gráfico 1024×500 PNG
 
 ### Screenshots (obligatorio, mínimo 2, recomendado 5-8)
+
 - [ ] Compilar la app en modo debug: `./gradlew installPremiumDebug`
 - [ ] Tomar capturas en un dispositivo/emulador (1080×1920 portrait)
 - [ ] Capturas sugeridas:
@@ -42,12 +45,14 @@ La política ya está escrita en `docs/privacy-policy.html`. Debe estar accesibl
 **Opciones para hostear:**
 
 ### Opción A: GitHub Pages (gratis, recomendado)
+
 1. Crear un repositorio público en GitHub (ej: `guia-farmacologica-legal`)
 2. Subir `privacy-policy.html` como `index.html`
 3. Settings → Pages → Deploy from main branch
 4. URL resultante: `https://tu-usuario.github.io/guia-farmacologica-legal/`
 
 ### Opción B: Firebase Hosting (gratis tier)
+
 1. `firebase init hosting` en un directorio temporal
 2. Copiar `privacy-policy.html` a `public/index.html`
 3. `firebase deploy`
@@ -78,6 +83,7 @@ export JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED --add-opens=java.ba
 ## 4. Crear Ficha en Google Play Console
 
 ### Información básica
+
 - [ ] **Nombre**: Guía Farmacológica Enfermería (≤30 chars)
 - [ ] **Descripción breve**: copiar de `playstore/ficha_play_store.txt` (≤80 chars)
 - [ ] **Descripción completa**: copiar de `playstore/ficha_play_store.txt` (≤4000 chars)
@@ -86,6 +92,7 @@ export JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED --add-opens=java.ba
 - [ ] **Política de privacidad**: pegar la URL pública (del paso 2)
 
 ### Assets gráficos
+
 - [ ] Subir icono 512×512
 - [ ] Subir feature graphic 1024×500
 - [ ] Subir screenshots (mínimo 2)
@@ -97,6 +104,7 @@ export JAVA_TOOL_OPTIONS="--enable-native-access=ALL-UNNAMED --add-opens=java.ba
 Google requiere completar un cuestionario (IARC) para asignar clasificación.
 
 **Respuestas orientativas:**
+
 - ¿Contiene violencia? → **No**
 - ¿Contenido sexual? → **No**
 - ¿Lenguaje ofensivo? → **No**
@@ -116,6 +124,7 @@ Google requiere completar un cuestionario (IARC) para asignar clasificación.
 En **Monetización → Productos → Suscripciones**:
 
 ### Suscripción Mensual
+
 - [ ] ID del producto: `premium_monthly`
 - [ ] Nombre: "Premium Mensual"
 - [ ] Descripción: "Acceso completo a todas las funciones premium"
@@ -124,6 +133,7 @@ En **Monetización → Productos → Suscripciones**:
 - [ ] Período de gracia: 7 días (recomendado)
 
 ### Suscripción Anual
+
 - [ ] ID del producto: `premium_yearly`
 - [ ] Nombre: "Premium Anual"
 - [ ] Descripción: "Acceso completo a todas las funciones premium — ahorro ~58%"
@@ -142,7 +152,7 @@ En **Monetización → Productos → Suscripciones**:
 - [ ] Añadir notas de la versión:
   ```
   Versión 1.0.0 — Lanzamiento inicial
-  • 2784 fármacos con información completa
+  • 2977 fármacos con información completa
   • 13 escalas clínicas interactivas
   • 14 protocolos de emergencia
   • 15 calculadoras clínicas
