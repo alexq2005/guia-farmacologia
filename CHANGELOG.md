@@ -14,6 +14,7 @@ APKs with duplicate version codes.
 
 ### Added
 
+- **MiSuite — hub del ecosistema de 3 apps de enfermería** (`src/screens/MiSuiteScreen.tsx`): pantalla nueva que detecta cuáles de las 3 apps están instaladas en el dispositivo (Curso, Patologías, Farmacológica) y ofrece abrirlas o descargarlas. Usa `Linking.canOpenURL` con esquemas custom (`farmacologia://`, `patologias://`, `curso://`). Entrada desde Tools sección "Ecosistema". Permisos Android `<queries>` para package visibility (Android 11+) y `<intent-filter>` para que las otras apps abran ésta.
 - **Tests de calculadoras médicas** (`__tests__/calculators.test.ts`): 35 tests cubriendo las 22 fórmulas (f01-f22) hand-calculados contra fuentes médicas canónicas (Mosteller, Cockcroft-Gault, Devine, Young, Clark, etc.). Edge cases: empty/non-numeric/comma-decimal locale es-ES. Test de regresión bloquea la convención vieja de "sexo".
 - **Test de integridad referencial** entre `pathologies.json` y `drugs.json` (`__tests__/pathologies-refs.test.ts`): valida que las 494 referencias matchean IDs reales. Falla CI si alguien renombra un drug ID sin actualizar refs.
 - **Crash reporting scaffolding** (`src/utils/crashReporting.ts`): interfaz abstracta con no-op provider por defecto. `ErrorBoundary` integrado vía `componentDidCatch`. Listo para activar Sentry/Crashlytics cuando se decida (ver `docs/CRASH_REPORTING.md`).
@@ -38,10 +39,10 @@ APKs with duplicate version codes.
 - **Form UI de calculadoras**: cuando una variable se llama `sexo`, ahora se renderiza como toggle visual de dos botones (Mujer / Hombre) en vez de TextInput numérico — imposible ingresar valores arbitrarios.
 - `calculateResult` extraída de `FormulaDetailScreen.tsx` a `src/utils/calculators.ts` (función pura testeable).
 - `src/data/formulas.json`: descripciones del campo `sexo` en f10/f16/f19 aclaradas a "0 = Mujer, 1 = Hombre".
-- **Conteos sincronizados a 2,977 fármacos** (eran 1,781 / 2,784 según el archivo):
-  - Código UI visible al usuario: `OnboardingScreen.tsx`, `PremiumScreen.tsx`, `App.tsx` header
+- **Conteos sincronizados a 2,977 fármacos** (eran 1,781 / 2,784 / 2,877 según el archivo):
+  - Código UI visible al usuario: `OnboardingScreen.tsx`, `PremiumScreen.tsx`, `App.tsx` header, `MiSuiteScreen.tsx`
   - Docs: `docs/DATA.md`, `docs/FEATURES.md`, `docs/play-store-listing.md`
-  - Marketing: `playstore/checklist_publicacion.md`, `playstore/generate_feature_graphic.html`
+  - Marketing: `playstore/checklist_publicacion.md`, `playstore/generate_feature_graphic.html`, `playstore/ficha_play_store.txt` (ficha definitiva para Play Store)
 - `docs/DATA.md`: contador de fórmulas actualizado de 15 → 22.
 - `docs/ARCHITECTURE.md`: sección nueva **"Sistema de Migraciones SQLite"** con explicación del bug histórico y enlace al flujo de release en DEVELOPMENT.md.
 - `docs/DEVELOPMENT.md`: easter-egg de activación reformulado para no pinear una versión específica del badge.

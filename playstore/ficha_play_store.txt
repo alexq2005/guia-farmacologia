@@ -9,7 +9,7 @@ Guía Farmacológica Enfermería
 ────────────────────────────────────────
 
 DESCRIPCIÓN BREVE (máx. 80 caracteres):
-Guía de fármacos offline para enfermería: 2784 medicamentos, escalas y más.
+Guía de fármacos offline para enfermería: 2977 medicamentos, escalas y más.
 
 ────────────────────────────────────────
 
@@ -18,7 +18,7 @@ DESCRIPCIÓN COMPLETA (máx. 4000 caracteres):
 La guía farmacológica más completa para profesionales y estudiantes de enfermería. Toda la información que necesitas, siempre disponible, sin conexión a internet.
 
 CONTENIDO INCLUIDO
-- 2784 fármacos con información completa: indicaciones, contraindicaciones, dosis (adulto, pediátrico, geriátrico), efectos adversos, interacciones, cuidados de enfermería, farmacocinética y más.
+- 2977 fármacos con información completa: indicaciones, contraindicaciones, dosis (adulto, pediátrico, geriátrico), efectos adversos, interacciones, cuidados de enfermería, farmacocinética y más.
 - 60 patologías clínicas vinculadas a fármacos relacionados.
 - 13 escalas clínicas interactivas: Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells, EVA, Aldrete, qSOFA, NIHSS, Mallampati y ASA.
 - 53 valores de laboratorio con rangos de referencia por sexo y edad, significado clínico e implicaciones de enfermería.
@@ -29,7 +29,7 @@ CONTENIDO INCLUIDO
 - 15 vías de administración con técnica y precauciones.
 
 HERRAMIENTAS DE ESTUDIO
-- Test farmacológico interactivo con 8 tipos de preguntas generadas desde los 2784 fármacos.
+- Test farmacológico interactivo con 8 tipos de preguntas generadas desde los 2977 fármacos.
 - Dashboard de progreso con estadísticas de estudio y racha.
 - Comparador de fármacos: compara hasta 3 medicamentos lado a lado.
 - Verificador de interacciones medicamentosas con niveles de severidad.
@@ -47,7 +47,7 @@ DISEÑO Y ACCESIBILIDAD
 - Interfaz limpia y rápida, optimizada para consulta en el hospital.
 
 MODELO FREEMIUM
-- Descarga gratuita con acceso a los 2784 fármacos, búsqueda, navegación por categorías, favoritos (5), notas (5) y modo oscuro.
+- Descarga gratuita con acceso a los 2977 fármacos, búsqueda, navegación por categorías, favoritos (5), notas (5) y modo oscuro.
 - 14 días de prueba gratuita con todas las funciones premium.
 - Suscripción premium (4.99€/mes o 24.99€/año — ahorro ~58%): test, calculadoras, escalas, valores de laboratorio, protocolos, comparador, interacciones, dashboard, guía parenteral, favoritos y notas ilimitados.
 
