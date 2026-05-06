@@ -44,7 +44,7 @@ Navegación jerárquica: Unidad > Capítulo > Fármacos. Cada unidad tiene color
 ### 4. Protocolos de Emergencia
 
 **Pantalla**: EmergencyProtocolsScreen, ProtocolDetailScreen
-**Datos**: 14 protocolos
+**Datos**: 18 protocolos
 **Premium**: Sí (gated con PremiumGate)
 
 Protocolos con pasos cronometrados para situaciones críticas:
@@ -69,7 +69,7 @@ Cada protocolo incluye: pasos con tiempos, dosis de fármacos, puntos de decisi�
 ### 5. Escalas Clínicas Interactivas
 
 **Pantalla**: ClinicalScalesScreen, ScaleDetailScreen
-**Datos**: 13 escalas
+**Datos**: 17 escalas
 **Premium**: Sí
 
 Escalas con cálculo automático e interpretación:
@@ -95,7 +95,7 @@ Tres tipos de interacción: `components` (suman puntos), `selector` (selección 
 ### 6. Valores de Laboratorio
 
 **Pantalla**: LabValuesScreen
-**Datos**: 53 valores en 9 categorías
+**Datos**: 61 valores en 9 categorías
 **Premium**: Sí (parcial)
 
 Categorías: Hematología, Bioquímica, Coagulación, Hepático, Renal, Cardíaco, Endocrino, Orina, Gasometría.
@@ -217,6 +217,30 @@ Seleccionar hasta 3 fármacos y compararlos en tabla horizontal con 10 campos:
 
 - Nombre, familia, mecanismo, indicaciones, contraindicaciones
 - Efectos adversos, dosis, vías, embarazo, cuidados
+
+### 13b. MiSuite — Hub del Ecosistema
+
+**Pantalla**: MiSuiteScreen (acceso desde ToolsScreen → "Ecosistema")
+
+Hub que detecta cuáles de las 3 apps de enfermería están instaladas en el
+dispositivo y permite abrirlas o descargarlas:
+
+- **Guía Farmacológica** (esta app) — _qué le doy al paciente_
+- **Patologías de Enfermería** (`com.patologiasenfermeria.free`) — _qué tiene el paciente_
+- **Curso de Enfermería** (`com.cursoenfermeria.free`) — _cómo se hace_
+
+Implementación: `Linking.canOpenURL` con esquemas custom (`farmacologia://`,
+`patologias://`, `curso://`). Permisos `<queries>` declarados en
+AndroidManifest para Android 11+ package visibility.
+
+### 13c. Provenance Banner
+
+**Pantalla**: DrugDetailScreen (footer de cada ficha) + AboutScreen (sección
+"Revisión y actualización")
+
+Banner discreto que muestra fuente del dato + fecha de edición + estado de
+revisión clínica ("Pendiente" hasta que un profesional firme, "✓ Revisado"
+después). Ver [CLINICAL_REVIEW.md](CLINICAL_REVIEW.md) para procedimiento.
 
 ---
 

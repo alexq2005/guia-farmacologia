@@ -265,13 +265,24 @@ Reemplazar `ACTIVATION_HASH` en `src/utils/activation.ts` con el hash resultante
 >
 > 1. Editar `src/data/drugs.json`
 > 2. **Bumpear `DATASET_VERSION` en `src/data/db.ts`** (incrementar en 1)
-> 3. Documentar el cambio en `CHANGELOG.md` bajo `[Unreleased]`
-> 4. Bumpear versión de la app (`scripts/bump-version.js` cuando exista)
+> 3. **Actualizar `src/data/_meta.json`** → entrada `drugs.lastEdited` con la
+>    fecha de hoy y `entries` con el nuevo conteo si cambió. Si la edición vino
+>    de sincronizar con AEMPS-CIMA, también `lastSyncWithSource`.
+> 4. Documentar el cambio en `CHANGELOG.md` bajo `[Unreleased]`.
+> 5. Bumpear versión de la app: `npm run version:patch`.
 >
 > En el primer arranque post-update, la app detecta `dataset_version` distinto
-> en la tabla `_meta`, hace `DELETE FROM drugs` y repobla desde el JSON nuevo.
-> Los favoritos/notas/quiz progress del usuario se preservan (viven en
+> en la tabla `_meta` SQLite, hace `DELETE FROM drugs` y repobla desde el JSON
+> nuevo. Los favoritos/notas/quiz progress del usuario se preservan (viven en
 > AsyncStorage/EncryptedStorage, no en la tabla `drugs`).
+>
+> El test `__tests__/dataset-meta.test.ts` valida que `entries` en `_meta.json`
+> coincide con el `length` real del array — si edita el JSON sin actualizar el
+> meta, el CI falla.
+>
+> ⚠️ **No tocar `lastClinicalReview` ni `reviewedBy`**: solo un profesional
+> sanitario los actualiza tras una revisión formal (ver
+> [CLINICAL_REVIEW.md](CLINICAL_REVIEW.md)).
 
 ### Agregar un nuevo fármaco
 

@@ -6,20 +6,27 @@ Originalmente la data estuvo en `src/data/` en formatos JSON gigantescales. Hoy 
 
 | Archivo                    | Registros                  | Descripción                                                           |
 | -------------------------- | -------------------------- | --------------------------------------------------------------------- |
-| `drugs.json`               | 2,977 fármacos             | Base de datos principal farmacológica                                 |
-| `categories.json`          | 14 unidades, 60+ capítulos | Clasificación terapéutica                                             |
+| `drugs.json`               | 2,977 fármacos             | Base de datos principal farmacológica (hidratada a SQLite)            |
+| `_meta.json`               | metadata 8 datasets        | Provenance, fuente canónica, fecha de revisión clínica por dataset    |
+| `categories.json`          | 13 unidades, 117 capítulos | Clasificación terapéutica                                             |
 | `pathologies.json`         | 60 patologías              | Enfermedades con fármacos vinculados                                  |
-| `emergency_protocols.json` | 14 protocolos              | ACLS, anafilaxia, IAM, ACV, sepsis...                                 |
-| `clinical_scales.json`     | 13 escalas                 | Glasgow, APGAR, Norton, Braden, NEWS2...                              |
-| `lab_values.json`          | 53 valores                 | Rangos por sexo y pediátricos                                         |
-| `parenteral_guide.json`    | Guía general               | Introducción a vía parenteral                                         |
-| `glossary.json`            | 65+ términos               | Terminología médica                                                   |
+| `emergency_protocols.json` | 18 protocolos              | ACLS, anafilaxia, IAM, ACV, sepsis...                                 |
+| `clinical_scales.json`     | 17 escalas                 | Glasgow, APGAR, Norton, Braden, NEWS2...                              |
+| `lab_values.json`          | 61 valores                 | Rangos por sexo y pediátricos                                         |
+| `parenteral_guide.json`    | 4 secciones                | Guía Son Espases (Introducción, Soluciones, NPT, Protección)          |
+| `glossary.json`            | 205 términos               | Terminología médica                                                   |
 | `formulas.json`            | 22 fórmulas                | Cálculos farmacéuticos (testeadas en `__tests__/calculators.test.ts`) |
-| `routes.json`              | 16 vías                    | Vías de administración                                                |
-| `emergency_drugs.json`     | Fármacos críticos          | Dosificación rápida de emergencia                                     |
-| `antidotes.json`           | Antídotos                  | Relación tóxico-antídoto                                              |
-| `nursing_care.json`        | 10+ protocolos             | Cuidados de enfermería por tipo                                       |
+| `routes.json`              | 15 vías                    | Vías de administración                                                |
+| `emergency_drugs.json`     | 17 fármacos críticos       | Dosificación rápida de emergencia                                     |
+| `antidotes.json`           | 15 antídotos               | Relación tóxico-antídoto                                              |
+| `nursing_care.json`        | objeto estructurado        | Cuidados de enfermería por tipo                                       |
 | `iv_compatibilities.json`  | Matriz                     | Compatibilidad fármaco-fármaco IV                                     |
+
+> **Provenance**: cada dataset tiene metadata explícita en `_meta.json`
+> (fuente canónica, fecha de edición, estado de revisión clínica). Ver
+> [`SOURCES.md`](SOURCES.md) para origen de cada dataset y
+> [`CLINICAL_REVIEW.md`](CLINICAL_REVIEW.md) para el procedimiento de firma
+> profesional.
 
 ## Interfaz Drug (Principal)
 

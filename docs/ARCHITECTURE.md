@@ -205,6 +205,65 @@ Otros datasets (`pathologies.json`, `lab_values.json`, etc.) NO están en SQLite
 — se cargan en RAM y los cambios llegan con cualquier APK update sin necesidad
 de bumpear ninguna versión.
 
+## Sistema de Metadata por Dataset (provenance)
+
+Independiente del sistema de migraciones SQLite, el proyecto mantiene un
+archivo separado [`src/data/_meta.json`](../src/data/_meta.json) que describe
+**de dónde viene cada dataset** y **cuándo fue revisado clínicamente**.
+Requerido para:
+
+- Cumplimiento Google Play 2026 (apps de salud)
+- Certificaciones HONcode / AppSaludable
+- Auditabilidad y traceability
+
+Cada dataset (`drugs`, `pathologies`, `emergency_protocols`, etc.) tiene:
+
+```json
+{
+  "displayName": "Fármacos",
+  "lastEdited": "2026-05-06",
+  "lastClinicalReview": null,
+  "reviewedBy": null,
+  "reviewerCredential": null,
+  "sourceCanonical": "AEMPS-CIMA",
+  "sourceUrl": "https://cima.aemps.es/",
+  "lastSyncWithSource": null,
+  "selectionCriteria": "..."
+}
+```
+
+`lastClinicalReview` y `reviewedBy` son `null` hasta que un profesional
+sanitario firme la revisión. La UI muestra el estado:
+
+- **DrugDetailScreen**: banner de procedencia al final de cada ficha.
+- **AboutScreen**: tabla de revisión por dataset con badge "Pendiente / ✓ Revisado".
+
+Helper: [`src/utils/datasetMeta.ts`](../src/utils/datasetMeta.ts) provee
+`getMeta(key)`, `getReviewStatus(key)`, `formatMonthYear(iso)`. El archivo se
+mantiene aparte (en vez de envolver cada JSON en `{_meta, data}`) para no
+romper los loaders existentes.
+
+Procedimiento de revisión: ver [`CLINICAL_REVIEW.md`](CLINICAL_REVIEW.md).
+Fuentes oficiales: ver [`SOURCES.md`](SOURCES.md).
+
+## Crash Reporting (scaffold)
+
+[`src/utils/crashReporting.ts`](../src/utils/crashReporting.ts) define una
+interfaz abstracta (`CrashReporter`) con un no-op provider por defecto:
+
+```
+ErrorBoundary → componentDidCatch → crashReporting.captureException()
+                                       ↓
+                                    consoleProvider (no-op)
+                                    [se reemplaza por Sentry/Crashlytics
+                                     cuando se decida — ver CRASH_REPORTING.md]
+```
+
+En su estado actual no envía datos a ningún servidor. Cuando se active un
+proveedor real, basta con reemplazar el `provider` constant en ese archivo
+(documentado en [`CRASH_REPORTING.md`](CRASH_REPORTING.md)) — el resto del
+código importa solo de `crashReporting.ts`, no del SDK directamente.
+
 ### Búsqueda
 
 ```

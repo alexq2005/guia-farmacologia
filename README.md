@@ -7,12 +7,13 @@ Aplicación móvil Android de referencia farmacológica para profesionales de en
 Herramienta de consulta rápida para el ámbito hospitalario y ambulatorio:
 
 - **2,977 fármacos** con mecanismo de acción, indicaciones, contraindicaciones, dosis, interacciones y cuidados de enfermería
-- **14 protocolos de emergencia** con pasos cronometrados (ACLS, anafilaxia, IAM, ACV, sepsis...)
-- **13 escalas clínicas** interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells...)
-- **53 valores de laboratorio** con rangos por sexo y pediátricos
-- **15 calculadoras médicas** (dosis, goteo, IMC, aclaramiento creatinina, APACHE II...)
+- **18 protocolos de emergencia** con pasos cronometrados (ACLS, anafilaxia, IAM, ACV, sepsis...)
+- **17 escalas clínicas** interactivas (Glasgow, APGAR, Norton, Braden, NEWS2, RASS, Wells...)
+- **61 valores de laboratorio** con rangos por sexo y pediátricos
+- **15 calculadoras médicas** dedicadas + **22 fórmulas** de cálculo testeadas (`__tests__/calculators.test.ts`)
 - **Guía parenteral** con compatibilidades IV (460 fármacos enriquecidos)
 - **60 patologías** con fármacos vinculados y cuidados de enfermería
+- **MiSuite**: hub de navegación cross-app con las 3 apps del ecosistema (Curso, Patologías, Farmacológica)
 - Quiz de estudio, favoritos, notas personales, modo oscuro, exportación de datos
 - **🚀 Escalamiento a 60 FPS (v2.0)**: Migración extrema usando `SQLite` sincrónico por puente JSI (absorbe los 10MB de JSON de la RAM). Renderizado infinito fluidísimo mediante el framework de lista de Shopify (`FlashList`), memoización de contextos anti-renders y encriptación de variables nativas (Keystore).
 
@@ -82,27 +83,49 @@ APKs generadas en:
 ```
 GuiaFarmacologica/
   src/
-    screens/          31 pantallas
-    components/       7 componentes reutilizables
-    context/          4 providers (Theme, Premium, Favorites, Notes)
+    screens/          33 pantallas
+    components/       9 componentes reutilizables
+    context/          5 providers (Theme, Premium, Favorites, Notes, TabBar)
     hooks/            7 custom hooks
     navigation/       AppNavigator (tabs + stack)
     types/            Interfaces TypeScript
-    utils/            Utilidades compartidas
-    data/             14 archivos JSON con datos clínicos
-  android/            Proyecto nativo Android
-  scripts/            Scripts de generación de datos
+    utils/            Utilidades compartidas (incl. crashReporting, datasetMeta, calculators)
+    data/             17 archivos JSON con datos clínicos + _meta.json (provenance)
+  __tests__/          6 archivos de test (109 tests, ~1s)
+  android/            Proyecto nativo Android (New Architecture activa)
+  .github/workflows/  CI con typecheck + lint + test
+  .husky/             pre-commit (prettier) + pre-push (typecheck)
+  scripts/            Scripts utilitarios (bump-version, fetch_cima, etc.)
   docs/               Documentación técnica
+  playstore/          Materiales para Google Play Console
 ```
 
 ## Documentación
 
-| Documento                               | Contenido                                            |
-| --------------------------------------- | ---------------------------------------------------- |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura, navegación, providers, flujo de datos  |
-| [DEVELOPMENT.md](docs/DEVELOPMENT.md)   | Guía de desarrollo, patrones, cómo agregar contenido |
-| [DATA.md](docs/DATA.md)                 | Modelo de datos, interfaces, archivos JSON           |
-| [FEATURES.md](docs/FEATURES.md)         | Catálogo completo de funcionalidades                 |
+### Docs principales
+
+| Documento                               | Contenido                                                                          |
+| --------------------------------------- | ---------------------------------------------------------------------------------- |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura, navegación, providers, flujo de datos, sistema de migraciones SQLite |
+| [DEVELOPMENT.md](docs/DEVELOPMENT.md)   | Guía de desarrollo, patrones, cómo agregar contenido                               |
+| [DATA.md](docs/DATA.md)                 | Modelo de datos, interfaces, archivos JSON                                         |
+| [FEATURES.md](docs/FEATURES.md)         | Catálogo completo de funcionalidades                                               |
+
+### Docs de calidad y compliance
+
+| Documento                                                           | Contenido                                                                   |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [SOURCES.md](docs/SOURCES.md)                                       | Fuentes oficiales (AEMPS-CIMA, GuíaSalud, etc.) y política de actualización |
+| [CLINICAL_REVIEW.md](docs/CLINICAL_REVIEW.md)                       | Protocolo de revisión clínica por bloques de riesgo                         |
+| [COMPLIANCE_PLAY_STORE_2026.md](docs/COMPLIANCE_PLAY_STORE_2026.md) | Checklist de cumplimiento Google Play 2026                                  |
+| [CRASH_REPORTING.md](docs/CRASH_REPORTING.md)                       | Cómo activar Sentry / Crashlytics cuando se decida                          |
+| [NEW_ARCHITECTURE.md](docs/NEW_ARCHITECTURE.md)                     | Estado de Fabric/TurboModules y matriz de compat                            |
+| [OTA_UPDATES_RESEARCH.md](docs/OTA_UPDATES_RESEARCH.md)             | Análisis de OTA updates (recomendación: NO implementar)                     |
+
+### Changelog y release
+
+- [CHANGELOG.md](CHANGELOG.md) — Keep-a-Changelog 1.1.0
+- `npm run version:patch|minor|major` — bump sincronizado de versiones
 
 ## Stack Tecnológico
 
@@ -121,11 +144,16 @@ GuiaFarmacologica/
 | ----------------------- | -------------------------- |
 | Fármacos                | 2,977                      |
 | Patologías              | 60                         |
-| Escalas clínicas        | 13                         |
-| Protocolos emergencia   | 14                         |
-| Valores laboratorio     | 53                         |
-| Calculadoras            | 15                         |
-| Fórmulas                | 15                         |
-| Vías administración     | 16                         |
-| Glosario                | 65+ términos               |
-| Categorías terapéuticas | 14 unidades, 60+ capítulos |
+| Escalas clínicas        | 17                         |
+| Protocolos emergencia   | 18                         |
+| Valores laboratorio     | 61                         |
+| Calculadoras dedicadas  | 15                         |
+| Fórmulas (testeadas)    | 22                         |
+| Vías administración     | 15                         |
+| Glosario                | 205 términos               |
+| Categorías terapéuticas | 13 unidades, 117 capítulos |
+| Antídotos               | 15                         |
+| Fármacos de emergencia  | 17                         |
+
+> Procedencia y estado de revisión clínica de cada dataset documentados en
+> [`src/data/_meta.json`](src/data/_meta.json) y [SOURCES.md](docs/SOURCES.md).

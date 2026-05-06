@@ -44,7 +44,12 @@ APKs with duplicate version codes.
   - Docs: `docs/DATA.md`, `docs/FEATURES.md`, `docs/play-store-listing.md`
   - Marketing: `playstore/checklist_publicacion.md`, `playstore/generate_feature_graphic.html`, `playstore/ficha_play_store.txt` (ficha definitiva para Play Store)
 - `docs/DATA.md`: contador de fórmulas actualizado de 15 → 22.
-- `docs/ARCHITECTURE.md`: sección nueva **"Sistema de Migraciones SQLite"** con explicación del bug histórico y enlace al flujo de release en DEVELOPMENT.md.
+- `docs/ARCHITECTURE.md`: secciones nuevas **"Sistema de Migraciones SQLite"**, **"Sistema de Metadata por Dataset"** (provenance) y **"Crash Reporting"** con enlaces a docs especializados.
+- `docs/DEVELOPMENT.md`: sección "Cómo Agregar Contenido" extendida con paso para actualizar `_meta.json` (`lastEdited`, `entries`, `lastSyncWithSource`) cada vez que se edita un dataset. CI bloquea si el conteo desincroniza.
+- `docs/DATA.md`: tabla de archivos JSON sincronizada con conteos reales (118 → 117 capítulos, 14 → 13 unidades, 53 → 61 lab values, 13 → 17 escalas, 14 → 18 protocolos, 65+ → 205 glosario, etc.) y nueva fila para `_meta.json`.
+- `docs/FEATURES.md`: secciones nuevas para **MiSuite** (hub ecosistema 3-apps) y **Provenance Banner** (UI de revisión clínica). Conteos sincronizados.
+- `README.md`: estructura del proyecto actualizada (33 screens vs 31, 9 components vs 7, 5 contexts vs 4, 17 data files vs 14), tabla de Contenido Clínico con conteos reales, nueva sección "Docs de calidad y compliance" con todos los nuevos documentos.
+- `playstore/PLAN_ACTUALIZACIONES.md`: nota explícita de que el roadmap original fue reordenado en Mayo 2026 hacia infraestructura fundacional. Las features de UX previstas se difieren.
 - `docs/DEVELOPMENT.md`: easter-egg de activación reformulado para no pinear una versión específica del badge.
 - `src/data/db.ts`: la repopulación de la tabla `drugs` ahora es `DELETE FROM drugs` + `INSERT OR REPLACE` dentro de transacción, en lugar de `INSERT OR IGNORE` solo si la tabla estaba vacía. Idempotente y rollback-safe.
 - `docs/DEVELOPMENT.md`: sección "Cómo Agregar Contenido" documenta el flujo correcto post-SQLite — editar JSON + bumpear `DATASET_VERSION`. Aclara qué datasets están en SQLite vs RAM.
