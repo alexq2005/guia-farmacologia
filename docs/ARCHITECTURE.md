@@ -2,7 +2,7 @@
 
 ## Visión General
 
-La app original seguía una arquitectura JSON simple, pero fue optimizada a **SQLite Nativo C++ (JSI)**. La información clínica reside en tablas locales para eludir picos de RAM, operando con **React Context memoizados** bajo el framework *FlashList* de altas prestaciones mecánicas.
+La app original seguía una arquitectura JSON simple, pero fue optimizada a **SQLite Nativo C++ (JSI)**. La información clínica reside en tablas locales para eludir picos de RAM, operando con **React Context memoizados** bajo el framework _FlashList_ de altas prestaciones mecánicas.
 
 ```
                     ErrorBoundary
@@ -134,27 +134,27 @@ Proporciona:
 
 ## Custom Hooks
 
-| Hook | Archivo | Función |
-|------|---------|---------|
-| `useDrugData` | hooks/useDrugData.ts | Ahora consulta localmente tablas SQLite a través del hook `db.executeSync` |
-| `useDrugSearch` | hooks/useDrugSearch.ts | Consultas SQL super optimizadas |
-| `useFavorites` | hooks/useFavorites.ts | CRUD favoritos con AsyncStorage, límite en versión free |
-| `useNotes` | hooks/useNotes.ts | Notas por fármaco con auto-guardado (debounce), límite free |
-| `useQuiz` | hooks/useQuiz.ts | Estado del quiz, 8 tipos de preguntas, filtros, puntuación, historial |
-| `useRecentDrugs` | hooks/useRecentDrugs.ts | Últimos 15 fármacos visitados, AsyncStorage |
-| `useSearchHistory` | hooks/useSearchHistory.ts | Historial de búsquedas (max 20), borrado individual/total |
+| Hook               | Archivo                   | Función                                                                    |
+| ------------------ | ------------------------- | -------------------------------------------------------------------------- |
+| `useDrugData`      | hooks/useDrugData.ts      | Ahora consulta localmente tablas SQLite a través del hook `db.executeSync` |
+| `useDrugSearch`    | hooks/useDrugSearch.ts    | Consultas SQL super optimizadas                                            |
+| `useFavorites`     | hooks/useFavorites.ts     | CRUD favoritos con AsyncStorage, límite en versión free                    |
+| `useNotes`         | hooks/useNotes.ts         | Notas por fármaco con auto-guardado (debounce), límite free                |
+| `useQuiz`          | hooks/useQuiz.ts          | Estado del quiz, 8 tipos de preguntas, filtros, puntuación, historial      |
+| `useRecentDrugs`   | hooks/useRecentDrugs.ts   | Últimos 15 fármacos visitados, AsyncStorage                                |
+| `useSearchHistory` | hooks/useSearchHistory.ts | Historial de búsquedas (max 20), borrado individual/total                  |
 
 ## Componentes Reutilizables
 
-| Componente | Archivo | Uso |
-|------------|---------|-----|
-| `DrugCard` | components/DrugCard.tsx | Tarjeta de fármaco con nombre, familia, categoría. `React.memo`, accesibilidad, animación press |
-| `CollapsibleSection` | components/CollapsibleSection.tsx | Sección expandible con rotación de chevron animada |
-| `SearchBar` | components/SearchBar.tsx | Barra de búsqueda con ícono, clear button, accesibilidad |
-| `PremiumGate` | components/PremiumGate.tsx | Bloquea contenido si `isPremium` es false. Muestra UI de upgrade |
-| `ErrorBoundary` | components/ErrorBoundary.tsx | Captura errores React, muestra UI de retry, detalles en dev |
-| `Skeleton` | components/Skeleton.tsx | Componentes de carga (pulse animation): SkeletonCard, SkeletonList, SkeletonDrugDetail |
-| `RouteIllustrationSVG` | components/RouteIllustrationSVG.tsx | Ilustraciones SVG de vías de administración |
+| Componente             | Archivo                             | Uso                                                                                             |
+| ---------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `DrugCard`             | components/DrugCard.tsx             | Tarjeta de fármaco con nombre, familia, categoría. `React.memo`, accesibilidad, animación press |
+| `CollapsibleSection`   | components/CollapsibleSection.tsx   | Sección expandible con rotación de chevron animada                                              |
+| `SearchBar`            | components/SearchBar.tsx            | Barra de búsqueda con ícono, clear button, accesibilidad                                        |
+| `PremiumGate`          | components/PremiumGate.tsx          | Bloquea contenido si `isPremium` es false. Muestra UI de upgrade                                |
+| `ErrorBoundary`        | components/ErrorBoundary.tsx        | Captura errores React, muestra UI de retry, detalles en dev                                     |
+| `Skeleton`             | components/Skeleton.tsx             | Componentes de carga (pulse animation): SkeletonCard, SkeletonList, SkeletonDrugDetail          |
+| `RouteIllustrationSVG` | components/RouteIllustrationSVG.tsx | Ilustraciones SVG de vías de administración                                                     |
 
 ## Flujo de Datos
 
@@ -175,6 +175,35 @@ Screens (consumen hooks + contexts)
      ├── FavoritesContext → favoritos del usuario
      └── NotesContext → notas personales
 ```
+
+## Sistema de Migraciones SQLite
+
+`db.ts` usa un sistema dual de versionado para que las actualizaciones de
+contenido (`drugs.json`) lleguen a usuarios existentes:
+
+```
+SCHEMA_VERSION  (PRAGMA user_version)
+    └── incrementar al cambiar columnas o tablas
+    └── cada migración en SCHEMA_MIGRATIONS[N] migra de v(N) → v(N+1)
+    └── migraciones lineales, jamás reordenar ni eliminar
+
+DATASET_VERSION (tabla _meta, key='dataset_version')
+    └── incrementar cuando cambia el contenido de drugs.json
+    └── triggera DELETE FROM drugs + INSERT OR REPLACE en transacción
+    └── favoritos/notas del usuario se preservan (viven en AsyncStorage por ID)
+```
+
+**Bug histórico (resuelto)**: antes la BD solo se hidrataba si `count === 0`,
+por lo que **los cambios en `drugs.json` nunca llegaban a usuarios con la app
+ya instalada**. Cada update del APK los dejaba con datos viejos hasta
+reinstalar. El sistema de migraciones resuelve esto detectando el version
+mismatch al arranque.
+
+Detalle del flujo de release: ver
+[`DEVELOPMENT.md` → "Cómo Agregar Contenido"](DEVELOPMENT.md#cómo-agregar-contenido).
+Otros datasets (`pathologies.json`, `lab_values.json`, etc.) NO están en SQLite
+— se cargan en RAM y los cambios llegan con cualquier APK update sin necesidad
+de bumpear ninguna versión.
 
 ### Búsqueda
 
@@ -223,20 +252,17 @@ export default function MiScreen() {
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
 
-  return (
-    <View style={styles.container}>
-      {/* contenido */}
-    </View>
-  );
+  return <View style={styles.container}>{/* contenido */}</View>;
 }
 
-const createStyles = (colors: ThemeColors) => StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  // ...
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    // ...
+  });
 ```
 
 ## Sistema de Colores
@@ -259,17 +285,17 @@ ThemeColors incluye:
 
 ## Almacenamiento Local (AsyncStorage)
 
-| Clave | Contenido | Contexto |
-|-------|-----------|----------|
-| `@guia_farmaco_theme` | 'light' \| 'dark' \| 'system' | ThemeContext |
-| `@guia_farmaco_trial_start` | timestamp (ms) | PremiumContext |
-| `@guia_farmaco_premium` | 'true' \| null | PremiumContext |
-| `@guia_farmaco_favorites` | string[] (IDs) | FavoritesContext |
-| `@guia_farmaco_notes` | DrugNote[] (JSON) | NotesContext |
-| `@guia_farmaco_search_history` | SearchHistoryEntry[] | useSearchHistory |
-| `@guia_farmaco_recent_drugs` | string[] (IDs, max 15) | useRecentDrugs |
-| `@guia_farmaco_quiz_results` | QuizResult[] | useQuiz |
-| `@guia_farmaco_activated` | 'true' \| null | activation.ts |
+| Clave                          | Contenido                     | Contexto         |
+| ------------------------------ | ----------------------------- | ---------------- |
+| `@guia_farmaco_theme`          | 'light' \| 'dark' \| 'system' | ThemeContext     |
+| `@guia_farmaco_trial_start`    | timestamp (ms)                | PremiumContext   |
+| `@guia_farmaco_premium`        | 'true' \| null                | PremiumContext   |
+| `@guia_farmaco_favorites`      | string[] (IDs)                | FavoritesContext |
+| `@guia_farmaco_notes`          | DrugNote[] (JSON)             | NotesContext     |
+| `@guia_farmaco_search_history` | SearchHistoryEntry[]          | useSearchHistory |
+| `@guia_farmaco_recent_drugs`   | string[] (IDs, max 15)        | useRecentDrugs   |
+| `@guia_farmaco_quiz_results`   | QuizResult[]                  | useQuiz          |
+| `@guia_farmaco_activated`      | 'true' \| null                | activation.ts    |
 
 ## Rendimiento
 

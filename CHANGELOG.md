@@ -14,6 +14,10 @@ APKs with duplicate version codes.
 
 ### Added
 
+- **Tests de calculadoras médicas** (`__tests__/calculators.test.ts`): 35 tests cubriendo las 22 fórmulas (f01-f22) hand-calculados contra fuentes médicas canónicas (Mosteller, Cockcroft-Gault, Devine, Young, Clark, etc.). Edge cases: empty/non-numeric/comma-decimal locale es-ES. Test de regresión bloquea la convención vieja de "sexo".
+- **Test de integridad referencial** entre `pathologies.json` y `drugs.json` (`__tests__/pathologies-refs.test.ts`): valida que las 494 referencias matchean IDs reales. Falla CI si alguien renombra un drug ID sin actualizar refs.
+- **Crash reporting scaffolding** (`src/utils/crashReporting.ts`): interfaz abstracta con no-op provider por defecto. `ErrorBoundary` integrado vía `componentDidCatch`. Listo para activar Sentry/Crashlytics cuando se decida (ver `docs/CRASH_REPORTING.md`).
+- **Doc `docs/NEW_ARCHITECTURE.md`**: matriz de compatibilidad de las 16 librerías nativas + checklist de smoke test en device. La app YA corre en New Architecture (default RN 0.82+).
 - **Sistema de migraciones SQLite** con dual versioning (`SCHEMA_VERSION` via `PRAGMA user_version` + `DATASET_VERSION` via tabla `_meta`) en `src/data/db.ts`. Permite que actualizaciones de `drugs.json` lleguen a usuarios existentes — antes la BD solo se hidrataba en fresh install.
 - **Script `scripts/bump-version.js`** para sincronizar `versionName` y `versionCode` entre `android/app/build.gradle` y `package.json`, con flag `--dry-run`. Mueve la sección `[Unreleased]` del CHANGELOG a la versión recién creada.
 - **npm scripts**: `version:patch`, `version:minor`, `version:major`, `version:dry`, `typecheck`, `prepare`.
@@ -30,6 +34,17 @@ APKs with duplicate version codes.
 
 ### Changed
 
+- **Codificación uniforme de "sexo"** en calculadoras f10 (Cockcroft-Gault), f16 (Devine PCI) y f19 (Déficit Na): convención `sexo === 0 → mujer, otro → hombre` en las tres. Antes cada fórmula esperaba un valor numérico distinto (0.85 / 0 / 0.5).
+- **Form UI de calculadoras**: cuando una variable se llama `sexo`, ahora se renderiza como toggle visual de dos botones (Mujer / Hombre) en vez de TextInput numérico — imposible ingresar valores arbitrarios.
+- `calculateResult` extraída de `FormulaDetailScreen.tsx` a `src/utils/calculators.ts` (función pura testeable).
+- `src/data/formulas.json`: descripciones del campo `sexo` en f10/f16/f19 aclaradas a "0 = Mujer, 1 = Hombre".
+- **Conteos sincronizados a 2,977 fármacos** (eran 1,781 / 2,784 según el archivo):
+  - Código UI visible al usuario: `OnboardingScreen.tsx`, `PremiumScreen.tsx`, `App.tsx` header
+  - Docs: `docs/DATA.md`, `docs/FEATURES.md`, `docs/play-store-listing.md`
+  - Marketing: `playstore/checklist_publicacion.md`, `playstore/generate_feature_graphic.html`
+- `docs/DATA.md`: contador de fórmulas actualizado de 15 → 22.
+- `docs/ARCHITECTURE.md`: sección nueva **"Sistema de Migraciones SQLite"** con explicación del bug histórico y enlace al flujo de release en DEVELOPMENT.md.
+- `docs/DEVELOPMENT.md`: easter-egg de activación reformulado para no pinear una versión específica del badge.
 - `src/data/db.ts`: la repopulación de la tabla `drugs` ahora es `DELETE FROM drugs` + `INSERT OR REPLACE` dentro de transacción, en lugar de `INSERT OR IGNORE` solo si la tabla estaba vacía. Idempotente y rollback-safe.
 - `docs/DEVELOPMENT.md`: sección "Cómo Agregar Contenido" documenta el flujo correcto post-SQLite — editar JSON + bumpear `DATASET_VERSION`. Aclara qué datasets están en SQLite vs RAM.
 - `README.md`: conteo actualizado de 1,781 → 2,977 fármacos (sincronizado con el dataset real).
@@ -42,9 +57,11 @@ APKs with duplicate version codes.
 
 ### Fixed
 
+- **Riesgo clínico de codificación de "sexo"** en calculadoras: antes el TextInput numérico aceptaba cualquier valor y cada fórmula esperaba uno distinto para "mujer" (0.85 en Cockcroft-Gault, 0 en Devine, 0.5 en Déficit Na). Si el profesional ingresaba el número equivocado, el cálculo daba resultado de hombre incluso para mujer (Cockcroft-Gault sobrestimado → menor ajuste renal → toxicidad de aminoglucósidos/vancomicina). Resuelto con UI toggle + convención uniforme + tests.
+- **`useMemo` condicional** en `FormulaDetailScreen.tsx:85`: violaba Rules of Hooks (hook después de early return). Podía crashear con "Rendered more hooks than during the previous render" al navegar a una fórmula con ID inválido.
 - **Bug crítico de actualización**: usuarios con la app instalada no recibían cambios en `drugs.json` al actualizar el APK desde Play Store. La BD persistía entre updates y el código solo hidrataba si `count === 0`. Ahora detecta version mismatch y rehidrata.
 - **Bug runtime semántico** (`DrugDetailScreen.tsx:146`): `farmacosRelacionados.some(f => f.drugId === drug.id)` siempre devolvía `false` porque `farmacosRelacionados` es `string[]`, no objetos. La sección "patologías relacionadas" en la ficha del fármaco siempre estaba vacía. Cambiado a `f === drug.id`.
-  > Nota: queda un mismatch semántico restante porque `pathologies.json` usa nombres legibles (`"enalapril"`) y `drugs.json` usa IDs (`"drug123"`). Tracked como TODO de data-quality.
+  > Investigación posterior: el match rate real es 100% (494/494 refs). El bug era exclusivamente la línea de código. Test de integridad referencial agregado para prevenir regresiones futuras.
 - TypeScript baseline limpio: 8 errores pre-existentes resueltos (FlashList, SVG types, Drug interface, route params).
 
 ### Removed
