@@ -55,8 +55,8 @@ Diseñada para profesionales y estudiantes de enfermería, esta aplicación reú
 • No recopila datos personales
 • Sin publicidad
 
-⚕️ AVISO IMPORTANTE
-Esta aplicación es una herramienta de consulta educativa y referencia rápida. No constituye consejo médico, diagnóstico ni tratamiento. Siempre verifique la información con fuentes primarias y los protocolos de su institución antes de administrar cualquier medicamento.
+⚕️ AVISO IMPORTANTE (Google Play 2026 compliance)
+Esta aplicación NO es un dispositivo médico y NO diagnostica, trata, cura ni previene ninguna afección. La información proporcionada es de referencia educativa para profesionales de la salud. Siempre consulte a un profesional de la salud para consejo médico, diagnóstico o tratamiento, y verifique cualquier decisión clínica con las fuentes primarias y los protocolos de su institución antes de administrar cualquier medicamento.
 
 ---
 

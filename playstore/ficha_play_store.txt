@@ -52,7 +52,7 @@ MODELO FREEMIUM
 - Suscripción premium (4.99€/mes o 24.99€/año — ahorro ~58%): test, calculadoras, escalas, valores de laboratorio, protocolos, comparador, interacciones, dashboard, guía parenteral, favoritos y notas ilimitados.
 
 AVISO IMPORTANTE
-Esta aplicación es una herramienta de consulta educativa y referencia rápida. No constituye consejo médico, diagnóstico ni tratamiento. Siempre verifique la información con fuentes primarias y los protocolos de su institución.
+Esta aplicación NO es un dispositivo médico y NO diagnostica, trata, cura ni previene ninguna afección. La información proporcionada es de referencia educativa para profesionales de la salud. Siempre consulte a un profesional de la salud para consejo médico, diagnóstico o tratamiento, y verifique cualquier decisión clínica con las fuentes primarias y los protocolos de su institución antes de administrar cualquier medicamento.
 
 Desarrollada con dedicación para la comunidad de enfermería.
 
