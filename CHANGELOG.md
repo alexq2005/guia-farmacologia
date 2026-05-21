@@ -12,6 +12,12 @@ APKs with duplicate version codes.
 
 ## [Unreleased]
 
+### Changed
+
+- **Enriquecida entrada `cima_butilescopolamina_bromuro___metamizol` (Buscapina Compuesta) con práctica argentina** (`src/data/drugs.json`): la entrada CIMA-imported estaba incompleta (dosis truncada a mitad de frase, `presentaciones: []`, sin `preparacionParenteral`). Ahora documenta tanto el producto combinado español (BUSCOPRESC COMPOSITUM, ampolla única 2500/20) como la **preparación artesanal de guardia en Argentina** (2 amp Buscapina + 2 amp Dipirona, diluido en 50-100 mL SF, IV lenta 10-15 min o IM profundo). Incluye `preparacionParenteral` completo, 2 cuidados de enfermería AR-específicos, y `dosis.pediatrico` con restricción explícita en <12 años. Además, agregados los aliases comerciales **"Buscapina Compuesta"** y **"Buscapina Compositum"** a `nombresComerciales` para que la búsqueda accent-insensitive AR-friendly funcione (antes solo aparecía con "BUSCOPRESC COMPOSITUM"). `DATASET_VERSION` bumpeado de 1 a 3 (los usuarios actualizados verán el cambio sin reinstalar).
+- `src/data/db.ts`: `DATASET_VERSION` 1 → 3.
+- `src/data/_meta.json`: `drugs.lastEdited` → 2026-05-21.
+
 ### Added
 
 - **MiSuite — hub del ecosistema de 3 apps de enfermería** (`src/screens/MiSuiteScreen.tsx`): pantalla nueva que detecta cuáles de las 3 apps están instaladas en el dispositivo (Curso, Patologías, Farmacológica) y ofrece abrirlas o descargarlas. Usa `Linking.canOpenURL` con esquemas custom (`farmacologia://`, `patologias://`, `curso://`). Entrada desde Tools sección "Ecosistema". Permisos Android `<queries>` para package visibility (Android 11+) y `<intent-filter>` para que las otras apps abran ésta.
