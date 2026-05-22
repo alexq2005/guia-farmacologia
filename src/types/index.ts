@@ -537,4 +537,14 @@ export interface SearchResult {
   drug: Drug;
   score: number;
   matchedFields: string[];
+  /**
+   * Primer nombre comercial cuyo texto contenía algún término de la query
+   * (cuando matchedFields incluye 'comercial'). Permite a la UI mostrar
+   * al usuario por qué un drug apareció en los resultados aunque su
+   * `nombre` canónico sea distinto del término buscado. Ejemplo: query
+   * "buscapina compuesta" matchea `cima_butilescopolamina_bromuro___metamizol`
+   * cuyo nombre es "Butilescopolamina Bromuro + Metamizol" — sin esta
+   * info, el usuario no reconoce el resultado.
+   */
+  matchedCommercial?: string;
 }

@@ -169,6 +169,7 @@ export function SearchScreen({ navigation }: Props) {
                   navigation.navigate('DrugDetail', { drugId: item.drug.id });
                 }}
                 highlight={query}
+                matchedCommercial={item.matchedCommercial}
               />
             )}
             keyExtractor={item => item.drug.id}

@@ -20,11 +20,17 @@ function buildSearchText(drug: Drug): string {
     ...drug.viaAdministracion,
     drug.grupoFarmacologico,
     drug.grupoTerapeutico,
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 }
 
 /** Score a drug against a search query */
-function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string): SearchResult | null {
+function scoreDrug(
+  drug: Drug,
+  searchTextMap: Map<string, string>,
+  query: string,
+): SearchResult | null {
   const normalizedQuery = normalize(query);
   const terms = normalizedQuery.split(/\s+/).filter(t => t.length >= 2);
 
@@ -32,6 +38,7 @@ function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string
 
   let totalScore = 0;
   const matchedFields: string[] = [];
+  let matchedCommercial: string | undefined;
 
   // Check nombre (highest priority)
   const nombre = normalize(drug.nombre);
@@ -58,26 +65,37 @@ function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string
       if (!matchedFields.includes('nombre')) matchedFields.push('nombre');
     }
 
-    // Check brand names
-    if (comerciales.some(c => c.includes(term))) {
+    // Check brand names — track which one matched for UI hint
+    const comIdx = comerciales.findIndex(c => c.includes(term));
+    if (comIdx >= 0) {
       totalScore += 2;
       if (!matchedFields.includes('comercial')) matchedFields.push('comercial');
+      // Keep the first matched commercial across all terms — usually the
+      // most user-recognizable one (AR aliases come first in our convention).
+      if (!matchedCommercial) {
+        matchedCommercial = drug.nombresComerciales[comIdx];
+      }
     }
 
     // Check familia/clasificacion
     if (familia.includes(term) || clasificacion.includes(term)) {
       totalScore += 2;
-      if (!matchedFields.includes('clasificacion')) matchedFields.push('clasificacion');
+      if (!matchedFields.includes('clasificacion'))
+        matchedFields.push('clasificacion');
     }
 
     // Check indicaciones
     if (drug.indicaciones.some(i => normalize(i).includes(term))) {
       totalScore += 1;
-      if (!matchedFields.includes('indicaciones')) matchedFields.push('indicaciones');
+      if (!matchedFields.includes('indicaciones'))
+        matchedFields.push('indicaciones');
     }
 
     // Check searchText (catch-all, generated at runtime)
-    if (totalScore === 0 && normalize(searchTextMap.get(drug.id) || '').includes(term)) {
+    if (
+      totalScore === 0 &&
+      normalize(searchTextMap.get(drug.id) || '').includes(term)
+    ) {
       totalScore += 0.5;
       matchedFields.push('otro');
     }
@@ -85,7 +103,7 @@ function scoreDrug(drug: Drug, searchTextMap: Map<string, string>, query: string
 
   if (totalScore === 0) return null;
 
-  return { drug, score: totalScore, matchedFields };
+  return { drug, score: totalScore, matchedFields, matchedCommercial };
 }
 
 export function useDrugSearch(drugs: Drug[]) {
@@ -96,7 +114,9 @@ export function useDrugSearch(drugs: Drug[]) {
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => setDebouncedQuery(query), 150);
-    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
   }, [query]);
 
   // Precompute search text once for all drugs (replaces JSON searchText field)
