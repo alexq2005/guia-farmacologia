@@ -10,7 +10,7 @@
     "drugs": {
       "displayName": "Fármacos",
       "file": "src/data/drugs.json",
-      "entries": 2977,
+      "entries": 2974,
       "lastEdited": "2026-05-21",
       "lastClinicalReview": null,
       "reviewedBy": null,

@@ -27,7 +27,7 @@ export const db: DB = open({
 // =============================================================================
 
 const SCHEMA_VERSION = 1;
-const DATASET_VERSION = 3;
+const DATASET_VERSION = 4;
 
 const META_KEY_DATASET = 'dataset_version';
 

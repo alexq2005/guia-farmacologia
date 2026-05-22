@@ -446,8 +446,16 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
         {(() => {
+          // Farmacocinética se considera "parcial" si tiene menos de 3 subcampos
+          // populados (de los 8 posibles). El objeto puede existir con un solo
+          // string en `absorcion` y no aportar valor clínico real.
+          const fcFields = drug.farmacocinetica
+            ? Object.values(drug.farmacocinetica).filter(
+                v => typeof v === 'string' && v.trim().length > 0,
+              ).length
+            : 0;
           const missing = [
-            !drug.farmacocinetica && 'Farmacocinética',
+            fcFields < 3 && 'Farmacocinética',
             !drug.dosis.ajusteRenal && 'Ajuste renal',
             !drug.dosis.ajusteHepatico && 'Ajuste hepático',
             !drug.dosis.pediatrico && 'Dosis pediátrica',

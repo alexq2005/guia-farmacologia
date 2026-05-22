@@ -493,7 +493,6 @@
             "metildigoxina",
             "midodrina",
             "milrinona",
-            "nitroprusiatosodico_nuevo",
             "drug2813",
             "drug2814"
           ]
@@ -776,7 +775,7 @@
             "lefamulina",
             "linezolid",
             "meropenem",
-            "meropenem_nuevo",
+            "imipenem_cilastatina_relebactam",
             "meropenem_vaborbactam",
             "metronidazol",
             "minociclina_oral",
@@ -2787,7 +2786,7 @@
             "acido_epsilon_aminocaproico",
             "acido_tranexamico",
             "alteplasa_iam",
-            "andexanet_alfa_detalle",
+            "andexanet_alfa",
             "complejo_coag_activado",
             "complejo_protrombinico",
             "concentrado_plaquetas",
@@ -3038,7 +3037,7 @@
             "alteplasa_acv",
             "aminofilina_emergencia",
             "amiodarona_emergencia",
-            "amrinona",
+            "angiotensina_ii",
             "atropina",
             "bicarbonato-sodio",
             "calcio_cloruro",
@@ -3799,9 +3798,7 @@
           "id": "c13_07",
           "nombre": "Trastornos de la Conducta Alimentaria",
           "unidadId": "u13",
-          "drugIds": [
-            "drug2873"
-          ]
+          "drugIds": ["drug2873"]
         }
       ]
     }

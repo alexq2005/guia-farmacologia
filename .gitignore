@@ -94,6 +94,9 @@ scripts/cima_cache/
 # One-shot historical scripts (kept for reference, not part of active workflow)
 scripts/_archive/
 
+# Script tooling outputs (regenerable: diff docs, summaries)
+scripts/_output/
+
 # Local build logs (artifacts of dev sessions)
 build_*.log
 build_error.log

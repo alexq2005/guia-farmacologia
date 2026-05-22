@@ -33,7 +33,7 @@ describe('drugs.json schema', () => {
     // If you bumped DATASET_VERSION because content changed, update this number.
     // If this test fails after editing drugs.json, either the count is wrong
     // or you forgot to update this expected value.
-    expect(allDrugs.length).toBe(2977);
+    expect(allDrugs.length).toBe(2974);
   });
 
   it('every drug has a non-empty `id`', () => {

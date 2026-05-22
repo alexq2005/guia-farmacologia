@@ -12,11 +12,27 @@ APKs with duplicate version codes.
 
 ## [Unreleased]
 
+### Removed
+
+- **3 entradas zombie eliminadas de `drugs.json`** (IDs cuyo slug no se correspondía con el contenido, por hijacking histórico):
+  - `amrinona` → contenía datos de Angiotensina II (Giapreza); canónica `angiotensina_ii` ya existía
+  - `nitroprusiatosodico_nuevo` → contenía datos de Fenoldopam (Corlopam); canónica `fenoldopam` ya existía
+  - `andexanet_alfa_detalle` → duplicada de `andexanet_alfa`/`andexanet` (ambas canónicas ya existían)
+  - Las 3 estaban en `categories.json` con su ID zombie; se reemplazaron por sus equivalentes canónicos. Ninguna estaba referenciada por `pathologies.json` (no rompe integridad referencial).
+
 ### Changed
 
+- **`meropenem_nuevo` renombrado a `imipenem_cilastatina_relebactam`** (`src/data/drugs.json`): el ID legacy era misleading (slug "meropenem" pero contenido era Imipenem/Cilastatina/Relebactam = Recarbrio). Es la única fuente de este drug, así que se renombra en vez de eliminar. Referencia en `categories.json` actualizada.
+- **`drugs.json` ahora tiene 2974 entradas (era 2977)** tras la limpieza de zombies. `DATASET_VERSION` bumpeado de 3 a 4. `_meta.json drugs.entries` actualizado. `__tests__/drugs-schema.test.ts` count expectation actualizado.
+- **Badge "Información parcial" en `DrugDetailScreen.tsx`** ahora considera `farmacocinetica` como faltante si tiene **menos de 3 subcampos populados** (antes solo flaggeaba ausencia total del objeto). Un fármaco con sólo `absorcion` poblado (~96% de los que tienen el objeto) ya no se considera completo. Resultado: cobertura "útil" pasa de 58% reportado a 25% real, alineando el badge con la calidad real de la data clínica.
 - **Enriquecida entrada `cima_butilescopolamina_bromuro___metamizol` (Buscapina Compuesta) con práctica argentina** (`src/data/drugs.json`): la entrada CIMA-imported estaba incompleta (dosis truncada a mitad de frase, `presentaciones: []`, sin `preparacionParenteral`). Ahora documenta tanto el producto combinado español (BUSCOPRESC COMPOSITUM, ampolla única 2500/20) como la **preparación artesanal de guardia en Argentina** (2 amp Buscapina + 2 amp Dipirona, diluido en 50-100 mL SF, IV lenta 10-15 min o IM profundo). Incluye `preparacionParenteral` completo, 2 cuidados de enfermería AR-específicos, y `dosis.pediatrico` con restricción explícita en <12 años. Además, agregados los aliases comerciales **"Buscapina Compuesta"** y **"Buscapina Compositum"** a `nombresComerciales` para que la búsqueda accent-insensitive AR-friendly funcione (antes solo aparecía con "BUSCOPRESC COMPOSITUM"). `DATASET_VERSION` bumpeado de 1 a 3 (los usuarios actualizados verán el cambio sin reinstalar).
-- `src/data/db.ts`: `DATASET_VERSION` 1 → 3.
-- `src/data/_meta.json`: `drugs.lastEdited` → 2026-05-21.
+- `src/data/db.ts`: `DATASET_VERSION` 1 → 4 (acumulado sesión 2026-05-21).
+- `src/data/_meta.json`: `drugs.lastEdited` → 2026-05-21, `drugs.entries` 2977 → 2974.
+
+### Added
+
+- **`docs/data_coverage_gaps.md`** — reporte auto-generado de las 2,234 entradas con farmacocinética incompleta (<3 subcampos populados). Agrupadas por grupo terapéutico para priorización del Bloque 1 de revisión clínica (v1.1). Top gaps: Antiinfecciosos (151), Sistema Nervioso (106), Antineoplásicos (101), Dermatología (96). 193 entradas además carecen de `grupoTerapeutico` — meta-gap secundario.
+- **`scripts/improve_cima_fc.py`** — herramienta para re-parsear el campo `farmacocinetica` de los drugs `cima_*` extrayendo 8 subcampos (absorcion/distribucion/metabolismo/excrecion/vidaMedia/inicioAccion/picoAccion/duracionAccion) desde el texto crudo de la sección 5.2 de CIMA ya cacheado en `scripts/cima_cache/clinical/`. Causa raíz: `fetch_cima.py:794-798` original solo metía todo el texto en `absorcion`. Parser usa estrategia dual (headers explícitos si están + clasificación por keywords como fallback). Settings de sesión (1a/2a/3c/4a): CIMA único fuente, modo supervisado (dry-run default, `--apply` para escribir), policy de solo-rellenar-huecos (nunca sobreescribe). **Dry-run sobre 1003 drugs cima\_\* propone enriquecer 815 (81%) con un total de ~2,181 nuevos datapoints clínicos**, sin necesidad de fetches nuevos a CIMA. Output: `scripts/_output/fc_proposed_diffs.md` (review humano) + `scripts/_output/fc_summary.json` (stats). Phase B (mapping manual top-200 para drugs hand-curated) pendiente.
 
 ### Added
 

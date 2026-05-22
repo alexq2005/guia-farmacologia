@@ -51380,7 +51380,7 @@
     "grupoFarmacologico": "Betalactámicos"
   },
   {
-    "id": "meropenem_nuevo",
+    "id": "imipenem_cilastatina_relebactam",
     "nombre": "Imipenem/Cilastatina/Relebactam",
     "nombreGenerico": "Imipenem-Cilastatina-Relebactam",
     "nombresComerciales": ["Recarbrio"],
@@ -51437,126 +51437,6 @@
     "capituloId": "c03_03",
     "grupoTerapeutico": "Antiinfecciosos",
     "grupoFarmacologico": "Otros antibacterianos"
-  },
-  {
-    "id": "amrinona",
-    "nombre": "Levosimendán",
-    "nombreGenerico": "Angiotensina II",
-    "nombresComerciales": ["Giapreza"],
-    "familia": "Vasopresores",
-    "clasificacion": "Vasopresor peptídico",
-    "mecanismoAccion": "Angiotensina II sintética que actúa sobre receptores AT1 causando vasoconstricción directa. Estimula liberación de aldosterona y vasopresina.",
-    "indicaciones": [
-      "Shock vasodilatador refractario a catecolaminas y vasopresina",
-      "Hipotensión en shock séptico como vasopresor de rescate"
-    ],
-    "contraindicaciones": [
-      "Hipersensibilidad al fármaco",
-      "Hipersensibilidad al principio activo o a alguno de los excipientes incluidos en la sección 6.1.",
-      "Hipersensibilidad al principio activo o a cualquiera de los excipientes"
-    ],
-    "efectosAdversos": [
-      "Trombosis venosa profunda",
-      "Trombocitopenia",
-      "Taquicardia",
-      "Acidosis",
-      "Hiperglucemia",
-      "Delirio"
-    ],
-    "interacciones": [
-      "IECAs y ARA-II: antagonizan efecto",
-      "Puede potenciar efecto de otros vasopresores"
-    ],
-    "viaAdministracion": ["IV"],
-    "dosis": {
-      "adulto": "Iniciar 20 ng/kg/min IV. Titular 15 ng/kg/min cada 5 min hasta máx 80 ng/kg/min. Mantenimiento: 1.25-40 ng/kg/min."
-    },
-    "presentaciones": ["Solución para infusión 2.5 mg/mL, vial 1 mL y 2 mL"],
-    "embarazo": "D",
-    "lactancia": "No recomendado.",
-    "cuidadosEnfermeria": [
-      "Administrar SOLO por vía central",
-      "Monitorización hemodinámica continua",
-      "Profilaxis antitrombótica obligatoria",
-      "Titular según PAM objetivo",
-      "Vigilar signos de isquemia distal"
-    ],
-    "preparacionParenteral": {
-      "reconstitucion": "No requiere.",
-      "dilucion": "Diluir en SF 0.9% o SG 5% hasta concentración de 5000-10000 ng/mL.",
-      "volumenAdministracion": "250 mL",
-      "velocidadAdministracion": "Iniciar 20 ng/kg/min. Bomba de infusión obligatoria. Vía central.",
-      "estabilidad": "Diluida: 24h a temp ambiente.",
-      "solucionesCompatibles": {
-        "ssf": true,
-        "sg5": true
-      }
-    },
-    "unidadId": "u11",
-    "capituloId": "c11_02",
-    "grupoTerapeutico": "Antídotos y Emergencias",
-    "grupoFarmacologico": "Fármacos de emergencia"
-  },
-  {
-    "id": "nitroprusiatosodico_nuevo",
-    "nombre": "Fenoldopam",
-    "nombreGenerico": "Fenoldopam mesilato",
-    "nombresComerciales": ["Corlopam"],
-    "familia": "Vasodilatadores",
-    "clasificacion": "Agonista dopaminérgico D1 selectivo",
-    "mecanismoAccion": "Agonista selectivo del receptor D1 de dopamina que causa vasodilatación arterial renal y sistémica. Aumenta flujo sanguíneo renal y natriuresis.",
-    "indicaciones": [
-      "Crisis hipertensiva en contexto hospitalario",
-      "Hipertensión perioperatoria",
-      "Protección renal en pacientes con riesgo de nefropatía por contraste"
-    ],
-    "contraindicaciones": [
-      "Hipersensibilidad al fenoldopam",
-      "Glaucoma o hipertensión intraocular",
-      "Hipersensibilidad al principio activo o a cualquiera de los excipientes"
-    ],
-    "efectosAdversos": [
-      "Hipotensión",
-      "Taquicardia refleja",
-      "Cefalea",
-      "Náuseas",
-      "Rubor facial",
-      "Hipocalemia"
-    ],
-    "interacciones": [
-      "Betabloqueadores: taquicardia refleja paradójica",
-      "Otros antihipertensivos: efecto aditivo"
-    ],
-    "viaAdministracion": ["IV"],
-    "dosis": {
-      "adulto": "Iniciar 0.1 mcg/kg/min IV. Titular cada 15 min hasta máx 1.6 mcg/kg/min.",
-      "pediatrico": "0.2 mcg/kg/min, titular hasta 0.8 mcg/kg/min"
-    },
-    "presentaciones": ["Solución inyectable 10 mg/mL ampolla de 1 mL y 2 mL"],
-    "embarazo": "B",
-    "lactancia": "Se desconoce. Precaución.",
-    "cuidadosEnfermeria": [
-      "Monitorización continua de PA y FC",
-      "Administrar por bomba de infusión",
-      "Vigilar hipocalemia (controlar K+ cada 6h)",
-      "Ajustar velocidad según PA objetivo",
-      "No mezclar con otros fármacos en la misma línea"
-    ],
-    "preparacionParenteral": {
-      "reconstitucion": "No requiere.",
-      "dilucion": "Diluir 10-20 mg en 250 mL de SF 0.9% o SG 5% (40-80 mcg/mL).",
-      "volumenAdministracion": "250 mL",
-      "velocidadAdministracion": "Iniciar 0.1 mcg/kg/min. Bomba de infusión. Titular cada 15 min.",
-      "estabilidad": "Diluida: 24h a temperatura ambiente.",
-      "solucionesCompatibles": {
-        "ssf": true,
-        "sg5": true
-      }
-    },
-    "unidadId": "u02",
-    "capituloId": "c02_07",
-    "grupoTerapeutico": "Sistema Cardiovascular",
-    "grupoFarmacologico": "Inotrópicos y vasopresores"
   },
   {
     "id": "ketamina_infusion",
@@ -51679,62 +51559,6 @@
     "capituloId": "c12_01",
     "grupoTerapeutico": "Fármacos Hospitalarios y Antineoplásicos",
     "grupoFarmacologico": "Anestésicos generales"
-  },
-  {
-    "id": "andexanet_alfa_detalle",
-    "nombre": "Andexanet alfa",
-    "nombreGenerico": "Andexanet alfa",
-    "nombresComerciales": ["Andexxa", "Ondexxya"],
-    "familia": "Antídotos anticoagulantes",
-    "clasificacion": "Agente reversor de inhibidores del factor Xa",
-    "mecanismoAccion": "Proteína recombinante modificada del factor Xa que actúa como señuelo, uniéndose a los inhibidores del factor Xa (rivaroxabán, apixabán) y neutralizando su efecto anticoagulante.",
-    "indicaciones": [
-      "Reversión urgente de rivaroxabán en hemorragia mayor",
-      "Reversión urgente de apixabán en hemorragia mayor"
-    ],
-    "contraindicaciones": [
-      "Hipersensibilidad al andexanet alfa",
-      "Antecedente de trombosis con andexanet (riesgo trombótico)",
-      "Hemorragia activa clínicamente significativa",
-      "Lesiones con riesgo de sangrado significativo",
-      "Insuficiencia hepática grave con coagulopatía"
-    ],
-    "efectosAdversos": [
-      "Eventos tromboembólicos (12-18%)",
-      "Reacciones infusionales",
-      "Anticuerpos anti-factor Xa",
-      "Elevación de dímero D"
-    ],
-    "interacciones": [
-      "Heparina: efecto neutralizado",
-      "Reiniciar anticoagulación lo antes posible tras hemostasia"
-    ],
-    "viaAdministracion": ["IV"],
-    "dosis": {
-      "adulto": "Dosis baja: bolo 400 mg IV + infusión 4 mg/min x 120 min. Dosis alta: bolo 800 mg IV + infusión 8 mg/min x 120 min."
-    },
-    "presentaciones": ["Polvo liofilizado 200 mg/vial"],
-    "embarazo": "N/A",
-    "lactancia": "No hay datos.",
-    "cuidadosEnfermeria": [
-      "Reconstituir y administrar rápidamente",
-      "Monitorizar signos de trombosis post-administración",
-      "Reiniciar anticoagulación tan pronto como sea clínicamente seguro",
-      "Vigilar signos vitales y hemograma cada 4h",
-      "Documentar hora exacta de administración"
-    ],
-    "preparacionParenteral": {
-      "reconstitucion": "Reconstituir cada vial de 200 mg con 20 mL de agua estéril. NO agitar.",
-      "dilucion": "No diluir más. Transferir volumen necesario a bolsas de infusión.",
-      "volumenAdministracion": "Dosis baja: 4 viales bolo + 4 viales infusión. Dosis alta: 8+8 viales.",
-      "velocidadAdministracion": "Bolo: 30 mg/min. Infusión: 4-8 mg/min por 120 min. Usar filtro 0.2 micras.",
-      "estabilidad": "Reconstituido: 8h refrigerado, 2h a temp ambiente.",
-      "observaciones": "Requiere filtro en línea (ver detalles en dilución/administración)."
-    },
-    "unidadId": "u10",
-    "capituloId": "c10_02",
-    "grupoTerapeutico": "Sangre y Órganos Hematopoyéticos",
-    "grupoFarmacologico": "Hemostáticos y factores de coagulación"
   },
   {
     "id": "droperidol",
