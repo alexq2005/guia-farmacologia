@@ -1370,7 +1370,9 @@
     "clasificacion": "Azálido (macrólido de 15 átomos)",
     "mecanismoAccion": "Se une a la subunidad 50S del ribosoma bacteriano, inhibiendo la síntesis proteica. Bacteriostático a dosis normales.",
     "indicaciones": [
-      "Neumonía comunitaria",
+      "Neumonía comunitaria (incluyendo neumonía atípica por Mycoplasma pneumoniae, Chlamydia pneumoniae, Legionella)",
+      "Exacerbación aguda de bronquitis crónica / EPOC (GOLD: macrólido de primera línea)",
+      "Bronquitis bacteriana aguda (Mycoplasma pneumoniae, Chlamydia pneumoniae, Bordetella pertussis)",
       "Faringoamigdalitis",
       "Otitis media",
       "Sinusitis",
@@ -18636,7 +18638,7 @@
     "clasificacion": "Antibiótico macrólido",
     "mecanismoAccion": "Inhibe la síntesis proteica uniéndose a la subunidad 50S ribosomal bacteriana. Bacteriostático (bactericida a altas concentraciones). Espectro: Gram+, atípicos (Mycoplasma, Chlamydia), H. pylori, MAC.",
     "indicaciones": [
-      "Infecciones respiratorias superiores e inferiores",
+      "Infecciones respiratorias: faringitis, bronquitis aguda y crónica, exacerbación de EPOC, neumonía comunitaria (incluida atípica)",
       "Erradicación de H. pylori (triple terapia)",
       "Infección por MAC en VIH",
       "Sinusitis",
@@ -18720,7 +18722,7 @@
     "clasificacion": "Antibiótico macrólido",
     "mecanismoAccion": "Primer macrólido. Inhibe síntesis proteica bacteriana uniéndose a subunidad 50S ribosomal. Efecto procinético gástrico adicional (agonista de receptores de motilina).",
     "indicaciones": [
-      "Infecciones respiratorias en alergia a penicilina",
+      "Infecciones respiratorias en alergia a penicilina (neumonía atípica, bronquitis bacteriana, faringitis estreptocócica)",
       "Tosferina (Bordetella pertussis)",
       "Conjuntivitis neonatal por Chlamydia",
       "Acné inflamatorio",

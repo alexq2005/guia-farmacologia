@@ -22,6 +22,11 @@ APKs with duplicate version codes.
 
 ### Changed
 
+- **Sweep de macrólidos — indicaciones ampliadas con bronquitis bacteriana y exacerbación de EPOC**:
+  - **Azitromicina**: indicaciones pasa de 7 a 9. Agregadas "Exacerbación aguda de bronquitis crónica / EPOC (GOLD: macrólido de primera línea)" y "Bronquitis bacteriana aguda (Mycoplasma pneumoniae, Chlamydia pneumoniae, Bordetella pertussis)". La indicación "Neumonía comunitaria" original se refinó con los patógenos atípicos cubiertos (Mycoplasma, Chlamydia pneumoniae, Legionella).
+  - **Claritromicina**: el vago "Infecciones respiratorias superiores e inferiores" reemplazado por "Infecciones respiratorias: faringitis, bronquitis aguda y crónica, exacerbación de EPOC, neumonía comunitaria (incluida atípica)".
+  - **Eritromicina**: el vago "Infecciones respiratorias en alergia a penicilina" reemplazado por "Infecciones respiratorias en alergia a penicilina (neumonía atípica, bronquitis bacteriana, faringitis estreptocócica)".
+  - Motivación: el dataset listaba las indicaciones del prospecto registrado pero omitía los usos de práctica clínica habitual establecidos en guías (GOLD, IDSA, ATS). El gap fue detectado al verificar por qué la búsqueda "azitromicina + bronquitis" no daba match en la ficha del drug. `DATASET_VERSION` bumpeado 5 → 6.
 - **`meropenem_nuevo` renombrado a `imipenem_cilastatina_relebactam`** (`src/data/drugs.json`): el ID legacy era misleading (slug "meropenem" pero contenido era Imipenem/Cilastatina/Relebactam = Recarbrio). Es la única fuente de este drug, así que se renombra en vez de eliminar. Referencia en `categories.json` actualizada.
 - **`drugs.json` ahora tiene 2974 entradas (era 2977)** tras la limpieza de zombies. `DATASET_VERSION` bumpeado de 3 a 4. `_meta.json drugs.entries` actualizado. `__tests__/drugs-schema.test.ts` count expectation actualizado.
 - **Badge "Información parcial" en `DrugDetailScreen.tsx`** ahora considera `farmacocinetica` como faltante si tiene **menos de 3 subcampos populados** (antes solo flaggeaba ausencia total del objeto). Un fármaco con sólo `absorcion` poblado (~96% de los que tienen el objeto) ya no se considera completo. Resultado: cobertura "útil" pasa de 58% reportado a 25% real, alineando el badge con la calidad real de la data clínica.
