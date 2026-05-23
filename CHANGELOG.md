@@ -12,6 +12,16 @@ APKs with duplicate version codes.
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+### Removed
+
+## [1.0.1] - 2026-05-23
+
 ### Removed
 
 - **3 entradas zombie eliminadas de `drugs.json`** (IDs cuyo slug no se correspondía con el contenido, por hijacking histórico):
