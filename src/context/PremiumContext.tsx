@@ -1,7 +1,19 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import { NativeModules, Alert } from 'react-native';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import { isActivated as checkActivation, validateActivationCode, saveActivation } from '../utils/activation';
+import {
+  isActivated as checkActivation,
+  validateActivationCode,
+  saveActivation,
+} from '../utils/activation';
+import { computeTrialDaysLeft, computeIsPremium } from '../utils/premiumLogic';
 import {
   initBilling,
   closeBilling,
@@ -17,7 +29,8 @@ import {
 } from '../utils/billing';
 
 /** Free build has all features unlocked — no trial/subscription needed */
-const IS_FREE_BUILD: boolean = NativeModules.BuildConfigModule?.IS_FREE ?? false;
+const IS_FREE_BUILD: boolean =
+  NativeModules.BuildConfigModule?.IS_FREE ?? false;
 
 const TRIAL_START_KEY = '@guia_farmaco_trial_start';
 const PREMIUM_KEY = '@guia_farmaco_premium';
@@ -84,7 +97,9 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       } else if (!IS_FREE_BUILD) {
         const now = Date.now();
         setTrialStartDate(now);
-        EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(() => {});
+        EncryptedStorage.setItem(TRIAL_START_KEY, now.toString()).catch(
+          () => {},
+        );
       }
 
       if (premiumRaw === 'true') {
@@ -128,7 +143,7 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (IS_FREE_BUILD) return;
 
-    purchaseListenerRef.current = onPurchaseUpdate(async (purchase) => {
+    purchaseListenerRef.current = onPurchaseUpdate(async purchase => {
       // Acknowledge/finish the transaction (required within 3 days)
       await acknowledgePurchase(purchase);
 
@@ -139,11 +154,14 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
       }
     });
 
-    errorListenerRef.current = onPurchaseError((error) => {
+    errorListenerRef.current = onPurchaseError(error => {
       setIsBillingLoading(false);
       // Don't show alert for user cancellation
       if (error.code !== 'E_USER_CANCELLED') {
-        Alert.alert('Error', 'No se pudo completar la compra. Intenta nuevamente.');
+        Alert.alert(
+          'Error',
+          'No se pudo completar la compra. Intenta nuevamente.',
+        );
       }
     });
 
@@ -156,28 +174,37 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
 
   // ─── Derived state ───────────────────────────────────────────────────────
 
-  const trialDaysLeft = (() => {
-    if (!trialStartDate) return TRIAL_DAYS;
-    const elapsed = Date.now() - trialStartDate;
-    const remaining = TRIAL_DAYS - Math.floor(elapsed / (1000 * 60 * 60 * 24));
-    return Math.max(0, remaining);
-  })();
-
+  const trialDaysLeft = computeTrialDaysLeft(
+    trialStartDate,
+    Date.now(),
+    TRIAL_DAYS,
+  );
   const isTrialActive = trialDaysLeft > 0;
-  const isPremium = IS_FREE_BUILD || isCodeActivated || isSubscribed || isTrialActive;
+  const isPremium = computeIsPremium({
+    isFreeBuild: IS_FREE_BUILD,
+    isCodeActivated,
+    isSubscribed,
+    isTrialActive,
+  });
 
   // ─── Actions ─────────────────────────────────────────────────────────────
 
-  const purchase = useCallback(async (productId: string, offerToken: string) => {
-    setIsBillingLoading(true);
-    try {
-      await purchaseSubscription(productId, offerToken);
-      // Result handled by purchaseUpdatedListener
-    } catch {
-      setIsBillingLoading(false);
-      Alert.alert('Error', 'No se pudo iniciar la compra. Verifica tu conexión.');
-    }
-  }, []);
+  const purchase = useCallback(
+    async (productId: string, offerToken: string) => {
+      setIsBillingLoading(true);
+      try {
+        await purchaseSubscription(productId, offerToken);
+        // Result handled by purchaseUpdatedListener
+      } catch {
+        setIsBillingLoading(false);
+        Alert.alert(
+          'Error',
+          'No se pudo iniciar la compra. Verifica tu conexión.',
+        );
+      }
+    },
+    [],
+  );
 
   const restore = useCallback(async (): Promise<boolean> => {
     setIsBillingLoading(true);
@@ -201,35 +228,40 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const activateWithCode = useCallback(async (code: string): Promise<boolean> => {
-    if (validateActivationCode(code)) {
-      await saveActivation();
-      setIsCodeActivated(true);
-      return true;
-    }
-    return false;
-  }, []);
+  const activateWithCode = useCallback(
+    async (code: string): Promise<boolean> => {
+      if (validateActivationCode(code)) {
+        await saveActivation();
+        setIsCodeActivated(true);
+        return true;
+      }
+      return false;
+    },
+    [],
+  );
 
   // ─── Render ──────────────────────────────────────────────────────────────
 
   if (!loaded) return null;
 
   return (
-    <PremiumContext.Provider value={{
-      isPremium,
-      isFreeBuild: IS_FREE_BUILD,
-      isCodeActivated,
-      isTrialActive,
-      trialDaysLeft,
-      trialStartDate,
-      isSubscribed,
-      products,
-      isBillingLoading,
-      purchase,
-      restore,
-      activateWithCode,
-      loaded,
-    }}>
+    <PremiumContext.Provider
+      value={{
+        isPremium,
+        isFreeBuild: IS_FREE_BUILD,
+        isCodeActivated,
+        isTrialActive,
+        trialDaysLeft,
+        trialStartDate,
+        isSubscribed,
+        products,
+        isBillingLoading,
+        purchase,
+        restore,
+        activateWithCode,
+        loaded,
+      }}
+    >
       {children}
     </PremiumContext.Provider>
   );
