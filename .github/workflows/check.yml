@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 # Cancel in-progress runs of the same workflow on the same branch.
 # Saves CI minutes when pushing multiple commits in quick succession.
@@ -65,4 +65,4 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Test
-        run: npm test -- --ci --passWithNoTests
+        run: npm test -- --ci
