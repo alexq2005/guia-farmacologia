@@ -17,6 +17,7 @@ import {
   computeTrialDaysLeft,
   computeIsPremium,
   resolveSubscriptionState,
+  TRIAL_DAYS,
 } from '../utils/premiumLogic';
 import {
   initBilling,
@@ -38,7 +39,6 @@ const IS_FREE_BUILD: boolean =
 
 const TRIAL_START_KEY = '@guia_farmaco_trial_start';
 const PREMIUM_KEY = '@guia_farmaco_premium';
-const TRIAL_DAYS = 14;
 
 interface PremiumContextType {
   /** true if trial active OR subscription active OR code activated */
@@ -96,8 +96,12 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
 
       if (!mounted) return;
 
-      if (trialRaw) {
-        setTrialStartDate(parseInt(trialRaw, 10));
+      // Valor faltante O corrupto (NaN) → (re)inicializar el trial ahora.
+      // Sin este guard, un trialStartDate NaN haría que computeTrialDaysLeft
+      // devuelva el trial completo para siempre (trial perpetuo gratis).
+      const parsedTrialStart = trialRaw ? parseInt(trialRaw, 10) : NaN;
+      if (Number.isFinite(parsedTrialStart)) {
+        setTrialStartDate(parsedTrialStart);
       } else if (!IS_FREE_BUILD) {
         const now = Date.now();
         setTrialStartDate(now);

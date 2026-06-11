@@ -13,20 +13,24 @@ const DAY_MS = 1000 * 60 * 60 * 24;
 
 /**
  * Días de trial restantes.
- * @param trialStartDate epoch ms del inicio del trial, o null si nunca empezó
+ * @param trialStartDate epoch ms del inicio del trial, o null si nunca empezó.
+ *   Un valor no finito (NaN/Infinity por storage corrupto) se trata como
+ *   inválido = "nunca empezó" — el caller debe re-inicializar el trial, NO
+ *   regalar acceso perpetuo.
  * @param now epoch ms actual (inyectable para tests — NO usar Date.now() acá)
  * @param trialDays duración total del trial
- * @returns entero >= 0 (clamp a 0; nunca negativo)
+ * @returns entero en [0, trialDays] — clamp inferior a 0 (trial vencido) y
+ *   superior a trialDays (retroceder el reloj NO extiende el trial)
  */
 export function computeTrialDaysLeft(
   trialStartDate: number | null,
   now: number,
   trialDays: number = TRIAL_DAYS,
 ): number {
-  if (!trialStartDate) return trialDays;
+  if (!trialStartDate || !Number.isFinite(trialStartDate)) return trialDays;
   const elapsed = now - trialStartDate;
   const remaining = trialDays - Math.floor(elapsed / DAY_MS);
-  return Math.max(0, remaining);
+  return Math.max(0, Math.min(trialDays, remaining));
 }
 
 export interface PremiumFlags {

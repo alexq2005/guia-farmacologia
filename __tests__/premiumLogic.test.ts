@@ -46,16 +46,35 @@ describe('computeTrialDaysLeft', () => {
     expect(computeTrialDaysLeft(start, start + 365 * DAY)).toBe(0);
   });
 
-  it('reloj hacia atrás (now < start): no explota, no da más que el total', () => {
+  it('reloj hacia atrás (now < start): clamp EXACTO al total — retroceder el reloj no extiende el trial', () => {
     const start = 1_700_000_000_000;
-    const result = computeTrialDaysLeft(start, start - 5 * DAY);
-    expect(result).toBeLessThanOrEqual(TRIAL_DAYS + 5); // tolerante, pero finito
-    expect(result).toBeGreaterThan(0);
+    expect(computeTrialDaysLeft(start, start - 5 * DAY)).toBe(TRIAL_DAYS);
+    expect(computeTrialDaysLeft(start, start - 365 * DAY)).toBe(TRIAL_DAYS);
+    // Rollback chico (1 hora) tampoco suma días extra
+    expect(computeTrialDaysLeft(start, start - 1000 * 60 * 60)).toBe(
+      TRIAL_DAYS,
+    );
+  });
+
+  it('REGRESIÓN (revenue): trialStartDate NaN (storage corrupto) NO regala trial perpetuo — se trata como inválido', () => {
+    // Devuelve el trial completo UNA vez; el contexto re-inicializa y
+    // re-persiste el start date, así que el reloj vuelve a correr.
+    expect(computeTrialDaysLeft(NaN, Date.now())).toBe(TRIAL_DAYS);
+  });
+
+  it('trialStartDate Infinity/-Infinity: inválido → trial completo (mismo trato que NaN)', () => {
+    expect(computeTrialDaysLeft(Infinity, Date.now())).toBe(TRIAL_DAYS);
+    expect(computeTrialDaysLeft(-Infinity, Date.now())).toBe(TRIAL_DAYS);
   });
 
   it('respeta una duración de trial custom', () => {
     const start = 1_700_000_000_000;
     expect(computeTrialDaysLeft(start, start + 3 * DAY, 7)).toBe(4);
+  });
+
+  it('clamp superior respeta la duración custom (no la default)', () => {
+    const start = 1_700_000_000_000;
+    expect(computeTrialDaysLeft(start, start - 30 * DAY, 7)).toBe(7);
   });
 });
 
