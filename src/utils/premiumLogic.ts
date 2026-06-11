@@ -48,3 +48,36 @@ export function computeIsPremium(flags: PremiumFlags): boolean {
     flags.isTrialActive
   );
 }
+
+// ─── Suscripción: revocar o conservar tras consultar Play Billing ───────────
+
+export interface SubscriptionResolution {
+  /** próximo valor de isSubscribed */
+  isSubscribed: boolean;
+  /** efecto sobre el flag persistido (PREMIUM_KEY) */
+  persist: 'set' | 'remove' | 'keep';
+}
+
+/**
+ * Decide el estado de la suscripción después de consultar Google Play.
+ *
+ * Semántica (revenue-critical, NO cambiar sin tests):
+ * - Consulta exitosa CON compra activa → suscripto, persistir `true`.
+ * - Consulta exitosa SIN compra activa → NO suscripto, borrar el flag
+ *   persistido (la suscripción fue cancelada o expiró — revocar acceso).
+ * - Consulta fallida (offline, billing caído) → conservar el valor cacheado
+ *   y no tocar el storage. NUNCA revocar a un suscriptor por estar offline.
+ */
+export function resolveSubscriptionState(
+  querySucceeded: boolean,
+  hasActivePurchase: boolean,
+  cachedIsSubscribed: boolean,
+): SubscriptionResolution {
+  if (!querySucceeded) {
+    return { isSubscribed: cachedIsSubscribed, persist: 'keep' };
+  }
+  if (hasActivePurchase) {
+    return { isSubscribed: true, persist: 'set' };
+  }
+  return { isSubscribed: false, persist: 'remove' };
+}

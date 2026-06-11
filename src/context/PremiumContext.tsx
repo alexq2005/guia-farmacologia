@@ -13,7 +13,11 @@ import {
   validateActivationCode,
   saveActivation,
 } from '../utils/activation';
-import { computeTrialDaysLeft, computeIsPremium } from '../utils/premiumLogic';
+import {
+  computeTrialDaysLeft,
+  computeIsPremium,
+  resolveSubscriptionState,
+} from '../utils/premiumLogic';
 import {
   initBilling,
   closeBilling,
@@ -120,12 +124,29 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
           const subs = await fetchSubscriptionProducts();
           if (mounted) setProducts(subs);
 
-          // Check for existing active subscriptions
-          const purchases = await restorePurchases();
+          // Verify subscription state against Google Play. Si la consulta
+          // es exitosa y NO hay compra activa → revocar el flag cacheado
+          // (suscripción cancelada/expirada). Si la consulta falla
+          // (offline) → conservar el cache, nunca castigar al suscriptor.
+          const { ok, purchases } = await restorePurchases();
+          if (!mounted) return;
           const activePurchase = purchases.find(isPurchaseActive);
-          if (activePurchase && mounted) {
-            setIsSubscribed(true);
+          const next = resolveSubscriptionState(
+            ok,
+            !!activePurchase,
+            premiumRaw === 'true',
+          );
+          setIsSubscribed(next.isSubscribed);
+          if (next.persist === 'set') {
             EncryptedStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
+          } else if (next.persist === 'remove') {
+            EncryptedStorage.removeItem(PREMIUM_KEY).catch(() => {});
+          }
+
+          // Acknowledge de compras que Google Play aún no confirmó —
+          // las compras sin acknowledge se reembolsan solas a los 3 días.
+          if (activePurchase && !activePurchase.isAcknowledgedAndroid) {
+            await acknowledgePurchase(activePurchase);
           }
         }
       }
@@ -209,15 +230,23 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const restore = useCallback(async (): Promise<boolean> => {
     setIsBillingLoading(true);
     try {
-      const purchases = await restorePurchases();
+      const { ok, purchases } = await restorePurchases();
       const activePurchase = purchases.find(isPurchaseActive);
 
       if (activePurchase) {
-        await acknowledgePurchase(activePurchase);
+        if (!activePurchase.isAcknowledgedAndroid) {
+          await acknowledgePurchase(activePurchase);
+        }
         setIsSubscribed(true);
         EncryptedStorage.setItem(PREMIUM_KEY, 'true').catch(() => {});
         setIsBillingLoading(false);
         return true;
+      }
+
+      if (ok) {
+        // Consulta exitosa sin compra activa → revocar el flag cacheado.
+        setIsSubscribed(false);
+        EncryptedStorage.removeItem(PREMIUM_KEY).catch(() => {});
       }
 
       setIsBillingLoading(false);

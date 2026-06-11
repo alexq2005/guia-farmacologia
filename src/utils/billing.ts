@@ -19,6 +19,7 @@ import {
   type PurchaseError,
 } from 'react-native-iap';
 import type { EmitterSubscription } from 'react-native';
+import { crashReporting } from './crashReporting';
 
 // ─── Product IDs (must match Google Play Console) ────────────────────────────
 
@@ -72,7 +73,9 @@ export async function closeBilling(): Promise<void> {
 
 // ─── Fetch products ──────────────────────────────────────────────────────────
 
-export async function fetchSubscriptionProducts(): Promise<SubscriptionProduct[]> {
+export async function fetchSubscriptionProducts(): Promise<
+  SubscriptionProduct[]
+> {
   try {
     const subs = await getSubscriptions({ skus: SKU_LIST });
     return subs.flatMap(parseSubscription);
@@ -91,25 +94,27 @@ function parseSubscription(sub: Subscription): SubscriptionProduct[] {
   const androidSub = sub as SubscriptionAndroid;
   const offers = androidSub.subscriptionOfferDetails;
   if (!offers || offers.length === 0) {
-    return [{
-      productId: androidSub.productId,
-      title: androidSub.title || androidSub.productId,
-      description: androidSub.description || '',
-      price: '',
-      priceMicros: 0,
-      currency: '',
-      period: '',
-      offerToken: '',
-    }];
+    return [
+      {
+        productId: androidSub.productId,
+        title: androidSub.title || androidSub.productId,
+        description: androidSub.description || '',
+        price: '',
+        priceMicros: 0,
+        currency: '',
+        period: '',
+        offerToken: '',
+      },
+    ];
   }
 
-  return offers.map((offer) => {
+  return offers.map(offer => {
     const phases = offer.pricingPhases.pricingPhaseList;
-    const recurringPhase = phases.find(p =>
-      parseInt(p.priceAmountMicros || '0', 10) > 0,
-    ) || phases[phases.length - 1];
-    const trialPhase = phases.find(p =>
-      parseInt(p.priceAmountMicros || '0', 10) === 0,
+    const recurringPhase =
+      phases.find(p => parseInt(p.priceAmountMicros || '0', 10) > 0) ||
+      phases[phases.length - 1];
+    const trialPhase = phases.find(
+      p => parseInt(p.priceAmountMicros || '0', 10) === 0,
     );
 
     return {
@@ -140,15 +145,29 @@ export async function purchaseSubscription(
 
 // ─── Restore ─────────────────────────────────────────────────────────────────
 
-export async function restorePurchases(): Promise<SubscriptionPurchase[]> {
+export interface RestoreResult {
+  /**
+   * true si la consulta a Play Billing terminó exitosamente.
+   * `ok: true` + `purchases: []` significa "confirmado: sin suscripción
+   * activa" (el caller puede revocar). `ok: false` significa "no se pudo
+   * consultar" (offline/error) — el caller NO debe revocar nada.
+   */
+  ok: boolean;
+  purchases: SubscriptionPurchase[];
+}
+
+export async function restorePurchases(): Promise<RestoreResult> {
   try {
     const purchases = await getAvailablePurchases();
-    return purchases.filter(p =>
-      SKU_LIST.includes(p.productId),
-    ) as SubscriptionPurchase[];
+    return {
+      ok: true,
+      purchases: purchases.filter(p =>
+        SKU_LIST.includes(p.productId),
+      ) as SubscriptionPurchase[],
+    };
   } catch (error) {
     console.warn('[Billing] Restore failed:', error);
-    return [];
+    return { ok: false, purchases: [] };
   }
 }
 
@@ -159,8 +178,22 @@ export async function acknowledgePurchase(
 ): Promise<void> {
   try {
     await finishTransaction({ purchase, isConsumable: false });
-  } catch (error) {
-    console.warn('[Billing] Finish transaction failed:', error);
+  } catch (firstError) {
+    console.warn(
+      '[Billing] Finish transaction failed, retrying once:',
+      firstError,
+    );
+    try {
+      await finishTransaction({ purchase, isConsumable: false });
+    } catch (secondError) {
+      // Google reembolsa automáticamente a los 3 días las compras sin
+      // acknowledge — esto no puede quedar solo en un console.warn.
+      console.warn('[Billing] Finish transaction retry failed:', secondError);
+      crashReporting.captureException(secondError, {
+        scope: 'billing.acknowledgePurchase',
+        productId: purchase.productId,
+      });
+    }
   }
 }
 
@@ -169,7 +202,7 @@ export async function acknowledgePurchase(
 export function onPurchaseUpdate(
   callback: (purchase: SubscriptionPurchase) => void,
 ): EmitterSubscription {
-  return purchaseUpdatedListener((purchase) => {
+  return purchaseUpdatedListener(purchase => {
     callback(purchase as SubscriptionPurchase);
   });
 }
@@ -193,6 +226,7 @@ export function formatPeriod(period: string): string {
 
 /** Check if a purchase is still active (Android) */
 export function isPurchaseActive(purchase: SubscriptionPurchase): boolean {
-  return purchase.autoRenewingAndroid === true
-    || purchase.purchaseStateAndroid === 1;
+  return (
+    purchase.autoRenewingAndroid === true || purchase.purchaseStateAndroid === 1
+  );
 }

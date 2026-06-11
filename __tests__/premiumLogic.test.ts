@@ -9,6 +9,7 @@
 import {
   computeTrialDaysLeft,
   computeIsPremium,
+  resolveSubscriptionState,
   TRIAL_DAYS,
 } from '../src/utils/premiumLogic';
 
@@ -97,5 +98,45 @@ describe('computeIsPremium', () => {
         isTrialActive: false,
       }),
     ).toBe(false);
+  });
+});
+
+describe('resolveSubscriptionState', () => {
+  it('consulta exitosa CON compra activa → suscripto + persistir true', () => {
+    expect(resolveSubscriptionState(true, true, false)).toEqual({
+      isSubscribed: true,
+      persist: 'set',
+    });
+    expect(resolveSubscriptionState(true, true, true)).toEqual({
+      isSubscribed: true,
+      persist: 'set',
+    });
+  });
+
+  it('REGRESIÓN (revenue): consulta exitosa SIN compra activa → revocar aunque el cache diga premium', () => {
+    // Suscripción cancelada: el flag persistido NO puede valer para siempre.
+    expect(resolveSubscriptionState(true, false, true)).toEqual({
+      isSubscribed: false,
+      persist: 'remove',
+    });
+  });
+
+  it('consulta exitosa sin compra activa y sin cache → no suscripto', () => {
+    expect(resolveSubscriptionState(true, false, false)).toEqual({
+      isSubscribed: false,
+      persist: 'remove',
+    });
+  });
+
+  it('REGRESIÓN (UX): consulta fallida (offline) → conservar el cache, NUNCA revocar', () => {
+    // Un suscriptor pago sin conexión NO puede perder acceso.
+    expect(resolveSubscriptionState(false, false, true)).toEqual({
+      isSubscribed: true,
+      persist: 'keep',
+    });
+    expect(resolveSubscriptionState(false, false, false)).toEqual({
+      isSubscribed: false,
+      persist: 'keep',
+    });
   });
 });
