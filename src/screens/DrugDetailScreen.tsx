@@ -15,6 +15,7 @@ import {
   Animated,
   Modal,
   Pressable,
+  type LayoutChangeEvent,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -222,6 +223,30 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   const [showPregModal, setShowPregModal] = useState(false);
   const drug = getDrugById(route.params.drugId);
 
+  // ── Índice de secciones (chips ancla) ──────────────────────
+  // Registra la posición Y de cada sección crítica dentro del scroll
+  // para saltar a ella con un toque (scrollTo con refs, sin librerías).
+  const scrollRef = useRef<ScrollView>(null);
+  const sectionYRef = useRef<Record<string, number>>({});
+  const registerSection = useCallback(
+    (key: string) => (e: LayoutChangeEvent) => {
+      sectionYRef.current[key] = e.nativeEvent.layout.y;
+    },
+    [],
+  );
+  const scrollToSection = useCallback(
+    (key: string) => {
+      const y = sectionYRef.current[key];
+      if (y != null) {
+        scrollRef.current?.scrollTo({
+          y: Math.max(y - rs.space(8), 0),
+          animated: true,
+        });
+      }
+    },
+    [rs],
+  );
+
   // Set drug name as header title + track recent
   useEffect(() => {
     if (drug) {
@@ -306,6 +331,61 @@ export function DrugDetailScreen({ route, navigation }: Props) {
   const unit = getUnitById(drug.unidadId);
   const unitColor = UNIT_COLORS[drug.unidadId] || colors.primary;
   const pregColor = PREGNANCY_COLORS[drug.embarazo] || colors.textLight;
+
+  // Secciones disponibles para el índice rápido (solo las críticas en guardia)
+  const hasLegacyPrep =
+    !drug.preparacionParenteral &&
+    Boolean(
+      drug.preparacionDilucion ||
+        drug.reconstitucion ||
+        (Array.isArray(drug.solucionesCompatibles) &&
+          drug.solucionesCompatibles.length > 0),
+    );
+  const sectionIndex = [
+    { key: 'dosis', label: 'Dosis', icon: 'needle', color: colors.primary },
+    ...(drug.preparacionParenteral || hasLegacyPrep
+      ? [
+          {
+            key: 'preparacion',
+            label: 'Preparación',
+            icon: 'iv-bag',
+            color: colors.info,
+          },
+        ]
+      : []),
+    {
+      key: 'cuidados',
+      label: 'Cuidados',
+      icon: 'account-heart-outline',
+      color: colors.nursing,
+    },
+    ...(drug.riesgosSobremedicacion
+      ? [
+          {
+            key: 'riesgos',
+            label: 'Riesgos',
+            icon: 'alert-outline',
+            color: colors.warning,
+          },
+        ]
+      : []),
+    {
+      key: 'contraindicaciones',
+      label: 'Contraindic.',
+      icon: 'close-octagon-outline',
+      color: colors.error,
+    },
+    {
+      key: 'interacciones',
+      label: 'Interacciones',
+      icon: 'swap-horizontal',
+      color: colors.info,
+    },
+  ];
+  const chipTint = (color: string) => ({
+    borderColor: color + '45',
+    backgroundColor: color + '10',
+  });
 
   // Parse replacement note from mechanism text
   const notaMatch = drug.mecanismoAccion?.match(/\s*Nota:\s*(.+)$/);
@@ -444,7 +524,40 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         </LinearGradient>
       </ImageBackground>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        ref={scrollRef}
+        style={styles.scroll}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* Índice rápido de secciones críticas — chips ancla */}
+        <View style={styles.sectionIndexRow}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.sectionIndexContent}
+          >
+            {sectionIndex.map(s => (
+              <TouchableOpacity
+                key={s.key}
+                style={[styles.sectionIndexChip, chipTint(s.color)]}
+                onPress={() => scrollToSection(s.key)}
+                accessibilityRole="button"
+                accessibilityLabel={`Ir a la sección ${s.label}`}
+              >
+                <MaterialCommunityIcons
+                  name={s.icon}
+                  size={13}
+                  color={s.color}
+                  style={styles.sectionIndexIcon}
+                />
+                <Text style={[styles.sectionIndexLabel, { color: s.color }]}>
+                  {s.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
         {(() => {
           // Farmacocinética se considera "parcial" si tiene menos de 3 subcampos
           // populados (de los 8 posibles). El objeto puede existir con un solo
@@ -531,7 +644,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.doseCard}>
+        <View style={styles.doseCard} onLayout={registerSection('dosis')}>
           <View
             style={{
               flexDirection: 'row',
@@ -654,7 +767,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           (Array.isArray(drug.solucionesCompatibles) &&
             drug.solucionesCompatibles.length > 0)) &&
           !drug.preparacionParenteral && (
-            <View style={styles.parenteralCard}>
+            <View
+              style={styles.parenteralCard}
+              onLayout={registerSection('preparacion')}
+            >
               <View
                 style={{
                   flexDirection: 'row',
@@ -743,7 +859,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           )}
 
         {drug.preparacionParenteral && (
-          <View style={styles.parenteralCard}>
+          <View
+            style={styles.parenteralCard}
+            onLayout={registerSection('preparacion')}
+          >
             <View
               style={{
                 flexDirection: 'row',
@@ -1019,7 +1138,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           </View>
         )}
 
-        <View style={styles.nursingCard}>
+        <View style={styles.nursingCard} onLayout={registerSection('cuidados')}>
           <View
             style={{
               flexDirection: 'row',
@@ -1041,7 +1160,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
         </View>
 
         {drug.riesgosSobremedicacion && (
-          <View style={styles.riskCard}>
+          <View style={styles.riskCard} onLayout={registerSection('riesgos')}>
             <View
               style={{
                 flexDirection: 'row',
@@ -1140,14 +1259,17 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           <BulletList items={drug.indicaciones} color={colors.success} />
         </CollapsibleSection>
 
-        <CollapsibleSection
-          title="Contraindicaciones"
-          icon="close-octagon-outline"
-          accentColor={colors.error}
-          badge={`${drug.contraindicaciones.length}`}
-        >
-          <BulletList items={drug.contraindicaciones} color={colors.error} />
-        </CollapsibleSection>
+        <View onLayout={registerSection('contraindicaciones')}>
+          <CollapsibleSection
+            title="Contraindicaciones"
+            icon="close-octagon-outline"
+            accentColor={colors.error}
+            badge={`${drug.contraindicaciones.length}`}
+            emphasized
+          >
+            <BulletList items={drug.contraindicaciones} color={colors.error} />
+          </CollapsibleSection>
+        </View>
 
         <CollapsibleSection
           title="Efectos Adversos"
@@ -1158,14 +1280,16 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           <BulletList items={drug.efectosAdversos} color={colors.warning} />
         </CollapsibleSection>
 
-        <CollapsibleSection
-          title="Interacciones"
-          icon="swap-horizontal"
-          accentColor={colors.info}
-          badge={`${drug.interacciones.length}`}
-        >
-          <BulletList items={drug.interacciones} color={colors.info} />
-        </CollapsibleSection>
+        <View onLayout={registerSection('interacciones')}>
+          <CollapsibleSection
+            title="Interacciones"
+            icon="swap-horizontal"
+            accentColor={colors.info}
+            badge={`${drug.interacciones.length}`}
+          >
+            <BulletList items={drug.interacciones} color={colors.info} />
+          </CollapsibleSection>
+        </View>
 
         <CollapsibleSection
           title="Presentaciones"
@@ -1481,6 +1605,22 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     },
     grupoText: { color: '#FFFFFF', fontSize: rs.font(11), fontWeight: '500' },
     scroll: { flex: 1, marginTop: -12 },
+    sectionIndexRow: { marginTop: rs.space(14) },
+    sectionIndexContent: {
+      paddingHorizontal: rs.space(16),
+      gap: rs.space(6),
+      alignItems: 'center',
+    },
+    sectionIndexChip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: rs.space(10),
+      paddingVertical: rs.space(6),
+      borderRadius: 14,
+      borderWidth: 1,
+    },
+    sectionIndexIcon: { marginRight: rs.space(4) },
+    sectionIndexLabel: { fontSize: rs.font(12), fontWeight: '700' },
     doseCard: {
       ...neuCard(colors),
       marginHorizontal: rs.space(16),
@@ -1534,7 +1674,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     doseValue: {
       fontSize: rs.font(14),
       color: colors.text,
-      lineHeight: rs.font(20),
+      lineHeight: rs.font(21),
     },
     parenteralCard: {
       backgroundColor: colors.primary + '08',
@@ -1585,7 +1725,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
     parenteralValue: {
       fontSize: rs.font(14),
       color: colors.text,
-      lineHeight: rs.font(20),
+      lineHeight: rs.font(21),
     },
     compatRow: {
       flexDirection: 'row',
@@ -1625,7 +1765,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       fontSize: rs.font(14),
       color: colors.text,
       flex: 1,
-      lineHeight: rs.font(20),
+      lineHeight: rs.font(21),
     },
     nursingCard: {
       backgroundColor: colors.nursing + '08',
@@ -1749,7 +1889,7 @@ const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
       fontSize: rs.font(14),
       color: colors.text,
       flex: 1,
-      lineHeight: rs.font(20),
+      lineHeight: rs.font(21),
     },
     infoRow: {
       flexDirection: 'row',
