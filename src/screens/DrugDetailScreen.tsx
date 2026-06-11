@@ -173,6 +173,8 @@ function PregnancyModal({
           <TouchableOpacity
             style={[s.modalCloseBtn, { backgroundColor: colors.primary }]}
             onPress={onClose}
+            accessibilityRole="button"
+            accessibilityLabel="Cerrar información de embarazo"
           >
             <Text style={s.modalCloseBtnText}>Entendido</Text>
           </TouchableOpacity>
@@ -199,8 +201,10 @@ function CopyButton({
   return (
     <TouchableOpacity
       onPress={handleCopy}
-      hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
       style={{ paddingHorizontal: rs.space(6), paddingVertical: rs.space(2) }}
+      accessibilityRole="button"
+      accessibilityLabel={copied ? 'Copiado' : 'Copiar al portapapeles'}
     >
       <MaterialCommunityIcons
         name={copied ? 'check' : 'content-copy'}
@@ -410,8 +414,10 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      {/* Theme-aware: la franja de status bar acompaña al header nativo
+          del stack (colors.surface), no al hero de color de unidad */}
       <StatusBar
-        backgroundColor={unitColor}
+        backgroundColor={colors.surface}
         barStyle={isDark ? 'light-content' : 'dark-content'}
       />
 
@@ -434,6 +440,8 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               onPress={() => shareDrug(drug)}
               style={styles.favButton}
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityRole="button"
+              accessibilityLabel={`Compartir ${drug.nombre}`}
             >
               <MaterialCommunityIcons
                 name="share-variant-outline"
@@ -445,6 +453,13 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               onPress={() => toggleFavorite(drug.id)}
               style={[styles.favButton, { marginLeft: rs.space(8) }]}
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityRole="button"
+              accessibilityLabel={
+                isFavorite(drug.id)
+                  ? `Quitar ${drug.nombre} de favoritos`
+                  : `Agregar ${drug.nombre} a favoritos`
+              }
+              accessibilityState={{ selected: isFavorite(drug.id) }}
             >
               <MaterialCommunityIcons
                 name={isFavorite(drug.id) ? 'heart' : 'heart-outline'}
@@ -1389,6 +1404,8 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 onPress={() =>
                   navigation.navigate('PathologyDetail', { pathologyId: p.id })
                 }
+                accessibilityRole="button"
+                accessibilityLabel={`Ver patología ${p.nombre}`}
               >
                 <Text
                   style={{
@@ -1471,6 +1488,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             placeholderTextColor={colors.textLight}
             multiline
             textAlignVertical="top"
+            accessibilityLabel={`Notas personales sobre ${drug.nombre}`}
           />
           {noteText.trim().length > 0 && (
             <Text style={styles.notesSaved}>Guardado automáticamente</Text>

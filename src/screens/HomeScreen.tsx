@@ -182,6 +182,11 @@ export function HomeScreen({ navigation }: Props) {
                 <TouchableOpacity
                   onPress={toggleTheme}
                   style={styles.heroButton}
+                  hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                  accessibilityRole="button"
+                  accessibilityLabel={
+                    isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'
+                  }
                 >
                   <MaterialCommunityIcons
                     name={
@@ -194,6 +199,9 @@ export function HomeScreen({ navigation }: Props) {
                 <TouchableOpacity
                   onPress={() => navigation.navigate('AboutScreen')}
                   style={styles.heroButton}
+                  hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                  accessibilityRole="button"
+                  accessibilityLabel="Acerca de la aplicación"
                 >
                   <MaterialCommunityIcons
                     name="information-outline"
@@ -236,6 +244,8 @@ export function HomeScreen({ navigation }: Props) {
               key={i}
               onPress={action.onPress}
               activeOpacity={0.85}
+              accessibilityRole="button"
+              accessibilityLabel={action.label}
             >
               <ImageBackground
                 source={action.image}
@@ -302,6 +312,12 @@ export function HomeScreen({ navigation }: Props) {
             ]}
             onPress={() => navigation.navigate('PremiumScreen')}
             activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel={
+              isTrialActive
+                ? `${trialDaysLeft} días de prueba Premium. Ver detalles`
+                : 'Prueba Premium expirada. Ver opciones de suscripción'
+            }
           >
             <MaterialCommunityIcons
               name={isTrialActive ? 'star-four-points' : 'lock-outline'}
@@ -426,6 +442,8 @@ export function HomeScreen({ navigation }: Props) {
                       navigation.navigate('DrugDetail', { drugId })
                     }
                     activeOpacity={0.7}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Abrir ficha de ${recentDrug.nombre}`}
                   >
                     <View
                       style={[styles.recentAccent, { backgroundColor: rColor }]}
@@ -454,6 +472,8 @@ export function HomeScreen({ navigation }: Props) {
               style={styles.progressCard}
               onPress={() => navigation.navigate('QuizScreen')}
               activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel={`Progreso de estudio: ${quizResults.length} sesiones, ${averageScore}% de promedio. Seguir practicando`}
             >
               <LinearGradient
                 colors={['#8B5CF6', '#7C3AED']}
@@ -517,6 +537,8 @@ export function HomeScreen({ navigation }: Props) {
                       navigation.navigate('DrugDetail', { drugId: favId })
                     }
                     activeOpacity={0.7}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Abrir ficha de ${favDrug.nombre}`}
                   >
                     <View
                       style={[styles.recentAccent, { backgroundColor: fColor }]}
@@ -589,6 +611,8 @@ export function HomeScreen({ navigation }: Props) {
             style={styles.emergencyBanner}
             onPress={() => navigation.navigate('Especial')}
             activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={`Fármacos de emergencia: acceso rápido a ${emergencyDrugs.length} fármacos críticos`}
           >
             <LinearGradient
               colors={['#DC2626', '#991B1B']}
@@ -644,6 +668,8 @@ export function HomeScreen({ navigation }: Props) {
             }
             style={styles.footerEmail}
             activeOpacity={0.7}
+            accessibilityRole="link"
+            accessibilityLabel="Enviar correo de contacto"
           >
             <MaterialCommunityIcons
               name="email-outline"

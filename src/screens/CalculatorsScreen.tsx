@@ -1,6 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, StatusBar, Animated,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  StyleSheet,
+  StatusBar,
+  Animated,
 } from 'react-native';
 import type { ThemeColors } from '../utils/colors';
 import { neuCard } from '../utils/neumorphism';
@@ -11,25 +18,59 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
 
 // ─── Calculator Tabs ────────────────────────────────────────
-type CalcKey = 'dosis' | 'goteo' | 'imc' | 'bsa' | 'creatinina' | 'dilucion' | 'sodio'
-  | 'calcio' | 'anionGap' | 'osmolalidad' | 'qtc' | 'parkland' | 'holliday' | 'glasgow' | 'apache';
+type CalcKey =
+  | 'dosis'
+  | 'goteo'
+  | 'imc'
+  | 'bsa'
+  | 'creatinina'
+  | 'dilucion'
+  | 'sodio'
+  | 'calcio'
+  | 'anionGap'
+  | 'osmolalidad'
+  | 'qtc'
+  | 'parkland'
+  | 'holliday'
+  | 'glasgow'
+  | 'apache';
 
-const CALC_TABS: { key: CalcKey; label: string; icon: string; color: string }[] = [
+const CALC_TABS: {
+  key: CalcKey;
+  label: string;
+  icon: string;
+  color: string;
+}[] = [
   { key: 'dosis', label: 'Dosis', icon: 'pill', color: '#2563EB' },
   { key: 'goteo', label: 'Goteo IV', icon: 'water-outline', color: '#0891B2' },
   { key: 'imc', label: 'IMC', icon: 'ruler', color: '#059669' },
   { key: 'bsa', label: 'BSA', icon: 'baby-face-outline', color: '#7C3AED' },
   { key: 'creatinina', label: 'ClCr', icon: 'kidney', color: '#DC2626' },
-  { key: 'dilucion', label: 'Dilución', icon: 'flask-round-bottom-outline', color: '#D97706' },
+  {
+    key: 'dilucion',
+    label: 'Dilución',
+    icon: 'flask-round-bottom-outline',
+    color: '#D97706',
+  },
   { key: 'sodio', label: 'Na⁺', icon: 'test-tube', color: '#0F766E' },
   { key: 'calcio', label: 'Ca²⁺', icon: 'bone', color: '#B45309' },
-  { key: 'anionGap', label: 'Anion Gap', icon: 'lightning-bolt', color: '#7E22CE' },
+  {
+    key: 'anionGap',
+    label: 'Anion Gap',
+    icon: 'lightning-bolt',
+    color: '#7E22CE',
+  },
   { key: 'osmolalidad', label: 'Osm', icon: 'water-outline', color: '#0369A1' },
   { key: 'qtc', label: 'QTc', icon: 'heart-pulse', color: '#E11D48' },
   { key: 'parkland', label: 'Parkland', icon: 'fire', color: '#EA580C' },
   { key: 'holliday', label: 'Líquidos', icon: 'human-child', color: '#0D9488' },
   { key: 'glasgow', label: 'Glasgow', icon: 'brain', color: '#6366F1' },
-  { key: 'apache', label: 'APACHE', icon: 'hospital-box-outline', color: '#991B1B' },
+  {
+    key: 'apache',
+    label: 'APACHE',
+    icon: 'hospital-box-outline',
+    color: '#991B1B',
+  },
 ];
 
 // ─── Reusable Input Component ───────────────────────────────
@@ -62,13 +103,20 @@ function CalcInput({
         keyboardType="decimal-pad"
         placeholder={placeholder}
         placeholderTextColor={colors.textLight}
+        accessibilityLabel={unit ? `${label} en ${unit}` : label}
       />
     </View>
   );
 }
 
 // ─── Sex Toggle ─────────────────────────────────────────────
-function SexToggle({ value, onChange }: { value: 'M' | 'F'; onChange: (v: 'M' | 'F') => void }) {
+function SexToggle({
+  value,
+  onChange,
+}: {
+  value: 'M' | 'F';
+  onChange: (v: 'M' | 'F') => void;
+}) {
   const { colors } = useTheme();
   const rs = useResponsiveScale();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
@@ -79,19 +127,47 @@ function SexToggle({ value, onChange }: { value: 'M' | 'F'; onChange: (v: 'M' | 
         <TouchableOpacity
           style={[styles.toggleBtn, value === 'M' && styles.toggleBtnActiveM]}
           onPress={() => onChange('M')}
+          accessibilityRole="button"
+          accessibilityLabel="Sexo: hombre"
+          accessibilityState={{ selected: value === 'M' }}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <MaterialCommunityIcons name="gender-male" size={14} color={value === 'M' ? '#FFFFFF' : colors.textSecondary} />
-            <Text style={[styles.toggleBtnText, value === 'M' && styles.toggleBtnTextActive]}>Hombre</Text>
+            <MaterialCommunityIcons
+              name="gender-male"
+              size={14}
+              color={value === 'M' ? '#FFFFFF' : colors.textSecondary}
+            />
+            <Text
+              style={[
+                styles.toggleBtnText,
+                value === 'M' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Hombre
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.toggleBtn, value === 'F' && styles.toggleBtnActiveF]}
           onPress={() => onChange('F')}
+          accessibilityRole="button"
+          accessibilityLabel="Sexo: mujer"
+          accessibilityState={{ selected: value === 'F' }}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
-            <MaterialCommunityIcons name="gender-female" size={14} color={value === 'F' ? '#FFFFFF' : colors.textSecondary} />
-            <Text style={[styles.toggleBtnText, value === 'F' && styles.toggleBtnTextActive]}>Mujer</Text>
+            <MaterialCommunityIcons
+              name="gender-female"
+              size={14}
+              color={value === 'F' ? '#FFFFFF' : colors.textSecondary}
+            />
+            <Text
+              style={[
+                styles.toggleBtnText,
+                value === 'F' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Mujer
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -121,22 +197,39 @@ function ResultDisplay({
   if (!value) return null;
   return (
     <View style={styles.resultContainer}>
-      <View style={[styles.resultBox, { backgroundColor: color + '12', borderColor: color + '40' }]}>
+      <View
+        style={[
+          styles.resultBox,
+          { backgroundColor: color + '12', borderColor: color + '40' },
+        ]}
+      >
         <Text style={styles.resultLabel}>RESULTADO</Text>
         <View style={styles.resultValueRow}>
           <Text style={[styles.resultValue, { color }]}>{value}</Text>
           <Text style={[styles.resultUnit, { color }]}>{unit}</Text>
         </View>
         {interpretation && (
-          <View style={[styles.interpBadge, { backgroundColor: (interpColor || color) + '20' }]}>
-            <Text style={[styles.interpText, { color: interpColor || color }]}>{interpretation}</Text>
+          <View
+            style={[
+              styles.interpBadge,
+              { backgroundColor: (interpColor || color) + '20' },
+            ]}
+          >
+            <Text style={[styles.interpText, { color: interpColor || color }]}>
+              {interpretation}
+            </Text>
           </View>
         )}
       </View>
       {warning && (
         <View style={styles.warningBox}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-            <MaterialCommunityIcons name="alert-outline" size={16} color="#D97706" style={{ marginRight: 6, marginTop: 2 }} />
+            <MaterialCommunityIcons
+              name="alert-outline"
+              size={16}
+              color="#D97706"
+              style={{ marginRight: 6, marginTop: 2 }}
+            />
             <Text style={[styles.warningText, { flex: 1 }]}>{warning}</Text>
           </View>
         </View>
@@ -159,26 +252,63 @@ function DosisCalc() {
   const f = parseFloat(frecuencia.replace(',', '.'));
 
   const totalDosis = !isNaN(p) && !isNaN(d) ? (p * d).toFixed(1) : null;
-  const dosisPorToma = totalDosis && !isNaN(f) && f > 0 ? (parseFloat(totalDosis) / f).toFixed(1) : null;
+  const dosisPorToma =
+    totalDosis && !isNaN(f) && f > 0
+      ? (parseFloat(totalDosis) / f).toFixed(1)
+      : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="pill" size={22} color="#2563EB" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Dosis por Peso Corporal</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="pill"
+          size={22}
+          color="#2563EB"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Dosis por Peso Corporal
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>Dosis Total = Peso (kg) x Dosis (mg/kg)</Text>
-      <CalcInput label="Peso del paciente" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="Dosis prescrita" unit="mg/kg" value={dosisPorKg} onChangeText={setDosisPorKg} />
-      <CalcInput label="Frecuencia diaria (opcional)" unit="veces/día" value={frecuencia} onChangeText={setFrecuencia} />
+      <Text style={styles.calcFormula}>
+        Dosis Total = Peso (kg) x Dosis (mg/kg)
+      </Text>
+      <CalcInput
+        label="Peso del paciente"
+        unit="kg"
+        value={peso}
+        onChangeText={setPeso}
+      />
+      <CalcInput
+        label="Dosis prescrita"
+        unit="mg/kg"
+        value={dosisPorKg}
+        onChangeText={setDosisPorKg}
+      />
+      <CalcInput
+        label="Frecuencia diaria (opcional)"
+        unit="veces/día"
+        value={frecuencia}
+        onChangeText={setFrecuencia}
+      />
       <ResultDisplay value={totalDosis} unit="mg total/día" color="#2563EB" />
       {dosisPorToma && (
         <View style={[styles.extraResult, { borderColor: '#2563EB30' }]}>
           <Text style={styles.extraResultLabel}>Dosis por toma:</Text>
-          <Text style={[styles.extraResultValue, { color: '#2563EB' }]}>{dosisPorToma} mg</Text>
+          <Text style={[styles.extraResultValue, { color: '#2563EB' }]}>
+            {dosisPorToma} mg
+          </Text>
         </View>
       )}
-      <ClearButton onPress={() => { setPeso(''); setDosisPorKg(''); setFrecuencia(''); }} />
+      <ClearButton
+        onPress={() => {
+          setPeso('');
+          setDosisPorKg('');
+          setFrecuencia('');
+        }}
+      />
     </View>
   );
 }
@@ -197,41 +327,90 @@ function GoteoCalc() {
   const t = parseFloat(tiempo.replace(',', '.'));
   const fg = parseInt(factorGoteo, 10);
 
-  const tiempoMin = !isNaN(t) && t > 0
-    ? (tiempoUnit === 'horas' ? t * 60 : t)
-    : NaN;
-  const tiempoH = !isNaN(t) && t > 0
-    ? (tiempoUnit === 'horas' ? t : t / 60)
-    : NaN;
+  const tiempoMin =
+    !isNaN(t) && t > 0 ? (tiempoUnit === 'horas' ? t * 60 : t) : NaN;
+  const tiempoH =
+    !isNaN(t) && t > 0 ? (tiempoUnit === 'horas' ? t : t / 60) : NaN;
 
-  const gotasMin = !isNaN(v) && !isNaN(tiempoMin) && tiempoMin > 0
-    ? ((v * fg) / tiempoMin).toFixed(1) : null;
-  const mlH = !isNaN(v) && !isNaN(tiempoH) && tiempoH > 0
-    ? (v / tiempoH).toFixed(1) : null;
+  const gotasMin =
+    !isNaN(v) && !isNaN(tiempoMin) && tiempoMin > 0
+      ? ((v * fg) / tiempoMin).toFixed(1)
+      : null;
+  const mlH =
+    !isNaN(v) && !isNaN(tiempoH) && tiempoH > 0
+      ? (v / tiempoH).toFixed(1)
+      : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="water-outline" size={22} color="#0891B2" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Velocidad de Goteo IV</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="water-outline"
+          size={22}
+          color="#0891B2"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Velocidad de Goteo IV
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>Gotas/min = (Vol x Factor) / Tiempo(min)</Text>
-      <CalcInput label="Volumen total" unit="mL" value={volumen} onChangeText={setVolumen} />
-      <CalcInput label="Tiempo de infusión" unit={tiempoUnit} value={tiempo} onChangeText={setTiempo} />
+      <Text style={styles.calcFormula}>
+        Gotas/min = (Vol x Factor) / Tiempo(min)
+      </Text>
+      <CalcInput
+        label="Volumen total"
+        unit="mL"
+        value={volumen}
+        onChangeText={setVolumen}
+      />
+      <CalcInput
+        label="Tiempo de infusión"
+        unit={tiempoUnit}
+        value={tiempo}
+        onChangeText={setTiempo}
+      />
       <View style={styles.inputRow}>
         <Text style={styles.inputLabel}>Unidad de tiempo</Text>
         <View style={styles.toggleRow}>
           <TouchableOpacity
-            style={[styles.toggleBtn, tiempoUnit === 'horas' && { backgroundColor: '#0891B2', borderColor: '#0891B2' }]}
+            style={[
+              styles.toggleBtn,
+              tiempoUnit === 'horas' && {
+                backgroundColor: '#0891B2',
+                borderColor: '#0891B2',
+              },
+            ]}
             onPress={() => setTiempoUnit('horas')}
           >
-            <Text style={[styles.toggleBtnText, tiempoUnit === 'horas' && styles.toggleBtnTextActive]}>Horas</Text>
+            <Text
+              style={[
+                styles.toggleBtnText,
+                tiempoUnit === 'horas' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Horas
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.toggleBtn, tiempoUnit === 'min' && { backgroundColor: '#0891B2', borderColor: '#0891B2' }]}
+            style={[
+              styles.toggleBtn,
+              tiempoUnit === 'min' && {
+                backgroundColor: '#0891B2',
+                borderColor: '#0891B2',
+              },
+            ]}
             onPress={() => setTiempoUnit('min')}
           >
-            <Text style={[styles.toggleBtnText, tiempoUnit === 'min' && styles.toggleBtnTextActive]}>Minutos</Text>
+            <Text
+              style={[
+                styles.toggleBtnText,
+                tiempoUnit === 'min' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Minutos
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -239,16 +418,42 @@ function GoteoCalc() {
         <Text style={styles.inputLabel}>Equipo de goteo</Text>
         <View style={styles.toggleRow}>
           <TouchableOpacity
-            style={[styles.toggleBtn, factorGoteo === '20' && { backgroundColor: '#0891B2', borderColor: '#0891B2' }]}
+            style={[
+              styles.toggleBtn,
+              factorGoteo === '20' && {
+                backgroundColor: '#0891B2',
+                borderColor: '#0891B2',
+              },
+            ]}
             onPress={() => setFactorGoteo('20')}
           >
-            <Text style={[styles.toggleBtnText, factorGoteo === '20' && styles.toggleBtnTextActive]}>Macro (20)</Text>
+            <Text
+              style={[
+                styles.toggleBtnText,
+                factorGoteo === '20' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Macro (20)
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.toggleBtn, factorGoteo === '60' && { backgroundColor: '#0891B2', borderColor: '#0891B2' }]}
+            style={[
+              styles.toggleBtn,
+              factorGoteo === '60' && {
+                backgroundColor: '#0891B2',
+                borderColor: '#0891B2',
+              },
+            ]}
             onPress={() => setFactorGoteo('60')}
           >
-            <Text style={[styles.toggleBtnText, factorGoteo === '60' && styles.toggleBtnTextActive]}>Micro (60)</Text>
+            <Text
+              style={[
+                styles.toggleBtnText,
+                factorGoteo === '60' && styles.toggleBtnTextActive,
+              ]}
+            >
+              Micro (60)
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -256,10 +461,17 @@ function GoteoCalc() {
       {mlH && (
         <View style={[styles.extraResult, { borderColor: '#0891B230' }]}>
           <Text style={styles.extraResultLabel}>Velocidad en bomba:</Text>
-          <Text style={[styles.extraResultValue, { color: '#0891B2' }]}>{mlH} mL/h</Text>
+          <Text style={[styles.extraResultValue, { color: '#0891B2' }]}>
+            {mlH} mL/h
+          </Text>
         </View>
       )}
-      <ClearButton onPress={() => { setVolumen(''); setTiempo(''); }} />
+      <ClearButton
+        onPress={() => {
+          setVolumen('');
+          setTiempo('');
+        }}
+      />
     </View>
   );
 }
@@ -285,19 +497,34 @@ function IMCCalc() {
   const t = parseFloat(talla.replace(',', '.'));
   const tallaM = t > 3 ? t / 100 : t; // auto-detect cm vs m
 
-  const imc = !isNaN(p) && !isNaN(tallaM) && tallaM > 0 ? p / (tallaM * tallaM) : NaN;
+  const imc =
+    !isNaN(p) && !isNaN(tallaM) && tallaM > 0 ? p / (tallaM * tallaM) : NaN;
   const imcStr = !isNaN(imc) ? imc.toFixed(1) : null;
   const cat = !isNaN(imc) ? getIMCCategory(imc) : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="ruler" size={22} color="#059669" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Índice de Masa Corporal</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="ruler"
+          size={22}
+          color="#059669"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Índice de Masa Corporal
+        </Text>
       </View>
       <Text style={styles.calcFormula}>IMC = Peso (kg) / Talla² (m²)</Text>
       <CalcInput label="Peso" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="Talla" unit="m o cm" value={talla} onChangeText={setTalla} />
+      <CalcInput
+        label="Talla"
+        unit="m o cm"
+        value={talla}
+        onChangeText={setTalla}
+      />
       <ResultDisplay
         value={imcStr}
         unit="kg/m²"
@@ -310,21 +537,63 @@ function IMCCalc() {
           <Text style={styles.scaleTitle}>Clasificación OMS</Text>
           {[
             { label: '< 18.5 Bajo peso', color: '#3B82F6', active: imc < 18.5 },
-            { label: '18.5-24.9 Normal', color: '#16A34A', active: imc >= 18.5 && imc < 25 },
-            { label: '25-29.9 Sobrepeso', color: '#F59E0B', active: imc >= 25 && imc < 30 },
-            { label: '30-34.9 Obesidad I', color: '#EA580C', active: imc >= 30 && imc < 35 },
-            { label: '35-39.9 Obesidad II', color: '#DC2626', active: imc >= 35 && imc < 40 },
+            {
+              label: '18.5-24.9 Normal',
+              color: '#16A34A',
+              active: imc >= 18.5 && imc < 25,
+            },
+            {
+              label: '25-29.9 Sobrepeso',
+              color: '#F59E0B',
+              active: imc >= 25 && imc < 30,
+            },
+            {
+              label: '30-34.9 Obesidad I',
+              color: '#EA580C',
+              active: imc >= 30 && imc < 35,
+            },
+            {
+              label: '35-39.9 Obesidad II',
+              color: '#DC2626',
+              active: imc >= 35 && imc < 40,
+            },
             { label: '≥ 40 Obesidad III', color: '#991B1B', active: imc >= 40 },
           ].map((item, i) => (
-            <View key={i} style={[styles.scaleRow, item.active && { backgroundColor: item.color + '18' }]}>
-              <View style={[styles.scaleDot, { backgroundColor: item.color }]} />
-              <Text style={[styles.scaleLabel, item.active && { color: item.color, fontWeight: '700' }]}>{item.label}</Text>
-              {item.active && <MaterialCommunityIcons name="chevron-left" size={14} color={item.color} />}
+            <View
+              key={i}
+              style={[
+                styles.scaleRow,
+                item.active && { backgroundColor: item.color + '18' },
+              ]}
+            >
+              <View
+                style={[styles.scaleDot, { backgroundColor: item.color }]}
+              />
+              <Text
+                style={[
+                  styles.scaleLabel,
+                  item.active && { color: item.color, fontWeight: '700' },
+                ]}
+              >
+                {item.label}
+              </Text>
+              {item.active && (
+                <MaterialCommunityIcons
+                  name="chevron-left"
+                  size={14}
+                  color={item.color}
+                />
+              )}
             </View>
           ))}
         </View>
       )}
-      <ClearButton onPress={() => { setPeso(''); setTalla(''); }} />
+      <ClearButton
+        onPress={() => {
+          setPeso('');
+          setTalla('');
+        }}
+      />
     </View>
   );
 }
@@ -342,33 +611,68 @@ function BSACalc() {
   const t = parseFloat(talla.replace(',', '.'));
   const da = parseFloat(dosisAdulto.replace(',', '.'));
 
-  const bsa = !isNaN(p) && !isNaN(t) && p > 0 && t > 0
-    ? Math.sqrt((p * t) / 3600)
-    : NaN;
+  const bsa =
+    !isNaN(p) && !isNaN(t) && p > 0 && t > 0 ? Math.sqrt((p * t) / 3600) : NaN;
   const bsaStr = !isNaN(bsa) ? bsa.toFixed(3) : null;
-  const dosisPed = !isNaN(bsa) && !isNaN(da) && da > 0
-    ? ((bsa / 1.73) * da).toFixed(1) : null;
+  const dosisPed =
+    !isNaN(bsa) && !isNaN(da) && da > 0 ? ((bsa / 1.73) * da).toFixed(1) : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="baby-face-outline" size={22} color="#7C3AED" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Superficie Corporal (Mosteller)</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="baby-face-outline"
+          size={22}
+          color="#7C3AED"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Superficie Corporal (Mosteller)
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>BSA = √((Peso kg x Talla cm) / 3600)</Text>
+      <Text style={styles.calcFormula}>
+        BSA = √((Peso kg x Talla cm) / 3600)
+      </Text>
       <CalcInput label="Peso" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="Talla" unit="cm" value={talla} onChangeText={setTalla} />
+      <CalcInput
+        label="Talla"
+        unit="cm"
+        value={talla}
+        onChangeText={setTalla}
+      />
       <ResultDisplay value={bsaStr} unit="m²" color="#7C3AED" />
       <View style={styles.divider} />
-      <Text style={styles.calcSubtitle}>Dosis pediátrica por BSA (opcional)</Text>
-      <Text style={styles.calcSubFormula}>Dosis ped = (BSA / 1.73) x Dosis adulto</Text>
-      <CalcInput label="Dosis adulto" unit="mg" value={dosisAdulto} onChangeText={setDosisAdulto} />
+      <Text style={styles.calcSubtitle}>
+        Dosis pediátrica por BSA (opcional)
+      </Text>
+      <Text style={styles.calcSubFormula}>
+        Dosis ped = (BSA / 1.73) x Dosis adulto
+      </Text>
+      <CalcInput
+        label="Dosis adulto"
+        unit="mg"
+        value={dosisAdulto}
+        onChangeText={setDosisAdulto}
+      />
       {dosisPed && (
-        <ResultDisplay value={dosisPed} unit="mg (pediátrica)" color="#7C3AED"
-          interpretation={`BSA ${bsaStr} m² = ${((bsa / 1.73) * 100).toFixed(0)}% de la dosis adulta`}
+        <ResultDisplay
+          value={dosisPed}
+          unit="mg (pediátrica)"
+          color="#7C3AED"
+          interpretation={`BSA ${bsaStr} m² = ${((bsa / 1.73) * 100).toFixed(
+            0,
+          )}% de la dosis adulta`}
         />
       )}
-      <ClearButton onPress={() => { setPeso(''); setTalla(''); setDosisAdulto(''); }} />
+      <ClearButton
+        onPress={() => {
+          setPeso('');
+          setTalla('');
+          setDosisAdulto('');
+        }}
+      />
     </View>
   );
 }
@@ -376,9 +680,12 @@ function BSACalc() {
 // ─── 5. Aclaramiento de Creatinina ─────────────────────────
 function getRenalStage(clcr: number): { label: string; color: string } {
   if (clcr >= 90) return { label: 'Función renal normal', color: '#16A34A' };
-  if (clcr >= 60) return { label: 'Insuficiencia renal leve', color: '#84CC16' };
-  if (clcr >= 30) return { label: 'Insuficiencia renal moderada', color: '#F59E0B' };
-  if (clcr >= 15) return { label: 'Insuficiencia renal grave', color: '#DC2626' };
+  if (clcr >= 60)
+    return { label: 'Insuficiencia renal leve', color: '#84CC16' };
+  if (clcr >= 30)
+    return { label: 'Insuficiencia renal moderada', color: '#F59E0B' };
+  if (clcr >= 15)
+    return { label: 'Insuficiencia renal grave', color: '#DC2626' };
   return { label: 'Enfermedad renal terminal', color: '#991B1B' };
 }
 
@@ -395,23 +702,42 @@ function CreatininaCalc() {
   const p = parseFloat(peso.replace(',', '.'));
   const cr = parseFloat(creatinina.replace(',', '.'));
 
-  const clcr = !isNaN(e) && !isNaN(p) && !isNaN(cr) && cr > 0
-    ? (((140 - e) * p) / (72 * cr)) * (sexo === 'F' ? 0.85 : 1)
-    : NaN;
+  const clcr =
+    !isNaN(e) && !isNaN(p) && !isNaN(cr) && cr > 0
+      ? (((140 - e) * p) / (72 * cr)) * (sexo === 'F' ? 0.85 : 1)
+      : NaN;
   const clcrStr = !isNaN(clcr) && clcr > 0 ? clcr.toFixed(1) : null;
   const stage = !isNaN(clcr) && clcr > 0 ? getRenalStage(clcr) : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="kidney" size={22} color="#DC2626" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Aclaramiento de Creatinina</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="kidney"
+          size={22}
+          color="#DC2626"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Aclaramiento de Creatinina
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>ClCr = ((140 - Edad) x Peso) / (72 x Cr)</Text>
-      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>x 0.85 en mujeres (Cockcroft-Gault)</Text>
+      <Text style={styles.calcFormula}>
+        ClCr = ((140 - Edad) x Peso) / (72 x Cr)
+      </Text>
+      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>
+        x 0.85 en mujeres (Cockcroft-Gault)
+      </Text>
       <CalcInput label="Edad" unit="años" value={edad} onChangeText={setEdad} />
       <CalcInput label="Peso" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="Creatinina sérica" unit="mg/dL" value={creatinina} onChangeText={setCreatinina} />
+      <CalcInput
+        label="Creatinina sérica"
+        unit="mg/dL"
+        value={creatinina}
+        onChangeText={setCreatinina}
+      />
       <SexToggle value={sexo} onChange={setSexo} />
       <ResultDisplay
         value={clcrStr}
@@ -425,20 +751,59 @@ function CreatininaCalc() {
           <Text style={styles.scaleTitle}>Estadios de función renal</Text>
           {[
             { label: '≥ 90 Normal', color: '#16A34A', active: clcr >= 90 },
-            { label: '60-89 Leve', color: '#84CC16', active: clcr >= 60 && clcr < 90 },
-            { label: '30-59 Moderada', color: '#F59E0B', active: clcr >= 30 && clcr < 60 },
-            { label: '15-29 Grave', color: '#DC2626', active: clcr >= 15 && clcr < 30 },
+            {
+              label: '60-89 Leve',
+              color: '#84CC16',
+              active: clcr >= 60 && clcr < 90,
+            },
+            {
+              label: '30-59 Moderada',
+              color: '#F59E0B',
+              active: clcr >= 30 && clcr < 60,
+            },
+            {
+              label: '15-29 Grave',
+              color: '#DC2626',
+              active: clcr >= 15 && clcr < 30,
+            },
             { label: '< 15 Terminal', color: '#991B1B', active: clcr < 15 },
           ].map((item, i) => (
-            <View key={i} style={[styles.scaleRow, item.active && { backgroundColor: item.color + '18' }]}>
-              <View style={[styles.scaleDot, { backgroundColor: item.color }]} />
-              <Text style={[styles.scaleLabel, item.active && { color: item.color, fontWeight: '700' }]}>{item.label}</Text>
-              {item.active && <MaterialCommunityIcons name="chevron-left" size={14} color={item.color} />}
+            <View
+              key={i}
+              style={[
+                styles.scaleRow,
+                item.active && { backgroundColor: item.color + '18' },
+              ]}
+            >
+              <View
+                style={[styles.scaleDot, { backgroundColor: item.color }]}
+              />
+              <Text
+                style={[
+                  styles.scaleLabel,
+                  item.active && { color: item.color, fontWeight: '700' },
+                ]}
+              >
+                {item.label}
+              </Text>
+              {item.active && (
+                <MaterialCommunityIcons
+                  name="chevron-left"
+                  size={14}
+                  color={item.color}
+                />
+              )}
             </View>
           ))}
         </View>
       )}
-      <ClearButton onPress={() => { setEdad(''); setPeso(''); setCreatinina(''); }} />
+      <ClearButton
+        onPress={() => {
+          setEdad('');
+          setPeso('');
+          setCreatinina('');
+        }}
+      />
     </View>
   );
 }
@@ -456,37 +821,77 @@ function DilucionCalc() {
   const V1 = parseFloat(v1.replace(',', '.'));
   const C2 = parseFloat(c2.replace(',', '.'));
 
-  const v2 = !isNaN(C1) && !isNaN(V1) && !isNaN(C2) && C2 > 0
-    ? (C1 * V1) / C2 : NaN;
+  const v2 =
+    !isNaN(C1) && !isNaN(V1) && !isNaN(C2) && C2 > 0 ? (C1 * V1) / C2 : NaN;
   const v2Str = !isNaN(v2) ? v2.toFixed(1) : null;
   const diluyente = !isNaN(v2) && !isNaN(V1) ? (v2 - V1).toFixed(1) : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="flask-round-bottom-outline" size={22} color="#D97706" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Dilución de Fármacos</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="flask-round-bottom-outline"
+          size={22}
+          color="#D97706"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Dilución de Fármacos
+        </Text>
       </View>
       <Text style={styles.calcFormula}>C1 x V1 = C2 x V2</Text>
-      <CalcInput label="Concentración inicial (C1)" unit="mg/mL" value={c1} onChangeText={setC1} />
-      <CalcInput label="Volumen inicial (V1)" unit="mL" value={v1} onChangeText={setV1} />
-      <CalcInput label="Concentración deseada (C2)" unit="mg/mL" value={c2} onChangeText={setC2} />
+      <CalcInput
+        label="Concentración inicial (C1)"
+        unit="mg/mL"
+        value={c1}
+        onChangeText={setC1}
+      />
+      <CalcInput
+        label="Volumen inicial (V1)"
+        unit="mL"
+        value={v1}
+        onChangeText={setV1}
+      />
+      <CalcInput
+        label="Concentración deseada (C2)"
+        unit="mg/mL"
+        value={c2}
+        onChangeText={setC2}
+      />
       <ResultDisplay value={v2Str} unit="mL (volumen final)" color="#D97706" />
       {diluyente && parseFloat(diluyente) > 0 && (
         <View style={[styles.extraResult, { borderColor: '#D9770630' }]}>
           <Text style={styles.extraResultLabel}>Diluyente a agregar:</Text>
-          <Text style={[styles.extraResultValue, { color: '#D97706' }]}>{diluyente} mL</Text>
+          <Text style={[styles.extraResultValue, { color: '#D97706' }]}>
+            {diluyente} mL
+          </Text>
         </View>
       )}
       {diluyente && parseFloat(diluyente) <= 0 && (
         <View style={styles.warningBox}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-            <MaterialCommunityIcons name="alert-outline" size={16} color="#D97706" style={{ marginRight: 6, marginTop: 2 }} />
-            <Text style={[styles.warningText, { flex: 1 }]}>La concentración deseada es mayor o igual a la inicial. No se requiere dilución.</Text>
+            <MaterialCommunityIcons
+              name="alert-outline"
+              size={16}
+              color="#D97706"
+              style={{ marginRight: 6, marginTop: 2 }}
+            />
+            <Text style={[styles.warningText, { flex: 1 }]}>
+              La concentración deseada es mayor o igual a la inicial. No se
+              requiere dilución.
+            </Text>
           </View>
         </View>
       )}
-      <ClearButton onPress={() => { setC1(''); setV1(''); setC2(''); }} />
+      <ClearButton
+        onPress={() => {
+          setC1('');
+          setV1('');
+          setC2('');
+        }}
+      />
     </View>
   );
 }
@@ -506,10 +911,13 @@ function SodioCalc() {
   const naD = parseFloat(naDeseado.replace(',', '.'));
 
   const act = !isNaN(p) ? p * (sexo === 'F' ? 0.5 : 0.6) : NaN;
-  const deficit = !isNaN(act) && !isNaN(naA) && !isNaN(naD)
-    ? act * (naD - naA) : NaN;
+  const deficit =
+    !isNaN(act) && !isNaN(naA) && !isNaN(naD) ? act * (naD - naA) : NaN;
   const deficitStr = !isNaN(deficit) ? Math.abs(deficit).toFixed(0) : null;
-  const deficitUnit = deficit < 0 ? 'mEq (exceso — aportar agua libre)' : 'mEq (déficit a reponer)';
+  const deficitUnit =
+    deficit < 0
+      ? 'mEq (exceso — aportar agua libre)'
+      : 'mEq (déficit a reponer)';
   const actStr = !isNaN(act) ? act.toFixed(1) : null;
 
   const diff = !isNaN(naA) && !isNaN(naD) ? naD - naA : 0;
@@ -517,26 +925,57 @@ function SodioCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="test-tube" size={22} color="#0F766E" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Déficit de Sodio</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="test-tube"
+          size={22}
+          color="#0F766E"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Déficit de Sodio
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>Déficit Na = ACT x (Na deseado - Na actual)</Text>
-      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>ACT = Peso x 0.6 (H) o 0.5 (M)</Text>
+      <Text style={styles.calcFormula}>
+        Déficit Na = ACT x (Na deseado - Na actual)
+      </Text>
+      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>
+        ACT = Peso x 0.6 (H) o 0.5 (M)
+      </Text>
       <CalcInput label="Peso" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="Na⁺ actual" unit="mEq/L" value={naActual} onChangeText={setNaActual} />
-      <CalcInput label="Na⁺ deseado" unit="mEq/L" value={naDeseado} onChangeText={setNaDeseado} />
+      <CalcInput
+        label="Na⁺ actual"
+        unit="mEq/L"
+        value={naActual}
+        onChangeText={setNaActual}
+      />
+      <CalcInput
+        label="Na⁺ deseado"
+        unit="mEq/L"
+        value={naDeseado}
+        onChangeText={setNaDeseado}
+      />
       <SexToggle value={sexo} onChange={setSexo} />
       <ResultDisplay
         value={deficitStr}
         unit={deficitUnit}
         color="#0F766E"
         interpretation={actStr ? `ACT = ${actStr} L` : undefined}
-        warning={showWarning
-          ? 'No corregir Na más de 8-10 mEq/L en 24 horas. Riesgo de mielinólisis pontina (hipoNa) o edema cerebral (hiperNa). Monitorizar Na cada 4-6 h.'
-          : undefined}
+        warning={
+          showWarning
+            ? 'No corregir Na más de 8-10 mEq/L en 24 horas. Riesgo de mielinólisis pontina (hipoNa) o edema cerebral (hiperNa). Monitorizar Na cada 4-6 h.'
+            : undefined
+        }
       />
-      <ClearButton onPress={() => { setPeso(''); setNaActual(''); setNaDeseado(''); }} />
+      <ClearButton
+        onPress={() => {
+          setPeso('');
+          setNaActual('');
+          setNaDeseado('');
+        }}
+      />
     </View>
   );
 }
@@ -563,16 +1002,47 @@ function CalcioCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="bone" size={22} color="#B45309" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Calcio Corregido por Albúmina</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="bone"
+          size={22}
+          color="#B45309"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Calcio Corregido por Albúmina
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>Ca corr = Ca + 0.8 × (4 - Albúmina)</Text>
-      <CalcInput label="Calcio sérico" unit="mg/dL" value={calcio} onChangeText={setCalcio} />
-      <CalcInput label="Albúmina sérica" unit="g/dL" value={albumina} onChangeText={setAlbumina} />
-      <ResultDisplay value={corrStr} unit="mg/dL" color={interp?.color || '#B45309'}
-        interpretation={interp?.label} interpColor={interp?.color} />
-      <ClearButton onPress={() => { setCalcio(''); setAlbumina(''); }} />
+      <Text style={styles.calcFormula}>
+        Ca corr = Ca + 0.8 × (4 - Albúmina)
+      </Text>
+      <CalcInput
+        label="Calcio sérico"
+        unit="mg/dL"
+        value={calcio}
+        onChangeText={setCalcio}
+      />
+      <CalcInput
+        label="Albúmina sérica"
+        unit="g/dL"
+        value={albumina}
+        onChangeText={setAlbumina}
+      />
+      <ResultDisplay
+        value={corrStr}
+        unit="mg/dL"
+        color={interp?.color || '#B45309'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+      />
+      <ClearButton
+        onPress={() => {
+          setCalcio('');
+          setAlbumina('');
+        }}
+      />
     </View>
   );
 }
@@ -601,18 +1071,57 @@ function AnionGapCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="lightning-bolt" size={22} color="#7E22CE" style={{ marginRight: 8 }} />
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="lightning-bolt"
+          size={22}
+          color="#7E22CE"
+          style={{ marginRight: 8 }}
+        />
         <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Anion Gap</Text>
       </View>
-      <Text style={styles.calcFormula}>AG = Na⁺ - (Cl⁻ + HCO₃⁻) · Normal: 8-12 mEq/L</Text>
-      <CalcInput label="Sodio (Na⁺)" unit="mEq/L" value={na} onChangeText={setNa} />
-      <CalcInput label="Cloro (Cl⁻)" unit="mEq/L" value={cl} onChangeText={setCl} />
-      <CalcInput label="Bicarbonato (HCO₃⁻)" unit="mEq/L" value={hco3} onChangeText={setHco3} />
-      <ResultDisplay value={agStr} unit="mEq/L" color={interp?.color || '#7E22CE'}
-        interpretation={interp?.label} interpColor={interp?.color}
-        warning={ag > 20 ? 'AG > 20: considerar cetoacidosis diabética, acidosis láctica, intoxicación (metanol, etilenglicol, salicilatos)' : undefined} />
-      <ClearButton onPress={() => { setNa(''); setCl(''); setHco3(''); }} />
+      <Text style={styles.calcFormula}>
+        AG = Na⁺ - (Cl⁻ + HCO₃⁻) · Normal: 8-12 mEq/L
+      </Text>
+      <CalcInput
+        label="Sodio (Na⁺)"
+        unit="mEq/L"
+        value={na}
+        onChangeText={setNa}
+      />
+      <CalcInput
+        label="Cloro (Cl⁻)"
+        unit="mEq/L"
+        value={cl}
+        onChangeText={setCl}
+      />
+      <CalcInput
+        label="Bicarbonato (HCO₃⁻)"
+        unit="mEq/L"
+        value={hco3}
+        onChangeText={setHco3}
+      />
+      <ResultDisplay
+        value={agStr}
+        unit="mEq/L"
+        color={interp?.color || '#7E22CE'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+        warning={
+          ag > 20
+            ? 'AG > 20: considerar cetoacidosis diabética, acidosis láctica, intoxicación (metanol, etilenglicol, salicilatos)'
+            : undefined
+        }
+      />
+      <ClearButton
+        onPress={() => {
+          setNa('');
+          setCl('');
+          setHco3('');
+        }}
+      />
     </View>
   );
 }
@@ -629,8 +1138,10 @@ function OsmCalc() {
   const naV = parseFloat(na.replace(',', '.'));
   const gluV = parseFloat(glu.replace(',', '.'));
   const bunV = parseFloat(bun.replace(',', '.'));
-  const osm = !isNaN(naV) && !isNaN(gluV) && !isNaN(bunV)
-    ? 2 * naV + gluV / 18 + bunV / 2.8 : NaN;
+  const osm =
+    !isNaN(naV) && !isNaN(gluV) && !isNaN(bunV)
+      ? 2 * naV + gluV / 18 + bunV / 2.8
+      : NaN;
   const osmStr = !isNaN(osm) ? osm.toFixed(0) : null;
 
   const getInterp = (v: number) => {
@@ -642,17 +1153,52 @@ function OsmCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="water-outline" size={22} color="#0369A1" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Osmolalidad Sérica Calculada</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="water-outline"
+          size={22}
+          color="#0369A1"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Osmolalidad Sérica Calculada
+        </Text>
       </View>
       <Text style={styles.calcFormula}>Osm = 2×Na + Glu/18 + BUN/2.8</Text>
-      <CalcInput label="Sodio (Na⁺)" unit="mEq/L" value={na} onChangeText={setNa} />
-      <CalcInput label="Glucosa" unit="mg/dL" value={glu} onChangeText={setGlu} />
-      <CalcInput label="BUN (Urea)" unit="mg/dL" value={bun} onChangeText={setBun} />
-      <ResultDisplay value={osmStr} unit="mOsm/kg" color={interp?.color || '#0369A1'}
-        interpretation={interp?.label} interpColor={interp?.color} />
-      <ClearButton onPress={() => { setNa(''); setGlu(''); setBun(''); }} />
+      <CalcInput
+        label="Sodio (Na⁺)"
+        unit="mEq/L"
+        value={na}
+        onChangeText={setNa}
+      />
+      <CalcInput
+        label="Glucosa"
+        unit="mg/dL"
+        value={glu}
+        onChangeText={setGlu}
+      />
+      <CalcInput
+        label="BUN (Urea)"
+        unit="mg/dL"
+        value={bun}
+        onChangeText={setBun}
+      />
+      <ResultDisplay
+        value={osmStr}
+        unit="mOsm/kg"
+        color={interp?.color || '#0369A1'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+      />
+      <ClearButton
+        onPress={() => {
+          setNa('');
+          setGlu('');
+          setBun('');
+        }}
+      />
     </View>
   );
 }
@@ -675,25 +1221,59 @@ function QTcCalc() {
   const getInterp = (v: number) => {
     const limit = sexo === 'M' ? 450 : 460;
     if (v <= limit) return { label: 'Normal', color: '#16A34A' };
-    if (v <= 500) return { label: 'Prolongado — monitorizar', color: '#F59E0B' };
+    if (v <= 500)
+      return { label: 'Prolongado — monitorizar', color: '#F59E0B' };
     return { label: 'Muy prolongado — riesgo de Torsades', color: '#DC2626' };
   };
   const interp = !isNaN(qtc) ? getInterp(qtc) : null;
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="heart-pulse" size={22} color="#E11D48" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Intervalo QTc (Bazett)</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="heart-pulse"
+          size={22}
+          color="#E11D48"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Intervalo QTc (Bazett)
+        </Text>
       </View>
       <Text style={styles.calcFormula}>QTc = QT / √(RR) donde RR = 60/FC</Text>
-      <CalcInput label="Intervalo QT" unit="ms" value={qt} onChangeText={setQt} />
-      <CalcInput label="Frecuencia cardíaca" unit="lpm" value={fc} onChangeText={setFc} />
+      <CalcInput
+        label="Intervalo QT"
+        unit="ms"
+        value={qt}
+        onChangeText={setQt}
+      />
+      <CalcInput
+        label="Frecuencia cardíaca"
+        unit="lpm"
+        value={fc}
+        onChangeText={setFc}
+      />
       <SexToggle value={sexo} onChange={setSexo} />
-      <ResultDisplay value={qtcStr} unit="ms" color={interp?.color || '#E11D48'}
-        interpretation={interp?.label} interpColor={interp?.color}
-        warning={qtc > 500 ? 'QTc > 500 ms: riesgo alto de arritmia ventricular (Torsade de Pointes). Revisar medicación y electrolitos.' : undefined} />
-      <ClearButton onPress={() => { setQt(''); setFc(''); }} />
+      <ResultDisplay
+        value={qtcStr}
+        unit="ms"
+        color={interp?.color || '#E11D48'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+        warning={
+          qtc > 500
+            ? 'QTc > 500 ms: riesgo alto de arritmia ventricular (Torsade de Pointes). Revisar medicación y electrolitos.'
+            : undefined
+        }
+      />
+      <ClearButton
+        onPress={() => {
+          setQt('');
+          setFc('');
+        }}
+      />
     </View>
   );
 }
@@ -716,33 +1296,75 @@ function ParklandCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="fire" size={22} color="#EA580C" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Fórmula de Parkland (Quemados)</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="fire"
+          size={22}
+          color="#EA580C"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Fórmula de Parkland (Quemados)
+        </Text>
       </View>
       <Text style={styles.calcFormula}>Volumen 24h = 4 × Peso (kg) × %SCQ</Text>
-      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>50% en primeras 8h, 50% en siguientes 16h (Ringer Lactato)</Text>
-      <CalcInput label="Peso del paciente" unit="kg" value={peso} onChangeText={setPeso} />
-      <CalcInput label="% Superficie Corporal Quemada" unit="%" value={scq} onChangeText={setScq} />
-      <ResultDisplay value={total24hStr} unit="mL en 24h" color="#EA580C"
-        warning={total24hStr ? 'Las 8 horas se cuentan desde la hora de la quemadura, NO desde la llegada al hospital. Si han pasado X horas, el 50% restante se administra en (8-X) horas.' : undefined} />
+      <Text style={[styles.calcFormula, { marginTop: 0, fontStyle: 'italic' }]}>
+        50% en primeras 8h, 50% en siguientes 16h (Ringer Lactato)
+      </Text>
+      <CalcInput
+        label="Peso del paciente"
+        unit="kg"
+        value={peso}
+        onChangeText={setPeso}
+      />
+      <CalcInput
+        label="% Superficie Corporal Quemada"
+        unit="%"
+        value={scq}
+        onChangeText={setScq}
+      />
+      <ResultDisplay
+        value={total24hStr}
+        unit="mL en 24h"
+        color="#EA580C"
+        warning={
+          total24hStr
+            ? 'Las 8 horas se cuentan desde la hora de la quemadura, NO desde la llegada al hospital. Si han pasado X horas, el 50% restante se administra en (8-X) horas.'
+            : undefined
+        }
+      />
       {first8h && (
         <>
           <View style={[styles.extraResult, { borderColor: '#EA580C30' }]}>
             <Text style={styles.extraResultLabel}>Primeras 8 horas:</Text>
-            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>{first8h} mL</Text>
+            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>
+              {first8h} mL
+            </Text>
           </View>
           <View style={[styles.extraResult, { borderColor: '#EA580C30' }]}>
-            <Text style={styles.extraResultLabel}>Velocidad (si 0h transcurridas):</Text>
-            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>{rateFirst} mL/h</Text>
+            <Text style={styles.extraResultLabel}>
+              Velocidad (si 0h transcurridas):
+            </Text>
+            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>
+              {rateFirst} mL/h
+            </Text>
           </View>
           <View style={[styles.extraResult, { borderColor: '#EA580C30' }]}>
             <Text style={styles.extraResultLabel}>Siguientes 16 horas:</Text>
-            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>{next16h} mL</Text>
+            <Text style={[styles.extraResultValue, { color: '#EA580C' }]}>
+              {next16h} mL
+            </Text>
           </View>
         </>
       )}
-      <ClearButton onPress={() => { setPeso(''); setScq(''); }} />
+      <ClearButton
+        onPress={() => {
+          setPeso('');
+          setScq('');
+        }}
+      />
     </View>
   );
 }
@@ -766,19 +1388,39 @@ function HollidayCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="human-child" size={22} color="#0D9488" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Holliday-Segar (Líquidos de Mantenimiento)</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="human-child"
+          size={22}
+          color="#0D9488"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Holliday-Segar (Líquidos de Mantenimiento)
+        </Text>
       </View>
       <Text style={styles.calcFormula}>≤10 kg: 100 mL/kg/día</Text>
-      <Text style={[styles.calcFormula, { marginTop: 0 }]}>11-20 kg: 1000 + 50 mL/kg por cada kg &gt; 10</Text>
-      <Text style={[styles.calcFormula, { marginTop: 0 }]}>&gt;20 kg: 1500 + 20 mL/kg por cada kg &gt; 20</Text>
-      <CalcInput label="Peso del paciente" unit="kg" value={peso} onChangeText={setPeso} />
+      <Text style={[styles.calcFormula, { marginTop: 0 }]}>
+        11-20 kg: 1000 + 50 mL/kg por cada kg &gt; 10
+      </Text>
+      <Text style={[styles.calcFormula, { marginTop: 0 }]}>
+        &gt;20 kg: 1500 + 20 mL/kg por cada kg &gt; 20
+      </Text>
+      <CalcInput
+        label="Peso del paciente"
+        unit="kg"
+        value={peso}
+        onChangeText={setPeso}
+      />
       <ResultDisplay value={mlDayStr} unit="mL/día" color="#0D9488" />
       {mlHrStr && (
         <View style={[styles.extraResult, { borderColor: '#0D948830' }]}>
           <Text style={styles.extraResultLabel}>Velocidad de infusión:</Text>
-          <Text style={[styles.extraResultValue, { color: '#0D9488' }]}>{mlHrStr} mL/h</Text>
+          <Text style={[styles.extraResultValue, { color: '#0D9488' }]}>
+            {mlHrStr} mL/h
+          </Text>
         </View>
       )}
       <ClearButton onPress={() => setPeso('')} />
@@ -796,21 +1438,31 @@ function GlasgowCalc() {
   const [motor, setMotor] = useState<number | null>(null);
 
   const ocularOpts = [
-    { value: 4, label: 'Espontánea' }, { value: 3, label: 'A la voz' },
-    { value: 2, label: 'Al dolor' }, { value: 1, label: 'Ninguna' },
+    { value: 4, label: 'Espontánea' },
+    { value: 3, label: 'A la voz' },
+    { value: 2, label: 'Al dolor' },
+    { value: 1, label: 'Ninguna' },
   ];
   const verbalOpts = [
-    { value: 5, label: 'Orientada' }, { value: 4, label: 'Confusa' },
-    { value: 3, label: 'Palabras inapropiadas' }, { value: 2, label: 'Sonidos incomprensibles' },
+    { value: 5, label: 'Orientada' },
+    { value: 4, label: 'Confusa' },
+    { value: 3, label: 'Palabras inapropiadas' },
+    { value: 2, label: 'Sonidos incomprensibles' },
     { value: 1, label: 'Ninguna' },
   ];
   const motorOpts = [
-    { value: 6, label: 'Obedece órdenes' }, { value: 5, label: 'Localiza dolor' },
-    { value: 4, label: 'Retira al dolor' }, { value: 3, label: 'Flexión anormal' },
-    { value: 2, label: 'Extensión anormal' }, { value: 1, label: 'Ninguna' },
+    { value: 6, label: 'Obedece órdenes' },
+    { value: 5, label: 'Localiza dolor' },
+    { value: 4, label: 'Retira al dolor' },
+    { value: 3, label: 'Flexión anormal' },
+    { value: 2, label: 'Extensión anormal' },
+    { value: 1, label: 'Ninguna' },
   ];
 
-  const total = ocular !== null && verbal !== null && motor !== null ? ocular + verbal + motor : null;
+  const total =
+    ocular !== null && verbal !== null && motor !== null
+      ? ocular + verbal + motor
+      : null;
   const totalStr = total !== null ? total.toString() : null;
 
   const getInterp = (v: number) => {
@@ -820,9 +1472,14 @@ function GlasgowCalc() {
   };
   const interp = total !== null ? getInterp(total) : null;
 
-  const descripcion = total !== null
-    ? `O${ocular}V${verbal}M${motor} — Ocular: ${ocularOpts.find(o => o.value === ocular)?.label}, Verbal: ${verbalOpts.find(o => o.value === verbal)?.label}, Motor: ${motorOpts.find(o => o.value === motor)?.label}`
-    : null;
+  const descripcion =
+    total !== null
+      ? `O${ocular}V${verbal}M${motor} — Ocular: ${
+          ocularOpts.find(o => o.value === ocular)?.label
+        }, Verbal: ${verbalOpts.find(o => o.value === verbal)?.label}, Motor: ${
+          motorOpts.find(o => o.value === motor)?.label
+        }`
+      : null;
 
   const renderGroup = (
     title: string,
@@ -833,33 +1490,78 @@ function GlasgowCalc() {
     iconName?: string,
   ) => (
     <View style={{ marginBottom: 12 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
-        {iconName && <MaterialCommunityIcons name={iconName} size={16} color={groupColor} style={{ marginRight: 6 }} />}
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}
+      >
+        {iconName && (
+          <MaterialCommunityIcons
+            name={iconName}
+            size={16}
+            color={groupColor}
+            style={{ marginRight: 6 }}
+          />
+        )}
         <Text style={[styles.inputLabel, { fontWeight: '700' }]}>{title}</Text>
       </View>
       {opts.map(opt => (
         <TouchableOpacity
           key={opt.value}
           style={{
-            flexDirection: 'row', alignItems: 'center', paddingVertical: 8, paddingHorizontal: 12,
-            borderRadius: 8, marginBottom: 3, borderWidth: 1,
-            borderColor: selected === opt.value ? groupColor + '60' : colors.borderLight,
-            backgroundColor: selected === opt.value ? groupColor + '12' : 'transparent',
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingVertical: 8,
+            paddingHorizontal: 12,
+            borderRadius: 8,
+            marginBottom: 3,
+            borderWidth: 1,
+            borderColor:
+              selected === opt.value ? groupColor + '60' : colors.borderLight,
+            backgroundColor:
+              selected === opt.value ? groupColor + '12' : 'transparent',
           }}
           onPress={() => onSelect(opt.value)}
           activeOpacity={0.7}
         >
-          <View style={{
-            width: 18, height: 18, borderRadius: 9, borderWidth: 2,
-            borderColor: selected === opt.value ? groupColor : colors.border,
-            alignItems: 'center', justifyContent: 'center', marginRight: 10,
-          }}>
-            {selected === opt.value && <View style={{ width: 9, height: 9, borderRadius: 5, backgroundColor: groupColor }} />}
+          <View
+            style={{
+              width: 18,
+              height: 18,
+              borderRadius: 9,
+              borderWidth: 2,
+              borderColor: selected === opt.value ? groupColor : colors.border,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 10,
+            }}
+          >
+            {selected === opt.value && (
+              <View
+                style={{
+                  width: 9,
+                  height: 9,
+                  borderRadius: 5,
+                  backgroundColor: groupColor,
+                }}
+              />
+            )}
           </View>
-          <Text style={{ flex: 1, fontSize: 13, color: selected === opt.value ? colors.text : colors.textSecondary }}>
+          <Text
+            style={{
+              flex: 1,
+              fontSize: 13,
+              color:
+                selected === opt.value ? colors.text : colors.textSecondary,
+            }}
+          >
             {opt.label}
           </Text>
-          <Text style={{ fontSize: 15, fontWeight: '800', color: selected === opt.value ? groupColor : colors.textLight }}>
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: '800',
+              color: selected === opt.value ? groupColor : colors.textLight,
+            }}
+          >
             {opt.value}
           </Text>
         </TouchableOpacity>
@@ -869,23 +1571,82 @@ function GlasgowCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="brain" size={22} color="#6366F1" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Glasgow — Calculadora + Texto</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="brain"
+          size={22}
+          color="#6366F1"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          Glasgow — Calculadora + Texto
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>GCS = Ocular (1-4) + Verbal (1-5) + Motor (1-6)</Text>
-      {renderGroup('Respuesta Ocular', ocularOpts, ocular, setOcular, '#6366F1', 'eye-outline')}
-      {renderGroup('Respuesta Verbal', verbalOpts, verbal, setVerbal, '#6366F1', 'comment-text-outline')}
-      {renderGroup('Respuesta Motora', motorOpts, motor, setMotor, '#6366F1', 'arm-flex-outline')}
-      <ResultDisplay value={totalStr} unit="puntos" color={interp?.color || '#6366F1'}
-        interpretation={interp?.label} interpColor={interp?.color} />
+      <Text style={styles.calcFormula}>
+        GCS = Ocular (1-4) + Verbal (1-5) + Motor (1-6)
+      </Text>
+      {renderGroup(
+        'Respuesta Ocular',
+        ocularOpts,
+        ocular,
+        setOcular,
+        '#6366F1',
+        'eye-outline',
+      )}
+      {renderGroup(
+        'Respuesta Verbal',
+        verbalOpts,
+        verbal,
+        setVerbal,
+        '#6366F1',
+        'comment-text-outline',
+      )}
+      {renderGroup(
+        'Respuesta Motora',
+        motorOpts,
+        motor,
+        setMotor,
+        '#6366F1',
+        'arm-flex-outline',
+      )}
+      <ResultDisplay
+        value={totalStr}
+        unit="puntos"
+        color={interp?.color || '#6366F1'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+      />
       {descripcion && (
-        <View style={[styles.extraResult, { borderColor: '#6366F130', flexDirection: 'column', alignItems: 'flex-start' }]}>
+        <View
+          style={[
+            styles.extraResult,
+            {
+              borderColor: '#6366F130',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+            },
+          ]}
+        >
           <Text style={styles.extraResultLabel}>Descripción:</Text>
-          <Text style={[styles.extraResultValue, { color: '#6366F1', fontSize: 13, fontWeight: '600' }]}>{descripcion}</Text>
+          <Text
+            style={[
+              styles.extraResultValue,
+              { color: '#6366F1', fontSize: 13, fontWeight: '600' },
+            ]}
+          >
+            {descripcion}
+          </Text>
         </View>
       )}
-      <ClearButton onPress={() => { setOcular(null); setVerbal(null); setMotor(null); }} />
+      <ClearButton
+        onPress={() => {
+          setOcular(null);
+          setVerbal(null);
+          setMotor(null);
+        }}
+      />
     </View>
   );
 }
@@ -920,48 +1681,95 @@ function ApacheCalc() {
   const allValid = Object.values(vals).every(v => !isNaN(v));
 
   const scoreTemp = (v: number) => {
-    if (v >= 41) return 4; if (v >= 39) return 3; if (v >= 38.5) return 1;
-    if (v >= 36) return 0; if (v >= 34) return 1; if (v >= 32) return 2;
-    if (v >= 30) return 3; return 4;
+    if (v >= 41) return 4;
+    if (v >= 39) return 3;
+    if (v >= 38.5) return 1;
+    if (v >= 36) return 0;
+    if (v >= 34) return 1;
+    if (v >= 32) return 2;
+    if (v >= 30) return 3;
+    return 4;
   };
   const scorePAM = (v: number) => {
-    if (v >= 160) return 4; if (v >= 130) return 3; if (v >= 110) return 2;
-    if (v >= 70) return 0; if (v >= 50) return 2; return 4;
+    if (v >= 160) return 4;
+    if (v >= 130) return 3;
+    if (v >= 110) return 2;
+    if (v >= 70) return 0;
+    if (v >= 50) return 2;
+    return 4;
   };
   const scoreFC = (v: number) => {
-    if (v >= 180) return 4; if (v >= 140) return 3; if (v >= 110) return 2;
-    if (v >= 70) return 0; if (v >= 55) return 2; if (v >= 40) return 3; return 4;
+    if (v >= 180) return 4;
+    if (v >= 140) return 3;
+    if (v >= 110) return 2;
+    if (v >= 70) return 0;
+    if (v >= 55) return 2;
+    if (v >= 40) return 3;
+    return 4;
   };
   const scoreFR = (v: number) => {
-    if (v >= 50) return 4; if (v >= 35) return 3; if (v >= 25) return 1;
-    if (v >= 12) return 0; if (v >= 10) return 1; if (v >= 6) return 2; return 4;
+    if (v >= 50) return 4;
+    if (v >= 35) return 3;
+    if (v >= 25) return 1;
+    if (v >= 12) return 0;
+    if (v >= 10) return 1;
+    if (v >= 6) return 2;
+    return 4;
   };
   const scorePH = (v: number) => {
-    if (v >= 7.7) return 4; if (v >= 7.6) return 3; if (v >= 7.5) return 1;
-    if (v >= 7.33) return 0; if (v >= 7.25) return 2; if (v >= 7.15) return 3; return 4;
+    if (v >= 7.7) return 4;
+    if (v >= 7.6) return 3;
+    if (v >= 7.5) return 1;
+    if (v >= 7.33) return 0;
+    if (v >= 7.25) return 2;
+    if (v >= 7.15) return 3;
+    return 4;
   };
   const scoreNa = (v: number) => {
-    if (v >= 180) return 4; if (v >= 160) return 3; if (v >= 155) return 2;
-    if (v >= 150) return 1; if (v >= 130) return 0; if (v >= 120) return 2; return 3;
+    if (v >= 180) return 4;
+    if (v >= 160) return 3;
+    if (v >= 155) return 2;
+    if (v >= 150) return 1;
+    if (v >= 130) return 0;
+    if (v >= 120) return 2;
+    return 3;
   };
   const scoreK = (v: number) => {
-    if (v >= 7) return 4; if (v >= 6) return 3; if (v >= 5.5) return 1;
-    if (v >= 3.5) return 0; if (v >= 3) return 1; if (v >= 2.5) return 2; return 4;
+    if (v >= 7) return 4;
+    if (v >= 6) return 3;
+    if (v >= 5.5) return 1;
+    if (v >= 3.5) return 0;
+    if (v >= 3) return 1;
+    if (v >= 2.5) return 2;
+    return 4;
   };
   const scoreCreat = (v: number) => {
-    if (v >= 3.5) return 4; if (v >= 2) return 3; if (v >= 1.5) return 2;
-    if (v >= 0.6) return 0; return 2;
+    if (v >= 3.5) return 4;
+    if (v >= 2) return 3;
+    if (v >= 1.5) return 2;
+    if (v >= 0.6) return 0;
+    return 2;
   };
   const scoreEdad = (v: number) => {
-    if (v < 45) return 0; if (v <= 54) return 2; if (v <= 64) return 3;
-    if (v <= 74) return 5; return 6;
+    if (v < 45) return 0;
+    if (v <= 54) return 2;
+    if (v <= 64) return 3;
+    if (v <= 74) return 5;
+    return 6;
   };
 
   let total = NaN;
   if (allValid) {
-    total = scoreTemp(vals.temp) + scorePAM(vals.pam) + scoreFC(vals.fc) +
-      scoreFR(vals.fr) + scorePH(vals.ph) + scoreNa(vals.na) + scoreK(vals.k) +
-      scoreCreat(vals.creat) + scoreEdad(vals.edad);
+    total =
+      scoreTemp(vals.temp) +
+      scorePAM(vals.pam) +
+      scoreFC(vals.fc) +
+      scoreFR(vals.fr) +
+      scorePH(vals.ph) +
+      scoreNa(vals.na) +
+      scoreK(vals.k) +
+      scoreCreat(vals.creat) +
+      scoreEdad(vals.edad);
   }
   const totalStr = !isNaN(total) ? total.toString() : null;
 
@@ -977,24 +1785,97 @@ function ApacheCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-        <MaterialCommunityIcons name="hospital-box-outline" size={22} color="#991B1B" style={{ marginRight: 8 }} />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>APACHE II Simplificado</Text>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
+      >
+        <MaterialCommunityIcons
+          name="hospital-box-outline"
+          size={22}
+          color="#991B1B"
+          style={{ marginRight: 8 }}
+        />
+        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+          APACHE II Simplificado
+        </Text>
       </View>
-      <Text style={styles.calcFormula}>Score de severidad en UCI (versión simplificada)</Text>
-      <CalcInput label="Temperatura" unit="°C" value={temp} onChangeText={setTemp} />
-      <CalcInput label="Presión arterial media" unit="mmHg" value={pam} onChangeText={setPam} />
-      <CalcInput label="Frecuencia cardíaca" unit="lpm" value={fc} onChangeText={setFc} />
-      <CalcInput label="Frecuencia respiratoria" unit="rpm" value={fr} onChangeText={setFr} />
-      <CalcInput label="pH arterial" unit="" value={ph} onChangeText={setPh} placeholder="7.40" />
-      <CalcInput label="Sodio sérico" unit="mEq/L" value={na} onChangeText={setNa} />
-      <CalcInput label="Potasio sérico" unit="mEq/L" value={k} onChangeText={setK} />
-      <CalcInput label="Creatinina sérica" unit="mg/dL" value={creat} onChangeText={setCreat} />
+      <Text style={styles.calcFormula}>
+        Score de severidad en UCI (versión simplificada)
+      </Text>
+      <CalcInput
+        label="Temperatura"
+        unit="°C"
+        value={temp}
+        onChangeText={setTemp}
+      />
+      <CalcInput
+        label="Presión arterial media"
+        unit="mmHg"
+        value={pam}
+        onChangeText={setPam}
+      />
+      <CalcInput
+        label="Frecuencia cardíaca"
+        unit="lpm"
+        value={fc}
+        onChangeText={setFc}
+      />
+      <CalcInput
+        label="Frecuencia respiratoria"
+        unit="rpm"
+        value={fr}
+        onChangeText={setFr}
+      />
+      <CalcInput
+        label="pH arterial"
+        unit=""
+        value={ph}
+        onChangeText={setPh}
+        placeholder="7.40"
+      />
+      <CalcInput
+        label="Sodio sérico"
+        unit="mEq/L"
+        value={na}
+        onChangeText={setNa}
+      />
+      <CalcInput
+        label="Potasio sérico"
+        unit="mEq/L"
+        value={k}
+        onChangeText={setK}
+      />
+      <CalcInput
+        label="Creatinina sérica"
+        unit="mg/dL"
+        value={creat}
+        onChangeText={setCreat}
+      />
       <CalcInput label="Edad" unit="años" value={edad} onChangeText={setEdad} />
-      <ResultDisplay value={totalStr} unit="puntos" color={interp?.color || '#991B1B'}
-        interpretation={interp?.label} interpColor={interp?.color}
-        warning={total > 24 ? 'Score alto: paciente críticamente enfermo. Requiere monitorización intensiva.' : undefined} />
-      <ClearButton onPress={() => { setTemp(''); setPam(''); setFc(''); setFr(''); setPh(''); setNa(''); setK(''); setCreat(''); setEdad(''); }} />
+      <ResultDisplay
+        value={totalStr}
+        unit="puntos"
+        color={interp?.color || '#991B1B'}
+        interpretation={interp?.label}
+        interpColor={interp?.color}
+        warning={
+          total > 24
+            ? 'Score alto: paciente críticamente enfermo. Requiere monitorización intensiva.'
+            : undefined
+        }
+      />
+      <ClearButton
+        onPress={() => {
+          setTemp('');
+          setPam('');
+          setFc('');
+          setFr('');
+          setPh('');
+          setNa('');
+          setK('');
+          setCreat('');
+          setEdad('');
+        }}
+      />
     </View>
   );
 }
@@ -1005,7 +1886,13 @@ function ClearButton({ onPress }: { onPress: () => void }) {
   const rs = useResponsiveScale();
   const styles = useMemo(() => createStyles(colors, rs), [colors, rs]);
   return (
-    <TouchableOpacity onPress={onPress} style={styles.clearBtn} activeOpacity={0.7}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.clearBtn}
+      activeOpacity={0.7}
+      accessibilityRole="button"
+      accessibilityLabel="Limpiar todos los valores ingresados"
+    >
       <Text style={styles.clearBtnText}>Limpiar valores</Text>
     </TouchableOpacity>
   );
@@ -1022,177 +1909,361 @@ export function CalculatorsScreen() {
 
   const renderCalc = () => {
     switch (activeCalc) {
-      case 'dosis': return <DosisCalc />;
-      case 'goteo': return <GoteoCalc />;
-      case 'imc': return <IMCCalc />;
-      case 'bsa': return <BSACalc />;
-      case 'creatinina': return <CreatininaCalc />;
-      case 'dilucion': return <DilucionCalc />;
-      case 'sodio': return <SodioCalc />;
-      case 'calcio': return <CalcioCalc />;
-      case 'anionGap': return <AnionGapCalc />;
-      case 'osmolalidad': return <OsmCalc />;
-      case 'qtc': return <QTcCalc />;
-      case 'parkland': return <ParklandCalc />;
-      case 'holliday': return <HollidayCalc />;
-      case 'glasgow': return <GlasgowCalc />;
-      case 'apache': return <ApacheCalc />;
+      case 'dosis':
+        return <DosisCalc />;
+      case 'goteo':
+        return <GoteoCalc />;
+      case 'imc':
+        return <IMCCalc />;
+      case 'bsa':
+        return <BSACalc />;
+      case 'creatinina':
+        return <CreatininaCalc />;
+      case 'dilucion':
+        return <DilucionCalc />;
+      case 'sodio':
+        return <SodioCalc />;
+      case 'calcio':
+        return <CalcioCalc />;
+      case 'anionGap':
+        return <AnionGapCalc />;
+      case 'osmolalidad':
+        return <OsmCalc />;
+      case 'qtc':
+        return <QTcCalc />;
+      case 'parkland':
+        return <ParklandCalc />;
+      case 'holliday':
+        return <HollidayCalc />;
+      case 'glasgow':
+        return <GlasgowCalc />;
+      case 'apache':
+        return <ApacheCalc />;
     }
   };
 
   return (
     <PremiumGate feature="Calculadoras Clínicas">
-    <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={activeData.color} barStyle={isDark ? 'light-content' : 'dark-content'} />
-      <View style={[styles.header, { backgroundColor: activeData.color }]}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <MaterialCommunityIcons name="calculator-variant-outline" size={24} color="#FFFFFF" style={{ marginRight: 8 }} />
-          <Text style={styles.headerTitle}>Calculadoras Clínicas</Text>
-        </View>
-        <Text style={styles.headerSubtitle}>15 herramientas de cálculo para enfermería</Text>
-      </View>
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.tabScroll}
-        contentContainerStyle={styles.tabContent}
-      >
-        {CALC_TABS.map(tab => (
-          <TouchableOpacity
-            key={tab.key}
-            style={[
-              styles.tabChip,
-              activeCalc === tab.key && { backgroundColor: tab.color + '18', borderColor: tab.color, borderWidth: 1 },
-            ]}
-            onPress={() => setActiveCalc(tab.key)}
-            activeOpacity={0.7}
-          >
-            <MaterialCommunityIcons name={tab.icon} size={16} color={activeCalc === tab.key ? tab.color : colors.textSecondary} />
-            <Text style={[
-              styles.tabChipLabel,
-              activeCalc === tab.key && { color: tab.color, fontWeight: '700' },
-            ]}>
-              {tab.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}
-        keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
-        {renderCalc()}
-        <View style={styles.disclaimer}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-            <MaterialCommunityIcons name="medical-bag" size={16} color={colors.textSecondary} style={{ marginRight: 6, marginTop: 2 }} />
-            <Text style={[styles.disclaimerText, { flex: 1 }]}>
-              Estas calculadoras son herramientas de apoyo educativo. Siempre verifique los resultados con el equipo médico y fuentes clínicas actualizadas antes de actuar.
-            </Text>
+      <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+        {/* Theme-aware: la franja superior acompaña al header nativo del stack */}
+        <StatusBar
+          backgroundColor={colors.surface}
+          barStyle={isDark ? 'light-content' : 'dark-content'}
+        />
+        <View style={[styles.header, { backgroundColor: activeData.color }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <MaterialCommunityIcons
+              name="calculator-variant-outline"
+              size={24}
+              color="#FFFFFF"
+              style={{ marginRight: 8 }}
+            />
+            <Text style={styles.headerTitle}>Calculadoras Clínicas</Text>
           </View>
+          <Text style={styles.headerSubtitle}>
+            15 herramientas de cálculo para enfermería
+          </Text>
         </View>
-        <View style={{ height: 40 }} />
-      </ScrollView>
-    </Animated.View>
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.tabScroll}
+          contentContainerStyle={styles.tabContent}
+        >
+          {CALC_TABS.map(tab => (
+            <TouchableOpacity
+              key={tab.key}
+              style={[
+                styles.tabChip,
+                activeCalc === tab.key && {
+                  backgroundColor: tab.color + '18',
+                  borderColor: tab.color,
+                  borderWidth: 1,
+                },
+              ]}
+              onPress={() => setActiveCalc(tab.key)}
+              activeOpacity={0.7}
+              hitSlop={{ top: 8, bottom: 8 }}
+              accessibilityRole="button"
+              accessibilityLabel={`Calculadora ${tab.label}`}
+              accessibilityState={{ selected: activeCalc === tab.key }}
+            >
+              <MaterialCommunityIcons
+                name={tab.icon}
+                size={16}
+                color={
+                  activeCalc === tab.key ? tab.color : colors.textSecondary
+                }
+              />
+              <Text
+                style={[
+                  styles.tabChipLabel,
+                  activeCalc === tab.key && {
+                    color: tab.color,
+                    fontWeight: '700',
+                  },
+                ]}
+              >
+                {tab.label}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+
+        <ScrollView
+          style={styles.scroll}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        >
+          {renderCalc()}
+          <View style={styles.disclaimer}>
+            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+              <MaterialCommunityIcons
+                name="medical-bag"
+                size={16}
+                color={colors.textSecondary}
+                style={{ marginRight: 6, marginTop: 2 }}
+              />
+              <Text style={[styles.disclaimerText, { flex: 1 }]}>
+                Estas calculadoras son herramientas de apoyo educativo. Siempre
+                verifique los resultados con el equipo médico y fuentes clínicas
+                actualizadas antes de actuar.
+              </Text>
+            </View>
+          </View>
+          <View style={{ height: 40 }} />
+        </ScrollView>
+      </Animated.View>
     </PremiumGate>
   );
 }
 
 // ─── Styles ─────────────────────────────────────────────────
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.neuBackground },
-  header: {
-    paddingTop: rs.space(16), paddingBottom: rs.space(16), paddingHorizontal: rs.space(20),
-  },
-  headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
-  headerSubtitle: { fontSize: rs.font(14), color: 'rgba(255,255,255,0.8)', marginTop: 2 },
-  tabScroll: { backgroundColor: colors.surface, maxHeight: rs.space(52), borderBottomWidth: 1, borderBottomColor: colors.borderLight },
-  tabContent: { paddingHorizontal: rs.space(12), paddingVertical: rs.space(8), gap: rs.space(6) },
-  tabChip: {
-    flexDirection: 'row', alignItems: 'center',
-    paddingHorizontal: rs.space(12), paddingVertical: rs.space(6),
-    borderRadius: 20, backgroundColor: colors.background, gap: 4,
-  },
-  tabChipLabel: { fontSize: rs.font(12), fontWeight: '600', color: colors.textSecondary },
-  scroll: { flex: 1 },
-  calcCard: {
-    ...neuCard(colors), margin: rs.space(16), marginBottom: 0, padding: rs.space(18),
-  },
-  calcTitle: { fontSize: rs.font(18), fontWeight: '800', color: colors.text, marginBottom: 4 },
-  calcFormula: {
-    fontSize: rs.font(12), color: colors.textSecondary, fontFamily: 'monospace',
-    marginBottom: rs.space(14), lineHeight: rs.font(18),
-  },
-  calcSubtitle: { fontSize: rs.font(15), fontWeight: '700', color: colors.text, marginBottom: 2 },
-  calcSubFormula: { fontSize: rs.font(11), color: colors.textSecondary, fontFamily: 'monospace', marginBottom: rs.space(10) },
-  divider: { height: 1, backgroundColor: colors.borderLight, marginVertical: rs.space(16) },
-  inputRow: {
-    flexDirection: 'row', alignItems: 'center', marginBottom: rs.space(12), gap: rs.space(10),
-  },
-  inputLabelArea: { flex: 1 },
-  inputLabel: { fontSize: rs.font(14), color: colors.text, fontWeight: '500' },
-  inputUnit: { fontSize: rs.font(11), color: colors.textLight, marginTop: 1 },
-  inputField: {
-    flex: 1, maxWidth: rs.space(140), borderWidth: 1.5, borderColor: colors.border,
-    borderRadius: 12, paddingHorizontal: rs.space(14), paddingVertical: rs.space(10),
-    fontSize: rs.font(17), fontWeight: '700', color: colors.text,
-    backgroundColor: colors.background, textAlign: 'center',
-  },
-  toggleRow: { flexDirection: 'row', gap: rs.space(6) },
-  toggleBtn: {
-    paddingHorizontal: rs.space(14), paddingVertical: rs.space(8), borderRadius: 10,
-    borderWidth: 1.5, borderColor: colors.border,
-    backgroundColor: colors.background,
-  },
-  toggleBtnActiveM: { backgroundColor: '#2563EB', borderColor: '#2563EB' },
-  toggleBtnActiveF: { backgroundColor: '#DB2777', borderColor: '#DB2777' },
-  toggleBtnText: { fontSize: rs.font(13), fontWeight: '600', color: colors.textSecondary },
-  toggleBtnTextActive: { color: '#FFFFFF' },
-  resultContainer: { marginTop: rs.space(16) },
-  resultBox: {
-    padding: rs.space(16), borderRadius: 14, borderWidth: 1.5, alignItems: 'center',
-  },
-  resultLabel: {
-    fontSize: rs.font(10), fontWeight: '700', letterSpacing: 1.5,
-    color: colors.textSecondary, marginBottom: 4,
-  },
-  resultValueRow: { flexDirection: 'row', alignItems: 'baseline', gap: rs.space(6) },
-  resultValue: { fontSize: rs.font(32), fontWeight: '800' },
-  resultUnit: { fontSize: rs.font(14), fontWeight: '600' },
-  interpBadge: {
-    marginTop: rs.space(8), paddingHorizontal: rs.space(14), paddingVertical: rs.space(5), borderRadius: 12,
-  },
-  interpText: { fontSize: rs.font(13), fontWeight: '700' },
-  extraResult: {
-    marginTop: rs.space(10), padding: rs.space(12), borderRadius: 10, borderWidth: 1,
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-  },
-  extraResultLabel: { fontSize: rs.font(13), color: colors.textSecondary },
-  extraResultValue: { fontSize: rs.font(18), fontWeight: '800' },
-  warningBox: {
-    marginTop: rs.space(10), backgroundColor: colors.warning + '15', borderRadius: 10,
-    padding: rs.space(12), borderWidth: 1, borderColor: colors.warning + '40',
-  },
-  warningText: { fontSize: rs.font(12), color: colors.warning, lineHeight: rs.font(18) },
-  scaleContainer: {
-    marginTop: rs.space(14), backgroundColor: colors.background,
-    borderRadius: 12, padding: rs.space(12),
-  },
-  scaleTitle: {
-    fontSize: rs.font(12), fontWeight: '700', color: colors.textSecondary,
-    textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: rs.space(8),
-  },
-  scaleRow: {
-    flexDirection: 'row', alignItems: 'center',
-    paddingVertical: rs.space(5), paddingHorizontal: rs.space(8), borderRadius: 6, marginBottom: 2,
-  },
-  scaleDot: { width: rs.space(8), height: rs.space(8), borderRadius: 4, marginRight: rs.space(10) },
-  scaleLabel: { fontSize: rs.font(13), color: colors.textSecondary, flex: 1 },
-  clearBtn: { marginTop: rs.space(14), alignItems: 'center', paddingVertical: rs.space(8) },
-  clearBtnText: { fontSize: rs.font(13), color: colors.textSecondary, textDecorationLine: 'underline' },
-  disclaimer: {
-    marginHorizontal: rs.space(16), marginTop: rs.space(16),
-    backgroundColor: colors.surface, padding: rs.space(14), borderRadius: 12,
-    borderWidth: 1, borderColor: colors.borderLight,
-  },
-  disclaimerText: { fontSize: rs.font(12), color: colors.textSecondary, lineHeight: rs.font(18) },
-});
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
+  StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.neuBackground },
+    header: {
+      paddingTop: rs.space(16),
+      paddingBottom: rs.space(16),
+      paddingHorizontal: rs.space(20),
+    },
+    headerTitle: { fontSize: rs.font(24), fontWeight: '800', color: '#FFFFFF' },
+    headerSubtitle: {
+      fontSize: rs.font(14),
+      color: 'rgba(255,255,255,0.8)',
+      marginTop: 2,
+    },
+    tabScroll: {
+      backgroundColor: colors.surface,
+      maxHeight: rs.space(52),
+      borderBottomWidth: 1,
+      borderBottomColor: colors.borderLight,
+    },
+    tabContent: {
+      paddingHorizontal: rs.space(12),
+      paddingVertical: rs.space(8),
+      gap: rs.space(6),
+    },
+    tabChip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: rs.space(12),
+      paddingVertical: rs.space(6),
+      borderRadius: 20,
+      backgroundColor: colors.background,
+      gap: 4,
+    },
+    tabChipLabel: {
+      fontSize: rs.font(12),
+      fontWeight: '600',
+      color: colors.textSecondary,
+    },
+    scroll: { flex: 1 },
+    calcCard: {
+      ...neuCard(colors),
+      margin: rs.space(16),
+      marginBottom: 0,
+      padding: rs.space(18),
+    },
+    calcTitle: {
+      fontSize: rs.font(18),
+      fontWeight: '800',
+      color: colors.text,
+      marginBottom: 4,
+    },
+    calcFormula: {
+      fontSize: rs.font(12),
+      color: colors.textSecondary,
+      fontFamily: 'monospace',
+      marginBottom: rs.space(14),
+      lineHeight: rs.font(18),
+    },
+    calcSubtitle: {
+      fontSize: rs.font(15),
+      fontWeight: '700',
+      color: colors.text,
+      marginBottom: 2,
+    },
+    calcSubFormula: {
+      fontSize: rs.font(11),
+      color: colors.textSecondary,
+      fontFamily: 'monospace',
+      marginBottom: rs.space(10),
+    },
+    divider: {
+      height: 1,
+      backgroundColor: colors.borderLight,
+      marginVertical: rs.space(16),
+    },
+    inputRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: rs.space(12),
+      gap: rs.space(10),
+    },
+    inputLabelArea: { flex: 1 },
+    inputLabel: {
+      fontSize: rs.font(14),
+      color: colors.text,
+      fontWeight: '500',
+    },
+    inputUnit: { fontSize: rs.font(11), color: colors.textLight, marginTop: 1 },
+    inputField: {
+      flex: 1,
+      maxWidth: rs.space(140),
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      borderRadius: 12,
+      paddingHorizontal: rs.space(14),
+      paddingVertical: rs.space(10),
+      fontSize: rs.font(17),
+      fontWeight: '700',
+      color: colors.text,
+      backgroundColor: colors.background,
+      textAlign: 'center',
+    },
+    toggleRow: { flexDirection: 'row', gap: rs.space(6) },
+    toggleBtn: {
+      paddingHorizontal: rs.space(14),
+      paddingVertical: rs.space(8),
+      borderRadius: 10,
+      borderWidth: 1.5,
+      borderColor: colors.border,
+      backgroundColor: colors.background,
+    },
+    toggleBtnActiveM: { backgroundColor: '#2563EB', borderColor: '#2563EB' },
+    toggleBtnActiveF: { backgroundColor: '#DB2777', borderColor: '#DB2777' },
+    toggleBtnText: {
+      fontSize: rs.font(13),
+      fontWeight: '600',
+      color: colors.textSecondary,
+    },
+    toggleBtnTextActive: { color: '#FFFFFF' },
+    resultContainer: { marginTop: rs.space(16) },
+    resultBox: {
+      padding: rs.space(16),
+      borderRadius: 14,
+      borderWidth: 1.5,
+      alignItems: 'center',
+    },
+    resultLabel: {
+      fontSize: rs.font(10),
+      fontWeight: '700',
+      letterSpacing: 1.5,
+      color: colors.textSecondary,
+      marginBottom: 4,
+    },
+    resultValueRow: {
+      flexDirection: 'row',
+      alignItems: 'baseline',
+      gap: rs.space(6),
+    },
+    resultValue: { fontSize: rs.font(32), fontWeight: '800' },
+    resultUnit: { fontSize: rs.font(14), fontWeight: '600' },
+    interpBadge: {
+      marginTop: rs.space(8),
+      paddingHorizontal: rs.space(14),
+      paddingVertical: rs.space(5),
+      borderRadius: 12,
+    },
+    interpText: { fontSize: rs.font(13), fontWeight: '700' },
+    extraResult: {
+      marginTop: rs.space(10),
+      padding: rs.space(12),
+      borderRadius: 10,
+      borderWidth: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    extraResultLabel: { fontSize: rs.font(13), color: colors.textSecondary },
+    extraResultValue: { fontSize: rs.font(18), fontWeight: '800' },
+    warningBox: {
+      marginTop: rs.space(10),
+      backgroundColor: colors.warning + '15',
+      borderRadius: 10,
+      padding: rs.space(12),
+      borderWidth: 1,
+      borderColor: colors.warning + '40',
+    },
+    warningText: {
+      fontSize: rs.font(12),
+      color: colors.warning,
+      lineHeight: rs.font(18),
+    },
+    scaleContainer: {
+      marginTop: rs.space(14),
+      backgroundColor: colors.background,
+      borderRadius: 12,
+      padding: rs.space(12),
+    },
+    scaleTitle: {
+      fontSize: rs.font(12),
+      fontWeight: '700',
+      color: colors.textSecondary,
+      textTransform: 'uppercase',
+      letterSpacing: 0.5,
+      marginBottom: rs.space(8),
+    },
+    scaleRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: rs.space(5),
+      paddingHorizontal: rs.space(8),
+      borderRadius: 6,
+      marginBottom: 2,
+    },
+    scaleDot: {
+      width: rs.space(8),
+      height: rs.space(8),
+      borderRadius: 4,
+      marginRight: rs.space(10),
+    },
+    scaleLabel: { fontSize: rs.font(13), color: colors.textSecondary, flex: 1 },
+    clearBtn: {
+      marginTop: rs.space(14),
+      alignItems: 'center',
+      paddingVertical: rs.space(8),
+    },
+    clearBtnText: {
+      fontSize: rs.font(13),
+      color: colors.textSecondary,
+      textDecorationLine: 'underline',
+    },
+    disclaimer: {
+      marginHorizontal: rs.space(16),
+      marginTop: rs.space(16),
+      backgroundColor: colors.surface,
+      padding: rs.space(14),
+      borderRadius: 12,
+      borderWidth: 1,
+      borderColor: colors.borderLight,
+    },
+    disclaimerText: {
+      fontSize: rs.font(12),
+      color: colors.textSecondary,
+      lineHeight: rs.font(18),
+    },
+  });

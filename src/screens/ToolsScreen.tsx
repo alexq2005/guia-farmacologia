@@ -68,7 +68,7 @@ const PREMIUM_TARGETS = new Set([
 ]);
 
 export function ToolsScreen({ navigation }: Props) {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
   const rs = useResponsiveScale();
   const { isPremium, isFreeBuild } = usePremium();
   const insets = useSafeAreaInsets();
@@ -317,7 +317,7 @@ export function ToolsScreen({ navigation }: Props) {
       <StatusBar
         translucent
         backgroundColor="transparent"
-        barStyle={colors.text === '#F1F5F9' ? 'light-content' : 'dark-content'}
+        barStyle={isDark ? 'light-content' : 'dark-content'}
       />
       <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <Text style={styles.headerTitle}>Herramientas</Text>
@@ -361,6 +361,8 @@ export function ToolsScreen({ navigation }: Props) {
                     style={styles.toolCard}
                     onPress={() => navigateTo(tool.target)}
                     activeOpacity={0.8}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${tool.title}. ${tool.subtitle}`}
                   >
                     <ImageBackground
                       source={
@@ -450,6 +452,8 @@ export function ToolsScreen({ navigation }: Props) {
             ]}
             onPress={handleExport}
             activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Exportar datos: favoritos, notas, tests e historial"
           >
             <MaterialCommunityIcons
               name="upload-outline"
@@ -476,6 +480,9 @@ export function ToolsScreen({ navigation }: Props) {
             ]}
             onPress={() => setShowImport(!showImport)}
             activeOpacity={0.7}
+            accessibilityRole="button"
+            accessibilityLabel="Importar datos desde backup JSON"
+            accessibilityState={{ expanded: showImport }}
           >
             <MaterialCommunityIcons
               name="download-outline"
@@ -509,6 +516,7 @@ export function ToolsScreen({ navigation }: Props) {
                 placeholderTextColor={colors.textLight}
                 multiline
                 textAlignVertical="top"
+                accessibilityLabel="Campo para pegar el JSON de backup"
               />
               <View style={styles.importButtons}>
                 <TouchableOpacity
@@ -520,6 +528,8 @@ export function ToolsScreen({ navigation }: Props) {
                     },
                   ]}
                   onPress={handlePaste}
+                  accessibilityRole="button"
+                  accessibilityLabel="Pegar desde el portapapeles"
                 >
                   <Text style={[styles.importBtnText, { color: colors.text }]}>
                     Pegar
@@ -531,6 +541,8 @@ export function ToolsScreen({ navigation }: Props) {
                     { backgroundColor: colors.info, borderColor: colors.info },
                   ]}
                   onPress={handleImport}
+                  accessibilityRole="button"
+                  accessibilityLabel="Importar el backup pegado"
                 >
                   <Text style={[styles.importBtnText, { color: '#FFFFFF' }]}>
                     Importar
@@ -598,6 +610,8 @@ export function ToolsScreen({ navigation }: Props) {
                   })
                 }
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={`Fórmula: ${formula.nombre}`}
               >
                 <View
                   style={[
@@ -668,6 +682,8 @@ export function ToolsScreen({ navigation }: Props) {
                   navigation.navigate('RouteDetail', { routeId: r.id })
                 }
                 activeOpacity={0.85}
+                accessibilityRole="button"
+                accessibilityLabel={`Vía ${r.name}`}
                 style={{
                   width: '30%',
                   marginHorizontal: '1.5%',

@@ -56,7 +56,7 @@ const VIA_OPTIONS: { key: RouteOfAdministration; label: string }[] = [
 const PREG_OPTIONS: PregnancyCategory[] = ['A', 'B', 'C', 'D', 'X'];
 
 export function SearchScreen({ navigation }: Props) {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
   const rs = useResponsiveScale();
   const insets = useSafeAreaInsets();
   const { handleScroll: handleTabBarScroll } = useTabBar();
@@ -97,7 +97,7 @@ export function SearchScreen({ navigation }: Props) {
       <StatusBar
         translucent
         backgroundColor="transparent"
-        barStyle={colors.text === '#F1F5F9' ? 'light-content' : 'dark-content'}
+        barStyle={isDark ? 'light-content' : 'dark-content'}
       />
       <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
         <Text style={styles.headerTitle}>Búsqueda</Text>
@@ -134,6 +134,10 @@ export function SearchScreen({ navigation }: Props) {
                   onPress={() =>
                     setFilterVia(filterVia === v.key ? null : v.key)
                   }
+                  hitSlop={{ top: 8, bottom: 8 }}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Filtrar por vía ${v.label}`}
+                  accessibilityState={{ selected: filterVia === v.key }}
                 >
                   <Text
                     style={[
@@ -154,6 +158,10 @@ export function SearchScreen({ navigation }: Props) {
                     filterPreg === p && styles.filterChipActive,
                   ]}
                   onPress={() => setFilterPreg(filterPreg === p ? null : p)}
+                  hitSlop={{ top: 8, bottom: 8 }}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Filtrar por categoría de embarazo ${p}`}
+                  accessibilityState={{ selected: filterPreg === p }}
                 >
                   <Text
                     style={[
@@ -252,7 +260,12 @@ export function SearchScreen({ navigation }: Props) {
                     Búsquedas recientes
                   </Text>
                 </View>
-                <TouchableOpacity onPress={clearHistory}>
+                <TouchableOpacity
+                  onPress={clearHistory}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                  accessibilityRole="button"
+                  accessibilityLabel="Limpiar historial de búsquedas"
+                >
                   <Text style={styles.clearHistoryText}>Limpiar</Text>
                 </TouchableOpacity>
               </View>
@@ -263,6 +276,8 @@ export function SearchScreen({ navigation }: Props) {
                     style={styles.suggestionChip}
                     onPress={() => search(entry.query)}
                     onLongPress={() => removeEntry(entry.query)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Buscar ${entry.query}. Mantén presionado para eliminar del historial`}
                   >
                     <Text style={styles.suggestionText}>{entry.query}</Text>
                   </TouchableOpacity>
@@ -284,6 +299,8 @@ export function SearchScreen({ navigation }: Props) {
                     key={i}
                     style={styles.suggestionChip}
                     onPress={() => search(term)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Buscar ${term}`}
                   >
                     <Text style={styles.suggestionText}>{term}</Text>
                   </TouchableOpacity>

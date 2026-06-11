@@ -1,5 +1,12 @@
 import React, { useMemo } from 'react';
-import { View, Text, FlatList, StyleSheet, StatusBar, Animated } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  StatusBar,
+  Animated,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
@@ -22,32 +29,46 @@ export function AllFavoritesScreen({ navigation }: Props) {
   const { getDrugById } = useDrugData();
   const fadeIn = useFadeIn();
 
-  const favDrugs = useMemo(() =>
-    favorites.map(id => getDrugById(id)).filter(Boolean),
-    [favorites, getDrugById]
+  const favDrugs = useMemo(
+    () => favorites.map(id => getDrugById(id)).filter(Boolean),
+    [favorites, getDrugById],
   );
 
   return (
     <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-      <StatusBar backgroundColor={colors.primary} barStyle={isDark ? 'light-content' : 'dark-content'} />
+      <StatusBar
+        backgroundColor={colors.surface}
+        barStyle={isDark ? 'light-content' : 'dark-content'}
+      />
       <FlatList
         data={favDrugs}
         keyExtractor={item => item!.id}
         contentContainerStyle={styles.list}
         ListHeaderComponent={
-          <Text style={styles.count}>{favDrugs.length} favorito{favDrugs.length !== 1 ? 's' : ''}</Text>
+          <Text style={styles.count}>
+            {favDrugs.length} favorito{favDrugs.length !== 1 ? 's' : ''}
+          </Text>
         }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
-            <MaterialCommunityIcons name="heart" size={48} color={colors.error} style={{ marginBottom: 12 }} />
+            <MaterialCommunityIcons
+              name="heart"
+              size={48}
+              color={colors.error}
+              style={{ marginBottom: 12 }}
+            />
             <Text style={styles.emptyText}>No tienes favoritos aún</Text>
-            <Text style={styles.emptySubtext}>Marca fármacos como favoritos desde su detalle</Text>
+            <Text style={styles.emptySubtext}>
+              Marca fármacos como favoritos desde su detalle
+            </Text>
           </View>
         }
         renderItem={({ item }) => (
           <DrugCard
             drug={item!}
-            onPress={() => navigation.navigate('DrugDetail', { drugId: item!.id })}
+            onPress={() =>
+              navigation.navigate('DrugDetail', { drugId: item!.id })
+            }
           />
         )}
       />
@@ -55,11 +76,21 @@ export function AllFavoritesScreen({ navigation }: Props) {
   );
 }
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.neuBackground },
-  list: { paddingBottom: rs.space(32) },
-  count: { fontSize: rs.font(13), color: colors.textSecondary, marginHorizontal: rs.space(20), marginVertical: rs.space(8) },
-  emptyContainer: { alignItems: 'center', paddingVertical: rs.space(60) },
-  emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
-  emptySubtext: { fontSize: rs.font(13), color: colors.textLight, marginTop: 4 },
-});
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
+  StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.neuBackground },
+    list: { paddingBottom: rs.space(32) },
+    count: {
+      fontSize: rs.font(13),
+      color: colors.textSecondary,
+      marginHorizontal: rs.space(20),
+      marginVertical: rs.space(8),
+    },
+    emptyContainer: { alignItems: 'center', paddingVertical: rs.space(60) },
+    emptyText: { fontSize: rs.font(16), fontWeight: '600', color: colors.text },
+    emptySubtext: {
+      fontSize: rs.font(13),
+      color: colors.textLight,
+      marginTop: 4,
+    },
+  });
