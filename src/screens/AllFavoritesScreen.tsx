@@ -55,7 +55,7 @@ export function AllFavoritesScreen({ navigation }: Props) {
               name="heart"
               size={48}
               color={colors.error}
-              style={{ marginBottom: 12 }}
+              style={styles.mb12}
             />
             <Text style={styles.emptyText}>No tienes favoritos aún</Text>
             <Text style={styles.emptySubtext}>
@@ -78,6 +78,9 @@ export function AllFavoritesScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mb12: { marginBottom: 12 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     list: { paddingBottom: rs.space(32) },
     count: {

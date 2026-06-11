@@ -385,13 +385,8 @@ export function ToolsScreen({ navigation }: Props) {
                             size={24}
                             color="#FFFFFF"
                           />
-                          <View style={{ flex: 1, marginLeft: 12 }}>
-                            <View
-                              style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                              }}
-                            >
+                          <View style={styles.flex1Ml12}>
+                            <View style={styles.rowCenter}>
                               <Text style={styles.toolTitle}>{tool.title}</Text>
                               {!isFreeBuild &&
                                 !isPremium &&
@@ -459,9 +454,9 @@ export function ToolsScreen({ navigation }: Props) {
               name="upload-outline"
               size={26}
               color={colors.success}
-              style={{ marginRight: 12 }}
+              style={styles.mr12}
             />
-            <View style={{ flex: 1 }}>
+            <View style={styles.flex1}>
               <Text style={[styles.backupTitle, { color: colors.success }]}>
                 Exportar datos
               </Text>
@@ -488,9 +483,9 @@ export function ToolsScreen({ navigation }: Props) {
               name="download-outline"
               size={26}
               color={colors.info}
-              style={{ marginRight: 12 }}
+              style={styles.mr12}
             />
-            <View style={{ flex: 1 }}>
+            <View style={styles.flex1}>
               <Text style={[styles.backupTitle, { color: colors.info }]}>
                 Importar datos
               </Text>
@@ -585,7 +580,7 @@ export function ToolsScreen({ navigation }: Props) {
                 name={categoryLabels[cat]?.icon || 'calculator'}
                 size={16}
                 color={FORMULA_COLORS[cat] || colors.text}
-                style={{ marginRight: 6 }}
+                style={styles.mr6}
               />
               <Text
                 style={[
@@ -745,6 +740,13 @@ export function ToolsScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    rowCenter: { flexDirection: 'row', alignItems: 'center' },
+    mr6: { marginRight: 6 },
+    mr12: { marginRight: 12 },
+    flex1: { flex: 1 },
+    flex1Ml12: { flex: 1, marginLeft: 12 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     header: {
       paddingBottom: rs.space(16),

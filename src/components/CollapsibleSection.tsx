@@ -96,7 +96,7 @@ export function CollapsibleSection({
               name={icon}
               size={18}
               color={accent}
-              style={{ marginRight: 8 }}
+              style={styles.mr8}
             />
           ) : null}
           <Text style={styles.title}>{title}</Text>
@@ -120,6 +120,9 @@ export function CollapsibleSection({
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mr8: { marginRight: 8 },
+
     container: {
       marginHorizontal: rs.space(16),
       marginVertical: 4,

@@ -1,5 +1,11 @@
 import React, { useRef, useCallback, useMemo } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import type { ThemeColors } from '../utils/colors';
 import { useTheme } from '../context/ThemeContext';
@@ -33,7 +39,12 @@ export function SearchBar({
 
   return (
     <View style={styles.container}>
-      <MaterialCommunityIcons name="magnify" size={20} color={colors.textLight} style={{ marginRight: 8 }} />
+      <MaterialCommunityIcons
+        name="magnify"
+        size={20}
+        color={colors.textLight}
+        style={styles.mr8}
+      />
       <TextInput
         ref={inputRef}
         style={styles.input}
@@ -49,39 +60,52 @@ export function SearchBar({
         accessibilityLabel="Buscar fármaco"
       />
       {value.length > 0 && (
-        <TouchableOpacity onPress={handleClear} style={styles.clearButton} accessibilityRole="button" accessibilityLabel="Limpiar búsqueda">
-          <MaterialCommunityIcons name="close-circle" size={18} color={colors.textLight} />
+        <TouchableOpacity
+          onPress={handleClear}
+          style={styles.clearButton}
+          accessibilityRole="button"
+          accessibilityLabel="Limpiar búsqueda"
+        >
+          <MaterialCommunityIcons
+            name="close-circle"
+            size={18}
+            color={colors.textLight}
+          />
         </TouchableOpacity>
       )}
     </View>
   );
 }
 
-const createStyles = (colors: ThemeColors, rs: ResponsiveScale) => StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    ...neuInset(colors),
-    marginHorizontal: rs.space(16),
-    marginVertical: rs.space(8),
-    paddingHorizontal: rs.space(14),
-  },
-  icon: {
-    fontSize: rs.font(18),
-    marginRight: rs.space(8),
-  },
-  input: {
-    flex: 1,
-    fontSize: rs.font(15),
-    color: colors.text,
-    paddingVertical: rs.space(12),
-  },
-  clearButton: {
-    padding: rs.space(6),
-  },
-  clearText: {
-    fontSize: rs.font(16),
-    color: colors.textLight,
-    fontWeight: '600',
-  },
-});
+const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
+  StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mr8: { marginRight: 8 },
+
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      ...neuInset(colors),
+      marginHorizontal: rs.space(16),
+      marginVertical: rs.space(8),
+      paddingHorizontal: rs.space(14),
+    },
+    icon: {
+      fontSize: rs.font(18),
+      marginRight: rs.space(8),
+    },
+    input: {
+      flex: 1,
+      fontSize: rs.font(15),
+      color: colors.text,
+      paddingVertical: rs.space(12),
+    },
+    clearButton: {
+      padding: rs.space(6),
+    },
+    clearText: {
+      fontSize: rs.font(16),
+      color: colors.textLight,
+      fontWeight: '600',
+    },
+  });

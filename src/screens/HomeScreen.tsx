@@ -174,7 +174,7 @@ export function HomeScreen({ navigation }: Props) {
           />
           <View style={styles.heroContent}>
             <View style={styles.headerTopRow}>
-              <View style={{ flex: 1 }}>
+              <View style={styles.flex1}>
                 <Text style={styles.heroTitle}>Guía{'\n'}Farmacológica</Text>
                 <Text style={styles.heroSubtitle}>Enfermería</Text>
               </View>
@@ -324,7 +324,7 @@ export function HomeScreen({ navigation }: Props) {
               size={28}
               color={isTrialActive ? colors.primary : colors.warning}
             />
-            <View style={{ flex: 1, marginLeft: 12 }}>
+            <View style={styles.flex1Ml12}>
               <Text
                 style={[
                   styles.trialBannerTitle,
@@ -654,7 +654,7 @@ export function HomeScreen({ navigation }: Props) {
               name="cellphone-check"
               size={14}
               color={colors.success}
-              style={{ marginRight: 4 }}
+              style={styles.mr4}
             />
             <Text style={[styles.offlineBadgeText, { color: colors.success }]}>
               v1.0 — 100% Offline
@@ -675,7 +675,7 @@ export function HomeScreen({ navigation }: Props) {
               name="email-outline"
               size={14}
               color={colors.primary}
-              style={{ marginRight: 4 }}
+              style={styles.mr4}
             />
             <Text
               style={[styles.footerEmailText, { color: colors.primaryLight }]}
@@ -691,6 +691,11 @@ export function HomeScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mr4: { marginRight: 4 },
+    flex1: { flex: 1 },
+    flex1Ml12: { flex: 1, marginLeft: 12 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     scroll: { flex: 1 },
 

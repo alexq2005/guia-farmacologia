@@ -159,7 +159,7 @@ function DrugCardComponent({
                 name="pill"
                 size={14}
                 color={colors.textSecondary}
-                style={{ marginRight: 4 }}
+                style={styles.mr4}
               />
               <Text style={styles.dose} numberOfLines={1}>
                 {drug.dosis.adulto}
@@ -180,6 +180,9 @@ export const DrugCard = React.memo(DrugCardComponent);
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mr4: { marginRight: 4 },
+
     card: {
       flexDirection: 'row',
       ...neuCard(colors),

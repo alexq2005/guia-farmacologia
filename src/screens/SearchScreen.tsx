@@ -249,12 +249,12 @@ export function SearchScreen({ navigation }: Props) {
           {history.length > 0 ? (
             <>
               <View style={styles.historyHeader}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={styles.rowCenter}>
                   <MaterialCommunityIcons
                     name="history"
                     size={18}
                     color={colors.text}
-                    style={{ marginRight: 6 }}
+                    style={styles.mr6}
                   />
                   <Text style={styles.suggestionsTitle}>
                     Búsquedas recientes
@@ -352,20 +352,14 @@ export function SearchScreen({ navigation }: Props) {
           )}
 
           <View style={styles.tipsContainer}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 8,
-              }}
-            >
+            <View style={styles.rowCenterMb8}>
               <MaterialCommunityIcons
                 name="lightbulb-outline"
                 size={18}
                 color={colors.text}
-                style={{ marginRight: 6 }}
+                style={styles.mr6}
               />
-              <Text style={[styles.tipsTitle, { marginBottom: 0 }]}>
+              <Text style={[styles.tipsTitle, styles.mb0]}>
                 Consejos de búsqueda
               </Text>
             </View>
@@ -390,6 +384,16 @@ export function SearchScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    rowCenter: { flexDirection: 'row', alignItems: 'center' },
+    rowCenterMb8: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 8,
+    },
+    mb0: { marginBottom: 0 },
+    mr6: { marginRight: 6 },
+
     container: {
       flex: 1,
       backgroundColor: colors.neuBackground,

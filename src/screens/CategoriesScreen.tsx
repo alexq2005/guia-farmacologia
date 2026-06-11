@@ -85,7 +85,7 @@ export function CategoriesScreen({ navigation }: Props) {
               name={iconName}
               size={26}
               color="#FFFFFF"
-              style={{ marginRight: 12 }}
+              style={styles.mr12}
             />
             <View style={styles.unitHeaderText}>
               <Text style={styles.unitNumber}>UNIDAD {item.numero}</Text>
@@ -155,6 +155,9 @@ export function CategoriesScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mr12: { marginRight: 12 },
+
     container: {
       flex: 1,
       backgroundColor: colors.neuBackground,

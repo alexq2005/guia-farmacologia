@@ -63,7 +63,7 @@ export function AllNotesScreen({ navigation }: Props) {
               name="note-text-outline"
               size={48}
               color={colors.textLight}
-              style={{ marginBottom: 12 }}
+              style={styles.mb12}
             />
             <Text style={styles.emptyText}>No tienes notas aún</Text>
             <Text style={styles.emptySubtext}>
@@ -127,6 +127,9 @@ export function AllNotesScreen({ navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    mb12: { marginBottom: 12 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     list: { padding: rs.space(16), paddingBottom: rs.space(32) },
     emptyContainer: { alignItems: 'center', paddingVertical: rs.space(60) },

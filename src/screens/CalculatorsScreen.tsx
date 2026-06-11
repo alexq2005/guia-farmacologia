@@ -131,7 +131,7 @@ function SexToggle({
           accessibilityLabel="Sexo: hombre"
           accessibilityState={{ selected: value === 'M' }}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+          <View style={styles.rowCenterGap4}>
             <MaterialCommunityIcons
               name="gender-male"
               size={14}
@@ -154,7 +154,7 @@ function SexToggle({
           accessibilityLabel="Sexo: mujer"
           accessibilityState={{ selected: value === 'F' }}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+          <View style={styles.rowCenterGap4}>
             <MaterialCommunityIcons
               name="gender-female"
               size={14}
@@ -223,14 +223,14 @@ function ResultDisplay({
       </View>
       {warning && (
         <View style={styles.warningBox}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+          <View style={styles.rowStart}>
             <MaterialCommunityIcons
               name="alert-outline"
               size={16}
               color="#D97706"
-              style={{ marginRight: 6, marginTop: 2 }}
+              style={styles.iconMr6Mt2}
             />
-            <Text style={[styles.warningText, { flex: 1 }]}>{warning}</Text>
+            <Text style={[styles.warningText, styles.flex1]}>{warning}</Text>
           </View>
         </View>
       )}
@@ -259,16 +259,14 @@ function DosisCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="pill"
           size={22}
           color="#2563EB"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Dosis por Peso Corporal
         </Text>
       </View>
@@ -343,16 +341,14 @@ function GoteoCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="water-outline"
           size={22}
           color="#0891B2"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Velocidad de Goteo IV
         </Text>
       </View>
@@ -504,16 +500,14 @@ function IMCCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="ruler"
           size={22}
           color="#059669"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Índice de Masa Corporal
         </Text>
       </View>
@@ -619,16 +613,14 @@ function BSACalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="baby-face-outline"
           size={22}
           color="#7C3AED"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Superficie Corporal (Mosteller)
         </Text>
       </View>
@@ -711,16 +703,14 @@ function CreatininaCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="kidney"
           size={22}
           color="#DC2626"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Aclaramiento de Creatinina
         </Text>
       </View>
@@ -828,18 +818,14 @@ function DilucionCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="flask-round-bottom-outline"
           size={22}
           color="#D97706"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
-          Dilución de Fármacos
-        </Text>
+        <Text style={[styles.calcTitle, styles.mb0]}>Dilución de Fármacos</Text>
       </View>
       <Text style={styles.calcFormula}>C1 x V1 = C2 x V2</Text>
       <CalcInput
@@ -871,14 +857,14 @@ function DilucionCalc() {
       )}
       {diluyente && parseFloat(diluyente) <= 0 && (
         <View style={styles.warningBox}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+          <View style={styles.rowStart}>
             <MaterialCommunityIcons
               name="alert-outline"
               size={16}
               color="#D97706"
-              style={{ marginRight: 6, marginTop: 2 }}
+              style={styles.iconMr6Mt2}
             />
-            <Text style={[styles.warningText, { flex: 1 }]}>
+            <Text style={[styles.warningText, styles.flex1]}>
               La concentración deseada es mayor o igual a la inicial. No se
               requiere dilución.
             </Text>
@@ -925,18 +911,14 @@ function SodioCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="test-tube"
           size={22}
           color="#0F766E"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
-          Déficit de Sodio
-        </Text>
+        <Text style={[styles.calcTitle, styles.mb0]}>Déficit de Sodio</Text>
       </View>
       <Text style={styles.calcFormula}>
         Déficit Na = ACT x (Na deseado - Na actual)
@@ -1002,16 +984,14 @@ function CalcioCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="bone"
           size={22}
           color="#B45309"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Calcio Corregido por Albúmina
         </Text>
       </View>
@@ -1071,16 +1051,14 @@ function AnionGapCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="lightning-bolt"
           size={22}
           color="#7E22CE"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>Anion Gap</Text>
+        <Text style={[styles.calcTitle, styles.mb0]}>Anion Gap</Text>
       </View>
       <Text style={styles.calcFormula}>
         AG = Na⁺ - (Cl⁻ + HCO₃⁻) · Normal: 8-12 mEq/L
@@ -1153,16 +1131,14 @@ function OsmCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="water-outline"
           size={22}
           color="#0369A1"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Osmolalidad Sérica Calculada
         </Text>
       </View>
@@ -1229,16 +1205,14 @@ function QTcCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="heart-pulse"
           size={22}
           color="#E11D48"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Intervalo QTc (Bazett)
         </Text>
       </View>
@@ -1296,16 +1270,14 @@ function ParklandCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="fire"
           size={22}
           color="#EA580C"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Fórmula de Parkland (Quemados)
         </Text>
       </View>
@@ -1388,16 +1360,14 @@ function HollidayCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="human-child"
           size={22}
           color="#0D9488"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Holliday-Segar (Líquidos de Mantenimiento)
         </Text>
       </View>
@@ -1489,16 +1459,14 @@ function GlasgowCalc() {
     groupColor: string,
     iconName?: string,
   ) => (
-    <View style={{ marginBottom: 12 }}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}
-      >
+    <View style={styles.mb12}>
+      <View style={styles.rowCenterMb6}>
         {iconName && (
           <MaterialCommunityIcons
             name={iconName}
             size={16}
             color={groupColor}
-            style={{ marginRight: 6 }}
+            style={styles.mr6}
           />
         )}
         <Text style={[styles.inputLabel, { fontWeight: '700' }]}>{title}</Text>
@@ -1571,16 +1539,14 @@ function GlasgowCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="brain"
           size={22}
           color="#6366F1"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           Glasgow — Calculadora + Texto
         </Text>
       </View>
@@ -1785,16 +1751,14 @@ function ApacheCalc() {
 
   return (
     <View style={styles.calcCard}>
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}
-      >
+      <View style={styles.rowCenterMb4}>
         <MaterialCommunityIcons
           name="hospital-box-outline"
           size={22}
           color="#991B1B"
-          style={{ marginRight: 8 }}
+          style={styles.mr8}
         />
-        <Text style={[styles.calcTitle, { marginBottom: 0 }]}>
+        <Text style={[styles.calcTitle, styles.mb0]}>
           APACHE II Simplificado
         </Text>
       </View>
@@ -1951,12 +1915,12 @@ export function CalculatorsScreen() {
           barStyle={isDark ? 'light-content' : 'dark-content'}
         />
         <View style={[styles.header, { backgroundColor: activeData.color }]}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.rowCenter}>
             <MaterialCommunityIcons
               name="calculator-variant-outline"
               size={24}
               color="#FFFFFF"
-              style={{ marginRight: 8 }}
+              style={styles.mr8}
             />
             <Text style={styles.headerTitle}>Calculadoras Clínicas</Text>
           </View>
@@ -2019,14 +1983,14 @@ export function CalculatorsScreen() {
         >
           {renderCalc()}
           <View style={styles.disclaimer}>
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+            <View style={styles.rowStart}>
               <MaterialCommunityIcons
                 name="medical-bag"
                 size={16}
                 color={colors.textSecondary}
-                style={{ marginRight: 6, marginTop: 2 }}
+                style={styles.iconMr6Mt2}
               />
-              <Text style={[styles.disclaimerText, { flex: 1 }]}>
+              <Text style={[styles.disclaimerText, styles.flex1]}>
                 Estas calculadoras son herramientas de apoyo educativo. Siempre
                 verifique los resultados con el equipo médico y fuentes clínicas
                 actualizadas antes de actuar.
@@ -2043,6 +2007,27 @@ export function CalculatorsScreen() {
 // ─── Styles ─────────────────────────────────────────────────
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    rowCenter: { flexDirection: 'row', alignItems: 'center' },
+    rowStart: { flexDirection: 'row', alignItems: 'flex-start' },
+    rowCenterMb4: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 4,
+    },
+    rowCenterMb6: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 6,
+    },
+    rowCenterGap4: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+    mb0: { marginBottom: 0 },
+    flex1: { flex: 1 },
+    mr8: { marginRight: 8 },
+    mr6: { marginRight: 6 },
+    mb12: { marginBottom: 12 },
+    iconMr6Mt2: { marginRight: 6, marginTop: 2 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     header: {
       paddingTop: rs.space(16),

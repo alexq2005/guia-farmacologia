@@ -24,7 +24,6 @@ import ClipboardService from '@react-native-clipboard/clipboard';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '../types';
 import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { CollapsibleSection } from '../components/CollapsibleSection';
 import { useDrugData } from '../hooks/useDrugData';
 import { useFavoritesContext } from '../context/FavoritesContext';
@@ -35,7 +34,6 @@ import type { ThemeColors } from '../utils/colors';
 import { shareDrug } from '../utils/share';
 import { useFadeIn } from '../utils/animations';
 import { useRecentDrugs } from '../hooks/useRecentDrugs';
-import { SkeletonDrugDetail } from '../components/Skeleton';
 import { neuCard } from '../utils/neumorphism';
 import { getUnitImage, HERO_IMAGE } from '../utils/unitImages';
 import { useResponsiveScale, type ResponsiveScale } from '../utils/responsive';
@@ -156,7 +154,7 @@ function PregnancyModal({
                 <View style={[s.pregModalBadge, { backgroundColor: color }]}>
                   <Text style={s.pregModalBadgeText}>{cat}</Text>
                 </View>
-                <View style={{ flex: 1 }}>
+                <View style={s.flex1}>
                   <Text style={[s.pregModalRisk, { color }]}>{info.risk}</Text>
                   <Text style={s.pregModalDesc}>{info.desc}</Text>
                 </View>
@@ -310,12 +308,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           }}
           onPress={() => navigation.goBack()}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View style={styles.rowCenter}>
             <MaterialCommunityIcons
               name="chevron-left"
               size={18}
               color="#FFFFFF"
-              style={{ marginRight: 4 }}
+              style={styles.mr4}
             />
             <Text
               style={{
@@ -433,7 +431,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           style={styles.header}
         >
           <View style={styles.headerTopRow}>
-            <Text style={[styles.unitName, { flex: 1 }]}>
+            <Text style={[styles.unitName, styles.flex1]}>
               {unit?.nombre || 'Sin unidad'}
             </Text>
             <TouchableOpacity
@@ -471,8 +469,8 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           <View style={styles.classificationBadge}>
             <Text style={styles.classificationText}>{drug.clasificacion}</Text>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={[styles.drugName, { flex: 1 }]}>{drug.nombre}</Text>
+          <View style={styles.rowCenter}>
+            <Text style={[styles.drugName, styles.flex1]}>{drug.nombre}</Text>
             <CopyButton
               text={`${drug.nombre} (${drug.nombreGenerico})`}
               colors={{
@@ -490,7 +488,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               accessibilityRole="button"
               accessibilityLabel={`Categoría de embarazo ${drug.embarazo}. Toca para más información`}
             >
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={styles.rowCenter}>
                 <Text style={styles.pregText}>Embarazo: {drug.embarazo} </Text>
                 <MaterialCommunityIcons
                   name="information-outline"
@@ -523,12 +521,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           )}
           {isReplacement && replacedDrug && (
             <View style={styles.replacementHeaderBadge}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={styles.rowCenter}>
                 <MaterialCommunityIcons
                   name="swap-horizontal-circle-outline"
                   size={14}
                   color="#FFFFFF"
-                  style={{ marginRight: 4 }}
+                  style={styles.mr4}
                 />
                 <Text style={styles.replacementHeaderText}>
                   Reemplazo de {replacedDrug}
@@ -591,14 +589,14 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           ].filter(Boolean);
           return missing.length > 0 ? (
             <View style={styles.incompleteBadge}>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+              <View style={styles.rowStart}>
                 <MaterialCommunityIcons
                   name="information-outline"
                   size={14}
                   color={colors.info}
-                  style={{ marginRight: 4, marginTop: 1 }}
+                  style={styles.iconMr4Mt1}
                 />
-                <Text style={[styles.incompleteBadgeText, { flex: 1 }]}>
+                <Text style={[styles.incompleteBadgeText, styles.flex1]}>
                   Información parcial — faltan: {missing.join(', ')}
                 </Text>
               </View>
@@ -673,7 +671,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               color={colors.primary}
               style={{ marginRight: rs.space(6) }}
             />
-            <Text style={[styles.doseSectionTitle, { marginBottom: 0 }]}>
+            <Text style={[styles.doseSectionTitle, styles.mb0]}>
               Vía y Dosis
             </Text>
           </View>
@@ -717,12 +715,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
           {drug.dosis.pediatrico && (
             <View style={[styles.doseBox, styles.pediatricBox]}>
               <View style={styles.doseLabelRow}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={styles.rowCenter}>
                   <MaterialCommunityIcons
                     name="baby-face-outline"
                     size={14}
                     color={colors.pediatric}
-                    style={{ marginRight: 4 }}
+                    style={styles.mr4}
                   />
                   <Text style={[styles.doseLabel, { color: colors.pediatric }]}>
                     Pediátrico
@@ -786,22 +784,14 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               style={styles.parenteralCard}
               onLayout={registerSection('preparacion')}
             >
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginBottom: 4,
-                }}
-              >
+              <View style={styles.rowCenterMb4}>
                 <MaterialCommunityIcons
                   name="needle"
                   size={20}
                   color={colors.primary}
                   style={{ marginRight: rs.space(6) }}
                 />
-                <Text
-                  style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}
-                >
+                <Text style={[styles.parenteralSectionTitle, styles.mb0]}>
                   Preparación y Dilución
                 </Text>
               </View>
@@ -878,29 +868,21 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             style={styles.parenteralCard}
             onLayout={registerSection('preparacion')}
           >
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 4,
-              }}
-            >
+            <View style={styles.rowCenterMb4}>
               <MaterialCommunityIcons
                 name="iv-bag"
                 size={20}
                 color={colors.primary}
                 style={{ marginRight: rs.space(6) }}
               />
-              <Text
-                style={[styles.parenteralSectionTitle, { marginBottom: 0 }]}
-              >
+              <Text style={[styles.parenteralSectionTitle, styles.mb0]}>
                 Guía de Administración Parenteral
               </Text>
             </View>
 
             {drug.preparacionParenteral.medicamentoPeligroso && (
               <View style={styles.hazardBadge}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={styles.rowCenter}>
                   <MaterialCommunityIcons
                     name="alert-outline"
                     size={18}
@@ -1167,7 +1149,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               color={colors.nursing}
               style={{ marginRight: rs.space(6) }}
             />
-            <Text style={[styles.nursingSectionTitle, { marginBottom: 0 }]}>
+            <Text style={[styles.nursingSectionTitle, styles.mb0]}>
               Cuidados de Enfermería
             </Text>
           </View>
@@ -1189,7 +1171,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
                 color={colors.error}
                 style={{ marginRight: rs.space(6) }}
               />
-              <Text style={[styles.riskSectionTitle, { marginBottom: 0 }]}>
+              <Text style={[styles.riskSectionTitle, styles.mb0]}>
                 Riesgos por Sobremedicación
               </Text>
             </View>
@@ -1217,16 +1199,14 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             )}
             {drug.riesgosSobremedicacion.alerta && (
               <View style={styles.riskAlerta}>
-                <View
-                  style={{ flexDirection: 'row', alignItems: 'flex-start' }}
-                >
+                <View style={styles.rowStart}>
                   <MaterialCommunityIcons
                     name="alert-octagon"
                     size={16}
                     color={colors.error}
                     style={{ marginRight: rs.space(6), marginTop: 1 }}
                   />
-                  <Text style={[styles.riskAlertaText, { flex: 1 }]}>
+                  <Text style={[styles.riskAlertaText, styles.flex1]}>
                     {drug.riesgosSobremedicacion.alerta}
                   </Text>
                 </View>
@@ -1440,12 +1420,12 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               borderColor: colors.warning + '25',
             }}
           >
-            <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+            <View style={styles.rowStart}>
               <MaterialCommunityIcons
                 name="clipboard-text-outline"
                 size={14}
                 color={colors.textSecondary}
-                style={{ marginRight: 4, marginTop: 1 }}
+                style={styles.iconMr4Mt1}
               />
               <Text
                 style={{
@@ -1476,7 +1456,7 @@ export function DrugDetailScreen({ route, navigation }: Props) {
               color={colors.text}
               style={{ marginRight: rs.space(6) }}
             />
-            <Text style={[styles.notesSectionTitle, { marginBottom: 0 }]}>
+            <Text style={[styles.notesSectionTitle, styles.mb0]}>
               Mis Notas
             </Text>
           </View>
@@ -1502,9 +1482,9 @@ export function DrugDetailScreen({ route, navigation }: Props) {
             name="information-outline"
             size={14}
             color={colors.textSecondary}
-            style={{ marginRight: 6, marginTop: 2 }}
+            style={styles.iconMr6Mt2}
           />
-          <View style={{ flex: 1 }}>
+          <View style={styles.flex1}>
             <Text style={styles.provenanceText}>
               Fuente: {drugsMeta.sourceCanonical} · Edición:{' '}
               {formatMonthYear(drugsMeta.lastEdited)}
@@ -1541,6 +1521,20 @@ export function DrugDetailScreen({ route, navigation }: Props) {
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
+    // ── Helpers de layout (extraídos de inline styles) ──
+    rowCenter: { flexDirection: 'row', alignItems: 'center' },
+    rowStart: { flexDirection: 'row', alignItems: 'flex-start' },
+    rowCenterMb4: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 4,
+    },
+    mb0: { marginBottom: 0 },
+    flex1: { flex: 1 },
+    mr4: { marginRight: 4 },
+    iconMr4Mt1: { marginRight: 4, marginTop: 1 },
+    iconMr6Mt2: { marginRight: 6, marginTop: 2 },
+
     container: { flex: 1, backgroundColor: colors.neuBackground },
     headerImageBg: {
       borderBottomLeftRadius: 24,
