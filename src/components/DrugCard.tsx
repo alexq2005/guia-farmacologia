@@ -32,7 +32,7 @@ interface Props {
   matchedCommercial?: string;
 }
 
-export function DrugCard({
+function DrugCardComponent({
   drug,
   onPress,
   onLongPress,
@@ -171,6 +171,12 @@ export function DrugCard({
     </TouchableOpacity>
   );
 }
+
+/**
+ * Memoizado: en listas FlashList largas evita re-renders de filas cuyas props
+ * no cambiaron (el toggle de favoritos de otra fila ya no repinta todas).
+ */
+export const DrugCard = React.memo(DrugCardComponent);
 
 const createStyles = (colors: ThemeColors, rs: ResponsiveScale) =>
   StyleSheet.create({
