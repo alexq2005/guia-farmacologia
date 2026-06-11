@@ -5,7 +5,7 @@
 ### 1. Base de Datos Farmacológica
 
 **Pantalla**: HomeScreen, SearchScreen, DrugDetailScreen
-**Datos**: 2,977 fármacos (Operando a 0 coste RAM vía `SQLite JSI Extractor`)
+**Datos**: 2,974 fármacos (Operando a 0 coste RAM vía `SQLite JSI Extractor`)
 
 La funcionalidad central de la app. Cada fármaco incluye:
 

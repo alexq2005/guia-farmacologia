@@ -6,7 +6,7 @@ Originalmente la data estuvo en `src/data/` en formatos JSON gigantescales. Hoy 
 
 | Archivo                    | Registros                  | Descripción                                                           |
 | -------------------------- | -------------------------- | --------------------------------------------------------------------- |
-| `drugs.json`               | 2,977 fármacos             | Base de datos principal farmacológica (hidratada a SQLite)            |
+| `drugs.json`               | 2,974 fármacos             | Base de datos principal farmacológica (hidratada a SQLite)            |
 | `_meta.json`               | metadata 8 datasets        | Provenance, fuente canónica, fecha de revisión clínica por dataset    |
 | `categories.json`          | 13 unidades, 117 capítulos | Clasificación terapéutica                                             |
 | `pathologies.json`         | 60 patologías              | Enfermedades con fármacos vinculados                                  |

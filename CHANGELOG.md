@@ -14,11 +14,70 @@ APKs with duplicate version codes.
 
 ### Added
 
+- **Tests nuevos de lógica premium (7)** en `__tests__/premiumLogic.test.ts`:
+  4 para `resolveSubscriptionState` (decisión revocar/conservar tras consultar
+  Play Billing, con casos REGRESIÓN de revenue y offline) y 3 para storage
+  corrupto / clock rollback en `computeTrialDaysLeft` (NaN, ±Infinity, clamp
+  con duración custom). Total de la suite: 130 tests.
+
 ### Changed
+
+- `restorePurchases()` (`src/utils/billing.ts`) ahora devuelve
+  `{ ok, purchases }` en vez de `SubscriptionPurchase[]`: permite distinguir
+  "consulta exitosa sin compra activa" (revocable) de "consulta fallida /
+  offline" (conservar cache).
+- `acknowledgePurchase()` reintenta una vez ante fallo de `finishTransaction`
+  y reporta vía `crashReporting.captureException` si el retry también falla
+  (no-op hasta activar Sentry, pero el rastro queda cableado).
+- `TRIAL_DAYS` tiene ahora única fuente de verdad en `src/utils/premiumLogic.ts`
+  (eliminada la copia local duplicada de `PremiumContext.tsx`).
 
 ### Fixed
 
+- **CI nunca corrió ni una vez**: `.github/workflows/check.yml` disparaba solo
+  en `main` pero la única rama del repo es `master`. Ahora dispara en ambas
+  (push y pull_request). Además se quitó `--passWithNoTests` del job de Jest:
+  con 123+ tests reales, "0 tests encontrados" debe ser fallo de CI, no un
+  pass silencioso.
+- **Suscripción cancelada conservaba premium para siempre** (revenue-critical):
+  el flag persistido `PREMIUM_KEY` se seteaba al comprar/restaurar pero nunca
+  se invalidaba. Ahora, si Play Billing responde exitosamente SIN compra
+  activa, se revoca (estado + `EncryptedStorage.removeItem`); si la consulta
+  falla (offline/error) se conserva el valor cacheado — un suscriptor offline
+  NUNCA pierde acceso. Lógica extraída a `resolveSubscriptionState()` pura y
+  testeada. El init path además hace acknowledge de compras activas no
+  confirmadas (Google reembolsa automáticamente a los 3 días las compras sin
+  acknowledge; antes solo el purchase listener y el restore manual lo hacían).
+- **Trial perpetuo por storage corrupto**: `computeTrialDaysLeft` con
+  `trialStartDate = NaN` devolvía los 14 días completos para siempre. Guard
+  `Number.isFinite` en la función pura + re-inicialización del trial en
+  `PremiumContext` cuando `parseInt(trialRaw)` no es finito (el trial se
+  reinicia, no se regala perpetuo). Clamp superior `Math.min(trialDays, …)`:
+  retroceder el reloj del dispositivo ya no extiende el trial sin tope.
+- **`useFavorites` perdía datos en silencio**: el `JSON.parse` del effect de
+  carga solo estaba cubierto por el `.catch()` del Promise — storage corrupto
+  vaciaba favoritos sin dejar rastro. Ahora cada parse tiene try/catch
+  explícito con `console.warn` (mismo patrón que `useNotes`/`useQuiz`/
+  `useRecentDrugs`/`useSearchHistory`) y las colecciones corruptas caen a las
+  default.
+- **Conteo de fármacos visible al usuario corregido 2,977 → 2,974** (el
+  dataset real tiene 2,974 entradas desde la limpieza de zombies de v1.0.1):
+  comentario de `App.tsx`, `OnboardingScreen.tsx` (×2), `PremiumScreen.tsx`,
+  `docs/DATA.md`, `docs/FEATURES.md`, `docs/play-store-listing.md`.
+
 ### Removed
+
+- **Código muerto** (verificado 0 imports/referencias con `git grep` antes de
+  borrar): `src/utils/icons.ts` y `src/utils/icons.tsx` (mapeos de iconos
+  nunca importados — el `TAB_ICONS` real vive como const local en
+  `AppNavigator.tsx`), `src/data/new_drugs.json` y
+  `src/data/new_drugs_psych.json` (datasets intermedios ya mergeados a
+  `drugs.json`; nota: `scripts/merge_drugs.js` espera un `new_drugs.json`
+  nuevo como input si alguna vez se reutiliza), y el `drugMap` sin
+  consumidores de `useDrugData.ts` (los lookups reales van por SQLite).
+- `build_error.log` y `build_out.log` destrackeados del repo (`git rm`);
+  borrados del disco `build_out_2.log` (ignorado) y `screenshots/` completo
+  (187 archivos, ~118 MB, gitignored).
 
 ## [1.0.1] - 2026-05-23
 
