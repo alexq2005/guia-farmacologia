@@ -39,7 +39,7 @@ const PREMIUM_FEATURES = [
 ];
 
 const FREE_FEATURES = [
-  { iconName: 'pill', text: '2,977 fármacos con información completa' },
+  { iconName: 'pill', text: '2,974 fármacos con información completa' },
   { iconName: 'bookshelf', text: 'Navegación por categorías y sistemas' },
   { iconName: 'magnify', text: 'Búsqueda inteligente sin acentos' },
   { iconName: 'moon-waning-crescent', text: 'Modo oscuro' },

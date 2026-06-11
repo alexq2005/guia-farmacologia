@@ -49,9 +49,9 @@ const SLIDES: SlideData[] = [
   {
     icon: 'database-outline',
     title: 'Base de datos\ncompleta',
-    subtitle: '2,977 fármacos detallados',
+    subtitle: '2,974 fármacos detallados',
     features: [
-      { icon: 'pill', text: '2,977 fármacos con información detallada' },
+      { icon: 'pill', text: '2,974 fármacos con información detallada' },
       { icon: 'magnify', text: 'Búsqueda inteligente por nombre o familia' },
       { icon: 'alert-outline', text: 'Interacciones y contraindicaciones' },
       {
