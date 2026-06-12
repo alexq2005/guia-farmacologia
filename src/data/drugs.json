@@ -1037,21 +1037,24 @@
     ],
     "viaAdministracion": ["oral", "IV"],
     "dosis": {
-      "adulto": "Carga oral: 200 mg TID x 1-2 semanas. Mantenimiento: 200 mg/día. Carga IV: 150 mg en 10 min, luego 1 mg/min x 6h, luego 0.5 mg/min"
+      "adulto": "Carga oral: 200 mg cada 8h x 1-2 semanas. Mantenimiento: 200 mg/día. Carga IV: 150-300 mg en 10-60 min, luego 1 mg/min x 6h, luego 0,5 mg/min (máx ~1,2 g/24h). En paro/FV refractaria (SVA): 300 mg IV en bolo, repetible 150 mg.",
+      "pediatrico": "IV: 5 mg/kg administrados en ~20-60 min (en paro: 5 mg/kg en bolo). ⚠️ La presentación IV contiene alcohol bencílico: NO usar en prematuros, neonatos ni niños hasta 3 años.",
+      "ajusteRenal": "No requiere ajuste (eliminación no renal); precaución por contenido de yodo en insuficiencia renal grave.",
+      "ajusteHepatico": "No hay ajuste fijo definido; suspender o reducir dosis si las transaminasas superan 3 veces el valor normal (hepatotoxicidad)."
     },
     "presentaciones": ["Comprimidos 200 mg", "Ampollas 150 mg/3 mL"],
     "embarazo": "D",
     "lactancia": "Contraindicada. Alto contenido de yodo.",
     "cuidadosEnfermeria": [
-      "Monitorización ECG continua durante carga IV",
-      "Infundir por vía central (irrita venas periféricas)",
-      "Usar equipo libre de PVC (se adsorbe al plástico)",
-      "Vigilar función tiroidea cada 6 meses",
-      "Radiografía de tórax basal y cada 6-12 meses",
-      "Función hepática cada 6 meses",
-      "Examen oftalmológico anual",
-      "Protección solar estricta: fotosensibilidad severa",
-      "Vida media muy larga: efectos persisten semanas tras suspender"
+      "Monitorización ECG y de TA continua durante la carga IV (vigilar bradicardia, bloqueo AV, hipotensión y prolongación de QT)",
+      "Diluir y administrar SOLO en SG5% (precipita en SF 0,9%); usar bomba de infusión",
+      "Infundir por vía central siempre que sea posible (es VESICANTE e irrita/flebitis en vía periférica); si se usa periférica, no superar 2 mg/mL y vigilar el sitio",
+      "Usar equipo y bolsa libres de PVC/DEHP (se adsorbe al plástico y libera plastificante); preferir vidrio o poliolefina",
+      "Para infusiones prolongadas usar filtro en línea (la presentación puede precipitar)",
+      "⚠️ Presentación IV con alcohol bencílico: contraindicada en prematuros, neonatos y <3 años ('síndrome del jadeo')",
+      "Vigilancia crónica: función tiroidea cada 6 meses (contiene yodo), Rx de tórax basal y cada 6-12 meses (pulmón de amiodarona), función hepática cada 6 meses, examen oftalmológico anual",
+      "Protección solar estricta (fotosensibilidad severa y coloración gris-azulada de la piel)",
+      "Vida media muy larga (40-55 días): los efectos y las interacciones (warfarina, digoxina) persisten semanas tras suspender"
     ],
     "farmacocinetica": {
       "absorcion": "Oral: variable, 22-86%",
@@ -1450,7 +1453,12 @@
     "id": "vancomicina",
     "nombre": "Vancomicina",
     "nombreGenerico": "Clorhidrato de vancomicina",
-    "nombresComerciales": ["Vancocin", "Vancomicina Hospira"],
+    "nombresComerciales": [
+      "Vancocin",
+      "Vancomicina Hospira",
+      "Vancomicina Richmond",
+      "Vancomicina Fada"
+    ],
     "familia": "Glucopéptidos",
     "clasificacion": "Antibiótico glucopéptido",
     "mecanismoAccion": "Inhibe la síntesis de pared celular bacteriana al unirse al dipéptido D-alanil-D-alanina, impidiendo la polimerización del peptidoglucano.",
@@ -1482,8 +1490,10 @@
     ],
     "viaAdministracion": ["IV", "oral"],
     "dosis": {
-      "adulto": "IV: 15-20 mg/kg cada 8-12h (guiado por niveles). Oral (C. difficile): 125-500 mg cada 6h",
-      "ajusteRenal": "Guiar por niveles séricos (valle 15-20 mcg/mL para infecciones graves)"
+      "adulto": "IV: 15-20 mg/kg cada 8-12h (guiado por niveles). En infección grave puede usarse dosis de carga de 25-30 mg/kg. Oral (C. difficile): 125-500 mg cada 6h.",
+      "pediatrico": "IV: 10-15 mg/kg/dosis cada 6h (lactantes/niños) hasta máx 60 mg/kg/día, ajustado por niveles. Neonatos: carga 15 mg/kg, luego 10 mg/kg cada 8-12h según edad postnatal y función renal (inmadurez renal → intervalos más largos, monitorización estrecha). Oral (C. difficile): 10 mg/kg/dosis cada 6h (máx 500 mg/dosis).",
+      "ajusteRenal": "Ajuste OBLIGATORIO por aclaramiento de creatinina y niveles séricos: alargar el intervalo en IR (la vida media pasa de 4-6h a varios días en anuria). Nefrotóxica: monitorizar creatinina cada 24-48h.",
+      "ajusteHepatico": "No requiere ajuste (eliminación renal, metabolismo hepático mínimo)."
     },
     "presentaciones": [
       "Polvo para reconstitución IV 500 mg, 1 g",
@@ -1492,13 +1502,13 @@
     "embarazo": "C",
     "lactancia": "Precaución. Monitorizar lactante.",
     "cuidadosEnfermeria": [
-      "Infundir en MÍNIMO 60 min por cada gramo (prevenir síndrome del hombre rojo)",
-      "Monitorizar niveles séricos: valle antes de 4ta dosis",
-      "Vigilar función renal y auditiva",
-      "Si rash/rubor durante infusión: detener, antihistamínico, reiniciar más lento",
-      "Oral NO se absorbe: solo útil para infecciones GI",
-      "IV NO útil para colitis por C. difficile",
-      "Verificar sitio IV: vesicante, causa necrosis si extravasa"
+      "Infundir SIEMPRE con bomba en MÍNIMO 60 min por cada gramo (máx 10 mg/min): la infusión rápida desencadena el 'síndrome del hombre rojo' (rubor, eritema en cara/cuello/tronco, prurito, hipotensión)",
+      "Si aparece rubor/rash durante la infusión: detener, administrar antihistamínico según pauta y reanudar a velocidad más lenta (es una reacción a la velocidad, no una alergia verdadera)",
+      "Monitorización de niveles: el estándar actual (IDSA 2020) es el objetivo AUC/CIM 400-600; donde no se calcula AUC, mantener valle de 15-20 mcg/mL en infecciones graves. Extraer el valle inmediatamente antes de la dosis (clásicamente antes de la 4ª dosis o en estado estacionario)",
+      "Vigilar función renal (creatinina basal y cada 24-48h): nefrotóxica, sobre todo asociada a aminoglucósidos, piperacilina-tazobactam o contraste",
+      "Vigilar función auditiva (acúfenos, hipoacusia): ototoxicidad, mayor riesgo con aminoglucósidos concomitantes",
+      "Vesicante: verificar permeabilidad de la vía antes y durante; la extravasación causa necrosis tisular. Para tratamientos prolongados, preferir vía central",
+      "NO administrar por vía IM (necrosis en el sitio). La vía oral NO se absorbe: solo es útil para colitis por C. difficile; a la inversa, la vía IV NO sirve para C. difficile"
     ],
     "farmacocinetica": {
       "distribucion": "Buena penetración tisular excepto SNC (mejora con meninges inflamadas)",
@@ -1989,12 +1999,7 @@
     "id": "ondansetron",
     "nombre": "Ondansetrón",
     "nombreGenerico": "Clorhidrato de ondansetrón",
-    "nombresComerciales": [
-      "Zofran",
-      "Ondax",
-      "Modifical",
-      "Metoclopramida (reemplazada parcialmente)"
-    ],
+    "nombresComerciales": ["Zofran", "Ondax", "Modifical", "Onsetrogen"],
     "familia": "Antieméticos",
     "clasificacion": "Antagonista selectivo de receptores 5-HT3 de serotonina",
     "mecanismoAccion": "Bloquea receptores 5-HT3 en la zona gatillo quimiorreceptora y en nervios vagales aferentes del tracto GI. Nota: Ondansetrón reemplaza a metoclopramida en muchos protocolos por menor riesgo de efectos extrapiramidales.",
@@ -2026,8 +2031,10 @@
     ],
     "viaAdministracion": ["oral", "IV", "IM"],
     "dosis": {
-      "adulto": "4-8 mg IV/oral previo a quimioterapia/cirugía. Postop: 4 mg IV",
-      "pediatrico": "0.15 mg/kg IV (máx 4 mg/dosis)"
+      "adulto": "Quimioterapia: 8 mg IV/oral antes, repetible. Náuseas/vómitos postoperatorios (NVPO): 4 mg IV. NO superar 16 mg en dosis IV única (riesgo de QT/torsades).",
+      "pediatrico": "0,15 mg/kg IV por dosis (máx 8 mg/dosis), hasta 3 dosis. NVPO: dosis única 0,1 mg/kg (≤40 kg) o 4 mg (>40 kg).",
+      "ajusteRenal": "No requiere ajuste.",
+      "ajusteHepatico": "Insuficiencia hepática grave: el aclaramiento se reduce y la semivida se prolonga (15-32h). NO superar una dosis total de 8 mg/día."
     },
     "presentaciones": [
       "Comprimidos 4, 8 mg",
@@ -2037,11 +2044,12 @@
     "embarazo": "B",
     "lactancia": "Datos limitados. Precaución.",
     "cuidadosEnfermeria": [
-      "Administrar 30 min antes de quimioterapia",
-      "IV: infundir en 15 min (no bolo rápido por riesgo QT)",
-      "No produce sedación ni extrapiramidalismo (ventaja sobre metoclopramida)",
-      "Puede causar estreñimiento: vigilar patrón intestinal",
-      "Monitorizar ECG en pacientes con riesgo de prolongación QT"
+      "Administrar 30 min antes de la quimioterapia o al inducir la anestesia (profilaxis de NVPO)",
+      "IV: la dosis ≤8 mg puede darse en bolo lento (≥30 s, idealmente 2-5 min); dosis mayores diluir e infundir en 15 min — nunca en bolo rápido por riesgo de prolongación de QT y torsades",
+      "Monitorizar ECG/QTc en pacientes con QT largo, hipopotasemia, hipomagnesemia, bradicardia o fármacos que prolongan QT; corregir electrolitos antes de administrar",
+      "No superar 16 mg en una dosis IV única (retirada de la presentación de 32 mg por seguridad cardíaca)",
+      "No produce sedación ni síntomas extrapiramidales (ventaja sobre metoclopramida), pero vigilar estreñimiento (puede provocar íleo en postoperados): controlar el patrón intestinal",
+      "Vigilar síndrome serotoninérgico si se asocia a ISRS, IRSN o tramadol (agitación, hipertermia, mioclonías, hiperreflexia)"
     ],
     "farmacocinetica": {
       "metabolismo": "Hepático: CYP3A4, CYP1A2, CYP2D6",
@@ -2510,11 +2518,7 @@
     "id": "enoxaparina",
     "nombre": "Enoxaparina",
     "nombreGenerico": "Enoxaparina sódica",
-    "nombresComerciales": [
-      "Clexane",
-      "Lovenox",
-      "Heparina cálcica (reemplazada por HBPM)"
-    ],
+    "nombresComerciales": ["Clexane", "Lovenox", "Dramaxide", "Endorad"],
     "familia": "Heparinas de bajo peso molecular",
     "clasificacion": "HBPM - anticoagulante anti-Xa predominante",
     "mecanismoAccion": "Potencia la antitrombina III con mayor actividad anti-Xa que anti-IIa (relación 3.8:1), proporcionando anticoagulación más predecible. Nota: Enoxaparina (HBPM) ha reemplazado a heparina cálcica SC por dosificación más predecible y menor riesgo de TIH.",
@@ -2546,20 +2550,23 @@
     ],
     "viaAdministracion": ["SC"],
     "dosis": {
-      "adulto": "Profilaxis: 40 mg SC/día. Tratamiento: 1 mg/kg cada 12h o 1.5 mg/kg cada 24h",
-      "ajusteRenal": "ClCr <30: 30 mg/día profilaxis, 1 mg/kg/día tratamiento"
+      "adulto": "Profilaxis: 40 mg SC/día (20 mg/día en riesgo moderado). Tratamiento (TVP/TEP/SCA): 1 mg/kg cada 12h o 1,5 mg/kg cada 24h.",
+      "pediatrico": "Tratamiento: ≤2 meses 1,5 mg/kg/dosis SC cada 12h (lactantes <3 meses suelen requerir 1,8 mg/kg); >2 meses 1 mg/kg/dosis cada 12h. Profilaxis: 0,75 mg/kg (<2 meses) o 0,5 mg/kg (>2 meses) cada 12h. SIEMPRE ajustar por anti-Xa (objetivo terapéutico 0,5-1 U/mL). En niños NO se usa la pauta cada 24h por mayor aclaramiento.",
+      "ajusteRenal": "ClCr <30 mL/min: profilaxis 20-30 mg/día; tratamiento 1 mg/kg cada 24h. Riesgo de acumulación y sangrado: considerar control de anti-Xa.",
+      "ajusteHepatico": "Precaución en insuficiencia hepática grave (mayor riesgo hemorrágico); no hay pauta de ajuste fija."
     },
     "presentaciones": ["Jeringas prellenadas 20, 40, 60, 80, 100 mg"],
     "embarazo": "B",
     "lactancia": "No se excreta significativamente. Compatible.",
     "cuidadosEnfermeria": [
-      "SC en abdomen: alternar lados, 5 cm del ombligo",
-      "NO expulsar burbuja de aire de la jeringa (es parte del sistema)",
-      "No masajear después de inyección",
-      "No monitorizar TTPa rutinariamente (predecible)",
-      "Anti-Xa solo en obesidad, embarazo, insuficiencia renal",
-      "Vigilar plaquetas semanalmente las primeras 3 semanas",
-      "Antídoto parcial: protamina (60-75% neutralización)"
+      "Inyectar SC en el tejido subcutáneo del abdomen anterolateral, alternando lados, a ≥5 cm del ombligo; insertar la aguja completa en un pliegue cutáneo sostenido durante toda la inyección",
+      "NO expulsar la burbuja de aire de la jeringa precargada (asegura administrar la dosis completa y sella el trayecto, reduciendo el hematoma)",
+      "No masajear la zona tras inyectar (aumenta el hematoma); aplicar presión suave",
+      "NUNCA administrar por vía IM (hematoma intramuscular grave)",
+      "No requiere monitorización de TTPa (efecto predecible); medir anti-Xa solo en obesidad, embarazo, insuficiencia renal, pediatría o peso extremo",
+      "Vigilar recuento plaquetario basal y periódico (riesgo de trombocitopenia inducida por heparina/HIT, menor que con HNF pero posible): si las plaquetas caen >50%, suspender y avisar",
+      "Vigilar signos de sangrado (hematuria, melena, gingivorragia, hematomas, cefalea brusca); el antídoto parcial es protamina (neutraliza ~60%)",
+      "⚠️ Anestesia/punción neuraxial: riesgo de hematoma espinal con parálisis permanente. Respetar los intervalos respecto a la dosis (p. ej. esperar ≥12h tras dosis profiláctica y ≥24h tras dosis terapéutica antes de retirar/colocar catéter) y vigilar déficit neurológico"
     ],
     "farmacocinetica": {
       "absorcion": "SC: biodisponibilidad >90%",
@@ -40594,9 +40601,10 @@
     ],
     "viaAdministracion": ["oral", "IV"],
     "dosis": {
-      "adultos": "IV: 10-40 mEq/h (máx 40 mEq/h por vía central, 10 mEq/h periférica). Concentración máx periférica: 40 mEq/L. Central: 60-80 mEq/L. Oral: 20-100 mEq/día dividido",
-      "pediatria": "IV: 0.5-1 mEq/kg/h (máx 40 mEq/h). Concentración similar",
-      "adulto": "Posología\nAdultos y pacientes de edad avanzada\nLa actividad recomendada administrada por vía intravenosa en las pruebas de esfuerzo o reposo para un paciente de peso medio (70 kg) es de 50 a 80 MBq de solución de cloruro de talio (201Tl) . Esta actividad puede incrementarse en un 50% si se realizan imágenes de SPECT, hasta una actividad máxima de 110 MBq.\nSe puede considerar una inyección adicional de 40 MBq en reposo después de la inyección en la prueba de esfuerzo inicial (reinyección).\nPoblac"
+      "adulto": "IV: 10-20 mEq/h por vía periférica; hasta 40 mEq/h por vía central solo en emergencia con monitorización ECG continua. Concentración máx periférica: 40 mEq/L; central: 60-80 mEq/L. Oral: 20-100 mEq/día divididos en 2-4 tomas.",
+      "pediatrico": "IV: 0,5-1 mEq/kg/h (máx 40 mEq/h). Oral: 1-3 mEq/kg/día. Misma regla de concentración y dilución obligatoria que en adultos.",
+      "ajusteRenal": "Reducir dosis y monitorizar estrechamente K+ sérico. Contraindicado en oliguria/anuria.",
+      "ajusteHepatico": "No requiere ajuste."
     },
     "presentaciones": [
       "Ampolla 10% (1.34 mEq/mL) 10 mL = 13.4 mEq",
@@ -109245,7 +109253,10 @@
     "nombre": "Acetilcisteína",
     "nombreGenerico": "acetilcisteína",
     "nombresComerciales": [
-      "ACETILCISTEÍNA BEXAL 200 mg POLVO PARA SOLUCIÓN ORAL EFG"
+      "Fluimucil",
+      "Acemuk",
+      "Toflux",
+      "Acetilcisteína Bexal"
     ],
     "familia": "Acetilcisteina",
     "clasificacion": "Mucoliticos",
@@ -109279,22 +109290,30 @@
       "Si se administra acetilcisteína junto con antibióticos como amfotericina B, ampicilina sódica, cefalosporinas, lactobionato de eritromicina o algunas tetraciclinas, pueden ser físicamente incompatibles o incluso pueden resultar inactivados los antibióticos. En estos casos, se recomienda separar las tomas al menos un intervalo de 2 horas. Esto no se refiere a loracarbef.",
       "Se ha demostrado que la administración simultánea de nitroglicerina y acetilcisteína produce una hipotensión significativa e incremento de la dilatación de la arteria temporal. Si es necesaria el tratamiento conjuntaode nitroglicerina y acetilcisteína, los pacientes deben ser controlados por la aparición de hipotensión, que puede ser grave, y advertir a los pacientes sobre la posibilidad de cefaleas."
     ],
-    "viaAdministracion": ["oral"],
+    "viaAdministracion": ["oral", "inhalatoria"],
     "dosis": {
-      "adulto": "Consultar ficha técnica"
+      "adulto": "Vía oral (mucolítico): 600 mg/día en una toma única, o 200 mg cada 8h. Nebulización: 3-6 mL de solución de NAC en volumen similar de suero fisiológico. (Nota: la indicación como antídoto del paracetamol usa pautas IV específicas y no corresponde a esta presentación oral.)",
+      "pediatrico": "Niños de 2 a 6 años: 100 mg cada 8h (300 mg/día). Niños >7 años: 200 mg cada 8h (máx 600 mg/día). NO administrar a menores de 2 años.",
+      "ajusteRenal": "Sin ajuste específico para el uso mucolítico.",
+      "ajusteHepatico": "Sin ajuste específico para el uso mucolítico."
     },
-    "presentaciones": [],
-    "embarazo": "C",
-    "lactancia": "Lactancia\nSe desconoce si acetilcisteína o sus metabolitos se excretan en la leche materna.",
+    "presentaciones": [
+      "Sobres/granulado 200 mg y 600 mg para solución oral",
+      "Comprimidos efervescentes 200 mg y 600 mg",
+      "Solución oral pediátrica 20 mg/mL",
+      "Ampolla/solución 100 mg/mL para nebulización"
+    ],
+    "embarazo": "B",
+    "lactancia": "Se desconoce si se excreta en leche; usar solo si el beneficio justifica el riesgo.",
     "cuidadosEnfermeria": [
-      "Verificar capacidad de deglución del paciente",
-      "Administrar con agua suficiente salvo indicación contraria",
-      "Valorar características de la tos (productiva/seca)",
-      "Fomentar hidratación para fluidificar secreciones",
-      "Monitorizar función hepática (GOT, GPT, bilirrubina) periódicamente",
-      "Medir TA regularmente; precaución con cambios posturales",
-      "Monitorizar ECG; vigilar FC y ritmo cardíaco",
-      "Disponer de adrenalina y equipo de reanimación; vigilar reacciones alérgicas"
+      "Administrar lejos de las comidas para mejorar absorción; disolver bien sobres/efervescentes en agua",
+      "Valorar características de la tos y de las secreciones (cantidad, color, viscosidad) antes y después",
+      "Fomentar hidratación y fisioterapia/tos asistida para movilizar el moco fluidificado",
+      "Separar al menos 2h la toma de antibióticos orales (puede inactivarlos) y de sales de hierro, calcio u oro (efecto quelante)",
+      "No asociar con antitusígenos ni anticolinérgicos: bloquean la expectoración del moco fluidificado",
+      "Nebulización: puede provocar broncoespasmo — en pacientes con hiperreactividad bronquial administrar un broncodilatador 10-15 min antes y vigilar",
+      "Vigilar reacciones de hipersensibilidad (broncoespasmo, angioedema, rash); el olor sulfuroso es normal",
+      "Con nitroglicerina concomitante: vigilar hipotensión y cefalea"
     ],
     "unidadId": "u04",
     "capituloId": "c04_cima",
@@ -113068,20 +113087,23 @@
     ],
     "viaAdministracion": ["oftalmica"],
     "dosis": {
-      "adulto": "Posología\nUso en adultos\nCuando se pretenda un efecto sostenido, se realizarán en general tres aplicaciones diarias de 2 gotas.\nEn refracción ciclopléjica, se instilarán 1 ó 2 gotas en cada ojo dos veces al día, de 1 a 3 días antes de la exploración.\nPoblación pediátrica\nDebido al riesgo de producir efectos adversos graves sistémicos:\nColirofta Atropina 10 mg/ml colirio en solución está contraindicado en niños menores de 3 años de edad y se recomienda utilizar con precaución en niños mayores de "
+      "adulto": "Uveítis anterior (iritis/iridociclitis): 1-2 gotas en el ojo afectado hasta 3 veces al día. Refracción ciclopléjica: 1-2 gotas en cada ojo 2 veces al día, durante 1-3 días antes de la exploración.",
+      "pediatrico": "Usar la menor concentración disponible. Colirio de 10 mg/ml contraindicado en <3 años; el de 5 mg/ml contraindicado en lactantes <3 meses. En niños, ocluir el conducto nasolagrimal para minimizar la absorción sistémica."
     },
-    "presentaciones": [],
+    "presentaciones": [
+      "Colirio en solución 10 mg/ml (1%)",
+      "Colirio en solución 5 mg/ml (0,5%)"
+    ],
     "embarazo": "D",
-    "lactancia": "Lactancia\nSe desconoce si la atropina se excreta en la leche materna tras administración oftálmica.",
+    "lactancia": "Se desconoce si pasa a leche tras uso oftálmico; evitar durante la lactancia (categoría de la ficha técnica).",
     "cuidadosEnfermeria": [
-      "Lavarse las manos antes de administrar",
-      "Inclinar la cabeza hacia atrás y aplicar en saco conjuntival inferior",
-      "Monitorizar función hepática (GOT, GPT, bilirrubina) periódicamente",
-      "Medir TA regularmente; precaución con cambios posturales",
-      "Monitorizar ECG; vigilar FC y ritmo cardíaco",
-      "Extremar precauciones en pacientes epilépticos; tener diazepam disponible",
-      "⚠️ Embarazo categoría D: Riesgo fetal demostrado. Verificar test de embarazo si procede",
-      "Advertir al paciente que puede afectar a la capacidad de conducción"
+      "Higiene de manos antes y después; no tocar el cuentagotas con el ojo ni con las pestañas",
+      "Inclinar la cabeza hacia atrás, traccionar el párpado inferior e instilar la gota en el saco conjuntival inferior",
+      "Comprimir el ángulo interno del ojo (conducto nasolagrimal) 1-2 min tras instilar: reduce la absorción sistémica y los efectos anticolinérgicos, sobre todo en niños y ancianos",
+      "Vigilar signos de absorción sistémica (sobredosis anticolinérgica): sequedad de boca, rubor facial, taquicardia, fiebre, agitación/confusión — más frecuente en niños pequeños",
+      "Advertir que produce midriasis y visión borrosa/cicloplejía prolongadas (días): el paciente no debe conducir ni realizar tareas de precisión y debe usar gafas de sol por fotofobia",
+      "Contraindicado en glaucoma de ángulo estrecho: confirmar antecedentes antes de administrar",
+      "Si se instila más de un colirio, separar las aplicaciones al menos 5 min"
     ],
     "unidadId": "u09",
     "capituloId": "c09_cima",
@@ -137013,7 +137035,9 @@
     "nombre": "Heparina",
     "nombreGenerico": "heparina",
     "nombresComerciales": [
-      "HEPARINA SODICA ROVI 1000 UI/ml SOLUCIÓN INYECTABLE"
+      "Heparina Sódica Richmond",
+      "Hepatriet (Craveri)",
+      "Heparina Sódica ROVI"
     ],
     "familia": "Heparina",
     "clasificacion": "Grupo de la heparina",
@@ -137058,20 +137082,27 @@
     ],
     "viaAdministracion": ["IV", "SC"],
     "dosis": {
-      "adulto": "Posología:\nLa heparina sódica puede ser administrada por vía intravenosa (en infusión continua o bolus), intraarterial, o subcutánea. Debe evitarse la administración intramuscular, por el riesgo de hematomas locales.\nLa dosis de heparina debe ser individualizada y ajustada según los tiempos de coagulación.\nLa dosis recomendada varía en función de las diferentes indicaciones, siendo en cada caso la siguiente:\nAdultos:\nTratamiento de la enfermedad tromboembólica: trombosis venosa profunda, tromboe"
+      "adulto": "Enfermedad tromboembólica (TVP/TEP): bolo IV de 80 UI/kg (o 5.000 UI fijas), seguido de infusión continua de 18 UI/kg/h (aprox. 1.300 UI/h o 32.000 UI/24h), ajustada por TTPa. SCA (angina inestable/IAM): bolo IV de 5.000 UI + 32.000 UI/24h en perfusión continua. Profilaxis: 5.000 UI SC cada 8-12h. NO administrar por vía IM (hematomas).",
+      "pediatrico": "Bolo IV inicial 75-100 UI/kg, seguido de 20-28 UI/kg/h en infusión continua (>2 meses), ajustada por TTPa. Contraindicada en prematuros y recién nacidos por el alcohol bencílico de algunas presentaciones.",
+      "ajusteRenal": "No requiere ajuste por dosis fija, pero en insuficiencia renal hay mayor riesgo de hiperpotasemia y acumulación: monitorizar K+ y TTPa más estrechamente.",
+      "ajusteHepatico": "Precaución en hepatopatía grave (mayor riesgo hemorrágico): contraindicada en trastorno grave de la función hepática."
     },
-    "presentaciones": [],
+    "presentaciones": [
+      "Vial/ampolla 5.000 UI/mL (5 mL = 25.000 UI)",
+      "Vial 1.000 UI/mL",
+      "Solución lista para dilución en perfusión"
+    ],
     "embarazo": "C",
-    "lactancia": "Lactancia: la heparina no se excreta en la leche materna.",
+    "lactancia": "No se excreta en leche materna (molécula grande, no pasa). Compatible.",
     "cuidadosEnfermeria": [
-      "Verificar permeabilidad del acceso venoso antes de administrar",
-      "Controlar velocidad de infusión según pauta médica",
-      "Rotar zonas de inyección (abdomen, muslos, brazos)",
-      "Pellizcar la piel e inyectar en ángulo de 45-90° según aguja",
-      "Vigilar signos de sangrado (epistaxis, hematuria, equimosis, melenas)",
-      "Controlar INR/APTT según anticoagulante",
-      "Educar sobre interacciones alimentarias (vitamina K con acenocumarol/warfarina)",
-      "Monitorizar función hepática (GOT, GPT, bilirrubina) periódicamente"
+      "NUNCA administrar por vía IM (riesgo de hematoma intramuscular severo)",
+      "Infusión IV: SIEMPRE con bomba volumétrica; rotular la bolsa con concentración y velocidad",
+      "Doble verificación de dosis (UI) con segundo profesional: alto riesgo, error puede ser letal",
+      "Controlar TTPa 4-6h tras iniciar y tras cada cambio de dosis (objetivo 1,5-2,5 veces el control)",
+      "Monitorizar recuento plaquetario basal y cada 2-3 días (riesgo de trombocitopenia inducida por heparina/HIT tipo II): si las plaquetas caen >50%, suspender y avisar",
+      "Vigilar signos de sangrado: epistaxis, hematuria, hematemesis/melena, equimosis, gingivorragia, cefalea brusca",
+      "Antídoto: sulfato de protamina IV (1 mg neutraliza ~100 UI de heparina); tenerlo accesible",
+      "SC: rotar zonas en abdomen (alejado del ombligo), no masajear el sitio tras inyectar"
     ],
     "unidadId": "u10",
     "capituloId": "c10_cima",
@@ -137082,6 +137113,18 @@
       "excrecion": "La eliminación es renal, generalmente en forma de metabolitos."
     },
     "almacenamiento": "No conservar a temperatura superior a 30ºC.",
+    "preparacionParenteral": {
+      "reconstitucion": "No requiere (solución lista para dilución).",
+      "dilucion": "Dilución estándar para infusión: 25.000 UI en 250 mL de SF 0,9% (= 100 UI/mL) o 25.000 UI en 500 mL (= 50 UI/mL). El bolo IV puede administrarse sin diluir o diluido en 10-20 mL de SF.",
+      "volumenAdministracion": "Bolo: 5-20 mL. Infusión: 250-500 mL.",
+      "velocidadAdministracion": "Bolo IV lento. Mantenimiento en infusión continua con bomba (p. ej. 18 UI/kg/h), titulando por TTPa. Nunca en bolo rápido la dosis de mantenimiento.",
+      "estabilidad": "Diluida estable 24h a temperatura ambiente. Mezclar bien la bolsa para evitar bolos por estratificación.",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": true
+      },
+      "observaciones": "Incompatible en Y-site con alteplasa, amiodarona, diazepam, fenitoína y vancomicina (purgar la vía). Fármaco de alto riesgo: doble verificación de dosis. Antídoto: protamina."
+    },
     "grupoTerapeutico": "Heparina",
     "grupoFarmacologico": "Grupo de la heparina",
     "preparacionDilucion": "Diluir en SF 0.9% o SG5%. Dilucion estandar: 25,000 UI en 250 mL SF = 100 UI/mL. Compatible con ambas soluciones. Usar bomba de infusion.",
@@ -146545,7 +146588,11 @@
     "id": "cima_metamizol",
     "nombre": "Metamizol",
     "nombreGenerico": "metamizol",
-    "nombresComerciales": ["METAMIZOL CINFA 575 mg CAPSULAS DURAS EFG"],
+    "nombresComerciales": [
+      "Novalgina (Sanofi/Opella)",
+      "Dipirona",
+      "Metamizol Cinfa"
+    ],
     "familia": "Metamizol sodico",
     "clasificacion": "Pirazolonas",
     "mecanismoAccion": "Grupo farmacoterapéutico: Otros analgésicos y antipiréticos. Pirazolonas, código ATC: N02BB.",
@@ -146587,25 +146634,46 @@
       "Inducción farmacocinética de enzimas metabolizantes",
       "Metamizol puede inducir enzimas metabolizantes, como CYP2B6 y CYP3A4."
     ],
-    "viaAdministracion": ["oral"],
+    "viaAdministracion": ["oral", "IV", "IM"],
     "dosis": {
-      "adulto": "Posología\nLa dosis se establece en función de la intensidad del dolor o la fiebre y la sensibilidad de cada persona al tratamiento con metamizol. Es muy importante escoger la dosis más baja que controle el dolor y la fiebre.\nLos adultos y adolescentes de 15 años de edad o mayores (>53 kg) pueden tomar 575 mg de metamizol en una dosis única, que se puede administrar hasta 6 veces al día, en intervalos de 4 a 6 horas, correspondiente a una dosis máxima diaria de 3.450 mg.\nEl efecto del medicamento"
+      "adulto": "Oral: 575 mg en dosis única, hasta 6 veces al día cada 4-6h (máx 3.450 mg/día); con ampollas suelen usarse 500-1.000 mg cada 6-8h. Parenteral: 2 g (1 ampolla de 2 g/5 mL) por dosis, IV lenta o IM profunda, hasta cada 6-8h (máx habitual 5-6 g/día). Elegir siempre la dosis mínima eficaz.",
+      "pediatrico": "10-15 mg/kg/dosis cada 6-8h (vía oral o parenteral, según presentación y edad). No usar la cápsula de 575 mg en <15 años; emplear gotas/jarabe o ampolla según peso.",
+      "ajusteRenal": "Reducir dosis / evitar en insuficiencia renal grave (eliminación renal de metabolitos).",
+      "ajusteHepatico": "Reducir dosis / evitar en insuficiencia hepática grave."
     },
-    "presentaciones": [],
+    "presentaciones": [
+      "Cápsulas/comprimidos 575 mg",
+      "Gotas 500 mg/mL",
+      "Jarabe 50-250 mg/mL (pediátrico)",
+      "Ampolla 2 g/5 mL para IV/IM"
+    ],
     "embarazo": "D",
-    "lactancia": "Lactancia\nLos productos de degradación de metamizol se excretan en la leche materna en cantidades considerables y no se puede excluir que exista riesgo para el lactante.",
+    "lactancia": "Los metabolitos se excretan en leche en cantidades considerables: evitar la lactancia hasta 48h después de la última dosis.",
     "cuidadosEnfermeria": [
-      "Verificar capacidad de deglución del paciente",
-      "Administrar con agua suficiente salvo indicación contraria",
-      "Evaluar dolor con escala EVA antes y después",
-      "Vigilar nivel de consciencia y FR (opioides: FR <12 alertar)",
-      "Monitorizar función hepática (GOT, GPT, bilirrubina) periódicamente",
-      "Monitorizar función renal (creatinina, aclaramiento, diuresis)",
-      "Controlar hemograma periódicamente; vigilar signos de infección o sangrado",
-      "Medir TA regularmente; precaución con cambios posturales"
+      "IV: administrar MUY lentamente, no más de 1 mL/min (≈400-500 mg/min) — la inyección rápida es la causa más frecuente de hipotensión y shock",
+      "Paciente acostado durante la administración IV; monitorizar TA, FC y FR durante y 30 min después",
+      "Diluir la ampolla en 100 mL de SF 0,9%, SG 5% o Ringer lactato si se prefiere infusión corta; usar de inmediato (estabilidad limitada)",
+      "Tener carro de paro accesible: riesgo de reacción anafiláctica/anafilactoide con la vía IV",
+      "Educar al paciente: la coloración rojiza de la orina es normal (metabolito), no es sangre",
+      "Vigilar signos de agranulocitosis: fiebre, odinofagia, úlceras orales o anales — suspender y avisar de inmediato",
+      "Controlar hemograma si tratamiento prolongado; indagar antecedente de reacción previa a pirazolonas",
+      "No añadir la ampolla a grandes volúmenes de solución ni a NPT (incompatibilidad por pH)"
     ],
     "unidadId": "u01",
     "capituloId": "c01_cima",
+    "preparacionParenteral": {
+      "reconstitucion": "No requiere (ampolla en solución lista).",
+      "dilucion": "IV directa lenta sin diluir, o diluir la ampolla (2 g/5 mL) en 100 mL de SF 0,9%, SG 5% o Ringer lactato para infusión corta. IM: sin diluir, profunda.",
+      "volumenAdministracion": "Bolo IV: 5 mL. Infusión: 100 mL. IM: 5 mL.",
+      "velocidadAdministracion": "IV muy lenta: máx 1 mL/min (≈400-500 mg/min), paciente acostado, por riesgo de hipotensión severa/shock.",
+      "estabilidad": "La mezcla diluida tiene estabilidad limitada: administrar inmediatamente. No mezclar con otros fármacos en la misma vía.",
+      "solucionesCompatibles": {
+        "ssf": true,
+        "sg5": true,
+        "otras": "Ringer lactato (uso inmediato)"
+      },
+      "observaciones": "No agregar a grandes volúmenes de infusión, NPT ni soluciones para corrección de pH. Vigilancia hemodinámica durante la administración IV."
+    },
     "farmacocinetica": {
       "absorcion": "Absorción\nDespués de la administración oral, metamizol se hidroliza rápidamente en el jugo gástrico a su principal metabolito, la 4-metilaminoantipirina (MAA), la cual es fácilmente absorbida. Metamizol administrado por vía oral se absorbe casi de forma completa. La ingesta concomitante de alimentos no tiene un efecto relevante en la farmacocinética de metamizol.\nDistribución\n4-MAA se une a las pr",
       "distribucion": "4-MAA se une a las proteínas plasmáticas en un 58%. El resto de metabolitos de metamizol se unen en la siguiente proporción: 4-aminoantipirina (48%), 4-formilaminoantipirina (18%) y 4-acetilaminoantipirina (14%). Metamizol puede atravesar la barrera placentaria. Los metabolitos se excretan en la leche de las madres lactantes.",
@@ -159710,7 +159778,11 @@
     "nombre": "Salbutamol",
     "nombreGenerico": "salbutamol",
     "nombresComerciales": [
-      "SALBUAIR 2.5 mg SOLUCION PARA INHALACION POR NEBULIZADOR"
+      "Ventolin (GSK)",
+      "Salbutral",
+      "Salbuden",
+      "Assal",
+      "Buto Asma"
     ],
     "familia": "Salbutamol",
     "clasificacion": "Agonistas selectivos de receptores beta-2 adrenergicos",
@@ -159740,20 +159812,27 @@
     ],
     "viaAdministracion": ["inhalatoria"],
     "dosis": {
-      "adulto": "Salbuair debe administrarse solo mediante inhalación oral, para ser inhalado a través de la boca.\nSalbuair no debe inyectarse ni tragarse. Debe administrarse empleando un respirador o un nebulizador y siempre bajo vigilancia médica"
+      "adulto": "Nebulización: dosis inicial 2,5 mg, aumentable a 5 mg; repetible hasta 4 veces al día. En crisis asmática aguda puede repetirse cada 20 min hasta 3 veces en la primera hora bajo supervisión. Inhalador (MDI): 100-200 mcg (1-2 disparos) a demanda.",
+      "pediatrico": "Nebulización: 0,15 mg/kg/dosis (mínimo 2,5 mg, máximo 5 mg), diluido en SF 0,9% hasta 3-5 mL, con O2 a 6-8 L/min. Pauta por peso: <10 kg = 1,25 mg; 10-20 kg = 2,5 mg; >20-30 kg = 3,5 mg; >30 kg = 5 mg. En crisis, repetir cada 20 min según respuesta.",
+      "ajusteRenal": "No requiere ajuste.",
+      "ajusteHepatico": "No requiere ajuste."
     },
-    "presentaciones": [],
-    "embarazo": "N/A",
-    "lactancia": "Consultar ficha técnica",
+    "presentaciones": [
+      "Solución para nebulizador 2,5 mg/2,5 mL y 5 mg/2,5 mL",
+      "Solución para nebulizar 5 mg/mL (frasco multidosis)",
+      "Aerosol MDI 100 mcg/dosis"
+    ],
+    "embarazo": "C",
+    "lactancia": "Se excreta en leche en pequeña cantidad; compatible a dosis inhaladas habituales.",
     "cuidadosEnfermeria": [
-      "Enseñar técnica correcta de inhalación al paciente",
-      "Indicar enjuague bucal tras inhalación (especialmente corticoides)",
-      "Evaluar función respiratoria (FR, SatO₂, peak flow)",
-      "Enseñar uso correcto del inhalador",
-      "Monitorizar función hepática (GOT, GPT, bilirrubina) periódicamente",
-      "Medir TA regularmente; precaución con cambios posturales",
-      "Monitorizar ECG; vigilar FC y ritmo cardíaco",
-      "Disponer de adrenalina y equipo de reanimación; vigilar reacciones alérgicas"
+      "Nebulizar con O2 (6-8 L/min) o aire según indicación; sentar al paciente erguido",
+      "Evaluar respuesta antes y después: FR, SatO2, auscultación (sibilancias), uso de músculos accesorios, peak flow si disponible",
+      "Monitorizar FC y ritmo: el salbutamol produce taquicardia y temblor (avisar si FC muy elevada o arritmia)",
+      "Vigilar hipopotasemia en dosis altas o repetidas (sobre todo asociado a corticoides, diuréticos o teofilina): controlar K+",
+      "Con técnica de inhalador (MDI): enseñar coordinación disparo-inspiración y uso de aerocámara/espaciador",
+      "Si se usa con corticoide inhalado: administrar primero el salbutamol (broncodilata) y luego el corticoide",
+      "Informar que temblor fino y cefalea suelen ceder con el uso continuado",
+      "En crisis grave: vigilancia estrecha; tener disponible equipo de soporte y considerar acidosis láctica si hay deterioro pese a broncodilatación"
     ],
     "unidadId": "u04",
     "capituloId": "c04_cima",
