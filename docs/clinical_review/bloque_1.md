@@ -159,6 +159,42 @@ Leyenda de columnas:
    - Editar `_meta.responsible` (top-level) si está null
    - Commit + `npm run version:patch` → release a Play Store
 
+## Notas regionales acumuladas (Argentina)
+
+> Conocimiento regional verificado durante el enriquecimiento de fármacos de
+> alto uso. Fuente base AEMPS-CIMA + Pediamécum (AEPED); la práctica argentina
+> manda cuando difiere. Última actualización: 2026-06-11.
+
+### Nombres comerciales argentinos confirmados
+
+- **Heparina sódica**: Heparina Sódica Richmond, Hepatriet (Craveri).
+- **Metamizol (dipirona)**: Novalgina; en AR se la nombra habitualmente
+  "dipirona" más que "metamizol".
+- **Salbutamol**: Ventolin (GSK), Salbutral, Assal, Buto Asma.
+- **Vancomicina**: Vancomicina Richmond, Vancomicina Fada.
+- **Enoxaparina**: Clexane, además de genéricos locales (Dramaxide, Endorad).
+- **Ondansetrón**: Zofran, Ondax, Modifical, Onsetrogen.
+
+### Deltas de práctica / seguridad relevantes
+
+- **Vancomicina**: el estándar de monitorización vigente (IDSA 2020) es
+  **AUC/CIM 400-600**; el valle 15-20 mcg/mL se conserva como objetivo donde no
+  se calcula AUC. Pediatría/neonatos siempre por niveles (inmadurez renal).
+- **Amiodarona IV**: contiene **alcohol bencílico** → contraindicada en
+  prematuros, neonatos y **< 3 años**. Diluir SOLO en SG5% (precipita en SF);
+  equipo libre de PVC/DEHP.
+- **Ondansetrón**: techo de **16 mg IV** por riesgo de QT/torsades; máx
+  **8 mg/día** en insuficiencia hepática grave.
+- **Enoxaparina pediátrica**: dosificar por **anti-Xa** (objetivo 0,5-1 U/mL);
+  NO usar pauta cada 24h en niños (mayor aclaramiento).
+- **Cloruro de potasio IV**: nunca en bolo; máx periférica clásica 10 mEq/h y
+  40 mEq/L de concentración. Alto riesgo: doble verificación.
+
+### Corrección de datos
+
+- Se depuraron notas editoriales que estaban mal ubicadas dentro de
+  `nombresComerciales` (no eran marcas): ondansetrón y enoxaparina.
+
 ## Regenerar este documento
 
 Si querés re-snapshot del estado tras cambios en `drugs.json`:

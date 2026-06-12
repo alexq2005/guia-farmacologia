@@ -14,6 +14,34 @@ APKs with duplicate version codes.
 
 ### Added
 
+- **Enriquecimiento clínico de 10 fármacos de alto uso hospitalario**
+  (`src/data/drugs.json`), orientado a enfermería argentina, con datos
+  verificados contra AEMPS-CIMA y Pediamécum (AEPED):
+
+  - **Cloruro de potasio, acetilcisteína, atropina oftálmica, heparina sódica,
+    metamizol (dipirona) y salbutamol**: dosis pediátrica y ajustes
+    renal/hepático estructurados, presentaciones, cuidados de enfermería
+    accionables (velocidad de infusión, incompatibilidades, signos de alarma) y
+    nombres comerciales argentinos. Heparina y metamizol incluyen además bloque
+    `preparacionParenteral` (diluyente, concentración, velocidad, estabilidad,
+    antídoto).
+  - **Vancomicina**: dosis pediátrica/neonatal y `ajusteHepatico`;
+    monitorización modernizada a AUC/CIM 400-600 (IDSA 2020) además del valle
+    15-20 mcg/mL; reacción a la velocidad ("hombre rojo") y manejo de
+    extravasación (vesicante).
+  - **Ondansetrón**: `ajusteRenal`/`ajusteHepatico` (máx 8 mg/día en hepatopatía
+    grave), techo de 16 mg IV por riesgo de QT/torsades, síndrome
+    serotoninérgico con tramadol/ISRS.
+  - **Enoxaparina**: dosis pediátrica guiada por anti-Xa, `ajusteHepatico`,
+    técnica SC (no expulsar burbuja, no masajear) e intervalos neuraxiales.
+  - **Amiodarona**: dosis pediátrica con alerta de alcohol bencílico
+    (contraindicada <3 años), ajustes renal/hepático, equipo libre de PVC/DEHP y
+    diluyente exclusivo SG5%.
+  - Corregidos nombres comerciales malformados (notas editoriales coladas en
+    `nombresComerciales` de ondansetrón y enoxaparina).
+  - `DATASET_VERSION` 6 → 7 para forzar re-hidratación de SQLite en
+    actualizaciones; `_meta.json drugs.lastEdited` → 2026-06-11.
+
 - **Tests nuevos de lógica premium (7)** en `__tests__/premiumLogic.test.ts`:
   4 para `resolveSubscriptionState` (decisión revocar/conservar tras consultar
   Play Billing, con casos REGRESIÓN de revenue y offline) y 3 para storage
